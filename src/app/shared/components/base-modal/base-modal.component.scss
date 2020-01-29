@@ -1,0 +1,11 @@
+@import "../../../theme/sass/conf/conf";
+@include branding-ibm-svg-icon-class('deploy_16', 'deploy_16', 'action-based/', 16, 16);
+
+div.modal-header {
+  border-bottom: 0px;
+}
+
+div.modal-footer {
+  border-bottom: 0px;
+  border: none;
+}

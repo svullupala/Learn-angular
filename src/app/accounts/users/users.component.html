@@ -1,0 +1,38 @@
+<ba-card baCardClass="dark-card" title="{{'users.textUsers' | translate}}" [ngClass]="{'hidden': mode !== 'list'}" [ngClass]="{'masked': masked}">
+  <div class="row">
+    <div class="align-right margin-bottom-10">
+      <button class="sdl inline with-icon" [ngClass]="{'disabled': !canCreate}"
+              [disabled]="!canCreate" (click)="onCreateClick()" translate>
+        <i class="bidi-add-new-white_16"></i>{{'users.textAddUsers'}}
+      </button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-6 users-left">
+      <div class="card">
+        <sdl-search-bar (search)="startSearch($event)" [textPlaceholderLabel]="textSearchFor">
+        </sdl-search-bar>
+          <user-table (usersLoad)="onUsersLoad($event)" (selectionChange)="onSelectionChange()"></user-table>
+      </div>
+    </div>
+    <div class="col-lg-6">
+      <div class="card users-right">
+        <user-details [models]="selectedUsers"
+                        (deleteUserClick)="onDeleteClick($event)"
+                        (modifySettingsClick)="onModifySettingsClick($event)"
+                        (changePasswordClick)="onChangePasswordClick($event)"
+                        (modifyResourcesClick)="onModifyResourcesClick($event)"
+                        (modifyRolesClick)="onModifyRolesClick($event)">
+        </user-details>
+      </div>
+    </div>
+  </div>
+</ba-card>
+<div *ngIf="mode === 'editSettings'">
+  <user-edit [minPasswordLength]="minPasswordLength" (cancelClick)="onCancelClick()" (saveSuccess)="onSaveSuccess()" [models]="users"
+             [createLink]="createLink" [mode]="settingsMode"></user-edit>
+</div>
+<div *ngIf="mode === 'editResources'">
+  <user-assign-resource (cancelClick)="onCancelClick()" (saveDone)="onSaveDone()" [models]="users"
+            ></user-assign-resource>
+</div>

@@ -1,0 +1,46 @@
+.jobs-table-style {
+  height: 300px;
+}
+
+.overflow {
+  overflow: auto;
+}
+
+.outer-jobs-container-style {
+  height: 375px;
+}
+
+.header-label {
+  padding: 0 0 0 0.75em;
+}
+
+.capitalize {
+  text-transform: capitalize;
+}
+
+.operation-col {
+  max-width: 120px;
+}
+
+.align-center {
+  text-align: center;
+}
+
+.ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 150px;
+}
+
+.noborder:hover {
+  border-color: #047CC0 !important;
+}
+
+.noborder:focus {
+  border-color: #047CC0 !important;
+}
+
+.noborder {
+  border-color: transparent !important;
+}

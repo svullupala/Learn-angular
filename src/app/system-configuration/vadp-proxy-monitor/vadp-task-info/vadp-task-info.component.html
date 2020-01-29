@@ -1,0 +1,81 @@
+<div class="container-fluid margin-top-10">
+  <div class="col-sm-4">
+    <div *ngIf="model && model.tasksInfo && model.tasksInfo.runningTasks.length > 0; then tasks else notasks"></div>
+      <ng-template #tasks>
+        <div>
+          <label class="control-label" translate>{{'vadpProxyMonitor.textSelectVm'}}</label>
+        </div>
+        <select class="form-control" [(ngModel)]="selectedVm" (ngModelChange)="onVmSelect()">
+          <option [ngValue]="vm" *ngFor="let vm of model.tasksInfo.runningTasks">{{ vm.vmName }}</option>
+        </select>
+        <div *ngIf="selectedVm && selectedVm.disks.length > 0; then disks else nodisks"></div>
+          <ng-template #disks>
+            <div class="margin-top-10">
+              <label class="control-label" translate>{{'vadpProxyMonitor.textSelectDisk'}}</label>
+            </div>
+            <select class="form-control" [(ngModel)]="selectedDisk">
+              <option [ngValue]="disk" *ngFor="let disk of selectedVm.disks">{{ disk.label }}</option>
+            </select>
+          </ng-template>
+          <ng-template #nodisks>
+            <label [hidden]="!selectedDisk" class="control-label" translate>{{'vadpProxyMonitor.textNoDisksFound'}}</label>
+          </ng-template>
+      </ng-template>
+      <ng-template #notasks>
+        <label class="control-label" translate>{{'vadpProxyMonitor.textNoTasksFound'}}</label>
+      </ng-template>
+  </div>
+  <div class="col-sm-8">
+    <div [hidden]="!selectedDisk">
+      <h3>{{'vadpProxyMonitor.textDiskInfo' | translate}}</h3>
+      <div class="container-fluid line-height-2" >
+        <div class="row">
+          <div class="col-sm-4">
+            <span  translate>{{ 'vadpProxyMonitor.textSnapshotPath' }}</span>
+          </div>
+          <div class="col-sm-8">
+            <span>{{ selectedDisk && selectedDisk.snapshotPath }}</span>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-4">
+            <span translate>{{ 'vadpProxyMonitor.textSourcePath' }}</span>
+          </div>
+          <div class="col-sm-8">
+            <span>{{ selectedDisk && selectedDisk.sourcePath }}</span>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-4">
+            <span translate>{{'vadpProxyMonitor.textChangedBytes'}}</span>
+          </div>
+          <div class="col-sm-8">
+            <span>{{ selectedDisk && selectedDisk.changedBytes | fileSize }}</span>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-4">
+            <span translate>{{ 'vadpProxyMonitor.textTotalBytes' }}</span>
+          </div>
+          <div class="col-sm-8">
+            <span>{{ selectedDisk && selectedDisk.totalBytes | fileSize }}</span>
+          </div>
+        </div>
+      </div>
+      <!--<div class="card" >-->
+        <!--<div class="card-header" translate>-->
+          <!--{{'hypervisor.textJobStatus'}}-->
+        <!--</div>-->
+        <!--<job-status-table></job-status-table>-->
+      <!--</div>-->
+    </div>
+  </div>
+</div>
+<div class="card margin-top-10" [hidden]="!selectedVm">
+  <div class="card-header" translate>
+    {{'hypervisor.textJobStatus'}}
+  </div>
+  <job-status-table
+    [hideAutoRefreshBtn]="true"
+    [defaultState]="false" [autoLoad]="false" [jobTaskFromProxy]="selectedVm"></job-status-table>
+</div>

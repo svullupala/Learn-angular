@@ -1,0 +1,26 @@
+<div class="application-list" [ngClass]="{'masked': masked}">
+  <div class="application-list-search">
+    <sdl-async-search-bar
+      [displayFieldKey]="'name'"
+      [searchAction]="search.bind(this)"
+      [textPlaceholderLabel]="'inventory.textSearchForDatabases' | translate"
+      (selectResult)="onSelectSearchResult($event)"
+    >
+    </sdl-async-search-bar>
+    <a class="application-list-advanced-search-link" href="#">
+      {{ 'inventory.textAdvancedSearch' | translate }}
+    </a>
+  </div>
+  <h3 class="section-headline application-list-headline">
+    {{ 'inventory.textTotalAppServers' | translate }} {{ totalRecords }}
+  </h3>
+  <div class="application-list-items">
+    <appserver-card *ngFor="let item of records" [item]="item"
+                    (select)="onItemSelect($event)"
+                    (action)="onExecuteAction($event)"
+                    (edit)="onItemEdit($event)"
+                    (remove)="onItemRemove($event)"
+    ></appserver-card>
+  </div>
+</div>
+<config-groups [model]="testResult" (abortClick)="onAbortTestClick()"></config-groups>

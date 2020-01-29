@@ -1,0 +1,398 @@
+[ {
+ "method": "GET",
+  "pattern": "/api/site?",
+    "response": {
+      "links": {
+          "create": {
+              "deprecation": null,
+              "href": "https://172.20.3.104/api/site",
+              "hreflang": null,
+              "media": null,
+              "rel": "create",
+              "title": null,
+              "type": null
+          },
+          "self": {
+              "deprecation": null,
+              "href": "https://172.20.3.104/api/site",
+              "hreflang": null,
+              "media": null,
+              "rel": "self",
+              "title": null,
+              "type": null
+          }
+      },
+      "page": 1,
+      "sites": [
+          {
+              "defaultSite": false,
+              "description": null,
+              "id": "2102",
+              "links": {
+                  "delete": {
+                      "deprecation": null,
+                      "href": "https://172.20.3.104/api/site/2102",
+                      "hreflang": null,
+                      "media": null,
+                      "rel": "delete",
+                      "title": null,
+                      "type": null
+                  },
+                  "edit": {
+                      "deprecation": null,
+                      "href": "https://172.20.3.104/api/site/2102",
+                      "hreflang": null,
+                      "media": null,
+                      "rel": "update",
+                      "title": null,
+                      "type": null
+                  },
+                  "netapp": {
+                      "deprecation": null,
+                      "href": "https://172.20.3.104/api/netapp?siteId=2102",
+                      "hreflang": null,
+                      "media": null,
+                      "rel": "related",
+                      "title": null,
+                      "type": null
+                  },
+                  "resourceprovider": {
+                      "deprecation": null,
+                      "href": "https://172.20.3.104/api/site/2102/resourceprovider",
+                      "hreflang": null,
+                      "media": null,
+                      "rel": "related",
+                      "title": null,
+                      "type": null
+                  },
+                  "self": {
+                      "deprecation": null,
+                      "href": "https://172.20.3.104/api/site/2102",
+                      "hreflang": null,
+                      "media": null,
+                      "rel": "self",
+                      "title": null,
+                      "type": null
+                  },
+                  "up": {
+                      "deprecation": null,
+                      "href": "https://172.20.3.104/api/site",
+                      "hreflang": null,
+                      "media": null,
+                      "rel": "up",
+                      "title": null,
+                      "type": null
+                  },
+                  "usedby": {
+                      "deprecation": null,
+                      "href": "http://localhost:8082/api/endeavour/association/resource/site/2102?action=listUsingResources",
+                      "hreflang": null,
+                      "media": null,
+                      "rel": "related",
+                      "title": null,
+                      "type": null
+                  },
+                  "vsphere": {
+                      "deprecation": null,
+                      "href": "https://172.20.3.104/api/vsphere?siteId=2102",
+                      "hreflang": null,
+                      "media": null,
+                      "rel": "related",
+                      "title": null,
+                      "type": null
+                  }
+              },
+              "name": "Local",
+              "rbacPath": "root:0/site:0/site:2102",
+              "throttles": []
+          },
+          {
+              "defaultSite": true,
+              "description": "Primary Site",
+              "id": "1000",
+              "links": {
+                  "delete": {
+                      "deprecation": null,
+                      "href": "https://172.20.3.104/api/site/1000",
+                      "hreflang": null,
+                      "media": null,
+                      "rel": "delete",
+                      "title": null,
+                      "type": null
+                  },
+                  "edit": {
+                      "deprecation": null,
+                      "href": "https://172.20.3.104/api/site/1000",
+                      "hreflang": null,
+                      "media": null,
+                      "rel": "update",
+                      "title": null,
+                      "type": null
+                  },
+                  "netapp": {
+                      "deprecation": null,
+                      "href": "https://172.20.3.104/api/netapp?siteId=1000",
+                      "hreflang": null,
+                      "media": null,
+                      "rel": "related",
+                      "title": null,
+                      "type": null
+                  },
+                  "resourceprovider": {
+                      "deprecation": null,
+                      "href": "https://172.20.3.104/api/site/1000/resourceprovider",
+                      "hreflang": null,
+                      "media": null,
+                      "rel": "related",
+                      "title": null,
+                      "type": null
+                  },
+                  "self": {
+                      "deprecation": null,
+                      "href": "https://172.20.3.104/api/site/1000",
+                      "hreflang": null,
+                      "media": null,
+                      "rel": "self",
+                      "title": null,
+                      "type": null
+                  },
+                  "up": {
+                      "deprecation": null,
+                      "href": "https://172.20.3.104/api/site",
+                      "hreflang": null,
+                      "media": null,
+                      "rel": "up",
+                      "title": null,
+                      "type": null
+                  },
+                  "usedby": {
+                      "deprecation": null,
+                      "href": "http://localhost:8082/api/endeavour/association/resource/site/1000?action=listUsingResources",
+                      "hreflang": null,
+                      "media": null,
+                      "rel": "related",
+                      "title": null,
+                      "type": null
+                  },
+                  "vsphere": {
+                      "deprecation": null,
+                      "href": "https://172.20.3.104/api/vsphere?siteId=1000",
+                      "hreflang": null,
+                      "media": null,
+                      "rel": "related",
+                      "title": null,
+                      "type": null
+                  }
+              },
+              "name": "Primary",
+              "rbacPath": "root:0/site:0/site:1000",
+              "throttles": [
+                  {
+                      "rate": "209715200",
+                      "schedules": []
+                  }
+              ]
+          },
+          {
+              "defaultSite": false,
+              "description": "secondary site",
+              "id": "2000",
+              "links": {
+                  "delete": {
+                      "deprecation": null,
+                      "href": "https://172.20.3.104/api/site/2000",
+                      "hreflang": null,
+                      "media": null,
+                      "rel": "delete",
+                      "title": null,
+                      "type": null
+                  },
+                  "edit": {
+                      "deprecation": null,
+                      "href": "https://172.20.3.104/api/site/2000",
+                      "hreflang": null,
+                      "media": null,
+                      "rel": "update",
+                      "title": null,
+                      "type": null
+                  },
+                  "netapp": {
+                      "deprecation": null,
+                      "href": "https://172.20.3.104/api/netapp?siteId=2000",
+                      "hreflang": null,
+                      "media": null,
+                      "rel": "related",
+                      "title": null,
+                      "type": null
+                  },
+                  "resourceprovider": {
+                      "deprecation": null,
+                      "href": "https://172.20.3.104/api/site/2000/resourceprovider",
+                      "hreflang": null,
+                      "media": null,
+                      "rel": "related",
+                      "title": null,
+                      "type": null
+                  },
+                  "self": {
+                      "deprecation": null,
+                      "href": "https://172.20.3.104/api/site/2000",
+                      "hreflang": null,
+                      "media": null,
+                      "rel": "self",
+                      "title": null,
+                      "type": null
+                  },
+                  "up": {
+                      "deprecation": null,
+                      "href": "https://172.20.3.104/api/site",
+                      "hreflang": null,
+                      "media": null,
+                      "rel": "up",
+                      "title": null,
+                      "type": null
+                  },
+                  "usedby": {
+                      "deprecation": null,
+                      "href": "http://localhost:8082/api/endeavour/association/resource/site/2000?action=listUsingResources",
+                      "hreflang": null,
+                      "media": null,
+                      "rel": "related",
+                      "title": null,
+                      "type": null
+                  },
+                  "vsphere": {
+                      "deprecation": null,
+                      "href": "https://172.20.3.104/api/vsphere?siteId=2000",
+                      "hreflang": null,
+                      "media": null,
+                      "rel": "related",
+                      "title": null,
+                      "type": null
+                  }
+              },
+              "name": "Secondary",
+              "rbacPath": "root:0/site:0/site:2000",
+              "throttles": null
+          },
+          {
+              "defaultSite": false,
+              "description": null,
+              "id": "2103",
+              "links": {
+                  "delete": {
+                      "deprecation": null,
+                      "href": "https://172.20.3.104/api/site/2103",
+                      "hreflang": null,
+                      "media": null,
+                      "rel": "delete",
+                      "title": null,
+                      "type": null
+                  },
+                  "edit": {
+                      "deprecation": null,
+                      "href": "https://172.20.3.104/api/site/2103",
+                      "hreflang": null,
+                      "media": null,
+                      "rel": "update",
+                      "title": null,
+                      "type": null
+                  },
+                  "netapp": {
+                      "deprecation": null,
+                      "href": "https://172.20.3.104/api/netapp?siteId=2103",
+                      "hreflang": null,
+                      "media": null,
+                      "rel": "related",
+                      "title": null,
+                      "type": null
+                  },
+                  "resourceprovider": {
+                      "deprecation": null,
+                      "href": "https://172.20.3.104/api/site/2103/resourceprovider",
+                      "hreflang": null,
+                      "media": null,
+                      "rel": "related",
+                      "title": null,
+                      "type": null
+                  },
+                  "self": {
+                      "deprecation": null,
+                      "href": "https://172.20.3.104/api/site/2103",
+                      "hreflang": null,
+                      "media": null,
+                      "rel": "self",
+                      "title": null,
+                      "type": null
+                  },
+                  "up": {
+                      "deprecation": null,
+                      "href": "https://172.20.3.104/api/site",
+                      "hreflang": null,
+                      "media": null,
+                      "rel": "up",
+                      "title": null,
+                      "type": null
+                  },
+                  "usedby": {
+                      "deprecation": null,
+                      "href": "http://localhost:8082/api/endeavour/association/resource/site/2103?action=listUsingResources",
+                      "hreflang": null,
+                      "media": null,
+                      "rel": "related",
+                      "title": null,
+                      "type": null
+                  },
+                  "vsphere": {
+                      "deprecation": null,
+                      "href": "https://172.20.3.104/api/vsphere?siteId=2103",
+                      "hreflang": null,
+                      "media": null,
+                      "rel": "related",
+                      "title": null,
+                      "type": null
+                  }
+              },
+              "name": "Throttled_site",
+              "rbacPath": "root:0/site:0/site:2103",
+              "throttles": [
+                  {
+                      "rate": "104857600",
+                      "schedules": [
+                          {
+                              "end": 7199,
+                              "start": 3600
+                          },
+                          {
+                              "end": 100799,
+                              "start": 97200
+                          },
+                          {
+                              "end": 194399,
+                              "start": 190800
+                          },
+                          {
+                              "end": 287999,
+                              "start": 284400
+                          },
+                          {
+                              "end": 381599,
+                              "start": 378000
+                          },
+                          {
+                              "end": 475199,
+                              "start": 471600
+                          },
+                          {
+                              "end": 568799,
+                              "start": 565200
+                          }
+                      ]
+                  }
+              ]
+          }
+      ],
+      "total": 4
+    }
+  }
+]

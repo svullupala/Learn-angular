@@ -1,0 +1,56 @@
+<h2 class="sdl-header" translate>{{'identities.identityProperties'}}</h2>
+<ba-card>
+  <div class="form-group row form-horizontal" hidden>
+    <label for="selectType" class="col-sm-2 control-label" translate>{{'storage.textType'}}</label>
+    <div class="col-sm-3">
+      <select [(ngModel)]="model.type" type="text" class="form-control" id="selectType" (change)="onSelectType()" disabled>
+        <option value="system">{{ 'identities.textSystem' | translate }}</option>
+      </select>
+    </div>
+  </div>
+  <form class="form-horizontal" [formGroup]="form">
+    <div class="form-group row" [ngClass]="{'has-error': (!name.valid && name.touched), 'has-success': (name.valid && name.touched)}">
+      <label for="inputName" class="col-sm-2 control-label" translate>{{'common.textName'}}</label>
+      <div class="col-sm-3">
+        <input sdlTooltip
+            [mode]="'critical'"
+            [isDisabled]="(!name.valid && name.untouched) || (name.valid && name.touched) || name.untouched"
+            [placement]="'right'"
+            [sdlTooltip]="'common.textRequiredFieldSuggestion' | translate"
+          [formControl]="name" [(ngModel)]="model.name" type="text" class="form-control" id="inputName">
+      </div>
+    </div>
+    <div class="form-group row" [ngClass]="{'has-error': (!username.valid && username.touched), 'has-success': (username.valid && username.touched)}">
+      <label for="inputUserame" class="col-sm-2 control-label" translate>{{'common.textUsername'}}</label>
+      <div class="col-sm-3">
+        <input sdlTooltip
+            [mode]="'critical'"
+            [isDisabled]="(!username.valid && username.untouched) || (username.valid && username.touched) || username.untouched"
+            [placement]="'right'"
+            [sdlTooltip]="'common.textRequiredFieldSuggestion' | translate"
+            [formControl]="username" [(ngModel)]="model.username" type="text" class="form-control" id="inputUserame">
+      </div>
+    </div>
+    <div class="form-group row" [ngClass]="{'has-error': (!password.valid && password.touched), 'has-success': (password.valid && password.touched)}">
+      <label for="inputPassword" class="col-sm-2 control-label" translate>{{'common.textPassword'}}</label>
+      <div class="col-sm-3">
+        <input sdlTooltip
+            [mode]="'critical'"
+            [isDisabled]="(!password.valid && password.untouched) || (password.valid && password.touched)"
+            [placement]="'right'"
+            [sdlTooltip]="'common.textRequiredFieldSuggestion' | translate"
+            [formControl]="password"
+            [(ngModel)]="model.password"
+            type="password"
+            class="form-control"
+            id="inputPassword">
+      </div>
+    </div>
+  </form>
+</ba-card>
+<confirm-toolbar-component
+  (cancelEvent)="onCancelClick()"
+  (confirmEvent)="onSaveClick()"
+  [disableConfirmButton]="!isValid()"
+  [splitButtons]="false"
+  [floatRight]="false"></confirm-toolbar-component>

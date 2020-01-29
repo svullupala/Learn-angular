@@ -1,0 +1,4 @@
+<div class="tooltip-arrow arrow sdl-tooltip-arrow"></div>
+<div class="sdl-tooltip-inner" [ngClass]="{'text-content': isTextContent}">
+  <i *ngIf="mode!=='standard' && !iconHidden" [ngClass]="iconCls"></i><label><ng-content></ng-content></label>
+</div>

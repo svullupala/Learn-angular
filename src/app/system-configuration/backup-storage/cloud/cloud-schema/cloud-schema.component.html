@@ -1,0 +1,33 @@
+<form *ngIf="model" class="form-horizontal" [formGroup]="form">
+  <div class="form-group row" *ngFor="let param of parameters"
+       [ngClass]="{'has-success': checkForControlValidity(form.controls[param.name]),
+                'has-error': checkForControlError(form.controls[param.name])}">
+    <label class="col-sm-3 control-label" *ngIf="param.name !== 'accessKey'">{{param.promptText || param.name}}</label>
+    <div class="col-sm-4">
+      <select class="form-control" [formControlName]="param.name" *ngIf="param.type === 'list'" [(ngModel)]="param.value">
+        <option *ngFor="let type of param.values" [ngValue]="type.value">{{type.name}}</option>
+      </select>
+      <input sdlTooltip
+            *ngIf="(param.type === 'string' || param.type === 'integer')" [min]="0"
+             [mode]="'critical'"
+             [attr.aria-label]="param.promptText || param.name"
+             [isDisabled]="(!checkForControlValidity(form.controls[param.name]) && form.controls[param.name].untouched)
+                        || (checkForControlValidity(form.controls[param.name]) && form.controls[param.name].touched)"
+             [placement]="'right'"
+             [sdlTooltip]="'common.textRequiredFieldSuggestion' | translate"
+             [type]="param.type === 'integer' ? 'number' : 'text'" class="form-control"
+             [formControlName]="param.name"
+             [(ngModel)]="param.value">
+      <label class="custom-checkbox" *ngIf="param.type === 'boolean'">
+        <input type="checkbox" [formControlName]="param.name" [(ngModel)]="param.value">
+        <span></span>
+      </label>
+    </div>
+  </div>
+</form>
+<label style="margin-bottom:1rem;" [hidden]="model === undefined || !showWarning"><i style="margin-right:10px;" class="bidi-status-warning"></i>{{credentialWarningText}}</label>
+<key-selector [hidden]="model === undefined"
+              [model]="keySelectModel"
+              [clsOfLabelCol]="'col-sm-3'" [clsOfFieldCol]="'col-sm-4'"
+              [textAccessKeyLabel]="isAzure ? 'key.textStorageAccountName' : undefined"
+              [textSecretKeyLabel]="isAzure ? 'key.textStorageAccountSharedKey' : undefined"></key-selector>

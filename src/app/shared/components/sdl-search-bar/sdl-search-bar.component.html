@@ -1,0 +1,19 @@
+<form [formGroup]="searchForm" (ngSubmit)="onSearch()" class="form-horizontal">
+  <div class="input-group search-field-light" cdkMonitorSubtreeFocus (cdkFocusChange)="markForCheck()">
+    <input #searchField formControlName="searchField" type="text" class="form-control"
+      placeholder="{{textPlaceholderLabel}}" title="{{textPlaceholderLabel}}" (keydown.enter)="onSearch($event)"
+      [attr.disabled]="isSearchFieldDisabled ? '' : null">
+    <div [hidden]="!isSupportClear" class="input-group-btn" style="width: 1.2rem;">
+      <button cdkMonitorElementFocus id="clear-button" type="button" [hidden]="!isSearchContent()" (click)="onClear()"
+        class="btn btn-default">
+        <i id="clear-icon" class="ion-close-circled"></i>
+      </button>
+    </div>
+    <div class="input-group-btn">
+      <button cdkMonitorElementFocus id="search-button" type="submit" title="{{'common.textSearch' | translate}}"
+        class="btn btn-default" [attr.disabled]="isSearchFieldDisabled ? '' : null">
+        <i id="search-icon" class="bidi-search_16"></i>
+      </button>
+    </div>
+  </div>
+</form>

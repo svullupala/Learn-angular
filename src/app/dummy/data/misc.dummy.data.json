@@ -1,0 +1,411 @@
+[ {
+ "method": "GET",
+  "pattern": "\/api\/cloud\/schema\\?type=s3&provider=aws",
+    "response": 
+      {
+          "links": {
+              "self": {
+                  "deprecation": null,
+                  "href": "http://172.20.239.130:8082/api/cloud/schema?type=s3&provider=aws",
+                  "hreflang": null,
+                  "media": null,
+                  "rel": "self",
+                  "title": null,
+                  "type": null
+              }
+          },
+          "parameters": [
+              {
+                  "allowMultipleValues": false,
+                  "defaultValue": "",
+                  "name": "accessKey",
+                  "promptText": "Access Key",
+                  "required": true,
+                  "type": "string"
+              },
+              {
+                  "allowMultipleValues": false,
+                  "defaultValue": "",
+                  "name": "name",
+                  "promptText": "Name",
+                  "required": true,
+                  "type": "string"
+              },
+              {
+                  "allowMultipleValues": false,
+                  "defaultValue": "",
+                  "name": "region",
+                  "promptText": "Region",
+                  "required": true,
+                  "type": "list",
+                  "values": [
+                      {
+                          "name": "US East (Virginia)",
+                          "value": "us-east-1"
+                      },
+                      {
+                          "name": "US East (Ohio)",
+                          "value": "us-east-2"
+                      },
+                      {
+                          "name": "US West (N. California)",
+                          "value": "us-west-1"
+                      },
+                      {
+                          "name": "US West (Oregon)",
+                          "value": "us-west-2"
+                      },
+                      {
+                          "name": "Asia Pacific (Tokyo)",
+                          "value": "ap-northeast-1"
+                      },
+                      {
+                          "name": "Asia Pacific (Seoul)",
+                          "value": "ap-northeast-2"
+                      },
+                      {
+                          "name": "Asia Pacific (Osaka-Local)",
+                          "value": "ap-northeast-3"
+                      },
+                      {
+                          "name": "Asia Pacific (Mumbai)",
+                          "value": "ap-south-1"
+                      },
+                      {
+                          "name": "Asia Pacific (Singapore)",
+                          "value": "ap-southeast-1"
+                      },
+                      {
+                          "name": "Asia Pacific (Sydney)",
+                          "value": "ap-southeast-2"
+                      },
+                      {
+                          "name": "Canada (Central)",
+                          "value": "ca-central-1"
+                      },
+                      {
+                          "name": "China (Beijing)",
+                          "value": "cn-north-1"
+                      },
+                      {
+                          "name": "China (Ningxia)",
+                          "value": "cn-northwest-1"
+                      },
+                      {
+                          "name": "EU (Frankfurt)",
+                          "value": "eu-central-1"
+                      },
+                      {
+                          "name": "EU (Ireland)",
+                          "value": "eu-west-1"
+                      },
+                      {
+                          "name": "EU (London)",
+                          "value": "eu-west-2"
+                      },
+                      {
+                          "name": "EU (Paris)",
+                          "value": "eu-west-3"
+                      },
+                      {
+                          "name": "EU (Frankfurt)",
+                          "value": "eu-central-1"
+                      },
+                      {
+                          "name": "EU (Stockholm)",
+                          "value": "eu-north-1"
+                      },
+                      {
+                          "name": "South America (S\u00e3o Paulo)",
+                          "value": "sa-east-1"
+                      }
+                  ]
+              },
+              {
+                  "allowMultipleValues": false,
+                  "defaultValue": false,
+                  "name": "enableDeepArchive",
+                  "promptText": "Enable Deep Archive",
+                  "required": false,
+                  "type": "boolean"
+              }
+          ],
+          "provider": "aws",
+          "type": "s3"
+      }
+  },
+  { 
+   "method": "POST",
+   "pattern": "\/ngp\/appserver",
+   "response": 
+      {
+          "appCredentials": [
+            {
+                "appServerId": "1021",
+                "appuser": {
+                    "href": "https://ecxbed4/api/identity/key/1008"
+                },
+                "comment": null,
+                "credentialType": null,
+                "id": "1009",
+                "instanceName": "aa",
+                "useForAllInstances": false
+            }
+        ],
+        "application": true,
+        "applicationType": "exchonline",
+        "applicationTypes": [],
+        "catalogEligible": null,
+        "comment": null,
+        "hostAddress": "172.20.3.143",
+        "id": "1021",
+        "links": {
+            "credentials": {
+                "deprecation": null,
+                "href": "https://ecxbed4/api/appserver/1021/credential",
+                "hreflang": null,
+                "media": null,
+                "rel": "related",
+                "title": null,
+                "type": null
+            },
+            "delete": {
+                "deprecation": null,
+                "href": "https://ecxbed4/api/appserver/1021",
+                "hreflang": null,
+                "media": null,
+                "rel": "delete",
+                "title": null,
+                "type": null
+            },
+            "disks": {
+                "deprecation": null,
+                "href": "https://ecxbed4/api/appserver/1021/disk?from=hlo",
+                "hreflang": null,
+                "media": null,
+                "rel": "related",
+                "title": null,
+                "type": null
+            },
+            "edit": {
+                "deprecation": null,
+                "href": "https://ecxbed4/api/appserver/1021",
+                "hreflang": null,
+                "media": null,
+                "rel": "update",
+                "title": null,
+                "type": null
+            },
+            "inventory": {
+                "deprecation": null,
+                "href": "https://ecxbed4/api/appserver/1021?action=inventory",
+                "hreflang": null,
+                "media": null,
+                "rel": "action",
+                "title": "Inventory",
+                "type": null
+            },
+            "self": {
+                "deprecation": null,
+                "href": "https://ecxbed4/api/appserver/1021",
+                "hreflang": null,
+                "media": null,
+                "rel": "self",
+                "title": null,
+                "type": null
+            },
+            "test": {
+                "deprecation": null,
+                "href": "https://ecxbed4/api/appserver/1021?action=test",
+                "hreflang": null,
+                "media": null,
+                "rel": "action",
+                "title": "Test",
+                "type": null
+            },
+            "up": {
+                "deprecation": null,
+                "href": "https://ecxbed4/api/appserver",
+                "hreflang": null,
+                "media": null,
+                "rel": "up",
+                "title": null,
+                "type": null
+            },
+            "usedby": {
+                "deprecation": null,
+                "href": "https://ecxbed4/api/endeavour/association/resource/appserver/1021?action=listUsingResources",
+                "hreflang": null,
+                "media": null,
+                "rel": "related",
+                "title": null,
+                "type": null
+            },
+            "volumes": {
+                "deprecation": null,
+                "href": "https://ecxbed4/api/appserver/1021/volume?from=hlo",
+                "hreflang": null,
+                "media": null,
+                "rel": "related",
+                "title": null,
+                "type": null
+            }
+        },
+        "logicalDelete": false,
+        "metadataPath": null,
+        "name": "172.20.3.143",
+        "opProperties": {
+            "maxConcurrency": 10
+        },
+        "osType": "windows",
+        "oskey": null,
+        "osuser": {
+            "href": "https://ecxbed4/api/identity/user/2206"
+        },
+        "portNumber": 0,
+        "rbacPath": "root:0/appserver.all:0/appserver:1021",
+        "resourceType": "appserver",
+        "script": false,
+        "serverType": null,
+        "useKeyAuthentication": false,
+        "vsphereId": null
+    }
+  },
+  { 
+   "method": "PUT",
+   "pattern": "\/ngp\/appserver\/\\d+",
+   "response": 
+      {
+          "appCredentials": [
+            {
+                "appServerId": "1021",
+                "appuser": {
+                    "href": "https://ecxbed4/api/identity/key/1008"
+                },
+                "comment": null,
+                "credentialType": null,
+                "id": "1009",
+                "instanceName": "aa",
+                "useForAllInstances": false
+            }
+        ],
+        "application": true,
+        "applicationType": "exchonline",
+        "applicationTypes": [],
+        "catalogEligible": null,
+        "comment": null,
+        "hostAddress": "172.20.3.143",
+        "id": "1021",
+        "links": {
+            "credentials": {
+                "deprecation": null,
+                "href": "https://ecxbed4/api/appserver/1021/credential",
+                "hreflang": null,
+                "media": null,
+                "rel": "related",
+                "title": null,
+                "type": null
+            },
+            "delete": {
+                "deprecation": null,
+                "href": "https://ecxbed4/api/appserver/1021",
+                "hreflang": null,
+                "media": null,
+                "rel": "delete",
+                "title": null,
+                "type": null
+            },
+            "disks": {
+                "deprecation": null,
+                "href": "https://ecxbed4/api/appserver/1021/disk?from=hlo",
+                "hreflang": null,
+                "media": null,
+                "rel": "related",
+                "title": null,
+                "type": null
+            },
+            "edit": {
+                "deprecation": null,
+                "href": "https://ecxbed4/api/appserver/1021",
+                "hreflang": null,
+                "media": null,
+                "rel": "update",
+                "title": null,
+                "type": null
+            },
+            "inventory": {
+                "deprecation": null,
+                "href": "https://ecxbed4/api/appserver/1021?action=inventory",
+                "hreflang": null,
+                "media": null,
+                "rel": "action",
+                "title": "Inventory",
+                "type": null
+            },
+            "self": {
+                "deprecation": null,
+                "href": "https://ecxbed4/api/appserver/1021",
+                "hreflang": null,
+                "media": null,
+                "rel": "self",
+                "title": null,
+                "type": null
+            },
+            "test": {
+                "deprecation": null,
+                "href": "https://ecxbed4/api/appserver/1021?action=test",
+                "hreflang": null,
+                "media": null,
+                "rel": "action",
+                "title": "Test",
+                "type": null
+            },
+            "up": {
+                "deprecation": null,
+                "href": "https://ecxbed4/api/appserver",
+                "hreflang": null,
+                "media": null,
+                "rel": "up",
+                "title": null,
+                "type": null
+            },
+            "usedby": {
+                "deprecation": null,
+                "href": "https://ecxbed4/api/endeavour/association/resource/appserver/1021?action=listUsingResources",
+                "hreflang": null,
+                "media": null,
+                "rel": "related",
+                "title": null,
+                "type": null
+            },
+            "volumes": {
+                "deprecation": null,
+                "href": "https://ecxbed4/api/appserver/1021/volume?from=hlo",
+                "hreflang": null,
+                "media": null,
+                "rel": "related",
+                "title": null,
+                "type": null
+            }
+        },
+        "logicalDelete": false,
+        "metadataPath": null,
+        "name": "172.20.3.143",
+        "opProperties": {
+            "maxConcurrency": 10
+        },
+        "osType": "windows",
+        "oskey": null,
+        "osuser": {
+            "href": "https://ecxbed4/api/identity/user/2206"
+        },
+        "portNumber": 0,
+        "rbacPath": "root:0/appserver.all:0/appserver:1021",
+        "resourceType": "appserver",
+        "script": false,
+        "serverType": null,
+        "useKeyAuthentication": false,
+        "vsphereId": null
+    }
+  }
+]

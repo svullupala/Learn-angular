@@ -1,0 +1,47 @@
+<ba-card baCardClass="{{borderClass}} card no-border">
+  <div>
+    <label class="control-label" translate>{{'resourceGroups.textChooseResourceType'}}</label>
+  </div>
+    <select class="form-control" [(ngModel)]="resourceType" (change)="loadData()">
+      <option value="account" translate>{{'resourceGroups.textAccounts'}}</option>
+      <option value="database" translate>{{'resourceGroups.textApplication'}}</option>
+      <option value="container" translate>{{'resourceGroups.textContainer'}}</option>
+      <option value="appserver" translate>{{'resourceGroups.textApplicationServers'}}</option>
+      <option value="hypervisor" translate>{{'resourceGroups.textHypervisor'}}</option>
+      <option value="job" translate>{{'resourceGroups.textJob'}}</option>
+      <option value="reports" translate>{{'resourceGroups.textReport'}}</option>
+      <option value="screens" translate>{{'resourceGroups.textScreens'}}</option>
+      <option value="slapolicy" translate>{{'resourceGroups.textSlaPolicy'}}</option>
+      <option value="system" translate>{{'resourceGroups.textSystem'}}</option>
+    </select>
+  <div [hidden]="(resourceType !== 'appserver')">
+    <resource-group-appserver-selector></resource-group-appserver-selector>
+  </div>
+  <div [hidden]="resourceType !== 'hypervisor'">
+    <resource-group-hypervisor-selector></resource-group-hypervisor-selector>
+  </div>
+  <div [hidden]="resourceType !== 'job'">
+    <resource-group-job-selector></resource-group-job-selector>
+  </div>
+  <div [hidden]="resourceType !== 'database'">
+    <resource-group-database-selector></resource-group-database-selector>
+  </div>
+  <div [hidden]="resourceType !== 'container'">
+    <resource-group-container-selector></resource-group-container-selector>
+  </div>
+  <div [hidden]="resourceType !== 'reports'">
+    <resource-group-reports-selector></resource-group-reports-selector>
+  </div>
+  <div [hidden]="resourceType !== 'account'">
+    <resource-group-account-selector></resource-group-account-selector>
+  </div>
+  <div [hidden]="resourceType !== 'screens'">
+    <resource-group-screens-selector></resource-group-screens-selector>
+  </div>
+  <div [hidden]="resourceType !== 'slapolicy'">
+    <resource-group-slapolicy-selector></resource-group-slapolicy-selector>
+  </div>
+  <div [hidden]="resourceType !== 'system'">
+    <resource-group-system-selector></resource-group-system-selector>
+  </div>
+</ba-card>

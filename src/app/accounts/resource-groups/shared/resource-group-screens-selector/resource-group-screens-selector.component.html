@@ -1,0 +1,15 @@
+<div class="space-top-10">
+    <resource-selector-component
+      [records]="records"
+      [dataset]="dataset"
+      [masked]="masked"
+      [addAllItem]="addAllItem"
+      [breadcrumbs]="breadcrumbs"
+      [resourceType]="'resourceGroups.textScreens' | translate"
+      [hideSearchBar]="true"
+      [paginateConfig]="paginateConfig"
+      (navigateEvent)="loadCustomReports($event)"
+      (onPageChangeEvent)="onRefresh()"
+      (onRefreshEvent)="onRefresh()"
+    ></resource-selector-component>
+</div>

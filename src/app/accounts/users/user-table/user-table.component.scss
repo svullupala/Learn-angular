@@ -1,0 +1,51 @@
+.no-top-border {
+  border-top: 0;
+}
+
+.large-text {
+  font-size: 24px;
+}
+
+.fixed {
+  table-layout:fixed;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.align-left {
+  text-align: left !important;
+}
+
+.align-center {
+  text-align: center !important;
+}
+
+.align-right {
+  text-align: right !important;
+}
+
+.normal-col {
+  width: 50%;
+  word-break: break-all;
+}
+
+.capitalize {
+  text-transform: capitalize;
+}
+
+.table > thead > tr > th:first-child {
+  padding-left: 0.75rem;
+}
+
+.table > tbody > tr > td:first-child {
+  padding-left: 0.75rem;
+}
+
+i {
+  opacity: 0.5;
+  margin-right: 5px;
+}
+
+

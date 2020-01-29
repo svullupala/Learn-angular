@@ -1,0 +1,89 @@
+@import 'sdl-variables';
+@import 'sdl-mixins';
+
+@-webkit-keyframes rotate {
+  0% {
+    transform: rotate(0deg); /* Firefox 16+, IE 10+, Opera */
+  }
+  100% {
+    transform: rotate(360deg); /* Firefox 16+, IE 10+, Opera */
+  }
+}
+
+@-moz-keyframes rotate {
+  0% {
+    -moz-transform: rotate(0deg); /* Firefox 16+*/
+  }
+  100% {
+    -moz-transform: rotate(360deg); /* Firefox 16+*/
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg); /* Firefox 16+, IE 10+, Opera */
+  }
+  100% {
+    transform: rotate(360deg); /* Firefox 16+, IE 10+, Opera */
+  }
+}
+
+@keyframes init-stroke {
+  0% {
+    stroke-dashoffset: 240;
+  }
+  100% {
+    stroke-dashoffset: 40;
+  }
+}
+
+@-webkit-keyframes init-stroke {
+  0% {
+    stroke-dashoffset: 240;
+  }
+  100% {
+    stroke-dashoffset: 40;
+  }
+}
+
+@-moz-keyframes init-stroke {
+  0% {
+    stroke-dashoffset: 240;
+  }
+  100% {
+    stroke-dashoffset: 40;
+  }
+}
+
+@keyframes init-stroke {
+  0% {
+    stroke-dashoffset: 240;
+  }
+  100% {
+    stroke-dashoffset: 40;
+  }
+}
+
+@mixin sdl-loading-spinner($width, $height) {
+  animation-name: rotate;
+  animation-duration: 500ms;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+  animation-iteration-count: infinite;
+  width: $width;
+  height: $height;
+  svg {
+    fill: transparent;
+    stroke: $cerulean50;
+    stroke-width: 7;
+    stroke-linecap: butt;
+    stroke-dasharray: 240;
+    stroke-dashoffset: 40;
+
+    circle {
+      animation-name: init-stroke;
+      animation-duration: 1000ms;
+      animation-timing-function: cubic-bezier(0.5, 0, 0.1, 1);
+    }
+  }
+}

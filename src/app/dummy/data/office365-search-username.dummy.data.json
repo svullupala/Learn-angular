@@ -1,0 +1,322 @@
+[
+    {
+        "method": "POST",
+        "pattern": "/api/application/search?",
+        "response": {
+            "links": {
+                "self": {
+                    "rel": "self",
+                    "href": "https://172.22.11.119/api/application/office365/search?resourceType=database&applicationType=office365&from=hlo",
+                    "hreflang": null,
+                    "media": null,
+                    "title": null,
+                    "type": null,
+                    "deprecation": null
+                }
+            },
+            "total": 3,
+            "contents": [
+                {
+                    "links": {
+                        "self": {
+                            "rel": "self",
+                            "href": "https://172.22.11.119/api/application/office365/instance/9465d17b165617624d95d377c651c15858bf3a6ff81ec737d697a5ea8ffc4be70cbd4387c4bb85db345e2212ba4dc021d115439cc682bc41d73538d20f58081f/database/103?from=hlo",
+                            "hreflang": null,
+                            "media": null,
+                            "title": null,
+                            "type": null,
+                            "deprecation": null
+                        },
+                        "options": {
+                            "rel": "related",
+                            "href": "https://172.22.11.119/api/application/office365/instance/9465d17b165617624d95d377c651c15858bf3a6ff81ec737d697a5ea8ffc4be70cbd4387c4bb85db345e2212ba4dc021d115439cc682bc41d73538d20f58081f/database/103/options",
+                            "hreflang": null,
+                            "media": null,
+                            "title": null,
+                            "type": null,
+                            "deprecation": null
+                        },
+                        "instance": {
+                            "rel": "related",
+                            "href": "https://172.22.11.119/api/application/office365/instance/9465d17b165617624d95d377c651c15858bf3a6ff81ec737d697a5ea8ffc4be70cbd4387c4bb85db345e2212ba4dc021d115439cc682bc41d73538d20f58081f?from=hlo",
+                            "hreflang": null,
+                            "media": null,
+                            "title": null,
+                            "type": null,
+                            "deprecation": null
+                        },
+                        "dataVolumes": {
+                            "rel": "related",
+                            "href": "https://172.22.11.119/api/application/volume?from=hlo&filter=%5B%7B%22property%22%3A%22pk%22%2C%22op%22%3A%22IN%22%2C%22value%22%3A%22%22%7D%5D",
+                            "hreflang": null,
+                            "media": null,
+                            "title": null,
+                            "type": null,
+                            "deprecation": null
+                        },
+                        "server": {
+                            "rel": "related",
+                            "href": "https://172.22.11.119/api/appserver/1014?from=hlo",
+                            "hreflang": null,
+                            "media": null,
+                            "title": null,
+                            "type": null,
+                            "deprecation": null
+                        },
+                        "appServerVms": {
+                            "rel": "related",
+                            "href": "https://172.22.11.119/api/application/office365/instance/9465d17b165617624d95d377c651c15858bf3a6ff81ec737d697a5ea8ffc4be70cbd4387c4bb85db345e2212ba4dc021d115439cc682bc41d73538d20f58081f/appservervm?from=hlo",
+                            "hreflang": null,
+                            "media": null,
+                            "title": null,
+                            "type": null,
+                            "deprecation": null
+                        },
+                        "deletefromcatalog": {
+                            "rel": "action",
+                            "href": "https://172.22.11.119/api/application/office365/103?from=recovery&action=deletefromcatalog",
+                            "hreflang": null,
+                            "media": null,
+                            "title": null,
+                            "type": null,
+                            "deprecation": null
+                        },
+                        "folders": {
+                            "rel": "related",
+                            "href": "https://172.22.11.119/api/application/office365/instance/9465d17b165617624d95d377c651c15858bf3a6ff81ec737d697a5ea8ffc4be70cbd4387c4bb85db345e2212ba4dc021d115439cc682bc41d73538d20f58081f/database/103/folder?from=hlo",
+                            "hreflang": null,
+                            "media": null,
+                            "title": null,
+                            "type": null,
+                            "deprecation": null
+                        }
+                    },
+                    "name": "CONTACTS",
+                    "type": "office365",
+                    "resourceType": "database",
+                    "id": "103",
+                    "host": "172.20.238.33",
+                    "providerNodeId": "1014",
+                    "sessionId": 1566874776247,
+                    "jobId": "1003",
+                    "rbacPath": "root:0/app:0/app.type:office365/appinst:9465d17b165617624d95d377c651c15858bf3a6ff81ec737d697a5ea8ffc4be70cbd4387c4bb85db345e2212ba4dc021d115439cc682bc41d73538d20f58081f/appdb:103",
+                    "dataVolumeIds": [],
+                    "logVolumeIds": [],
+                    "eligibility": {
+                        "backup": {
+                            "eligible": true,
+                            "reason": "supported"
+                        },
+                        "logbackup": {
+                            "eligible": false,
+                            "reason": "notsupported"
+                        }
+                    },
+                    "metadataPath": "/DBINST:9465d17b165617624d95d377c651c15858bf3a6ff81ec737d697a5ea8ffc4be70cbd4387c4bb85db345e2212ba4dc021d115439cc682bc41d73538d20f58081f/DBFLDR:edde0f62029990e9a065f0c40df07fdf192306881f59b0e6263dce8d39e476eb652fc6f3057869c3417c99036fc8e4769940621702380957e3267e185b089437/DB:103",
+                    "storageProfiles": [],
+                    "location": "/storwaredev/adrzej.bombel@storwaredev.onmicrosoft.com/CONTACTS"
+                },
+                {
+                    "links": {
+                        "self": {
+                            "rel": "self",
+                            "href": "https://172.22.11.119/api/application/office365/instance/9465d17b165617624d95d377c651c15858bf3a6ff81ec737d697a5ea8ffc4be70cbd4387c4bb85db345e2212ba4dc021d115439cc682bc41d73538d20f58081f/database/203?from=hlo",
+                            "hreflang": null,
+                            "media": null,
+                            "title": null,
+                            "type": null,
+                            "deprecation": null
+                        },
+                        "options": {
+                            "rel": "related",
+                            "href": "https://172.22.11.119/api/application/office365/instance/9465d17b165617624d95d377c651c15858bf3a6ff81ec737d697a5ea8ffc4be70cbd4387c4bb85db345e2212ba4dc021d115439cc682bc41d73538d20f58081f/database/203/options",
+                            "hreflang": null,
+                            "media": null,
+                            "title": null,
+                            "type": null,
+                            "deprecation": null
+                        },
+                        "instance": {
+                            "rel": "related",
+                            "href": "https://172.22.11.119/api/application/office365/instance/9465d17b165617624d95d377c651c15858bf3a6ff81ec737d697a5ea8ffc4be70cbd4387c4bb85db345e2212ba4dc021d115439cc682bc41d73538d20f58081f?from=hlo",
+                            "hreflang": null,
+                            "media": null,
+                            "title": null,
+                            "type": null,
+                            "deprecation": null
+                        },
+                        "dataVolumes": {
+                            "rel": "related",
+                            "href": "https://172.22.11.119/api/application/volume?from=hlo&filter=%5B%7B%22property%22%3A%22pk%22%2C%22op%22%3A%22IN%22%2C%22value%22%3A%22%22%7D%5D",
+                            "hreflang": null,
+                            "media": null,
+                            "title": null,
+                            "type": null,
+                            "deprecation": null
+                        },
+                        "server": {
+                            "rel": "related",
+                            "href": "https://172.22.11.119/api/appserver/1014?from=hlo",
+                            "hreflang": null,
+                            "media": null,
+                            "title": null,
+                            "type": null,
+                            "deprecation": null
+                        },
+                        "appServerVms": {
+                            "rel": "related",
+                            "href": "https://172.22.11.119/api/application/office365/instance/9465d17b165617624d95d377c651c15858bf3a6ff81ec737d697a5ea8ffc4be70cbd4387c4bb85db345e2212ba4dc021d115439cc682bc41d73538d20f58081f/appservervm?from=hlo",
+                            "hreflang": null,
+                            "media": null,
+                            "title": null,
+                            "type": null,
+                            "deprecation": null
+                        },
+                        "deletefromcatalog": {
+                            "rel": "action",
+                            "href": "https://172.22.11.119/api/application/office365/203?from=recovery&action=deletefromcatalog",
+                            "hreflang": null,
+                            "media": null,
+                            "title": null,
+                            "type": null,
+                            "deprecation": null
+                        },
+                        "folders": {
+                            "rel": "related",
+                            "href": "https://172.22.11.119/api/application/office365/instance/9465d17b165617624d95d377c651c15858bf3a6ff81ec737d697a5ea8ffc4be70cbd4387c4bb85db345e2212ba4dc021d115439cc682bc41d73538d20f58081f/database/203/folder?from=hlo",
+                            "hreflang": null,
+                            "media": null,
+                            "title": null,
+                            "type": null,
+                            "deprecation": null
+                        }
+                    },
+                    "name": "CONTACTS",
+                    "type": "office365",
+                    "resourceType": "database",
+                    "id": "203",
+                    "host": "172.20.238.33",
+                    "providerNodeId": "1014",
+                    "sessionId": 1566874776247,
+                    "jobId": "1003",
+                    "rbacPath": "root:0/app:0/app.type:office365/appinst:9465d17b165617624d95d377c651c15858bf3a6ff81ec737d697a5ea8ffc4be70cbd4387c4bb85db345e2212ba4dc021d115439cc682bc41d73538d20f58081f/appdb:203",
+                    "dataVolumeIds": [],
+                    "logVolumeIds": [],
+                    "eligibility": {
+                        "backup": {
+                            "eligible": true,
+                            "reason": "supported"
+                        },
+                        "logbackup": {
+                            "eligible": false,
+                            "reason": "notsupported"
+                        }
+                    },
+                    "metadataPath": "/DBINST:9465d17b165617624d95d377c651c15858bf3a6ff81ec737d697a5ea8ffc4be70cbd4387c4bb85db345e2212ba4dc021d115439cc682bc41d73538d20f58081f/DBFLDR:6dfd84dae23a000e6d58f4b10fa35ddd3f27c62ca22b4204d11b91bee0e25a2cab546345b7173f3ee092b48f8f76644280044f981bf20bf628218c3ad82e5b61/DB:203",
+                    "storageProfiles": [],
+                    "location": "/storwaredev/b.hackett@storwaredev.onmicrosoft.com/CONTACTS"
+                },
+                {
+                    "links": {
+                        "self": {
+                            "rel": "self",
+                            "href": "https://172.22.11.119/api/application/office365/instance/9465d17b165617624d95d377c651c15858bf3a6ff81ec737d697a5ea8ffc4be70cbd4387c4bb85db345e2212ba4dc021d115439cc682bc41d73538d20f58081f/database/303?from=hlo",
+                            "hreflang": null,
+                            "media": null,
+                            "title": null,
+                            "type": null,
+                            "deprecation": null
+                        },
+                        "options": {
+                            "rel": "related",
+                            "href": "https://172.22.11.119/api/application/office365/instance/9465d17b165617624d95d377c651c15858bf3a6ff81ec737d697a5ea8ffc4be70cbd4387c4bb85db345e2212ba4dc021d115439cc682bc41d73538d20f58081f/database/303/options",
+                            "hreflang": null,
+                            "media": null,
+                            "title": null,
+                            "type": null,
+                            "deprecation": null
+                        },
+                        "instance": {
+                            "rel": "related",
+                            "href": "https://172.22.11.119/api/application/office365/instance/9465d17b165617624d95d377c651c15858bf3a6ff81ec737d697a5ea8ffc4be70cbd4387c4bb85db345e2212ba4dc021d115439cc682bc41d73538d20f58081f?from=hlo",
+                            "hreflang": null,
+                            "media": null,
+                            "title": null,
+                            "type": null,
+                            "deprecation": null
+                        },
+                        "dataVolumes": {
+                            "rel": "related",
+                            "href": "https://172.22.11.119/api/application/volume?from=hlo&filter=%5B%7B%22property%22%3A%22pk%22%2C%22op%22%3A%22IN%22%2C%22value%22%3A%22%22%7D%5D",
+                            "hreflang": null,
+                            "media": null,
+                            "title": null,
+                            "type": null,
+                            "deprecation": null
+                        },
+                        "server": {
+                            "rel": "related",
+                            "href": "https://172.22.11.119/api/appserver/1014?from=hlo",
+                            "hreflang": null,
+                            "media": null,
+                            "title": null,
+                            "type": null,
+                            "deprecation": null
+                        },
+                        "appServerVms": {
+                            "rel": "related",
+                            "href": "https://172.22.11.119/api/application/office365/instance/9465d17b165617624d95d377c651c15858bf3a6ff81ec737d697a5ea8ffc4be70cbd4387c4bb85db345e2212ba4dc021d115439cc682bc41d73538d20f58081f/appservervm?from=hlo",
+                            "hreflang": null,
+                            "media": null,
+                            "title": null,
+                            "type": null,
+                            "deprecation": null
+                        },
+                        "deletefromcatalog": {
+                            "rel": "action",
+                            "href": "https://172.22.11.119/api/application/office365/303?from=recovery&action=deletefromcatalog",
+                            "hreflang": null,
+                            "media": null,
+                            "title": null,
+                            "type": null,
+                            "deprecation": null
+                        },
+                        "folders": {
+                            "rel": "related",
+                            "href": "https://172.22.11.119/api/application/office365/instance/9465d17b165617624d95d377c651c15858bf3a6ff81ec737d697a5ea8ffc4be70cbd4387c4bb85db345e2212ba4dc021d115439cc682bc41d73538d20f58081f/database/303/folder?from=hlo",
+                            "hreflang": null,
+                            "media": null,
+                            "title": null,
+                            "type": null,
+                            "deprecation": null
+                        }
+                    },
+                    "name": "CONTACTS",
+                    "type": "office365",
+                    "resourceType": "database",
+                    "id": "303",
+                    "host": "172.20.238.33",
+                    "providerNodeId": "1014",
+                    "sessionId": 1566874776247,
+                    "jobId": "1003",
+                    "rbacPath": "root:0/app:0/app.type:office365/appinst:9465d17b165617624d95d377c651c15858bf3a6ff81ec737d697a5ea8ffc4be70cbd4387c4bb85db345e2212ba4dc021d115439cc682bc41d73538d20f58081f/appdb:303",
+                    "dataVolumeIds": [],
+                    "logVolumeIds": [],
+                    "eligibility": {
+                        "backup": {
+                            "eligible": true,
+                            "reason": "supported"
+                        },
+                        "logbackup": {
+                            "eligible": false,
+                            "reason": "notsupported"
+                        }
+                    },
+                    "metadataPath": "/DBINST:9465d17b165617624d95d377c651c15858bf3a6ff81ec737d697a5ea8ffc4be70cbd4387c4bb85db345e2212ba4dc021d115439cc682bc41d73538d20f58081f/DBFLDR:a989eff7a2fb0726f487cfb1b7555830b36e77a5302f7c0af3a5bf5e6fb8e80d8e797e53a90a5bce4ff56d1a3b8c2594f0a7ea0ca94a68e8af130459124baf2b/DB:303",
+                    "storageProfiles": [],
+                    "location": "/storwaredev/b.sisko@storwaredev.onmicrosoft.com/CONTACTS"
+                }
+            ]
+        }
+    }
+]

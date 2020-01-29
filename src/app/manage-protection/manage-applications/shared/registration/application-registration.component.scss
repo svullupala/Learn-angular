@@ -1,0 +1,145 @@
+$info-icon-color: #1191E6;
+
+.application-registration {
+
+  .modal-header {
+    position: relative;
+    padding-bottom: 0;
+
+    & > .modal-title-wrapper {
+      display: flex;
+      flex-direction: column;
+
+      & > label > .sdl-header {
+        font-weight: normal;
+        font-size: 24px;
+      }
+    }
+
+    & > .close {
+      position: absolute;
+      top: 0;
+      right: 1rem;
+      width: 14px;
+    }
+
+    & > .modal-hr {
+      border-color: #D0DADA;
+    }
+  }
+
+  .modal-body {
+    padding: 0 2rem;
+
+    & > .with-scroll {
+      overflow-x: auto;
+      padding-bottom: 1rem;
+
+      & > .sdl-header {
+
+        margin-bottom: 1rem;
+
+        .info-icon {
+          height: 1rem;
+          width: 1rem;
+          color: $info-icon-color;
+        }
+      }
+    }
+
+
+    .side-by-side-wrapper {
+      display: flex;
+      flex-flow: row;
+
+      &.as-area > .side-by-side-left {
+        min-height: 260px;
+      }
+    }
+
+    .side-by-side-left {
+      flex: 1;
+      border-right: 1px solid #D0DADA;
+    }
+
+    .side-by-side-right {
+      flex: 1;
+      margin-left: 2rem;
+
+      .radio-demo {
+        margin-left: 0;
+
+        .custom-radio {
+          margin-right: 2rem;
+        }
+      }
+
+      ::ng-deep label.col-sm-2.control-label {
+        width: 250px;
+      }
+
+      .control-label {
+        width: 250px;
+        line-height: 1.5;
+        margin-bottom: .5rem;
+      }
+    }
+
+    .form-group {
+
+      & > label.control-label {
+        width: 250px;
+        line-height: 1.5;
+        margin-bottom: .5rem;
+      }
+
+      & > .input-value {
+        padding-left: 0;
+        width: 85%;
+
+        & > input[type="number"] {
+          width: 20%;
+          min-width: 50px;
+        }
+      }
+
+      &.discovery-area {
+        margin-top: -2.5rem;
+
+        & > .discovery {
+          margin-right: 2rem;
+
+          ::ng-deep .manage-table-container {
+            height: auto;
+
+            .manage-table-height {
+              height: 250px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .modal-footer {
+    margin-top: 0;
+  }
+
+  ::ng-deep key-selector {
+    .row {
+      margin-left: 0;
+      margin-right: 0;
+
+      .col-sm-12 {
+        padding-left: 0;
+        padding-right: 0;
+      }
+    }
+  }
+}
+
+.header-tooltip {
+  text-align: left;
+  max-width: 280px;
+  white-space: normal;
+}

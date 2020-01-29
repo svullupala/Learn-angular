@@ -1,0 +1,24 @@
+<ba-card baCardClass="dark-card" title="{{'fileRestore.textFileSearch' | translate}}">
+  <sdl-search-bar (search)="startSearch($event)"
+                  [textPlaceholderLabel]="textSearchFor">
+  </sdl-search-bar>
+  <file-search-options></file-search-options>
+  <div [hidden]="hideSearchOutput">
+    <h2 class="sdl-header" translate>{{'fileRestore.textSearchOutput'}}</h2>
+    <ba-card>
+      <file-select-table></file-select-table>
+    </ba-card>
+    <h2 class="sdl-header" translate>{{'fileRestore.textOptions'}}</h2>
+    <ba-card>
+      <file-restore-options [hypervisorType]="hypervisorType" (saveClick)="onSaveOptionsClick($event)"></file-restore-options>
+    </ba-card>
+    <div class="text-right">
+      <button [disabled]="!isValid()" (click)="onRestoreClick()" type="button" class="sdl inline" [ngClass]="{'disabled': !hasFileVersionSelection() || masked}"
+              translate>{{'fileRestore.textRestore'}}
+      </button>
+    </div>
+  </div>
+</ba-card>
+<ba-card baCardClass="dark-card" title="{{'fileRestore.textJobSessions' | translate}}">
+  <job-status-table [serviceIds]="jobServiceIds"></job-status-table>
+</ba-card>

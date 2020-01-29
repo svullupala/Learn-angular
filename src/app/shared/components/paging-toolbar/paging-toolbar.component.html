@@ -1,0 +1,61 @@
+<div class="flex">
+  <div *ngIf="alignToRight" class="placeholder"></div>
+  <div keyboardPagination #paginationHost="keyboard-pagination" [pagination]="pagination" [ngClass]="{'no-page-number': noPageNumber,
+      'prev-page-disabled': prevPageDisabled, 'next-page-disabled': nextPageDisabled}"
+       [hidden]="isInfiniteScrollingMode || !paginationHost.paginationVisible">
+    <pagination-controls (pageChange)="onPageChange($event)" #pagination
+                         [id]="id"
+                         [maxSize]="maxSize"
+                         [directionLinks]="directionLinks"
+                         [autoHide]="autoHide"
+                         [previousLabel]="previousLabel"
+                         [nextLabel]="nextLabel"
+                         [screenReaderPaginationLabel]="screenReaderPaginationLabel"
+                         [screenReaderPageLabel]="screenReaderPageLabel"
+                         [screenReaderCurrentLabel]="screenReaderCurrentLabel"></pagination-controls>
+  </div>
+  <div class="nowrap">
+    <span class="label masked" *ngIf="isInfiniteScrollingMode && infiniteScrollLoadingIndicator"></span>
+    <span class="label" *ngIf="isInfiniteScrollingMode && !noDisplayedCount">{{textDisplayed}} {{displayedCount}}</span>
+    <span class="label" *ngIf="!noTotalNumber">{{textTotal}} {{totalItems}}</span>
+    <span class="label" *ngIf="isInfiniteScrollingMode">{{'common.textColonEntry' | translate}}</span>
+    <input class="entry-number" *ngIf="isInfiniteScrollingMode"
+           [attr.aria-label]="'common.textEntryNumber' | translate"
+           type="number" min="1" [max]="totalItems"
+           [(ngModel)]="entryNumber">
+    <button *ngIf="isInfiniteScrollingMode"
+            class="btn btn-primary btn-xs"
+            [ngClass]="{'disabled': jumpToDisabled}"
+            [disabled]="jumpToDisabled"
+            (click)="onJumpToClick()" [title]="'common.textJumpTo' | translate"><i class="ion-arrow-left-a"></i>
+    </button>
+    <button *ngIf="isInfiniteScrollingMode && jumpToLastPageEnabled"
+            class="btn btn-primary btn-xs"
+            [ngClass]="{'disabled': !hasLastPageLink()}"
+            [disabled]="!hasLastPageLink()"
+            (click)="onJumpToLastPageClick()" [title]="'common.textJumpToLastPage' | translate"><i class="ion-arrow-right-b"></i>
+    </button>
+    <button class="btn btn-primary btn-xs"
+            [ngClass]="{'disabled': refreshDisabled}"
+            [disabled]="refreshDisabled"
+            [hidden]="hideRefreshButton" (click)="onRefresh()" [title]="textRefresh"><i class="ion-refresh"></i>
+    </button>
+    <button class="btn btn-primary btn-xs" *ngIf="canSwitchMode" (click)="onSwitchMode()">
+      {{textSwitchMode}}
+    </button>
+    <div infiniteScroll
+         *ngIf="isInfiniteScrollingMode"
+         [hidden]="true"
+         [infiniteScrollDistance]="2"
+         [infiniteScrollUpDistance]="2"
+         [infiniteScrollContainer]="getInfiniteScrollContainer()"
+         [fromRoot]="true"
+         [scrollWindow]="false"
+         [immediateCheck]="true"
+         [infiniteScrollDisabled]="infiniteScrollDisabled"
+         (scrolled)="onScrollDown($event)"
+         (scrolledUp)="onScrollUp($event)">
+    </div>
+  </div>
+  <div *ngIf="!alignToRight" class="placeholder"></div>
+</div>

@@ -1,0 +1,63 @@
+<div style="height: 330px;" [ngClass]="{'masked': mask}">
+<div style="height: 300px; overflow: auto;">
+  <table>
+    <thead>
+    <tr>
+      <th class="checkbox-column" translate>
+        <label class="custom-checkbox">
+          <input type="checkbox" [(ngModel)]="selectedAll" (change)="selectAll()"/>
+          <span></span>
+        </label>
+      </th>
+      <th translate>{{ nameText }}</th>
+      <th translate [hidden]="true">{{'application.textLocation'}}</th>
+      <th [hidden]="isDbLevel || !isDb2" class="partition-column" translate>{{ 'application.textHost' }}</th>
+      <th [hidden]="isDbLevel || applicationType === 'office365'" translate>{{ 'common.textVersion' }}</th>
+      <th [hidden]="!isDbSearch" translate>{{ 'application.textLocation' }}</th>
+      <th translate>{{ slaPolicyText }}</th>
+      <th translate [hidden]="!hideLogBackupCol() || isK8s">{{ 'application.textEligibleForLogBackup' }}</th>
+    </tr>
+    </thead>
+    <tbody>
+      <tr [hidden]="!(records && records.length < 1)">
+        <td>
+          <i class="bidi-status-warning"></i>
+        </td>
+        <td colspan="3">
+          <span translate>{{'common.textThereIsNoEntries'}}</span>
+        </td>
+      </tr>
+    <tr *ngFor="let item of records | paging: paginateConfig.json(); trackBy: dbTrackByFn" [ngClass]="{'active-row': item.metadata['selected']}">
+      <td class="checkbox-column">
+        <label class="custom-checkbox" [title]="item.isBackupEligibleReason()">
+          <input type="checkbox"
+                 [(ngModel)]="item.metadata['selected']" (ngModelChange)="onSelectChange(item)"
+                 [disabled]="!item.isBackupEligible()"
+                 aria-label="...">
+          <span></span>
+        </label>
+      </td>
+      <td class="icon-format">
+        <ibm-icon-tag size="16" *ngIf="item.resourceType === 'label'"></ibm-icon-tag>
+        <i *ngIf ="item.resourceType !== 'label'" [ngClass]="getResourceIcon(item)"></i>
+        <span [ngClass]="{'link': canNavigate(item)}" tabindex="0" (keydown.enter)="navigate(item,$event)" (click)="navigate(item,$event)">{{applicationType === 'office365' ? item.parseName : item.name}}</span>
+      </td>
+      <td [hidden]="isDbLevel || !isDb2">{{item | partitionDisplay }}</td>
+      <td [hidden]="isDbLevel || applicationType === 'office365'" translate>{{ item.version }}</td>
+      <td [hidden]="!isDbSearch" translate>{{ item.parseLocation }}</td>
+      <td>
+        {{(item.storageProfiles || []).join(', ')}}
+      </td>
+      <td
+        [hidden]="!hideLogBackupCol() || isK8s"
+        [ngClass]="{'help-pointer': !item.isLogBackupEligible()}"
+        [title]="item.isLogbackupEligibleReason()" translate>{{ item.isLogBackupEligible() | boolean }}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+  <div class="paging-toolbar">
+    <paging-toolbar (pageChange)="onPageChange($event)" (refresh)="onRefresh()"
+                    [id]="paginateConfig.id" [total]="paginateConfig.totalItems"></paging-toolbar>
+  </div>
+</div>

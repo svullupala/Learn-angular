@@ -1,0 +1,28 @@
+<div id="subnetlist" style="height: 300px; overflow: auto;">
+  <table>
+    <thead>
+    <tr>
+      <td class="action-icon-column"></td>
+      <td class="action-icon-column"></td>
+      <td translate>{{ 'hypervisor.subnetOrIPText' }}</td>
+      <td translate>{{ 'hypervisor.dhcpText' }}</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let mapping of subnetMappingList; let i = index;">
+      <td class="action-icon-format">
+        <i class="ion-edit" (click)="onEditMapping(mapping, i)"></i>
+      </td>
+      <td class="action-icon-format">
+        <i class="ion-close-round" (click)="onDeleteMapping(i)"></i>
+      </td>
+      <td>
+        {{ mapping && mapping.metadata.ip }}
+      </td>
+      <td>
+        {{ mapping && mapping.dhcp | boolean }}
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

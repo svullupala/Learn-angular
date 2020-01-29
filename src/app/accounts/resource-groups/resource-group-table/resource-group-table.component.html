@@ -1,0 +1,24 @@
+<div class="horizontal-scroll" [ngClass]="{'masked': masked}">
+  <table class="selectable fixed" tabindex="0" #highlightableContainer>
+    <thead>
+      <tr>
+        <th class="normal-col sortable" [ngClass]="{'st-sort-ascent': isAsc('name'), 'st-sort-descent': isDesc('name')}"
+            tabindex="0" clickOnEnterKeydown (click)="onSort('name')"  translate>{{ 'resourceGroups.textResourceGroupName' }}</th>
+        <th class="operation-col align-center"></th>
+      </tr>
+    </thead>
+    <tbody>
+    <ng-template let-item ngFor [ngForOf]="model.records | paging: model.json()">
+      <tr (click)="toggleSelect(item, model.records, $event)" [ngClass]="{'selected': isSelected(item)}"
+          (itemSelected)="toggleSelect($event.data, model.records, $event.event)"
+          [item]="item" highlightable>
+        <td class="normal-col">{{item.name}}</td>
+        <td class="normal-col" translate>{{ item.canned ? 'resourceGroups.textCannotBeModified' : '' }}</td>
+      </tr>
+    </ng-template>
+    </tbody>
+  </table>
+  <paging-toolbar [model]="model" [noPageNumber]="false"
+                  (startGoPage)="mask()" (refresh)="onRefresh()"
+                  (pageChange)="onPageChange($event)"></paging-toolbar>
+</div>

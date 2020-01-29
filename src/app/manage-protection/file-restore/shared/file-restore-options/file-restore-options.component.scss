@@ -1,0 +1,51 @@
+@import "../../../../theme/sass/conf/conf";
+
+.form-control {
+  background-color: #ffffff;
+  color: $dropdown-text;
+  margin-bottom: 5px;
+}
+
+.destination-vm {
+  padding: 30px;
+}
+
+.input[type="checkbox"] + label span {
+  display: inline-block;
+  width: 19px;
+  height: 19px;
+}
+
+ul.a {
+  list-style-type: none;
+}
+
+label {
+  line-height: 30px;
+}
+
+.disabled {
+  pointer-events: none;
+  opacity: 0.5;
+  background: #CCC;
+  label {
+    color: #CCC;
+  }
+  * {
+    pointer-events: none;
+    opacity: 0.5;
+    background: #CCC;
+  }
+}
+
+.target-path {
+  label {
+    padding-right: 10px;
+  }
+  input {
+    width: 50%;
+    color: $content-text;
+    background: none;
+    border: 1px solid $border-light;
+  }
+}

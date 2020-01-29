@@ -1,0 +1,72 @@
+.version-view {
+  max-width: 2048px;
+  background-color: transparent;
+  margin:0 auto;
+}
+
+.version-row {
+  padding-left: 32px;
+  padding-right: 32px;
+  margin-bottom: 10px;
+}
+
+.version-col {
+  text-align: left;
+  color: #C0BFC0;
+  font-size: 20px;
+  padding-left: 0px;
+}
+
+.download-col {
+  text-align: right;
+  font-size: 14px;
+  color: #56ACF2;
+  padding-right: 0px;
+}
+
+.version-selector {
+  max-width: 211px;
+  border: none;
+  background-color: transparent;
+  color: #C0BFC0;
+  padding: 10px;
+  margin-left: -10px;
+}
+
+.release-col {
+  text-align: left;
+  color: #C0BFC0;
+  padding-left: 0px;
+}
+
+.release-row {
+  margin-bottom: 2.5rem;
+  padding-left: 32px;
+}
+
+
+select.custom-select {
+  border-color: #FFFFFF;
+}
+
+.option-select {
+    color: #FFFFFF;
+  }
+
+.download-link {
+  cursor: pointer;
+  color: #56ACF2;
+  text-decoration: off;
+  padding-bottom: 2px;
+  &:hover {
+    border-bottom-style: solid;
+    border-width: 0.5px;
+  }
+
+  > i {
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+    margin-bottom: 6px;
+  }
+}

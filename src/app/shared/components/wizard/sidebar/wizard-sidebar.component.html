@@ -1,0 +1,5 @@
+<div class="wizard-sidebar">
+  <div class="item" *ngFor="let item of items">
+    <wizard-sidebar-item [theme]="theme" [model]="item" [selectableIfDone]="doneItemSelectable" (selectEvent)="onItemSelect($event)"></wizard-sidebar-item>
+  </div>
+</div>

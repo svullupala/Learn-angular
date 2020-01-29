@@ -1,0 +1,63 @@
+<div class="form-group row">
+  <label [ngClass]="clsOfLabelCol || 'col-sm-3'" class="control-label" translate>{{'certificates.textCertificate'}}</label>
+  <div [ngClass]="clsOfFieldCol || 'col-sm-6'">
+    <div class="input-demo radio-demo row">
+      <div class="col-md-4" style="min-width: 105px">
+        <label class="radio-inline custom-radio nowrap">
+          <input type="radio" name="certificateoptions" [(ngModel)]="model.method" [value]="UPLOAD_TYPE">
+          <span translate>{{'certificates.textUpload'}}</span>
+        </label>
+      </div>
+      <div class="col-md-4" style="min-width: 125px">
+        <label class="radio-inline custom-radio nowrap">
+          <input type="radio" name="certificateoptions" [(ngModel)]="model.method" [value]="CUT_AND_PASTE_TYPE">
+          <span translate>{{'certificates.textCopyPaste'}}</span>
+        </label>
+      </div>
+      <div class="col-md-4" [hidden]="browseOnly">
+        <label class="radio-inline custom-radio nowrap">
+          <input type="radio" name="certificateoptions" [(ngModel)]="model.method" [value]="EXISTING_TYPE">
+          <span translate>{{'certificates.textUseExisting'}}</span>
+        </label>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="form-group row">
+  <div [hidden]="model.method !== EXISTING_TYPE || browseOnly">
+    <label [ngClass]="clsOfLabelCol || 'col-sm-3'" class="control-label" translate>{{'cloud.textSelectCertificate'}}</label>
+    <div [ngClass]="clsOfFieldCol || 'col-sm-3'">
+      <select class="form-control" [attr.aria-label]="'cloud.textSelectCertificate'  | translate" [(ngModel)]="model.certificate">
+        <option *ngFor="let certificate of certificates" [ngValue]="certificate.url">{{certificate.name}}</option>
+      </select>
+    </div>
+  </div>
+  <div [hidden]="model.method === EXISTING_TYPE">
+    <label [ngClass]="clsOfLabelCol || 'col-sm-3'" class="control-label" translate></label>
+    <div [ngClass]="clsOfFieldCol || 'col-sm-3'" [hidden]="model.method === UPLOAD_TYPE">
+      <input type="text" class="form-control" [(ngModel)]="model.certificateName"
+             [attr.aria-label]="'certificates.textEnterCertName'  | translate"
+             placeholder="{{'certificates.textEnterCertName' | translate}}">
+      <textarea class="form-control"
+                style="margin-top: 10px;"
+                [(ngModel)]="model.certificateString"
+                [attr.aria-label]="'certificates.textCopyPastePlaceholder'  | translate"
+                placeholder="{{'certificates.textCopyPastePlaceholder' | translate}}"></textarea>
+    </div>
+    <div [ngClass]="clsOfFieldCol || 'col-sm-4'">
+      <label [title]="fileToolTip" [hidden]="model.method !== UPLOAD_TYPE">{{textSelectedFileLabel}}</label>
+      <button class="sdl inline small" [hidden]="model.method !== UPLOAD_TYPE" (click)="onBrowseClick()" translate>
+        {{'cloud.textBrowse'}}
+        <input #uploader ngFileSelect hidden="true" type="file"
+               [options]="uploaderOptions"
+               [events]="inputUploadEvents"
+               (onUpload)="handleUpload($event)"
+               (beforeUpload)="beforeUpload($event)">
+      </button>
+      <button class="sdl inline small" [ngClass]="{'disabled': !isValid()}"
+              [disabled]="!isValid()"
+              *ngIf="!browseOnly" (click)="startUpload()" translate>
+              {{model.method === UPLOAD_TYPE ? 'cloud.textUpload' : 'common.textCreate'}}</button>
+    </div>
+  </div>
+</div>

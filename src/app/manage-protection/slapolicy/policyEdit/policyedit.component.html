@@ -1,0 +1,655 @@
+<div [ngClass]="{'masked': masked}">
+  <ba-card #policyEditContainer [title]="model.phantom ? textNewPolicy : textEditPolicy"
+    baCardClass="dark-card viewport100 with-scroll">
+    <form class="form-horizontal" [formGroup]="form" id="scrollToTop">
+      <div class="form-group row"
+        [ngClass]="{'has-error': (name.touched && !name.valid), 'has-success': (name.touched && name.valid)}">
+        <label for="inputName" class="col-sm-2 control-label" translate>{{'slapolicy.textName'}}</label>
+        <div class="col-sm-3">
+          <input [formControl]="name" [(ngModel)]="model.name" type="text" class="form-control" id="inputName"
+            [readonly]="!model.phantom">
+        </div>
+      </div>
+    </form>
+    <div [hidden]="!model.phantom">
+      <div class="radio-btn-margin">
+        <label class="radio-inline custom-radio">
+          <input type="radio" name="slaTypeBackup" value="backup" [(ngModel)]="model.slaType"
+            (click)="onSelectSlaType($event)">
+          <span translate>{{'slapolicy.textTraditional'}}</span>
+        </label>
+      </div>
+      <div class="radio-btn-margin">
+        <label class="radio-inline custom-radio">
+          <input type="radio" name="slaTypeSnapshot_backup" value="snapshot_backup" [(ngModel)]="model.slaType"
+            (click)="onSelectSlaType($event)">
+          <span translate>{{'slapolicy.textKubernetesSLAForm'}}</span>
+        </label>
+      </div>
+      <div class="radio-btn-margin">
+        <label class="radio-inline custom-radio">
+          <input type="radio" name="slaTypeSnapshot" value="snapshot" [(ngModel)]="model.slaType"
+            (click)="onSelectSlaType($event)">
+          <span translate>{{'slapolicy.textAmazonEC2SLAForm'}}</span>
+        </label>
+      </div>
+    </div>
+    <!--SLA TYPE 1-->
+    <div [hidden]="model.slaType !== 'backup'">
+      <ba-card>
+        <h6 class="heading-space-top" translate>{{'slapolicy.textMainPolicy'}}</h6>
+        {{'common.textRetention' | translate}}
+        <input [attr.aria-label]="'common.textRetention' | translate" class="space-left-15" type="number" min="1"
+          [(ngModel)]="retentionBackupTarget" required [disabled]="!enableMainPolicyBackup">
+        <select class="custom-select" [ngClass]="(isSnapshotBackupDanger()) && 'custom-select-danger'"
+          [(ngModel)]="retentionTypeBackupTarget" [disabled]="!enableMainPolicyBackup">
+          <option value="age" selected translate>{{'slapolicy.textDays'}}</option>
+          <option value="age-weeks" translate>{{'slapolicy.textWeeks'}}</option>
+          <option value="age-months" translate>{{'slapolicy.textMonths'}}</option>
+          <option value="age-years" translate>{{'slapolicy.textYears'}}</option>
+        </select>
+        <span *ngIf="isSnapshotBackupDanger()">
+          <i class="bidi-status-warning snapshot-danger-icon"></i><label class="snapshot-danger-label"
+            translate>{{'slapolicy.textSnapshotRetentionDanger'}}</label>
+        </span>
+        <div class="space-top-10">
+          <define-schedule #rpoScheduleComponent [startTimeLabelMarginClass]="'space-right-12'"
+            [disable]="!enableMainPolicyBackup" [allowDisableSchedule]="true" [enableMinMax]="true"
+            [hideStartTime]="false" (calculatedFrequency)="validateFrequency($event, 'backup')"
+            (defineScheduleDisabled)="defineScheduleDisabled($event, 'backup')"
+            [frequencyWarningMessage]="showFrequencyValidationMessage ? 'slapolicy.textSLABackupFrequencyError' : ''">
+          </define-schedule>
+        </div>
+        <div class="space-top-10">
+          <label class="control-label" [ngClass]="{'disabled-label': !enableMainPolicyBackup}"
+            translate>{{'slapolicy.textTargetSite'}}</label>
+          <select class="custom-select space-left-10" [(ngModel)]="siteBackupTarget"
+            [disabled]="!enableMainPolicyBackup" (change)="onChangeSiteBackupTarget()">
+            <option *ngFor="let site of getSites()" [ngValue]="site.name">{{site.name}}</option>
+          </select>
+        </div>
+        <ba-checkbox [(ngModel)]="backupToEncryptedVSnapOnly" [baCheckboxClass]="'enabled space-top-10'"
+          [label]="('slapolicy.textOnlyUseEncryptedDiskStorage' | translate)"
+          [disabled]="model.spec.demo || !enableMainPolicyBackup">
+        </ba-checkbox>
+        <hr>
+        <h6 translate>{{'slapolicy.textReplicationPolicy'}}</h6>
+        <ba-checkbox [(ngModel)]="enableVsnapReplication" (change)="updateFrequencyWarningMessage()"
+          [baCheckboxClass]="'enabled'" [label]="('slapolicy.textVSnapReplication' | translate)"
+          [disabled]="model.spec.demo || !enableMainPolicyBackup">
+        </ba-checkbox>
+        <div class="row spo-padding space-top-10">
+          <div class="col-md-6">
+            <define-schedule [disable]="!enableVsnapReplication" [allowDisableSchedule]="true" [hideStartTime]="false"
+              #vsrScheduleComponent></define-schedule>
+            <div class="space-top-10">
+              <label class="control-label" [ngClass]="{'disabled-label': !enableVsnapReplication}"
+                translate>{{'slapolicy.textTargetSite'}}</label>
+              <dropdown class="space-left-8" [values]="sites" [key]="'name'" [value]="siteReplication"
+                [isDisabled]="!enableVsnapReplication" [scrollableHolder]="scrollableHolder"
+                [scrollableHolderMargin]="scrollableHolderMargin" (onSelect)="onSelectSiteReplication($event)">
+              </dropdown>
+              <ba-checkbox [(ngModel)]="replicateToEncryptedVSnapOnly" [baCheckboxClass]="'enabled space-top-10'"
+                [label]="('slapolicy.textOnlyUseEncryptedDiskStorage' | translate)"
+                [disabled]="!enableVsnapReplication">
+              </ba-checkbox>
+              <label class="custom-checkbox space-top-10">
+                <input type="checkbox" [disabled]="!enableVsnapReplication"
+                  [(ngModel)]="sameRetentionAsSourceSelection">
+                <span>{{ 'slapolicy.textSameRetentionAsSourceSelection' | translate }}</span>
+              </label>
+              <div class="spo-padding space-top-10">
+                <label class="control-label"
+                  [ngClass]="{'disabled-label': sameRetentionAsSourceSelection}">{{'common.textRetention' | translate}}</label>
+                <input [attr.aria-label]="'common.textRetention' | translate" type="number" min="1"
+                  [disabled]="!enableVsnapReplication || sameRetentionAsSourceSelection"
+                  [(ngModel)]="sameRetentionAsSourceSelection ? retentionBackupTarget : retentionReplication" required>
+                <select class="custom-select" [ngClass]="(isSnapshotReplicationDanger()) && 'custom-select-danger'"
+                  [disabled]="!enableVsnapReplication || sameRetentionAsSourceSelection"
+                  [(ngModel)]="sameRetentionAsSourceSelection ? retentionTypeBackupTarget : retentionTypeReplication">
+                  <option value="age" selected translate>{{'slapolicy.textDays'}}</option>
+                  <option value="age-weeks" translate>{{'slapolicy.textWeeks'}}</option>
+                  <option value="age-months" translate>{{'slapolicy.textMonths'}}</option>
+                  <option value="age-years" translate>{{'slapolicy.textYears'}}</option>
+                </select>
+                <span *ngIf="isSnapshotReplicationDanger()">
+                  <i class="bidi-status-warning snapshot-danger-icon"></i><label class="snapshot-danger-label"
+                    translate>{{'slapolicy.textSnapshotRetentionDanger'}}</label>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr>
+        <h6 translate>{{'slapolicy.textAdditionalCopiesSLAPage'}}</h6>
+        <ba-checkbox [(ngModel)]="enableCloudOffload" [baCheckboxClass]="'enabled space-top-10'"
+          (change)="updateFrequencyWarningMessage()" [tooltip]="'slapolicy.textOffloadToCloudStorageHover' | translate"
+          [label]="('slapolicy.textOffloadToCloudStorage' | translate)"
+          [disabled]="model.spec.demo || !enableMainPolicyBackup">
+        </ba-checkbox>
+        <div class="row spo-padding space-top-10">
+          <div class="col-md-6">
+            <define-schedule [hideStartTime]="false" [allowDisableSchedule]="true" [disable]="!enableCloudOffload"
+              #cloudOffloadScheduleComponent (calculatedFrequency)="validateFrequency($event, 'offload')"
+              (defineScheduleDisabled)="defineScheduleDisabled($event, 'offload')"
+              [frequencyWarningMessage]="showFrequencyValidationMessage ? 'slapolicy.textSLAOffloadFrequencyError' : ''">
+            </define-schedule>
+            <br>
+            <label class="custom-checkbox">
+              <input type="checkbox" [disabled]="!enableCloudOffload || disableCloudRetentionIfWorm"
+                [(ngModel)]="sameRetentionAsSourceSelectionCloud">
+              <span>{{ 'slapolicy.textSameRetentionAsSourceSelection' | translate }}</span>
+            </label>
+            <div class="spo-padding space-top-10">
+              <label class="control-label"
+                [ngClass]="{'disabled-label': (disableCloudRetentionIfWorm
+                       || !enableCloudOffload || sameRetentionAsSourceSelectionCloud)}">{{'common.textRetention' | translate}}</label>
+              <input [attr.aria-label]="'common.textRetention' | translate" type="number" min="1"
+                [disabled]="disableCloudRetentionIfWorm || !enableCloudOffload || sameRetentionAsSourceSelectionCloud"
+                [(ngModel)]="sameRetentionAsSourceSelectionCloud ? retentionBackupTarget : retentionReplicationCloud"
+                required>
+              <select class="custom-select" [ngClass]="(isSnapshotCloudDanger()) && 'custom-select-danger'"
+                [disabled]="disableCloudRetentionIfWorm || !enableCloudOffload || sameRetentionAsSourceSelectionCloud"
+                [(ngModel)]="sameRetentionAsSourceSelectionCloud ? retentionTypeBackupTarget : retentionTypeReplicationCloud ">
+                <option value="age" selected translate>{{'slapolicy.textDays'}}</option>
+                <option value="age-weeks" translate>{{'slapolicy.textWeeks'}}</option>
+                <option value="age-months" translate>{{'slapolicy.textMonths'}}</option>
+                <option value="age-years" translate>{{'slapolicy.textYears'}}</option>
+              </select>
+              <div *ngIf="isSnapshotCloudDanger()">
+                <p>
+                  <i class="bidi-status-warning snapshot-danger-icon"></i><label class="snapshot-danger-label"
+                    translate>{{'slapolicy.textSnapshotRetentionDanger'}}</label>
+              </div>
+            </div>
+            <div class="space-top-10" [hidden]="!disableCloudRetentionIfWorm">
+              <label class="control-label" translate>{{'slapolicy.textWormRetentionDisabled'}}</label>
+              <label
+                *ngIf="(disableCloudRetentionIfWorm && wormCloudRetention !== undefined)">{{getWormRetentionText()}}</label>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="row checkbox-demo-row">
+              <h5 [ngClass]="{'disabled-label': !enableCloudOffload}" translate>{{'slapolicy.textCopySource'}}</h5>
+              <div class="input-demo radio-demo">
+                <div class="col-md-6">
+                  <label class="radio-inline custom-radio">
+                    <input type="radio" name="inlineRadioCopyOffloadSource"
+                    [disabled]="!enableCloudOffload" value="backup" [(ngModel)]="cloudOffloadSource">
+                    <span translate>{{'slapolicy.textMainDestination'}}</span>
+                  </label>
+                </div>
+                <div class="col-md-6">
+                  <label class="radio-inline custom-radio nowrap">
+                    <input type="radio" name="inlineRadioCopyOffloadSource"
+                    [disabled]="!enableVsnapReplication || !enableCloudOffload" value="replication" value="replication" [(ngModel)]="cloudOffloadSource"
+                      >
+                    <span translate>{{'slapolicy.textReplicationDestination'}}</span>
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-4 label-center">
+                <label class="control-label"
+                  [ngClass]="{'disabled-label': (disableCloudRetentionIfWorm || !enableCloudOffload)}"
+                  translate>{{'slapolicy.textOffloadDestinationType'}}</label>
+              </div>
+              <div class="col-sm-3">
+                <dropdown [values]="offloadTypes" [key]="'name'" [isDisabled]="!enableCloudOffload"
+                  [value]="selectedOffloadType" [scrollableHolder]="scrollableHolder"
+                  [scrollableHolderMargin]="scrollableHolderMargin" (onSelect)="onSelectOffloadTypeClick($event)">
+                </dropdown>
+              </div>
+            </div>
+            <br>
+            <div class="row">
+              <div class="col-sm-4 label-center">
+                <label class="control-label"
+                  [ngClass]="{'disabled-label': (disableCloudRetentionIfWorm || !enableCloudOffload)}"
+                  translate>{{'slapolicy.textOffloadTargetServer'}}</label>
+              </div>
+              <div class="col-sm-3">
+                <dropdown [values]="offloadTargets" [key]="'name'" [isDisabled]="!enableCloudOffload"
+                  [value]="cloudOffloadTarget" [scrollableHolder]="scrollableHolder"
+                  [scrollableHolderMargin]="scrollableHolderMargin" (onSelect)="onSelectCloudClick($event)">
+                </dropdown>
+              </div>
+            </div>
+            <div class="row" [hidden]="enableCloudOffload ? model.phantom : true">
+              <i class="bidi-status-warning space-top-15 col-sm-1"></i>
+              <label class="control-label space-top-10 col-sm-10" translate>
+                {{'slapolicy.textCloudOffloadSourceSettingsWarning'}}</label>
+            </div>
+          </div>
+        </div>
+        <br><br>
+        <ba-checkbox [(ngModel)]="enableArchive" [baCheckboxClass]="'enabled space-top-10'"
+          [label]="('slapolicy.textArchiveToCloudTape' | translate)"
+          [tooltip]="'slapolicy.textArchiveToCloudTapeHover' | translate"
+          [disabled]="model.spec.demo || !enableMainPolicyBackup">
+        </ba-checkbox>
+        <div class="row spo-padding space-top-10">
+          <div class="col-md-6">
+            <define-schedule [hideStartTime]="false" [hideStartHourAndMinute]="false" [hideSubhourlyType]="true"
+              [hideHourlyType]="true" [hideDailyType]="true" [allowDisableSchedule]="true" [defaultFrequency]="1"
+              [defaultType]="WEEKLY" [disable]="!enableArchive" #cloudArchiveScheduleComponent></define-schedule>
+            <br>
+            <label class="control-label"
+              [ngClass]="{'disabled-label': (disableArchiveRetentionIfWorm || !enableArchive)}">{{'common.textRetention' | translate}}</label>
+            <input [attr.aria-label]="'common.textRetention' | translate" type="number" min="1"
+              [disabled]="disableArchiveRetentionIfWorm || !enableArchive" [(ngModel)]="retentionReplicationArchive"
+              required>
+            <select class="custom-select" [ngClass]="(isSnapshotCloudDanger()) && 'custom-select-danger'"
+              [disabled]="disableArchiveRetentionIfWorm || !enableArchive"
+              [(ngModel)]="retentionTypeReplicationArchive ">
+              <option value="age-weeks" translate>{{'slapolicy.textWeeks'}}</option>
+              <option value="age-months" translate>{{'slapolicy.textMonths'}}</option>
+              <option value="age-years" translate>{{'slapolicy.textYears'}}</option>
+            </select>
+            <div class="space-top-10" [hidden]="!disableArchiveRetentionIfWorm">
+              <label class="control-label" translate>{{'slapolicy.textWormRetentionDisabled'}}</label>
+              <label
+                *ngIf="(disableArchiveRetentionIfWorm && wormArchiveRetention !== undefined)">{{getWormRetentionText()}}</label>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="row checkbox-demo-row">
+              <h5 [ngClass]="{'disabled-label': !enableArchive}" translate>{{'slapolicy.textArchiveCopySource'}}</h5>
+              <div class="input-demo radio-demo">
+                <div class="col-md-6">
+                  <label class="radio-inline custom-radio">
+                    <input type="radio" [disabled]="!enableArchive" name="inlineRadioCopyArchiveSource" value="backup"
+                      [(ngModel)]="cloudArchiveSource">
+                    <span translate>{{'slapolicy.textMainDestination'}}</span>
+                  </label>
+                </div>
+                <div class="col-md-6">
+                  <label class="radio-inline custom-radio nowrap">
+                    <input type="radio" name="inlineRadioCopyArchiveSource"
+                      [disabled]="!enableVsnapReplication || !enableArchive" value="replication"
+                      [(ngModel)]="cloudArchiveSource">
+                    <span translate>{{'slapolicy.textReplicationDestination'}}</span>
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-4 label-center">
+                <label class="control-label"
+                  [ngClass]="{'disabled-label': (disableArchiveRetentionIfWorm || !enableArchive)}"
+                  translate>{{'slapolicy.textArchiveDestinationType'}}</label>
+              </div>
+              <div class="col-sm-3">
+                <dropdown [values]="archiveTypes" [key]="'name'" [isDisabled]="!enableArchive"
+                  [value]="selectedArchiveType" [scrollableHolder]="scrollableHolder"
+                  [scrollableHolderMargin]="scrollableHolderMargin" (onSelect)="onSelectArchiveTypeClick($event)">
+                </dropdown>
+              </div>
+            </div>
+            <br>
+            <div class="row">
+              <div class="col-sm-4 label-center">
+                <label class="control-label col-sm-4"
+                  [ngClass]="{'disabled-label': (disableArchiveRetentionIfWorm || !enableArchive)}"
+                  translate>{{'slapolicy.textArchiveTargetServer'}}</label>
+              </div>
+              <div class="col-sm-3">
+                <dropdown [values]="archiveTargets" [key]="'name'" [isDisabled]="!enableArchive"
+                  [value]="cloudArchiveTarget" [scrollableHolder]="scrollableHolder"
+                  [scrollableHolderMargin]="scrollableHolderMargin" (onSelect)="onSelectArchiveClick($event)">
+                </dropdown>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ba-card>
+    </div>
+    <!--END OF SLA TYPE 1-->
+    <!--SLA TYPE 2-->
+    <div [hidden]="model.slaType!=='snapshot_backup'">
+      <ba-card>
+        <h6 class="heading-space-top" translate>{{'slapolicy.textSnapshotProtection'}}</h6>
+        <label class="control-label" [ngClass]="{'disabled-label': !snapshot}"
+          translate>{{'common.textRetention' | translate}}</label>
+        <input [attr.aria-label]="'common.textRetention' | translate" class="space-left-15" type="number" min="1"
+          [(ngModel)]="retentionSnapshotBackupTarget" required [disabled]="!snapshot">
+        <select class="custom-select" [ngClass]="(isSnapshotProtectionBackupDanger()) && 'custom-select-danger'"
+          [(ngModel)]="retentionTypeSnapshotBackupTarget" [disabled]="!snapshot">
+          <option value="age" selected translate>{{'slapolicy.textDays'}}</option>
+          <option value="age-weeks" translate>{{'slapolicy.textWeeks'}}</option>
+          <option value="age-months" translate>{{'slapolicy.textMonths'}}</option>
+          <option value="age-years" translate>{{'slapolicy.textYears'}}</option>
+        </select>
+        <span *ngIf="isSnapshotProtectionBackupDanger()">
+          <i class="bidi-status-warning snapshot-danger-icon"></i><label class="snapshot-danger-label"
+            translate>{{'slapolicy.textSnapshotRetentionDanger'}}</label>
+        </span>
+        <div class="space-top-10">
+          <define-schedule [startTimeLabelMarginClass]="'space-right-12'" [allowDisableSchedule]="true"
+            #snapshotScheduleTypeSnapshotBackupComponent [hideStartTime]="false" [disable]="!snapshot"
+            (defineScheduleDisabled)="defineScheduleDisabled($event, 'snapshot')">
+          </define-schedule>
+        </div>
+        <div class="space-top-10 snapshot-protection-prefix-container">
+          <label class="control-label" translate
+            [ngClass]="{'disabled-label': !snapshot}">{{'common.textSnapshotPrefix' | translate}}</label>
+          <input [attr.aria-label]="'common.textRetention' | translate" class="space-left-15" type="text"
+            class="form-control snapshot-protection-prefix" [(ngModel)]="snapshotProtectionLabel" required
+            [disabled]="!snapshot">
+        </div>
+        <br>
+        <hr>
+        <br>
+        <h6 class="heading-space-top" translate>{{'slapolicy.textMainPolicy'}}</h6>
+        <ba-checkbox [(ngModel)]="enableMainPolicyBackup" (change)="updateFrequencyWarningMessage()"
+          [baCheckboxClass]="'enabled'" [label]="('slapolicy.textBackupStorage' | translate)"
+          [tooltip]="'slapolicy.textBackupStorage' | translate">
+        </ba-checkbox>
+        {{'common.textRetention' | translate}}
+        <input [attr.aria-label]="'common.textRetention' | translate" class="space-left-15" type="number" min="1"
+          [(ngModel)]="retentionBackupTarget" required [disabled]="!enableMainPolicyBackup">
+        <select class="custom-select" [ngClass]="(isSnapshotBackupDanger()) && 'custom-select-danger'"
+          [(ngModel)]="retentionTypeBackupTarget" [disabled]="!enableMainPolicyBackup">
+          <option value="age" selected translate>{{'slapolicy.textDays'}}</option>
+          <option value="age-weeks" translate>{{'slapolicy.textWeeks'}}</option>
+          <option value="age-months" translate>{{'slapolicy.textMonths'}}</option>
+          <option value="age-years" translate>{{'slapolicy.textYears'}}</option>
+        </select>
+        <span *ngIf="isSnapshotBackupDanger()">
+          <i class="bidi-status-warning snapshot-danger-icon"></i><label class="snapshot-danger-label"
+            translate>{{'slapolicy.textSnapshotRetentionDanger'}}</label>
+        </span>
+        <div class="space-top-10">
+          <define-schedule #rpoScheduleTypeSnapshotBackupComponent [startTimeLabelMarginClass]="'space-right-12'"
+            [disable]="!enableMainPolicyBackup" [allowDisableSchedule]="true" [enableMinMax]="true"
+            [hideStartTime]="false" (calculatedFrequency)="validateFrequency($event, 'backup')"
+            (defineScheduleDisabled)="defineScheduleDisabled($event, 'backup')"
+            [frequencyWarningMessage]="showFrequencyValidationMessage ? 'slapolicy.textSLABackupFrequencyError' : ''">
+          </define-schedule>
+        </div>
+        <div class="space-top-10">
+          <label class="control-label" [ngClass]="{'disabled-label': !enableMainPolicyBackup}"
+            translate>{{'slapolicy.textTargetSite'}}</label>
+          <select class="custom-select space-left-10" [(ngModel)]="siteBackupTarget"
+            [disabled]="!enableMainPolicyBackup" (change)="onChangeSiteBackupTarget()">
+            <option *ngFor="let site of getSites()" [ngValue]="site.name">{{site.name}}</option>
+          </select>
+        </div>
+        <ba-checkbox [(ngModel)]="backupToEncryptedVSnapOnly" [baCheckboxClass]="'enabled space-top-10'"
+          [label]="('slapolicy.textOnlyUseEncryptedDiskStorage' | translate)"
+          [disabled]="model.spec.demo || !enableMainPolicyBackup">
+        </ba-checkbox>
+        <hr>
+        <h6 translate>{{'slapolicy.textReplicationPolicy'}}</h6>
+        <ba-checkbox [(ngModel)]="enableVsnapReplication" (change)="updateFrequencyWarningMessage()"
+          [baCheckboxClass]="'enabled'" [label]="('slapolicy.textVSnapReplication' | translate)"
+          [disabled]="model.spec.demo || !enableMainPolicyBackup">
+        </ba-checkbox>
+        <div class="row spo-padding space-top-10">
+          <div class="col-md-6">
+            <define-schedule [disable]="!enableVsnapReplication" [allowDisableSchedule]="true" [hideStartTime]="false"
+              #vsrScheduleTypeSnapshotBackupComponent></define-schedule>
+            <div class="space-top-10">
+              <label class="control-label" [ngClass]="{'disabled-label': !enableVsnapReplication}"
+                translate>{{'slapolicy.textTargetSite'}}</label>
+              <dropdown class="space-left-8" [values]="sites" [key]="'name'" [value]="siteReplication"
+                [isDisabled]="!enableVsnapReplication" [scrollableHolder]="scrollableHolder"
+                [scrollableHolderMargin]="scrollableHolderMargin" (onSelect)="onSelectSiteReplication($event)">
+              </dropdown>
+              <ba-checkbox [(ngModel)]="replicateToEncryptedVSnapOnly" [baCheckboxClass]="'enabled space-top-10'"
+                [label]="('slapolicy.textOnlyUseEncryptedDiskStorage' | translate)"
+                [disabled]="!enableVsnapReplication">
+              </ba-checkbox>
+              <label class="custom-checkbox space-top-10">
+                <input type="checkbox" [disabled]="!enableVsnapReplication"
+                  [(ngModel)]="sameRetentionAsSourceSelection">
+                <span>{{ 'slapolicy.textSameRetentionAsSourceSelection' | translate }}</span>
+              </label>
+              <div class="spo-padding space-top-10">
+                <label class="control-label"
+                  [ngClass]="{'disabled-label': sameRetentionAsSourceSelection}">{{'common.textRetention' | translate}}</label>
+                <input [attr.aria-label]="'common.textRetention' | translate" type="number" min="1"
+                  [disabled]="!enableVsnapReplication || sameRetentionAsSourceSelection"
+                  [(ngModel)]="sameRetentionAsSourceSelection ? retentionBackupTarget : retentionReplication" required>
+                <select class="custom-select" [ngClass]="(isSnapshotReplicationDanger()) && 'custom-select-danger'"
+                  [disabled]="!enableVsnapReplication || sameRetentionAsSourceSelection"
+                  [(ngModel)]="sameRetentionAsSourceSelection ? retentionTypeBackupTarget : retentionTypeReplication">
+                  <option value="age" selected translate>{{'slapolicy.textDays'}}</option>
+                  <option value="age-weeks" translate>{{'slapolicy.textWeeks'}}</option>
+                  <option value="age-months" translate>{{'slapolicy.textMonths'}}</option>
+                  <option value="age-years" translate>{{'slapolicy.textYears'}}</option>
+                </select>
+                <span *ngIf="isSnapshotReplicationDanger()">
+                  <i class="bidi-status-warning snapshot-danger-icon"></i><label class="snapshot-danger-label"
+                    translate>{{'slapolicy.textSnapshotRetentionDanger'}}</label>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr>
+        <h6 translate>{{'slapolicy.textAdditionalCopiesSLAPage'}}</h6>
+        <ba-checkbox [(ngModel)]="enableCloudOffload" [baCheckboxClass]="'enabled space-top-10'"
+          (change)="updateFrequencyWarningMessage()" [tooltip]="'slapolicy.textOffloadToCloudStorageHover' | translate"
+          [label]="('slapolicy.textOffloadToCloudStorage' | translate)"
+          [disabled]="model.spec.demo || !enableMainPolicyBackup">
+        </ba-checkbox>
+        <div class="row spo-padding space-top-10">
+          <div class="col-md-6">
+            <define-schedule [hideStartTime]="false" [allowDisableSchedule]="true" [disable]="!enableCloudOffload"
+              #cloudOffloadScheduleTypeSnapshotBackupComponent (calculatedFrequency)="validateFrequency($event, 'offload')"
+              (defineScheduleDisabled)="defineScheduleDisabled($event, 'offload')"
+              [frequencyWarningMessage]="showFrequencyValidationMessage ? 'slapolicy.textSLAOffloadFrequencyError' : ''">
+            </define-schedule>
+            <br>
+            <label class="custom-checkbox">
+              <input type="checkbox" [disabled]="!enableCloudOffload || disableCloudRetentionIfWorm"
+                [(ngModel)]="sameRetentionAsSourceSelectionCloud">
+              <span>{{ 'slapolicy.textSameRetentionAsSourceSelection' | translate }}</span>
+            </label>
+            <div class="spo-padding space-top-10">
+              <label class="control-label"
+                [ngClass]="{'disabled-label': (disableCloudRetentionIfWorm
+                           || !enableCloudOffload || sameRetentionAsSourceSelectionCloud)}">{{'common.textRetention' | translate}}</label>
+              <input [attr.aria-label]="'common.textRetention' | translate" type="number" min="1"
+                [disabled]="disableCloudRetentionIfWorm || !enableCloudOffload || sameRetentionAsSourceSelectionCloud"
+                [(ngModel)]="sameRetentionAsSourceSelectionCloud ? retentionBackupTarget : retentionReplicationCloud"
+                required>
+              <select class="custom-select" [ngClass]="(isSnapshotCloudDanger()) && 'custom-select-danger'"
+                [disabled]="disableCloudRetentionIfWorm || !enableCloudOffload || sameRetentionAsSourceSelectionCloud"
+                [(ngModel)]="sameRetentionAsSourceSelectionCloud ? retentionTypeBackupTarget : retentionTypeReplicationCloud ">
+                <option value="age" selected translate>{{'slapolicy.textDays'}}</option>
+                <option value="age-weeks" translate>{{'slapolicy.textWeeks'}}</option>
+                <option value="age-months" translate>{{'slapolicy.textMonths'}}</option>
+                <option value="age-years" translate>{{'slapolicy.textYears'}}</option>
+              </select>
+              <div *ngIf="isSnapshotCloudDanger()">
+                <p>
+                  <i class="bidi-status-warning snapshot-danger-icon"></i><label class="snapshot-danger-label"
+                    translate>{{'slapolicy.textSnapshotRetentionDanger'}}</label>
+              </div>
+            </div>
+            <div class="space-top-10" [hidden]="!disableCloudRetentionIfWorm">
+              <label class="control-label" translate>{{'slapolicy.textWormRetentionDisabled'}}</label>
+              <label
+                *ngIf="(disableCloudRetentionIfWorm && wormCloudRetention !== undefined)">{{getWormRetentionText()}}</label>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="row checkbox-demo-row">
+              <h5 [ngClass]="{'disabled-label': !enableCloudOffload}" translate>{{'slapolicy.textCopySource'}}</h5>
+              <div class="input-demo radio-demo">
+                <div class="col-md-6">
+                  <label class="radio-inline custom-radio">
+                    <input type="radio" [disabled]="!enableCloudOffload" name="inlineRadioCopyOffloadSource2"
+                      value="backup" [(ngModel)]="cloudOffloadSource">
+                    <span translate>{{'slapolicy.textMainDestination'}}</span>
+                  </label>
+                </div>
+                <div class="col-md-6">
+                  <label class="radio-inline custom-radio nowrap">
+                    <input type="radio" name="inlineRadioCopyOffloadSource2"
+                      [disabled]="!enableVsnapReplication || !enableCloudOffload" value="replication"
+                      [(ngModel)]="cloudOffloadSource">
+                    <span translate>{{'slapolicy.textReplicationDestination'}}</span>
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-4 label-center">
+                <label class="control-label"
+                  [ngClass]="{'disabled-label': (disableCloudRetentionIfWorm || !enableCloudOffload)}"
+                  translate>{{'slapolicy.textOffloadDestinationType'}}</label>
+              </div>
+              <div class="col-sm-3">
+                <dropdown [values]="offloadTypes" [key]="'name'" [isDisabled]="!enableCloudOffload"
+                  [value]="selectedOffloadType" [scrollableHolder]="scrollableHolder"
+                  [scrollableHolderMargin]="scrollableHolderMargin" (onSelect)="onSelectOffloadTypeClick($event)">
+                </dropdown>
+              </div>
+            </div>
+            <br>
+            <div class="row">
+              <div class="col-sm-4 label-center">
+                <label class="control-label"
+                  [ngClass]="{'disabled-label': (disableCloudRetentionIfWorm || !enableCloudOffload)}"
+                  translate>{{'slapolicy.textOffloadTargetServer'}}</label>
+              </div>
+              <div class="col-sm-3">
+                <dropdown [values]="offloadTargets" [key]="'name'" [isDisabled]="!enableCloudOffload"
+                  [value]="cloudOffloadTarget" [scrollableHolder]="scrollableHolder"
+                  [scrollableHolderMargin]="scrollableHolderMargin" (onSelect)="onSelectCloudClick($event)">
+                </dropdown>
+              </div>
+            </div>
+            <div class="row" [hidden]="enableCloudOffload ? model.phantom : true">
+              <i class="bidi-status-warning space-top-15 col-sm-1"></i>
+              <label class="control-label space-top-10 col-sm-10" translate>
+                {{'slapolicy.textCloudOffloadSourceSettingsWarning'}}</label>
+            </div>
+          </div>
+        </div>
+        <br><br>
+        <ba-checkbox [(ngModel)]="enableArchive" [baCheckboxClass]="'enabled space-top-10'"
+          [label]="('slapolicy.textArchiveToCloudTape' | translate)"
+          [tooltip]="'slapolicy.textArchiveToCloudTapeHover' | translate"
+          [disabled]="model.spec.demo || !enableMainPolicyBackup">
+        </ba-checkbox>
+        <div class="row spo-padding space-top-10">
+          <div class="col-md-6">
+            <define-schedule [hideStartTime]="false" [hideStartHourAndMinute]="false" [hideSubhourlyType]="true"
+              [hideHourlyType]="true" [hideDailyType]="true" [allowDisableSchedule]="true" [defaultFrequency]="1"
+              [defaultType]="WEEKLY" [disable]="!enableArchive" #cloudArchiveScheduleTypeSnapshotBackupComponent></define-schedule>
+            <br>
+            <label class="control-label"
+              [ngClass]="{'disabled-label': (disableArchiveRetentionIfWorm || !enableArchive)}">{{'common.textRetention' | translate}}</label>
+            <input [attr.aria-label]="'common.textRetention' | translate" type="number" min="1"
+              [disabled]="disableArchiveRetentionIfWorm || !enableArchive" [(ngModel)]="retentionReplicationArchive"
+              required>
+            <select class="custom-select" [ngClass]="(isSnapshotCloudDanger()) && 'custom-select-danger'"
+              [disabled]="disableArchiveRetentionIfWorm || !enableArchive"
+              [(ngModel)]="retentionTypeReplicationArchive ">
+              <option value="age-weeks" translate>{{'slapolicy.textWeeks'}}</option>
+              <option value="age-months" translate>{{'slapolicy.textMonths'}}</option>
+              <option value="age-years" translate>{{'slapolicy.textYears'}}</option>
+            </select>
+            <div class="space-top-10" [hidden]="!disableArchiveRetentionIfWorm">
+              <label class="control-label" translate>{{'slapolicy.textWormRetentionDisabled'}}</label>
+              <label
+                *ngIf="(disableArchiveRetentionIfWorm && wormArchiveRetention !== undefined)">{{getWormRetentionText()}}</label>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="row checkbox-demo-row">
+              <h5 [ngClass]="{'disabled-label': !enableArchive}" translate>{{'slapolicy.textArchiveCopySource'}}</h5>
+              <div class="input-demo radio-demo">
+                <div class="col-md-6">
+                  <label class="radio-inline custom-radio">
+                    <input type="radio" [disabled]="!enableArchive" name="inlineRadioCopyArchiveSource2" value="backup"
+                      [(ngModel)]="cloudArchiveSource">
+                    <span translate>{{'slapolicy.textMainDestination'}}</span>
+                  </label>
+                </div>
+                <div class="col-md-6">
+                  <label class="radio-inline custom-radio nowrap">
+                    <input type="radio" name="inlineRadioCopyArchiveSource2"
+                      [disabled]="!enableVsnapReplication || !enableArchive" value="replication"
+                      [(ngModel)]="cloudArchiveSource">
+                    <span translate>{{'slapolicy.textReplicationDestination'}}</span>
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-4 label-center">
+                <label class="control-label"
+                  [ngClass]="{'disabled-label': (disableArchiveRetentionIfWorm || !enableArchive)}"
+                  translate>{{'slapolicy.textArchiveDestinationType'}}</label>
+              </div>
+              <div class="col-sm-3">
+                <dropdown [values]="archiveTypes" [key]="'name'" [isDisabled]="!enableArchive"
+                  [value]="selectedArchiveType" [scrollableHolder]="scrollableHolder"
+                  [scrollableHolderMargin]="scrollableHolderMargin" (onSelect)="onSelectArchiveTypeClick($event)">
+                </dropdown>
+              </div>
+            </div>
+            <br>
+            <div class="row">
+              <div class="col-sm-4 label-center">
+                <label class="control-label col-sm-4"
+                  [ngClass]="{'disabled-label': (disableArchiveRetentionIfWorm || !enableArchive)}"
+                  translate>{{'slapolicy.textArchiveTargetServer'}}</label>
+              </div>
+              <div class="col-sm-3">
+                <dropdown [values]="archiveTargets" [key]="'name'" [isDisabled]="!enableArchive"
+                  [value]="cloudArchiveTarget" [scrollableHolder]="scrollableHolder"
+                  [scrollableHolderMargin]="scrollableHolderMargin" (onSelect)="onSelectArchiveClick($event)">
+                </dropdown>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ba-card>
+    </div>
+    <!--END OF SLA TYPE 2-->
+    <!--SLA TYPE 3-->
+    <div [hidden]="model.slaType !=='snapshot'">
+      <ba-card>
+        <h6 class="heading-space-top" translate>{{'slapolicy.textSnapshotProtection'}}</h6>
+        <label class="control-label" [ngClass]="{'disabled-label': !snapshot}"
+          translate>{{'common.textRetention' | translate}}</label>
+        <input [attr.aria-label]="'common.textRetention' | translate" class="space-left-15" type="number" min="1"
+          [(ngModel)]="retentionSnapshotBackupTarget" required [disabled]="!snapshot">
+        <select class="custom-select" [ngClass]="(isSnapshotProtectionBackupDanger()) && 'custom-select-danger'"
+          [(ngModel)]="retentionTypeSnapshotBackupTarget" [disabled]="!snapshot">
+          <option value="age" selected translate>{{'slapolicy.textDays'}}</option>
+          <option value="age-weeks" translate>{{'slapolicy.textWeeks'}}</option>
+          <option value="age-months" translate>{{'slapolicy.textMonths'}}</option>
+          <option value="age-years" translate>{{'slapolicy.textYears'}}</option>
+        </select>
+        <span *ngIf="isSnapshotProtectionBackupDanger()">
+          <i class="bidi-status-warning snapshot-danger-icon"></i><label class="snapshot-danger-label"
+            translate>{{'slapolicy.textSnapshotRetentionDanger'}}</label>
+        </span>
+        <div class="space-top-10">
+          <define-schedule [startTimeLabelMarginClass]="'space-right-12'" [allowDisableSchedule]="true"
+            #snapshotScheduleComponent [hideStartTime]="false" [disable]="!snapshot"
+            (defineScheduleDisabled)="defineScheduleDisabled($event, 'snapshot')">
+          </define-schedule>
+        </div>
+        <div class="space-top-10 snapshot-protection-prefix-container">
+          <label class="control-label" translate
+            [ngClass]="{'disabled-label': !snapshot}">{{'common.textSnapshotPrefix' | translate}}</label>
+          <input [attr.aria-label]="'common.textRetention' | translate" class="space-left-15" type="text"
+            class="form-control snapshot-protection-prefix" [(ngModel)]="snapshotProtectionLabel" required
+            [disabled]="!snapshot">
+        </div>
+      </ba-card>
+    </div>
+    <!-- END OF SLA TYPE 3 -->
+  </ba-card>
+  <confirm-toolbar-component (cancelEvent)="onCancelClick()" (confirmEvent)="onSaveClick()"
+    [disableConfirmButton]="!isValid()" [splitButtons]="true" [floatRight]="false"></confirm-toolbar-component>
+</div>

@@ -1,0 +1,35 @@
+<div class="horizontal-scroll manage-table-container" [ngClass]="{'masked': masked}" >
+  <div class="manage-table-height">
+    <table>
+      <thead>
+        <tr>
+          <th class="action-icon-column"></th>
+          <th class="action-icon-column"></th>
+          <th class="action-icon-column"></th>
+          <th class="sortable" [ngClass]="{'st-sort-ascent': isAsc('name'), 'st-sort-descent': isDesc('name')}"
+              tabindex="0" clickOnEnterKeydown (click)="onSort('name')" translate>{{'scripts.textScriptName'}}</th>
+          <th class="sortable" [ngClass]="{'st-sort-ascent': isAsc('lastUpdated'), 'st-sort-descent': isDesc('lastUpdated')}"
+              tabindex="0" clickOnEnterKeydown (click)="onSort('lastUpdated')" translate>{{'scripts.textLastUpdated'}}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of model.records | paging: model.json()" class="no-top-border">
+          <td class="action-icon-format">
+            <i *ngIf="canDelete(item)" tabindex="0" (keydown.enter)="onDeleteClick(item)" (click)="onDeleteClick(item)" class="ion-close-round"></i>
+          </td>
+          <td class="action-icon-format">
+            <i *ngIf="canEdit(item)" tabindex="0" (keydown.enter)="onEditClick(item)" (click)="onEditClick(item)" class="ion-edit"></i>
+          </td>
+          <td class="action-icon-format">
+            <i *ngIf="canDownload(item)" tabindex="0" (keydown.enter)="onDownloadClick(item)" (click)="onDownloadClick(item)" class="fa fa-cloud-download"></i>
+          </td>
+          <td>{{item.name}}</td>
+          <td>{{item.lastUpdated | amDateFormat: 'll LTS'}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <br/>
+  <paging-toolbar [model]="model" (pageChange)="onPageChange($event)" (refresh)="loadData()"></paging-toolbar>
+</div>
+

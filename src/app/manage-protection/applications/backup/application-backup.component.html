@@ -1,0 +1,156 @@
+<div [hidden]="isCreatingRestoreJob">
+  <div>
+    <button type="button" class="sdl inline secondary with-icon" data-toggle="collapse" data-target="#collapseappmanage"
+            translate><i class="ion-android-settings"></i>{{getDisplayName()}}
+    </button>
+    <div class="align-right toolbar">
+      <button *ngIf="showCreateRestoreJobButton" class="sdl inline" (click)="onCreateRestoreJobClick()" translate>{{'job.textCreateJob'}}</button>
+    </div>
+    <br>
+    <div class="collapse" id="collapseappmanage" role="form">
+      <ba-card baCardClass="dark-card" title="{{getDisplayName() | translate}}">
+        <manage-app-server [applicationType]="applicationType" [onlyUserSelection]="false"
+                           [canDoDiscover]="canDiscover"
+                           [showOsType]="showOsType"></manage-app-server>
+      </ba-card>
+    </div>
+  </div>
+  <ba-card baCardClass="dark-card" title="{{cardTitle | translate}}">
+    <div [ngClass]="{'masked': maskSelf}">
+    <div class="side-by-side-wrapper">
+      <div class="side-by-side-left">
+        <div class="side-by-side-wrapper">
+          <div class="search-bar">
+            <sdl-search-bar (search)="startSearch($event)"
+                            [isSupportClear]="true"
+                            (clear)="onClearSearch()"
+                            [textPlaceholderLabel]="'common.textSearchFor' | translate">
+            </sdl-search-bar>
+          </div>
+          <div class="btn-group space-left-10" role="group" aria-label="Filter">
+            <div class="btn-group" role="group">
+              <button id="btnGroupDrop2" type="button" class="btn btn-default dropdown-toggle dropdown-toggle-sdl"
+                      data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                {{sla && sla.name}}
+              </button>
+              <div class="dropdown-menu slas-menu scrollable-menu dropdown-menu-sdl" aria-labelledby="btnGroupDrop2">
+                <a *ngFor="let item of slas" tabindex="0" class="dropdown-item dropdown-item-sdl" clickOnEnterKeydown (click)="onSlaClick(item)">{{item.name}}</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="side-by-side-right" *ngIf="applicationType === 'sql' || applicationType === 'exch' || applicationType === 'k8s'">
+        <div class="btn-group view" role="group">
+          <div class="nowrap">
+            <label class="control-label" translate>{{'hypervisor.textView'}}</label>
+            <div class="btn-group" role="group">
+              <button id="btnGroupDrop1" type="button" class="btn btn-default dropdown-toggle dropdown-toggle-sdl"
+                      data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                {{view && view.name}}
+              </button>
+              <div class="dropdown-menu dropdown-menu-right dropdown-menu-sdl" aria-labelledby="btnGroupDrop1">
+                <a *ngFor="let item of views" tabindex="0" class="dropdown-item dropdown-item-sdl"
+                   clickOnEnterKeydown (click)="onViewClick(item)">{{item.name}}</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <ul class="breadcrumb2">
+        <li *ngFor="let breadcrumb of breadcrumbs">
+          <span tabindex="0" clickOnEnterKeydown (click)="onBreadcrumbClick(breadcrumb,$event)" [ngClass]="{'link': canNavigateBreadCrumb(breadcrumb)}" >{{breadcrumb.title}}</span>
+        </li>
+        <div class="inventory" *ngIf="!!inventoryJob">
+          <label class="control-label space-right-10">{{textLastInventoryAt + ' ' + (inventoryJob.lastRunTime | amDateFormat: 'll LTS')}}</label>
+          <button type="button"
+                  [disabled]="inventoryInProgress" (click)="onRunInventoryClick()"
+                  class="sdl inline small" [ngClass]="{'disabled' : inventoryInProgress}" translate>
+            {{inventoryInProgress ? 'hypervisor.textInventoryInProgress' : 'hypervisor.textRunInventory'}}
+          </button>
+        </div>
+      </ul>
+    </div>
+    <db-backup-table
+      [applicationType]="applicationType"
+      (refreshSearchEvent)=" startSearch()"
+      (onSelectChangeEvent)="onSelectionChangeEvent()"></db-backup-table>
+    <br>
+    <div class="text-right">
+      <button [hidden]="!hasResourceSelection()" (click)="emptyResourceSelection()" type="button"
+              class="sdl inline float-left">{{textClearSelections}}
+      </button>
+      <button [disabled]="!canRerun()" (click)="onRerunClick()" type="button"
+              class="sdl inline" [ngClass]="{'disabled': !canRerun()}" translate>{{'common.textRerunSelection'}}
+      </button>
+      <button type="button" data-toggle="collapse" data-target="#collapseapplypolicy"
+              (click)="onCardCollapse('policy')"
+              [disabled]="!hasResourceSelection()"
+              class="sdl inline" [ngClass]="{'disabled': !hasResourceSelection()}" translate>{{ selectSLAText }}</button>
+      <button type="button" data-toggle="collapse" data-target="#collapsedboptions" [hidden]="applicationType === 'office365' || applicationType === 'k8s'"
+              (click)="onCardCollapse('options')"
+              [disabled]="!hasResourceSelection()"
+              class="sdl inline" [ngClass]="{'disabled': !hasResourceSelection()}" translate>{{ selectOptionsText }}</button>
+    </div>
+    <div class="collapse" id="collapseapplypolicy" #collapsepolicy role="form">
+      <h2 class="sdl-header" translate>{{'slapolicy.textSLAPolicy'}}</h2>
+      <br>
+      <policyselect-table [selectedNames]="selectedPolicyNames" (dataLoad)="onPoliciesLoad($event)"></policyselect-table>
+      <button [ngClass]="{'disabled': isPoliciesLengthZero}" [disabled]="isPoliciesLengthZero" (click)="onApplyPolicyClick()" class="sdl inline" type="button" data-toggle="collapse" data-target="#collapseapplypolicy" aria-expanded="false" aria-controls="collapseapplypolicy" translate>
+        {{ 'common.textSave' | translate }}
+      </button>
+    </div>
+    <div class="collapse" id="collapsedboptions" #collapseoptions role="form">
+      <application-backup-options [applicationType]="applicationType"
+                                  [applicationView]="view ? view.value : 'applicationview'"
+                                  [includeLogBackup]="includeLogBackup"
+                                  (applyOptionsClicked)="onApplyOptionsClick($event)"
+      ></application-backup-options>
+    </div>
+    </div>
+  </ba-card>
+  <ba-card baCardClass="dark-card" title="{{'application.textPolicyStatus' | translate}}">
+    <div class="log-type-filter align-right row margin-bottom-10">
+      <label translate>{{'job.textFilterJobLogLabel'}}</label>
+      <div class="log-type-list" keyboardMultiselect [multiselect]="multiselect">
+        <angular2-multiselect [settings]="dropdownSettings" #multiselect
+                              [data]="selectableLogTypes"
+                              [(ngModel)]="selectedLogTypes"
+                              (onSelect)="onLogTypeSelect($event)"
+                              (onDeSelect)="onLogTypeDeselect($event)"
+        ></angular2-multiselect>
+      </div>
+    </div>
+    <policy-status-table
+      [subtype]="applicationType"
+      [showOptions]="true"
+      [showInventoryBackupOption]="false"
+      [jobTypeFilters]="logFilters"
+      [objType]="'database'"></policy-status-table>
+  </ba-card>
+  <base-modal-component #rerun [title]="textRerun"
+                        [disableConfirmButton]="selectedRerunSla === undefined"
+                        [confirmBtnText]="textRerun" (onSave)="rerunJob(selectedRerunDb, selectedRerunSla)">
+    <div class="row">
+      <div class="col-sm-5">
+        <label class="form-control-label"
+               style="padding-top: .5rem;" translate>{{'slapolicy.textSelectASLAPolicy'}}</label>
+      </div>
+      <div class="col-sm-7">
+        <select class="form-control" [(ngModel)]="selectedRerunSla">
+          <option *ngFor="let sla of (selectedRerunDb && selectedRerunDb.storageProfiles)" [value]="sla">{{sla}}</option>
+        </select>
+      </div>
+    </div>
+  </base-modal-component>
+</div>
+<div [hidden]="!isCreatingRestoreJob">
+  <job-wizard [autoShow]="false"
+              [textBackToTarget]="textBackToTarget"
+              [allowedCategories]="allowedCategories"
+              (cancelEvent)="onWizardCancel()"
+              (submitEvent)="onWizardSubmit()">
+  </job-wizard>
+</div>

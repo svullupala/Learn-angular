@@ -1,0 +1,70 @@
+<div [formGroup]="form">
+  <div class="form-group row" *ngIf="!enterOnly">
+    <label [ngClass]="clsOfLabelCol || 'col-sm-3'" class="control-label" translate>{{'identity.textUseExistingUser'}}</label>
+    <div [ngClass]="clsOfFieldCol || 'col-sm-3'">
+      <ba-checkbox [(ngModel)]="model.useExisting" [ngModelOptions]="{standalone: true}"
+                   [baCheckboxClass]="'enabled'" [disabled]="disabled">
+      </ba-checkbox>
+    </div>
+  </div>
+  <div class="form-group row" *ngIf="!model.useExisting && enableNameField"
+       [ngClass]="{'has-error': (!name.valid && name.touched), 'has-success': (name.valid && name.touched)}">
+    <label class="control-label" [ngClass]="clsOfLabelCol || 'col-sm-3'" translate>{{'common.textName'}}</label>
+    <div [ngClass]="clsOfFieldCol || 'col-sm-3'">
+      <input type="text" [formControl]="name" class="form-control" [(ngModel)]="model.name" [disabled]="disabled">
+    </div>
+  </div>
+  <div class="form-group row" *ngIf="!model.useExisting"
+       [ngClass]="{'has-error': (!username.valid && username.touched), 'has-success': (username.valid && username.touched)}">
+    <label class="control-label" [ngClass]="clsOfLabelCol || 'col-sm-3'" translate>{{ textUsername ? textUsername :
+      'identity.textUsername'}}</label>
+    <div [ngClass]="clsOfFieldCol || 'col-sm-3'">
+      <input sdlTooltip
+          [disabled]="disabled"
+          [mode]="'critical'"
+          [isDisabled]="disableToolTip(username)"
+          [placement]="'top'"
+          [sdlTooltip]="'common.textRequiredFieldSuggestion' | translate"
+          type="text"
+          [formControl]="username"
+          class="form-control" [(ngModel)]="model.username"
+             [attr.aria-label]="(textUsername || 'identity.textUsername') | translate"
+          placeholder="{{ noPlaceholder ? '' : (applicationType === 'db2' || applicationType === 'mongo' || applicationType === 'oracle') ?
+            ('identity.textUsernameDatabasePlaceholder' | translate) : ('identity.textUsernamePlaceholder' | translate) }}">
+    </div>
+  </div>
+  <div class="form-group row" *ngIf="!model.useExisting"
+       [ngClass]="{'has-error': (!password.valid && password.touched), 'has-success': (password.valid && password.touched)}">
+    <label class="control-label" [ngClass]="clsOfLabelCol || 'col-sm-3'" translate>{{ textPassword ? textPassword :
+      'identity.textPassword'}}</label>
+    <div [ngClass]="clsOfFieldCol || 'col-sm-3'">
+      <input sdlToolTip
+             [disabled]="disabled"
+          [mode]="'critical'"
+          [isDisabled]="disableToolTip(password)"
+          [placement]="'top'"
+          [sdlTooltip]="'common.textRequiredFieldSuggestion' | translate"
+          [type]="showPassword ? 'text' : 'password'"
+          [formControl]="password"
+          class="form-control"
+          [(ngModel)]="model.password"
+             [attr.aria-label]="(textPassword || 'identity.textPassword') | translate"
+             placeholder="{{ noPlaceholder ? '' : ('identity.textPassword' | translate) }}">
+    </div>
+    <label class="control-label" *ngIf="showHidePassword">
+      <i class="ion-eye action btn-show" tabindex="0" (keydown.enter)="togglePasswordVisibility()" (click)="togglePasswordVisibility()" translate>{{showPassword ? 'users.textHide': 'users.textShow'}}</i>
+    </label>
+  </div>
+  <div class="form-group row" *ngIf="model.useExisting">
+    <label class="control-label" [ngClass]="clsOfLabelCol || 'col-sm-3'" translate>{{'identity.textSelectUser'}}</label>
+    <div [ngClass]="clsOfFieldCol || 'col-sm-3'">
+      <select class="form-control" [(ngModel)]="model.user"
+              (ngModelChange)="onSelectUser(item)" [ngModelOptions]="{standalone: true}"
+              [disabled]="disabled">
+        <option [ngValue]="undefined" [hidden]="true" translate>{{ 'common.textClickToSelect' }}</option>
+        <option *ngFor="let item of records" [ngValue]="item">{{ userDisplayName(item) }}
+        </option>
+      </select>
+    </div>
+  </div>
+</div>

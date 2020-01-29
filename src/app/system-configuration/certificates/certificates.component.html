@@ -1,0 +1,9 @@
+<div class="align-right margin-bottom-10" [ngClass]="{'hidden': mode !== 'list'}">
+  <button class="sdl inline with-icon" *ngIf="!certificatesTable.disableAddCertificates" (click)="onAddClick()" translate>
+    <i class="bidi-add-new-white_16"></i>{{'certificates.textAddCertificate' | translate}}
+  </button>
+</div>
+<certificates-table (deleteClick)="onDeleteClick($event)" (editClick)="onEditClick($event)" [ngClass]="{'hidden': mode !== 'list'}"></certificates-table>
+<certificates-edit (saveClick)="loadData(true)" (cancelClick)="onCancelClick()" [disableAddCertificates]="certificatesTable.disableAddCertificates" [ngClass]="{'hidden': mode !== 'edit'}"></certificates-edit>
+
+

@@ -1,0 +1,8 @@
+<div
+  class="scroll-tabset-tabname"
+  [ngClass]="{ 'scroll-tabset-tabname--active': tab.active }"
+  *ngFor="let tab of _tabs"
+  (click)="onChangeTab(tab)"
+>
+  {{ tab.title }}
+</div>

@@ -1,0 +1,17 @@
+@import '../../theme/sass/_auth';
+.card{
+  height: 650px;
+}
+
+.table th {
+  border-top: 0;
+  border-bottom: 0;
+}
+
+.table tfoot th {
+  padding: 0 5px 0 5px;
+}
+
+.hidden {
+  display: none;
+}

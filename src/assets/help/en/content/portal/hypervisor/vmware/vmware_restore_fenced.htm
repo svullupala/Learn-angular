@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-us" xml:lang="en-us" class="task _Skins_HTML5_topnav_IBMOEM" data-mc-search-type="Stem" data-mc-help-system-file-name="Default.xml" data-mc-path-to-help-system="../../../../" data-mc-has-content-body="True" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic;Default" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Operations|VMware">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>Create a Fenced Network Through a VMware Restore Job</title>
+        <link rel="icon" href="../../../Resources/images/IBM-icon-48.ico" />
+        <link href="../../../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" />
+        <link href="../../../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
+        <link href="../../../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
+        <link href="../../../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" />
+        <link href="../../../../Skins/Default/Stylesheets/Components/Tablet.css" rel="stylesheet" />
+        <link href="../../../../Skins/Default/Stylesheets/Components/Mobile.css" rel="stylesheet" />
+        <link href="../../../../Skins/Fluid/stylesheets/foundation.6.2.3.css" rel="stylesheet" />
+        <link href="../../../../Skins/Fluid/stylesheets/styles.css" rel="stylesheet" />
+        <link href="../../../../Skins/Fluid/stylesheets/tablet.css" rel="stylesheet" />
+        <link href="../../../../Skins/Fluid/stylesheets/mobile.css" rel="stylesheet" />
+        <style>/*&lt;meta /&gt;*/
+
+.button.remove-highlight-button
+{
+	-pie-background: url('../../../../Skins/Default/Stylesheets/Images/highlight.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.expand-all-button
+{
+	-pie-background: url('../../../../Skins/Default/Stylesheets/Images/expand.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.print-button
+{
+	-pie-background: url('../../../../Skins/Default/Stylesheets/Images/printer.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.collapse-all-button
+{
+	-pie-background: url('../../../../Skins/Default/Stylesheets/Images/collapse.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.needs-pie
+{
+	behavior: url('../../../../Resources/Scripts/PIE-no-motw.htc');
+}
+
+</style>
+        <link href="../../../resources/stylesheets/styles_topnavi.css" rel="stylesheet" />
+        <script src="../../../../Resources/Scripts/custom.modernizr.js">
+        </script>
+        <script src="../../../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../../../Resources/Scripts/require.min.js">
+        </script>
+        <script src="../../../../Resources/Scripts/require.config.js">
+        </script>
+        <script src="../../../../Resources/Scripts/foundation.6.2.3_custom.js">
+        </script>
+        <script src="../../../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div class="foundation-wrap off-canvas-wrapper">
+            <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper="">
+                <aside class="off-canvas position-right" id="offCanvas" data-off-canvas="" data-position="right" data-mc-ignore="true">
+                    <ul class="off-canvas-drilldown vertical menu off-canvas-list" data-drilldown="" data-mc-back-link="Back" data-mc-css-tree-node-expanded="is-drilldown-submenu-parent" data-mc-css-tree-node-collapsed="is-drilldown-submenu-parent" data-mc-css-sub-menu="vertical menu slide-in-right is-drilldown-submenu" data-mc-include-indicator="False" data-mc-include-icon="False" data-mc-include-parent-link="True" data-mc-include-back="True" data-mc-defer-expand-event="True" data-mc-expand-event="click.zf.drilldown" data-mc-toc="True">
+                    </ul>
+                </aside>
+                <div class="off-canvas-content inner-wrap" data-off-canvas-content="">
+                    <div>
+                        <nav class="title-bar tab-bar" data-mc-ignore="true">
+                            <div class="middle title-bar-section outer-row clearfix">
+                                <div class="relative clearfix"><a class="logo" href="../../about/about_application_overview.htm" alt="Logo"></a>
+                                    <div class="navigation-wrapper nocontent">
+                                        <ul class="navigation clearfix" data-mc-css-tree-node-has-children="has-children" data-mc-css-sub-menu="sub-menu" data-mc-expand-event="mouseenter" data-mc-top-nav-menu="True" data-mc-max-depth="4" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                                            <li class="placeholder" style="visibility:hidden"><a>placeholder</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <button class="menu-icon" data-toggle="offCanvas"><span></span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="nav-search row outer-row">
+                                <form class="search" action="#">
+                                    <div class="search-bar search-bar-container needs-pie">
+                                        <input class="search-field needs-pie" type="search" placeholder="Search the help system" />
+                                        <div class="search-filter-wrapper">
+                                            <div class="search-filter">
+                                                <div class="search-filter-content">
+                                                    <ul>
+                                                        <li>All Files</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="search-submit-wrapper" dir="ltr">
+                                            <div class="search-submit" title="Search">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </nav>
+                    </div>
+                    <section class="main-section">
+                        <div class="row outer-row" data-mc-content-body="True">
+                            <div class="buttons popup-container clearfix topicToolbarProxy mc-component nocontent" style="margin-left: 0px; float: right; mc-topic-toolbar-items: RemoveHighlight ExpandAll CollapseAll Print;">
+                                <div class="button-group-container-left">
+                                    <button class="button needs-pie remove-highlight-button" title="Remove Highlights">
+                                        <img src="../../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="remove highlight" />
+                                    </button>
+                                    <button class="button needs-pie expand-all-button" data-state1-class="expand-all-button" data-state2-class="collapse-all-button" data-state2-title="Collapse all" title="Expand all" data-state1-title="Expand all">
+                                        <img src="../../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="expand all" />
+                                    </button>
+                                    <button class="button needs-pie print-button" title="Print">
+                                        <img src="../../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="print" />
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="nocontent">
+                                <div class="MCBreadcrumbsBox_0 breadcrumbs" data-mc-breadcrumbs-divider=" &gt; " data-mc-breadcrumbs-count="3" data-mc-toc="True"><span class="MCBreadcrumbsPrefix">You are here: </span>
+                                </div>
+                            </div>
+                            <h1>Create a Fenced Network Through a VMware Restore Job</h1>
+                            <p>Through fenced networking, you can establish a safe environment to test your jobs without interfering with virtual machines used for production. Fenced networking can be used with with jobs running in Test Mode and Production Mode. </p>
+                            <p>Running a VMware Restore job in <b>Test Mode</b> creates temporary virtual machines for development/testing, snapshot verification, and disaster recovery verification on a scheduled, repeatable basis without affecting production environments. Test machines are kept running as long as needed to complete testing and verification and are then cleaned up after testing and verification completes.  Virtual machines created through Test mode are also given unique names and identifiers to avoid conflicts within your production environment.</p>
+                            <p><b>Production Mode</b> enables disaster recovery at the local site from primary storage or a remote disaster recovery site, replacing original machine images with recovered images. All configurations are carried over as part of the recovery, including names and identifiers, and all copy data jobs associated with the virtual machine continue to run.</p>
+                            <p>The following procedure describes how to create a fenced network through VMware Restore jobs. </p>
+                            <div class="Prerequisite">
+                                <p class="PostPreRelTitleLeft"><span class="PostPreRelTitle">BEFORE&#160;YOU&#160;BEGIN:</span>
+                                </p>
+                                <ul>
+                                    <li value="1">Create and run a VMware Backup job. See <a href="vmware_backup.htm" class="MCXref xref">Create a VMware Backup Job Definition</a>.</li>
+                                </ul>
+                                <p class="PostPreRelTitleLeft" data-mc-conditions="Default.1012 navigation"><span class="PostPreRelTitle">CONSIDERATIONS:</span>
+                                </p>
+                                <ul>
+                                    <li value="1" data-mc-conditions="Default.1012 navigation">When selecting virtual machines for restore, restore points offloaded to IBM&#160;Spectrum Protect storage cannot be recovered in Test Mode.</li>
+                                    <li value="2" data-mc-conditions="Default.1012 navigation">Restore points that were offloaded to IBM&#160;Spectrum Protect storage cannot be used to restore VMDKs. </li>
+                                </ul>
+                            </div>
+                            <p class="ListHeading">To create a fenced network through a VMware Restore job:</p>
+                            <ol>
+                                <li value="1" data-mc-conditions="Default.1012 navigation">From the navigation menu, expand <b>Manage Protection</b>, then expand <b>Hypervisors</b>. Expand <b>VMware</b>, then click <b>Restore</b>.</li>
+                                <li value="2">In the Restore pane, review the available restore points of your VMware sources,  including virtual machines, VM templates, datastores, folders, and vApps. Use the search function and filters to fine-tune your selection across specific recovery site types. Expand an entry in the Restore pane to view individual restore points by date.</li>
+                                <li value="3" data-mc-conditions="Default.1012 navigation">Select restore points and click the <span class="Strong">Add to Restore List</span> <img src="../../../resources/images/new_icons/add_to_restorelist.png" style="vertical-align: text-top;border-left-style: solid;border-left-width: 0px;border-left-color: #000000;border-right-style: solid;border-right-width: 0px;border-right-color: #000000;border-top-style: solid;border-top-width: 0px;border-top-color: #000000;border-bottom-style: solid;border-bottom-width: 0px;border-bottom-color: #000000;" alt="Add to Restore List icon" />  icon to add the restore point to the Restore List. Click the <span class="Strong">Remove</span> <img src="../../../resources/images/new_icons/remove.png" style="vertical-align: text-top;border-left-style: solid;border-left-width: 0px;border-left-color: #000000;border-right-style: solid;border-right-width: 0px;border-right-color: #000000;border-top-style: solid;border-top-width: 0px;border-top-color: #000000;border-bottom-style: solid;border-bottom-width: 0px;border-bottom-color: #000000;" alt="Remove icon" />  icon to remove items from the Restore List.</li>
+                                <li value="4">Click <b>Options</b>. Set the job definition options. </li>
+                                <li value="5">Select <b>Alternate ESX&#160;Host or Cluster</b>, then select an alternate host or cluster from the vCenter list. </li>
+                                <li class="indent" data-mc-autonum=""><span class="autonumber"><span></span></span>From the <b>Production</b> and <b>Test</b> fields, set virtual networks for production and test restore job runs. Destination network settings for production and test environments should be different locations to create a fenced network, which keeps virtual machines used for testing from interfering with virtual machines used for production. The networks associated with Test and Production will be utilized when the restore job is run in the associated mode. </li>
+                                <li class="indent" data-mc-autonum=""><span class="autonumber"><span></span></span>Set an IP address or subnet mask for virtual machines to be re-purposed for development/testing or disaster recovery use cases. Supported mapping types include IP to IP, IP to DHCP, and subnet to subnet. Virtual machines containing multiple NICs are supported.</li>
+                                <li class="indent" data-mc-autonum=""><span class="autonumber"><span></span></span>By default, the <b>Use system defined subnets and IP addresses for VM guest OS on destination</b> option is enabled. To use your predefined subnets and IP addresses, select <b>Use original subnets and IP addresses for VM guest OS on destination</b>.</li>
+                                <li class="indent" data-mc-autonum=""><span class="autonumber"><span></span></span>To create a new mapping configuration, select <b>Add mappings for subnets and IP addresses for VM guest OS on destination</b>, then click <b>Add Mapping</b>. Enter a subnet or IP address in the Source field. In the destination field, select <b>DHCP</b> to automatically select an IP and related configuration information if DHCP is available on the selected client. Select <b>Static</b> to enter a specific subnet or IP address, subnet mask, gateway, and DNS. Note that <b>Subnet / IP Address</b>, <b>Subnet Mask</b>, and <b>Gateway</b> are required fields. If a subnet is entered as a source, a subnet must also be entered as a destination.</li>
+                                <li class="indent" data-mc-autonum=""><span class="autonumber"><span></span></span>IP reconfiguration is skipped for virtual machines if a static IP is used but no suitable subnet mapping is found, or if the source machine is powered off and there is more than one associated NIC. In a Windows environment, if a virtual machine is DHCP only, then IP reconfiguration is skipped for that virtual machine. In a Linux environment all addresses are assumed to be static, and only IP mapping will be available.</li>
+                                <li value="6">In the <b>Destination Datastore</b> field, set the destination datastore for a restore to an alternate ESX host or cluster.</li>
+                                <li value="7">In the <b>VM&#160;Folder Destination</b> field, enter the VM folder path on the destination datastore. Note that the directory will be created if it does not exist. Use "/" as the root VM folder of the targeted datastore.</li>
+                                <li value="8">In the <b>Script Settings</b> fields, select an uploaded script and a script server where the script will run. Scripts and script servers are configured through the <b data-mc-conditions="Default.1012 navigation">Jobs and Monitoring &gt;&#160;Script</b> pane. See <a href="../../system/system_script.htm" class="MCXref xref">Configure Scripts</a>.</li>
+                                <li class="indent" data-mc-autonum=""><span class="autonumber"><span></span></span>Pre-scripts and post-scripts are scripts that can be run before or after a job runs at the job-level. Batch and PowerShell scripts are supported.</li>
+                                <li class="indent" data-mc-autonum=""><span class="autonumber"><span></span></span><b data-mc-conditions="Default.1012 navigation">Continue job/task on script error</b> - When enabled, if a Pre-script completes with a non-zero return code, the backup or restore is attempted and the Pre-script task status returns COMPLETED. When disabled, the backup or restore is not attempted, and the Pre-script task status returns FAILED.  If a Post-script completes with a non-zero return code, the Post-script task status returns COMPLETED. When disabled, the Post-script task status returns FAILED.</li>
+                                <li value="9">Click <b>Save</b> to save the policy options.</li>
+                                <li value="10">To run the job now, click <b>Restore</b>. To schedule the job click <b>Manage Job</b><b>s</b> and define a trigger for the job definition.</li>
+                                <li value="11">Once the job completes successfully, select one of the following options from the <span class="Strong">Actions</span> menu on the Jobs Sessions or Active Clones sections on the Restore pane:&#160;</li>
+                                <li class="indent" data-mc-autonum=""><span class="autonumber"><span></span></span><b>Move to Production (vMotion)</b> migrates the  virtual machine through vMotion to the Datastore and the Virtual Network defined as the "Production" Network.</li>
+                                <li class="indent" data-mc-autonum=""><span class="autonumber"><span></span></span><b>Clone (vMotion)</b> migrates the virtual machine through vMotion to the Datastore and Virtual Network defined as the "Test" network.</li>
+                            </ol>
+                            <div class="RelatedTopic">
+                                <p class="PostPreRelTitleLeft"><span class="PostPreRelTitle">RELATED TOPICS:</span>
+                                </p>
+                                <ul>
+                                    <li value="1"><a href="vmware_backup.htm" class="MCXref xref">Create a VMware Backup Job Definition</a>
+                                    </li>
+                                    <li value="2"><a href="vmware_manage.htm" class="MCXref xref">Add a VMware Provider</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <p>&#160;</p>
+                            <hr width="100%" size="0" align="center" />
+                            <p style="text-align: left;"><span class="Strong" style="font-size: 10pt;">IBM Spectrum Protect Plus</span> <span class="Strong" style="font-size: 10pt;">10.1.2</span> <![CDATA[ ]]></p>
+                            <p style="font-size: 8pt;">Licensed Material - Property of IBM Corp. © IBM Corporation and other(s) <span class="GeneralYear">2018</span>. IBM is a registered trademark of the IBM Corporation in the United States, other countries, or both. <span style="font-size: 10pt;"><span style="font-size: 8pt;">| </span></span><span style="font-size: 8pt;" class="SystemShortDate">8/23/2018</span></p>
+                        </div>
+                    </section><a data-close="true"></a>
+                </div>
+            </div>
+            <script>/* <![CDATA[ */$(document).foundation();/* ]]> */</script>
+        </div>
+    </body>
+</html>

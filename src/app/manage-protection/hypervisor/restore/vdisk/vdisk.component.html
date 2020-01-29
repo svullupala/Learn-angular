@@ -1,0 +1,52 @@
+<form #vdiskform="ngForm" style="height: 350px;" id="vdiskform" [ngClass]="{'masked': masked}">
+  <div style="height: 300px; overflow: auto;">
+    <table>
+      <thead>
+      <tr>
+        <th translate>{{ "vmware.sourceVdisksText" }}</th>
+        <th translate>{{ "vmware.destinationVmText" }}</th>
+        <th *ngIf="isHyperV() === false"  translate>{{ "vmware.destinationVmModeText" }}</th>
+        <th *ngIf="isHyperV() === false"  translate>{{ "vmware.destinationControllerTypeText" }}</th>
+        <th translate>{{ "vmware.destinationControllerAddressText" }}</th>
+        <th translate>{{ "vmware.destinationControllerLunText" }}</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr class="no-top-border" [ngModelGroup]="item.resource.url" *ngFor="let item of sourceList; let i = index">
+        <td class="align-left wrap">{{ item.resource.name }}</td>
+        <td [ngModelGroup]="'target'">
+          <select class="form-control" name="href"
+            (change)="handleSelect($event, i, 'select', 'destinationVM')"
+            [(ngModel)]="mapVdiskArr[i] && mapVdiskArr[i]['targetHref']" >
+            <option [ngValue]="vm.getUrl('self')" *ngFor="let vm of destinationVms">{{ vm.name }}</option>
+          </select>
+        </td>
+        <td *ngIf="isHyperV() === false">
+          <select class="form-control" name="mode"
+                  (change)="handleSelect($event, i, 'select', 'diskMode')"
+                  [(ngModel)]="mapVdiskArr[i] && mapVdiskArr[i]['mode'] || diskModeVal">
+            <option [ngValue]="mode.value" *ngFor="let mode of diskModeValues">{{ mode.label }}</option>
+          </select>
+        </td>
+        <td *ngIf="isHyperV() === false">
+          <select class="form-control" name="controllertype"
+                  (change)="handleSelect($event, i, 'select', 'controllerType')"
+                  [(ngModel)]="mapVdiskArr[i] && mapVdiskArr[i]['controllertype']">
+            <option [ngValue]="type.value" *ngFor="let type of controllerTypeOptionValues">{{ type.label }}</option>
+          </select>
+        </td>
+        <td>
+          <input type="text" class="form-control" name="address" 
+            (ngModelChange)="handleSelect($event, i, 'input', 'address')"
+            [(ngModel)]="mapVdiskArr[i] && mapVdiskArr[i]['address']">
+        </td>
+        <td>
+          <input type="text" class="form-control" name="lun"
+            (ngModelChange)="handleSelect($event, i, 'input', 'lun')"
+            [(ngModel)]="mapVdiskArr[i] && mapVdiskArr[i]['lun']">
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</form>

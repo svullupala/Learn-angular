@@ -1,0 +1,95 @@
+<div [ngClass]="{ masked: isLoading }">
+  <span *ngIf="!report" translate>{{ 'reports.textSelectOneReport' }}</span>
+  <form *ngIf="model" class="form-horizontal" [formGroup]="form" [ngClass]="{ collapse: !report }">
+    <ng-container *ngIf="isSaveCustomReport">
+      <br />
+      <!--      <h2 class="sdl-header" translate>{{(isUpdate() ? 'reports.textUpdateCustom' : 'reports.textSaveCustom')}}</h2>-->
+      <div
+        class="form-group row"
+        [ngClass]="{
+          'has-error': reportName.touched && !reportName.valid,
+          'has-success': reportName.touched && reportName.valid
+        }"
+      >
+        <label for="inputReportName" class="col-md-4 control-label" translate>{{ 'reports.textName' }}</label>
+        <div class="col-sm-6">
+          <input
+            [formControl]="reportName"
+            [(ngModel)]="name"
+            type="text"
+            class="form-control"
+            id="inputReportName"
+          />
+        </div>
+      </div>
+      <div class="row">
+        <label for="inputReportDesc" class="col-md-4 control-label" translate>{{
+          'reports.textDescription'
+        }}</label>
+        <div class="col-sm-6">
+          <input
+            [(ngModel)]="description"
+            [ngModelOptions]="{ standalone: true }"
+            type="text"
+            class="form-control"
+            [disabled]="disableAllFields"
+            id="inputReportDesc"
+          />
+        </div>
+      </div>
+      <br />
+    </ng-container>
+    <br />
+    <div *ngFor="let param of model.records" class="row">
+      <label class="col-md-4 control-label">{{ param.promptText || param.name }}</label>
+      <div class="col-sm-6">
+        <div
+          *ngIf="param.type === 'list' && param.metadata['dropdownSettings']"
+          keyboardMultiselect
+          [multiselect]="multiselect"
+        >
+          <angular2-multiselect
+            #multiselect
+            [ngModelOptions]="{ standalone: true }"
+            [data]="param.metadata['dropdownList']"
+            [(ngModel)]="param.metadata['selectedItems']"
+            [settings]="getDropdownSettings(param.metadata['dropdownSettings'])"
+            (onSelect)="onItemSelect($event)"
+            (onDeSelect)="OnItemDeSelect($event)"
+            (click)="onParamClick(param)"
+            [fixMultiselectDropdownPosition]="multiselect"
+            [scrollableParentElement]="tabContentEl"
+          ></angular2-multiselect>
+        </div>
+        <input
+          *ngIf="param.type === 'string'"
+          [ngModelOptions]="{ standalone: true }"
+          [(ngModel)]="param.value"
+          [disabled]="disableAllFields"
+          type="text"
+          class="form-control"
+          placeholder="{{ param.promptText || '' }}"
+        />
+        <input
+          *ngIf="param.type === 'number'"
+          [ngModelOptions]="{ standalone: true }"
+          [(ngModel)]="param.value"
+          type="number"
+          class="form-control"
+          [attr.min]="param.minValue || 0"
+          [attr.max]="param.hasMaxValue() ? (param.unit === '%' ? 100 : param.maxValue) : null"
+          [disabled]="disableAllFields"
+        />
+        <ba-checkbox
+          *ngIf="param.type === 'boolean'"
+          [ngModelOptions]="{ standalone: true }"
+          [baCheckboxClass]="'enabled'"
+          [(ngModel)]="param.value"
+          [disabled]="disableAllFields"
+        >
+        </ba-checkbox>
+        <br />
+      </div>
+    </div>
+  </form>
+</div>

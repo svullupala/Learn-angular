@@ -1,0 +1,65 @@
+<div class="source">
+  <div class="title" translate>{{'wizard.job.textSourceSelectTitle'}}</div>
+  <div class="desc" translate>{{'wizard.job.textSourceSelectDescApplication'}}</div>
+  <div class="content">
+    <div class="row">
+      <div class="col-lg-8">
+        <div class="side-by-side-wrapper">
+          <div class="row">
+            <div class="col-lg-6">
+              <sdl-search-bar (search)="startSearch($event)"
+                              [textPlaceholderLabel]="'common.textSearchFor' | translate">
+              </sdl-search-bar>
+            </div>
+            <div class="col-lg-6">
+              <div class="btn-group text-right side-by-side-right" role="group">
+                <div class="nowrap">
+                  <label class="control-label" translate>{{'hypervisor.textView'}}</label>
+                  <div class="btn-group" role="group">
+                    <button id="btnGroupDrop1" type="button" class="btn btn-default dropdown-toggle  dropdown-toggle-sdl"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      {{model.view && model.view.name}}
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-right  dropdown-menu-sdl" aria-labelledby="btnGroupDrop1">
+                      <a *ngFor="let item of model.views" tabindex="0" class="dropdown-item  dropdown-item-sdl"
+                         clickOnEnterKeydown (click)="onViewClick(item)">{{item.name}}</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <ul class="breadcrumb2">
+          <li *ngFor="let breadcrumb of breadcrumbs">
+            <span tabindex="0" clickOnEnterKeydown (click)="onBreadcrumbClick(breadcrumb,$event)" [ngClass]="{'link': canNavigateBreadCrumb(breadcrumb)}" >{{breadcrumb.title}}</span>
+          </li>
+        </ul>
+      </div>
+      <div class="row">
+        <div class="col-lg-8">
+          <application-restore-source-table
+            [applicationType]="applicationType"
+            (addClick)="onAddClick($event)"
+            [filters]="filters"
+            (refreshSearchEvent)="startSearch()"></application-restore-source-table>
+        </div>
+        <div class="col-lg-4">
+          <application-restore-selection-table
+            [applicationType]="applicationType"
+            (onRemoveItem)="onRemoveItem()"></application-restore-selection-table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<ng-template #summary>
+  <div class="summary">
+    <div class="content">
+      <div class="property">
+        <label class="name">{{'wizard.job.textSourceSelectSummary' | translate}}</label>
+        <label class="value">{{summaryValue || ('wizard.job.textEmpty' | translate)}}</label>
+      </div>
+    </div>
+  </div>
+</ng-template>

@@ -1,0 +1,16 @@
+<div class="inventory-stat-chart">
+  <div class="toolbar" *ngIf="hasToolbar">
+    <inventory-stat-options [view]="view" [views]="views" [model]="options"
+                            (viewChange)="onViewChange($event)"
+                            (apply)="onApply($event)">
+    </inventory-stat-options>
+  </div>
+  <div class="chart">
+    <inventory-doughnut-chart [header]="('inventory.textLast' | translate) + ' ' + (options.timeRange.name | translate)"
+                              [title]="title"
+                              [titleCentered]="titleCentered"
+                              [data]="chartData"
+                              (itemSelect)="onItemSelect($event)">
+    </inventory-doughnut-chart>
+  </div>
+</div>

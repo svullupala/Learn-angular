@@ -1,0 +1,47 @@
+<div style="margin-top:80px;">
+    <hr>
+    <div>
+        <p style="font-weight:bold;">Download PST Options</p>
+    </div>
+    <div class="input-demo radio-demo row">
+        <div class="col-lg-6">
+            <div>
+                <label class="radio-inline custom-radio nowrap">
+                    <input 
+                        type="radio" 
+                        name="inlineRadioPstToProxyMachine" 
+                        (click)="onClickPSTOptions('downloadPST')"
+                        [value]="'downloadPST'"
+                        [(ngModel)]="optionSelected">
+                    <span translate>{{'application.textDownloadPstFileProxyMachine'}}</span>
+                </label>
+            </div>
+            <div class="adjust-sub-field" style="max-width: 60%;">
+                <input 
+                    [disabled]="radioControlValue === 'downloadFileDirectly' && radioControlValue !== null"
+                    class="form-control" 
+                    style="max-width: 80%;" 
+                    type="text">
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div>
+                <label class="radio-inline custom-radio nowrap">
+                    <input 
+                        type="radio" 
+                        name="inlineRadioPstToProxyMachine" 
+                        (click)="onClickPSTOptions('downloadFileDirectly')"
+                        [value]="'downloadFileDirectly'"
+                        [(ngModel)]="optionSelected">
+                    <span translate>{{'application.textDownloadFielDirectlyFromGUI'}}</span>
+                </label>
+            </div>
+            <div class="adjust-sub-field">
+                <li translate>{{'application.textRestoreJobsWithOneMailbox'}}</li>
+                <li translate>{{'application.textSkipsJobOptionStep'}}</li>
+            </div>
+            <div>
+            </div>
+        </div>
+    </div>
+</div>

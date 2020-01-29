@@ -1,0 +1,28 @@
+<div class="checkbox">
+  <label class="custom-checkbox" translate>
+    <input type="checkbox" [(ngModel)]="model.overwriteExistingDb">
+    <span>{{'application.textOverwriteDatabase' | translate }}</span>
+  </label>
+</div>
+<br>
+<div class="row" [hidden]="hideMaxParallelStreams">
+  <label for="maxParallelStreams" class="col-sm-4 control-label wrap" translate>
+    {{'application.textMaxParallelStreams'}}
+  </label>
+  <div class="col-sm-2">
+    <input type="number" min="1" class="form-control" id="maxParallelStreams"
+           [(ngModel)]="model.maxParallelStreams">
+  </div>
+</div>
+<div class="row" [title]="'application.textDb2MemoryOptionToolTip' | translate">
+  <br>
+  <label class="col-sm-4 control-label wrap" translate>{{'application.textSpecifyMemory'}}</label>
+  <div class="col-sm-2">
+    <input type="number"
+           [attr.aria-label]="'application.textSpecifyMemory' | translate"
+           [max]="maxKb"
+           [min]="0"
+           class="form-control"
+           [(ngModel)]="model.databaseMemory">
+  </div>
+</div>

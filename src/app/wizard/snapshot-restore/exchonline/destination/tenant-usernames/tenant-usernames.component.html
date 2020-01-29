@@ -1,0 +1,21 @@
+<div class="horizontal-scroll" [ngClass]="{'masked': masked}">
+    <table class="selectable fixed" tabindex="0" #highlightableContainer>
+        <thead>
+            <tr>
+                <th class="normal-col sortable" tabindex="0" clickOnEnterKeydown translate>Name
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <ng-template let-item ngFor [ngForOf]="searchResult">
+                <tr [ngClass]="{'selected': isSelected(item, true)}" highlightable
+                (click)="toggleSelect(item, searchResult, $event)"
+                    (itemSelected)="toggleSelect($event.data, searchResult, $event.event, true)" tabindex="0" clickOnEnterKeydown>
+                    <td class="normal-col">
+                        {{item.name}}
+                    </td>
+                </tr>
+            </ng-template>
+        </tbody>
+    </table>
+</div>

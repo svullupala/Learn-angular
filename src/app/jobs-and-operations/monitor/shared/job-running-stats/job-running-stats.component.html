@@ -1,0 +1,63 @@
+<div class="card-block">
+  <div class="item-list col-md-9">
+    <div class="item-col" style="cursor:pointer;">
+      <circle-summary-chart [isClickable]="true" [value]="total" [label]="('monitoring.textTotalJobs' | translate)"
+        (selection)="setFilterType(['all'])" [borderColor]="activeFilter[0] === 'all' ? activeBorderColor : borderColor"
+        [fillColor]="activeFilter[0] === 'all' ? fillColor : ''"
+        [labelColor]="activeFilter[0] === 'all' ? activeTextColor : textColor"
+        [unitColor]="activeFilter[0] === 'all' ? activeTextColor : textColor" [cursorType]="cursorType">
+      </circle-summary-chart>
+    </div>
+    <div class="spliter-col">
+      <div class="spliter">
+      </div>
+    </div>
+    <div class="item-col">
+      <circle-summary-chart [isClickable]="true" [value]="protection" [label]="('monitoring.textBackup' | translate)"
+        (selection)="setFilterType(['protection'])"
+        [borderColor]="activeFilter[0] === 'protection' ? activeBorderColor : borderColor"
+        [fillColor]="activeFilter[0] === 'protection' ? fillColor : ''"
+        [labelColor]="activeFilter[0] === 'protection' ? activeTextColor : textColor"
+        [unitColor]="activeFilter[0] === 'protection' ? activeTextColor : textColor" [cursorType]="cursorType">
+      </circle-summary-chart>
+    </div>
+    <div class="item-col">
+      <circle-summary-chart [isClickable]="true" [value]="inventory" [label]="('monitoring.textInventory' | translate)"
+        (selection)="setFilterType(['catalog'])"
+        [borderColor]="activeFilter[0] === 'catalog' ? activeBorderColor : borderColor"
+        [fillColor]="activeFilter[0] === 'catalog' ? fillColor : ''"
+        [labelColor]="activeFilter[0] === 'catalog' ? activeTextColor : textColor"
+        [unitColor]="activeFilter[0] === 'catalog' ? activeTextColor : textColor" [cursorType]="cursorType">
+      </circle-summary-chart>
+    </div>
+    <div class="item-col">
+      <circle-summary-chart [isClickable]="true" [value]="maintenance" [label]="('monitoring.textMaintenance' | translate)"
+        (selection)="setFilterType(['maintenance'])"
+        [borderColor]="activeFilter[0] === 'maintenance' ? activeBorderColor : borderColor"
+        [fillColor]="activeFilter[0] === 'maintenance' ? fillColor : ''"
+        [labelColor]="activeFilter[0] === 'maintenance' ? activeTextColor : textColor"
+        [unitColor]="activeFilter[0] === 'maintenance' ? activeTextColor : textColor" [cursorType]="cursorType">
+      </circle-summary-chart>
+    </div>
+    <div class="item-col">
+      <circle-summary-chart [isClickable]="true" [value]="recovery" [label]="('monitoring.textRestore' | translate)"
+        (selection)="setFilterType(['recovery', 'restore'])"
+        [borderColor]="activeFilter[0] === 'recovery' ? activeBorderColor : borderColor"
+        [fillColor]="activeFilter[0] === 'recovery' ? fillColor : ''"
+        [labelColor]="activeFilter[0] === 'recovery' ? activeTextColor : textColor"
+        [unitColor]="activeFilter[0] === 'recovery' ? activeTextColor : textColor" [cursorType]="cursorType">
+      </circle-summary-chart>
+    </div>
+    <div class="spliter-col">
+      <div class="spliter">
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3" style="
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 1rem">
+    <cpu-usage-metrics [rate]="10000"></cpu-usage-metrics>
+  </div>
+</div>

@@ -1,0 +1,32 @@
+<div [hidden]="model.hidden" class="wizard-sidebar-item {{theme}}" [ngClass]="{'has-prev': hasPrev, 'has-subtitle' : optional, 'has-prev-subtitle' : hasPrevSubtitle}">
+  <div class="h-link"
+       [ngClass]="{'hl-invisible': hlInvisible, 'u-link': hasULink, 'd-link': hasDLink, 'disabled' : model.disabled, 'dl-disabled': dlDisabled}"></div>
+  <button class="status" [ngClass]="{'hl-invisible': hlInvisible, 'done': model.done, 'disabled' : model.disabled}"
+          [disabled]="model.disabled"
+          tabindex="0"
+          [attr.aria-label]="model.title | translate"
+          sdlTooltip
+          [mode]="'standard'"
+          [triggers]="'hover focus'"
+          [placement]="'right'"
+          [sdlTooltip]="summary">
+    <i *ngIf="model.done" class="bidi-status-normal-white"></i>
+  </button>
+  <button class="label" (click)="onItemSelect()"
+          [ngClass]="{'has-subtitle' : optional, 'selectable': canSelect}" [disabled]="!canSelect">
+    <label class="title" [ngClass]="{'disabled' : !canSelect && !hasCursor}" translate>{{model.title}}</label>
+    <div class="subtitle" *ngIf="optional" [ngClass]="{'disabled' : !canSelect && !hasCursor}" translate>
+      {{'wizard.textOptional'}}
+    </div>
+  </button>
+</div>
+<ng-template #grpSummary>
+  <div [hidden]="model.hidden" class="group-summary">
+    <div class="title">{{(model.summaryTitle || model.title) | translate}}</div>
+    <div class="content">
+      <ng-template let-se ngFor [ngForOf]="summaryEntries">
+        <ng-template [ngTemplateOutlet]="se.content"></ng-template>
+      </ng-template>
+    </div>
+  </div>
+</ng-template>

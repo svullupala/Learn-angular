@@ -1,0 +1,47 @@
+$Cerulean50: #047CC0;
+$Cerulean70: #1c496d;
+
+.filter-label-button {
+  font-weight: bold;
+  background-color: transparent;
+  border: none;
+  font-size: .875rem;
+  //height: 1rem;
+  //min-width: 1rem;
+  padding: 0;
+  float: left;
+  &.float-right {
+    float: right;
+  }
+}
+
+.margin-bottom-1rem {
+  margin-bottom: 1rem;
+}
+
+.filter-button {
+  min-width: 2.5rem;
+  height: 2.5em;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  &:active {
+    background-color: $Cerulean70;
+    border-color: $Cerulean70;
+  }
+  &.active {
+    background-color: $Cerulean50;
+    border-color: $Cerulean50;
+  }
+}
+
+.dropdown-menu-style {
+  min-height: 400px;
+  min-width: 400px;
+  margin: 0;
+}
+
+.catagory-header {
+  color: #047CC0;
+  font-weight: bold;
+}

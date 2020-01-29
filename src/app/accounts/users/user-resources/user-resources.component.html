@@ -1,0 +1,8 @@
+<div  [ngClass]="{'masked': masked}">
+  <div *ngFor="let item of model.resources">
+    <label class="control-label nowrap bold">{{item.name}}
+    </label>
+    <hr>
+    <br>
+  </div>
+</div>

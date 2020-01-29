@@ -1,0 +1,31 @@
+<div class="space-top-10">
+  <div>
+    <label class="control-label" translate>{{'resourceGroups.textChooseAccountType'}}</label>
+  </div>
+  <div>
+    <select class="form-control" [(ngModel)]="accountType" (change)="loadData()">
+      <option [value]="ROLE_TYPE" translate>{{'resourceGroups.textRoles'}}</option>
+      <option [value]="USER_TYPE" translate>{{'resourceGroups.textUsers'}}</option>
+      <option [value]="IDENTITY_TYPE" translate>{{ 'identities.identitiesTitle' }}</option>
+    </select>
+  </div>
+  <div [hidden]="accountType === undefined">
+    <resource-selector-component
+      [records]="records"
+      [dataset]="dataset"
+      [masked]="masked"
+      [breadcrumbs]="breadcrumbs"
+      [textPlaceholderLabel]="searchPlaceholderText"
+      [hideBreadcrumbs]="true"
+      [resourceType]="'resourceGroups.textAccounts' | translate"
+      [addAllItem]="allAddItem"
+      [hideSearchBar]="accountType === IDENTITY_TYPE"
+      [view]="view"
+      [paginateConfig]="paginateConfig"
+      (navigateEvent)="loadCustomReports($event)"
+      (onPageChangeEvent)="loadData(undefined, $event)"
+      (onRefreshEvent)="loadData(undefined, $event)"
+      (onSearchEvent)="onSearch($event)"
+    ></resource-selector-component>
+  </div>
+</div>

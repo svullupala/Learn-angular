@@ -1,0 +1,56 @@
+<div class="card-block">
+  <div *ngIf="model" class="item-list col-md-9">
+    <div class="item-col">
+      <circle-summary-chart [value]="(model.totalRuns - model.running) === 0 ?
+                 0 : (model.successful / (model.totalRuns - model.running)) * 100 | number: '1.0-2'" [unit]="'%'"
+        [unitMedium]="true" [unitColor]="defaultTextColor" [label]="'dashboard.textSuccessRate'"
+        [borderColor]="'transparent'"></circle-summary-chart>
+    </div>
+    <div class="item-col">
+      <circle-summary-chart [isClickable]="true" [value]="(model.totalRuns - model.running)" [label]="'dashboard.textTotalJobs'"
+        (selection)="setFilterType('all')" [borderColor]="activeFilter === 'all' ? activeBorderColor : borderColor"
+        [fillColor]="activeFilter === 'all' ? fillColor : ''"
+        [labelColor]="activeFilter === 'all' ? activeTextColor : textColor" [cursorType]="cursorType">
+      </circle-summary-chart>
+    </div>
+    <div class="spliter-col">
+      <div class="spliter">
+      </div>
+    </div>
+    <div class="item-col">
+      <circle-summary-chart [isClickable]="true" [value]="model.failed" [label]="'dashboard.textFailed'"
+        (selection)="setFilterType('FAILED')"
+        [topIcon]="failedStatData.topIcon"
+        [borderColor]="failedStatData.borderColor"
+        [labelColor]="failedStatData.labelColor"
+        [fillColor]="failedStatData.fillColor"
+        [cursorType]="cursorType"
+      ></circle-summary-chart>
+    </div>
+    <div class="item-col">
+      <circle-summary-chart [isClickable]="true" [value]="model.warning" [label]="'dashboard.textWarning'"
+        (selection)="setFilterType('PARTIAL')"
+        [topIcon]="warningStatData.topIcon"
+        [borderColor]="warningStatData.borderColor"
+        [labelColor]="warningStatData.labelColor"
+        [fillColor]="warningStatData.fillColor"
+        [cursorType]="cursorType"
+      ></circle-summary-chart>
+    </div>
+    <div class="item-col">
+      <circle-summary-chart [isClickable]="true" [value]="model.successful" [label]="'dashboard.textSuccessful'"
+        (selection)="setFilterType('COMPLETED')" [topIcon]="'bidi-success'" [borderColor]="successColor"
+        [labelColor]="activeFilter === 'COMPLETED' ? activeTextColor : textColor"
+        [fillColor]="activeFilter === 'COMPLETED' ? successLight : ''" [cursorType]="cursorType"></circle-summary-chart>
+    </div>
+  </div>
+  <div *ngIf="model" class="col-md-3" style="
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 1rem">
+    <last-period-filter [selectedLastPeriod]="selectedLastPeriod" [filterOnReady]="true"
+      [title]="'dashboard.textJobStatusPeriod'" [showRefresh]="false" [extraTimes]="true"
+      (filter)="onLastPeriodFilter($event)"></last-period-filter>
+  </div>
+</div>

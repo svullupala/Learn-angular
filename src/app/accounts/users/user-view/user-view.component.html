@@ -1,0 +1,32 @@
+<div *ngIf="model" class="view">
+  <div class="form-group">
+    <label class="control-label bold uppercase" translate>
+      {{'users.textResourceGroups'}}
+    </label>
+  </div>
+  <user-resources [model]="model"></user-resources>
+  <div class="form-group">
+    <label class="control-label bold uppercase" translate>
+      {{'users.textRole'}}
+    </label>
+  </div>
+  <ng-template let-item ngFor [ngForOf]="model.roleNames">
+    <div class="form-group">
+      <label class="control-label">
+        {{item.valueOf()}}
+      </label>
+    </div>
+  </ng-template>
+  <div class="form-group">
+    <label class="control-label bold uppercase" translate>
+      {{'users.textPermissionGroups'}}
+    </label>
+  </div>
+  <div *ngIf="model.isSuperUser()" class="form-group">
+    <label class="control-label" translate>
+      {{'users.textSuperUserHasAllPermissions'}}
+    </label>
+  </div>
+  <permission-role *ngIf="!model.isSuperUser()" [roles]="model.roles"></permission-role>
+</div>
+

@@ -1,0 +1,280 @@
+@import "../../../theme/sass/conf/conf";
+
+:host.tooltip {
+  opacity: 1.0;
+  line-height: 1rem;
+}
+
+:host.tooltip-top {
+  margin-bottom: 10px;
+  .sdl-tooltip-inner {
+    border-bottom: 5px solid $gray10;
+    border-top: 1px solid $gray10;
+    border-right: 1px solid $gray10;
+    border-left: 1px solid $gray10;
+  }
+}
+
+:host.tooltip-right {
+  margin-left: 10px;
+
+  .sdl-tooltip-inner {
+    border-left: 5px solid $gray10;
+    border-top: 1px solid $gray10;
+    border-right: 1px solid $gray10;
+    border-bottom: 1px solid $gray10;
+  }
+}
+
+:host.tooltip-bottom {
+  margin-top: 10px;
+  .sdl-tooltip-inner {
+    border-top: 5px solid $gray10;
+    border-right: 1px solid $gray10;
+    border-bottom: 1px solid $gray10;
+    border-left: 1px solid $gray10;
+  }
+}
+
+:host.tooltip-left {
+  margin-right: 10px;
+  .sdl-tooltip-inner {
+    border-right: 5px solid $gray10;
+    border-top: 1px solid $gray10;
+    border-bottom: 1px solid $gray10;
+    border-left: 1px solid $gray10;
+  }
+}
+
+:host.standard {
+  .sdl-tooltip-inner {
+    background-color: white;
+  }
+  &.tooltip-top {
+    .sdl-tooltip-inner {
+      border-bottom-color: $gray20;
+    }
+    .sdl-tooltip-arrow {
+      border-top-color: $gray20;
+    }
+  }
+  &.tooltip-right {
+    .sdl-tooltip-inner {
+      border-left-color: $gray20;
+    }
+    .sdl-tooltip-arrow {
+      border-right-color: $gray20;
+    }
+  }
+  &.tooltip-bottom {
+    .sdl-tooltip-inner {
+      border-top-color: $gray20;
+    }
+    .sdl-tooltip-arrow {
+      border-bottom-color: $gray20;
+    }
+  }
+  &.tooltip-left {
+    .sdl-tooltip-inner {
+      border-right-color: $gray20;
+    }
+    .sdl-tooltip-arrow {
+      border-left-color: $gray20;
+    }
+  }
+}
+
+:host.info {
+  .sdl-tooltip-inner {
+    background-color: $cerulean1;
+  }
+  &.tooltip-top {
+    .sdl-tooltip-inner {
+      border-bottom-color: $cerulean50;
+    }
+    .sdl-tooltip-arrow {
+      border-top-color: $cerulean50;
+    }
+  }
+  &.tooltip-right {
+    .sdl-tooltip-inner {
+      border-left-color: $cerulean50;
+    }
+    .sdl-tooltip-arrow {
+      border-right-color: $cerulean50;
+    }
+  }
+  &.tooltip-bottom {
+    .sdl-tooltip-inner {
+      border-top-color: $cerulean50;
+    }
+    .sdl-tooltip-arrow {
+      border-bottom-color: $cerulean50;
+    }
+  }
+  &.tooltip-left {
+    .sdl-tooltip-inner {
+      border-right-color: $cerulean50;
+    }
+    .sdl-tooltip-arrow {
+      border-left-color: $cerulean50;
+    }
+  }
+}
+
+:host.critical {
+  .sdl-tooltip-inner {
+    background-color: $red1;
+  }
+  &.tooltip-top {
+    .sdl-tooltip-inner {
+      border-bottom-color: $red50;
+    }
+    .sdl-tooltip-arrow {
+      border-top-color: $red50;
+    }
+  }
+  &.tooltip-right {
+    .sdl-tooltip-inner {
+      border-left-color: $red50;
+    }
+    .sdl-tooltip-arrow {
+      border-right-color: $red50;
+    }
+  }
+  &.tooltip-bottom {
+    .sdl-tooltip-inner {
+      border-top-color: $red50;
+    }
+    .sdl-tooltip-arrow {
+      border-bottom-color: $red50;
+    }
+  }
+  &.tooltip-left {
+    .sdl-tooltip-inner {
+      border-right-color: $red50;
+    }
+    .sdl-tooltip-arrow {
+      border-left-color: $red50;
+    }
+  }
+}
+
+:host.warning {
+  .sdl-tooltip-inner {
+    background-color: $orange1;
+  }
+  &.tooltip-top {
+    .sdl-tooltip-inner {
+      border-bottom-color: $orange30;
+    }
+    .sdl-tooltip-arrow {
+      border-top-color: $orange30;
+    }
+  }
+  &.tooltip-right {
+    .sdl-tooltip-inner {
+      border-left-color: $orange30;
+    }
+    .sdl-tooltip-arrow {
+      border-right-color: $orange30;
+    }
+  }
+  &.tooltip-bottom {
+    .sdl-tooltip-inner {
+      border-top-color: $orange30;
+    }
+    .sdl-tooltip-arrow {
+      border-bottom-color: $orange30;
+    }
+  }
+  &.tooltip-left {
+    .sdl-tooltip-inner {
+      border-right-color: $orange30;
+    }
+    .sdl-tooltip-arrow {
+      border-left-color: $orange30;
+    }
+  }
+}
+
+.sdl-tooltip-arrow {
+  z-index: 200;
+}
+
+:host.sdl-tooltip-top {
+  .sdl-tooltip-arrow {
+    top: 100%;
+    left: 1.25rem;
+    margin-top: -5px;
+    border-width: 10px 10px 0 10px;
+    //border-top-color: $gray10;
+  }
+  &.center .sdl-tooltip-arrow {
+    left: calc(50% - .5rem);
+  }
+}
+
+:host.sdl-tooltip-right .sdl-tooltip-arrow {
+  top: 50%;
+  left: -5px;
+  margin-top: -10px;
+  border-width: 10px 10px 10px 0;
+  //border-right-color: $gray10;
+}
+
+:host.sdl-tooltip-bottom {
+  .sdl-tooltip-arrow {
+    top: 0;
+    left: 1.25rem;
+    margin-top: -5px;
+    border-width: 0 10px 10px 10px;
+    //border-bottom-color: $gray10;
+  }
+  &.center .sdl-tooltip-arrow {
+    left: calc(50% - .5rem);
+  }
+}
+
+:host.sdl-tooltip-left .sdl-tooltip-arrow {
+  top: 50%;
+  right: -5px;
+  margin-top: -10px;
+  border-width: 10px 0 10px 10px;
+  //border-left-color: $gray10;
+}
+
+.sdl-tooltip-inner {
+  font-family: $font-family;
+  font-size: 0.875rem;
+  padding: 1rem;
+  text-align: center;
+  white-space: nowrap;
+  background-color: white;
+  border-radius: 2px;
+  border-color: $gray10;
+  color: $base-font-color-light;
+  filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.14));
+
+  & > i {
+    height: 1rem;
+    line-height: 1rem;
+    margin-right: 1rem;
+  }
+  & > label {
+    height: 1rem;
+    line-height: 1rem;
+    margin: 0;
+  }
+  &:not(.text-content) {
+    & > label {
+      height: auto;
+    }
+  }
+}
+
+:host.container-class-top-icon {
+  .sdl-tooltip-inner > i {
+    vertical-align: top;
+  }
+}

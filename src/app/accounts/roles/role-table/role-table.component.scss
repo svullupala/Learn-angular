@@ -1,0 +1,48 @@
+.large-text {
+  font-size: 24px;
+}
+
+.fixed {
+  table-layout: fixed;
+}
+
+label {
+  margin: 0;
+}
+
+.align-center {
+  text-align: center !important;
+}
+
+.align-right {
+  text-align: right !important;
+}
+
+.normal-col {
+  width: calc(calc(90% - 40px) / 3);
+  word-break: break-all;
+}
+
+.icon-col {
+  width: 5%;
+  word-break: break-all;
+  border-left: 0;
+}
+
+.operation-col {
+  max-width: 120px;
+  border-left: 0;
+}
+
+.capitalize {
+  text-transform: capitalize;
+}
+
+.table > thead > tr > th:first-child {
+  padding-left: 0.75rem;
+}
+
+.table > tbody > tr > td:first-child {
+  padding-left: 0.75rem;
+}
+

@@ -1,0 +1,12 @@
+<div class="wrapper">
+  <div class="row dash-row">
+    <!-- For Demo only. SPP-11133 <button (click)="sendMsg()">{{serverTime}}</button> -->
+    <dashboard-jobs-and-ops [refreshRate]="60000"></dashboard-jobs-and-ops>
+  </div>
+  <div class="row dash-row">
+    <dashboard-destinations></dashboard-destinations>
+  </div>
+  <div class="row dash-row">
+    <dashboard-coverage></dashboard-coverage>
+  </div>
+</div>

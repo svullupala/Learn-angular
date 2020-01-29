@@ -1,0 +1,90 @@
+<div class="run-type">
+  <div class="title" translate>{{'wizard.job.textRunTypeTitle'}}</div>
+  <div class="desc" translate>{{'wizard.job.textRunTypeDesc'}}</div>
+  <div class="content">
+    <div *ngIf="isIaRestore">
+      <label translate>{{'wizard.textVdiskMsg'}}</label>
+      <br>
+      <br>
+    </div>
+    <div class="input-demo radio-demo row">
+      <div class="col-md-3">
+        <div class="item">
+          <label class="radio-inline custom-radio nowrap">
+            <input type="radio"
+                   [disabled]="!isIaRestore"
+                   [(ngModel)]="model.runType"
+                   name="inlineRadioOptions" value="IA">
+            <span translate>{{'application.textInstantAccess'}}</span>
+          </label>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="item">
+          <label class="radio-inline custom-radio nowrap">
+            <input type="radio"
+                   [disabled]="isIaRestore"
+                   name="inlineRadioOptions"
+                   [(ngModel)]="model.runType"
+                   value="recovery">
+            <span translate>{{'hypervisor.textProduction'}}</span>
+          </label>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="item">
+          <label class="radio-inline custom-radio nowrap">
+            <input type="radio"
+                   [disabled]="isIaRestore || model.isAWSDest || (model.originalHostCluster && model.isAWSSource)"
+                   name="inlineRadioOptions"
+                   [(ngModel)]="model.runType"
+                   value="test">
+            <span translate>{{'hypervisor.textTest'}}</span>
+          </label>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="item">
+          <label class="radio-inline custom-radio nowrap">
+            <input type="radio"
+                   [disabled]="isIaRestore"
+                   name="inlineRadioOptions"
+                   [(ngModel)]="model.runType"
+                   value="clone">
+            <span translate>{{'hypervisor.textClone'}}</span>
+          </label>
+        </div>
+      </div>
+    </div>
+    <br>
+    <div class="row" *ngIf="model.workflowType !== 'IA'">
+      <div class="col-lg-11">
+        <hypervisor-restore-selection-table
+          [snapshotSelectionDisabled]="true"
+          [showDelete]="false"
+          [showRename]="model.sourceType !== 'vdisk'"
+          [selectSnapshot]="false"></hypervisor-restore-selection-table>
+      </div>
+    </div>
+  </div>
+</div>
+<ng-template #summary>
+  <div class="summary">
+    <div class="content">
+      <div class="property">
+        <label class="name">{{'wizard.job.textRunTypeSummary' | translate}}</label>
+        <label class="value">{{getTypeString() | translate}}</label>
+      </div>
+      <div class="property" *ngIf="!!getSummaryText() && getCountOfRenameItems !== 0">
+        <label class="name">{{'wizard.job.textRenameVMSummary' | translate}}</label>
+        <label class="value">
+          <div *ngFor="let item of getSummaryText()">
+            <div *ngIf="item.rename">
+              {{item.name}}&#160;&#160;->&#160;&#160;{{item.rename}}
+            </div>
+          </div>
+        </label>
+      </div>
+    </div>
+  </div>
+</ng-template>

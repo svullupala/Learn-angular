@@ -1,0 +1,27 @@
+<div class="space-top-10">
+  <label class="control-label" translate>{{'resourceGroups.textChooseReportType'}}</label>
+  <div>
+    <select class="form-control" [(ngModel)]="selectedReport" (change)="loadCannedReports()">
+      <option *ngFor="let report of categories" [ngValue]="report" translate>{{ report.name }}</option>
+    </select>
+  </div>
+  <div [hidden]="selectedReport=== undefined">
+    <resource-selector-component
+      [records]="records"
+      [dataset]="dataset"
+      [masked]="masked"
+      [breadcrumbs]="breadcrumbs"
+      [hideSearchBar]="true"
+      [hideBreadcrumbs]="searchResultView"
+      [resourceType]="'resourceGroups.textReport' | translate"
+      [addAllItem]="addAllItem"
+      (onBreadcrumbClickEvent)="onBreadcrumbClick($event)"
+      [view]="view"
+      [paginateConfig]="paginateConfig"
+      (navigateEvent)="loadCustomReports($event)"
+      (onPageChangeEvent)="onRefresh()"
+      (onRefreshEvent)="onRefresh()"
+      (onSearchEvent)="onSearch($event)"
+    ></resource-selector-component>
+  </div>
+</div>

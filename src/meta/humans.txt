@@ -1,0 +1,15 @@
+# TEAM
+
+  catalogicsoftware.com
+
+  Kamlesh Lad
+  Toney Xie
+  Steven Consuegra
+  Gordon Mascarenhas
+  Randy Cuaycong
+  Ronald So
+
+# TECHNOLOGY COLOPHON
+
+  HTML5, CSS3, Bootstrap
+  AngularJS, TypeScript, Webpack

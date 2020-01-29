@@ -1,0 +1,43 @@
+<div class="paging-dockbar">
+  <pagination-template #p="paginationApi" [id]="identity"
+                       (pageChange)="onPageChange($event)"></pagination-template>
+  <div class="page-size btn-group dropup" role="group">
+    <button id="btnGroupDrop1" type="button" class="btn btn-default dropdown-toggle dropdown-toggle-sdl"
+            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <label class="size">{{textItemsPerPage}}</label>
+      <carbon-icon type="chevron--down" class="arrow-down"></carbon-icon>
+    </button>
+    <div class="dropdown-menu dropdown-menu-right dropdown-menu-sdl" aria-labelledby="btnGroupDrop1">
+      <a *ngFor="let item of sizes" tabindex="0" class="dropdown-item dropdown-item-sdl"
+         clickOnEnterKeydown (click)="onPageSizeClick(item)">{{item.name}}</a>
+    </div>
+  </div>
+  <div class="items">
+    <label>{{textOfItems}}</label>
+  </div>
+  <div class="pages btn-group dropup" role="group">
+    <button id="btnGroupDrop2" type="button" class="btn btn-default dropdown-toggle dropdown-toggle-sdl"
+            [disabled]="totalPages < 1"
+            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      {{currentPage}}
+      <carbon-icon type="chevron--down" class="arrow-down"></carbon-icon>
+      <label class="page">{{textOfPages}}</label>
+    </button>
+    <div class="dropdown-menu dropdown-menu-left dropdown-menu-sdl" aria-labelledby="btnGroupDrop2">
+      <a *ngFor="let item of pages" tabindex="0" class="dropdown-item  dropdown-item-sdl"
+         clickOnEnterKeydown (click)="p.setCurrent(item.value)">{{item.name}}</a>
+    </div>
+  </div>
+  <button class="previous btn" [disabled]="p.isFirstPage()" [class.disabled]="p.isFirstPage()" (click)="p.previous()">
+    <carbon-icon type="caret--left" [title]="previousLabel"></carbon-icon>
+  </button>
+  <button class="next btn" [disabled]="p.isLastPage()" [class.disabled]="p.isLastPage()" (click)="p.next()">
+    <carbon-icon type="caret--right" [title]="nextLabel"></carbon-icon>
+  </button>
+  <button class="refresh btn"
+          [ngClass]="{'disabled': refreshDisabled}"
+          [disabled]="refreshDisabled"
+          [hidden]="hideRefreshButton" (click)="onRefresh()" [title]="textRefresh">
+    <carbon-icon type="restart" [title]="textRefresh"></carbon-icon>
+  </button>
+</div>

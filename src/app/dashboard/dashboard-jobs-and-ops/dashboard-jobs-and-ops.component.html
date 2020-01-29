@@ -1,0 +1,131 @@
+<div class="row">
+  <div class="col-sm-12">
+    <h4 translate>{{'dashboard.textJobsAndOpsTitle'}}</h4>
+  </div>
+</div>
+<div class="row" style="">
+  <div class="col-xl-4 col-lg-4 col-sm-12 dashboard-item">
+    <ba-card baCardClass="dashboard-card" [ngClass]="{'masked': stats === undefined}">
+      <div class="row">
+        <div class="col-sm-12">
+          <h2 class="sdl-header" translate>{{'dashboard.textRunningJobsCardTitle'}}</h2>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12">
+          <div *ngIf="stats" class="item-list">
+            <div class="item-col-left">
+              <div class="left-align">
+                <circle-summary-chart
+                  [value]="getTotalJobs()"
+                  [topLabel]="'dashboard.textTotalJobs'"
+                  [unitColor]="labelColor"
+                  [topLabelColor]="labelColor"
+                  [borderColor]="'transparent'"></circle-summary-chart>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row progress-bar-row">
+        <div class="col-sm-12" style="padding-bottom: 32px">
+          <cpu-usage-metrics [rate]="10000"></cpu-usage-metrics>
+        </div>
+      </div>
+      <button
+        *ngIf="stats && hasViewPermission()" class="sdl dashboard-view-btn secondary inline small right-align"
+        type="button"
+        (click)="onViewRunning()"
+        translate>{{'dashboard.textViewButton'}}</button>
+    </ba-card>
+  </div>
+  <div class="col-xl-8 col-lg-8 col-sm-12">
+    <ba-card baCardClass="dashboard-card" [ngClass]="{'masked': stats === undefined}">
+      <div class="row">
+        <div class="col-sm-12">
+          <h2 class="sdl-header" translate>{{'dashboard.textHistoryCardTitle'}}</h2>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6 d-flex">
+          <div *ngIf="stats">
+            <div class="item-list">
+              <div class="item-col-left">
+                <circle-summary-chart
+                  [value]="getTotalJobsRun()"
+                  [topLabel]="'dashboard.textTotalJobsRun'"
+                  [unitColor]="labelColor"
+                  [topLabelColor]="labelColor"
+                  [borderColor]="'transparent'"></circle-summary-chart>
+              </div>
+            </div>
+          </div>
+          <div *ngIf="stats">
+            <div class="item-list">
+              <div class="item-col">
+                <circle-summary-chart
+                  [value]="(stats.totalRuns - stats.running) === 0 ?
+                   0 : (stats.successful / (stats.totalRuns - stats.running)) * 100 | number: '1.0-2'"
+                  [unit]="'%'" [unitMedium]="true"
+                  [unitColor]="labelColor"
+                  [topLabelColor]="labelColor"
+                  [topLabel]="'dashboard.textSuccessRate'"
+                  [borderColor]="'transparent'"></circle-summary-chart>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="stats" class="col-sm-6">
+          <div class="right-align space" style="margin-right: -20px;">
+            <last-period-filter
+              [selectedLastPeriod]="selectedLastPeriod" [filterOnReady]="true"
+              [showRefresh]="false"
+              (filter)="onLastPeriodFilter($event)"></last-period-filter>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div *ngIf="stats" class="col-sm-4 item-list">
+          <div class="short">
+            <circle-summary-chart
+              [isClickable]="hasViewPermission()"
+              (selection)="hasViewPermission() && onViewHistory('FAILED')"
+              [value]="stats.failed"
+              [label]="'dashboard.textFailed'"
+              [topIcon]="stats.failed !== 0 ? 'bidi-failed' : 'bidi-failed-disabled'"
+              [labelColor]="unitColor"
+              [borderColor]="stats.failed !== 0 ? failedColor : defaultColor"></circle-summary-chart>
+          </div>
+        </div>
+        <div *ngIf="stats" class="col-sm-4 item-list">
+          <div class="short">
+              <circle-summary-chart
+                [isClickable]="hasViewPermission()"
+                (selection)="hasViewPermission() && onViewHistory('PARTIAL')"
+                [value]="stats.warning"
+                [label]="'dashboard.textWarning'"
+                [topIcon]="stats.warning !== 0 ? 'bidi-warning' : 'bidi-warning-disabled'"
+                [labelColor]="unitColor"
+                [borderColor]="stats.warning !== 0 ? warningColor : defaultColor" ></circle-summary-chart>
+          </div>
+        </div>
+        <div *ngIf="stats" class="col-sm-4 item-list">
+          <div class="short">
+            <circle-summary-chart
+              [isClickable]="hasViewPermission()"
+              (selection)="hasViewPermission() && onViewHistory('COMPLETED')"
+              [value]="stats.successful"
+              [label]="'dashboard.textSuccessful'"
+              [topIcon]="'bidi-success'"
+              [labelColor]="unitColor"
+              [borderColor]="successColor"></circle-summary-chart>
+          </div>
+        </div>
+      </div>
+      <button
+        *ngIf="stats && hasViewPermission()" class="sdl secondary dashboard-view-btn inline small right-align"
+        type="button"
+        (click)="onViewHistory()"
+        translate>{{'dashboard.textViewButton'}}</button>
+    </ba-card>
+</div>

@@ -1,0 +1,39 @@
+<div class="schedule">
+  <div class="title" translate>{{'wizard.job.textScheduleTitle'}}</div>
+  <div class="desc" translate>{{'wizard.job.textScheduleDesc'}}</div>
+  <div class="content">
+    <div *ngIf="!model.useLatest">
+      <label translate>{{'wizard.job.textOnDemandRestoreSelected'}}</label>
+    </div>
+    <div *ngIf="model.useLatest">
+      <div class="col-lg-6">
+        <input type="text"
+               [(ngModel)]="scheduleName"
+               [disabled]="editMode"
+               placeholder="{{'wizard.textJobName' | translate}}"
+               class="text-width form-control">
+        <br>
+        <define-schedule [hideStartTime]="false"></define-schedule>
+      </div>
+    </div>
+  </div>
+</div>
+<ng-template #summary>
+  <div class="summary">
+    <div class="content">
+      <div class="property" *ngIf="model.useLatest">
+        <label class="name">{{'wizard.textJobNameSummary' | translate}}</label>
+        <label class="value">{{scheduleName || ('wizard.job.textEmpty' | translate)}}</label>
+      </div>
+      <div class="property">
+        <label class="name">{{'wizard.job.textScheduleSummary' | translate}}</label>
+        <label class="value" *ngIf="model.useLatest">
+          {{(rpo | rpoDisplay: true) +
+          (activateDate ? (' ' +
+          ('wizard.job.textFrom' | translate ) + ' ' +
+          (activateDate | amDateFormat: 'll')) : '')}}</label>
+        <label class="value" *ngIf="!model.useLatest">{{'wizard.job.textOnDemand' | translate}}</label>
+      </div>
+    </div>
+  </div>
+</ng-template>

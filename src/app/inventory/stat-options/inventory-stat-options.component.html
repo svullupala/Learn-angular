@@ -1,0 +1,23 @@
+<div class="inventory-stat-options side-by-side-wrapper">
+  <div class="btn-group view side-by-side-left" role="group">
+    <div class="nowrap" *ngIf="hasViews">
+      <button id="btnGroupDrop1" type="button" class="btn btn-default dropdown-toggle dropdown-toggle-sdl"
+              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <label [hidden]="!view"
+               class="view-label">{{view ? ('common.textViewColon' | translate) + ' ' + view.name : ''}}</label>
+      </button>
+      <div class="dropdown-menu dropdown-menu-left dropdown-menu-sdl" aria-labelledby="btnGroupDrop1">
+        <a *ngFor="let item of views" tabindex="0" class="dropdown-item  dropdown-item-sdl"
+           clickOnEnterKeydown (click)="onViewClick(item)">{{item.name}}</a>
+      </div>
+    </div>
+  </div>
+  <div class="side-by-side-right options-dropdown">
+    <inventory-stat-options-dropdown [options]="options"
+                                     [menuWidth]="dropdownMenuWidth"
+                                     (apply)="onApplyOptions($event)">
+    </inventory-stat-options-dropdown>
+  </div>
+</div>
+
+

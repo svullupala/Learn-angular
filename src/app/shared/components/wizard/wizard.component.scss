@@ -1,0 +1,225 @@
+@import '../../../theme/sass/conf/conf';
+
+$wizard-background: #F3F3F3;
+$font-color: #666666;
+$sidebar-splitter-border-color: #C0BFC0;
+$sidebar-background: white;
+$pages-background: white;
+$text-color: #047CC0;
+
+.wizard {
+  @include scrollbars(.7em, rgba(0, 0, 0, 0.6), rgba(255, 255, 255, 0.7));
+  color: $font-color;
+  background-color: $wizard-background;
+  border-radius: 0;
+  border: none;
+  position: relative;
+  margin-bottom: 0;
+
+  &.maximize {
+  }
+  .wizard-header.topbar {
+    background-color: transparent;
+    height: 128px;
+    width: 100%;
+    padding: 2rem 2rem 1rem 2.5rem;
+  }
+  .wizard-body {
+    padding: 0;
+    width: 100%;
+    min-height: 130px;
+
+    &.starting {
+      height: calc(100vh - 444px);
+      margin-top: 64px;
+    }
+
+    &:not(.starting) {
+      height: calc(100vh - 308px);
+    }
+
+    &.maximize {
+      &.starting {
+        height: calc(100vh - 256px);
+      }
+      &:not(.starting) {
+        height: calc(100vh - 264px);
+      }
+    }
+    &.content {
+      background-color: transparent;
+      width: 100%;
+      .starter {
+        background-color: transparent;
+        width: 90%;
+        margin-left: 2.5rem;
+      }
+      .leftbar {
+        &.dark-masked {
+          position: relative;
+          pointer-events: none;
+
+          * {
+            pointer-events: none;
+          }
+
+          &:before {
+            position: absolute;
+            content: "";
+            display: block;
+            width: 100%;
+            height: 100%;
+            left: 0;
+            top: 0;
+            background: gray;
+            opacity: .5;
+            z-index: 77;
+          }
+        }
+
+        width: 20%;
+        max-width: 450px;
+        &.with-view-bar {
+          min-width: 180px;
+        }
+        height: 100%;
+        background-color: $sidebar-background;
+        border-right: 1px solid $sidebar-splitter-border-color;
+        .view-bar {
+          background-color: transparent;
+          border-bottom: 1px solid $sidebar-splitter-border-color;
+          padding-left: 2rem;
+          padding-top: 1rem;
+          height: 3rem;
+          min-width: 180px;
+        }
+        .preview-bar {
+          text-align: center;
+          & > button {
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+
+            &.secondary {
+              background-color: transparent;
+              color: #047CC0;
+              outline: none;
+            }
+          }
+        }
+        .summary-bar {
+          background-color: transparent;
+          text-align: right;
+          height: 2rem;
+          & > i {
+            margin: .5rem
+          }
+        }
+        .sidebar {
+          background-color: transparent;
+          margin: 0 0 0 2.5rem;
+          overflow-y: auto;
+          height: calc(100% - 2rem);
+          &.with-view-bar:not(.with-preview-bar) {
+            height: calc(100% - 5rem)
+          }
+          &.with-preview-bar:not(.with-view-bar) {
+            height: calc(100% - 6.5rem)
+          }
+          &.with-view-bar.with-preview-bar {
+            height: calc(100% - 9.5rem)
+          }
+        }
+      }
+
+      .preview-view {
+        background-color: $pages-background;
+        flex: 1;
+        display: flex;
+        flex-flow: column;
+        &.hidden {
+          flex: none;
+          display: none;
+        }
+
+        & > .preview-head {
+          text-align: right;
+          & > button.close {
+            margin-top: 1rem;
+            margin-right: 1rem;
+          }
+        }
+
+        & > .preview-body {
+          flex: 1;
+          padding: 0 2rem 1rem 2.5rem;
+          overflow-y: auto;
+        }
+      }
+
+      .pages {
+        background-color: $pages-background;
+        flex: 1;
+
+        &.hidden {
+          flex: none;
+          display: none;
+        }
+
+        padding: 2rem 2rem 1rem 2.5rem;
+        overflow-y: auto;
+      }
+    }
+  }
+
+  .wizard-footer.toolbar {
+    background-color: transparent;
+    height: 72px;
+    width: 100%;
+    padding: 1rem 2rem 1rem 2.5rem;
+    text-align: right;
+  }
+}
+
+.summary {
+  text-align: left;
+  & > .title {
+    font-size: 20px;
+    line-height: 2rem;
+    font-weight: bold;
+    color: $text-color;
+  }
+}
+.preview-tooltip {
+  text-align: left;
+  max-width: 200px;
+  white-space: normal;
+}
+
+.wizard.pop {
+  .wizard-body {
+    padding: 0;
+    width: 100%;
+    min-height: 150px;
+
+    &.starting {
+      height: calc(100vh - 436px);
+    }
+
+    &:not(.starting) {
+      height: calc(100vh - 300px);
+    }
+
+    .leftbar {
+      background-color: #EAEAEA;
+      border-right: none;
+
+      .sidebar {
+        margin-left: 2rem;
+      }
+    }
+  }
+
+  .wizard-footer.toolbar {
+    background-color: #F6F6F6;
+  }
+}

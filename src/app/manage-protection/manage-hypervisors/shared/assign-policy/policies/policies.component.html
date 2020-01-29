@@ -1,0 +1,89 @@
+<ba-card>
+  <div class="side-by-side-wrapper">
+    <div class="side-by-side-left hypervisor-policies-content" [ngClass]="{ masked: masked }">
+      <div class="hypervisor-policies-list">
+        <div class="hypervisor-policies-info">
+          <p [innerHTML]="formattedTextAssignToProtectResourcesInfo"></p>
+          <span
+            *ngIf="isSummaryView"
+            class="link icon-container"
+            style="text-align: right"
+            (click)="onEditAssignments()"
+            translate
+          >
+            <svg ibmIconEdit16 class="icon-resource"></svg>{{ 'inventory.textEditPolicy' }}
+          </span>
+        </div>
+        <div class="hypervisor-policies-table">
+          <table class="inventory-table">
+            <thead>
+              <tr>
+                <th width="22%" translate>{{ 'inventory.textPolicyName' }}</th>
+                <th width="16%" translate>{{ 'inventory.textJobType' }}</th>
+                <th width="24%" translate>{{ 'inventory.textFrequency' }}</th>
+                <th width="24%" translate>{{ 'inventory.textRetention' }}</th>
+                <th width="14%" translate>{{ 'inventory.textDestination' }}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <ng-container *ngFor="let item of displayedRecords">
+                <tr
+                  *ngFor="let subpolicy of item.spec['subpolicy']; let index = index"
+                  class="no-top-border"
+                >
+                  <td
+                    *ngIf="index === 0"
+                    class="checkbox-column"
+                    [rowSpan]="item.spec['subpolicy'].length"
+                  >
+                    <label class="custom-checkbox" translate>
+                      <input
+                        type="checkbox"
+                        [disabled]="item.metadata['disabled']"
+                        [(ngModel)]="item.metadata['selected']"
+                        (ngModelChange)="onSelect(item)"
+                        aria-label="..."
+                      />
+                      <span></span>
+                    </label>
+                    {{ item.name }}
+                  </td>
+                  <td>{{ subpolicy.type }}</td>
+                  <td>{{ (subpolicy | rpoDisplay) || '---' }}</td>
+                  <td>{{ ([subpolicy] | subPolicyDisplay: 'replication' | async) || '---' }}</td>
+                  <td>
+                    {{
+                      subpolicy.site || (subpolicy.target && subpolicy.target.resourceType) || '---'
+                    }}
+                  </td>
+                </tr>
+              </ng-container>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div *ngIf="!isSummaryView" class="hypervisor-policies-actions">
+        <div class="side-by-side-wrapper">
+          <div class="side-by-side-left">{{ formattedTextItemsSelected }}</div>
+          <div class="side-by-side-right">
+            <button
+              class="sdl inline secondary"
+              (click)="onResetPolicies()"
+              style="margin-right: 12px"
+              translate
+            >
+              {{ 'common.resetText' }}
+            </button>
+            <button class="sdl inline" (click)="onAssignPolicies()" translate>
+              {{ 'common.textAssign' }}
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-by-side-right hypervisor-policies-resources">
+      <hypervisor-assign-policy-recent-jobs></hypervisor-assign-policy-recent-jobs>
+    </div>
+  </div>
+</ba-card>

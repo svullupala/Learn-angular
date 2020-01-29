@@ -1,0 +1,60 @@
+.wizard-starter.side-by-side-wrapper {
+  overflow: auto;
+  padding: 1rem;
+  margin-left: -3rem;
+  margin-top: -3rem;
+  .category {
+    background-color: white;
+    border-radius: .25rem;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.14);
+
+    margin-left: 3rem;
+    //flex: 1;
+    flex: 0.2; // Temporary, only when there's one card so it doesn't flex the whole screen - gmascarenhas
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    height: 19.88rem;
+    min-width: 18.44rem;
+    max-width: 18.44rem;
+    margin-top: 2.5rem;
+
+    &:focus {
+      outline: none;
+      border: 1px solid #047CC0;
+    }
+
+    .row {
+      margin-top: 1.5rem;
+      &:first-child {
+        margin-top: 0;
+      }
+    }
+    label {
+      &.i {
+        line-height: 1.59rem;
+        font-size: 1.59rem;
+      }
+      &.title {
+        font-weight: bold;
+        line-height: 1.5rem;
+        font-size: 1.5rem;
+        color: #1C496D;
+      }
+      &.description {
+        flex: 1;
+        font-size: 14px;
+        color: #1C496D;
+      }
+    }
+
+    button {
+      position: absolute;
+      bottom: 2.5rem;
+      width: 6.38rem;
+      height: 2.5rem;
+      border-radius: 0.13rem;
+    }
+  }
+}

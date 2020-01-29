@@ -1,0 +1,37 @@
+.scroll-tabset-header {
+  display: flex;
+  margin-bottom: 40px;
+  border-bottom: 1px solid #a0a0a0;
+}
+
+.scroll-tabset-content {
+  position: relative;
+  padding-right: 10px;
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  &--disabled {
+    pointer-events: none;
+    opacity: 0.7;
+  }
+}
+
+.scroll-tabset-section {
+  padding: 20px 0;
+  border-bottom: 1px solid #acacac;
+  box-sizing: border-box;
+
+  &:first-child {
+    padding-top: 0;
+  }
+
+  &:last-child {
+    padding-bottom: 0;
+    border: 0;
+  }
+
+  &--disabled {
+    pointer-events: none;
+    opacity: 0.7;
+  }
+}

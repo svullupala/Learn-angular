@@ -1,0 +1,30 @@
+.action-menu-dropdown {
+  &-menu-btn {
+    background-color: transparent;
+    border: 0;
+    padding: 3px 8px 3px 5px;
+
+    .ion-more {
+      display: inline-block;
+      transform: rotate(90deg);
+      color: #171717;
+      font-size: 18px;
+    }
+
+    &:hover {
+      background-color: #e5e5e5;
+    }
+  }
+
+  .dropdown-menu {
+    padding: 0;
+    border: 0 !important;
+    box-shadow: 1px 1px 5px #b5b5b5;
+  }
+
+  &.open {
+    .action-menu-dropdown-menu-btn {
+      background-color: #fff;
+    }
+  }
+}

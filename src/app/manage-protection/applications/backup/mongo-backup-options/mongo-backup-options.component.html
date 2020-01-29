@@ -1,0 +1,17 @@
+  <!--<div class="checkbox">-->
+    <!--<label class="custom-checkbox" translate>-->
+      <!--<input type="checkbox" [(ngModel)]="enableLogBackup">-->
+      <!--<span>{{'application.textEnableLogbackup' | translate }}</span>-->
+    <!--</label>-->
+  <!--</div>-->
+  <!--<br>-->
+  <!--<br>-->
+  <div class="form-group row">
+    <label for="maxParallelStreams" class="col-sm-3 control-label line-height-30" translate>
+      {{'application.textMaxParallelStreams'}}
+    </label>
+    <div class="col-sm-2">
+      <input type="number" min="1" class="form-control" id="maxParallelStreams"
+             [(ngModel)]="model.maxParallelStreams">
+    </div>
+  </div>

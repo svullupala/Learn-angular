@@ -1,0 +1,14 @@
+<div *ngIf="!hidden" baCardBlur class="card {{cardType}} {{baCardClass || ''}}" (click)="_onCardClick()">
+    <div *ngIf="title" class="card-header clearfix"> <h2 class="card-title">{{title}}</h2> </div>
+    <img *ngIf="imageSrc" [src]="imageSrc" class="card-img-top card-image" [alt]="imageAltText">
+    <div class="{{baCardBodyClass || 'card-body'}}">
+        <i *ngIf="bodyTitleIcon" class="body-title-icon" [ngClass]="bodyTitleIcon"></i>
+        <h2 *ngIf="bodyTitle" class="sdl-header body-title">{{bodyTitle}}</h2>
+        <ng-content></ng-content>
+        <p>
+        <span *ngIf="buttonLabel" (click)="_onClick()" class="card-link" [ngClass]="cardLinkCls">
+          {{buttonLabel}}
+          <i [ngClass]="cardLinkIcon"></i>
+        </span>
+    </div>
+</div>

@@ -1,0 +1,55 @@
+$enabled-color: #666666;
+$disabled-color: #C0BFC0;
+$switch-border-disabled-color: $disabled-color;
+$switch-border-color: $enabled-color;
+$slider-disabled-color: $disabled-color;
+$slider-color: $enabled-color;
+
+.toggle {
+  background-color: transparent;
+  text-align: left;
+
+  & > .switch {
+
+    margin-right: .5rem;
+    padding-left: 0;
+    background-color: transparent;
+    border: .1rem solid $switch-border-color;
+
+    &.disabled {
+      border: .1rem solid $switch-border-disabled-color;
+
+      & > .slider {
+        background-color: $slider-disabled-color;
+        border: .1rem solid $slider-disabled-color;
+      }
+    }
+
+    border-radius: 1rem;
+    width: 2rem;
+    height: 1.1rem;
+
+    & > .slider {
+      background-color: $slider-color;
+      border: .1rem solid $slider-color;
+      border-radius: .7rem;
+      width: .7rem;
+      height: .7rem;
+      text-align: left;
+      display: inline-block;
+
+      &:not(.advanced) {
+        margin-left: .1rem;
+        margin-right: 1rem;
+      }
+
+      &.advanced {
+        margin-left: 1rem;
+      }
+    }
+  }
+
+  & > .title {
+    margin-bottom: 0;
+  }
+}

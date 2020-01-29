@@ -1,0 +1,48 @@
+<div style="height: 360px;">
+  <div style="height: 330px; overflow: auto;">
+    <table>
+      <thead>
+      <tr>
+        <th *ngIf="showDelete" width="3%"></th>
+        <th translate>{{'hypervisor.textItem'}}</th>
+        <th [hidden]="applicationType !== 'office365'" translate>{{'key.textUser'}}</th>
+        <th *ngIf="selectSnapshot" translate>{{'hypervisor.textRecoveryPoint'}}</th>
+<!--        <th translate [hidden]="applicationType === 'office365'">{{'common.textVersion'}}</th>-->
+      </tr>
+      </thead>
+      <tbody>
+      <tr [hidden]="!(records === undefined || records.length < 1)">
+        <td>
+          <i class="bidi-status-warning"></i>
+        </td>
+        <td colspan="3">
+          <span>{{ 'hypervisor.addToRestoreListText' | translate }}</span>
+        </td>
+      </tr>
+      <tr *ngFor="let item of records; trackBy: trackByFn">
+        <td *ngIf="showDelete">
+          <button class="btn btn-danger btn-xs"  (click)="remove(item)" type="button"
+                  [attr.aria-label]="'common.textDeselect' | translate">
+            <i class="ion-minus"></i>
+          </button>
+        </td>
+        <td class="nowrap" [ngClass]="{'greyed-out': greyedOutEnabled && greyedOut(item)}">{{item.resource.name}}</td>
+        <td [hidden]="applicationType !== 'office365'">{{parseUsername(item.resource.location)}}</td>
+        <td *ngIf="selectSnapshot">
+          <div class="btn-group" role="group">
+            <button type="button" class="btn btn-default dropdown-toggle dropdown-toggle-sdl" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false" (click)="onSnapshotDropDown(item)" [disabled]="snapshotSelectionDisabled">
+              {{item.version ? (item.version.protectionTime | amDateFormat: 'll LTS') : ('hypervisor.textNoSnapshotsFound' | translate)}}
+            </button>
+            <div class="dropdown-menu dropdown-menu-sdl">
+              <a tabindex="0" *ngFor="let version of item.resource.versions" class="dropdown-item dropdown-item-sdl"
+                 clickOnEnterKeydown (click)="onSnapshotSelect(item, version)">{{version.protectionTime | amDateFormat: 'll LTS'}}</a>
+            </div>
+          </div>
+        </td>
+<!--        <td ngClass="nowrap" translate [hidden]="applicationType === 'office365'">{{item.instanceVersion}}</td>-->
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

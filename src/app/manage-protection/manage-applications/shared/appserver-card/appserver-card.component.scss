@@ -1,0 +1,109 @@
+$hover-background-color: #deedf7;
+
+:host {
+  width: 100%;
+  max-width: 260px;
+}
+
+.appserver-card-wrapper {
+  padding: 18px;
+  background-color: #f3f3f3;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: all 0.2s ease-out;
+
+  &:hover {
+    background-color: $hover-background-color;
+  }
+}
+
+.appserver-card-header {
+  position: relative;
+
+  .action-menu-dropdown {
+    position: absolute;
+    top: -12px;
+    right: -7px;
+
+    .action-menu-dropdown-menu-btn {
+      width: 34px;
+      height: 35px;
+      padding: 0;
+    }
+
+    .icon-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}
+
+.appserver-card-info {
+  width: 190px;
+}
+
+.appserver-card-system {
+  font-size: 0.9em;
+}
+
+.appserver-card-name {
+  overflow: hidden;
+  margin-top: 6px;
+  font-size: 16px;
+  color: #171717;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.appserver-card-more {
+  margin-top: -3px;
+  margin-right: -4px;
+
+  i {
+    display: inline-block;
+    font-size: 1.4em;
+    transform: rotate(90deg);
+  }
+}
+
+.appserver-card-dbs {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin: 50px 0 74px 0;
+}
+
+.appserver-card-db {
+  display: flex;
+  flex-direction: column;
+}
+
+.appserver-card-db-value {
+  margin-bottom: 3px;
+  font-weight: 500;
+  font-size: 34px;
+  line-height: 100%;
+  color: #171717;
+
+  &--sm {
+    font-size: 18px;
+  }
+}
+
+.appserver-card-status-desc {
+  font-size: 0.9em;
+}
+
+.appserver-card-status-indicator {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin-right: 6px;
+  margin-top: -3px;
+  border-radius: 50%;
+
+  &--basic {
+    background-color: #777677;
+  }
+}

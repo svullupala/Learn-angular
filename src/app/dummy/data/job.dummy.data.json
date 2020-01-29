@@ -1,0 +1,267 @@
+[ {
+ "method": "GET",
+  "pattern": "/api/endeavour/job?",
+    "response": {
+    "jobs": [
+        {
+            "actions": null,
+            "description": "Auto-generated job for maintenance",
+            "displayName": "Maintenance",
+            "id": "1001",
+            "lastRunTime": 1554346801449,
+            "lastSessionDuration": 50552,
+            "lastSessionStatus": "COMPLETED",
+            "lastSessionStatusDisplayName": "Completed",
+            "lastrun": {
+                "duration": 50552,
+                "end": 1554346852001,
+                "jobName": "Maintenance",
+                "lastUpdate": 1554346852016,
+                "numTasks": 14,
+                "percent": 100,
+                "policySnapshot": null,
+                "previousLastTask": 0,
+                "properties": null,
+                "results": "COMPLETED",
+                "serviceId": "serviceprovider.maintenance",
+                "sessionId": "1554346800072",
+                "start": 1554346801449,
+                "status": "COMPLETED",
+                "subType": "maintenance",
+                "type": "maintenance"
+            },
+            "links": {
+                "activejobsessions": {
+                    "href": "http://172.20.239.130:8082/api/endeavour/jobsession?filter=%5B%7B%22property%22:%22status%22,%22op%22:%22%3D%22,%22value%22:%22active%22%7D,%7B%22property%22:%22jobId%22,%22op%22:%22%3D%22,%22value%22:%221001%22%7D%5D",
+                    "rel": "related"
+                },
+                "delete": {
+                    "href": "http://172.20.239.130:8082/api/endeavour/job/1001",
+                    "rel": "delete"
+                },
+                "edit": {
+                    "href": "http://172.20.239.130:8082/api/endeavour/job/1001",
+                    "rel": "update"
+                },
+                "firetimes": {
+                    "href": "http://172.20.239.130:8082/api/endeavour/firetime?filter=%5B%7B%22property%22:%22jobId%22,%22value%22:%221001%22%7D%5D",
+                    "rel": "related"
+                },
+                "historicaljobsessions": {
+                    "href": "http://172.20.239.130:8082/api/endeavour/jobsession?filter=%5B%7B%22property%22:%22status%22,%22op%22:%22%3D%22,%22value%22:%22history%22%7D,%7B%22property%22:%22jobId%22,%22op%22:%22%3D%22,%22value%22:%221001%22%7D%5D",
+                    "rel": "related"
+                },
+                "jobsessions": {
+                    "href": "http://172.20.239.130:8082/api/endeavour/jobsession?filter=%5B%7B%22property%22:%22jobId%22,%22value%22:%221001%22%7D%5D",
+                    "rel": "related"
+                },
+                "lastrun": {
+                    "href": "http://172.20.239.130:8082/api/endeavour/jobsession/1554346800072",
+                    "rel": "related"
+                },
+                "lastrunlog": {
+                    "href": "http://172.20.239.130:8082/api/endeavour/log/job?filter=%5B%7B%22property%22:%22jobsessionId%22,%22value%22:%221554346800072%22%7D%5D",
+                    "rel": "related"
+                },
+                "livejobsessions": {
+                    "href": "http://172.20.239.130:8082/api/endeavour/jobsession?filter=%5B%7B%22property%22:%22status%22,%22op%22:%22%3D%22,%22value%22:%22live%22%7D,%7B%22property%22:%22jobId%22,%22op%22:%22%3D%22,%22value%22:%221001%22%7D%5D",
+                    "rel": "related"
+                },
+                "pendingjobsessions": {
+                    "href": "http://172.20.239.130:8082/api/endeavour/jobsession?filter=%5B%7B%22property%22:%22status%22,%22op%22:%22%3D%22,%22value%22:%22pending%22%7D,%7B%22property%22:%22jobId%22,%22op%22:%22%3D%22,%22value%22:%221001%22%7D%5D",
+                    "rel": "related"
+                },
+                "policy": {
+                    "href": "http://172.20.239.130:8082/api/endeavour/policy/1001",
+                    "rel": "related"
+                },
+                "policydelete": {
+                    "href": "http://172.20.239.130:8082/api/endeavour/policy/1001",
+                    "rel": "delete"
+                },
+                "policyedit": {
+                    "href": "http://172.20.239.130:8082/api/endeavour/policy/1001",
+                    "rel": "update"
+                },
+                "pause Schedule": {
+                    "href": "http://172.20.239.130:8082/api/endeavour/job/1001?action=pause",
+                    "rel": "action",
+                    "title": "Pause Schedule"
+                },
+                "start": {
+                    "href": "http://172.20.239.130:8082/api/endeavour/job/1001?action=start",
+                    "rel": "action",
+                    "title": "Start"
+                },
+                "rerunnablejobsessions": {
+                    "href": "http://172.20.239.130:8082/api/endeavour/jobsession?filter=%5B%7B%22property%22:%22rerunnable%22,%22op%22:%22%3D%22,%22value%22:true%7D,%7B%22property%22:%22jobId%22,%22op%22:%22%3D%22,%22value%22:%221001%22%7D%5D",
+                    "rel": "related"
+                },
+                "self": {
+                    "href": "http://172.20.239.130:8082/api/endeavour/job/1001",
+                    "rel": "self"
+                },
+                "stats": {
+                    "href": "http://172.20.239.130:8082/api/endeavour/jobsession/stats/jobid/1001",
+                    "rel": "related"
+                },
+                "status": {
+                    "href": "http://172.20.239.130:8082/api/endeavour/job/1001/status",
+                    "rel": "related"
+                },
+                "triggers": {
+                    "href": "http://172.20.239.130:8082/api/endeavour/job/1001/trigger",
+                    "rel": "related"
+                },
+                "up": {
+                    "href": "http://172.20.239.130:8082/api/endeavour/job",
+                    "rel": "up"
+                }
+            },
+            "name": "Maintenance",
+            "nextFireTime": 1558148400000,
+            "policyId": "1001",
+            "policyName": "Maintenance",
+            "serviceId": "serviceprovider.maintenance",
+            "statistics": null,
+            "status": "HELD",
+            "statusDisplayName": "Held",
+            "subType": "maintenance",
+            "subTypeDisplayName": "Maintenance",
+            "tenantId": 1000,
+            "triggerData": [
+                {
+                    "triggerId": "1001",
+                    "triggerInfo": null
+                }
+            ],
+            "triggerIds": [
+                "1001"
+            ],
+            "type": "maintenance",
+            "typeDisplayName": "Maintenance"
+        },
+        {
+            "actions": null,
+            "description": "Auto-generated job for maintenance",
+            "displayName": "Script",
+            "id": "1002",
+            "lastRunTime": null,
+            "lastSessionDuration": null,
+            "lastSessionStatus": null,
+            "lastSessionStatusDisplayName": null,
+            "links": {
+                "activejobsessions": {
+                    "href": "http://172.20.239.130:8082/api/endeavour/jobsession?filter=%5B%7B%22property%22:%22status%22,%22op%22:%22%3D%22,%22value%22:%22active%22%7D,%7B%22property%22:%22jobId%22,%22op%22:%22%3D%22,%22value%22:%221002%22%7D%5D",
+                    "rel": "related"
+                },
+                "delete": {
+                    "href": "http://172.20.239.130:8082/api/endeavour/job/1002",
+                    "rel": "delete"
+                },
+                "edit": {
+                    "href": "http://172.20.239.130:8082/api/endeavour/job/1002",
+                    "rel": "update"
+                },
+                "firetimes": {
+                    "href": "http://172.20.239.130:8082/api/endeavour/firetime?filter=%5B%7B%22property%22:%22jobId%22,%22value%22:%221002%22%7D%5D",
+                    "rel": "related"
+                },
+                "historicaljobsessions": {
+                    "href": "http://172.20.239.130:8082/api/endeavour/jobsession?filter=%5B%7B%22property%22:%22status%22,%22op%22:%22%3D%22,%22value%22:%22history%22%7D,%7B%22property%22:%22jobId%22,%22op%22:%22%3D%22,%22value%22:%221002%22%7D%5D",
+                    "rel": "related"
+                },
+                "jobsessions": {
+                    "href": "http://172.20.239.130:8082/api/endeavour/jobsession?filter=%5B%7B%22property%22:%22jobId%22,%22value%22:%221002%22%7D%5D",
+                    "rel": "related"
+                },
+                "livejobsessions": {
+                    "href": "http://172.20.239.130:8082/api/endeavour/jobsession?filter=%5B%7B%22property%22:%22status%22,%22op%22:%22%3D%22,%22value%22:%22live%22%7D,%7B%22property%22:%22jobId%22,%22op%22:%22%3D%22,%22value%22:%221002%22%7D%5D",
+                    "rel": "related"
+                },
+                "pendingjobsessions": {
+                    "href": "http://172.20.239.130:8082/api/endeavour/jobsession?filter=%5B%7B%22property%22:%22status%22,%22op%22:%22%3D%22,%22value%22:%22pending%22%7D,%7B%22property%22:%22jobId%22,%22op%22:%22%3D%22,%22value%22:%221002%22%7D%5D",
+                    "rel": "related"
+                },
+                "policy": {
+                    "href": "http://172.20.239.130:8082/api/endeavour/policy/1002",
+                    "rel": "related"
+                },
+                "policydelete": {
+                    "href": "http://172.20.239.130:8082/api/endeavour/policy/1002",
+                    "rel": "delete"
+                },
+                "policyedit": {
+                    "href": "http://172.20.239.130:8082/api/endeavour/policy/1002",
+                    "rel": "update"
+                },
+                "release Schedule": {
+                    "href": "http://172.20.239.130:8082/api/endeavour/job/1002?action=release",
+                    "rel": "action",
+                    "title": "Release Schedule"
+                },
+                "rerunnablejobsessions": {
+                    "href": "http://172.20.239.130:8082/api/endeavour/jobsession?filter=%5B%7B%22property%22:%22rerunnable%22,%22op%22:%22%3D%22,%22value%22:true%7D,%7B%22property%22:%22jobId%22,%22op%22:%22%3D%22,%22value%22:%221002%22%7D%5D",
+                    "rel": "related"
+                },
+                "self": {
+                    "href": "http://172.20.239.130:8082/api/endeavour/job/1002",
+                    "rel": "self"
+                },
+                "stats": {
+                    "href": "http://172.20.239.130:8082/api/endeavour/jobsession/stats/jobid/1002",
+                    "rel": "related"
+                },
+                "status": {
+                    "href": "http://172.20.239.130:8082/api/endeavour/job/1002/status",
+                    "rel": "related"
+                },
+                "triggers": {
+                    "href": "http://172.20.239.130:8082/api/endeavour/job/1002/trigger",
+                    "rel": "related"
+                },
+                "up": {
+                    "href": "http://172.20.239.130:8082/api/endeavour/job",
+                    "rel": "up"
+                }
+            },
+            "name": "Update AWS Certificate",
+            "nextFireTime": null,
+            "policyId": "1002",
+            "policyName": "Update AWS Certificate",
+            "serviceId": "serviceprovider.script",
+            "statistics": null,
+            "status": "HELD",
+            "statusDisplayName": "Held",
+            "subType": "script",
+            "subTypeDisplayName": "Script",
+            "tenantId": 1000,
+            "triggerData": [],
+            "triggerIds": [],
+            "type": "misc",
+            "typeDisplayName": "POLICY_TYPE_MISC"
+        }
+    ],
+    "links": {
+        "create": {
+            "href": "http://172.20.239.130:8082/api/endeavour/job",
+            "rel": "create"
+        },
+        "self": {
+            "href": "http://172.20.239.130:8082/api/endeavour/job?pageSize=50&pageStartIndex=0&sort=%5B%7B%22property%22:%22lastRunTime%22,%22direction%22:%22DESC%22%7D%5D",
+            "rel": "self"
+        },
+        "stats": {
+            "href": "http://172.20.239.130:8082/api/endeavour/job/stats",
+            "rel": "stats"
+        },
+        "up": {
+            "href": "http://172.20.239.130:8082/api/endeavour/job",
+            "rel": "up"
+        }
+    },
+    "page": 1,
+    "total": 2  
+}
+  }
+]

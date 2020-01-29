@@ -1,0 +1,7 @@
+    <div class="form-inline sub-group-space">
+      <label class="control-label label-width" >{{textLabel}}</label>
+      <select class="form-control dropdown-width" [(ngModel)]="modelField" (ngModelChange)="onChange.emit($event)">
+        <option [ngValue]="script" *ngFor="let script of scripts">{{ script.name }} </option>
+      </select>
+      <i *ngIf="scripts && scripts.length < 1" class="bidi-status-warning" [title]="textNone"></i>
+    </div>

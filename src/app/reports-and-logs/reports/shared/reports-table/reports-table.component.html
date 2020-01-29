@@ -1,0 +1,133 @@
+<div class="horizontal-scroll" [ngClass]="{ masked: masked }">
+  <div class="side-by-side-wrapper">
+    <div class="wrapper margin-bottom-10">
+      <div class="nowrap">
+        <label class="control-label" translate>{{ 'reports.textFilterByCategory' }}</label>
+        <div
+          class="btn-group dropdown"
+          role="group"
+          dropdown
+          container="body"
+          placement="bottom right"
+        >
+          <button
+            dropdownToggle
+            id="btnGroupDrop1"
+            type="button"
+            class="btn btn-default dropdown-toggle dropdown-toggle-sdl"
+          >
+            {{ selectedCategory && selectedCategory.name }}
+          </button>
+          <div
+            *dropdownMenu
+            class="dropdown-menu dropdown-menu-right dropdown-menu-sdl"
+            style="top: -2px"
+          >
+            <a
+              *ngFor="let cat of dropdownCategories"
+              tabindex="0"
+              class="dropdown-item  dropdown-item-sdl"
+              clickOnEnterKeydown
+              (click)="onCategoriesFilterChange(cat)"
+              >{{ cat.name }}</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <table border="0">
+    <thead>
+      <tr>
+        <th class="action-icon-column"></th>
+        <th class="action-icon-column"></th>
+        <th class="action-icon-column"></th>
+        <th translate>{{ 'reports.tableColumns.name' }}</th>
+        <th translate>{{ 'reports.tableColumns.category' }}</th>
+        <th *ngIf="isCustomReports" translate>{{ 'reports.tableColumns.parentReport' }}</th>
+        <th translate>{{ 'reports.tableColumns.schedule' }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of records" class="no-top-border">
+        <td
+          class="action-icon-format"
+          (click)="onClickRunReport(item)"
+          tabindex="0"
+          clickOnEnterKeydown
+        >
+          <img
+            src="/assets/icon/ion-play-circle-icon.svg"
+            alt="play-icon"
+            class="play-circle-icon"
+            [tooltip]="isCustomReports ? textRunCustom : textRunReport"
+            [placement]="'bottom'"
+            [container]="'body'"
+          />
+        </td>
+        <td
+          *ngIf="!isCustomReports"
+          class="action-icon-format"
+          (click)="onClickScheduleReport(item)"
+          tabindex="0"
+          clickOnEnterKeydown
+        >
+          <i
+            class="ion-calendar"
+            [tooltip]="textScheduleReportWithDefaultParams"
+            [placement]="'bottom'"
+            [container]="'body'"
+          ></i>
+        </td>
+        <td
+          *ngIf="!isCustomReports"
+          class="action-icon-format"
+          (click)="onClickCreateCustomReport(item)"
+          tabindex="0"
+          clickOnEnterKeydown
+        >
+          <i
+            class="ion-plus-round"
+            [tooltip]="textCreateCustomReport"
+            [placement]="'bottom'"
+            [container]="'body'"
+          ></i>
+        </td>
+        <td
+          *ngIf="isCustomReports"
+          class="action-icon-format"
+          (click)="onClickUpdateCustomReport(item)"
+          tabindex="0"
+          clickOnEnterKeydown
+        >
+          <i
+            class="ion-edit"
+            [tooltip]="textUpdateCustomReport"
+            [placement]="'bottom'"
+            [container]="'body'"
+          ></i>
+        </td>
+        <td
+          *ngIf="isCustomReports"
+          class="action-icon-format"
+          (click)="onDeleteClick(item)"
+          tabindex="0"
+          clickOnEnterKeydown
+        >
+          <i
+            class="ion-close-round"
+            [tooltip]="textRemoveReport"
+            [placement]="'bottom'"
+            [container]="'body'"
+          ></i>
+        </td>
+        <td class="align-left">{{ item.displayName }}</td>
+        <td class="align-left">{{ item.category }}</td>
+        <td *ngIf="isCustomReports" class="align-left">
+          {{ item.parentDisplayName || item.getLink('parent').title }}
+        </td>
+        <td class="align-left">{{ item | rpoDisplay: true }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,41 @@
+<div style="height: 360px;" [ngClass]="{'masked': masked}">
+  <div style="height: 330px; overflow: auto;">
+    <table>
+      <thead>
+        <tr>
+          <th width="50%" translate>{{'hypervisor.textName'}}</th>
+          <th [hidden]="isDbLevel || !isDb2" class="partition-column" translate>{{ 'application.textHost' }}</th>
+          <th translate [hidden]="isDbLevel || applicationType === 'office365'">{{ 'common.textVersion' }}</th>
+          <th translate [hidden]="!isDbSearch">{{ 'application.textLocation' }}</th>
+          <th width="2%"></th>
+        </tr>
+      </thead>
+      <tbody>
+      <ng-template let-item ngFor [ngForOf]="records | paging: paginateConfig.json()">
+        <tr>
+          <td class="icon-format">
+            <ibm-icon-tag size="16" *ngIf="item.resourceType === 'label'"></ibm-icon-tag>
+            <i *ngIf ="item.resourceType !== 'label'" [ngClass]="getResourceIcon(item)"></i>
+            <span [ngClass]="{'link': canNavigate(item)}" [tabindex]="canNavigate(item) ? 0 : -1" (keydown.enter)="navigate(item,$event)" (click)="navigate(item,$event)">{{item.name}}</span>
+          </td>
+          <td [hidden]="isDbLevel || !isDb2">{{item | partitionDisplay }}</td>
+          <td [hidden]="isDbLevel || applicationType === 'office365'">{{ item.version }}</td>
+          <td [hidden]="!isDbSearch">{{ item.parseLocation }}</td>
+          <td>
+            <button class="btn btn-primary btn-xs"
+                    [hidden]="item.resourceType !== 'database'"
+                    (click)="onUseLatestClick(item)" type="button"
+                    [attr.aria-label]="'common.textSelect' | translate">
+              <i class="ion-plus"></i>
+            </button>
+          </td>
+        </tr>
+      </ng-template>
+      </tbody>
+    </table>
+  </div>
+  <div class="paging-toolbar">
+    <paging-toolbar (pageChange)="onPageChange($event)" (refresh)="onRefresh()"
+                    [id]="paginateConfig.id" [total]="paginateConfig.totalItems"></paging-toolbar>
+  </div>
+</div>

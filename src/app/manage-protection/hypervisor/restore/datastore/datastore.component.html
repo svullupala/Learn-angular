@@ -1,0 +1,28 @@
+<form #datastore="ngForm" style="height: 350px;" id="datastoreform">
+  <div style="height: 300px; overflow: auto;" [ngClass]="{'masked': tableMask, 'masked': datastoreMask}">
+    <table>
+      <thead>
+      <tr>
+        <th width="50%" translate>{{ 'common.sourceText' }}</th>
+        <th width="50%" translate>{{ 'common.destinationText' }}</th>
+      </tr>
+      <td colspan="2" *ngIf="sourceDatastores === undefined || sourceDatastores.length < 1">
+        <i class="bidi-status-warning"></i>
+        {{ 'hypervisor.textSelectOneHostOrCluster' | translate }}
+      </td>
+      </thead>
+      <tbody>
+      <tr *ngFor="let item of sourceDatastores; let i = index">
+        <td class="wrap">{{ item.name }}</td>
+        <td>
+          <select class="form-control" [name]="item.getUrl('self')" [(ngModel)]="datastoreModelSelections[i] && datastoreModelSelections[i]['destination']"
+            (change)="handleSelect($event, i, 'destination')">
+            <option [ngValue]="datastore.getUrl('self')" *ngFor="let datastore of datastores">{{ datastore.name }}</option>
+            <option [hidden]="true" value=""></option>
+          </select>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</form>

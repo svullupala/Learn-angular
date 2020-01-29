@@ -1,0 +1,146 @@
+<div class="row">
+  <div class="col-xl-12">
+    <h4 translate>{{'dashboard.textDestinationsTitle'}}</h4>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xl-4 col-lg-4 col-sm-12 dashboard-item">
+    <ba-card baCardClass="dashboard-card" [ngClass]="{'masked': model === undefined}">
+      <div class="row">
+        <div class="col-sm-12">
+          <h2 class="sdl-header" translate>{{'dashboard.textCapacitySummaryCardTitle'}}</h2>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12">
+          <div *ngIf="model" class="item-list">
+            <div class="item-col-left">
+              <div class="left-align">
+                <circle-summary-chart
+                  [topLabel]="'dashboard.availCapacity'"
+                  [value]="getUsedPct(model.sizeFreeAllStorage,model.sizeTotalAllStorage)"
+                  [unit]="'%'"
+                  [unitColor]="defaultTextColor"
+                  [unitMedium]="true"
+                  [rightLabel]= "getSizeAndUnit(model.sizeFreeAllStorage | fileSizeObservable: 1 | async, model.sizeFreeAllStorage | fileSizeObservable: 2 | async )"
+                  [borderColor]="transparentColor"
+                  [topLabelColor]="cerulean70Color"></circle-summary-chart>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row progress-bar-row">
+        <div class="col-sm-12" style="padding-bottom: 32px">
+          <progress-bar
+            *ngIf="model"
+            [status]="'normal-destinations'"
+            [topLeftLabel]="model.sizeUsedAllStorage | fileSizeObservable: 1 | async"
+              [topLeftSubLabel]="(model.sizeUsedAllStorage | fileSizeObservable: 2 | async) + ' ' + ('common.textUsed' | translate)"
+            [topRightLabel]="model.sizeTotalAllStorage | fileSizeObservable: 1 | async"
+              [topRightSubLabel]="(model.sizeTotalAllStorage | fileSizeObservable: 2 | async) + ' ' + ('common.textTotal' | translate)"
+            [percentage]="getUsedPct(model.sizeUsedAllStorage,model.sizeTotalAllStorage)" [type]="'thin'"></progress-bar>
+        </div>
+      </div>
+        <div class="row">
+          <div class="col-sm-12" style="margin-left: 8px; padding-top: 16px;">
+            <button
+              *ngIf="model && hasViewPermission()" class="sdl secondary inline small right-align"
+              type="button"
+              (click)="onViewCapacitySummary()"
+              translate>{{'dashboard.textViewButton'}}</button>
+          </div>
+        </div>
+    </ba-card>
+  </div>
+  <div class="col-xl-4 col-lg-4 col-sm-12 dashboard-item">
+    <ba-card baCardClass="dashboard-card" [ngClass]="{'masked': model === undefined}">
+      <div class="row">
+        <div class="col-sm-12">
+          <h2 class="sdl-header" translate>{{'dashboard.textDeviceStatusCardTitle'}}</h2>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12">
+          <div *ngIf="model" class="item-list">
+            <div class="item-col-left">
+              <div class="left-align">
+                <circle-summary-chart
+                  [topLabel]="'dashboard.totalDevices'"
+                  [value]="model.total"
+                  [borderColor]="transparentColor"
+                  [topLabelColor]="cerulean70Color"></circle-summary-chart>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-5">
+          <div *ngIf="model" class="item-list">
+            <div class="long">
+              <circle-summary-chart
+                [wrapLabel]="true" [value]="model.unavailable"
+                [topIcon]="'bidi-unavailable'"
+                [label]="'dashboard.devicesInactive'"
+                [fillColor]="fillColor"
+                [borderColor]="fillColor"
+                [labelColor]="defaultBubbleTextColor"></circle-summary-chart>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-5">
+          <div *ngIf="model" class="item-list">
+            <div class="long">
+              <circle-summary-chart
+                [value]="model.full" [label]="'dashboard.devicesFull'"
+                [topIcon]="'bidi-full'"
+                [fillColor]="fillColor"
+                [borderColor]="fillColor"
+                [labelColor]="defaultBubbleTextColor"></circle-summary-chart>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ba-card>
+  </div>
+  <div class="col-xl-4 col-lg-4 col-sm-12 dashboard-item">
+    <ba-card baCardClass="dashboard-card" [ngClass]="{'masked': model === undefined}">
+      <div class="row">
+        <div class="col-sm-12">
+          <h2 class="sdl-header" translate>{{'dashboard.textDataReductionCardTitle'}}</h2>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12">
+          <div *ngIf="model" class="item-list">
+            <div class="item-col-left">
+              <div class="left-align">
+                <circle-summary-chart
+                  [topLabel]="'dashboard.dataDedupRatio'"
+                  [value]="ratioValue(model.deduplicationRatio)"
+                  [borderColor]="transparentColor"
+                  [topLabelColor]="cerulean70Color"></circle-summary-chart>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12">
+          <div *ngIf="model" class="item-list">
+            <div class="item-col-left">
+              <div class="left-align">
+                <circle-summary-chart
+                  [topLabel]="'dashboard.dataCompressionRatio'"
+                  [value]="ratioValue(model.compressionRatio)"
+                  [borderColor]="transparentColor"
+                  [topLabelColor]="cerulean70Color"></circle-summary-chart>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ba-card>
+  </div>
+</div>

@@ -1,0 +1,19 @@
+<ba-card>
+	<div class="row align-items-center search-row">
+		<div class="col-xs-12 col-lg-3">
+			<select class="form-control type-dropdown" [(ngModel)]="selectType">
+				<option value="application" selected="selected" translate>{{ 'common.textApplications' }}</option>
+				<option value="hypervisor" translate>{{ 'common.textHypervisors' }}</option>
+			</select>
+		</div>
+		<div class="col-xs-12 col-lg-9">
+			<sdl-search-bar (search)="startSearch($event)"
+											[textPlaceholderLabel]="textSearchFor">
+			</sdl-search-bar>
+		</div>
+	</div>
+	<h2 class="sdl-header" translate>{{'catalog.textSearchOutput'}}</h2>
+	<ba-card>
+		<catalog-resource-table></catalog-resource-table>
+	</ba-card>
+</ba-card>

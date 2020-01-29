@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-us" xml:lang="en-us" class="task _Skins_HTML5_topnav_IBMOEM" data-mc-search-type="Stem" data-mc-help-system-file-name="Default.xml" data-mc-path-to-help-system="../../../" data-mc-has-content-body="True" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic;Default" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Operations">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>Restore a File</title>
+        <link rel="icon" href="../../Resources/images/IBM-icon-48.ico" />
+        <link href="../../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Tablet.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Mobile.css" rel="stylesheet" />
+        <link href="../../../Skins/Fluid/stylesheets/foundation.6.2.3.css" rel="stylesheet" />
+        <link href="../../../Skins/Fluid/stylesheets/styles.css" rel="stylesheet" />
+        <link href="../../../Skins/Fluid/stylesheets/tablet.css" rel="stylesheet" />
+        <link href="../../../Skins/Fluid/stylesheets/mobile.css" rel="stylesheet" />
+        <style>/*&lt;meta /&gt;*/
+
+.button.remove-highlight-button
+{
+	-pie-background: url('../../../Skins/Default/Stylesheets/Images/highlight.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.expand-all-button
+{
+	-pie-background: url('../../../Skins/Default/Stylesheets/Images/expand.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.print-button
+{
+	-pie-background: url('../../../Skins/Default/Stylesheets/Images/printer.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.collapse-all-button
+{
+	-pie-background: url('../../../Skins/Default/Stylesheets/Images/collapse.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.needs-pie
+{
+	behavior: url('../../../Resources/Scripts/PIE-no-motw.htc');
+}
+
+</style>
+        <link href="../../resources/stylesheets/styles_topnavi.css" rel="stylesheet" />
+        <script src="../../../Resources/Scripts/custom.modernizr.js">
+        </script>
+        <script src="../../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/require.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/require.config.js">
+        </script>
+        <script src="../../../Resources/Scripts/foundation.6.2.3_custom.js">
+        </script>
+        <script src="../../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div class="foundation-wrap off-canvas-wrapper">
+            <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper="">
+                <aside class="off-canvas position-right" id="offCanvas" data-off-canvas="" data-position="right" data-mc-ignore="true">
+                    <ul class="off-canvas-drilldown vertical menu off-canvas-list" data-drilldown="" data-mc-back-link="Back" data-mc-css-tree-node-expanded="is-drilldown-submenu-parent" data-mc-css-tree-node-collapsed="is-drilldown-submenu-parent" data-mc-css-sub-menu="vertical menu slide-in-right is-drilldown-submenu" data-mc-include-indicator="False" data-mc-include-icon="False" data-mc-include-parent-link="True" data-mc-include-back="True" data-mc-defer-expand-event="True" data-mc-expand-event="click.zf.drilldown" data-mc-toc="True">
+                    </ul>
+                </aside>
+                <div class="off-canvas-content inner-wrap" data-off-canvas-content="">
+                    <div>
+                        <nav class="title-bar tab-bar" data-mc-ignore="true">
+                            <div class="middle title-bar-section outer-row clearfix">
+                                <div class="relative clearfix"><a class="logo" href="../about/about_application_overview.htm" alt="Logo"></a>
+                                    <div class="navigation-wrapper nocontent">
+                                        <ul class="navigation clearfix" data-mc-css-tree-node-has-children="has-children" data-mc-css-sub-menu="sub-menu" data-mc-expand-event="mouseenter" data-mc-top-nav-menu="True" data-mc-max-depth="4" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                                            <li class="placeholder" style="visibility:hidden"><a>placeholder</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <button class="menu-icon" data-toggle="offCanvas"><span></span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="nav-search row outer-row">
+                                <form class="search" action="#">
+                                    <div class="search-bar search-bar-container needs-pie">
+                                        <input class="search-field needs-pie" type="search" placeholder="Search the help system" />
+                                        <div class="search-filter-wrapper">
+                                            <div class="search-filter">
+                                                <div class="search-filter-content">
+                                                    <ul>
+                                                        <li>All Files</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="search-submit-wrapper" dir="ltr">
+                                            <div class="search-submit" title="Search">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </nav>
+                    </div>
+                    <section class="main-section">
+                        <div class="row outer-row" data-mc-content-body="True">
+                            <div class="buttons popup-container clearfix topicToolbarProxy mc-component nocontent" style="margin-left: 0px; float: right; mc-topic-toolbar-items: RemoveHighlight ExpandAll CollapseAll Print;">
+                                <div class="button-group-container-left">
+                                    <button class="button needs-pie remove-highlight-button" title="Remove Highlights">
+                                        <img src="../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="remove highlight" />
+                                    </button>
+                                    <button class="button needs-pie expand-all-button" data-state1-class="expand-all-button" data-state2-class="collapse-all-button" data-state2-title="Collapse all" title="Expand all" data-state1-title="Expand all">
+                                        <img src="../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="expand all" />
+                                    </button>
+                                    <button class="button needs-pie print-button" title="Print">
+                                        <img src="../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="print" />
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="nocontent">
+                                <div class="MCBreadcrumbsBox_0 breadcrumbs" data-mc-breadcrumbs-divider=" &gt; " data-mc-breadcrumbs-count="3" data-mc-toc="True"><span class="MCBreadcrumbsPrefix">You are here: </span>
+                                </div>
+                            </div>
+                            <h1>Restore a File</h1>
+                            <p>Restore files from a snapshot created through <span class="ProductNames_LongShortECX_Short">IBM Spectrum Protect Plus</span> Backup jobs. Files can be restored to their original or alternate location.</p>
+                            <div class="Prerequisite">
+                                <p class="PostPreRelTitleLeft"><span class="PostPreRelTitle">BEFORE YOU BEGIN:</span>
+                                </p>
+                                <ul>
+                                    <li value="1">Review the File Indexing and Restore Requirements. See <a href="../system_requirements/system_requirements_file_restore.htm" class="MCXref xref">File Indexing and Restore Requirements</a>.</li>
+                                    <li value="2">Run a Backup job with <b>Catalog file metadata</b> enabled. Note that credentials must be established for the associated virtual machine as well as the alternate virtual machine destination through the Guest OS&#160;Username and Guest OS&#160;Password option  within the backup job definition. Ensure the virtual machine can be accessed from the <span class="ProductNames_LongShortECX_Short">IBM Spectrum Protect Plus</span> appliance either through DNS or host-name. In a Windows environment, the default security policy uses the Windows NTLM protocol, and the user identity follows the default <b>domain\Name</b> format if the Hyper-V virtual machine is attached to a domain. The format   <b>&lt;local administrator&gt;</b> is used if the user is a local administrator.</li>
+                                </ul>
+                                <p class="PostPreRelTitleLeft"><span class="PostPreRelTitle">GENERAL CONSIDERATIONS:</span>
+                                </p>
+                                <ul>
+                                    <li value="1">Encrypted Windows file systems are not supported for file indexing or file restore.</li>
+                                    <li value="2">For a file restore to complete successfully, ensure that the user on the target machine has the necessary ownership permissions of the file being restored. If a file was created by a user that differs from the user restoring the file based on their Windows security credentials, the file restore will fail. </li>
+                                    <li value="3" data-mc-conditions="Default.1012 navigation">File indexing and file restore are not supported from restore points that were offloaded to IBM&#160;Spectrum Protect storage.</li>
+                                    <li value="4">When restoring files in a Resilient File System (ReFS) environment, restores from newer versions of Windows Server to earlier versions are not supported. For example, restoring a file from Windows Server 2016 to Windows Server 2012 R2. </li>
+                                    <li value="5">
+                                        <p>Use an NTP&#160;server to synchronize the time zones across <span class="ProductNames_LongShortECX_Short">IBM Spectrum Protect Plus</span> resources in your environment, such as the <span class="ProductNames_LongShortECX_Short">IBM Spectrum Protect Plus</span> appliance, storage arrays, hypervisors and application servers . If the clocks on the various systems are significantly out of sync, you may experience errors during application registration, metadata cataloging, <span class="GeneralInventory">Inventory</span>, Backup, or Restore/File Restore jobs. For more information about identifying and resolving timer drift, see the following VMware knowledge base article: <a href="https://kb.vmware.com/kb/1006072" target="_blank">Time in virtual machine drifts due to hardware timer drift</a>.</p>
+                                    </li>
+                                </ul>
+                                <p class="PostPreRelTitleLeft"><span class="PostPreRelTitle">HYPER-V CONSIDERATIONS:</span>
+                                </p>
+                                <ul>
+                                    <li value="1">Only volumes on SCSI disks are eligible for file cataloging and file restore.</li>
+                                </ul>
+                                <p class="PostPreRelTitleLeft"><span class="PostPreRelTitle">LINUX CONSIDERATIONS:</span>
+                                </p>
+                                <ul>
+                                    <li value="1">If data resides on LVM volumes, the <i>lvm2-lvmetad</i> service must be disabled as it can interfere with <span class="ProductNames_LongShortECX_Short">IBM Spectrum Protect Plus</span>'s ability to mount and resignature volume group snapshots/clones. To disable:</li>
+                                    <ul style="list-style-type: circle;">
+                                        <li value="1"><code>systemctl stop lvm2-lvmetad</code>
+                                        </li>
+                                        <li value="2"><code>systemctl disable lvm2-lvmetad</code>
+                                        </li>
+                                        <li value="3">Edit the file <i>/etc/lvm/lvm.conf</i> and set <code>use_lvmetad = 0</code></li>
+                                    </ul>
+                                    <li value="2">If data resides on XFS file systems and the version of xfsprogs is between 3.2.0 and 4.1.9, the file restore can fail due to a known issue in xfsprogs that causes corruption of a clone/snapshot file system when its UUID is modified.  To resolve this issue, update xfsprogs to version 4.2.0 or above. For more information, see <a href="https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=782012" target="_blank">https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=782012</a>.</li>
+                                </ul>
+                            </div>
+                            <p style="font-weight: bold;">To restore a file:</p>
+                            <ol>
+                                <li value="1" data-mc-conditions="Default.1012 navigation">From the navigation menu, expand <b>Jobs and Operations</b>, then click <b>File Restore</b>. </li>
+                                <li value="2">Enter a search string to search for a file by name, then click <span class="Strong">Search </span> <img src="../../resources/images/new_icons/search.png" style="vertical-align: text-top;border-left-style: solid;border-left-width: 0px;border-left-color: #000000;border-right-style: solid;border-right-width: 0px;border-right-color: #000000;border-top-style: solid;border-top-width: 0px;border-top-color: #000000;border-bottom-style: solid;border-bottom-width: 0px;border-bottom-color: #000000;" alt="Search icon" /> . See <a href="#Search_Guidelines" class="MCXref xref">Search Guidelines</a>. </li>
+                                <li value="3" data-mc-conditions="Default.SPP_30_patch2_REMOVE">Optionally, use  filters to fine-tune your search across specific virtual machines, date range in which the file was protected, and virtual machine operating system types. Searches can also be limited to a specific folder through the <b>Folder path</b> filter. The Folder path field supports wildcards. Position wildcards at the beginning, middle, or end of a string. For example, enter <code>*Downloads</code> to search within the Downloads folder without entering the preceding path. </li>
+                                <li class="indent" data-mc-autonum="" data-mc-conditions="Default.SPP_30_patch2_REMOVE"><span class="autonumber"><span></span></span>Click <span class="Strong">Search </span> <img src="../../resources/images/new_icons/search.png" style="vertical-align: text-top;border-left-style: solid;border-left-width: 0px;border-left-color: #000000;border-right-style: solid;border-right-width: 0px;border-right-color: #000000;border-top-style: solid;border-top-width: 0px;border-top-color: #000000;border-bottom-style: solid;border-bottom-width: 0px;border-bottom-color: #000000;" alt="Search icon" />  to perform the search with selected filters. </li>
+                                <li value="4">To restore the file using default options, click <b>Restore</b>. The file is restored to its original location.  </li>
+                                <li value="5">To edit  options before restoring the file, click <b>Options</b>. Set the file restore options. </li>
+                                <li class="indent" style="font-weight: bold;" data-mc-autonum=""><span class="autonumber"><span></span></span>Overwrite existing files/folder</li>
+                                <li class="Indent_Level2" data-mc-autonum=""><span class="autonumber"><span></span></span>Select to replace the existing file or folder with the restored file or folder.</li>
+                                <li class="indent" style="font-weight: bold;" data-mc-autonum=""><span class="autonumber"><span></span></span>Destination</li>
+                                <li class="Indent_Level2" data-mc-autonum=""><span class="autonumber"><span></span></span>Restore the file to its original location by selecting <b>Restore file</b><b>s</b><b> to original location</b>. Select <b>Restore file</b><b>s</b><b> to alternative location</b> to restore to a local destination different from the original location, then select the alternate location from available resources through the navigation tree or through the search function. </li>
+                                <li class="Indent_Level2" data-mc-autonum=""><span class="autonumber"><span></span></span><span class="NoteBlue">Note:</span> If restoring to an alternate location, credentials must be established for the alternate virtual machine  through the Guest OS&#160;Username and Guest OS&#160;Password option  within the backup job definition.</li>
+                                <li class="Indent_Level2" data-mc-autonum=""><span class="autonumber"><span></span></span>Enter the VM folder path on the alternate destination in the <b>Destination Folder</b> field. Note that the directory will be created if it does not exist. </li>
+                                <li class="indent" data-mc-autonum=""><span class="autonumber"><span></span></span>Click <b>Save</b> to save the options. </li>
+                                <li value="6">To restore the file using defined options, click <b>Restore</b>. </li>
+                            </ol>
+                            <p class="ListHeading"><a name="Search_Guidelines"></a>Search Guidelines</p>
+                            <ul>
+                                <li value="1">Enter a character string to find objects with a name that exactly matches  the character string. Searching for the term <b>string.txt</b> will return the exact match, <b>string.txt</b>.</li>
+                                <li value="2">Apply wildcards as needed. </li>
+                                <li value="3">Regular Expression search entries are supported. For more information see <a href="https://docs.microsoft.com/en-us/sql/relational-databases/scripting/search-text-with-regular-expressions" target="_blank">https://docs.microsoft.com/en-us/sql/relational-databases/scripting/search-text-with-regular-expressions</a>.</li>
+                            </ul>
+                            <p> A wildcard is a character that you can substitute for zero or more unspecified characters when searching text. Position wildcards at the beginning, middle, or end of a string, and combine them within a string. </p>
+                            <ul>
+                                <li value="1">Match a character string with an asterisk, which represents a variable string of zero or more characters:<ul><li value="1"><span class="Strong">string*</span> searches for terms like string, strings, or stringency</li><li value="2"><span class="Strong">str*ing</span> searches for terms like string, straying, or straightening</li><li value="3"><span class="Strong">*string</span> searches for terms like string or shoestring</li></ul></li>
+                                <li value="2">&#160;Match a single character with a question mark:<ul><li value="1"><span class="Strong">string?</span> searches for terms like strings, stringy, or string1</li><li value="2"><span class="Strong">st??ring</span> searches for terms like starring or steering</li><li value="3"><span class="Strong">???string</span> searches for terms like hamstring or bowstring</li></ul></li>
+                            </ul>
+                            <p>You can use multiple asterisk wildcards in a single text string, though this might considerably slow down a large search.</p>
+                            <p>The search functionality supports special characters, which must be escaped with a \ before the character. The following special characters are supported: + - &amp; | ! ( ) { } [ ] ^ " ~ * ? : \</p>
+                            <p>To search for a file named <b>string[2].txt</b>, enter the following:&#160;<b>string\[2\].txt</b>. </p>
+                            <div class="RelatedTopic">
+                                <p class="PostPreRelTitleLeft"><span class="PostPreRelTitle">RELATED TOPICS:</span>
+                                </p>
+                                <ul>
+                                    <li value="1"><a href="../system_requirements/system_requirements_file_restore.htm" class="MCXref xref">File Indexing and Restore Requirements</a>
+                                    </li>
+                                    <li value="2"><a href="../hypervisor/vmware/vmware_backup.htm" class="MCXref xref">Create a VMware Backup Job Definition</a>
+                                    </li>
+                                    <li value="3"><a href="../hypervisor/vmware/vmware_restore.htm" class="MCXref xref">Create a VMware Restore Job Definition</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <p>&#160;</p>
+                            <hr width="100%" size="0" align="center" />
+                            <p style="text-align: left;"><span class="Strong" style="font-size: 10pt;">IBM Spectrum Protect Plus</span> <span class="Strong" style="font-size: 10pt;">10.1.2</span> <![CDATA[ ]]></p>
+                            <p style="font-size: 8pt;">Licensed Material - Property of IBM Corp. © IBM Corporation and other(s) <span class="GeneralYear">2018</span>. IBM is a registered trademark of the IBM Corporation in the United States, other countries, or both. <span style="font-size: 10pt;"><span style="font-size: 8pt;">| </span></span><span style="font-size: 8pt;" class="SystemShortDate">8/23/2018</span></p>
+                        </div>
+                    </section><a data-close="true"></a>
+                </div>
+            </div>
+            <script>/* <![CDATA[ */$(document).foundation();/* ]]> */</script>
+        </div>
+    </body>
+</html>

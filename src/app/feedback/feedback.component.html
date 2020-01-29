@@ -1,0 +1,29 @@
+<div bsModal #fbModal="bs-modal" class="modal fade" [config]="{backdrop: 'static', keyboard : false}"
+     tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+    <div cdkTrapFocus class="modal-content">
+      <div class="modal-header title">
+        <h4 class="modal-title" translate>{{ 'feedback.title '}}</h4>
+      </div>
+      <div class="modal-body">
+        <div class="side-by-side-wrapper">
+          <div class="side-by-side-left">
+            <img class="feedbackLargeIcon" alt="{{'feedback.textFeedbackAltText' | translate}}"/>
+          </div>
+          <div class="side-by-side-right">
+            <div class="large">{{'feedback.textTellIBM' | translate}}</div>
+            <div class="regular">{{'feedback.textLetUsKnow' | translate}}</div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <a target="_blank" class="privacy" style="margin-left: 1rem;" href="{{ privacyUrl }}">{{'feedback.textPrivacy' | translate}}</a>
+        <button cdkFocusRegionStart class="sdl inline secondary margin-right-1rem" (click)="onRemindLaterClick()" translate>{{'feedback.textRemindLater'}}</button>
+        <button cdkFocusRegionEnd class="sdl inline" (click)="onProvideFeedbackClick()" translate>
+          <img class="feedbackSmallIcon" alt="{{'feedback.textFeedbackConfirmAltText' | translate}}" />
+          {{'feedback.textProvideFeedback'}}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

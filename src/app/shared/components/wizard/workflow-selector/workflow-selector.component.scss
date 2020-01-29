@@ -1,0 +1,74 @@
+$summary-text-color: #1C496D;
+
+.workflow-selector {
+  background-color: transparent;
+  text-align: left;
+  & > .title {
+    font-size: 24px;
+    line-height: 2.5rem;
+  }
+  & > .description {
+    font-size: 14px;
+    line-height: 1.25rem;
+  }
+  & > .content {
+    display: flex;
+    flex-flow: wrap;
+    & > .entry {
+      display: flex;
+      flex-flow: row;
+      border: 1px solid #047CC0;
+      border-radius: .25rem;
+      width: 11.88rem;
+      height: 5rem;
+      margin-top: 2rem;
+      margin-right: 2rem;
+      &.selected {
+        background: rgba(222, 237, 247, 0.50);
+      }
+      &:focus {
+        outline: 1px dashed yellow;
+      }
+      & > label {
+        height: 5rem;
+        line-height: 5rem;
+        margin-left: 2rem;
+        text-align: left;
+        vertical-align: middle;
+        flex: 1;
+      }
+      & > i {
+        width: 1rem;
+        height: 100%;
+        line-height: 100%;
+        margin-right: 2rem;
+      }
+    }
+  }
+}
+
+.summary {
+  text-align: left;
+  color: $summary-text-color;
+
+  & > .title {
+    font-size: 16px;
+    line-height: 2rem;
+    font-weight: bold;
+  }
+  & > .content {
+    font-size: 14px;
+
+    & > .property {
+      line-height: 24px;
+      & > .name {
+        white-space: nowrap;
+        width: 300px;
+      }
+      & > .value {
+        white-space: normal;
+        font-weight: bold;
+      }
+    }
+  }
+}

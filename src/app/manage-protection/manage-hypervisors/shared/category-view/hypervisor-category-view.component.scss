@@ -1,0 +1,49 @@
+$table-background-color: #F3F3F3;
+$infoIconColor: #1191E6;
+
+.hypervisor-category-view {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  .search-bar {
+    display: flex;
+    align-items: center;
+    width: 100%;
+
+    sdl-search-bar {
+      flex: 1;
+      height: 36px;
+    }
+
+    .advanced-search-link {
+      margin-left: 1rem;
+      white-space: nowrap;
+    }
+
+    .close {
+      margin-left: 3rem;
+      font-size: 34px;
+      font-weight: 400;
+    }
+  }
+
+
+  .title {
+    margin: 22px 1rem;
+    > .refresh-icon {
+      margin-left: 1rem;
+      margin-top: -3px;
+      cursor: pointer;
+      color: $infoIconColor;
+    }
+  }
+
+  .category-table {
+    flex: 1;
+    min-width: 128px;
+    max-height: calc(100% - 108px);
+    background-color: $table-background-color;
+  }
+}
+

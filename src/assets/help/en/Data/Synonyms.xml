@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MadCapSynonyms xml:lang="en-us">
+    <Groups>
+        <SynonymGroup>
+            <Word>license key</Word>
+            <Word>product key</Word>
+        </SynonymGroup>
+        <SynonymGroup>
+            <Word>vmware</Word>
+            <Word>vcenter</Word>
+            <Word>vsphere</Word>
+            <Word>ESX</Word>
+        </SynonymGroup>
+        <SynonymGroup>
+            <Word>cataloging</Word>
+            <Word>indexing</Word>
+        </SynonymGroup>
+        <SynonymGroup>
+            <Word>roadmap</Word>
+            <Word>audience</Word>
+            <Word>user</Word>
+            <Word>users</Word>
+        </SynonymGroup>
+        <SynonymGroup>
+            <Word>ova</Word>
+            <Word>appliance</Word>
+            <Word>mini</Word>
+        </SynonymGroup>
+        <SynonymGroup>
+            <Word>user</Word>
+            <Word>account</Word>
+            <Word>rbac</Word>
+            <Word>role</Word>
+            <Word>roles</Word>
+        </SynonymGroup>
+        <SynonymGroup>
+            <Word>fiber</Word>
+            <Word>fibre</Word>
+        </SynonymGroup>
+        <SynonymGroup>
+            <Word>pre-script</Word>
+            <Word>prescript</Word>
+        </SynonymGroup>
+        <SynonymGroup>
+            <Word>post-script</Word>
+            <Word>postscript</Word>
+        </SynonymGroup>
+        <SynonymGroup>
+            <Word>mini</Word>
+            <Word>DPX</Word>
+        </SynonymGroup>
+        <SynonymGroup>
+            <Word>role based access control</Word>
+            <Word>rbac</Word>
+        </SynonymGroup>
+        <SynonymGroup>
+            <Word>sql</Word>
+            <Word>mssql</Word>
+        </SynonymGroup>
+        <SynonymGroup>
+            <Word>tenant</Word>
+            <Word>tenancy</Word>
+        </SynonymGroup>
+        <SynonymGroup>
+            <Word>vadp proxy</Word>
+            <Word>vadpproxy</Word>
+            <Word>backup proxy</Word>
+        </SynonymGroup>
+        <SynonymGroup>
+            <Word>vnx</Word>
+            <Word>unity</Word>
+        </SynonymGroup>
+        <SynonymGroup>
+            <Word>svc</Word>
+            <Word>spectrum virtualize</Word>
+        </SynonymGroup>
+        <SynonymGroup>
+            <Word>xiv</Word>
+            <Word>spectrum accelerate</Word>
+        </SynonymGroup>
+        <SynonymGroup>
+            <Word>fcm</Word>
+            <Word>spectrum protect</Word>
+        </SynonymGroup>
+        <SynonymGroup>
+            <Word>physical rdm</Word>
+            <Word>pRDM</Word>
+            <Word>rdm-p</Word>
+        </SynonymGroup>
+        <SynonymGroup>
+            <Word>catalog</Word>
+            <Word>inventory</Word>
+            <Word>repository</Word>
+        </SynonymGroup>
+        <SynonymGroup Stem="true">
+            <Word Stem="administr">administrator</Word>
+            <Word Stem="oper">operator</Word>
+            <Word Stem="admin">admin</Word>
+        </SynonymGroup>
+        <SynonymGroup Stem="true">
+            <Word Stem="node">node</Word>
+            <Word Stem="host">host</Word>
+            <Word Stem="provid">provider</Word>
+            <Word Stem="resourc">resource</Word>
+        </SynonymGroup>
+        <SynonymGroup Stem="true">
+            <Word Stem="netapp">netapp</Word>
+            <Word Stem="filer">filer</Word>
+            <Word Stem="fas">fas</Word>
+            <Word Stem="nearstor">nearstore</Word>
+            <Word Stem="vfiler">vfiler</Word>
+            <Word Stem="netapp fil">netapp filer</Word>
+        </SynonymGroup>
+        <SynonymGroup Stem="true">
+            <Word Stem="polici">policy</Word>
+            <Word Stem="job">job</Word>
+        </SynonymGroup>
+        <SynonymGroup Stem="true">
+            <Word Stem="print">print</Word>
+            <Word Stem="publish">publish</Word>
+            <Word Stem="export">export</Word>
+            <Word Stem="download">download</Word>
+        </SynonymGroup>
+        <SynonymGroup Stem="true">
+            <Word Stem="add">add</Word>
+            <Word Stem="insert">insert</Word>
+            <Word Stem="creat">create</Word>
+            <Word Stem="configur">configure</Word>
+            <Word Stem="regist">register</Word>
+        </SynonymGroup>
+        <SynonymGroup Stem="true">
+            <Word Stem="delet">delete</Word>
+            <Word Stem="remov">remove</Word>
+            <Word Stem="unregist">unregister</Word>
+        </SynonymGroup>
+        <SynonymGroup Stem="true">
+            <Word Stem="edit">edit</Word>
+            <Word Stem="updat">update</Word>
+        </SynonymGroup>
+        <SynonymGroup Stem="true">
+            <Word Stem="object">object</Word>
+            <Word Stem="file">file</Word>
+        </SynonymGroup>
+        <SynonymGroup Stem="true">
+            <Word Stem="find">find</Word>
+            <Word Stem="search">search</Word>
+        </SynonymGroup>
+        <SynonymGroup Stem="true">
+            <Word Stem="eula">EULA</Word>
+            <Word Stem="notic">Notices</Word>
+            <Word Stem="sla">SLA</Word>
+            <Word Stem="software license agr">Software License Agreement</Word>
+            <Word Stem="legal">legal</Word>
+        </SynonymGroup>
+        <SynonymGroup Stem="true">
+            <Word Stem="backup">backup</Word>
+            <Word Stem="back up">back up</Word>
+            <Word Stem="snapshot polici">snapshot policy</Word>
+            <Word Stem="protect">protect</Word>
+        </SynonymGroup>
+        <SynonymGroup Stem="true">
+            <Word Stem="recov">recover</Word>
+            <Word Stem="recoveri">recovery</Word>
+            <Word Stem="restor">restore</Word>
+            <Word Stem="use">use</Word>
+            <Word Stem="reus">reuse</Word>
+        </SynonymGroup>
+        <SynonymGroup Stem="true">
+            <Word Stem="svm">SVM</Word>
+            <Word Stem="vserver">vserver</Word>
+            <Word Stem="vserver">Vserver</Word>
+        </SynonymGroup>
+        <SynonymGroup Stem="true">
+            <Word Stem="protect">protect</Word>
+            <Word Stem="protect">protection</Word>
+            <Word Stem="copi">copy</Word>
+        </SynonymGroup>
+        <SynonymGroup Stem="true">
+            <Word Stem="report">report</Word>
+            <Word Stem="insight">insight</Word>
+        </SynonymGroup>
+        <SynonymGroup Stem="true">
+            <Word Stem="snapvault">snapvault</Word>
+            <Word Stem="vault">vault</Word>
+        </SynonymGroup>
+        <SynonymGroup Stem="true">
+            <Word Stem="snapmirror">snapmirror</Word>
+            <Word Stem="mirror">mirror</Word>
+        </SynonymGroup>
+        <SynonymGroup Stem="true">
+            <Word Stem="retent">retention</Word>
+            <Word Stem="keep">keep</Word>
+            <Word Stem="retain">retain</Word>
+            <Word Stem="expir">expire</Word>
+            <Word Stem="expir">expiration</Word>
+        </SynonymGroup>
+        <SynonymGroup Stem="true">
+            <Word Stem="privileg">privilege</Word>
+            <Word Stem="permiss">permission</Word>
+        </SynonymGroup>
+        <SynonymGroup Stem="true">
+            <Word Stem="hang">hang</Word>
+            <Word Stem="hung">hung</Word>
+            <Word Stem="freez">freeze</Word>
+            <Word Stem="frozen">frozen</Word>
+        </SynonymGroup>
+        <SynonymGroup Stem="true">
+            <Word Stem="verifi">verify</Word>
+            <Word Stem="valid">validate</Word>
+        </SynonymGroup>
+        <SynonymGroup Stem="true">
+            <Word Stem="verif">verification</Word>
+            <Word Stem="valid">validation</Word>
+        </SynonymGroup>
+        <SynonymGroup Stem="true">
+            <Word Stem="frequenc">frequency</Word>
+            <Word Stem="interv">interval</Word>
+            <Word Stem="schedul">schedule</Word>
+        </SynonymGroup>
+        <SynonymGroup Stem="true">
+            <Word Stem="instal">install</Word>
+            <Word Stem="instal">instal</Word>
+            <Word Stem="deploy">deploy</Word>
+        </SynonymGroup>
+    </Groups>
+    <Directional>
+        <DirectionalSynonym From="prescript" To="pre" />
+        <DirectionalSynonym From="postscript" To="post" />
+    </Directional>
+</MadCapSynonyms>

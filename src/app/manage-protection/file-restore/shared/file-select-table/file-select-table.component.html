@@ -1,0 +1,83 @@
+<div class="manage-table-container">
+  <div class="manage-table-height">
+    <table>
+      <thead>
+      <tr>
+        <th class="col-xsm align-center action-icon-column"></th>
+        <th class="col-xsm align-center action-icon-column"></th>
+        <th class="col-sm" translate>{{ 'fileRestore.textFilename' }}</th>
+        <th class="col-md align-left" translate>{{ 'fileRestore.textPath' }}</th>
+        <th class="col-sm align-left" translate>{{ 'fileRestore.textVM' }}</th>
+        <th class="col-sm align-left" translate>{{ 'fileRestore.textHost' }}</th>
+        <th class="col-sm align-left" translate>{{ 'fileRestore.textSize' }}</th>
+        <!--<th class="col-sm align-left" translate>{{ 'fileRestore.textLatestBackupTime' }}</th>-->
+        <th class="col-sm align-left" translate>{{ 'fileRestore.textOS' }}</th>
+      </tr>
+      </thead>
+      <tbody>
+      <ng-template let-item ngFor [ngForOf]="model.records | paging: model.json()">
+        <tr class="no-top-border">
+          <td class="col-xsm">
+            <button class="btn btn-primary btn-xs" (click)="loadVersions(item, false)" data-toggle="collapse"
+                    [attr.aria-label]="'common.textCollapseExpand' | translate"
+                    [attr.data-target]="'#' + getCollapsibleContainerId(item)">
+              <i [id]="getCollapsibleOperatorId(item)" class="ion-chevron-right"></i>
+            </button>
+          </td>
+          <td class="col-xsm align-center">
+            <label class="custom-radio" *ngIf="item.hasLink('latestversion')">
+              <input (click)="onFileVersionClick($event, item, item.latestVersion)" [attr.name]="getVersionsRadioName(item)"
+                     type="radio" aria-label="...">
+              <span></span>
+            </label>
+          </td>
+          <td class="col-sm bold align-left">{{item.filename}}</td>
+          <td class="col-md align-left">{{item.path}}</td>
+          <td class="col-sm align-left">{{item.vm}}</td>
+          <td class="col-sm align-left">{{item.host}}</td>
+          <td class="col-sm align-left">{{item.size | fileSize}}</td>
+          <!--<td class="col-sm align-left">{{item.catalogTime | amDateFormat: 'll LTS'}}</td>-->
+          <td class="col-sm align-left">{{item.os}}</td>
+        </tr>
+        <tr class="no-top-border">
+          <td colspan=9>
+            <div [attr.id]="getCollapsibleContainerId(item)" class="collapse" align="left" role="form">
+              <table class="table2" border="0">
+                <thead>
+                <tr>
+                  <th width="10%"></th>
+                  <th width="30%" translate>{{'fileRestore.textSnapshotTime'}}</th>
+                  <th width="30%" translate>{{'fileRestore.textSubPolicyType'}}</th>
+                  <th width="30%" translate>{{'fileRestore.textSite'}}</th>
+                  <!--<th width="30%" translate>{{'fileRestore.textStorageServer'}}</th>-->
+                </tr>
+                </thead>
+                <tr *ngFor="let version of item.versions" class="no-top-border">
+                  <td>
+                    <label class="custom-radio">
+                      <input (click)="onFileVersionClick($event, item, version)" [attr.name]="getVersionsRadioName(item)"
+                             type="radio" aria-label="...">
+                      <span></span>
+                    </label>
+                  </td>
+                  <!--amDateFormat: 'll LTS'-->
+                  <td>{{version.protectionCopyTime | amDateFormat: 'll LTS'}}</td>
+                  <!-- <td>{{version.protectionInfo.subPolicyType}}</td> -->
+                  <td translate>{{'fileRestore.subpolicyType.' + (version.protectionInfo.subPolicyType | uppercase)}}</td>
+                  <td>{{getSiteName(version.siteId)}}</td>
+                  <!--<td>{{version.storage}}</td>-->
+                </tr>
+              </table>
+            </div>
+          </td>
+        </tr>
+      </ng-template>
+      </tbody>
+    </table>
+  </div>
+  <br>
+  <paging-toolbar [model]="model" [noPageNumber]="true" [noTotalNumber]="true"
+                  [prevPageDisabled]="!model.hasPrevPageLink"
+                  [nextPageDisabled]="!model.hasNextPageLink"
+                  (startGoPage)="mask()" (refresh)="onRefresh()" (pageChange)="onPageChange($event)"></paging-toolbar>
+</div>

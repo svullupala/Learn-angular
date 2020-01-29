@@ -1,0 +1,27 @@
+@import "../../../../theme/sass/conf/conf";
+
+.searchbox {
+  input {
+    border-radius: 15px;
+    color: $content-text;
+    background: none;
+    border: 1px solid $border-light;
+    outline: none;
+    padding: 8px 15px 8px 15px;
+    margin: 15px 15px 15px 1px;
+    height: 32px;
+  }
+}
+#search-button {
+  border-color: transparent;
+}
+
+#search-button:active {
+  background: transparent;
+}
+#search-icon {
+  width: 30px;
+  height: 30px;
+}
+
+

@@ -1,0 +1,148 @@
+$header-background-color: #F9F9F9;
+$header-border-color: #B6B5B6;
+$header-separator-color: #C6C5C6;
+$row-separator-color: #E1E1E1;
+$warning-color: #F5BD00;
+
+.hypervisor-category-table {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  & > .paging-table {
+    flex: 1;
+    overflow: auto;
+
+    th.menu:before {
+      content: none;
+    }
+
+    td.menu {
+      text-align: center;
+      padding: 5px;
+    }
+
+    .icon-resource {
+      margin-right: 5px;
+      margin-top: 3.5px;
+    }
+
+    .icon-warning {
+      color: $warning-color;
+    }
+
+    .policy {
+      display: inline-block;
+      vertical-align: middle;
+
+      &.first {
+        margin-right: .25rem;
+
+        &.full-width {
+          max-width: 180px;
+        }
+      }
+    }
+
+    .ellipsis {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 80px;
+    }
+
+    .status-item {
+      display: inline-block;
+      margin-right: .5rem;
+
+      .successful {
+        color: #2599E7;
+      }
+
+      .warning {
+        color: #FC7B1E;
+      }
+
+      .failed {
+        color: #FA575F;
+      }
+    }
+
+    .out-of-label {
+      margin-right: .25rem;
+      margin-bottom: 0;
+    }
+
+    .action-menu-dropdown {
+
+      .action-menu-dropdown-menu-btn {
+        width: 34px;
+        height: 35px;
+        padding: 0;
+      }
+
+      &.open {
+        .action-menu-dropdown-menu-btn {
+          border: 0;
+          outline: none;
+          box-shadow: 1px 1px 5px #b5b5b5;
+        }
+      }
+
+      .icon-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .dropdown-item {
+        &:nth-child(2) {
+          border-top: 1px solid $row-separator-color;
+        }
+      }
+
+      .first-capitalize {
+        text-transform: lowercase;
+
+        &:first-letter {
+          text-transform: capitalize;
+        }
+      }
+    }
+  }
+
+  & > .paging-dockbar {
+    height: auto;
+  }
+}
+
+table > thead > tr {
+  background-color: $header-background-color;
+
+  & > th {
+    background-color: $header-background-color;
+    border-bottom: 1px solid $header-border-color;
+    border-top: none;
+    font-weight: bold;
+  }
+
+  & > th + th {
+    border-left: none;
+
+    &:before {
+      content: '';
+      height: 70%;
+      width: 1px;
+      position: absolute;
+      top: 8px;
+      left: 0;
+      background-color: $header-separator-color;
+    }
+  }
+}
+
+table > tbody > tr {
+  & > td {
+    border-top: 1px solid $row-separator-color;
+  }
+}

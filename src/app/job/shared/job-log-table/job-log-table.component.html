@@ -1,0 +1,83 @@
+<div [ngClass]="{'full-height': infiniteScrollingMode}">
+  <div #infiniteScrollContainer [ngClass]="{'scroll-container': infiniteScrollingMode}">
+  <table border="0">
+    <thead>
+    <tr>
+      <th class="normal-col sortable"
+          [ngClass]="{'st-sort-ascent': isAsc('type'), 'st-sort-descent': isDesc('type')}"
+          tabindex="0" clickOnEnterKeydown (click)="onSort('type')"
+          translate>{{'common.textStatus'}}</th>
+      <th class="normal-col sortable"
+          [ngClass]="{'st-sort-ascent': isAsc('logTime'), 'st-sort-descent': isDesc('logTime')}"
+          tabindex="0" clickOnEnterKeydown (click)="onSort('logTime')"
+          translate>{{'common.textTime'}}</th>
+      <th translate>{{'common.textId'}}</th>
+      <th translate>{{'common.textDescription'}}</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngIf="model.records.length == 0">
+      <td colspan="3" style="text-align:center;" translate>{{'job.textNoAvailableLogs'}}<td>
+    </tr>
+    <ng-template let-log ngFor [ngForOf]="infiniteScrollingMode ? model.records : (model.records | paging: model.json())" [ngForTrackBy]="trackByModel">
+      <tr>
+        <td class="nowrap">
+          <div *ngIf="(log.type || '').toLowerCase() == 'info'">
+            <i class="bidi-status-normal"></i>
+            <span translate>{{'job.textStatusInfo'}}</span>
+          </div>
+          <div *ngIf="(log.type || '').toLowerCase() == 'detail'">
+            <i class="bidi-status-normal"></i>
+            <span translate>{{'job.textStatusDetail'}}</span>
+          </div>
+          <div *ngIf="(log.type || '').toLowerCase() == 'summary'">
+            <i class="bidi-status-normal"></i>
+            <span translate>{{'job.textStatusSummary'}}</span>
+          </div>
+          <div *ngIf="(log.type || '').toLowerCase() == 'warn'">
+            <i class="bidi-status-warning"></i>
+            <span translate>{{'job.textStatusWarning'}}</span>
+          </div>
+          <div *ngIf="(log.type || '').toLowerCase() == 'error'">
+            <i class="bidi-status-error"></i>
+            <span translate>{{'job.textStatusError'}}</span>
+          </div>
+        </td>
+        <td class="nowrap align-left">
+          {{log.logTime | amDateFormat: 'll'}}
+          <br>
+          {{log.logTime | amDateFormat: 'LTS'}}
+        </td>
+        <div *ngIf="isMessageLink(log); then messageIdLink else messageId"></div>
+        <ng-template #messageId><td>{{ log.messageId }}</td></ng-template>
+        <ng-template #messageIdLink><td><a (click)="onMessageIdClick(log)" href="javascript:void(0)">
+          {{ log.messageId }}</a></td>
+        </ng-template>
+        <td class="wrap" style="word-break: break-word"
+              [ngClass]="{'red-text': (log.type || '').toLowerCase() == 'error' }">
+              {{ !logIdStorage.includes(log.id) ? log.message : log.detail }}
+              <span *ngIf="log.detail !== null" (click)="getLogId(log, i)"
+                style="cursor: pointer; color: blue">
+                <u>{{ (logIdStorage.includes(log.id) ? 'job.textLessDetail' : 'job.textMoreDetail') | translate }}</u>
+              </span>
+            </td>
+      </tr>
+    </ng-template>
+    </tbody>
+  </table>
+  </div>
+  <div class="paging-toolbar">
+    <paging-toolbar [model]="model"
+                    (pageChange)="onPageChange($event)"
+                    [supportedMode]="infiniteScrollingMode ? 'infiniteScrolling' : 'normal'"
+                    [jumpToLastPageEnabled]="jumpToLastPageEnabled"
+                    [displayedCount]="displayedCount"
+                    [infiniteScrollContainer]="infiniteScrollContainer"
+                    [resetEntryNumber]="isDifferentJobSessionClicked"
+                    (jumpTo)="onJumpTo($event)"
+                    (scrolled)="onScrollDown($event)"
+                    (scrolledUp)="onScrollUp($event)"
+                    (beforeRefresh)="onBeforeRefresh($event)">
+    </paging-toolbar>
+  </div>
+</div>

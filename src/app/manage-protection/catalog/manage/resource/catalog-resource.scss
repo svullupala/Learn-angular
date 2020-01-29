@@ -1,0 +1,44 @@
+@import "../../../../theme/sass/conf/conf";
+
+@media screen and (min-width: 1620px) {
+  .row.shift-up {
+    > * {
+      margin-top: -573px;
+    }
+  }
+}
+
+@media screen and (max-width: 1620px) {
+  .card.feed-panel.large-card {
+    height: 824px;
+  }
+}
+
+.user-stats-card {
+  .card-title {
+    padding: 0 0 15px;
+  }
+}
+
+.hidden {
+  display: none !important;
+}
+
+.modal-buttons .btn {
+  margin-right: 20px;
+}
+
+.restore-options {
+  padding-top: 10px;
+}
+
+.type-dropdown {
+  max-height: 35px;
+  float: left;
+}
+
+.search-row {
+  margin-left: 1rem;
+  margin-right: 1rem;
+  padding-bottom: 2rem;
+}

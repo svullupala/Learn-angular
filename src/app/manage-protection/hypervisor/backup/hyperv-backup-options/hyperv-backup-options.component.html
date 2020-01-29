@@ -1,0 +1,102 @@
+  <h6 translate>{{'hypervisor.textBackupOptions'}}</h6>
+  <ba-card>
+    <div class="row">
+        <ba-checkbox [(ngModel)]="model.skipReadonlyDS" [baCheckboxClass]="'enabled'"
+                     label="{{'hypervisor.textSkipReadonlyDS' | translate}}" [disabled]="false">
+        </ba-checkbox>
+    </div>
+    <div class="row">
+      <ba-checkbox [(ngModel)]="model.skipIAMounts" [baCheckboxClass]="'enabled'"
+                   label="{{'hypervisor.textSkipIAMounts' | translate}}" [disabled]="false">
+      </ba-checkbox>
+    </div>
+    <div class="row">
+      <ba-checkbox [(ngModel)]="model.includeVMsOnMultDatastores" [baCheckboxClass]="'enabled'"
+                   label="{{'hypervisor.textIncludeVMsOnMultDatastores' | translate}}"
+                   [disabled]="false" [hidden]="view ? (view.value === 'storageview' ? false : true) : true">
+      </ba-checkbox>
+    </div>
+    <div class="row"></div>
+    <div class="form-group row">
+      <label for="priority" class="col-sm-3 control-label" translate>
+        {{'hypervisor.textPriority'}}
+      </label>
+      <div class="col-sm-9 number-value">
+        <input type="number" min="1" max="10" class="form-control" id="priority" [(ngModel)]="model.priority"
+               required>
+      </div>
+    </div>
+  </ba-card>
+  <h6 translate>{{'hypervisor.textSnapshotOptions'}}</h6>
+  <ba-card>
+    <div class="row">
+      <ba-checkbox [(ngModel)]="model.makeApplicationConsistent" [baCheckboxClass]="'enabled'"
+                   label="{{'hypervisor.textMakeApplicationConsistent' | translate}}" [disabled]="false">
+      </ba-checkbox>
+    </div>
+    <div class="row"></div>
+    <div class="form-group row">
+      <label for="snapshotRetries" class="col-sm-3 control-label" translate>
+        {{'hypervisor.textSnapshotRetries'}}
+      </label>
+      <div class="col-sm-9 number-value">
+        <input type="number" min="1" class="form-control" id="snapshotRetries" [(ngModel)]="model.snapshotRetries"
+               required>
+      </div>
+    </div>
+    <div class="row">
+      <ba-checkbox [(ngModel)]="model.fallbackToUnquiescedSnapshot" [baCheckboxClass]="'enabled'"
+                   label="{{'hypervisor.fallbackToUnquiescedSnapshot' | translate}}" [disabled]="!model.makeApplicationConsistent">
+      </ba-checkbox>
+    </div>
+  </ba-card>
+  <h6 translate>{{'hypervisor.textAgentOptions'}}</h6>
+  <ba-card>
+    <div class="row">
+      <ba-checkbox [(ngModel)]="model.enableLogTruncate" [baCheckboxClass]="'enabled'"
+                   label="{{'hypervisor.textLogTruncate' | translate}}" [disabled]="false">
+      </ba-checkbox>
+    </div>
+    <div class="row">
+      <ba-checkbox [(ngModel)]="model.enableFH" [baCheckboxClass]="'enabled'"
+                   label="{{'hypervisor.textEnableFH' | translate}}" [disabled]="false">
+      </ba-checkbox>
+    </div>
+    <div class="row"></div>
+    <div class="form-group row">
+      <div class="col-sm-3">
+        <label class="control-label label-width" translate>{{'hypervisor.textExcludeFiles'}}</label>
+      </div>
+      <div class="col-sm-9">
+        <textarea [attr.aria-label]="'hypervisor.textExcludeFiles' | translate" [disabled]="!model.enableFH"
+                  class="form-control dropdown-width" (keypress)="keyPressed($event)" type="text" [placeholder]="'hypervisor.textExcludeFilesPlaceholder' | translate"
+                  [(ngModel)]="model.FHExcludedPath"></textarea>
+      </div>
+    </div>
+    <div class="row user-selection">
+      <div class="form-group row input-demo radio-demo">
+        <div class="col-md-3">
+          <label class="radio-inline custom-radio nowrap">
+            <input type="radio" [value]="true" name="registrationselection" [(ngModel)]="userRegistrationMode" [disabled]="!model.enableFH">
+            <span translate>{{'key.textUser'}}</span>
+          </label>
+        </div>
+        <div class="col-md-3">
+          <label class="radio-inline custom-radio nowrap">
+            <input type="radio" [value]="false" [(ngModel)]="userRegistrationMode" name="registrationselection" [disabled]="!model.enableFH">
+            <span translate>{{'key.textSshKey'}}</span>
+          </label>
+        </div>
+      </div>
+      <div [hidden]="userRegistrationMode">
+        <key-selector [onlySSHKeys]="true" [useExistingOnly]="true" [disabled]="!model.enableFH"></key-selector>
+      </div>
+      <div [hidden]="!userRegistrationMode">
+        <identity-user-enter-select [model]="userInfo" [type]="userType" [disabled]="!model.enableFH"
+                                    [textUsername]="'hypervisor.textGuestOSUsername'"
+                                    [textPassword]="'hypervisor.textGuestOSPassword'"
+                                    (loadedUserEvent)="onLoadUsers($event)"
+        ></identity-user-enter-select>
+      </div>
+    </div>
+  </ba-card>

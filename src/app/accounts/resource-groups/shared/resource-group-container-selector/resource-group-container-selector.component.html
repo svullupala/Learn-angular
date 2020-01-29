@@ -1,0 +1,42 @@
+<div class="space-top-10">
+  <div class="row">
+    <div class="col-lg-6">
+      <div>
+        <label class="control-label" translate>{{'resourceGroups.textChooseSystemType'}}</label>
+      </div>
+      <select class="form-control" [(ngModel)]="applicationType" (change)="loadDataResetView()">
+        <option value="k8s" translate>{{ 'application.textKubernetes' }}</option>
+      </select>
+    </div>
+    <div class="col-lg-6" [hidden]="!isViewSupported()">
+      <div>
+        <label class="control-label" translate>{{'resourceGroups.textChooseAViewType'}}</label>
+      </div>
+      <select class="form-control" [(ngModel)]="typeView" (change)="loadData()">
+        <option value="applicationview" translate>{{'application.textNamespace'}}</option>
+        <option [hidden]="!isK8s()" value="labelview" translate>{{'application.textLabel'}}</option>
+      </select>
+    </div>
+  </div>
+  <div [hidden]="applicationType === undefined">
+    <resource-selector-component
+      [records]="records"
+      [dataset]="dataset"
+      [masked]="masked"
+      [breadcrumbs]="breadcrumbs"
+      [hideBreadcrumbs]="searchResultView"
+      [hideAllButton]="!isFirstLevel()"
+      [addAllItem]="addAllItem"
+      [resourceType]="'resourceGroups.textApplication' | translate"
+      [ignoreBreadCrumb]="true"
+      (onBreadcrumbClickEvent)="onBreadcrumbClick($event)"
+      [view]="view"
+      [paginateConfig]="paginateConfig"
+      [applicationType]="applicationTypeText"
+      (navigateEvent)="navigate($event)"
+      (onPageChangeEvent)="onRefresh()"
+      (onRefreshEvent)="onRefresh()"
+      (onSearchEvent)="onSearch($event)"
+    ></resource-selector-component>
+  </div>
+</div>

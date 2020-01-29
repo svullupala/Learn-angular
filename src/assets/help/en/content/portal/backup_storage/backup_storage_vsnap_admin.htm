@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-us" xml:lang="en-us" class="task _Skins_HTML5_topnav_IBMOEM" data-mc-search-type="Stem" data-mc-help-system-file-name="Default.xml" data-mc-path-to-help-system="../../../" data-mc-has-content-body="True" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic;Default" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Setup|vSnap Installation and Setup">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>vSnap Server Administration Reference</title>
+        <link rel="icon" href="../../Resources/images/IBM-icon-48.ico" />
+        <link href="../../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Tablet.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Mobile.css" rel="stylesheet" />
+        <link href="../../../Skins/Fluid/stylesheets/foundation.6.2.3.css" rel="stylesheet" />
+        <link href="../../../Skins/Fluid/stylesheets/styles.css" rel="stylesheet" />
+        <link href="../../../Skins/Fluid/stylesheets/tablet.css" rel="stylesheet" />
+        <link href="../../../Skins/Fluid/stylesheets/mobile.css" rel="stylesheet" />
+        <style>/*&lt;meta /&gt;*/
+
+.button.remove-highlight-button
+{
+	-pie-background: url('../../../Skins/Default/Stylesheets/Images/highlight.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.expand-all-button
+{
+	-pie-background: url('../../../Skins/Default/Stylesheets/Images/expand.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.print-button
+{
+	-pie-background: url('../../../Skins/Default/Stylesheets/Images/printer.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.collapse-all-button
+{
+	-pie-background: url('../../../Skins/Default/Stylesheets/Images/collapse.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.needs-pie
+{
+	behavior: url('../../../Resources/Scripts/PIE-no-motw.htc');
+}
+
+</style>
+        <link href="../../resources/stylesheets/styles_topnavi.css" rel="stylesheet" />
+        <script src="../../../Resources/Scripts/custom.modernizr.js">
+        </script>
+        <script src="../../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/require.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/require.config.js">
+        </script>
+        <script src="../../../Resources/Scripts/foundation.6.2.3_custom.js">
+        </script>
+        <script src="../../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div class="foundation-wrap off-canvas-wrapper">
+            <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper="">
+                <aside class="off-canvas position-right" id="offCanvas" data-off-canvas="" data-position="right" data-mc-ignore="true">
+                    <ul class="off-canvas-drilldown vertical menu off-canvas-list" data-drilldown="" data-mc-back-link="Back" data-mc-css-tree-node-expanded="is-drilldown-submenu-parent" data-mc-css-tree-node-collapsed="is-drilldown-submenu-parent" data-mc-css-sub-menu="vertical menu slide-in-right is-drilldown-submenu" data-mc-include-indicator="False" data-mc-include-icon="False" data-mc-include-parent-link="True" data-mc-include-back="True" data-mc-defer-expand-event="True" data-mc-expand-event="click.zf.drilldown" data-mc-toc="True">
+                    </ul>
+                </aside>
+                <div class="off-canvas-content inner-wrap" data-off-canvas-content="">
+                    <div>
+                        <nav class="title-bar tab-bar" data-mc-ignore="true">
+                            <div class="middle title-bar-section outer-row clearfix">
+                                <div class="relative clearfix"><a class="logo" href="../about/about_application_overview.htm" alt="Logo"></a>
+                                    <div class="navigation-wrapper nocontent">
+                                        <ul class="navigation clearfix" data-mc-css-tree-node-has-children="has-children" data-mc-css-sub-menu="sub-menu" data-mc-expand-event="mouseenter" data-mc-top-nav-menu="True" data-mc-max-depth="4" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                                            <li class="placeholder" style="visibility:hidden"><a>placeholder</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <button class="menu-icon" data-toggle="offCanvas"><span></span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="nav-search row outer-row">
+                                <form class="search" action="#">
+                                    <div class="search-bar search-bar-container needs-pie">
+                                        <input class="search-field needs-pie" type="search" placeholder="Search the help system" />
+                                        <div class="search-filter-wrapper">
+                                            <div class="search-filter">
+                                                <div class="search-filter-content">
+                                                    <ul>
+                                                        <li>All Files</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="search-submit-wrapper" dir="ltr">
+                                            <div class="search-submit" title="Search">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </nav>
+                    </div>
+                    <section class="main-section">
+                        <div class="row outer-row" data-mc-content-body="True">
+                            <div class="buttons popup-container clearfix topicToolbarProxy mc-component nocontent" style="margin-left: 0px; float: right; mc-topic-toolbar-items: RemoveHighlight ExpandAll CollapseAll Print;">
+                                <div class="button-group-container-left">
+                                    <button class="button needs-pie remove-highlight-button" title="Remove Highlights">
+                                        <img src="../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="remove highlight" />
+                                    </button>
+                                    <button class="button needs-pie expand-all-button" data-state1-class="expand-all-button" data-state2-class="collapse-all-button" data-state2-title="Collapse all" title="Expand all" data-state1-title="Expand all">
+                                        <img src="../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="expand all" />
+                                    </button>
+                                    <button class="button needs-pie print-button" title="Print">
+                                        <img src="../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="print" />
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="nocontent">
+                                <div class="MCBreadcrumbsBox_0 breadcrumbs" data-mc-breadcrumbs-divider=" &gt; " data-mc-breadcrumbs-count="3" data-mc-toc="True"><span class="MCBreadcrumbsPrefix">You are here: </span>
+                                </div>
+                            </div>
+                            <h1>vSnap Server Administration Reference</h1>
+                            <p class="SubHeading">General vSnap Administration</p>
+                            <p>Once vSnap has been installed, registered, and initialized, <span class="ProductNames_LongShortECX_Short">IBM Spectrum Protect Plus</span> automatically manages its use as a backup target. Volumes and snapshots are created and managed automatically based on the SLA Policies defined in <span class="ProductNames_LongShortECX_Short">IBM Spectrum Protect Plus</span>.</p>
+                            <p>However, you may still need to configure and administer certain aspects of vSnap, such as network configuration or storage pool management. The vSnap command-line interface is the primary means of administering vSnap. In addition, some of the most common operations can also be performed from the <span class="ProductNames_LongShortECX_Short">IBM Spectrum Protect Plus</span> user interface.</p>
+                            <p class="ListHeading">Managing vSnap Using a Command Line Interface</p>
+                            <p>Run the <code>vsnap</code> command to access the command line interface. The command can be invoked as the <b>serveradmin</b> user or any other OS user that has vSnap admin privileges. Use the <code>vsnap user create</code> command to create additional OS users that have these privileges. The initial <b>serveradmin</b> password is <b>sppDP758-SysXyz</b>.</p>
+                            <p>The command line interface consists of several commands and subcommands that manage various aspects of the system. Refer to <a href="#Storage_Management" class="MCXref xref">Storage Management</a> and <a href="#Network_Management" class="MCXref xref">Network Management</a> for details on using these commands. You can also pass the <code>--help </code>flag to any command or subcommand to view usage help, for example, <code>vsnap --help</code> or <code>vsnap pool create --help</code>.</p>
+                            <p class="ListHeading">Managing vSnap Using <span class="ProductNames_LongShortECX_Short">IBM Spectrum Protect Plus</span> User Interface</p>
+                            <p>Log in to the <span class="ProductNames_LongShortECX_Short">IBM Spectrum Protect Plus</span> user interface and from the navigation menu select <b data-mc-conditions="Default.1012 navigation">System Configuration &gt;&#160;Backup Storage &gt;&#160;Disk</b>. Click the <span class="Strong">Manage </span> <img src="../../resources/images/new_icons/manage.png" style="vertical-align: text-top;border-left-style: solid;border-left-width: 0px;border-left-color: #000000;border-right-style: solid;border-right-width: 0px;border-right-color: #000000;border-top-style: solid;border-top-width: 0px;border-top-color: #000000;border-bottom-style: solid;border-bottom-width: 0px;border-bottom-color: #000000;" alt="Manage icon" />  icon next to a vSnap server to manage it. Refer to <a href="#Storage_Management" class="MCXref xref">Storage Management</a> and <a href="#Network_Management" class="MCXref xref">Network Management</a> for details.</p>
+                            <p class="SubHeading"><a name="Storage_Management"></a>Storage Management</p>
+                            <p class="ListHeading">Encryption</p>
+                            <p>To enable encryption of backup data on a vSnap server, select <b>Initialize with encryption enabled</b> when initializing the server. Encryption settings cannot be changed after the server is initialized and a pool is created. All disks of a vSnap pool use same keyfile, which is generated upon pool creation. Data is encrypted when at rest on the vSnap server. </p>
+                            <p><b>Encryption Algorithm Details</b>
+                            </p>
+                            <ul>
+                                <li value="1">Cipher name:  Advanced Encryption Standard (AES)</li>
+                                <li value="2">Cipher mode:  xts-plain64</li>
+                                <li value="3">Key:   256 bits</li>
+                                <li value="4">LUKS header hashing:  sha256</li>
+                            </ul>
+                            <p class="ListHeading"><a name="Managing_Disks"></a>Managing Disks</p>
+                            <p>vSnap creates a storage pool using disks provisioned to the vSnap server. In the case of virtual deployments, the disks can be RDM or virtual disks provisioned from datastores on any backing storage. In the case of physical deployments, the disks can be local or SAN storage attached to the physical server. The local disks may already have external redundancy enabled via a hardware RAID controller, but if not, vSnap can also create RAID-based storage pools for internal redundancy.</p>
+                            <p>Disks attached to vSnap must be thick provisioned. If disks are thin provisioned, the vSnap server will not have an accurate view of free space in the storage pool, which may lead to data corruption if the underlying datastore runs out of space.</p>
+                            <p>If vSnap was deployed as part of a virtual appliance, it already contains a 100GB starter virtual disk that can be used to create a pool. You can add more disks before or after creating a pool and accordingly use them to create a larger pool or expand an existing pool.</p>
+                            <p>Once you have added disks to a vSnap server, you can rescan to detect newly attached disks.</p>
+                            <ul>
+                                <li value="1">To rescan using the <span class="ProductNames_LongShortECX_Short">IBM Spectrum Protect Plus</span> user interface: From the navigation menu select <b data-mc-conditions="Default.1012 navigation">System Configuration &gt;&#160;Backup Storage &gt;&#160;Disk</b>, then click the <b>Actions</b> menu next to the relevant vSnap server and select <b>Rescan</b>.</li>
+                                <li value="2">To rescan using the vSnap command line interface: Run <code>vsnap disk rescan</code>.</li>
+                            </ul>
+                            <p>Run the command <code>vsnap disk show</code> to list all disks discovered on the system. The USED AS column in the output shows whether each disk is in use. Any disk that is unformatted and unpartitioned is marked as <i>unused</i>, otherwise they are marked as <i>used</i> by the partition table or filesystem that is discovered on them.</p>
+                            <p>Only disks that are marked as <i>unused</i> are eligible for creating or adding to a storage pool. If a disk that you plan to add to a storage pool is not seen as <i>unused</i> by vSnap, it may be because it was previously in use and thus contains remnants of an older partition table or filesystem. You can correct this by using system commands like <code>parted </code>or <code>dd </code>to wipe the disk's partition table.</p>
+                            <p><span class="NoteBlue">Note:</span> It is essential to protect against corruption that could be caused when a VMware datastore on a vSnap server fills up.  For virtual vSnap servers that do not use RAID, it is a best practice to ensure a stable environment (such as utilizing thick provisioned VMDKs). Replicating to external vSnap servers provides further protection.</p>
+                            <p><span class="NoteBlue">Note:</span> A vSnap server will become invalidated if the vSnap pool is deleted or if a vSnap disk is deleted in a non-redundant RAID configuration. All data on the vSnap server will be lost. If your vSnap server becomes invalidated you must unregister the vSnap server through the <span class="ProductNames_LongShortECX_Short">IBM Spectrum Protect Plus</span> interface, then run the Maintenance job. Once complete, the vSnap server can be re-registered in <span class="ProductNames_LongShortECX_Short">IBM Spectrum Protect Plus</span>.</p>
+                            <p class="ListHeading">Showing Storage Pool Information</p>
+                            <p>Run the <code>vsnap pool show</code> command to view information about each storage pool.</p>
+                            <p class="ListHeading">Creating a Storage Pool</p>
+                            <p>If you performed the Simple initialization procedure described in <a href="backup_storage_vsnap_install.htm" class="MCXref xref">Install vSnap Server</a>, a storage pool was already created automatically.</p>
+                            <p>To create a storage pool manually, use the <code>vsnap pool create</code> command. Before running, ensure one or more unused disks are available as described in <a href="#Managing_Disks" class="MCXref xref">Managing Disks</a>. For information about available options,  pass the <code>--help </code>flag to any command or subcommand to view usage help.</p>
+                            <p>Specify a user-friendly display name for the pool and a list of one or more disks. If no disks are specified, all available unused disks are used. You can choose to enable compression and deduplication for the pool during creation. You can also update the compression/deduplication settings at a later time using the <code>vsnap pool update</code> command.</p>
+                            <p>Your choice of pool type specified during creation dictates the redundancy of the pool:</p>
+                            <ul>
+                                <li value="1"><b>raid0</b> - This is the default option when no pool type is specified. In this case vSnap assumes your disks have external redundancy, for example, if you use virtual disks on a datastore backed by redundant storage. In this case, the storage pool will have no internal redundancy.</li>
+                                <li value="2"><b>raid5</b> - When you select this option, the pool is comprised of one or more RAID5 groups each consisting of three or more disks. The number of RAID5 groups and the number of disks in each group depends on the total number of disks you specify during pool creation. Based on the number of available disks, vSnap chooses values that maximize total capacity while also ensuring optimal redundancy of vital metadata.</li>
+                                <li value="3"><b>raid6</b> - When you select this option, the pool is comprised of one or more RAID6 groups each consisting of four or more disks. The number of RAID6 groups and the number of disks in each group depends on the total number of disks you specify during pool creation. Based on the number of available disks, vSnap chooses values that maximize total capacity while also ensuring optimal redundancy of vital metadata.</li>
+                            </ul>
+                            <p><span class="NoteBlue">Note:</span> Once a disk has been added to a raid0 pool it cannot be removed. Disconnecting the disk will result in the pool becoming unavailable which can only be resolved by destroying and recreating the pool.</p>
+                            <p class="ListHeading">Expanding a Storage Pool</p>
+                            <p>Before expanding a pool, ensure  one or more unused disks are available as described in <a href="#Managing_Disks" class="MCXref xref">Managing Disks</a>.</p>
+                            <p>To expand a storage pool from the <span class="ProductNames_LongShortECX_Short">IBM Spectrum Protect Plus</span> user interface, from the navigation menu select <b data-mc-conditions="Default.1012 navigation">System Configuration &gt;&#160;Backup Storage &gt;&#160;Disk</b>. Click the <span class="Strong">Manage </span> <img src="../../resources/images/new_icons/manage.png" style="vertical-align: text-top;border-left-style: solid;border-left-width: 0px;border-left-color: #000000;border-right-style: solid;border-right-width: 0px;border-right-color: #000000;border-top-style: solid;border-top-width: 0px;border-top-color: #000000;border-bottom-style: solid;border-bottom-width: 0px;border-bottom-color: #000000;" alt="Manage icon" />  icon next to a vSnap server to manage it, then expand the tab titled Add New Disks. The tab displays all unused disks discovered on the system. Select one or more disks and click <b>Save</b> to add them to the storage pool.</p>
+                            <p>To expand a storage pool from the command line interface, use the <code>vsnap pool expand</code> command. For information about available options,  pass the <code>--help </code>flag to any command or subcommand to view usage help.</p>
+                            <p class="SubHeading"><a name="Network_Management"></a>Network Management</p>
+                            <p class="ListHeading">Showing Network Interface Information</p>
+                            <p>Run the <code>vsnap network show</code> command to list network interfaces and the services associated with each.</p>
+                            <p>By default, the following vSnap services are available on all network interfaces:</p>
+                            <ul>
+                                <li value="1"><b>mgmt</b> - Used for management traffic between <span class="ProductNames_LongShortECX_Short">IBM Spectrum Protect Plus</span> and vSnap.</li>
+                                <li value="2"><b>nfs</b> - Used for data traffic when backing up data using NFS (currently used for VMware backups).</li>
+                                <li value="3"><b>smb</b> - Used for data traffic when backing up data using SMB/CIFS (currently not used, reserved for future use.)</li>
+                                <li value="4"><b>iscsi</b> - Used for data traffic when backing up data using iSCSI (currently used for Hyper-V backups).</li>
+                            </ul>
+                            <p class="ListHeading">Modifying Services Associated with Network Interfaces</p>
+                            <p>Run the <code>vsnap network update</code> command to modify services associated with an interface, for example, if you're using a dedicated interface for data traffic to improve performance.</p>
+                            <p>Specify the following options:</p>
+                            <p><b>--id &lt;TEXT&gt;</b> - Enter the ID of the interface to update (required).</p>
+                            <p><b>--services &lt;TEXT&gt;</b> - Specify "all" or a comma-separated list of services to enable on the interface. The following are valid services:&#160;mgmt, nfs, smb, and iscsi (required).</p>
+                            <p><span class="NoteBlue">Note:</span> If a service is available on more than one interface, <span class="ProductNames_LongShortECX_Short">IBM Spectrum Protect Plus</span> may use any one of the interfaces.</p>
+                            <p><span class="NoteBlue">Note:</span> Ensure the <i>mgmt</i> service remains enabled on the interface that was used to register the vSnap server into <span class="ProductNames_LongShortECX_Short">IBM Spectrum Protect Plus</span>.</p>
+                            <div class="RelatedTopic">
+                                <p class="PostPreRelTitleLeft"><span class="PostPreRelTitle">RELATED TOPICS:</span>
+                                </p>
+                                <ul>
+                                    <li value="1"><a href="backup_storage_vsnap_install.htm" class="MCXref xref">Install vSnap Server</a>
+                                    </li>
+                                    <li value="2"><a href="backup_storage_add.htm" class="MCXref xref">Add a Backup Storage Provider</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <p>&#160;</p>
+                            <hr width="100%" size="0" align="center" />
+                            <p style="text-align: left;"><span class="Strong" style="font-size: 10pt;">IBM Spectrum Protect Plus</span> <span class="Strong" style="font-size: 10pt;">10.1.2</span> <![CDATA[ ]]></p>
+                            <p style="font-size: 8pt;">Licensed Material - Property of IBM Corp. © IBM Corporation and other(s) <span class="GeneralYear">2018</span>. IBM is a registered trademark of the IBM Corporation in the United States, other countries, or both. <span style="font-size: 10pt;"><span style="font-size: 8pt;">| </span></span><span style="font-size: 8pt;" class="SystemShortDate">8/23/2018</span></p>
+                        </div>
+                    </section><a data-close="true"></a>
+                </div>
+            </div>
+            <script>/* <![CDATA[ */$(document).foundation();/* ]]> */</script>
+        </div>
+    </body>
+</html>

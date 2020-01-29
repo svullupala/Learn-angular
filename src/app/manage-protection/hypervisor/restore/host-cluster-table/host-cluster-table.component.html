@@ -1,0 +1,82 @@
+<div style="height: 425px;" [ngClass]="{'masked': masked}">
+  <div>
+    <div class="row">
+      <div class="col-lg-6" style="width: 245px;">
+        <sdl-search-bar (search)="startSearch(($event === '') ? '*' : $event)"
+             [isSupportClear]="true"
+             (clear)="onClearSearch()"
+             [textPlaceholderLabel]="textSearchFor">
+        </sdl-search-bar>
+      </div>
+      <div class="col-lg-6" *ngIf="!isAwsec2()">
+        <label class="inline" style="font-size: 14px; width: 50px; text-align: right;" translate [hidden]="enableEsxUser">{{'common.textViewColon'}}</label>
+        <div class="btn-group" role="group" [hidden]="enableEsxUser">
+          <button id="btnGroupDrop1" type="button" class="btn btn-default dropdown-toggle dropdown-toggle-sdl" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            {{ view && view.name }}
+          </button>
+          <div class="dropdown-menu dropdown-menu-sdl" aria-labelledby="btnGroupDrop1">
+            <a *ngFor="let item of views" tabindex="0" class="dropdown-item dropdown-item-sdl" clickOnEnterKeydown (click)="onViewClick(item)" >{{item.name}}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  <ul class="breadcrumb2">
+    <li *ngFor="let breadcrumb of breadcrumbs">
+      <span tabindex="0" clickOnEnterKeydown (click)="onBreadcrumbClick(breadcrumb, $event)" [ngClass]="{'link': canNavigateBreadCrumb(breadcrumb)}"
+      >{{breadcrumb.title}}</span>
+    </li>
+  </ul>
+  <div style="height: 300px; overflow: auto;">
+    <table>
+      <thead>
+      <tr>
+        <th class="checkbox-column"></th>
+        <th translate>{{'hypervisor.textName'}}</th>
+        <th *ngIf="!isSearch() && !isAwsec2()" translate>{{'common.typeText'}}</th>
+        <th *ngIf="isSearch()" translate>{{'common.textPath'}}</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let item of records | paging: paginateConfig.json()" class="no-top-border">
+        <td class="checkbox-column">
+          <label class="custom-radio" *ngIf="canSelect(item)">
+            <input type="radio"
+                   name="hostcluster"
+                   [checked]="isSelected(item)"
+                   #hostclusterradionbtn
+                   (click)="onSelect(item)"
+                   aria-label="...">
+            <span></span>
+          </label>
+        </td>
+        <td class="icon-format">
+          <i class="ion-android-folder" *ngIf="isHypervisor(item)"></i>
+          <i class="ion-android-desktop" *ngIf="isHost(item)"></i>
+          <span [ngClass]="{'link': canNavigate(item, view.value)}" tabindex="0" (keydown.enter)="navigate(item,$event)" (click)="navigate(item,$event)">{{item.name}}</span>
+        </td>
+        <td *ngIf="!isSearch() && !isAwsec2()">
+          {{item.resourceType}}
+        </td>
+        <td *ngIf="isSearch()">
+          {{item.location}}
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="paging-toolbar">
+    <paging-toolbar (pageChange)="onPageChange($event)" (refresh)="onRefresh()"
+                    [id]="paginateConfig.id" [total]="paginateConfig.totalItems"></paging-toolbar>
+  </div>
+</div>
+</div>
+<base-modal-component *ngIf="!isHyperV()"
+                      (onSave)="onUserSave()"
+                      [disableConfirmButton]="!isUserValid()"
+                      [title]="'hypervisor.textCreateOrSelectUser' | translate">
+  <identity-user-enter-select [clsOfFieldCol]="'col-sm-6'"
+                              [clsOfLabelCol]="'col-sm-6'"
+                              [model]="identityModel"
+                              [enableNameField]="true"
+                              (createdUserEvent)="onCreatedUserCallback($event)"></identity-user-enter-select>
+</base-modal-component>

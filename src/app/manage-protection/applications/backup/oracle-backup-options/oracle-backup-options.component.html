@@ -1,0 +1,50 @@
+  <div class="checkbox">
+    <label class="custom-checkbox" translate>
+      <input type="checkbox" [(ngModel)]="enableLogBackup">
+      <span>{{'application.textEnableLogbackup' | translate }}</span>
+    </label>
+  </div>
+  <div [ngClass]="{'decrease-botton-margin': enableLogBackup}">
+    <ba-card [hidden]="!enableLogBackup">
+      <div class="form-group row">
+        <label class="control-label col-sm-3 line-height-30" translate>{{'application.textLogbackupFrequency'}}</label>
+        <div class="col-sm-9">
+          <define-schedule [hideMonthlyType]="true"
+                          [enableMinMax]="true"
+                          [hideLabel]="true"
+                          [startTimeLabelMarginClass]="'space-right-12'"
+                          [hideStartTime]="true"
+                          [hideStartHourAndMinute] = "false"
+                          [defaultType] = "'SUBHOURLY'"
+                          [defaultFrequency] = '30'
+                          [hideWeeklyType]="true"></define-schedule>
+        </div>
+      </div>
+      <div class="form-group row space-top-10">
+        <label class="control-label col-sm-3">{{ 'application.textPurgePrimaryLogs' | translate }}</label>
+        <div class="col-sm-9">
+          <label class="custom-checkbox" translate>
+            <input type="checkbox" [(ngModel)]="purgePrimaryLogs">
+            <span></span>
+          </label>
+        </div>
+      </div>
+      <div class="form-group row space-top-10">
+        <label class="col-sm-3 control-label line-height-30">{{ 'application.textPrimaryLogsRetentionDays' | translate }}</label>
+        <div class="col-sm-3">
+          <input type="number" [min]="1" class="form-control" [(ngModel)]="model.primaryLogRetentionDays">
+        </div>
+      </div>
+    </ba-card>
+  </div>
+  <br [hidden]="enableLogBackup">
+  <br [hidden]="enableLogBackup">
+  <div class="form-group row">
+    <label for="maxParallelStreams" class="col-sm-3 control-label line-height-30" translate>
+      {{'application.textMaxParallelStreams'}}
+    </label>
+    <div class="col-sm-3">
+      <input type="number" min="1" style="margin-left: 15px" class="form-control" id="maxParallelStreams"
+             [(ngModel)]="model.maxParallelStreams">
+    </div>
+  </div>

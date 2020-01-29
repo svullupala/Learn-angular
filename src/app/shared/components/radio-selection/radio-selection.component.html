@@ -1,0 +1,21 @@
+<div class="radio-selection-wrapper">
+  <div
+    class="radio-selection-item"
+    [ngClass]="{ 'radio-selection-item--active': selections[i].key === value }"
+    (click)="handleClick(selections[i].key)"
+    *ngFor="let template of templates.toArray(); let i = index"
+  >
+    <label class="radio-inline custom-radio">
+      <input
+        type="radio"
+        [checked]="value === selections[i].key"
+        (click)="handleClick(selections[i].key)"
+      />
+      <span>{{ selections[i].labelText }}</span>
+    </label>
+
+    <div>
+      <ng-container [ngTemplateOutlet]="template"></ng-container>
+    </div>
+  </div>
+</div>

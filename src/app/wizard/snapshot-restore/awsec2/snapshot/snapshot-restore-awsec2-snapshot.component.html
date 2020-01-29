@@ -1,0 +1,133 @@
+<div class="snapshot">
+  <div class="title" translate>{{'wizard.job.textSourceSnapshotTitle'}}</div>
+  <div class="desc">{{singleSourceOnDemand ? textSingleSourceSnapshotDesc : ('wizard.job.textSourceSnapshotDesc' | translate)}}</div>
+  <div class="content">
+    <div *ngIf="showExcludeSelectionsNoSnapshot" class="note" translate>{{'wizard.job.textExcludeSelectionsNoSnapshot'}}</div>
+    <div class="filter side-by-side-wrapper">
+      <div class="side-by-side-wrapper">
+        <div class="btn-group" role="group">
+          <button id="btnDropRestoreType" type="button" class="btn btn-default dropdown-toggle  dropdown-toggle-sdl" data-toggle="dropdown"
+                  aria-haspopup="true" aria-expanded="false" [disabled]="editMode">
+            {{selectedRestoreType && selectedRestoreType.name}}
+          </button>
+          <div class="dropdown-menu dropdown-menu-sdl" aria-labelledby="btnGroupDropType">
+            <a *ngFor="let type of restoreTypes" tabindex="0" class="dropdown-item  dropdown-item-sdl"
+               clickOnEnterKeydown (click)="onSelectRestoreType(type)">{{type.name}}</a>
+          </div>
+        </div>
+      </div>
+<!--      <div class="btn-group site" role="group" aria-label="Site" [hidden]="singleSourceOnDemand">-->
+<!--        <div>-->
+<!--          <div class="btn-group" role="group">-->
+<!--            <button id="btnGroupDropType" type="button" class="btn btn-default dropdown-toggle  dropdown-toggle-sdl" data-toggle="dropdown"-->
+<!--                    aria-haspopup="true" aria-expanded="false" [disabled]="selectedRestoreType.value === ''">-->
+<!--              {{selectedRestoreSourceType && selectedRestoreSourceType.name}}-->
+<!--            </button>-->
+<!--            <div class="dropdown-menu dropdown-menu-sdl" aria-labelledby="btnGroupDropType">-->
+<!--              <a *ngFor="let type of restoreSourceTypes" tabindex="0" class="dropdown-item  dropdown-item-sdl"-->
+<!--                 clickOnEnterKeydown (click)="onSelectTypeClick(type)">{{type.name}}</a>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <div class="btn-group site" role="group" aria-label="Site" [hidden]="singleSourceOnDemand">-->
+<!--        <div>-->
+<!--          <div class="btn-group" role="group">-->
+<!--            <button id="btnGroupDropSite" type="button" class="btn btn-default dropdown-toggle  dropdown-toggle-sdl" data-toggle="dropdown"-->
+<!--                    aria-haspopup="true" aria-expanded="false" [disabled]="selectedRestoreSourceType.value === ''">-->
+<!--              {{selectedRestoreSourceItem && selectedRestoreSourceItem.name}}-->
+<!--            </button>-->
+<!--            <div class="dropdown-menu dropdown-menu-sdl" aria-labelledby="btnGroupDropSite">-->
+<!--              <a *ngFor="let item of availableRestoreSourceItems" tabindex="0" class="dropdown-item  dropdown-item-sdl"-->
+<!--                 clickOnEnterKeydown (click)="onFilteredItemClick(item)">{{item.name}}</a>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+      <div class="col-lg-4 side-by-side-wrapper" *ngIf="!model.useLatest">
+        <input [attr.aria-label]="'fileRestore.textDateRange' | translate" [disabled]="selectedRestoreType.value === ''"
+               class="form-control" #drpElement #drp="bsDaterangepicker" readonly="readonly" bsDaterangepicker
+               [bsConfig]="bsConfig"
+               [(ngModel)]="model.dateRange"
+               (ngModelChange)="setSnapshotFilters()"
+               (bsValueChange)="onDateRangeChange($event)"
+               (keydown)="onDateRangeKeyDown(drp, $event)">
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-lg-11" [ngClass]="{'masked': mask}" [hidden]="singleSourceOnDemand">
+        <hypervisor-restore-selection-table
+          [greyedOutEnabled]="true"
+          [snapshotSelectionDisabled]="snapshotSelectionDisabled"
+          [showDelete]="false"
+          [selectSnapshot]="!model.useLatest"
+          (dropDownSnapshotEvent)="onSnapshotDropDown($event)"
+          (selectSnapshotEvent)="onSnapshotSelect($event)"></hypervisor-restore-selection-table>
+      </div>
+      <div class="col-lg-11" [ngClass]="{'masked': mask}" *ngIf="isSingleSource" [hidden]="!singleSourceOnDemand">
+        <hypervisor-single-source-snapshot-selection
+          [restoreItem]="singleSource" [filters]="dateRangeFilters"
+          (toggleSnapshotSelect)="onToggleSnapshotSelect($event)"></hypervisor-single-source-snapshot-selection>
+      </div>
+    </div>
+<!--    <div class="row" [hidden]="!showAlternateVsnap">-->
+<!--      <ba-card>-->
+<!--        <div class="row">-->
+<!--          <label class="col-sm-4 control-label wrap" translate>{{'hypervisor.textUseAlternateVsnap'}}</label>-->
+<!--          <div class="col-sm-3">-->
+<!--            <label class="custom-checkbox">-->
+<!--              <input type="checkbox" [(ngModel)]="model.useAlternateVsnap">-->
+<!--              <span></span>-->
+<!--            </label>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        <div class="row">-->
+<!--          <br>-->
+<!--          <label class="col-sm-4 control-label wrap" translate>{{'hypervisor.textSelectAlternateVsnap'}}</label>-->
+<!--          <div class="col-sm-3">-->
+<!--            <div class="btn-group" role="group">-->
+<!--              <button id="btnGroupDropPartner" type="button" [disabled]="!model.useAlternateVsnap"-->
+<!--                      class="btn btn-default dropdown-toggle  dropdown-toggle-sdl" data-toggle="dropdown"-->
+<!--                      aria-haspopup="true" aria-expanded="false">-->
+<!--                {{model.selectedStorage && model.selectedStorage.hostAddress}}-->
+<!--              </button>-->
+<!--              <div class="dropdown-menu dropdown-menu-sdl" aria-labelledby="btnGroupDropPartner">-->
+<!--                <a *ngFor="let storage of storageList" tabindex="0" clickOnEnterKeydown class="dropdown-item  dropdown-item-sdl"-->
+<!--                   (click)="model.selectedStorage = storage">{{storage.hostAddress}}</a>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </ba-card>-->
+<!--    </div>-->
+  </div>
+</div>
+<ng-template #summary>
+  <div class="summary">
+    <div class="content">
+      <div class="property" *ngIf="!hasSelection">
+          <label class="name">{{'wizard.job.textSourceSnapshotSummary' | translate}}</label>
+          <label class="value">{{'wizard.job.textEmpty' | translate}}</label>
+      </div>
+      <div class="property" *ngFor="let item of summarySource; let i = index">
+        <label class="name">{{i === 0 ? ('wizard.job.textSourceSnapshotSummary' | translate) : ''}}</label>
+        <label class="value">
+          {{item.resource.name}} - {{item.snapshot ? ((item.snapshot.copyTime || item.snapshot.protectionTime) | amDateFormat: 'll LTS') : ('hypervisor.textUseLatest' | translate)}}
+        </label>
+      </div>
+      <div class="property">
+        <label class="name">{{'wizard.job.textRestoreTypeSummary' | translate}}</label>
+        <label class="value">{{selectedRestoreType.value === '' ? ('wizard.job.textEmpty' | translate) : selectedRestoreType.name}}</label>
+      </div>
+<!--      <div class="property">-->
+<!--        <label class="name">{{'wizard.job.textRestoreSourceTypeSummary' | translate}}</label>-->
+<!--        <label class="value">{{selectedRestoreSourceType.value === '' ? ('wizard.job.textEmpty' | translate) : selectedRestoreSourceType.name}}</label>-->
+<!--      </div>-->
+<!--      <div class="property">-->
+<!--        <label class="name">{{'wizard.job.textRestoreSourceItemSummary' | translate}}</label>-->
+<!--        <label class="value">{{selectedRestoreSourceItem.value === '' ? ('wizard.job.textEmpty' | translate) : selectedRestoreSourceItem.name}}</label>-->
+<!--      </div>-->
+    </div>
+  </div>
+</ng-template>

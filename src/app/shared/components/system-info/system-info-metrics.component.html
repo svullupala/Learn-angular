@@ -1,0 +1,11 @@
+<div class="card-block widget-card-block">
+    <div class="row progress-bar-row">
+      <div class="col-lg-6">
+        <progress-bar *ngIf="metrics && metrics.cpu" [status]="getProgressBarStatus(metrics.cpu)" [label]="textCPU" [totalLabel]="getCPUTotalLabel()" [percentage]="metrics.cpu"></progress-bar>
+      </div>
+      <div class="col-lg-6">
+        <progress-bar *ngIf="metrics && metrics.mem" [status]="getProgressBarStatus(metrics.mem)" [label]="textMEM" [totalLabel]="getMEMTotalLabel()" [percentage]="metrics.mem"></progress-bar>
+      </div>
+    </div>
+</div>
+

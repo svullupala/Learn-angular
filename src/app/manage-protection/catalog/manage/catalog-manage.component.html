@@ -1,0 +1,9 @@
+<ba-card baCardClass="dark-card" title="{{'catalog.textCatalogSearch' | translate}}">
+	<dynamic-tabset [tabs]="tabs" (select)="onSwitchMode($event)"></dynamic-tabset>
+	<ng-template #search>
+		<catalog-search></catalog-search>
+	</ng-template>
+	<ng-template #resource>
+		<catalog-resource></catalog-resource>
+	</ng-template>
+</ba-card>

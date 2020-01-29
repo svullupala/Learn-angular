@@ -1,0 +1,218 @@
+@import 'conf/conf';
+
+$text-color: #ffffff;
+$copyright-width: 400px;
+$ibm-logo-width: 64px;
+$java-logo-width: 64px;
+$logo-spacing: 16px;
+
+.auth-main {
+  display: flex;
+  align-items: center;
+  overflow: auto;
+  height: calc(100% - 80px);
+  width: 100%;
+  position: absolute;
+  background: url($branding-ibm-root + 'landing/spectrum_login_bg_v3.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.auth-footer {
+  bottom: 0;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  position: absolute;
+  background-color: black;
+  color: #FFFFFF;
+  #copyright {
+    font-size: 9px;
+    word-break: keep-all;
+    text-align: center;
+    width: $copyright-width;
+    margin: auto;
+    position: absolute;
+    top: 50%;
+    left: calc(50% - #{$copyright-width / 2});
+    transform: translateY(-50%);
+  }
+  #version {
+    position: absolute;
+    font-size: 10px;
+    left: calc(#{$logo-spacing * 3 + $ibm-logo-width});
+  }
+  #ibmlogo {
+    position: absolute;
+    left: $logo-spacing;
+    margin-left: $logo-spacing;
+    padding: 8px 0;
+    width: $ibm-logo-width;
+  }
+  #javalogo {
+    position: absolute;
+    right: $logo-spacing;
+    margin: 0;
+    padding: 8px 0;
+    width: $java-logo-width;
+  }
+
+}
+.auth-block {
+  width: 540px;
+  margin: 0 auto;
+  border-radius: 5px;
+  color: #fff;
+  padding: 32px;
+  h1 {
+    font-weight: $font-normal;
+    font-size: $font-size-of-spp;
+    margin-bottom: 40px;
+    height: 56px;
+    text-align: center;
+    padding: 16px;
+
+    #name2 {
+      font-weight: $font-bold;
+      margin-bottom: 24px;
+      text-align: center;
+    }
+    #name3 {
+      font-weight: $font-bold;
+      margin-bottom: 4px;
+      text-align: center;
+    }
+  }
+
+  p {
+    font-size: 16px;
+  }
+  a {
+    text-decoration: none;
+    outline: none;
+    transition: all 0.2s ease;
+    color: $primary;
+    &:hover {
+      color: $primary-dark;
+    }
+  }
+
+  .control-label {
+    padding-top: 11px;
+    color: $text-color;
+  }
+
+  .form-group {
+    margin-bottom: 12px;
+  }
+
+  .margin8 {
+    margin: 8px 0 0 0;
+  }
+
+  .submitBox {
+    width: 296px;
+    margin: 0 auto;
+  }
+}
+
+.auth-input {
+  width: 296px;
+  margin: 0 auto;
+  border-radius: 0;
+  background-color: transparent !important;
+  font-size: 16px;
+  color: #ffffff;
+  @include placeholderStyle($content-text, 1.0);
+  input {
+    display: block;
+    width: 100%;
+    border: none;
+    font-size: 16px;
+    padding: 6px 20px;
+    outline: none;
+  }
+  &:focus {
+    color: #ffffff;
+    box-shadow: none;
+    border-color: $primary-bg;
+    background-color: transparent !important;
+  }
+}
+
+a.forgot-pass {
+  display: block;
+  text-align: right;
+  margin-bottom: -20px;
+  float: right;
+  z-index: 2;
+  position: relative;
+}
+
+.auth-link {
+  display: block;
+  font-size: 16px;
+  text-align: center;
+  margin-bottom: 33px;
+}
+
+.auth-sep {
+  margin-top: 36px;
+  margin-bottom: 24px;
+  line-height: 20px;
+  font-size: 16px;
+  text-align: center;
+  display: block;
+  position: relative;
+  & > span {
+    display: table-cell;
+    width: 30%;
+    white-space: nowrap;
+    padding: 0 24px;
+    color: $text-color;
+    & > span {
+      margin-top: -12px;
+      display: block;
+    }
+  }
+  &:before, &:after {
+    border-top: solid 1px $text-color;
+    content: "";
+    height: 1px;
+    width: 35%;
+    display: table-cell;
+  }
+}
+
+.al-share-auth {
+  text-align: center;
+  .al-share {
+    float: none;
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    li {
+      margin-left: 24px;
+      &:first-child {
+        margin-left: 0;
+      }
+      i {
+        font-size: 24px;
+      }
+    }
+  }
+}
+
+.btn-auth {
+  color: #09474d !important;
+  background: $brand !important;
+  width: 100%;
+  font-size: 16px;
+  padding: 16px;
+  margin: 24px 0 0 0;
+  border: 0;
+  border-radius: 0;
+}

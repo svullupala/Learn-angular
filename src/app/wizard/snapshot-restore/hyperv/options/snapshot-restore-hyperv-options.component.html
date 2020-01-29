@@ -1,0 +1,52 @@
+<div class="options">
+  <div class="title" translate>{{'wizard.job.textOptionsTitle'}}</div>
+  <div class="desc" translate>{{'wizard.job.textOptionsDesc'}}</div>
+  <div class="content" (change)="getOptions()">
+    <basic-dynamic-form
+      [formValues]="formValues"
+      [enableSaveButton]="false"
+      [enableCardLayout]="false"
+      [enableCancelButton]="false">
+    </basic-dynamic-form>
+  </div>
+</div>
+<ng-template #summary>
+  <div class="summary">
+    <div class="content">
+      <div class="property">
+        <label class="name">{{'hypervisor.autoCleanupTextSummary' | translate}}</label>
+        <label class="value">{{(model.options.autocleanup ? 'wizard.job.textYes' : 'wizard.job.textNo') | translate}}</label>
+      </div>
+      <div class="property">
+        <label class="name">{{'hypervisor.overwriteVMSummary' | translate}}</label>
+        <label class="value">{{(model.options.allowvmoverwrite ? 'wizard.job.textYes' : 'wizard.job.textNo') |
+          translate}}</label>
+      </div>
+      <div class="property">
+        <label class="name">{{'hypervisor.continueOnSourceTextSummary' | translate}}</label>
+        <label class="value">{{(model.options.continueonerror ? 'wizard.job.textYes' : 'wizard.job.textNo') |
+          translate}}</label>
+      </div>
+      <div class="property" *ngIf="isIAWorkflow">
+        <label class="name">{{'hypervisor.iaPermanentTextSummary' | translate}}</label>
+        <label class="value">{{(model.options.IR ? 'wizard.job.textYes' : 'wizard.job.textNo') |
+          translate}}</label>
+      </div>
+      <div class="property" *ngIf="!isIAWorkflow">
+        <label class="name">{{'hypervisor.powerOnTextSummary' | translate}}</label>
+        <label class="value">{{(model.options.poweron ? 'wizard.job.textYes' : 'wizard.job.textNo') |
+          translate}}</label>
+      </div>
+      <div *ngIf="model.runType !== 'recovery'" class="section">
+        <div class="property">
+          <label class="name">{{'hypervisor.textVmNamePrefixSummary' | translate}}</label>
+          <label class="value">{{(model.options.vmNamePrefix ? model.options.vmNamePrefix : ('wizard.job.textEmpty' | translate))}}</label>
+        </div>
+        <div class="property">
+          <label class="name">{{'hypervisor.textVmNameSuffixSummary' | translate}}</label>
+          <label class="value">{{(model.options.vmNameSuffix ? model.options.vmNameSuffix : ('wizard.job.textEmpty' | translate))}}</label>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>

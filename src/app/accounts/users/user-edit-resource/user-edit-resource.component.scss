@@ -1,0 +1,73 @@
+.no-top-border {
+  border-top: 0;
+}
+
+.table {
+  table-layout:fixed;
+}
+
+.table th {
+  border-top: 0;
+  border-bottom: 0;
+}
+
+.table td {
+  border-top: 0;
+  border-bottom: 0;
+  padding: 0;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.align-left {
+  text-align: left !important;
+}
+
+.normal-col {
+  width: 50%;
+  word-break: break-all;
+}
+
+.table > tbody > tr > td:first-child {
+  padding-left: 0.75rem;
+}
+
+.right {
+  float: right;
+  padding-right: 0.75rem;
+}
+
+.side-by-side-wrapper {
+  display: flex;
+  flex-flow: row;
+}
+
+.side-by-side-left {
+  flex: 1;
+}
+
+.side-by-side-right {
+  flex: 1;
+}
+
+.vmiddle {
+  vertical-align: middle;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.vertical-scroll {
+  overflow-y: auto;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.action {
+  cursor: pointer;
+}

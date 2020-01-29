@@ -1,0 +1,56 @@
+<svg *ngIf="model.icon === 'error--filled'" ibmIconErrorFilled16 class="status-icon {{theme}} status-failed"
+     [ngClass]="class"
+     sdlTooltip
+     placement="left"
+     container="body"
+     mode="critical"
+     [iconHidden]="true"
+     [isDisabled]="_tooltipDisabled"
+     [sdlTooltip]="model.tooltip  | translate"></svg>
+<svg *ngIf="model.icon === 'warning--filled'" ibmIconWarningFilled16 class="status-icon {{theme}} status-warning"
+     [ngClass]="class"
+     sdlTooltip
+     placement="left"
+     container="body"
+     mode="warning"
+     [iconHidden]="true"
+     [isDisabled]="_tooltipDisabled"
+     [sdlTooltip]="model.tooltip  | translate"></svg>
+<svg *ngIf="model.icon === 'checkmark--filled'" ibmIconCheckmarkFilled16 class="status-icon {{theme}} status-successful"
+     [ngClass]="class"
+     sdlTooltip
+     placement="left"
+     container="body"
+     mode="info"
+     [iconHidden]="true"
+     [isDisabled]="_tooltipDisabled"
+     [sdlTooltip]="model.tooltip | translate"></svg>
+<svg *ngIf="model.icon === 'error--outline'" ibmIconErrorOutline16 class="status-icon {{theme}} status-failed"
+     [ngClass]="class"
+     sdlTooltip
+     placement="left"
+     container="body"
+     mode="critical"
+     [iconHidden]="true"
+     [isDisabled]="_tooltipDisabled"
+     [sdlTooltip]="model.tooltip  | translate"></svg>
+<svg *ngIf="model.icon === 'warning--alt'" ibmIconWarningAlt16 class="status-icon {{theme}} status-warning"
+     [ngClass]="class"
+     sdlTooltip
+     placement="left"
+     container="body"
+     mode="warning"
+     [iconHidden]="true"
+     [isDisabled]="_tooltipDisabled"
+     [sdlTooltip]="model.tooltip  | translate"></svg>
+<svg *ngIf="model.icon === 'checkmark--outline'" ibmIconCheckmarkOutline16
+     class="status-icon {{theme}} status-successful"
+     [ngClass]="class"
+     sdlTooltip
+     placement="left"
+     container="body"
+     mode="info"
+     [iconHidden]="true"
+     [isDisabled]="_tooltipDisabled"
+     [sdlTooltip]="model.tooltip | translate"></svg>
+

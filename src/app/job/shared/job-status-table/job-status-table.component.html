@@ -1,0 +1,106 @@
+<div class="scroll outer-jobs-container-style">
+  <div class="log-type-filter align-right row margin-bottom-10">
+    <label translate>{{'job.textFilterJobLogLabel'}}</label>
+    <div class="log-type-list" keyboardMultiselect [multiselect]="multiselect">
+      <angular2-multiselect [settings]="dropdownSettings" #multiselect
+                            [data]="selectableLogTypes"
+                            [(ngModel)]="selectedLogTypes"
+                            (onSelect)="onLogTypeSelect($event)"
+                            (onDeSelect)="onLogTypeDeselect($event)"
+      ></angular2-multiselect>
+    </div>
+  </div>
+  <div #overflowTable class="jobs-table-style overflow">
+    <table>
+      <thead>
+        <tr>
+          <th></th>
+          <th width="30%" translate>{{'job.textName'}}</th>
+          <th width="15%" translate>{{'job.textStatus'}}</th>
+          <!-- <th translate>{{'job.textProgress'}}</th> SPP-1767 -->
+          <th width="15%" translate>{{'job.textStartTime'}}</th>
+          <th width="15%" translate>{{'job.textDuration'}}</th>
+          <th width="15%"></th>
+        </tr>
+      </thead>
+      <tbody>
+      <tr [hidden]="!(jobs && jobs.length < 1)">
+        <td>
+          <i class="bidi-status-warning"></i>
+        </td>
+        <td colspan="3">
+          <span translate>{{'job.textNoJobSessions'}}</span>
+        </td>
+      </tr>
+      <ng-template let-item ngFor [ngForOf]="jobs | paging: jobPaginateConfig.json()" [ngForTrackBy]="trackByModel">
+        <tr>
+          <td>
+            <button class="btn btn-primary btn-xs"
+                    [attr.aria-label]="(isExpanded(item) ? 'common.textCollapse' : 'common.textExpand') | translate"
+                    (click)="onLogClick(item)" data-toggle="collapse"
+                    [attr.data-target]="'#' + getCollapsibleContainerId(item)">
+              <i [id]="getCollapsibleOperatorId(item)" [class]="isExpanded(item)? 'ion-chevron-down' : 'ion-chevron-right'"></i>
+            </button>
+          </td>
+          <td>{{item.jobName | ondemandSessionName}}</td>
+          <td>
+            {{item.status}}
+            <button [title]="'common.textClickForAdditionalInfo' | translate"
+                    style="background-color: transparent; border: none;"
+                    (click)="onRestoreInfoClick(item)" *ngIf="item.hasPostRestoreMessage() || item.hasPostRestoreCommand()">
+              <img src="{{ ( 'app/misc/info.png' | baAppPicture )}}"
+                   alt="{{'common.textInfoAltText' | translate}}" width="16" height="16">
+            </button>
+          </td>
+          <!-- <td>{{item.percent || 0}}%</td> SPP-1767 -->
+          <td>{{item.start | amDateFormat: 'll LTS'}}</td>
+          <td>{{item.duration | durationDisplay}}</td>
+            <td class="align-center">
+                <span *ngIf="canDownloadLogs(item)" tabindex="0" clickOnEnterKeydown (click)="onDownloadLogs(item)"
+                      class="link fa fa-cloud-download">
+                </span>
+              <div *ngIf="item.hasActionLinksExceptExpire()" class="btn-group" role="group">
+                <button [attr.id]="getDropDownActionId(item)" type="button" class="btn btn-default dropdown-toggle dropdown-toggle-sdl"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" (click)="toggleDropDown(item)">
+                  {{'job.textOperation' | translate}}
+                </button>
+                <div [attr.id]="getDropDownMenuId(item)" class="dropdown-menu dropdown-menu-right dropdown-menu-sdl" [ngClass]="isDropDown(item)? 'show' : 'hide'" [attr.aria-labelledby]="getDropDownActionId(item)">
+                  <a tabindex="0" class="dropdown-item capitalize dropdown-item-sdl" translate clickOnEnterKeydown (click)="onExecuteAction(item, link.href)" *ngFor="let link of item.getActionLinksExceptExpire(); trackBy: trackByLinkModel">{{link.title  || link.name}}</a>
+                </div>
+              </div>
+            </td>
+        </tr>
+        <tr [hidden]="!isExpanded(item)" class="plain-row">
+          <td colspan=7>
+            <div [attr.id]="getCollapsibleContainerId(item)" class="collapse align-left" [ngClass]="{'in': isExpanded(item)}" role="form">
+              <job-log-table [autoLoad]="!!item.metadata['autoLoad']"
+                             [autoRefreshMode]="true"
+                             [filters]="logFilters"
+                             [jobSession]="item"
+                             (loadStart)="onLoadLogsStart($event)"
+                             (loadEnd)="onLoadLogsEnd($event)">
+              </job-log-table>
+            </div>
+          </td>
+        </tr>
+      </ng-template>
+      </tbody>
+    </table>
+  </div>
+  <div class="container-fluid form-inline">
+    <refresh-button-basic
+      [hideAutoRefreshBtn]="hideAutoRefreshBtn"
+      [defaultState]="defaultState" [rate]="30000" [tickEnabled]="true" (onTick)="loadData(true)"></refresh-button-basic>
+    <paging-toolbar (pageChange)="onPageChange($event)" (refresh)="loadData()"
+                    [id]="jobPaginateConfig.id" [total]="jobPaginateConfig.totalItems"></paging-toolbar>
+  </div>
+</div>
+<ng-template #postRestoreTemplate>
+  <div>
+    <label class="form-control-label">{{jobSessionWithPostRestoreInfo && jobSessionWithPostRestoreInfo.postRestoreInfoMessage}}</label>
+  </div>
+  <div>
+    <label class="form-control-label">{{jobSessionWithPostRestoreInfo && jobSessionWithPostRestoreInfo.postRestoreInfoCommand}}</label>
+  </div>
+</ng-template>
+

@@ -1,0 +1,57 @@
+.bold {
+  font-weight: bold;
+}
+
+.right {
+  float: right;
+}
+
+.align-left {
+  text-align: left !important;
+}
+
+.align-center {
+  text-align: center;
+}
+
+.green-text {
+  color: #73A22C;
+}
+
+.masked {
+  &:before {
+    background: transparent;
+  }
+  height: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.horizontal-scroll {
+  overflow-x: auto;
+  table.table > tbody > tr > td {
+    word-break: keep-all;
+    line-height: 1rem;
+  }
+  .table-hover {
+    > tbody > tr:hover {
+      background-color: transparent;
+    }
+  }
+}
+
+.name-column-width {
+  width: 20%;
+}
+
+.description-column-width {
+  width: 35%;
+}
+
+.status-column-width {
+  width: 1%;
+}
+
+.message-column-width {
+  width: 35%;
+}
+

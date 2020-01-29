@@ -1,0 +1,24 @@
+<div dropdown class="timepicker-wrapper">
+  <input
+    type="text"
+    placeholder="HH:mm"
+    mask="Hh:m0"
+    class="form-control dropdown-toggle dropdown-toggle-sdl"
+    dropdownToggle
+    [required]="required"
+    [disabled]="disabled"
+    [ngClass]="{ invalid: !this.isValid() }"
+    [(ngModel)]="inputValue"
+    (ngModelChange)="onChangeInput($event)"
+  />
+  <div *dropdownMenu class="dropdown-menu dropdown-menu-sdl">
+    <a
+      class="dropdown-item dropdown-item-sdl"
+      tabindex="0"
+      clickOnEnterKeydown
+      *ngFor="let option of options"
+      (click)="onSelectValue(option)"
+      >{{ option.name }}</a
+    >
+  </div>
+</div>

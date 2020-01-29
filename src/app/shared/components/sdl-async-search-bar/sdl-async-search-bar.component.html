@@ -1,0 +1,60 @@
+<form [formGroup]="searchForm" class="form-horizontal">
+  <div
+    class="input-group search-field-light"
+    style="margin: 0"
+    dropdown
+    cdkMonitorSubtreeFocus
+    (cdkFocusChange)="markForCheck()"
+  >
+    <input
+      #searchField
+      formControlName="searchField"
+      type="text"
+      class="form-control"
+      placeholder="{{ textPlaceholderLabel }}"
+      title="{{ textPlaceholderLabel }}"
+      (focus)="onFocusSearchField()"
+      (blur)="onBlurSearchField()"
+      [attr.disabled]="isSearchFieldDisabled ? '' : null"
+    />
+    <div class="input-group-btn" style="width: 2.2rem;">
+      <button
+        cdkMonitorElementFocus
+        id="clear-button"
+        type="button"
+        [hidden]="!isSearchContent()"
+        (click)="onClear()"
+        class="btn btn-default"
+      >
+        <i id="clear-icon" class="ion-close-circled"></i>
+      </button>
+    </div>
+    <div class="input-group-btn">
+      <button
+        cdkMonitorElementFocus
+        id="search-button"
+        type="submit"
+        title="{{ 'common.textSearch' | translate }}"
+        class="btn btn-default"
+        [attr.disabled]="isSearchFieldDisabled ? '' : null"
+      >
+        <i id="search-icon" class="bidi-search_16"></i>
+      </button>
+    </div>
+    <ul *dropdownMenu class="dropdown-menu dropdown-menu-sdl" role="menu">
+      <ng-container *ngIf="!!searchResults.length && !searching">
+        <li *ngFor="let item of searchResults" role="menuitem" (click)="onSelectResult(item)">
+          <a class="dropdown-item dropdown-item-sdl">
+            {{ item[displayFieldKey] }}
+          </a>
+        </li>
+      </ng-container>
+      <li *ngIf="!searching && !searchResults.length" role="menuitem">
+        <a class="dropdown-item dropdown-item-sdl">{{ 'common.textCouldNotFindResults' | translate }}</a>
+      </li>
+      <li *ngIf="searching" role="menuitem">
+        <a class="dropdown-item dropdown-item-sdl">{{ 'common.textSearchingResults' | translate }}</a>
+      </li>
+    </ul>
+  </div>
+</form>

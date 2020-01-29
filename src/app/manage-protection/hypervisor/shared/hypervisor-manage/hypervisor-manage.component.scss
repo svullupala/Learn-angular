@@ -1,0 +1,65 @@
+@import '../../../../theme/sass/_auth';
+.card{
+    height: 650px;
+}
+
+.table th {
+  border-top: 0;
+  border-bottom: 0;
+}
+
+.table tfoot th {
+  padding: 0 5px 0 5px;
+}
+
+fieldset {
+  border: transparent;
+}
+
+.custom-label-width {
+  width: 250px;
+}
+
+.custom-snapshot-label-width {
+  width: 450px;
+}
+
+.custom-snapshot-numberfield-width {
+  width: 75px;
+}
+
+label.col-sm-2.control-label {
+  width: 250px;
+}
+
+.offset-sm-2 {
+  margin-left: 250px;
+}
+
+/deep/ label.col-sm-2.control-label {
+  width: 250px;
+}
+
+.align-center {
+  text-align: center;
+}
+
+.operation-col {
+  max-width: 120px;
+}
+
+.capitalize {
+  text-transform: capitalize;
+}
+
+.noborder:hover {
+  border-color: #047CC0 !important;
+}
+
+.noborder:focus {
+  border-color: #047CC0 !important;
+}
+
+.noborder {
+  border-color: transparent !important;
+}

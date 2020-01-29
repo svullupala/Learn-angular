@@ -1,0 +1,86 @@
+@import "../../../theme/sass/conf/conf";
+
+$copyright-width: 400px;
+
+.modal {
+  padding-top: 20px;
+
+  .modal-content {
+    color: #FFFFFF;
+    height: 400px;
+    background-color: #1C2B36;
+    border: none;
+    label {
+      white-space: nowrap;
+    }
+
+    .modal-header {
+      border: none;
+      padding: 0;
+      #closer {
+        color: #FFFFFF !important;
+      }
+    }
+
+    .modal-body {
+      text-align: center;
+
+      h1 {
+        font-weight: $font-normal;
+        margin-bottom: 24px;
+        height: 56px;
+        text-align: center;
+        padding: 0 0 40px 0;
+
+        #name2 {
+          font-weight: $font-bold;
+          margin-bottom: 24px;
+          text-align: center;
+        }
+        #name3 {
+          font-weight: $font-bold;
+          margin-bottom: 4px;
+          text-align: center;
+          //color: $brand;
+        }
+      }
+    }
+
+    .close {
+      outline: none;
+      color: #FFFFFF !important;
+    }
+  }
+
+  .modal-footer {
+    text-align: center;
+    border: none;
+    bottom: 0;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    position: absolute;
+    background-color: black;
+    color: #FFFFFF;
+    #copyright {
+      font-size: 9px;
+      text-align: center;
+      width: $copyright-width;
+      overflow-wrap: break-word;
+      word-wrap: break-word;
+      margin: auto;
+      position: absolute;
+      top: 50%;
+      left: calc(50% - #{$copyright-width / 2});
+      transform: translateY(-50%);
+    }
+  }
+}
+
+.logo {
+  display: block;
+  margin: 0 auto;
+  padding: 10px;
+  width: 128px;
+}

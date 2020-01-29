@@ -1,0 +1,36 @@
+:host {
+  .inventory-table {
+    thead > tr > th {
+      background-color: #ffffff;
+    }
+
+    button {
+      min-width: 0;
+    }
+  }
+}
+
+.hypervisor-recent-jobs-cell {
+  display: flex;
+  flex-direction: column;
+
+  .type {
+    color: #252525;
+    margin-bottom: 18px;
+  }
+
+  .scheduled {
+    font-size: 0.8em;
+  }
+
+  .date {
+    color: #252525;
+  }
+}
+
+.hypervisor-recent-jobs-title {
+  display: block;
+  margin-bottom: 30px;
+  font-size: 1.2rem;
+  color: #464646;
+}

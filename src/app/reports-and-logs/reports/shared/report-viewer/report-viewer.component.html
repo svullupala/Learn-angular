@@ -1,0 +1,17 @@
+<div class='viewer'>
+<div class="btn-group btn-toolbar" role="group">
+  <button id="downloadBtnGroupDrop" type="button" class="btn sdl btn-primary dropdown-toggle margin-bottom-10"
+          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" translate>
+    {{'reports.textDownload'}}
+  </button>
+  <div class="dropdown-menu" aria-labelledby="downloadBtnGroupDrop">
+    <a *ngFor="let item of downloadLinks" tabindex="0" class="dropdown-item"
+       clickOnEnterKeydown (click)="onDownloadClick(item)" >
+      <img src="{{ ('app/misc/format_' + item.name + '.png') | baAppPicture }}" alt="{{'reports.format.' + item.name + 'AltText' | translate}}" width="16" height="16">
+      {{ getDownloadFormatText(item.name.toUpperCase()) }}</a>
+  </div>
+</div>
+<iframe name="reportViewerIframe" [src]="viewSrcUrl" class='report' frameborder="0">
+</iframe>
+</div>
+

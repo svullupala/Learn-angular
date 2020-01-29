@@ -1,0 +1,393 @@
+[
+    {
+        "method": "GET",
+        "pattern": "/api/vadp/2101?",
+        "response": {
+            "links": {
+              "self": {
+                "rel": "self",
+                "href": "https://172.20.3.163/api/vadp/2101"
+              },
+              "up": {
+                "rel": "up",
+                "href": "https://172.20.3.163/api/vadp"
+              },
+              "proxyoptions": {
+                "rel": "action",
+                "href": "https://71.100.90.41:8098/conf",
+                "title": "Proxy Options"
+              },
+              "proxyinfo": {
+                "rel": "related",
+                "href": "https://71.100.90.41:8098/conf",
+                "title": "Proxy Information"
+              },
+              "options": {
+                "rel": "related",
+                "href": "https://172.20.3.163/api/vadp/2101?proxyoptions=true",
+                "title": "Options"
+              },
+              "tasksinfo": {
+                "rel": "related",
+                "href": "https://172.20.3.163/api/vadp/2101?tasksinfo=true",
+                "title": "Tasks Information"
+              },
+              "suspend": {
+                "rel": "action",
+                "href": "https://172.20.3.163/api/vadp/2101?action=suspend",
+                "title": "Suspend"
+              },
+              "uninstall": {
+                "rel": "related",
+                "href": "https://172.20.3.163/api/vadp/2101?action=uninstall",
+                "title": "Uninstall"
+              }
+            },
+            "id": 2101,
+            "siteId": 2000,
+            "siteName": "Secondary",
+            "app": "VMDKBACKUP.VADPPROXY",
+            "displayName": "ssSLES11sp4Dev",
+            "healthCheckUrl": "https://ssSLES11sp4Dev:8098/admin/health",
+            "homePageUrl": "https://ssSLES11sp4Dev:8098",
+            "statusPageUrl": "http://ssSLES11sp4Dev:8080/admin/info",
+            "hostName": "ssSLES11sp4Dev",
+            "ipAddr": "71.100.90.41",
+            "port": -1,
+            "securePort": 8098,
+            "rbacPath": "root:0/proxy:0/proxy.type:vmdkbackup.vadpproxy/proxy.type.vmdkbackup.vadpproxy:2,101",
+            "corecount": 0,
+            "availablememory": 0,
+            "version": "Not Available",
+            "state": "UNREACHABLE",
+            "stateDisplayName": "Unreachable",
+            "isLocal": false,
+            "demo": false
+          }
+    },
+    {
+        "method": "GET",
+        "pattern": "/api/vadp?",
+        "response": {
+            "links": {
+              "self": {
+                "rel": "self",
+                "href": "https://172.20.3.163/api/vadp"
+              },
+              "up": {
+                "rel": "up",
+                "href": "https://172.20.3.163/api/vadp"
+              },
+              "exclude_installerinfo": {
+                "rel": "related",
+                "href": "https://172.20.3.163/api/vadp?installerinfo=false"
+              },
+              "pushInstall": {
+                "rel": "action",
+                "href": "https://172.20.3.163/api/vadp?action=pushinstall",
+                "title": "Push Install"
+              }
+            },
+            "vadps": [
+              {
+                "links": {
+                  "self": {
+                    "rel": "self",
+                    "href": "172.20.2.147"
+                  },
+                  "register": {
+                    "rel": "action",
+                    "href": "https://172.20.3.163/api/vadp?action=register",
+                    "title": "Register"
+                  }
+                },
+                "app": "VMDKBACKUP.VADPPROXY",
+                "displayName": "sri_vsnap-vadp",
+                "healthCheckUrl": "https://sri_vsnap-vadp:8098/admin/health",
+                "homePageUrl": "https://sri_vsnap-vadp:8098",
+                "statusPageUrl": "http://sri_vsnap-vadp:8080/admin/info",
+                "hostName": "sri_vsnap-vadp",
+                "ipAddr": "172.20.2.147",
+                "securePort": 8098,
+                "rbacPath": "root:0/proxy:0/proxy.type:vmdkbackup.vadpproxy",
+                "corecount": 0,
+                "availablememory": 0,
+                "state": "UNKNOWN",
+                "isLocal": false,
+                "demo": false
+              },
+              {
+                "links": {
+                  "self": {
+                    "rel": "self",
+                    "href": "https://172.20.3.163/api/vadp/2101"
+                  },
+                  "up": {
+                    "rel": "up",
+                    "href": "https://172.20.3.163/api/vadp"
+                  },
+                  "proxyoptions": {
+                    "rel": "action",
+                    "href": "https://71.100.90.41:8098/conf",
+                    "title": "Proxy Options"
+                  },
+                  "proxyinfo": {
+                    "rel": "related",
+                    "href": "https://71.100.90.41:8098/conf",
+                    "title": "Proxy Information"
+                  },
+                  "options": {
+                    "rel": "related",
+                    "href": "https://172.20.3.163/api/vadp/2101?proxyoptions=true",
+                    "title": "Options"
+                  },
+                  "tasksinfo": {
+                    "rel": "related",
+                    "href": "https://172.20.3.163/api/vadp/2101?tasksinfo=true",
+                    "title": "Tasks Information"
+                  },
+                  "suspend": {
+                    "rel": "action",
+                    "href": "https://172.20.3.163/api/vadp/2101?action=suspend",
+                    "title": "Suspend"
+                  },
+                  "uninstall": {
+                    "rel": "related",
+                    "href": "https://172.20.3.163/api/vadp/2101?action=uninstall",
+                    "title": "Uninstall"
+                  }
+                },
+                "id": 2101,
+                "siteId": 2000,
+                "siteName": "Secondary",
+                "app": "VMDKBACKUP.VADPPROXY",
+                "displayName": "ssSLES11sp4Dev",
+                "healthCheckUrl": "https://ssSLES11sp4Dev:8098/admin/health",
+                "homePageUrl": "https://ssSLES11sp4Dev:8098",
+                "statusPageUrl": "http://ssSLES11sp4Dev:8080/admin/info",
+                "hostName": "ssSLES11sp4Dev",
+                "ipAddr": "71.100.90.41",
+                "port": -1,
+                "securePort": 8098,
+                "rbacPath": "root:0/proxy:0/proxy.type:vmdkbackup.vadpproxy/proxy.type.vmdkbackup.vadpproxy:2,101",
+                "corecount": 0,
+                "availablememory": 0,
+                "version": "Not Available",
+                "state": "UNREACHABLE",
+                "stateDisplayName": "Unreachable",
+                "isLocal": false,
+                "demo": false
+              },
+              {
+                "links": {
+                  "self": {
+                    "rel": "self",
+                    "href": "https://172.20.3.163/api/vadp/2000"
+                  },
+                  "up": {
+                    "rel": "up",
+                    "href": "https://172.20.3.163/api/vadp"
+                  },
+                  "proxyoptions": {
+                    "rel": "action",
+                    "href": "http://127.0.0.1:8080/conf",
+                    "title": "Proxy Options"
+                  },
+                  "proxyinfo": {
+                    "rel": "related",
+                    "href": "http://127.0.0.1:8080/conf",
+                    "title": "Proxy Information"
+                  },
+                  "options": {
+                    "rel": "related",
+                    "href": "https://172.20.3.163/api/vadp/2000?proxyoptions=true",
+                    "title": "Options"
+                  },
+                  "tasksinfo": {
+                    "rel": "related",
+                    "href": "https://172.20.3.163/api/vadp/2000?tasksinfo=true",
+                    "title": "Tasks Information"
+                  },
+                  "suspend": {
+                    "rel": "action",
+                    "href": "https://172.20.3.163/api/vadp/2000?action=suspend",
+                    "title": "Suspend"
+                  },
+                  "uninstall": {
+                    "rel": "related",
+                    "href": "https://172.20.3.163/api/vadp/2000?action=uninstall",
+                    "title": "Uninstall"
+                  }
+                },
+                "id": 2000,
+                "siteId": 3000,
+                "siteName": "Demo",
+                "app": "VMDKBACKUP.VADPPROXY",
+                "displayName": "localhost",
+                "healthCheckUrl": "http://localhost:8080/admin/health",
+                "homePageUrl": "http://localhost:8080/",
+                "statusPageUrl": "http://localhost:8080/admin/info",
+                "hostName": "localhost",
+                "ipAddr": "127.0.0.1",
+                "port": 8080,
+                "securePort": -1,
+                "rbacPath": "root:0/proxy:0/proxy.type:vmdkbackup.vadpproxy/proxy.type.vmdkbackup.vadpproxy:2,000",
+                "corecount": 0,
+                "availablememory": 0,
+                "version": "10.1.4.224",
+                "state": "ENABLED",
+                "stateDisplayName": "Enabled",
+                "isLocal": true,
+                "demo": true
+              }
+            ],
+            "enabled": [
+              {
+                "links": {
+                  "self": {
+                    "rel": "self",
+                    "href": "https://172.20.3.163/api/vadp/2000"
+                  },
+                  "up": {
+                    "rel": "up",
+                    "href": "https://172.20.3.163/api/vadp"
+                  },
+                  "proxyoptions": {
+                    "rel": "action",
+                    "href": "http://127.0.0.1:8080/conf",
+                    "title": "Proxy Options"
+                  },
+                  "proxyinfo": {
+                    "rel": "related",
+                    "href": "http://127.0.0.1:8080/conf",
+                    "title": "Proxy Information"
+                  },
+                  "options": {
+                    "rel": "related",
+                    "href": "https://172.20.3.163/api/vadp/2000?proxyoptions=true",
+                    "title": "Options"
+                  },
+                  "tasksinfo": {
+                    "rel": "related",
+                    "href": "https://172.20.3.163/api/vadp/2000?tasksinfo=true",
+                    "title": "Tasks Information"
+                  },
+                  "suspend": {
+                    "rel": "action",
+                    "href": "https://172.20.3.163/api/vadp/2000?action=suspend",
+                    "title": "Suspend"
+                  },
+                  "uninstall": {
+                    "rel": "related",
+                    "href": "https://172.20.3.163/api/vadp/2000?action=uninstall",
+                    "title": "Uninstall"
+                  }
+                },
+                "id": 2000,
+                "siteId": 3000,
+                "siteName": "Demo",
+                "app": "VMDKBACKUP.VADPPROXY",
+                "displayName": "localhost",
+                "healthCheckUrl": "http://localhost:8080/admin/health",
+                "homePageUrl": "http://localhost:8080/",
+                "statusPageUrl": "http://localhost:8080/admin/info",
+                "hostName": "localhost",
+                "ipAddr": "127.0.0.1",
+                "port": 8080,
+                "securePort": -1,
+                "rbacPath": "root:0/proxy:0/proxy.type:vmdkbackup.vadpproxy/proxy.type.vmdkbackup.vadpproxy:2,000",
+                "corecount": 0,
+                "availablememory": 0,
+                "version": "10.1.4.224",
+                "state": "ENABLED",
+                "stateDisplayName": "Enabled",
+                "isLocal": true,
+                "demo": true
+              },
+              {
+                "links": {
+                  "self": {
+                    "rel": "self",
+                    "href": "https://172.20.3.163/api/vadp/2101"
+                  },
+                  "up": {
+                    "rel": "up",
+                    "href": "https://172.20.3.163/api/vadp"
+                  },
+                  "proxyoptions": {
+                    "rel": "action",
+                    "href": "https://71.100.90.41:8098/conf",
+                    "title": "Proxy Options"
+                  },
+                  "proxyinfo": {
+                    "rel": "related",
+                    "href": "https://71.100.90.41:8098/conf",
+                    "title": "Proxy Information"
+                  },
+                  "options": {
+                    "rel": "related",
+                    "href": "https://172.20.3.163/api/vadp/2101?proxyoptions=true",
+                    "title": "Options"
+                  },
+                  "tasksinfo": {
+                    "rel": "related",
+                    "href": "https://172.20.3.163/api/vadp/2101?tasksinfo=true",
+                    "title": "Tasks Information"
+                  },
+                  "suspend": {
+                    "rel": "action",
+                    "href": "https://172.20.3.163/api/vadp/2101?action=suspend",
+                    "title": "Suspend"
+                  },
+                  "uninstall": {
+                    "rel": "related",
+                    "href": "https://172.20.3.163/api/vadp/2101?action=uninstall",
+                    "title": "Uninstall"
+                  }
+                },
+                "id": 2101,
+                "siteId": 2000,
+                "siteName": "Secondary",
+                "app": "VMDKBACKUP.VADPPROXY",
+                "displayName": "ssSLES11sp4Dev",
+                "healthCheckUrl": "https://ssSLES11sp4Dev:8098/admin/health",
+                "homePageUrl": "https://ssSLES11sp4Dev:8098",
+                "statusPageUrl": "http://ssSLES11sp4Dev:8080/admin/info",
+                "hostName": "ssSLES11sp4Dev",
+                "ipAddr": "71.100.90.41",
+                "port": -1,
+                "securePort": 8098,
+                "rbacPath": "root:0/proxy:0/proxy.type:vmdkbackup.vadpproxy/proxy.type.vmdkbackup.vadpproxy:2,101",
+                "corecount": 0,
+                "availablememory": 0,
+                "version": "Not Available",
+                "state": "UNREACHABLE",
+                "stateDisplayName": "Unreachable",
+                "isLocal": false,
+                "demo": false
+              }
+            ],
+            "suspended": [
+              
+            ],
+            "available": [
+              {
+                "app": "VMDKBACKUP.VADPPROXY",
+                "displayName": "sri_vsnap-vadp",
+                "healthCheckUrl": "https://sri_vsnap-vadp:8098/admin/health",
+                "homePageUrl": "https://sri_vsnap-vadp:8098",
+                "statusPageUrl": "http://sri_vsnap-vadp:8080/admin/info",
+                "hostName": "sri_vsnap-vadp",
+                "ipAddr": "172.20.2.147",
+                "securePort": 8098,
+                "rbacPath": "root:0/proxy:0/proxy.type:vmdkbackup.vadpproxy",
+                "corecount": 0,
+                "availablememory": 0,
+                "isLocal": false,
+                "demo": false
+              }
+            ]
+          }
+        
+    }
+]

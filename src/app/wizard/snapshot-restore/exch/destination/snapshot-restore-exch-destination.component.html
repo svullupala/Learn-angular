@@ -1,0 +1,57 @@
+<div class="destination">
+  <div class="title" translate>{{'wizard.job.textSetDestinationTitle'}}</div>
+  <div class="desc" translate>{{'wizard.job.textSetDestinationDesc'}}</div>
+  <div class="content">
+    <div class="input-demo radio-demo row">
+      <div class="col-md-4">
+        <label class="radio-inline custom-radio nowrap">
+          <input type="radio" name="inlineRadioDestinationOptions"
+                 (ngModelChange)="onOriginalClick($event)"
+                 [value]="'original'" [(ngModel)]="targetLocation">
+          <span translate>{{'application.textRestoreOriginal'}}</span>
+        </label>
+        <div class="space-top-10" [hidden]="!hasMultipleVersions">
+          <span class="nowrap" translate>{{'application.textErrMultipleVersionList'}}</span>
+        </div>
+      </div>
+      <div class="col-md-4" [hidden]="true">
+        <label class="radio-inline custom-radio nowrap">
+          <input type="radio" name="inlineRadioDestinationOptions"
+                 (ngModelChange)="onOriginalClick($event)"
+                 [value]="'originalPrimary'" [(ngModel)]="targetLocation">
+          <span translate>{{'application.textRestorePrimary'}}</span>
+        </label>
+        <div class="space-top-10" [hidden]="!hasMultipleVersions">
+          <span class="nowrap" translate>{{'application.textErrMultipleVersionList'}}</span>
+        </div>
+      </div>
+      <div class="col-md-4" [hidden]="hasMultipleVersions">
+        <label class="radio-inline custom-radio nowrap">
+          <input type="radio" name="inlineRadioDestinationOptions"
+                 [value]="'alternate'"
+                 (ngModelChange)="onAlternateLocationClick($event)"
+                 [(ngModel)]="targetLocation">
+          <span translate>{{'application.textRestoreAlternate'}}</span>
+        </label>
+      </div>
+    </div>
+    <div [hidden]="originalLocation">
+      <label translate>{{'application.textInstanceDisabled'}}</label>
+    </div>
+    <application-destination-table
+      [hidden]="originalLocation"
+      [filters]="filters"
+      [applicationType]="applicationType"></application-destination-table>
+  </div>
+</div>
+<ng-template #summary>
+  <div class="summary">
+    <div class="title" translate>{{'wizard.job.textSetDestinationTitle'}}</div>
+    <div class="content">
+      <div class="property">
+        <label class="name">{{'wizard.job.textDestinationSummary' | translate}}</label>
+        <label class="value">{{originalLocation? ('application.textRestoreOriginal' | translate) : ('application.textRestoreAlternate' | translate) + ' - ' + (destinationName || ('wizard.job.textEmpty' | translate))}}</label>
+      </div>
+    </div>
+  </div>
+</ng-template>

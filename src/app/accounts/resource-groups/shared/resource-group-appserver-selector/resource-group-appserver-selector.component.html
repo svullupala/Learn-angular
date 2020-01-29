@@ -1,0 +1,29 @@
+<div class="space-top-10">
+  <label class="control-label" translate>{{'resourceGroups.textChooseAppServerType'}}</label>
+  <div>
+    <select class="form-control" [(ngModel)]="applicationType" (change)="loadData()">
+      <option value="db2" translate>{{ 'application.textDb2' }}</option>
+      <option value="exch" translate>{{ 'application.textExchange' }}</option>
+      <option value="mongo" translate>{{ 'application.textMongoDb' }}</option>
+      <option value="oracle" translate>{{ 'application.textOracle' }}</option>
+      <option value="sql" translate>{{ 'application.textSql' }}</option>
+      <option value="office365" translate>{{ 'application.textExchangeOnline' }}</option>
+    </select>
+  </div>
+  <div [hidden]="(resourceType === 'appserver' && applicationType === undefined)">
+    <resource-selector-component
+      [records]="records"
+      [dataset]="dataset"
+      [masked]="masked"
+      [breadcrumbs]="breadcrumbs"
+      [addAllItem]="allAddItem"
+      [hideAllButton]="true"
+      [hideBreadcrumbs]="true"
+      [hideSearchBar]="true"
+      [resourceType]="('resourceGroups.textApplicationServers' | translate)"
+      [paginateConfig]="paginateConfig"
+      (onPageChangeEvent)="onRefresh()"
+      (onRefreshEvent)="onRefresh()"
+    ></resource-selector-component>
+  </div>
+</div>

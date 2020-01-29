@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="18px" height="18px" viewBox="0 0 18 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.4 (67378) - http://www.bohemiancoding.com/sketch -->
+    <title>icons / failed</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="elements-/-Filter-Card-/-Unselected" transform="translate(-107.000000, -5.000000)">
+            <g id="icons-/-failed" transform="translate(106.000000, 4.000000)">
+                <g>
+                    <rect id="Rectangle" x="0" y="0" width="20" height="20"></rect>
+                    <path d="M14.7725714,13.1821429 L13.1821429,14.7725714 L10,11.5917143 L6.81785714,14.7725714 L5.22742857,13.1821429 L8.40957143,10 L5.22742857,6.81914286 L6.81785714,5.22742857 L10,8.40957143 L13.1821429,5.22742857 L14.7725714,6.81914286 L11.5904286,10 L14.7725714,13.1821429 Z M10.0012857,1 C5.03071429,1 1,5.03071429 1,10.0012857 C1,14.9718571 5.03071429,19 10.0012857,19 C14.9705714,19 19,14.9718571 19,10.0012857 C19,5.03071429 14.9705714,1 10.0012857,1 Z" id="Fill-30" fill="#E62325"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

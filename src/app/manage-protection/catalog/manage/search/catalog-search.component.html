@@ -1,0 +1,10 @@
+<ba-card>
+	<sdl-search-bar (search)="startSearch($event)"
+									[textPlaceholderLabel]="textSearchFor">
+	</sdl-search-bar>
+	<catalog-search-options></catalog-search-options>
+	<h2 class="sdl-header" translate>{{'catalog.textSearchOutput'}}</h2>
+	<ba-card>
+		<catalog-entries-table></catalog-entries-table>
+	</ba-card>
+</ba-card>

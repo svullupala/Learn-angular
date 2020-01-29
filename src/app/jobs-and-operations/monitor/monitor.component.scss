@@ -1,0 +1,41 @@
+@import "../../theme/theme.scss";
+
+side-by-side-wrapper {
+  display: flex;
+  flex-flow: row;
+}
+
+.side-by-side-left {
+  flex: 1;
+}
+
+.side-by-side-right {
+  flex: 2;
+  background-color: #f6f6f6;
+}
+
+@media only screen and (min-width: 1366px) {
+  .side-by-side-left {
+    flex: 2;
+  }
+}
+
+@media only screen and (min-width: 1367px) {
+  .side-by-side-left {
+    flex: 1;
+  }
+}
+
+.no-margins {
+  margin: 0;
+}
+
+.add-border-right {
+  border-right: 1px solid #D8D8D8;
+}
+
+.toolbar {
+  margin-top: -40px;
+  margin-right: 2rem;
+  height: 40px;
+}

@@ -1,0 +1,5 @@
+<div class="percentage-doughnut-chart-container" [ngStyle]="{'max-width.px': chartSize, 'max-height.px': chartHeight}">
+  <div [ngClass]="{'percentage-doughnut-chart-label': !enableHalfDoughnut, 'percentage-half-doughnut-chart-label': enableHalfDoughnut}" class="percentage-doughnut-chart-label" (click)="handleClick()" [tooltip]="hoverTooltipText">{{label}}</div>
+  <canvas [id]="chartId" class="percentage-chart-doughnut-area"  height="100" width="100"
+  [style.transform]="'rotate(' + (chartRotation ? chartRotation : 0) + 'deg)'"></canvas>
+</div>

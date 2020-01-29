@@ -1,0 +1,108 @@
+@import '../../../theme/sass/conf/conf';
+
+.weekly-schedule {
+  overflow-x: auto;
+
+  .time-axis-icon, .time-axis-x {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  & > .time-axis-icon {
+    height: 1rem;
+    line-height: 1rem;
+    font-size: 12px;
+    div.time-axis-icon-tick {
+      position: absolute;
+      text-align: center;
+      i {
+        font-size: 2rem;
+        width: 2rem;
+        height: 2rem;
+        display: inline-block;
+      }
+    }
+  }
+
+  & > .time-axis-x {
+    height: 1rem;
+    line-height: 1rem;
+    font-size: 12px;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    div.time-axis-x-tick {
+      flex: 1;
+      text-align: center;
+      label {
+        margin-bottom: 0;
+        color: $gray50;
+      }
+    }
+  }
+  .chart {
+    flex: 1;
+    min-width: 240px;
+    table.canvas {
+      thead > tr > th {
+        padding: 0;
+        border-left: 0;
+        min-width: 1px;
+        &:not(.operable) {
+          border-right: 1px solid $gray50;
+        }
+      }
+      tbody > tr > td {
+        padding: 0;
+        border-left: 0;
+        &:not(.operable) {
+          border-right: 1px solid $gray50;
+        }
+        &.cell {
+          cursor: pointer;
+        }
+      }
+      thead > tr, tbody > tr {
+        height: 32px;
+      }
+    }
+    .operable {
+      width: 120px;
+      button {
+        width: 100%;
+        height: 32px;
+        border: 0;
+      }
+    }
+    .summary {
+      margin-top: 0.5rem;
+      line-height: 1.5rem;
+    }
+  }
+  .legends {
+    width: 120px;
+    padding-top: 76px;
+    padding-left: 0.5rem;
+    .legend {
+      display: flex;
+      flex-flow: row;
+      margin-top: 1rem;
+      div {
+        width: 10px;
+        height: 32px;
+        border: 1px solid black;
+        &.enable {
+          background-color: $cerulean50;
+        }
+        &.disable {
+          background-color: white;
+        }
+      }
+      label {
+        text-align: left;
+        line-height: 2rem;
+        height: 2rem;
+        margin-left: 0.5rem;
+      }
+    }
+  }
+}

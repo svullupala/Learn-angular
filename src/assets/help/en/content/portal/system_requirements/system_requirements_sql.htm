@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-us" xml:lang="en-us" class="reference _Skins_HTML5_topnav_IBMOEM" data-mc-search-type="Stem" data-mc-help-system-file-name="Default.xml" data-mc-path-to-help-system="../../../" data-mc-has-content-body="True" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic;Default" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Setup|Requirements">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>SQL Requirements</title>
+        <link rel="icon" href="../../Resources/images/IBM-icon-48.ico" />
+        <link href="../../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Tablet.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Mobile.css" rel="stylesheet" />
+        <link href="../../../Skins/Fluid/stylesheets/foundation.6.2.3.css" rel="stylesheet" />
+        <link href="../../../Skins/Fluid/stylesheets/styles.css" rel="stylesheet" />
+        <link href="../../../Skins/Fluid/stylesheets/tablet.css" rel="stylesheet" />
+        <link href="../../../Skins/Fluid/stylesheets/mobile.css" rel="stylesheet" />
+        <style>/*&lt;meta /&gt;*/
+
+.button.remove-highlight-button
+{
+	-pie-background: url('../../../Skins/Default/Stylesheets/Images/highlight.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.expand-all-button
+{
+	-pie-background: url('../../../Skins/Default/Stylesheets/Images/expand.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.print-button
+{
+	-pie-background: url('../../../Skins/Default/Stylesheets/Images/printer.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.collapse-all-button
+{
+	-pie-background: url('../../../Skins/Default/Stylesheets/Images/collapse.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.needs-pie
+{
+	behavior: url('../../../Resources/Scripts/PIE-no-motw.htc');
+}
+
+</style>
+        <link href="../../resources/tablestyles/spp_ports.css" rel="stylesheet" />
+        <link href="../../resources/stylesheets/styles_topnavi.css" rel="stylesheet" />
+        <script src="../../../Resources/Scripts/custom.modernizr.js">
+        </script>
+        <script src="../../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/require.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/require.config.js">
+        </script>
+        <script src="../../../Resources/Scripts/foundation.6.2.3_custom.js">
+        </script>
+        <script src="../../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div class="foundation-wrap off-canvas-wrapper">
+            <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper="">
+                <aside class="off-canvas position-right" id="offCanvas" data-off-canvas="" data-position="right" data-mc-ignore="true">
+                    <ul class="off-canvas-drilldown vertical menu off-canvas-list" data-drilldown="" data-mc-back-link="Back" data-mc-css-tree-node-expanded="is-drilldown-submenu-parent" data-mc-css-tree-node-collapsed="is-drilldown-submenu-parent" data-mc-css-sub-menu="vertical menu slide-in-right is-drilldown-submenu" data-mc-include-indicator="False" data-mc-include-icon="False" data-mc-include-parent-link="True" data-mc-include-back="True" data-mc-defer-expand-event="True" data-mc-expand-event="click.zf.drilldown" data-mc-toc="True">
+                    </ul>
+                </aside>
+                <div class="off-canvas-content inner-wrap" data-off-canvas-content="">
+                    <div>
+                        <nav class="title-bar tab-bar" data-mc-ignore="true">
+                            <div class="middle title-bar-section outer-row clearfix">
+                                <div class="relative clearfix"><a class="logo" href="../about/about_application_overview.htm" alt="Logo"></a>
+                                    <div class="navigation-wrapper nocontent">
+                                        <ul class="navigation clearfix" data-mc-css-tree-node-has-children="has-children" data-mc-css-sub-menu="sub-menu" data-mc-expand-event="mouseenter" data-mc-top-nav-menu="True" data-mc-max-depth="4" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                                            <li class="placeholder" style="visibility:hidden"><a>placeholder</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <button class="menu-icon" data-toggle="offCanvas"><span></span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="nav-search row outer-row">
+                                <form class="search" action="#">
+                                    <div class="search-bar search-bar-container needs-pie">
+                                        <input class="search-field needs-pie" type="search" placeholder="Search the help system" />
+                                        <div class="search-filter-wrapper">
+                                            <div class="search-filter">
+                                                <div class="search-filter-content">
+                                                    <ul>
+                                                        <li>All Files</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="search-submit-wrapper" dir="ltr">
+                                            <div class="search-submit" title="Search">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </nav>
+                    </div>
+                    <section class="main-section">
+                        <div class="row outer-row" data-mc-content-body="True">
+                            <div class="buttons popup-container clearfix topicToolbarProxy mc-component nocontent" style="margin-left: 0px; float: right; mc-topic-toolbar-items: RemoveHighlight ExpandAll CollapseAll Print;">
+                                <div class="button-group-container-left">
+                                    <button class="button needs-pie remove-highlight-button" title="Remove Highlights">
+                                        <img src="../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="remove highlight" />
+                                    </button>
+                                    <button class="button needs-pie expand-all-button" data-state1-class="expand-all-button" data-state2-class="collapse-all-button" data-state2-title="Collapse all" title="Expand all" data-state1-title="Expand all">
+                                        <img src="../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="expand all" />
+                                    </button>
+                                    <button class="button needs-pie print-button" title="Print">
+                                        <img src="../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="print" />
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="nocontent">
+                                <div class="MCBreadcrumbsBox_0 breadcrumbs" data-mc-breadcrumbs-divider=" &gt; " data-mc-breadcrumbs-count="3" data-mc-toc="True"><span class="MCBreadcrumbsPrefix">You are here: </span>
+                                </div>
+                            </div>
+                            <h1>Microsoft SQL Server Requirements</h1>
+                            <p>Before registering each SQL&#160;server in <span class="ProductNames_LongShortECX_Short">IBM Spectrum Protect Plus</span>, ensure it meets the following requirements.</p>
+                            <p class="SubHeading">Microsoft SQL&#160;Server Configuration Requirements</p>
+                            <ul>
+                                <li value="1">SQL 2008 R2 SP3 on Windows Server 2012 R2</li>
+                                <li value="2">SQL 2012 on Windows Server 2012 R2</li>
+                                <li value="3">SQL 2012 SP2  on Windows Server 2016</li>
+                                <li value="4">SQL 2014  on Windows Server 2012 R2</li>
+                                <li value="5">SQL 2014  on Windows Server 2016</li>
+                                <li value="6">SQL 2016 on Windows Server 2012 R2</li>
+                                <li value="7">SQL 2016  on Windows Server 2016</li>
+                                <li value="8">SQL&#160;2017 on Windows Server 2012 R2</li>
+                                <li value="9">SQL&#160;2017 on Windows Server 2016</li>
+                            </ul>
+                            <p><span class="NoteBlue">Note:</span> It is highly recommended to install the latest SQL&#160;Server patches and updates in your environment. </p>
+                            <p>Standalone, SQL Server Failover Clustering, and Always On configurations are supported for SQL 2008 R2 SP3, SQL 2012, SQL 2014, and SQL 2016. Standalone configurations are supported for SQL&#160;2017. Cluster drive configurations utilizing dynamic disks are not supported. Standalone dynamic disk configurations are supported.</p>
+                            <p>Windows Remote Shell (WinRM) must be enabled. </p>
+                            <p>Cluster drive configurations utilizing dynamic disks are not supported. Standalone dynamic disk configurations are supported.</p>
+                            <p>Microsoft iSCSI&#160;Initiator must be enabled and running on the Windows Server. An iSCSI route must be enabled between the SQL system and vSnap server. For more information see <a href="https://technet.microsoft.com/en-us/library/ee338476(v=ws.10).aspx" target="_blank">https://technet.microsoft.com/en-us/library/ee338476(v=ws.10).aspx</a>.</p>
+                            <p><span class="ProductNames_LongShortECX_Short">IBM Spectrum Protect Plus</span> Inventory jobs discover system databases and mark the databases that are eligible for protection. Log backup is marked as ineligible for system databases.</p>
+                            <p style="font-weight: bold;">In-Memory OLTP&#160;Requirements and Limitations</p>
+                            <p>In-Memory OLTP is a memory-optimized database engine used to improve database application performance,  supported in SQL 2014 and 2016. Note the following <span class="ProductNames_LongShortECX_Short">IBM Spectrum Protect Plus</span> requirements and limitations for In-Memory OLTP usage:</p>
+                            <ul>
+                                <li value="1">The maximum restore file path must be less than 256 characters, which is a SQL requirement. If the original path exceeds this length, consider using a customized restore file path to reduce the length.</li>
+                                <li value="2">The metadata that can be restored is subject to VSS and SQL restore capabilities.</li>
+                            </ul>
+                            <p style="font-weight: bold;">SQL&#160;Incremental Backup Requirements and Limitations</p>
+                            <p><span class="ProductNames_LongShortECX_Short">IBM Spectrum Protect Plus</span> utilizes update sequence number (USN)&#160;change journal technology to perform incremental backups in a SQL&#160;environment. The USN&#160;change journal provides write range tracking for a volume when the file size is increased to a specific threshold. The changed bytes offset and length extent information can be queried against a specific file.</p>
+                            <p>Requirements to enable write range tracking:</p>
+                            <ul>
+                                <li value="1">Windows 2012 R2 or later</li>
+                                <li value="2">NTFS version 3.0 or later</li>
+                            </ul>
+                            <p>Cluster shared volumes (CSVFS) are supported.</p>
+                            <p>The following technologies are not supported for changed bytes tracking:</p>
+                            <ul>
+                                <li value="1">ReFS</li>
+                                <li value="2">Server Message Block (SMB) 3.0 protocol</li>
+                                <li value="3">SMB TFO (Transparent Failover)</li>
+                                <li value="4">SMB 3.0 with Scale-out file shares (SO)</li>
+                            </ul>
+                            <p>By default, 512 MB of space is allocated for USN change journaling.</p>
+                            <p>The minimum space required for shadow copy storage is 100 MB, though more space may be required on systems with increased activity. The SQL&#160;agent checks the source volume space, and will fail a backup if the free space on the source volume is lower than 100 MB. A warning message displays in the job log when free space is below 10%, then the backup proceeds.</p>
+                            <p>A base backup is forced when the following conditions are detected:</p>
+                            <ul>
+                                <li value="1">Journal discontinuity is detected, due to the log reaching the maximum size, disabling of the log, or changing of the cataloged USN&#160;ID.</li>
+                                <li value="2">The file size is less than the tracked threshold size, which by default is 102 KB.</li>
+                                <li value="3">The file size is smaller after a previous backup.</li>
+                                <li value="4">A file is added after a previous backup.</li>
+                            </ul>
+                            <p style="font-weight: bold;">SQL&#160;Always On Availability Groups Considerations</p>
+                            <p>Configure the preferred instance for backup through SQL Server Management Studio. Select the Availability Group node. Select the availability group you wish to configure, then select <b>Properties</b>. In the <b>Availability Group Properties</b> dialog box, select <b>Backup Preferences</b>.</p>
+                            <p>On the <b>Where should backups occur?</b> pane, select <b>Secondary only</b>. If more than one secondary replica is available, the SQL Executor will select the first secondary replica in the preferred list reported by the <span class="ProductNames_LongShortECX_Short">IBM Spectrum Protect Plus</span> SQL agent.</p>
+                            <p>The SQL agent sets the VSS backup type to COPY_ONLY.</p>
+                            <p class="SubHeading"><a name="Registration_and_Authentication"></a>Registration and Authentication </p>
+                            <p>Register each SQL server  in <span class="ProductNames_LongShortECX_Short">IBM Spectrum Protect Plus</span> by name or IP address. When registering a SQL&#160;Cluster (Always On) node, register each node by name or IP&#160;address. Note that the IP&#160;addresses must be public-facing and listening on port 5985. The fully qualified domain name must be resolvable and route-able from the <span class="ProductNames_LongShortECX_Short">IBM Spectrum Protect Plus</span> appliance.</p>
+                            <p>The user identity must have sufficient rights to install and start the <span class="ProductNames_LongShortECX_Short">IBM Spectrum Protect Plus</span> Tools Service on the  node. This includes "Log on as a service" rights. For more information about the "Log on as a service"&#160;right, see <a href="https://technet.microsoft.com/en-us/library/cc794944.aspx" target="_blank">https://technet.microsoft.com/en-us/library/cc794944.aspx</a>.</p>
+                            <p>The user identity follows the default <b>domain\Name</b> format if the virtual machine is attached to a domain. The format <b>&lt;local administrator&gt;</b> is used if the user is a local administrator. </p>
+                            <p style="font-weight: bold;">Kerberos Requirements</p>
+                            <p style="font-weight: normal;">Kerberos-based authentication can be enabled through a configuration file on the <span class="ProductNames_LongShortECX_Short">IBM Spectrum Protect Plus</span> appliance. This will override the default Windows NTLM protocol. </p>
+                            <p>For Kerberos-based authentication only, the user identity must be specified in the username@FQDN format. The username must be able to authenticate using the registered password to obtain a ticket-granting ticket (TGT) from the key distribution center (KDC) on the domain specified by the fully qualified domain name.</p>
+                            <p>Kerberos authentication also requires that the clock skew between the Domain Controller and the <span class="ProductNames_LongShortECX_Short">IBM Spectrum Protect Plus</span> appliance is less than 5 minutes. Note that the default Windows NTLM protocol is not time dependent. </p>
+                            <p class="SubHeading">SQL&#160;Log Truncation</p>
+                            <p>To truncate SQL&#160;application logs during hypervisor Backup jobs, enable the <i>Truncate SQL&#160;logs</i> option when creating a job definition. The following SQL&#160;environments support SQL&#160;log truncation:</p>
+                            <ul>
+                                <li value="1">SQL 2008 R2 SP3 on Windows Server 2012 R2</li>
+                                <li value="2">SQL 2012 SP4 on Windows Server 2012 R2</li>
+                                <li value="3">SQL 2014 SP2 on Windows Server 2012 R2</li>
+                                <li value="4">SQL 2016 SP1 on Windows Server 2016</li>
+                            </ul>
+                            <p class="SubHeading"><a name="Privileges"></a>Privileges</p>
+                            <p>On the SQL&#160;server, the system login credential must have <b>public</b> and  <b>sysadmin</b> permissions enabled, plus permission to access cluster resources in a SQL&#160;Always On environment. If one user account is used for all SQL functions, a Windows login must be enabled for the SQL server, with <b>public</b> and <b>sysadmin</b> permissions enabled. </p>
+                            <p>The SQL VDI-based framework is used to interact with SQL databases and log backup/restore operations. A VDI connection requires SQL <b>sysadmin</b> permissions. The owner of a restored database is not changed to the original owner. A manual step is required to modify the owner of a restored database. For more information about the VDI framework, see the following Microsoft article:&#160;<a href="https://support.microsoft.com/en-us/help/2926557/sql-server-vdi-backup-and-restore-operations-require-sysadmin-privileg" target="_blank">https://support.microsoft.com/en-us/help/2926557/sql-server-vdi-backup-and-restore-operations-require-sysadmin-privileg</a>.</p>
+                            <p>The target SQL server service account must have permissions to access SQL restore files. See <i>Administrative Considerations</i> in the following Microsoft article: <a href="https://docs.microsoft.com/en-us/previous-versions/sql/sql-server-2008-r2/ms189128(v=sql.105)" target="_blank">https://docs.microsoft.com/en-us/previous-versions/sql/sql-server-2008-r2/ms189128(v=sql.105)</a>.</p>
+                            <p>
+                                <MadCap:conditionalText data-mc-conditions="Default.1012 navigation">To perform log backups, the SQL server agent service user must be a local Windows administrator and must have the <b>sysadmin</b> permission enabled to manage SQL server agent jobs.</MadCap:conditionalText> The agent will use that administrator account to enable/access log backup jobs. The <span class="ProductNames_LongShortECX_Short">IBM Spectrum Protect Plus</span> SQL agent service user must also be the same as the SQL&#160;server service and SQL&#160;server agent service account for every SQL&#160;instance to be protected. </p>
+                            <p style="font-weight: bold;">SQL&#160;Server Ports </p>
+                            <p>The following ports are used by SQL&#160;servers. Note that ports marked as Accept use a secure connection (https/ssl).</p>
+                            <table style="width: 100%;mc-table-style: url('../../resources/tablestyles/spp_ports.css');border-left-style: solid;border-left-width: 1px;border-left-color: #000000;border-right-style: solid;border-right-width: 1px;border-right-color: #000000;border-top-style: solid;border-top-width: 1px;border-top-color: #000000;border-bottom-style: solid;border-bottom-width: 1px;border-bottom-color: #000000;margin-left: 0;margin-right: auto;caption-side: top;" class="TableStyle-spp_ports" cellspacing="0">
+                                <caption style="text-align: center;">Incoming SQL&#160;Server Firewall Connections </caption>
+                                <col style="width: 10%;" class="TableStyle-spp_ports-Column-Column1" />
+                                <col style="width: 15%;" class="TableStyle-spp_ports-Column-Column1" />
+                                <col style="width: 15%;" class="TableStyle-spp_ports-Column-Column1" />
+                                <col style="width: 15%;" class="TableStyle-spp_ports-Column-Column1" />
+                                <col style="width: 45%;" class="TableStyle-spp_ports-Column-Column1" />
+                                <thead>
+                                    <tr class="TableStyle-spp_ports-Head-Header1">
+                                        <th style="text-align: left;font-size: 10pt;" class="TableStyle-spp_ports-HeadE-Column1-Header1"><span style="font-size: 10pt;">Port</span>
+                                        </th>
+                                        <th class="TableStyle-spp_ports-HeadE-Column1-Header1" style="text-align: left;font-size: 10pt;">Protocol</th>
+                                        <th class="TableStyle-spp_ports-HeadE-Column1-Header1" style="text-align: left;font-size: 10pt;">Firewall Rule</th>
+                                        <th style="text-align: left;font-size: 10pt;" class="TableStyle-spp_ports-HeadE-Column1-Header1">Service</th>
+                                        <th style="text-align: left;font-size: 10pt;" class="TableStyle-spp_ports-HeadD-Column1-Header1">Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="TableStyle-spp_ports-Body-Body1">
+                                        <td style="font-size: 10pt;" class="TableStyle-spp_ports-BodyE-Column1-Body1">5985</td>
+                                        <td class="TableStyle-spp_ports-BodyE-Column1-Body1" style="font-size: 10pt;">TCP</td>
+                                        <td class="TableStyle-spp_ports-BodyE-Column1-Body1" style="font-size: 10pt;">Accept</td>
+                                        <td style="font-size: 10pt;" class="TableStyle-spp_ports-BodyE-Column1-Body1">WinRM</td>
+                                        <td style="font-size: 10pt;" class="TableStyle-spp_ports-BodyD-Column1-Body1">Windows Remote Management Service</td>
+                                    </tr>
+                                    <tr class="TableStyle-spp_ports-Body-Body1">
+                                        <td style="font-size: 10pt;" class="TableStyle-spp_ports-BodyB-Column1-Body1">5986</td>
+                                        <td class="TableStyle-spp_ports-BodyB-Column1-Body1" style="font-size: 10pt;">TCP</td>
+                                        <td class="TableStyle-spp_ports-BodyB-Column1-Body1" style="font-size: 10pt;">Accept</td>
+                                        <td style="font-size: 10pt;" class="TableStyle-spp_ports-BodyB-Column1-Body1">WinRM</td>
+                                        <td style="font-size: 10pt;" class="TableStyle-spp_ports-BodyA-Column1-Body1">Secure Windows Remote Management Service</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <p>&#160;</p>
+                            <table style="width: 100%;mc-table-style: url('../../resources/tablestyles/spp_ports.css');border-left-style: solid;border-left-width: 1px;border-left-color: #000000;border-right-style: solid;border-right-width: 1px;border-right-color: #000000;border-top-style: solid;border-top-width: 1px;border-top-color: #000000;border-bottom-style: solid;border-bottom-width: 1px;border-bottom-color: #000000;margin-left: 0;margin-right: auto;caption-side: top;" class="TableStyle-spp_ports" cellspacing="0">
+                                <caption style="text-align: center;">Outgoing SQL&#160;Server Firewall Connections</caption>
+                                <col style="width: 10%;" class="TableStyle-spp_ports-Column-Column1" />
+                                <col style="width: 15%;" class="TableStyle-spp_ports-Column-Column1" />
+                                <col style="width: 15%;" class="TableStyle-spp_ports-Column-Column1" />
+                                <col style="width: 45%;" class="TableStyle-spp_ports-Column-Column1" />
+                                <thead>
+                                    <tr class="TableStyle-spp_ports-Head-Header1">
+                                        <th style="text-align: left;font-size: 10pt;" class="TableStyle-spp_ports-HeadE-Column1-Header1"><span style="font-size: 10pt;">Port</span>
+                                        </th>
+                                        <th class="TableStyle-spp_ports-HeadE-Column1-Header1" style="text-align: left;font-size: 10pt;">Protocol</th>
+                                        <th style="text-align: left;font-size: 10pt;" class="TableStyle-spp_ports-HeadE-Column1-Header1">Service</th>
+                                        <th style="text-align: left;font-size: 10pt;" class="TableStyle-spp_ports-HeadD-Column1-Header1">Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="TableStyle-spp_ports-Body-Body1">
+                                        <td class="TableStyle-spp_ports-BodyB-Column1-Body1" style="font-size: 10pt;">
+                                            <p style="font-size: 10pt;">3260</p>
+                                            <p style="font-size: 10pt;">iSCSI&#160;initiator is required on this node.</p>
+                                        </td>
+                                        <td class="TableStyle-spp_ports-BodyB-Column1-Body1" style="font-size: 10pt;">TCP</td>
+                                        <td class="TableStyle-spp_ports-BodyB-Column1-Body1" style="font-size: 10pt;">vSnap iSCSI</td>
+                                        <td class="TableStyle-spp_ports-BodyA-Column1-Body1" style="font-size: 10pt;">iSCSI&#160;vSnap target port used for mounting LUNS for backup and recovery. </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <p>&#160;</p>
+                            <hr width="100%" size="0" align="center" />
+                            <p style="text-align: left;"><span class="Strong" style="font-size: 10pt;">IBM Spectrum Protect Plus</span> <span class="Strong" style="font-size: 10pt;">10.1.2</span> <![CDATA[ ]]></p>
+                            <p style="font-size: 8pt;">Licensed Material - Property of IBM Corp. © IBM Corporation and other(s) <span class="GeneralYear">2018</span>. IBM is a registered trademark of the IBM Corporation in the United States, other countries, or both. <span style="font-size: 10pt;"><span style="font-size: 8pt;">| </span></span><span style="font-size: 8pt;" class="SystemShortDate">8/23/2018</span></p>
+                        </div>
+                    </section><a data-close="true"></a>
+                </div>
+            </div>
+            <script>/* <![CDATA[ */$(document).foundation();/* ]]> */</script>
+        </div>
+    </body>
+</html>

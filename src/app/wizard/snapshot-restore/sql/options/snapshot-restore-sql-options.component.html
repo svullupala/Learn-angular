@@ -1,0 +1,81 @@
+<div class="options">
+  <div class="title" translate>{{'wizard.job.textOptionsTitle'}}</div>
+  <div class="desc" translate>{{'wizard.job.textOptionsDesc'}}</div>
+  <div class="content">
+    <div class="section" [hidden]="hidePit">
+      <h6 class="section-title" translate>{{'application.textRecoveryOptions'}}</h6>
+      <div class="section-content">
+        <application-pit-component [applicationType]="applicationType"
+                                   [restoreItems]="getRestoreList()"
+                                   [applicationOptions]="model.subOption"
+                                   [workflowType]="model.subPolicyType"
+                                   [view]="model.view.value"
+                                   [disablePitOnly]="isOffload || recurring"
+                                   [enablePitOnly]="model.onDemandPIT"
+                                   [disabled]="model.subPolicyType === 'IA'">
+        </application-pit-component>
+      </div>
+    </div>
+    <div class="section" [hidden]="model.subPolicyType === 'IA'">
+      <h6 class="section-title" translate>{{'application.textApplicationOptions'}}</h6>
+      <div class="section-content">
+        <application-options
+          [restoreType]="model.runType"
+          [applicationType]="applicationType"
+          [options]="model.subOption">
+        </application-options>
+      </div>
+    </div>
+    <div class="section">
+      <h6 class="section-title" translate>{{'common.advancedOptionsText'}}</h6>
+      <div class="section-content offset">
+        <basic-dynamic-form
+          [formValues]="formValues"
+          [enableSaveButton]="false"
+          [enableCardLayout]="false"
+          [enableCancelButton]="false">
+        </basic-dynamic-form>
+      </div>
+    </div>
+  </div>
+</div>
+<ng-template #summary>
+  <div class="summary">
+    <div class="title"></div>
+    <div class="content">
+      <div class="property">
+        <label class="name">{{'hypervisor.autoCleanupTextSummary' | translate}}</label>
+        <label class="value">{{(options.autocleanup ? 'wizard.job.textYes' : 'wizard.job.textNo') | translate}}</label>
+      </div>
+      <div class="property">
+        <label class="name">{{'application.textAllowSessionOverwriteSummary' | translate}}</label>
+        <label class="value">{{(options.allowsessoverwrite ? 'wizard.job.textYes' : 'wizard.job.textNo') |
+          translate}}</label>
+      </div>
+      <div class="property">
+        <label class="name">{{'application.textContinueWithRestoreSummary' | translate}}</label>
+        <label class="value">{{(options.continueonerror ? 'wizard.job.textYes' : 'wizard.job.textNo') |
+          translate}}</label>
+      </div>
+      <div *ngIf="hasApplicationOption" class="section">
+        <div class="property" *ngIf="!isSubPolicyTypeIA && model.runType !== 'test'">
+          <label class="name">{{'application.textOverwriteDatabaseSummary' | translate}}</label>
+          <label class="value">{{(applicationOption.overwriteExistingDb ? 'wizard.job.textYes' :
+            'wizard.job.textNo') | translate}}</label>
+        </div>
+        <div class="property" *ngIf="!isSubPolicyTypeIA">
+          <label class="name">{{'wizard.job.textRecoveryTypeSummary' | translate}}</label>
+          <label class="value">{{applicationOption.recoveryType}}</label>
+        </div>
+        <div class="property" *ngIf="!isSubPolicyTypeIA && hasMaxParallelStreams">
+          <label class="name">{{'application.textMaxParallelStreamsSummary' | translate}}</label>
+          <label class="value">{{applicationOption.maxParallelStreams}}</label>
+        </div>
+        <div class="property" *ngIf="hasMountPathPrefix">
+          <label class="name">{{'application.textInstantAccessMountPointSummary' | translate}}</label>
+          <label class="value">{{applicationOption.mountPathPrefix || ('wizard.job.textEmpty' | translate)}}</label>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>

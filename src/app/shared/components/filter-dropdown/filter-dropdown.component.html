@@ -1,0 +1,48 @@
+<div class="btn-group dropdown"
+     placement="bottom right"
+     dropdown container="body" #dropdown="bs-dropdown" [autoClose]="false" role="group"
+    (onShown)="focusContainer()" (onHidden)="focusElement(btn)">
+  <button #btn
+    dropdownToggle
+    id="btnfilterselect" type="button" [attr.aria-label]="'common.textSelectFilter' | translate" class="filter-button"
+    [disabled]="disabled" [ngClass]="{ 'active': dropdown.isOpen }"
+    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <i class="bidi-filter_16" [ngClass]="{ 'bidi-filter_white_16': dropdown.isOpen}" aria-hidden="true"></i>
+  </button>
+  <div #container *dropdownMenu tabindex="0" class="dropdown-menu dropdown-menu-sdl dropdown-menu-right dropdown-menu-style"
+       aria-labelledby="btnfilterselect">
+    <div class="card" style="margin: 0;">
+      <div class="card-body" style="padding-bottom: 0;">
+        <div *ngFor="let filterCatagory of filterCatagories">
+          <div [hidden]="filterCatagory.hidden">
+            <label class="catagory-header" translate>{{filterCatagory.header}}</label>
+            <div class="container">
+              <div class="row" *ngFor="let catagory of filterCatagory.catagories">
+                <label class="custom-checkbox">
+                  <input type="checkbox"
+                         [(ngModel)]="catagory.selected"
+                         (change)="onSelectChange(catagory)"
+                         aria-label="...">
+                  <span translate>{{catagory.name}}</span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card" style="bottom: 0;">
+      <div class="card-body" style="padding-bottom: 0;">
+        <hr>
+        <div class="clearfix margin-bottom-1rem">
+          <button class="sdl secondary small filter-label-button" (click)="onSelectAll()">{{'common.textSelectAll' | translate}}</button>
+          <button class="sdl secondary small filter-label-button float-right" (click)="onClearAll()">{{'common.textClearFilters' | translate}}</button>
+        </div>
+        <confirm-toolbar-component [floatRight]="true"
+                                   [confirmText]="'common.textApply' | translate"
+                                   (cancelEvent)="onCancel(dropdown)"
+                                   (confirmEvent)="onApply(dropdown)"></confirm-toolbar-component>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,177 @@
+<ba-card *ngIf="enableCardLayout" [title]="formLabel">
+  <form class="form-horizontal" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="form-group row" *ngFor="let formVal of formValues" [ngSwitch]="formVal.controlType"
+         [ngClass]="{'hidden': !dependenciesValid(formVal)}" [id]="rowKey(formVal)">
+
+      <div *ngSwitchCase="'text'" [hidden]="formVal.hidden" [id]="idWithPrefix(formVal)" #textfield>
+        <label class="col-sm-4 control-label wrap" [attr.for]="idWithPrefix(formVal)" translate>{{ formVal.label }}</label>
+        <div class="col-sm-3" *ngIf="form.controls[formVal.key] !== undefined"
+             [ngClass]="{'has-success': form.controls[formVal.key].valid && form.controls[formVal.key].touched,
+                'has-error': !form.controls[formVal.key].valid && form.controls[formVal.key].touched}"
+        >
+
+          <input *ngIf="formVal.type === 'number'"
+                 sdlTooltip
+                 [container]="'body'"
+                 [mode]="'critical'"
+                 [isDisabled]="disableToolTip(form.controls[formVal.key])"
+                 [placement]="'top'"
+                 [sdlTooltip]="formVal.errorSuggestion | translate"
+                 [min]="formVal.min"
+                 [max]="formVal.max"
+                 [type]="formVal.type"
+                 [attr.aria-label]="formVal.label | translate"
+                 placeholder="{{formVal.placeholder && formVal.placeholder | translate}}"
+                 class="form-control" [formControlName]="formVal.key">
+          <input *ngIf="formVal.type !== 'number'"
+                 sdlTooltip
+                 [container]="'body'"
+                 [mode]="'critical'"
+                 [isDisabled]="disableToolTip(form.controls[formVal.key])"
+                 [placement]="'top'"
+                 [sdlTooltip]="formVal.errorSuggestion | translate"
+                 [type]="formVal.type"
+                 [attr.aria-label]="formVal.label | translate"
+                 placeholder="{{formVal.placeholder && formVal.placeholder | translate}}"
+                 class="form-control" [formControlName]="formVal.key">
+        </div>
+      </div>
+
+      <div *ngSwitchCase="'dropdown'" [hidden]="formVal.hidden" [id]="idWithPrefix(formVal)" #dropdown>
+        <label  class="col-sm-4 control-label wrap" [attr.for]="idWithPrefix(formVal)" translate>{{ formVal.label }}</label>
+        <div class="col-sm-3" *ngIf="form.controls[formVal.key] !== undefined"
+             [ngClass]="{'has-success': form.controls[formVal.key].valid && form.controls[formVal.key].touched,
+        'has-error': !form.controls[formVal.key].valid && form.controls[formVal.key].touched }">
+          <select
+            sdlTooltip
+            [container]="'body'"
+            [mode]="'critical'"
+            [isDisabled]="(form.controls[formVal.key].valid && form.controls[formVal.key].touched) || form.controls[formVal.key].untouched"
+            [placement]="'top'"
+            [sdlTooltip]="formVal.errorSuggestion | translate"
+            class="form-control" [formControlName]="formVal.key">
+            <option *ngFor="let option of formVal.options" [ngValue]="option.value" translate> {{ option.label}} </option>
+          </select>
+        </div>
+      </div>
+
+      <div *ngSwitchCase="'checkbox'" class="checkbox" [hidden]="formVal.hidden" [id]="idWithPrefix(formVal)" #checkbox>
+        <label  class="col-sm-4 control-label wrap" [attr.for]="idWithPrefix(formVal)" translate>{{ formVal.label }}</label>
+        <div class="col-sm-3" *ngIf="form.controls[formVal.key] !== undefined">
+          <label class="custom-checkbox">
+            <input type="checkbox" [formControlName]="formVal.key" (change)="onChange(formVal)">
+            <span></span>
+          </label>
+        </div>
+      </div>
+
+      <div *ngSwitchCase="'radio'" class="radio" [hidden]="formVal.hidden" [id]="idWithPrefix(formVal)" #radio>
+        <label class="col-sm-4 control-label wrap" [attr.for]="idWithPrefix(formVal)" translate>{{ formVal.label }}</label>
+        <div class="col-sm-3" *ngIf="form.controls[formVal.key] !== undefined">
+          <label class="radio-inline custom-radio" *ngIf="option && option.value">
+            <input type="radio" *ngIf="option && option.value" [formControlName]="formVal.key" [value]="option.value">
+            <span *ngIf="option && option.label" translate>{{ option.label }}</span>
+          </label>
+        </div>
+      </div>
+
+    </div>
+    <div class="form-inline">
+      <button *ngIf="enableCancelButton" type="button" class="sdl inline secondary margin-right-1rem" aria-expanded="false" (click)="cancel()">{{ cancelText }}</button>
+      <button *ngIf="enableSaveButton" type="submit" class="sdl inline" [ngClass]="{'disabled': !form.valid}" [disabled]="!form.valid" aria-expanded="false">{{ saveText }}</button>
+    </div>
+  </form>
+</ba-card>
+<div *ngIf="!enableCardLayout">
+  <div class="header" *ngIf="formLabel !== undefined">
+    <h3>{{ formLabel }}</h3>
+    <hr>
+  </div>
+  <form class="form-horizontal" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div #row class="form-group row" *ngFor="let formVal of formValues" [ngSwitch]="formVal.controlType"
+         [ngClass]="{'hidden': !dependenciesValid(formVal)}" [id]="rowKey(formVal)">
+
+      <div *ngSwitchCase="'text'" [hidden]="formVal.hidden" [id]="idWithPrefix(formVal)" #textfield>
+        <label class="col-sm-4 control-label wrap" [attr.for]="idWithPrefix(formVal)" translate>{{ formVal.label }}</label>
+        <div class="col-sm-3" *ngIf="form.controls[formVal.key] !== undefined"
+             [ngClass]="{'has-success': form.controls[formVal.key].valid && form.controls[formVal.key].touched,
+                'has-error': !form.controls[formVal.key].valid && form.controls[formVal.key].touched}"
+        >
+          <input *ngIf="formVal.type === 'number'"
+            sdlTooltip
+            [container]="'body'"
+            [mode]="'critical'"
+            [isDisabled]="(form.controls[formVal.key].valid && form.controls[formVal.key].touched) || form.controls[formVal.key].untouched"
+            [placement]="'top'"
+            [sdlTooltip]="formVal.errorSuggestion | translate"
+            [type]="formVal.type"
+            [attr.aria-label]="formVal.label | translate"
+            placeholder="{{formVal.placeholder && formVal.placeholder | translate}}"
+            class="form-control" [formControlName]="formVal.key">
+          <input *ngIf="formVal.type !== 'number'"
+            sdlTooltip
+            [container]="'body'"
+            [mode]="'critical'"
+            [isDisabled]="(form.controls[formVal.key].valid && form.controls[formVal.key].touched) || form.controls[formVal.key].untouched"
+            [placement]="'top'"
+            [sdlTooltip]="formVal.errorSuggestion | translate"
+            [type]="formVal.type"
+                 [attr.aria-label]="formVal.label | translate"
+                 placeholder="{{formVal.placeholder && formVal.placeholder | translate}}"
+                 class="form-control" [formControlName]="formVal.key">
+        </div>
+      </div>
+
+      <div *ngSwitchCase="'dropdown'" [hidden]="formVal.hidden" [id]="idWithPrefix(formVal)" #dropdown>
+        <label  class="col-sm-4 control-label wrap" [attr.for]="idWithPrefix(formVal)" translate>{{ formVal.label }}</label>
+        <div class="col-sm-3" *ngIf="form.controls[formVal.key] !== undefined"
+             [ngClass]="{'has-success': form.controls[formVal.key].valid && form.controls[formVal.key].touched,
+        'has-error': !form.controls[formVal.key].valid && form.controls[formVal.key].touched }">
+          <select
+            sdlTooltip
+            [container]="'body'"
+            [mode]="'critical'"
+            [isDisabled]="(form.controls[formVal.key].valid && form.controls[formVal.key].touched) || form.controls[formVal.key].untouched"
+            [placement]="'top'"
+            [sdlTooltip]="formVal.errorSuggestion | translate"
+            class="form-control" [formControlName]="formVal.key">
+            <option *ngFor="let option of formVal.options" [ngValue]="option.value"> {{ option.label | translate}} </option>
+          </select>
+        </div>
+      </div>
+
+      <div *ngSwitchCase="'checkbox'" class="checkbox" [hidden]="formVal.hidden" [id]="idWithPrefix(formVal)" #checkbox>
+        <div class="checkbox">
+          <label class="custom-checkbox" translate>
+            <input type="checkbox" [formControlName]="formVal.key" [attr.disabled]="formVal.disabled ? '' : null" (change)="onChange(formVal)">
+            <span>{{formVal.label | translate }}</span>
+          </label>
+        </div>
+
+        <!--<label  class="col-sm-4 control-label wrap" [attr.for]="idWithPrefix(formVal)" translate>{{ formVal.label }}</label>-->
+        <!--<div class="col-sm-3" *ngIf="form.controls[formVal.key] !== undefined">-->
+          <!--<label class="custom-checkbox">-->
+            <!--<input type="checkbox" [formControlName]="formVal.key" (change)="onChange(formVal)">-->
+            <!--<span></span>-->
+          <!--</label>-->
+        <!--</div>-->
+      </div>
+
+      <div *ngSwitchCase="'radio'" class="radio" [hidden]="formVal.hidden" [id]="idWithPrefix(formVal)" #radio>
+        <label class="col-sm-4 control-label wrap" [attr.for]="idWithPrefix(formVal)" translate>{{ formVal.label }}</label>
+        <div class="col-sm-3" *ngIf="form.controls[formVal.key] !== undefined">
+          <label class="radio-inline custom-radio" *ngIf="option && option.value">
+            <input type="radio" *ngIf="option && option.value" [formControlName]="formVal.key" [value]="option.value">
+            <span *ngIf="option && option.label" translate>{{ option.label }}</span>
+          </label>
+        </div>
+      </div>
+
+    </div>
+    <div class="form-inline">
+      <button *ngIf="enableCancelButton" type="button" class="sdl inline secondary margin-right-1rem" aria-expanded="false" (click)="cancel()">{{ cancelText }}</button>
+      <button *ngIf="enableSaveButton" type="submit" class="sdl inline" [ngClass]="{'disabled': !form.valid}" [disabled]="!form.valid" aria-expanded="false">{{ saveText }}</button>
+    </div>
+  </form>
+</div>
+

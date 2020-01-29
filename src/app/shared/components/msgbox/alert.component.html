@@ -1,0 +1,103 @@
+<div class="notification-contianer">
+    <div class="notification" *ngFor="let item of notificationArray; let i = index" [ngClass]="{'info': item.getType() === 'info',
+        'success': item.getType() === 'success',
+        'critical': item.getType() === 'critical',
+        'standard' : item.getType() === 'standard',
+        'warning' : item.getType() === 'warning'}">
+      <div class="notification-content">
+        <div class="close-button">
+          <button cdkFocusRegionStart *ngIf="!noInteraction" class="close" (click)="discardNotification(i)"
+            aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="notification-title">
+          <div class="title-body">
+            <div class="check-icon-body" *ngIf="item.getType() === 'success'">
+              <img src="{{ ( 'app/todo/check-icon.png' | baAppPicture )}}" width="12" height="11">
+            </div>
+            <img *ngIf="item.getType() === 'warning'" src="{{ ( 'app/misc/warning.png' | baAppPicture )}}"
+              alt="{{'common.textWarningAltText' | translate}}" width="20" height="20">
+            <img *ngIf="item.getType() === 'info'" src="{{ ( 'app/misc/info.png' | baAppPicture )}}"
+              alt="{{'common.textInfoAltText' | translate}}" width="20" height="20">
+            <div class="title-text">
+              {{item.getTitle()}}
+            </div>
+          </div>
+        </div>
+        <div class="notification-body">
+          {{item.getContent()}}
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div bsModal #lgModal="bs-modal" class="modal fade" [ngClass]="{'centered-modal': trotting}"
+     (keydown.esc)="onKeyDownEnterEsc()"
+     [config]="{backdrop: 'static', keyboard : false}" tabindex="-1" role="dialog"
+     aria-hidden="true">
+  <div *ngIf="!trotting" class="modal-dialog modal-lg">
+    <div cdkTrapFocus class="modal-content">
+      <button cdkFocusRegionStart *ngIf="!noInteraction" class="close" (click)="discard()" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <div *ngIf="!noInteraction || !!title" class="modal-header">
+        <label class="modal-title">{{title}}</label>
+        <hr class="modal-hr-sdl">
+      </div>
+      <div *ngIf="type !== AlertType.TEMPLATE" class="modal-body side-by-side-wrapper">
+        <div class="side-by-side-left" [ngClass]="{'question': confirmed}">
+          <img *ngIf="confirmed && !isDanger" src="{{ ( 'app/misc/question.png' | baAppPicture )}}" alt="{{'common.textQuestionAltText' | translate}}" width="64" height="64">
+          <img *ngIf="confirmed && isDanger" src="{{ ( 'app/misc/warning.png' | baAppPicture )}}" alt="{{'common.textWarningAltText' | translate}}" width="32" height="32">
+          <img *ngIf="type === AlertType.ERROR" src="{{ ( 'app/misc/error.png' | baAppPicture )}}" alt="{{'common.textErrorAltText' | translate}}" width="32" height="32">
+          <img *ngIf="type === AlertType.WARNING" src="{{ ( 'app/misc/warning.png' | baAppPicture )}}" alt="{{'common.textWarningAltText' | translate}}" width="32" height="32">
+          <img *ngIf="type === AlertType.INFO" src="{{ ( 'app/misc/info.png' | baAppPicture )}}" alt="{{'common.textInfoAltText' | translate}}" width="32" height="32">
+        </div>
+        <div class="side-by-side-right message">{{message}}
+          <div *ngIf="isDanger">
+            <br>
+            <label class="danger-label">{{dangerMessage}} {{dangerRequiredString}}</label>
+            <br>
+            <input type="text" class="danger-input" [(ngModel)]="dangerConfirmedString"/>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="type === AlertType.TEMPLATE" class="modal-body">
+        <ng-template [ngTemplateOutlet]="message"></ng-template>
+      </div>
+      <div class="container" style="width: 75%; margin: auto; padding: 10px" *ngIf="hasDetails && isDetails">
+        <textarea class="details" rows="25" cols="160" readonly="true">
+          {{prettyDetails}}
+        </textarea>
+      </div>
+      <div *ngIf="!noInteraction" class="modal-footer">
+        <button *ngIf="confirmed || forceConfirmationHandler" class="sdl inline secondary margin-right-1rem" (click)="discard()" translate>
+          {{'common.textNo'}}
+        </button>
+        <button cdkFocusRegionEnd *ngIf="!isDanger && (confirmed || forceConfirmationHandler)" class="sdl inline" (click)="confirm()" translate>
+          {{'common.textYes'}}
+        </button>
+        <button cdkFocusRegionEnd [disabled]="!isDangerValid()" *ngIf="isDanger && (confirmed || forceConfirmationHandler)" class="sdl inline danger-button" [ngClass]="{'disabled': !isDangerValid()}"  (click)="confirm()" translate>
+          {{dangerButtonText}}
+        </button>
+        <button cdkFocusRegionEnd *ngIf="!confirmed" [hidden]="forceConfirmationHandler" class="sdl inline"
+                [ngClass]="{'margin-right-1rem': hasDetails }"
+                (click)="hide()" translate>{{'common.textOK'}}
+        </button>
+        <button cdkFocusRegionEnd *ngIf="hasDetails" class="sdl inline button-details" (click)="showDetails()" translate>{{(isDetails) ? 'common.hideAlertDetails' : 'common.showAlertDetails'}}
+        </button>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="trotting" class="spinning-wheel-wrapper">
+    <div class="dialog">
+      <div *ngIf="!simplyMask" class="has-spinning-wheel">
+        <div class="spinning-wheel-container">
+          <div class="spinning-wheel">
+            <loader-basic [active]="trotting"></loader-basic>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

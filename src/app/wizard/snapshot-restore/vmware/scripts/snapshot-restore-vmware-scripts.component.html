@@ -1,0 +1,35 @@
+<div class="scripts">
+  <div class="title" translate>{{'wizard.job.textApplyScriptsTitle'}}</div>
+  <div class="desc" translate>{{'wizard.job.textApplyScriptsDesc'}}</div>
+  <div class="content">
+    <post-scripts-selector-component></post-scripts-selector-component>
+  </div>
+</div>
+<ng-template #summary>
+  <div class="summary">
+    <div class="content">
+      <div class="property">
+        <label class="name">{{'scripts.textPreScriptSummary' | translate}}</label>
+        <label class="value">
+          {{hasPreScript ? (preScript + ' ' + ('wizard.job.textIn' | translate) + ' ' +
+          ((isPreScriptServer ? 'scripts.textScriptServer' : 'application.textApplicationServer') | translate) +
+          ' ' + preServer) : ('wizard.job.textEmpty' | translate)}}
+        </label>
+      </div>
+      <div class="property">
+        <label class="name">{{'scripts.textPostScriptSummary' | translate}}</label>
+        <label class="value">
+          {{hasPostScript ? (postScript + ' ' + ('wizard.job.textIn' | translate) + ' ' +
+          ((isPostScriptServer ? 'scripts.textScriptServer' : 'application.textApplicationServer') | translate) +
+          ' ' + postServer) : ('wizard.job.textEmpty' | translate)}}
+        </label>
+      </div>
+      <div class="property">
+        <label class="name">{{'scripts.textContinueScriptsOnErrorSummary' | translate}}</label>
+        <label class="value">
+          {{(continueScriptsOnError ? 'wizard.job.textYes' : 'wizard.job.textNo') | translate}}
+        </label>
+      </div>
+    </div>
+  </div>
+</ng-template>

@@ -1,0 +1,34 @@
+$item-border-radius: 3px;
+
+.radio-selection-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.radio-selection-item {
+  flex: 1 1 0;
+  border: 2px solid #d8d8d8;
+  padding: 20px 10px;
+  margin-left: -2px;
+  cursor: pointer;
+
+  label.custom-radio {
+    margin-bottom: 1rem;
+  }
+
+  &:first-child {
+    margin-left: 0;
+    border-top-left-radius: $item-border-radius;
+    border-bottom-left-radius: $item-border-radius;
+  }
+
+  &:last-child {
+    border-top-right-radius: $item-border-radius;
+    border-bottom-right-radius: $item-border-radius;
+  }
+}
+
+.radio-selection-item--active {
+  border-color: #1191e6;
+  z-index: 1;
+}

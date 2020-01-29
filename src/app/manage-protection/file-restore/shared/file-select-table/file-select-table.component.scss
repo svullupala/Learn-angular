@@ -1,0 +1,52 @@
+.no-top-border {
+  border-top: 0;
+}
+
+.large-text {
+  font-size: 24px;
+}
+
+.table {
+  table-layout:fixed;
+}
+
+.table th {
+  border-top: 0;
+  border-bottom: 0;
+}
+
+.table td {
+  border-top: 0;
+  border-bottom: 0;
+  padding: 0;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.align-left {
+  text-align: left;
+}
+
+.align-center {
+  text-align: center;
+}
+
+.align-right {
+  text-align: right;
+}
+
+.col-xsm {
+  width: 2%;
+}
+
+.col-sm {
+  width: 13%;
+  word-break: break-all;
+}
+
+.col-md {
+  width: 28%;
+  word-break: break-all;
+}

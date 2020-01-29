@@ -1,0 +1,810 @@
+[ {
+ "method": "GET",
+  "pattern": "/api/application/db2/instance?",
+    "response": {
+      "instances": [
+          {
+              "appServerVmInfos": [
+                  {
+                      "appServerId": "1015",
+                      "appServerName": "10.1.100.43",
+                      "hypervisorHost": null,
+                      "hypervisorServerId": null,
+                      "hypervisorServerName": null,
+                      "vmId": null,
+                      "vmLocation": null,
+                      "vmName": null
+                  }
+              ],
+              "applicationFullName": "Oracle Database",
+              "capabilities": {
+                  "disablelogbackup": null,
+                  "enablelogbackup": null,
+                  "logtruncate": null,
+                  "masking": null,
+                  "postrestore": null,
+                  "postsnapshot": null,
+                  "prerestore": null,
+                  "presnapshot": null,
+                  "recordbackup": null,
+                  "resolveLogBackupLocations": false,
+                  "restore": null,
+                  "restorecleanup": null,
+                  "snapshot": null
+              },
+              "host": "10.1.100.43",
+              "id": "8660ee18ea28f98fb4cd8819440d95ba",
+              "isOwnerNode": false,
+              "jobId": "1004",
+              "partitions": [
+                  {
+                      "host": "ohioprod1", 
+                      "id": "0"
+                  }, 
+                  {
+                      "host": "ohioprod2", 
+                      "id": "0"
+                  }, 
+                  {
+                      "host": "ohioprod3", 
+                      "id": "0"
+                  }, 
+                  {
+                      "host": "ohioprod4", 
+                      "id": "0"
+                  }, 
+                  {
+                      "host": "ohioprod5.somesite.ibm.com", 
+                      "id": "0"
+                  }, 
+                  {
+                      "host": "ohioprod6", 
+                      "id": "0"
+                  }, 
+                  {
+                      "host": "ohioprod7", 
+                      "id": "0"
+                  }, 
+                  {
+                      "host": "ohioprod8", 
+                      "id": "0"
+                  }, 
+                  {
+                      "host": "ohioprod9", 
+                      "id": "0"
+                  }, 
+                  {
+                      "host": "ohioprod10", 
+                      "id": "0"
+                  }, 
+                  {
+                      "host": "ohioprod11", 
+                      "id": "0"
+                  }, 
+                  {
+                      "host": "ohioprod12", 
+                      "id": "0"
+                  }, 
+                  {
+                      "host": "ohioprod13", 
+                      "id": "0"
+                  }, 
+                  {
+                      "host": "ohioprod14", 
+                      "id": "0"
+                  }, 
+                  {
+                      "host": "ohioprod15", 
+                      "id": "0"
+                  }, 
+                  {
+                      "host": "ohioprod16", 
+                      "id": "1"
+                  }, 
+                  {
+                      "host": "ohioprod17", 
+                      "id": "2"
+                  }, 
+                  {
+                      "host": "ohioprod18", 
+                      "id": "3"
+                  },
+                  {
+                      "host": "ohioprod19", 
+                      "id": "3"
+                  },
+                  {
+                      "host": "ohioprod20", 
+                      "id": "3"
+                  }
+              ],
+              "links": {
+                  "appServerVms": {
+                      "deprecation": null,
+                      "href": "http://172.20.39.3:8082/api/application/oracle/instance/8660ee18ea28f98fb4cd8819440d95ba/appservervm?from=hlo",
+                      "hreflang": null,
+                      "media": null,
+                      "rel": "related",
+                      "title": null,
+                      "type": null
+                  },
+                  "applicationview": {
+                      "deprecation": null,
+                      "href": "http://172.20.39.3:8082/api/application/oracle/instance/8660ee18ea28f98fb4cd8819440d95ba/database?from=hlo",
+                      "hreflang": null,
+                      "media": null,
+                      "rel": "related",
+                      "title": null,
+                      "type": null
+                  },
+                  "databases": {
+                      "deprecation": null,
+                      "href": "http://172.20.39.3:8082/api/application/oracle/instance/8660ee18ea28f98fb4cd8819440d95ba/database?from=hlo",
+                      "hreflang": null,
+                      "media": null,
+                      "rel": "related",
+                      "title": null,
+                      "type": null
+                  },
+                  "options": {
+                      "deprecation": null,
+                      "href": "http://172.20.39.3:8082/api/application/oracle/instance/8660ee18ea28f98fb4cd8819440d95ba/options?from=hlo",
+                      "hreflang": null,
+                      "media": null,
+                      "rel": "related",
+                      "title": null,
+                      "type": null
+                  },
+                  "self": {
+                      "deprecation": null,
+                      "href": "http://172.20.39.3:8082/api/application/oracle/instance/8660ee18ea28f98fb4cd8819440d95ba?from=hlo",
+                      "hreflang": null,
+                      "media": null,
+                      "rel": "self",
+                      "title": null,
+                      "type": null
+                  },
+                  "servers": {
+                      "deprecation": null,
+                      "href": "http://172.20.39.3:8082/api/appserver?from=hlo&filter=%5B%7B%22property%22%3A%22pk%22%2C%22op%22%3A%22IN%22%2C%22value%22%3A%5B%221015%22%5D%7D%5D",
+                      "hreflang": null,
+                      "media": null,
+                      "rel": "related",
+                      "title": null,
+                      "type": null
+                  },
+                  "up": {
+                      "deprecation": null,
+                      "href": "http://172.20.39.3:8082/api/application/oracle/instance?from=hlo",
+                      "hreflang": null,
+                      "media": null,
+                      "rel": "up",
+                      "title": null,
+                      "type": null
+                  }
+              },
+              "location": "/atm-oracle-1011.automation.local / OraDB12Home1",
+              "metadataPath": "/DBINST:8660ee18ea28f98fb4cd8819440d95ba",
+              "name": "PARTITIONS20.SOMESITE.IBM.COM",
+              "providerNodeId": "1015",
+              "rbacPath": "root:0/app:0/app.type:oracle/appinst:8660ee18ea28f98fb4cd8819440d95ba",
+              "resourceType": "applicationinstance",
+              "sessionId": 1552678489155,
+              "storageProfiles": [],
+              "type": "oracle",
+              "version": "12.2.0.1.0"
+          },
+          {
+              "appServerVmInfos": [
+                  {
+                      "appServerId": "1015",
+                      "appServerName": "10.1.100.43",
+                      "hypervisorHost": null,
+                      "hypervisorServerId": null,
+                      "hypervisorServerName": null,
+                      "vmId": null,
+                      "vmLocation": null,
+                      "vmName": null
+                  }
+              ],
+              "applicationFullName": "Oracle Database",
+              "capabilities": {
+                  "disablelogbackup": null,
+                  "enablelogbackup": null,
+                  "logtruncate": null,
+                  "masking": null,
+                  "postrestore": null,
+                  "postsnapshot": null,
+                  "prerestore": null,
+                  "presnapshot": null,
+                  "recordbackup": null,
+                  "resolveLogBackupLocations": false,
+                  "restore": null,
+                  "restorecleanup": null,
+                  "snapshot": null
+              },
+              "host": "10.1.100.43",
+              "id": "8660ee18ea28f98fb4cd8819440d95ba",
+              "isOwnerNode": false,
+              "jobId": "1004",
+              "partitions": [
+                  {
+                      "host": "ohioprod5.somesite.ibm.com", 
+                      "id": "0"
+                  }, 
+                  {
+                      "host": "ohioprod5.somesite.ibm.com", 
+                      "id": "1"
+                  }, 
+                  {
+                      "host": "ohioprod5.somesite.ibm.com", 
+                      "id": "2"
+                  }, 
+                  {
+                      "host": "ohioprod5.somesite.ibm.com", 
+                      "id": "3"
+                  }, 
+                  {
+                      "host": "ohioprod5.somesite.ibm.com", 
+                      "id": "4"
+                  }, 
+                  {
+                      "host": "ohioprod5.somesite.ibm.com", 
+                      "id": "5"
+                  }, 
+                  {
+                      "host": "ohioprod5.somesite.ibm.com", 
+                      "id": "6"
+                  }, 
+                  {
+                      "host": "ohioprod5.somesite.ibm.com", 
+                      "id": "2"
+                  }, 
+                  {
+                      "host": "ohioprod5.somesite.ibm.com", 
+                      "id": "7"
+                  }, 
+                  {
+                      "host": "ohioprod5.somesite.ibm.com", 
+                      "id": "8"
+                  }, 
+                  {
+                      "host": "ohioprod5.somesite.ibm.com", 
+                      "id": "9"
+                  }, 
+                  {
+                      "host": "ohioprod5.somesite.ibm.com", 
+                      "id": "10"
+                  }, 
+                  {
+                      "host": "ohioprod6", 
+                      "id": "3"
+                  },
+                  {
+                      "host": "ohioprod2", 
+                      "id": "0"
+                  }, 
+                  {
+                      "host": "ohioprod2", 
+                      "id": "1"
+                  }, 
+                  {
+                      "host": "ohioprod2", 
+                      "id": "2"
+                  }, 
+                  {
+                      "host": "ohioprod2", 
+                      "id": "3"
+                  }, 
+                  {
+                      "host": "ohioprod2", 
+                      "id": "4"
+                  }, 
+                  {
+                      "host": "ohioprod2", 
+                      "id": "5"
+                  }, 
+                  {
+                      "host": "ohioprod2", 
+                      "id": "6"
+                  }, 
+                  {
+                      "host": "ohioprod4", 
+                      "id": "2"
+                  }, 
+                  {
+                      "host": "ohioprod2", 
+                      "id": "7"
+                  }, 
+                  {
+                      "host": "ohioprod2", 
+                      "id": "8"
+                  }, 
+                  {
+                      "host": "ohioprod2", 
+                      "id": "9"
+                  }, 
+                  {
+                      "host": "ohioprod2", 
+                      "id": "10"
+                  }, 
+                  {
+                      "host": "ohioprod4", 
+                      "id": "3"
+                  }
+              ],
+              "links": {
+                  "appServerVms": {
+                      "deprecation": null,
+                      "href": "http://172.20.39.3:8082/api/application/oracle/instance/8660ee18ea28f98fb4cd8819440d95ba/appservervm?from=hlo",
+                      "hreflang": null,
+                      "media": null,
+                      "rel": "related",
+                      "title": null,
+                      "type": null
+                  },
+                  "applicationview": {
+                      "deprecation": null,
+                      "href": "http://172.20.39.3:8082/api/application/oracle/instance/8660ee18ea28f98fb4cd8819440d95ba/database?from=hlo",
+                      "hreflang": null,
+                      "media": null,
+                      "rel": "related",
+                      "title": null,
+                      "type": null
+                  },
+                  "databases": {
+                      "deprecation": null,
+                      "href": "http://172.20.39.3:8082/api/application/oracle/instance/8660ee18ea28f98fb4cd8819440d95ba/database?from=hlo",
+                      "hreflang": null,
+                      "media": null,
+                      "rel": "related",
+                      "title": null,
+                      "type": null
+                  },
+                  "options": {
+                      "deprecation": null,
+                      "href": "http://172.20.39.3:8082/api/application/oracle/instance/8660ee18ea28f98fb4cd8819440d95ba/options?from=hlo",
+                      "hreflang": null,
+                      "media": null,
+                      "rel": "related",
+                      "title": null,
+                      "type": null
+                  },
+                  "self": {
+                      "deprecation": null,
+                      "href": "http://172.20.39.3:8082/api/application/oracle/instance/8660ee18ea28f98fb4cd8819440d95ba?from=hlo",
+                      "hreflang": null,
+                      "media": null,
+                      "rel": "self",
+                      "title": null,
+                      "type": null
+                  },
+                  "servers": {
+                      "deprecation": null,
+                      "href": "http://172.20.39.3:8082/api/appserver?from=hlo&filter=%5B%7B%22property%22%3A%22pk%22%2C%22op%22%3A%22IN%22%2C%22value%22%3A%5B%221015%22%5D%7D%5D",
+                      "hreflang": null,
+                      "media": null,
+                      "rel": "related",
+                      "title": null,
+                      "type": null
+                  },
+                  "up": {
+                      "deprecation": null,
+                      "href": "http://172.20.39.3:8082/api/application/oracle/instance?from=hlo",
+                      "hreflang": null,
+                      "media": null,
+                      "rel": "up",
+                      "title": null,
+                      "type": null
+                  }
+              },
+              "location": "/atm-oracle-1011.automation.local / OraDB12Home1",
+              "metadataPath": "/DBINST:8660ee18ea28f98fb4cd8819440d95ba",
+              "name": "PARTITIONS2.SOMESITE.IBM.COM",
+              "providerNodeId": "1015",
+              "rbacPath": "root:0/app:0/app.type:oracle/appinst:8660ee18ea28f98fb4cd8819440d95ba",
+              "resourceType": "applicationinstance",
+              "sessionId": 1552678489155,
+              "storageProfiles": [],
+              "type": "oracle",
+              "version": "12.2.0.1.0"
+          },
+          {
+              "appServerVmInfos": [
+                  {
+                      "appServerId": "1015",
+                      "appServerName": "10.1.100.43",
+                      "hypervisorHost": null,
+                      "hypervisorServerId": null,
+                      "hypervisorServerName": null,
+                      "vmId": null,
+                      "vmLocation": null,
+                      "vmName": null
+                  }
+              ],
+              "applicationFullName": "Oracle Database",
+              "capabilities": {
+                  "disablelogbackup": null,
+                  "enablelogbackup": null,
+                  "logtruncate": null,
+                  "masking": null,
+                  "postrestore": null,
+                  "postsnapshot": null,
+                  "prerestore": null,
+                  "presnapshot": null,
+                  "recordbackup": null,
+                  "resolveLogBackupLocations": false,
+                  "restore": null,
+                  "restorecleanup": null,
+                  "snapshot": null
+              },
+              "host": "10.1.100.43",
+              "id": "8660ee18ea28f98fb4cd8819440d95ba",
+              "isOwnerNode": false,
+              "jobId": "1004",
+              "partitions": [
+                  {
+                      "host": "ohioprod2", 
+                      "id": "0"
+                  }, 
+                  {
+                      "host": "ohioprod2", 
+                      "id": "1"
+                  }, 
+                  {
+                      "host": "ohioprod2", 
+                      "id": "2"
+                  }, 
+                  {
+                      "host": "ohioprod2", 
+                      "id": "3"
+                  }, 
+                  {
+                      "host": "ohioprod2", 
+                      "id": "4"
+                  }, 
+                  {
+                      "host": "ohioprod2", 
+                      "id": "5"
+                  }, 
+                  {
+                      "host": "ohioprod2", 
+                      "id": "6"
+                  }, 
+                  {
+                      "host": "ohioprod4", 
+                      "id": "2"
+                  }, 
+                  {
+                      "host": "ohioprod2", 
+                      "id": "7"
+                  }, 
+                  {
+                      "host": "ohioprod2", 
+                      "id": "8"
+                  }, 
+                  {
+                      "host": "ohioprod2", 
+                      "id": "9"
+                  }, 
+                  {
+                      "host": "ohioprod2", 
+                      "id": "10"
+                  }, 
+                  {
+                      "host": "ohioprod4", 
+                      "id": "3"
+                  }
+              ],
+              "links": {
+                  "appServerVms": {
+                      "deprecation": null,
+                      "href": "http://172.20.39.3:8082/api/application/oracle/instance/8660ee18ea28f98fb4cd8819440d95ba/appservervm?from=hlo",
+                      "hreflang": null,
+                      "media": null,
+                      "rel": "related",
+                      "title": null,
+                      "type": null
+                  },
+                  "applicationview": {
+                      "deprecation": null,
+                      "href": "http://172.20.39.3:8082/api/application/oracle/instance/8660ee18ea28f98fb4cd8819440d95ba/database?from=hlo",
+                      "hreflang": null,
+                      "media": null,
+                      "rel": "related",
+                      "title": null,
+                      "type": null
+                  },
+                  "databases": {
+                      "deprecation": null,
+                      "href": "http://172.20.39.3:8082/api/application/oracle/instance/8660ee18ea28f98fb4cd8819440d95ba/database?from=hlo",
+                      "hreflang": null,
+                      "media": null,
+                      "rel": "related",
+                      "title": null,
+                      "type": null
+                  },
+                  "options": {
+                      "deprecation": null,
+                      "href": "http://172.20.39.3:8082/api/application/oracle/instance/8660ee18ea28f98fb4cd8819440d95ba/options?from=hlo",
+                      "hreflang": null,
+                      "media": null,
+                      "rel": "related",
+                      "title": null,
+                      "type": null
+                  },
+                  "self": {
+                      "deprecation": null,
+                      "href": "http://172.20.39.3:8082/api/application/oracle/instance/8660ee18ea28f98fb4cd8819440d95ba?from=hlo",
+                      "hreflang": null,
+                      "media": null,
+                      "rel": "self",
+                      "title": null,
+                      "type": null
+                  },
+                  "servers": {
+                      "deprecation": null,
+                      "href": "http://172.20.39.3:8082/api/appserver?from=hlo&filter=%5B%7B%22property%22%3A%22pk%22%2C%22op%22%3A%22IN%22%2C%22value%22%3A%5B%221015%22%5D%7D%5D",
+                      "hreflang": null,
+                      "media": null,
+                      "rel": "related",
+                      "title": null,
+                      "type": null
+                  },
+                  "up": {
+                      "deprecation": null,
+                      "href": "http://172.20.39.3:8082/api/application/oracle/instance?from=hlo",
+                      "hreflang": null,
+                      "media": null,
+                      "rel": "up",
+                      "title": null,
+                      "type": null
+                  }
+              },
+              "location": "/atm-oracle-1011.automation.local / OraDB12Home1",
+              "metadataPath": "/DBINST:8660ee18ea28f98fb4cd8819440d95ba",
+              "name": "PARTITIONS1.SOMESITE.IBM.COM",
+              "providerNodeId": "1015",
+              "rbacPath": "root:0/app:0/app.type:oracle/appinst:8660ee18ea28f98fb4cd8819440d95ba",
+              "resourceType": "applicationinstance",
+              "sessionId": 1552678489155,
+              "storageProfiles": [],
+              "type": "oracle",
+              "version": "12.2.0.1.0"
+          },
+          {
+              "appServerVmInfos": [
+                  {
+                      "appServerId": "1015",
+                      "appServerName": "10.1.100.43",
+                      "hypervisorHost": null,
+                      "hypervisorServerId": null,
+                      "hypervisorServerName": null,
+                      "vmId": null,
+                      "vmLocation": null,
+                      "vmName": null
+                  }
+              ],
+              "applicationFullName": "Oracle Database",
+              "capabilities": {
+                  "disablelogbackup": null,
+                  "enablelogbackup": null,
+                  "logtruncate": null,
+                  "masking": null,
+                  "postrestore": null,
+                  "postsnapshot": null,
+                  "prerestore": null,
+                  "presnapshot": null,
+                  "recordbackup": null,
+                  "resolveLogBackupLocations": false,
+                  "restore": null,
+                  "restorecleanup": null,
+                  "snapshot": null
+              },
+              "host": "10.1.100.43",
+              "id": "8660ee18ea28f98fb4cd8819440d95ba",
+              "isOwnerNode": false,
+              "jobId": "1004",
+              "links": {
+                  "appServerVms": {
+                      "deprecation": null,
+                      "href": "http://172.20.39.3:8082/api/application/oracle/instance/8660ee18ea28f98fb4cd8819440d95ba/appservervm?from=hlo",
+                      "hreflang": null,
+                      "media": null,
+                      "rel": "related",
+                      "title": null,
+                      "type": null
+                  },
+                  "applicationview": {
+                      "deprecation": null,
+                      "href": "http://172.20.39.3:8082/api/application/oracle/instance/8660ee18ea28f98fb4cd8819440d95ba/database?from=hlo",
+                      "hreflang": null,
+                      "media": null,
+                      "rel": "related",
+                      "title": null,
+                      "type": null
+                  },
+                  "databases": {
+                      "deprecation": null,
+                      "href": "http://172.20.39.3:8082/api/application/oracle/instance/8660ee18ea28f98fb4cd8819440d95ba/database?from=hlo",
+                      "hreflang": null,
+                      "media": null,
+                      "rel": "related",
+                      "title": null,
+                      "type": null
+                  },
+                  "options": {
+                      "deprecation": null,
+                      "href": "http://172.20.39.3:8082/api/application/oracle/instance/8660ee18ea28f98fb4cd8819440d95ba/options?from=hlo",
+                      "hreflang": null,
+                      "media": null,
+                      "rel": "related",
+                      "title": null,
+                      "type": null
+                  },
+                  "self": {
+                      "deprecation": null,
+                      "href": "http://172.20.39.3:8082/api/application/oracle/instance/8660ee18ea28f98fb4cd8819440d95ba?from=hlo",
+                      "hreflang": null,
+                      "media": null,
+                      "rel": "self",
+                      "title": null,
+                      "type": null
+                  },
+                  "servers": {
+                      "deprecation": null,
+                      "href": "http://172.20.39.3:8082/api/appserver?from=hlo&filter=%5B%7B%22property%22%3A%22pk%22%2C%22op%22%3A%22IN%22%2C%22value%22%3A%5B%221015%22%5D%7D%5D",
+                      "hreflang": null,
+                      "media": null,
+                      "rel": "related",
+                      "title": null,
+                      "type": null
+                  },
+                  "up": {
+                      "deprecation": null,
+                      "href": "http://172.20.39.3:8082/api/application/oracle/instance?from=hlo",
+                      "hreflang": null,
+                      "media": null,
+                      "rel": "up",
+                      "title": null,
+                      "type": null
+                  }
+              },
+              "location": "/atm-oracle-1011.automation.local / OraDB12Home1",
+              "metadataPath": "/DBINST:8660ee18ea28f98fb4cd8819440d95ba",
+              "name": "NOPARTITIONS.SOMESITE.IBM.COM",
+              "providerNodeId": "1015",
+              "rbacPath": "root:0/app:0/app.type:oracle/appinst:8660ee18ea28f98fb4cd8819440d95ba",
+              "resourceType": "applicationinstance",
+              "sessionId": 1552678489155,
+              "storageProfiles": [],
+              "type": "oracle",
+              "version": "12.2.0.1.0"
+          },
+          {
+              "appServerVmInfos": [
+                  {
+                      "appServerId": "1015",
+                      "appServerName": "10.1.100.43",
+                      "hypervisorHost": null,
+                      "hypervisorServerId": null,
+                      "hypervisorServerName": null,
+                      "vmId": null,
+                      "vmLocation": null,
+                      "vmName": null
+                  }
+              ],
+              "applicationFullName": "Oracle Database",
+              "capabilities": {
+                  "disablelogbackup": null,
+                  "enablelogbackup": null,
+                  "logtruncate": null,
+                  "masking": null,
+                  "postrestore": null,
+                  "postsnapshot": null,
+                  "prerestore": null,
+                  "presnapshot": null,
+                  "recordbackup": null,
+                  "resolveLogBackupLocations": false,
+                  "restore": null,
+                  "restorecleanup": null,
+                  "snapshot": null
+              },
+              "host": "10.1.100.43",
+              "id": "8660ee18ea28f98fb4cd8819440d95ba",
+              "isOwnerNode": false,
+              "jobId": "1004",
+              "partitions" : null, 
+              "links": {
+                  "appServerVms": {
+                      "deprecation": null,
+                      "href": "http://172.20.39.3:8082/api/application/oracle/instance/8660ee18ea28f98fb4cd8819440d95ba/appservervm?from=hlo",
+                      "hreflang": null,
+                      "media": null,
+                      "rel": "related",
+                      "title": null,
+                      "type": null
+                  },
+                  "applicationview": {
+                      "deprecation": null,
+                      "href": "http://172.20.39.3:8082/api/application/oracle/instance/8660ee18ea28f98fb4cd8819440d95ba/database?from=hlo",
+                      "hreflang": null,
+                      "media": null,
+                      "rel": "related",
+                      "title": null,
+                      "type": null
+                  },
+                  "databases": {
+                      "deprecation": null,
+                      "href": "http://172.20.39.3:8082/api/application/oracle/instance/8660ee18ea28f98fb4cd8819440d95ba/database?from=hlo",
+                      "hreflang": null,
+                      "media": null,
+                      "rel": "related",
+                      "title": null,
+                      "type": null
+                  },
+                  "options": {
+                      "deprecation": null,
+                      "href": "http://172.20.39.3:8082/api/application/oracle/instance/8660ee18ea28f98fb4cd8819440d95ba/options?from=hlo",
+                      "hreflang": null,
+                      "media": null,
+                      "rel": "related",
+                      "title": null,
+                      "type": null
+                  },
+                  "self": {
+                      "deprecation": null,
+                      "href": "http://172.20.39.3:8082/api/application/oracle/instance/8660ee18ea28f98fb4cd8819440d95ba?from=hlo",
+                      "hreflang": null,
+                      "media": null,
+                      "rel": "self",
+                      "title": null,
+                      "type": null
+                  },
+                  "servers": {
+                      "deprecation": null,
+                      "href": "http://172.20.39.3:8082/api/appserver?from=hlo&filter=%5B%7B%22property%22%3A%22pk%22%2C%22op%22%3A%22IN%22%2C%22value%22%3A%5B%221015%22%5D%7D%5D",
+                      "hreflang": null,
+                      "media": null,
+                      "rel": "related",
+                      "title": null,
+                      "type": null
+                  },
+                  "up": {
+                      "deprecation": null,
+                      "href": "http://172.20.39.3:8082/api/application/oracle/instance?from=hlo",
+                      "hreflang": null,
+                      "media": null,
+                      "rel": "up",
+                      "title": null,
+                      "type": null
+                  }
+              },
+              "location": "/atm-oracle-1011.automation.local / OraDB12Home1",
+              "metadataPath": "/DBINST:8660ee18ea28f98fb4cd8819440d95ba",
+              "name": "PARTITIONSNULL.SOMESITE.IBM.COM",
+              "providerNodeId": "1015",
+              "rbacPath": "root:0/app:0/app.type:oracle/appinst:8660ee18ea28f98fb4cd8819440d95ba",
+              "resourceType": "applicationinstance",
+              "sessionId": 1552678489155,
+              "storageProfiles": [],
+              "type": "oracle",
+              "version": "12.2.0.1.0"
+          }
+      ],
+      "links": {
+          "self": {
+              "deprecation": null,
+              "href": "http://172.20.39.3:8082/api/application/oracle/instance?from=hlo",
+              "hreflang": null,
+              "media": null,
+              "rel": "self",
+              "title": null,
+              "type": null
+          }
+      },
+      "page": 1,
+      "total": 1
+    }
+  }
+]

@@ -1,0 +1,30 @@
+.btn-group button {
+  border: 1px solid grey; /* Green border */
+  padding: 10px 24px; /* Some padding */
+  cursor: pointer; /* Pointer/hand icon */
+  float: left; /* Float the buttons side by side */
+
+}
+
+.btn-group button:first-of-type {
+  border-bottom-left-radius: 20px;
+  border-top-left-radius: 20px;
+  outline: none;
+}
+
+.btn-group button:last-of-type {
+  border-bottom-right-radius: 20px;
+  border-top-right-radius: 20px;
+  outline: none;
+}
+
+.btn-group button:not(:last-child) {
+  border-right: none; /* Prevent double borders */
+}
+
+/* Clear floats (clearfix hack) */
+.btn-group:after {
+  content: "";
+  clear: both;
+  display: table;
+}

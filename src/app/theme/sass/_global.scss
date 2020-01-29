@@ -1,0 +1,261 @@
+@import 'conf/conf';
+
+/* Style the list */
+ul.breadcrumb2 {
+  list-style: none;
+  font-size: 14px;
+  border-radius: 4px;
+}
+
+/* Display list items side by side */
+ul.breadcrumb2 li {
+  display: inline;
+}
+
+/* Add a slash symbol (/) before/behind each list item */
+ul.breadcrumb2 li + li:before {
+  padding: 8px;
+  color: black;
+  content: "/\00a0";
+}
+
+/* Add a color on mouse-over */
+ul.breadcrumb2 li span.link:hover {
+  color: #01447e;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+i.ion-ios-arrow-right {
+  cursor: pointer;
+}
+
+a.dropdown-item {
+  cursor: pointer;
+}
+
+span.link {
+  color: $hyperlink-color;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.manage-table-height {
+  height: 300px;
+  overflow: auto;
+}
+
+.manage-table-container {
+  height: 350px;
+}
+
+.space-top-10 {
+  margin-top: 10px;
+}
+
+.bs-datepicker-container {
+  font-family: $font-family;
+}
+
+.table-content {
+
+}
+
+
+.details-content {
+
+}
+
+.align-title-bar {
+  margin-top: -50px;
+}
+
+.margin-bottom-10 {
+  margin-bottom: 10px;
+}
+
+.capitalize {
+  text-transform: capitalize;
+}
+
+.dark-card {
+  @include scrollbars(.7em, rgba(0, 0, 0, 0.6), rgba(255, 255, 255, 0.7));
+  width: 100%;
+  min-height: 130px;
+
+  > .card-header {
+    background-color: $normal-header-bg;
+    border-radius: 0 !important;
+    padding: 1rem 2rem;
+    height: auto;
+    h2.card-title {
+      color: $label-text;
+      font-size: 1.125rem;
+      font-weight: bold;
+      line-height: 1.5rem;
+      margin: 0;
+    }
+  }
+  &.medium-card {
+    height: $medium-card-height;
+  }
+  &.viewport100-210 {
+    height: calc(100vh - 210px);
+  }
+  &.viewport100 {
+    height: calc(100vh - 240px);
+  }
+  &.no-border {
+    border: none;
+  }
+  &.with-scroll {
+    overflow-y: auto;
+    .card-body {
+      height: 100%;
+    }
+  }
+}
+
+.dark-card-header-standalone {
+  background-color: $normal-header-bg !important;
+  border-radius: 0 !important;
+  color: $label-text !important;
+  font-weight: bold !important;
+}
+
+.side-by-side-wrapper {
+  display: flex;
+  flex-flow: row;
+}
+
+.search-bar {
+  width: 15rem;
+}
+
+body > bs-daterangepicker-container > div.bs-datepicker > div.bs-datepicker-container {
+  &.cdk-keyboard-focused {
+    outline: $keyboard-focused-outline-width $keyboard-focused-outline-style-dashed $keyboard-focused-outline-color;
+    button:focus, a:focus {
+      outline: $keyboard-focused-outline-width $keyboard-focused-outline-style-dashed $keyboard-focused-outline-color;
+    }
+    table > tbody > tr > td > span:not(.is-other-month):focus {
+      outline: $keyboard-focused-outline-width $keyboard-focused-outline-style-dashed $keyboard-focused-outline-color;
+    }
+  }
+}
+
+body > bs-datepicker-container > div.bs-datepicker > div.bs-datepicker-container {
+  &.cdk-keyboard-focused {
+    outline: $keyboard-focused-outline-width $keyboard-focused-outline-style-dashed $keyboard-focused-outline-color;
+    button:focus, a:focus {
+      outline: $keyboard-focused-outline-width $keyboard-focused-outline-style-dashed $keyboard-focused-outline-color;
+    }
+    table > tbody > tr > td:not(.disabled) > span:not(.is-other-month):not(.disabled):focus {
+      outline: $keyboard-focused-outline-width $keyboard-focused-outline-style-dashed $keyboard-focused-outline-color;
+    }
+  }
+}
+
+.bs-datepicker-body table.days span {
+  width: 48px !important; 
+}
+
+.bs-datepicker-body table.days span:hover {
+  width: 32px !important;
+}
+
+.bs-datepicker-body table.days span.select-start.selected {
+  width: 32px !important;
+}
+
+.bs-datepicker-body table.days span.select-end.selected {
+  width: 32px !important;
+}
+
+table > tbody > tr:hover {
+  background-color: transparent !important;
+}
+
+body > popover-container > div.popover-body {
+  &.cdk-keyboard-focused {
+    div:focus {
+      outline: $keyboard-focused-outline-width $keyboard-focused-outline-style-dashed $keyboard-focused-outline-color;
+    }
+
+  }
+  &.cdk-mouse-focused {
+    div:focus {
+      outline: none;
+    }
+  }
+}
+
+.cuppa-dropdown {
+
+  &.cdk-keyboard-focused {
+    outline: $keyboard-focused-outline-width $keyboard-focused-outline-style-dashed $keyboard-focused-outline-color;
+
+    .selected-list > button > .c-list > .c-token > span.fa-remove:focus {
+      outline: $keyboard-focused-outline-width $keyboard-focused-outline-style-dashed $keyboard-focused-outline-color;
+    }
+    .dropdown-list li.pure-checkbox:focus {
+      outline: $keyboard-focused-outline-width $keyboard-focused-outline-style-dashed $keyboard-focused-outline-color;
+      outline-offset: -.25em;
+    }
+  }
+  &.cdk-mouse-focused {
+    .selected-list > button > .c-list > .c-token > span.fa-remove:focus {
+      outline: none;
+    }
+    .dropdown-list li.pure-checkbox:focus {
+      outline: none;
+      background-color: transparent !important;
+    }
+  }
+}
+
+.focusable-pagination-host {
+  outline: none;
+  &.cdk-keyboard-focused {
+    outline: $keyboard-focused-outline-width $keyboard-focused-outline-style-dashed $keyboard-focused-outline-color;
+  }
+  ul.ngx-pagination {
+
+    &.cdk-keyboard-focused {
+      outline: $keyboard-focused-outline-width $keyboard-focused-outline-style-dashed $keyboard-focused-outline-color;
+      li > a:focus {
+        outline: $keyboard-focused-outline-width $keyboard-focused-outline-style-dashed $keyboard-focused-outline-color;
+      }
+    }
+    &.cdk-mouse-focused {
+      li > a:focus {
+        outline: none;
+      }
+    }
+  }
+}
+
+body:not(.modal-open) {
+  button.cdk-keyboard-focused {
+    outline: $keyboard-focused-outline-width $keyboard-focused-outline-style $keyboard-focused-outline-color;
+  }
+  a.cdk-keyboard-focused {
+    outline: $keyboard-focused-outline-width $keyboard-focused-outline-style $keyboard-focused-outline-color;
+  }
+}
+
+body.modal-open {
+  *:not(.modal-dialog) {
+    .cdk-program-focused {
+      outline: none;
+      pointer-events: none;
+    }
+    .cdk-keyboard-focused {
+      outline: none;
+      pointer-events: none;
+    }
+    *:focus {
+      outline: none;
+    }
+  }
+}

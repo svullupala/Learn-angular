@@ -1,0 +1,40 @@
+.application-list {
+  margin: 2rem 2rem 1rem 2rem;
+  max-height: calc(100% - 48px);
+  display: flex;
+  flex-direction: column;
+}
+
+.application-list-items {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  overflow-y: auto;
+  appserver-card {
+    margin-right: 20px;
+    margin-bottom: 14px;
+
+    &:last-child {
+      margin: 0;
+    }
+  }
+}
+
+.application-list-search {
+  display: flex;
+  align-items: center;
+
+  sdl-async-search-bar {
+    width: 100%;
+  }
+}
+
+.application-list-advanced-search-link {
+  margin-left: 20px;
+  white-space: nowrap;
+}
+
+.application-list-headline {
+  margin: 22px 16px;
+}
+

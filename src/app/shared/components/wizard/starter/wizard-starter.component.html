@@ -1,0 +1,15 @@
+<div class="wizard-starter side-by-side-wrapper">
+  <div class="row">
+    <div tabindex="0" class="col-lg-4 category" *ngFor="let item of entries"
+         [ngClass]="{'selected': item.selected}">
+      <i class="row icon"[ngClass]="item.icon"></i>
+      <div class="row"><label class="title" translate>{{item.title}}</label></div>
+      <div class="row"><label class="description" translate>{{item.description}}</label></div>
+      <button class="row btn btn-primary"
+              (click)="onCategorySelected(item)"
+              translate>
+        {{'wizard.textSelect'}}
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,27 @@
+.inventory {
+  width: 100%;
+  height: calc(100vh - 183px);
+  min-height: 580px;
+}
+
+.side-by-side-wrapper {
+  display: flex;
+  flex-flow: row;
+}
+
+.side-by-side-left {
+  flex: 1;
+  border-right: 1px solid #D0DADA;
+  min-width: 336px;
+  max-width: 500px;
+}
+
+.side-by-side-right {
+  flex: 2;
+  overflow-x: auto;
+
+  & > .category {
+    margin: 2rem 2rem 1rem 2rem;
+    height: calc(100% - 48px);
+  }
+}

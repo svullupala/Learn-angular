@@ -1,0 +1,22 @@
+.applications-assign-policy {
+}
+
+.applications-assign-policy-header {
+  position: relative;
+  padding: 2rem;
+  color: #464646;
+
+  .title {
+    line-height: 2rem;
+    font-size: 1.7rem;
+    font-weight: 400;
+  }
+}
+
+.applications-assign-policy-close {
+  position: absolute;
+  right: 2rem;
+  top: 1.6rem;
+  font-size: 34px;
+  font-weight: 400;
+}

@@ -1,0 +1,14 @@
+<wizard *ngIf="active"
+        [maximize]="false"
+        [hideTopbar]="true"
+        [theme]="'pop'"
+        [registry]="registry"
+        [model]="model"
+        [delayLoad]="true"
+        [textBackToTarget]="textBackToTarget"
+        [showOverallSummary]="false"
+        (activatePageEvent)="onWizardActivatePage($event)"
+        (beforeNextEvent)="onWizardBeforeNext($event)"
+        (cancelEvent)="onWizardCancel()"
+        (submitEvent)="onWizardSubmit($event)">
+</wizard>

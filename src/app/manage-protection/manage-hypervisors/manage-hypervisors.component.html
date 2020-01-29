@@ -1,0 +1,50 @@
+<ng-container *ngIf="isMainView">
+  <div class="align-right toolbar">
+    <label style="color: red; font-size: 24px; font-weight: bold; margin-right: 2rem">
+      10.1.7 Inventory project in progress
+    </label>
+    <button *ngIf="canCreate" class="sdl inline" (click)="onAddClick()" translate>
+      {{ isHyperV() ? 'hyperv.textAddServer' : 'vmware.textAddVCenter' }}
+    </button>
+  </div>
+  <dynamic-tabset [tabs]="tabs" (select)="onSwitchMode($event)"></dynamic-tabset>
+  <ng-template #vmware>
+    <vmware-inventory
+      *ngIf="hypervisorType === 'vmware'"
+      (itemSelect)="onItemSelect($event)"
+      (itemEdit)="onItemEdit($event)"
+      (assignPolicy)="onAssignPolicy($event)"
+      (editRunSettings)="onEditRunSettings($event)"
+    ></vmware-inventory>
+  </ng-template>
+  <ng-template #hyperv>
+    <hyperv-inventory
+      *ngIf="hypervisorType === 'hyperv'"
+      (itemSelect)="onItemSelect($event)"
+      (itemEdit)="onItemEdit($event)"
+      (assignPolicy)="onAssignPolicy($event)"
+      (editRunSettings)="onEditRunSettings($event)"
+    ></hyperv-inventory>
+  </ng-template>
+</ng-container>
+<ng-container *ngIf="(isViewerView || isAssignPolicyView) && selectedItem">
+  <hypervisor-viewer
+    [model]="selectedItem"
+    [view]="hypervisorView"
+    [hidden]="isAssignPolicyView"
+    [textBackToTarget]="'menubar.submenu.textManageHypervisors'"
+    (backTo)="onBackTo()"
+    (onAssignPolicy)="onAssignPolicy($event)"
+    (onEditRunSettings)="onEditRunSettings($event)"
+  ></hypervisor-viewer>
+</ng-container>
+
+<ng-container *ngIf="isAssignPolicyView">
+  <hypervisor-assign-policy
+    [assignPolicyTo]="assignPolicyTo"
+    [hypervisorType]="hypervisorType"
+    [selectedTab]="selectedAssignPolicyTab"
+    [runSettingsEditMode]="runSettingsEditMode"
+    (closeView)="onCloseAssignPolicyView()"
+  ></hypervisor-assign-policy>
+</ng-container>

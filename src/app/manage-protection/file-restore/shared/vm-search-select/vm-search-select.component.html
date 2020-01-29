@@ -1,0 +1,85 @@
+<div class="vmsearch">
+  <div class="row" *ngIf="!hideSelectedArea && (hasSelection() || alwaysShowSelectedArea)">
+    <div *ngIf="!hideLabelArea" class="col-md-3">
+      <label class="control-label">
+        {{selectedVMsLabel !== undefined ? selectedVMsLabel : ('fileRestore.textSelectedVMs' | translate)}}
+      </label>
+      <span *ngIf="hasSelection() && !hideCounter" class="selection-total">{{'+' + (getSelection() || []).length}}</span>
+      <button *ngIf="hasSelection() && !hideCounter" class="close" (click)="emptySelection()" title="{{'fileRestore.textRemoveAllSelections' | translate}}"
+              aria-label="Close"><span>&times;</span></button>
+    </div>
+    <div class="col-sm-9">
+      <ng-template let-item ngFor [ngForOf]="getSelection()">
+        {{item.name}}
+        <button class="close" (click)="deselect(item)" title="{{'fileRestore.textRemoveThisSelection' | translate}}"
+                aria-label="Close"><span>&times;</span>
+        </button>
+      </ng-template>
+      <label *ngIf="!hasSelection()">{{'fileRestore.textNoVMsSelected' | translate}}</label>
+    </div>
+  </div>
+  <div class="row">
+    <label *ngIf="!hideLabelArea" class="col-md-3 control-label">{{vmLabel !== undefined ? vmLabel : ('fileRestore.textVirtualMachine' | translate)}}</label>
+    <div class="col-sm-6">
+      <sdl-search-bar (search)="startSearch(true, $event)"
+                      [textPlaceholderLabel]="textSearchForVMs">
+      </sdl-search-bar>
+    </div>
+    <div *ngIf="popup" class="arrow-up" [ngClass]="{'hidden': !showResult, 'arrow-up2': !hideSelectedArea && (hasSelection() || alwaysShowSelectedArea), 'align-left': hideLabelArea}"></div>
+    <div *ngIf="!popup" class="col-sm-11 bread-crumb">
+      <ul class="breadcrumb2">
+        <li *ngFor="let breadcrumb of breadcrumbs">
+          <span tabindex="0" clickOnEnterKeydown (click)="onBreadcrumbClick(breadcrumb,$event)" class='link'>{{breadcrumb.title}}</span>
+        </li>
+      </ul>
+    </div>
+    <div (clickOutside)="onClickResultOutside()" class="result manage-table-height" [ngClass]="{'popup': popup, 'hidden': !showResult, 'result2': !hideSelectedArea && (hasSelection() || alwaysShowSelectedArea), 'align-left': hideLabelArea, 'masked': masked}">
+      <table>
+        <thead>
+        <tr>
+          <th class="action-icon-column"></th>
+          <th class="align-left" translate>{{ 'common.textName' }}</th>
+          <th *ngIf="canShowPath()" class="align-left" translate>{{ 'fileRestore.textPath' }}</th>
+          <th class="align-left" translate>{{ 'fileRestore.textGuestOS' }}</th>
+          <th *ngIf="popup" class="closecol">
+            <button class="close" (click)="hideResult()" aria-label="Close"><span>&times;</span>
+            </button>
+          </th>
+        </tr>
+        </thead>
+        <tbody>
+        <ng-template let-item ngFor [ngForOf]="records | paging: paginateConfig.json()">
+          <tr>
+            <td>
+              <label class="custom-radio" *ngIf="selectMode === 1 && isVm(item)">
+                <input #radioButton (click)="onRadioClick($event, item)" name="vmSelectBox"
+                       type="radio" [checked]="item.metadata['selected']" aria-label="...">
+                <span></span>
+              </label>
+              <label class="custom-checkbox" *ngIf="selectMode === 0 && isVm(item)">
+                <input type="checkbox" [(ngModel)]="item.metadata['selected']"
+                       (ngModelChange)="onSelectChange(item)"
+                       aria-label="...">
+                <span></span>
+              </label>
+            </td>
+            <td class="align-left">
+              <i class="ion-android-folder" *ngIf="folderIcon(item)"></i>
+              <i class="ion-android-desktop" *ngIf="isVm(item)"></i>
+              <i class="fa fa-database" *ngIf="isDatastore(item) || isVolume(item)"></i>
+              <span [ngClass]="{'link': canNavigate(item)}" [tabindex]="canNavigate(item) ? 0 : -1" (keydown.enter)="navigate(item,$event)" (click)="navigate(item,$event)">{{item.name}}</span>
+            </td>
+            <td *ngIf="canShowPath()" class="align-left">{{ item.location || '' }}</td>
+            <td class="align-left" [attr.colspan]="popup? 2 : 1">{{item.osType}}</td>
+          </tr>
+        </ng-template>
+        </tbody>
+      </table>
+      <div class="paging-toolbar">
+        <paging-toolbar (pageChange)="onPageChange($event)" (refresh)="onRefresh()"
+                        [id]="paginateConfig.id" [total]="paginateConfig.totalItems"
+                        [previousLabel]="''" [nextLabel]="''"></paging-toolbar>
+      </div>
+    </div>
+  </div>
+</div>

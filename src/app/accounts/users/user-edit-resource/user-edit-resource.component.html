@@ -1,0 +1,47 @@
+<form class="form-horizontal" [formGroup]="form">
+  <div class="side-by-side-wrapper">
+    <div class="side-by-side-left">
+      <div class="form-group row">
+        <i *ngIf="onlyOneUser" class="i-rbac_user space-left" style="margin-left: 10px;"></i>
+        <label>{{title}}</label>
+      </div>
+      <div *ngIf="onlyOneUser" class="form-group row">
+        <label class="col-sm-9 control-label">
+          {{selectedRolesNames}}
+        </label>
+      </div>
+      <div *ngIf="multiUsers" class="form-group row">
+          <table class="table table-hover">
+            <tbody>
+            <ng-template let-item ngFor [ngForOf]="models">
+              <tr class="no-top-border">
+                <td class="normal-col bold align-left">{{item.name}}</td>
+                <td class="align-left">{{item.roleNames.join(', ')}}</td>
+              </tr>
+            </ng-template>
+            </tbody>
+          </table>
+      </div>
+      <div class="form-group row">
+        <label class="col-sm-8 control-label" translate>{{'users.textChooseResourceGroupsToAssign'}}</label>
+      </div>
+      <div class="form-group vertical-scroll">
+        <div *ngFor="let item of resourceGroups">
+          <label class="custom-checkbox nowrap">
+            <input type="checkbox" class="vmiddle" [ngModelOptions]="{standalone: true}"
+                   [(ngModel)]="item.metadata['selected']">
+            <span>{{item.name}}</span>
+          </label>
+        </div>
+      </div>
+      <button [disabled]="!hasPendingSelectedResourceGroups" (click)="onAddResourcesClick()"
+              class="sdl inline small" [ngClass]="{'disabled': !hasPendingSelectedResourceGroups}" type="button" translate>
+        {{'users.textAddResources'}}
+      </button>
+    </div>
+    <div class="side-by-side-right">
+      <user-selected-resources (addItem)="onResourceChange()" (removeItem)="onResourceChange()" [model]="selectedResources"></user-selected-resources>
+    </div>
+  </div>
+</form>
+

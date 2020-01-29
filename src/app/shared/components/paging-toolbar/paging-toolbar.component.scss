@@ -1,0 +1,73 @@
+.flex {
+  display: flex;
+  flex-flow: row;
+}
+
+.label {
+  height: 14px;
+  display: inline-block;
+  vertical-align: middle;
+  &:not(.masked) {
+    padding: 0 5px 0 0;
+  }
+  &.masked {
+    padding: 0;
+    margin-right: 0.5rem;
+  }
+}
+
+input.entry-number[type="number"] {
+  width: 80px;
+  height: 100% !important;
+  vertical-align: middle;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+input[type='number'] {
+  -moz-appearance:textfield;
+}
+
+.placeholder {
+  flex: 1;
+}
+
+.no-page-number {
+  /deep/ ul > li {
+    display: none;
+    &:first-child {
+      display: inline-block !important;
+    }
+    &:last-child {
+      display: inline-block !important;
+    }
+  }
+}
+
+.prev-page-disabled {
+  /deep/ ul > li {
+    &:first-child {
+      pointer-events: none;
+      color: #CCC !important;
+      ::before {
+        color: #CCC !important;
+      }
+    }
+  }
+}
+
+.next-page-disabled {
+  /deep/ ul > li {
+    &:last-child {
+      pointer-events: none;
+      color: #CCC !important;
+      ::after {
+        color: #CCC !important;
+      }
+    }
+  }
+}

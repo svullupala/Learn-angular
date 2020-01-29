@@ -1,0 +1,9 @@
+<wizard [maximize]="true"
+        [registry]="registry"
+        [model]="model"
+        [delayLoad]="true"
+        [textBackToTarget]="textBackToTarget"
+        (beforeCancelEvent)="onWizardBeforeCancel($event)"
+        (cancelEvent)="onWizardCancel()"
+        (submitEvent)="onWizardSubmit($event)">
+</wizard>

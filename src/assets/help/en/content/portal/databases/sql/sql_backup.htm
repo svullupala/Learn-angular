@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-us" xml:lang="en-us" class="task _Skins_HTML5_topnav_IBMOEM" data-mc-search-type="Stem" data-mc-help-system-file-name="Default.xml" data-mc-path-to-help-system="../../../../" data-mc-has-content-body="True" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic;Default" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Operations|SQL">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>Create a SQL Backup Job Definition</title>
+        <link rel="icon" href="../../../Resources/images/IBM-icon-48.ico" />
+        <link href="../../../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" />
+        <link href="../../../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
+        <link href="../../../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
+        <link href="../../../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" />
+        <link href="../../../../Skins/Default/Stylesheets/Components/Tablet.css" rel="stylesheet" />
+        <link href="../../../../Skins/Default/Stylesheets/Components/Mobile.css" rel="stylesheet" />
+        <link href="../../../../Skins/Fluid/stylesheets/foundation.6.2.3.css" rel="stylesheet" />
+        <link href="../../../../Skins/Fluid/stylesheets/styles.css" rel="stylesheet" />
+        <link href="../../../../Skins/Fluid/stylesheets/tablet.css" rel="stylesheet" />
+        <link href="../../../../Skins/Fluid/stylesheets/mobile.css" rel="stylesheet" />
+        <style>/*&lt;meta /&gt;*/
+
+.button.remove-highlight-button
+{
+	-pie-background: url('../../../../Skins/Default/Stylesheets/Images/highlight.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.expand-all-button
+{
+	-pie-background: url('../../../../Skins/Default/Stylesheets/Images/expand.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.print-button
+{
+	-pie-background: url('../../../../Skins/Default/Stylesheets/Images/printer.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.collapse-all-button
+{
+	-pie-background: url('../../../../Skins/Default/Stylesheets/Images/collapse.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.needs-pie
+{
+	behavior: url('../../../../Resources/Scripts/PIE-no-motw.htc');
+}
+
+</style>
+        <link href="../../../resources/stylesheets/styles_topnavi.css" rel="stylesheet" />
+        <script src="../../../../Resources/Scripts/custom.modernizr.js">
+        </script>
+        <script src="../../../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../../../Resources/Scripts/require.min.js">
+        </script>
+        <script src="../../../../Resources/Scripts/require.config.js">
+        </script>
+        <script src="../../../../Resources/Scripts/foundation.6.2.3_custom.js">
+        </script>
+        <script src="../../../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div class="foundation-wrap off-canvas-wrapper">
+            <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper="">
+                <aside class="off-canvas position-right" id="offCanvas" data-off-canvas="" data-position="right" data-mc-ignore="true">
+                    <ul class="off-canvas-drilldown vertical menu off-canvas-list" data-drilldown="" data-mc-back-link="Back" data-mc-css-tree-node-expanded="is-drilldown-submenu-parent" data-mc-css-tree-node-collapsed="is-drilldown-submenu-parent" data-mc-css-sub-menu="vertical menu slide-in-right is-drilldown-submenu" data-mc-include-indicator="False" data-mc-include-icon="False" data-mc-include-parent-link="True" data-mc-include-back="True" data-mc-defer-expand-event="True" data-mc-expand-event="click.zf.drilldown" data-mc-toc="True">
+                    </ul>
+                </aside>
+                <div class="off-canvas-content inner-wrap" data-off-canvas-content="">
+                    <div>
+                        <nav class="title-bar tab-bar" data-mc-ignore="true">
+                            <div class="middle title-bar-section outer-row clearfix">
+                                <div class="relative clearfix"><a class="logo" href="../../about/about_application_overview.htm" alt="Logo"></a>
+                                    <div class="navigation-wrapper nocontent">
+                                        <ul class="navigation clearfix" data-mc-css-tree-node-has-children="has-children" data-mc-css-sub-menu="sub-menu" data-mc-expand-event="mouseenter" data-mc-top-nav-menu="True" data-mc-max-depth="4" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                                            <li class="placeholder" style="visibility:hidden"><a>placeholder</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <button class="menu-icon" data-toggle="offCanvas"><span></span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="nav-search row outer-row">
+                                <form class="search" action="#">
+                                    <div class="search-bar search-bar-container needs-pie">
+                                        <input class="search-field needs-pie" type="search" placeholder="Search the help system" />
+                                        <div class="search-filter-wrapper">
+                                            <div class="search-filter">
+                                                <div class="search-filter-content">
+                                                    <ul>
+                                                        <li>All Files</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="search-submit-wrapper" dir="ltr">
+                                            <div class="search-submit" title="Search">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </nav>
+                    </div>
+                    <section class="main-section">
+                        <div class="row outer-row" data-mc-content-body="True">
+                            <div class="buttons popup-container clearfix topicToolbarProxy mc-component nocontent" style="margin-left: 0px; float: right; mc-topic-toolbar-items: RemoveHighlight ExpandAll CollapseAll Print;">
+                                <div class="button-group-container-left">
+                                    <button class="button needs-pie remove-highlight-button" title="Remove Highlights">
+                                        <img src="../../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="remove highlight" />
+                                    </button>
+                                    <button class="button needs-pie expand-all-button" data-state1-class="expand-all-button" data-state2-class="collapse-all-button" data-state2-title="Collapse all" title="Expand all" data-state1-title="Expand all">
+                                        <img src="../../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="expand all" />
+                                    </button>
+                                    <button class="button needs-pie print-button" title="Print">
+                                        <img src="../../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="print" />
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="nocontent">
+                                <div class="MCBreadcrumbsBox_0 breadcrumbs" data-mc-breadcrumbs-divider=" &gt; " data-mc-breadcrumbs-count="3" data-mc-toc="True"><span class="MCBreadcrumbsPrefix">You are here: </span>
+                                </div>
+                            </div>
+                            <h1>Create a SQL Backup Job Definition</h1>
+                            <p>Back up SQL&#160;environments with snapshots using a SQL&#160;Backup job definition. During the initial base backup, <span class="ProductNames_LongShortECX_Short">IBM Spectrum Protect Plus</span> creates a new vSnap volume and creates an NFS share. During incremental backups, the previously created volume is reused. The <span class="ProductNames_LongShortECX_Short">IBM Spectrum Protect Plus</span> agent mounts the share on the SQL&#160;server where the backup is to be performed. Once complete, the <span class="ProductNames_LongShortECX_Short">IBM Spectrum Protect Plus</span> agent unmounts the share from the SQL&#160;server and creates a vSnap snapshot of the backup volume. </p>
+                            <p>The following option is available for SQL&#160;Backup jobs:</p>
+                            <p><b>Log Backup</b>&#160;- The log backup feature enables continuous backup of transaction logs to a specified destination. <span class="ProductNames_LongShortECX_Short">IBM Spectrum Protect Plus</span> leverages transaction logs to enable point-in-time recoveries of databases to facilitate RPOs. <MadCap:conditionalText data-mc-conditions="Default.1012 navigation">To perform log backups, the SQL server agent service user must be a local Windows administrator and must have the <b>sysadmin</b> permission enabled to manage SQL server agent jobs.</MadCap:conditionalText> The agent will use that administrator account to enable/access log backup jobs. The <span class="ProductNames_LongShortECX_Short">IBM Spectrum Protect Plus</span> SQL agent service user must also be the same as the SQL&#160;server service and SQL&#160;server agent service account for every SQL&#160;instance to be protected. </p>
+                            <div class="Prerequisite">
+                                <p class="PostPreRelTitleLeft"><span class="PostPreRelTitle">BEFORE&#160;YOU&#160;BEGIN:</span>
+                                </p>
+                                <ul>
+                                    <li value="1">Register the providers  to back up. See <a href="sql_manage.htm" class="MCXref xref" xrefformat="{paratext}">Add a SQL Server</a>. </li>
+                                    <li value="2">Configure an&#160;SLA&#160;Policy.  See <a href="../../sla_policy/sla_policy_create.htm" class="MCXref xref" xrefformat="{paratext}">Configure SLA&#160;Policies</a>.</li>
+                                    <li value="3"> Before an <span class="ProductNames_LongShortECX_Short">IBM Spectrum Protect Plus</span> user can perform backup and restore operations, roles and resource groups must be assigned to the user. Grant users access to resources and backup and restore operations through the <b data-mc-conditions="Default.1012 navigation">Accounts</b> pane. See <a href="../../access/access_overview.htm" class="MCXref xref" xrefformat="{paratext}">Access</a>.</li>
+                                    <li value="4">Microsoft iSCSI&#160;Initiator must be enabled and running on the Windows Server. An iSCSI route must be enabled between the SQL system and vSnap server. For more information see <a href="https://technet.microsoft.com/en-us/library/ee338476(v=ws.10).aspx" target="_blank">https://technet.microsoft.com/en-us/library/ee338476(v=ws.10).aspx</a>.</li>
+                                    <li value="5">Before setting up and running SQL&#160;backup jobs you must configure the Shadow Copy storage settings for the volumes where your SQL&#160;databases are located.  This setting is configured once per volume. If new databases are added to the job, the setting must configured for any new volumes containing SQL&#160;databases. </li>
+                                    <li class="indent" data-mc-autonum=""><span class="autonumber"><span></span></span>In Windows Explorer, right-click the source volume and select the <b>Shadow Copies</b> tab. Set the <b>Maximum size</b> to <b>No limit</b> or a reasonable size depending on the source volume size and I/O&#160;activities, then click <b>OK</b>. </li>
+                                    <li class="indent" data-mc-autonum=""><span class="autonumber"><span></span></span>The shadow copy storage area must be on the same volume or another available volume during the time of backup. </li>
+                                </ul>
+                                <p class="PostPreRelTitleLeft"><span class="PostPreRelTitle">CONSIDERATIONS:</span>
+                                </p>
+                                <ul>
+                                    <li value="1">Avoid configuring log backup for a single SQL database through multiple Backup jobs. Logs are truncated during log backup operations. If a single SQL database is added to multiple job definitions with log backup enabled, a log backup from one job will truncate a log before it is backed up by the next job. This might cause point-in-time restore jobs to fail.</li>
+                                    <li value="2">Note that <span class="ProductNames_LongShortECX_Short">IBM Spectrum Protect Plus</span> does not support log backup of Simple recovery models. </li>
+                                    <li value="3">An Always On of a replica of a SQL cluster instance is not supported. Replicas are limited standalone SQL servers and instances.</li>
+                                    <li value="4">Failover of a SQL cluster instance during backup is not supported.</li>
+                                    <li value="5">If backing up a large number of databases, you might need to increase the number of maximum worker threads on each associated SQL Server instance to ensure backup jobs complete successfully. The default value for max worker threads is 0 and the server automatically determines the max worker threads value based on the number of processors available to the server. SQL Server uses the threads from this pool to perform network connections, database checkpoints, and queries. Additionally, a backup of each database requires one additional thread from this pool. If you have large number of databases in a backup job, the default max worker threads might not be enough for backing up all of the databases and the job will fail. For more information about increasing the max worker threads option, see <a href="https://docs.microsoft.com/en-us/sql/database-engine/configure-windows/configure-the-max-worker-threads-server-configuration-option?view=sql-server-2017" target="_top">https://docs.microsoft.com/en-us/sql/database-engine/configure-windows/configure-the-max-worker-threads-server-configuration-option?view=sql-server-2017</a>.</li>
+                                    <li value="6">When a log backup of a secondary SQL Always On database fails with the following error, the backup preference of the availability group must be changed to Primary: "<i>Log backup for database 'DatabaseName' on a secondary replica failed because a synchronization point could not be established on the primary database.</i>" Changing the preference to Primary will back up the log from the primary replica. After a successful log backup of the primary replica completes, the backup preference can be changed.</li>
+                                </ul>
+                            </div>
+                            <p class="ListHeading">To create a SQL Backup job definition:</p>
+                            <ol>
+                                <li value="1" data-mc-conditions="Default.1012 navigation">From the navigation menu, expand <b>Manage Protection</b>, then expand <b>Applications</b>. Expand <b>SQL</b>, then click <b>Backup</b>.</li>
+                                <li value="2">Select a SQL instance to back up. Use the search function to search for available instances and toggle the displayed instances through the View filter. Available options include <b>Standalone/Failover Cluster</b> and <b>Always On</b>.</li>
+                                <li value="3">Click <b>Select SLA&#160;Policy</b> to add an SLA&#160;Policy to the job definition  that meets your backup data criteria. </li>
+                                <li value="4">To create the job definition using default options, click <b>Save</b>. The job runs as defined by your SLA&#160;Policy, or can be run manually from the <span class="GeneralJob Monitor">Job Monitor</span> pane. </li>
+                                <li value="5">To edit options before creating the job definition, click <b>Select Options</b>. Set the job definition options.</li>
+                                <li class="indent_strong" data-mc-autonum=""><span class="autonumber"><span></span></span>Enable Log Backup </li>
+                                <li class="Indent_Level2" data-mc-autonum=""><span class="autonumber"><span></span></span>If selected, <span class="ProductNames_LongShortECX_Short">IBM Spectrum Protect Plus</span> backs up transaction logs then protects the underlying disks. </li>
+                                <li class="Indent_Level2" data-mc-autonum=""><span class="autonumber"><span></span></span><span class="ProductNames_LongShortECX_Short">IBM Spectrum Protect Plus</span> automatically truncates post log backups of databases that it backs up. If database logs are not backed up with <span class="ProductNames_LongShortECX_Short">IBM Spectrum Protect Plus</span>, logs are not truncated by <span class="ProductNames_LongShortECX_Short">IBM Spectrum Protect Plus</span> and must be managed separately.</li>
+                                <li class="Indent_Level2" data-mc-autonum=""><span class="autonumber"><span></span></span>When SQL&#160;backup job completes with log backups enabled, all transaction logs up to the point of the job completing are purged from the SQL server. Note that log purging will only occur if the SQL&#160;Backup job completes successfully. If log backups are disabled during a re-run of the job, log purging will not occur.</li>
+                                <li class="Indent_Level2" data-mc-autonum=""><span class="autonumber"><span></span></span>If a source database is overwritten, all old transaction logs up to that point are placed in a “condense” directory once the restoration of the original database completes. When the next run of the SQL Backup job completes, the contents of the condense folder is removed.</li>
+                                <li class="Indent_Level2" data-mc-autonum=""><span class="autonumber"><span></span></span><span class="NoteBlue">Note:</span>&#160;<MadCap:conditionalText data-mc-conditions="Default.1012 navigation">To perform log backups, the SQL server agent service user must be a local Windows administrator and must have the <b>sysadmin</b> permission enabled to manage SQL server agent jobs.</MadCap:conditionalText> The agent will use that administrator account to enable/access log backup jobs. The <span class="ProductNames_LongShortECX_Short">IBM Spectrum Protect Plus</span> SQL agent service user must also be the same as the SQL&#160;server service and SQL&#160;server agent service account for every SQL&#160;instance to be protected. </li>
+                                <li class="Indent_Level2" data-mc-autonum=""><span class="autonumber"><span></span></span>To enable log backup schedule creation for multiple databases on the same SQL instance, ensure all databases are added to the same SLA Policy.</li>
+                                <li class="indent_strong" data-mc-autonum=""><span class="autonumber"><span></span></span>Maximum Parallel Streams per Database</li>
+                                <li class="Indent_Level2" data-mc-autonum=""><span class="autonumber"><span></span></span>Set the maximum data stream per database to the backup storage. This setting applies to each database in the job definition. Note that multiple databases can still be backed up in parallel if the value of the option is set to 1. Multiple parallel streams may improve backup speed, but high bandwidth consumption may affect overall system performance.</li>
+                                <li value="6">When you are satisfied that the job-specific information is correct, click <b>Save</b>. The job runs as defined by your SLA&#160;Policy, or can be run manually from the <span class="GeneralJob Monitor">Job Monitor</span> pane.</li>
+                                <li value="7">To configure additional options, click the <b>Options</b> field associated with the job in the SLA&#160;Policy Status section. If no additional options are currently configured for the job, the field will display <i>Not Configured</i>. Set the additional job options.</li>
+                                <li class="indent_strong" data-mc-autonum=""><span class="autonumber"><span></span></span>Pre-scripts and Post-Scripts</li>
+                                <li class="Indent_Level2" data-mc-autonum=""><span class="autonumber"><span></span></span>In the Pre-Script and/or Post-Script section, select an uploaded script. <MadCap:conditionalText data-mc-conditions="Default.1012 navigation">Select the <b>Use Script Server</b> check box to select a script server where the script will run. To select an Application Server where the script will run, clear the <b>Use Script Server</b> check box. </MadCap:conditionalText>Scripts and script servers are configured through the <b data-mc-conditions="Default.1012 navigation">Jobs and Monitoring &gt;&#160;Script</b> pane. See <a href="../../system/system_script.htm" class="MCXref xref" xrefformat="{paratext}">Configure Scripts</a>.</li>
+                                <li class="Indent_Level2" data-mc-autonum=""><span class="autonumber"><span></span></span>Pre-scripts and post-scripts are scripts that can be run before or after a job runs at the job-level. Batch and PowerShell scripts are supported.</li>
+                                <li class="Indent_Level2" data-mc-autonum=""><span class="autonumber"><span></span></span><b data-mc-conditions="Default.1012 navigation">Continue job/task on script error</b> - When enabled, if a Pre-script completes with a non-zero return code, the backup or restore is attempted and the Pre-script task status returns COMPLETED. When disabled, the backup or restore is not attempted, and the Pre-script task status returns FAILED.  If a Post-script completes with a non-zero return code, the Post-script task status returns COMPLETED. When disabled, the Post-script task status returns FAILED.</li>
+                                <li class="indent" style="font-weight: bold;" data-mc-autonum=""><span class="autonumber"><span></span></span>Exclude Resources</li>
+                                <li class="Indent_Level2" data-mc-autonum=""><span class="autonumber"><span></span></span>Exclude specific resources from the backup job  through single or multiple exclusion patterns. Resources can be excluded through an exact match or with wildcard asterisks specified before the pattern (*test) or after the pattern (test*). Multiple asterisk wildcards are also supported in a single pattern. Patterns support standard alphanumeric characters as well as the following special characters:&#160;- _ and *. Separate multiple filters with a semicolon.  </li>
+                                <li class="indent" style="font-weight: bold;" data-mc-autonum="" data-mc-conditions="Default.1012 navigation"><span class="autonumber"><span></span></span>Force Base Resources</li>
+                                <li class="Indent_Level2" data-mc-autonum=""><span class="autonumber"><span></span></span>Force base backups for specific virtual machines or databases in the Backup job definition. All previous backup information associated with the resource will be removed. Separate multiple resources with a semicolon. </li>
+                                <li value="8">Once complete, click <b>Save</b>.</li>
+                            </ol>
+                            <div class="RelatedTopic">
+                                <p class="PostPreRelTitleLeft"><span class="PostPreRelTitle">RELATED TOPICS:</span>
+                                </p>
+                                <ul>
+                                    <li value="1"><a href="sql_restore.htm" class="MCXref xref" xrefformat="{paratext}">Create a SQL Restore Job Definition</a>
+                                    </li>
+                                    <li value="2"><a href="sql_manage.htm" class="MCXref xref" xrefformat="{paratext}">Add a SQL Server</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <p>&#160;</p>
+                            <hr width="100%" size="0" align="center" />
+                            <p style="text-align: left;"><span class="Strong" style="font-size: 10pt;">IBM Spectrum Protect Plus</span> <span class="Strong" style="font-size: 10pt;">10.1.2</span> <![CDATA[ ]]></p>
+                            <p style="font-size: 8pt;">Licensed Material - Property of IBM Corp. © IBM Corporation and other(s) <span class="GeneralYear">2018</span>. IBM is a registered trademark of the IBM Corporation in the United States, other countries, or both. <span style="font-size: 10pt;"><span style="font-size: 8pt;">| </span></span><span style="font-size: 8pt;" class="SystemShortDate">8/23/2018</span></p>
+                        </div>
+                    </section><a data-close="true"></a>
+                </div>
+            </div>
+            <script>/* <![CDATA[ */$(document).foundation();/* ]]> */</script>
+        </div>
+    </body>
+</html>

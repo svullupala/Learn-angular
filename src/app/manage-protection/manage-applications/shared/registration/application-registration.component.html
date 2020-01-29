@@ -1,0 +1,197 @@
+<div class="application-registration" [ngClass]="{'masked': masked}">
+  <div class="modal-header">
+  <div class="modal-title-wrapper">
+    <label class="modal-title" translate><h2 class="sdl-header">{{getTitleText() | translate}} - {{getSubtitleText() | translate}}</h2></label>
+  </div>
+  <button type="button" class="close pull-right" (click)="hide()" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  <hr class="modal-hr">
+</div>
+<div class="modal-body">
+    <form #appForm="ngForm" class="with-scroll">
+      <div *ngIf="isExchangeOnline; then exchonlinemain else appserver"></div>
+
+      <ng-template #exchonlinemain>
+        <h2 class="sdl-header" translate>{{'application.textTenantProperties'}}
+          <carbon-icon type="info--glyph" class="info-icon" sdlTooltip
+            container="body"
+            placement="right"
+            [sdlTooltip]="tooltipTenant"
+          ></carbon-icon>
+          <ng-template #tooltipTenant>
+            <div class="header-tooltip">
+              {{'application.textTenantHelpText' | translate}}
+            </div>
+          </ng-template>
+        </h2>
+        <ng-template [ngTemplateOutlet]="tenant"></ng-template>
+        <h2 class="sdl-header" translate>{{'application.textProxyProperties'}}
+          <carbon-icon type="info--glyph" class="info-icon" sdlTooltip
+                       container="body"
+                       placement="right"
+                       [sdlTooltip]="tooltipProxy"
+          ></carbon-icon>
+          <ng-template #tooltipProxy>
+            <div class="header-tooltip">
+              {{'application.textProxyHelpText' | translate}}
+            </div>
+          </ng-template>
+        </h2>
+        <ng-template [ngTemplateOutlet]="appserver"></ng-template>
+      </ng-template>
+
+      <ng-template #appserver>
+        <div class="side-by-side-wrapper as-area">
+          <div class="side-by-side-left">
+        <div class="form-group"
+             [ngClass]="{'has-error': (hostAddress && hostAddress.touched && !hostAddress.valid), 'has-success': (hostAddress && hostAddress.touched && hostAddress.valid)}">
+          <label class="control-label" for="hostAddress" translate>{{'application.hostAddressText'}}</label>
+          <div class="input-value">
+            <input sdlTooltip
+                   [mode]="'critical'"
+                   [isDisabled]="(hostAddress.valid && hostAddress.touched && hostAddress.valid) || hostAddress.untouched"
+                   [placement]="'top'"
+                   [sdlTooltip]="'common.textRequiredFieldSuggestion' | translate"
+                   type="text"
+                   id="hostAddress"
+                   name="hostAddress"
+                   [container]="'body'"
+                   [(ngModel)]="appserverPayloadModel.hostAddress"
+                   required
+                   #hostAddress="ngModel"
+                   class="form-control">
+          </div>
+        </div>
+        <div class="form-group" *ngIf="showOsType">
+          <label class="control-label"  translate>{{'application.textOsType'}}</label>
+          <div>
+            <select class="form-control" required name="osType" [(ngModel)]="appserverPayloadModel.osType" >
+              <option [value]="LINUX_TYPE" translate>{{ 'application.textLinux' }}
+              <option [value]="WINDOWS_TYPE" translate>{{ 'application.textWindows' }}
+              </option>
+            </select>
+          </div>
+        </div>
+            <div class="form-group" *ngIf="!isOptionsHidden() && !isExchangeOnline"
+                 [ngClass]="{'has-error': (!maxConcurrency.valid && maxConcurrency.touched), 'has-success': (maxConcurrency.valid && maxConcurrency.touched)}">
+              <label for="maxConcurrency" class="control-label">
+                {{'application.textMaxConcurrency' | translate }}</label>
+              <div class="input-value">
+                <input sdlTooltip
+                       [mode]="'critical'"
+                       [isDisabled]="(maxConcurrency.valid && maxConcurrency.touched) || maxConcurrency.untouched"
+                       [placement]="'top'"
+                       [sdlTooltip]="textRequiredFieldMinSuggestion"
+                       [(ngModel)]="appserverPayloadModel.maxConcurrency"
+                       min="1" max="99"
+                       type="number"
+                       id="maxConcurrency"
+                       name="maxConcurrency"
+                       required
+                       #maxConcurrency="ngModel"
+                       class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="side-by-side-right">
+            <label class="control-label">{{'inventory.textUserAccess' | translate }}</label>
+            <div *ngIf="onlyUserSelection; then onlyuserselectioncomponent else keyanduser"></div>
+          </div>
+        </div>
+        <ng-template #onlyuserselectioncomponent>
+          <identity-user-enter-select-v2
+            #identityUserSelect
+            [model]="appserverPayloadModel"
+            [textUsername]="'storage.textUserId'"
+            [textPassword]="'storage.textPassword'"
+          ></identity-user-enter-select-v2>
+        </ng-template>
+        <ng-template #keyanduser>
+          <identity-user-enter-select-v2 #identityUserSelect
+            [model]="appserverPayloadModel"
+            [enableSshIdentify]="appserverPayloadModel.osType === LINUX_TYPE"
+            (loadedUserEvent)="onUsersLoaded()"
+            [textUsername]="'storage.textUserId'"
+            [textPassword]="'storage.textPassword'"
+          ></identity-user-enter-select-v2>
+        </ng-template>
+
+      </ng-template>
+
+      <ng-template #tenant>
+        <div *ngIf="isExchangeOnline" class="side-by-side-wrapper tenant-area">
+          <div class="side-by-side-left">
+          <div class="form-group"
+               [ngClass]="{'has-error': (tenantName && tenantName.touched && !tenantName.valid), 'has-success': (tenantName && tenantName.touched && tenantName.valid)}">
+            <label class="control-label" for="tenantName" translate>{{'application.textTenantName'}}</label>
+            <div class="input-value">
+              <input sdlTooltip
+                     [mode]="'critical'"
+                     [isDisabled]="(tenantName.valid && tenantName.touched && tenantName.valid) || tenantName.untouched"
+                     [placement]="'top'"
+                     [sdlTooltip]="'common.textRequiredFieldSuggestion' | translate"
+                     type="text"
+                     id="tenantName"
+                     name="tenantName"
+                     [container]="'body'"
+                     [(ngModel)]="appserverPayloadModel.tenantName"
+                     required
+                     #tenantName="ngModel"
+                     class="form-control">
+            </div>
+          </div>
+          <div class="form-group"
+               [ngClass]="{'has-error': (tenantID && tenantID.touched && !tenantID.valid), 'has-success': (tenantID && tenantID.touched && tenantID.valid)}">
+            <label class="control-label" for="tenantID" translate>{{'application.textTenantID'}}</label>
+            <div class="input-value">
+              <input sdlTooltip
+                     [mode]="'critical'"
+                     [isDisabled]="(tenantID.valid && tenantID.touched && tenantID.valid) || tenantID.untouched"
+                     [placement]="'top'"
+                     [sdlTooltip]="'common.textRequiredFieldSuggestion' | translate"
+                     type="text"
+                     id="tenantID"
+                     name="tenantID"
+                     [container]="'body'"
+                     [(ngModel)]="appserverPayloadModel.tenantID"
+                     required
+                     #tenantID="ngModel"
+                     class="form-control">
+            </div>
+          </div>
+        </div>
+          <div class="side-by-side-right">
+            <label class="control-label">{{'inventory.textApplicationInfo' | translate }}</label>
+          <identity-user-enter-select-v2 #tenantClientSelect
+                                      [model]="appserverPayloadModel.tenantClient"
+                                      [enterOnly]="true"
+                                      [noPlaceholder]="true"
+                                      [showHidePassword]="true"
+                                      [textUsername]="'application.textClientID'"
+                                      [textPassword]="'application.textClientSecret'">
+          </identity-user-enter-select-v2>
+          </div>
+        </div>
+      </ng-template>
+      <div class="form-group discovery-area" *ngIf="canDiscover">
+        <button class="sdl"
+                [ngClass]="{'disabled': !(appForm.form.valid && isIdentityComponentValid())}"
+                [disabled]="!(appForm.form.valid && isIdentityComponentValid())"
+                (click)="getInstances()" translate>{{isOracleApplication ? 'application.textGetDatabases' : 'application.textGetInstances'}}</button>
+        <div class="space-top-10 discovery">
+          <discovery-table [instances]="instances" [applicationType]="applicationType"></discovery-table>
+        </div>
+      </div>
+    </form>
+</div>
+<div class="modal-footer">
+  <confirm-toolbar-component
+    (cancelEvent)="onCancelClick()"
+    (confirmEvent)="onSaveClick()"
+    [confirmText]="'common.textConfirm' | translate"
+    [disableConfirmButton]="!isValid(appForm)"
+    [splitButtons]="false"
+    [floatRight]="false"></confirm-toolbar-component>
+</div>
+</div>

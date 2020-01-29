@@ -1,0 +1,73 @@
+<div
+  class="appserver-card-wrapper"
+  [ngStyle]="isDropdownHovered && { 'background-color': '#f3f3f3' }"
+  tabindex="0"
+  clickOnEnterKeydown
+  (click)="onClick(item, $event)"
+>
+  <div class="appserver-card-header">
+    <div class="appserver-card-info">
+      <div class="appserver-card-system">
+        <span class="capitalize">{{ item.osType }}</span>
+        <span *ngIf="item.version">| {{'inventory.textVersion' | translate}} {{ item.version }}</span>
+      </div>
+      <h3 class="appserver-card-name" title="{{ item.name }}">{{ item.name }}</h3>
+    </div>
+    <div class="btn-group action-menu-dropdown" role="group" (click)="onMenuClick($event)">
+      <button
+        type="button"
+        class="action-menu-dropdown-menu-btn icon-container"
+        data-toggle="dropdown"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        <svg ibmIconOverflowMenuVertical16></svg>
+      </button>
+      <div
+        class="dropdown-menu dropdown-menu-sdl dropdown-menu-right"
+        (mouseenter)="onDropdownMouseEnter()"
+        (mouseleave)="onDropdownMouseLeave()"
+      >
+        <a
+          tabindex="0"
+          class="dropdown-item capitalize dropdown-item-sdl"
+          *ngFor="let link of item.getActionLinks()"
+          (click)="onExecuteAction(item, link)"
+          clickOnEnterKeydown
+        >{{ link.title || link.name }}</a>
+        <a
+          tabindex="0"
+          class="dropdown-item capitalize dropdown-item-sdl"
+          *ngIf="item.hasLink('edit')"
+          (click)="onEdit(item)"
+          clickOnEnterKeydown
+          translate
+        >{{ 'inventory.textEditAppServer' }}</a>
+        <a
+          tabindex="0"
+          class="dropdown-item capitalize dropdown-item-sdl"
+          *ngIf="item.hasLink('delete')"
+          (click)="onRemove(item)"
+          clickOnEnterKeydown
+          translate
+        >{{ 'inventory.textRemoveAppServer' }}</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="appserver-card-dbs">
+    <div class="appserver-card-db">
+      <span class="appserver-card-db-value">{{ item.unprotectedDbs }}</span>
+      <span class="appserver-card-db-name" translate>{{'inventory.textUnprotectedDatabasesNoColon'}}</span>
+    </div>
+    <div class="appserver-card-db">
+      <span class="appserver-card-db-value appserver-card-db-value--sm">{{ item.totalDbs }}</span>
+      <span class="appserver-card-db-name" translate>{{'inventory.textTotalDatabases'}}</span>
+    </div>
+  </div>
+
+  <div class="appserver-card-status">
+    <span class="appserver-card-status-indicator appserver-card-status-indicator--basic"></span>
+    <span class="appserver-card-status-desc" translate>Inventory last updated 2 hours ago</span>
+  </div>
+</div>

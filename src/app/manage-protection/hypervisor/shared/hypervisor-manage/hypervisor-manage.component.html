@@ -1,0 +1,109 @@
+<div [hidden]="mode !== 'list'">
+  <div class="align-right margin-bottom-10" *ngIf="canCreate">
+    <button class="sdl inline with-icon"
+            (click)="onAddClick()" translate>
+      <i class="bidi-add-new-white_16"></i>{{getAddButtonText()}}
+    </button>
+  </div>
+      <hypervisor-table
+        [hidden]="isAWSEC2()"
+        [hypervisorType]="hypervisorType"
+        (resetEvent)="reset()"
+        (editClickEvent)="onEditClick($event)"
+        (loadedEvent)="canCreate = $event">
+      </hypervisor-table>
+      <cloud-table
+        (editCloudEvent)="onEditCloudClick($event)"
+        [cloudType]="'compute'"
+        [hidden]="!isAWSEC2()">
+      </cloud-table>
+    </div>
+<div [hidden]="mode !== 'edit'">
+  <h2 class="sdl-header">{{getTitleText()}}</h2>
+  <div [hidden]="isAWSEC2()">
+    <ba-card>
+      <form class="form-horizontal" [formGroup]="form">
+        <div class="form-group row"
+             [ngClass]="{'has-error': (!hostAddress.valid && hostAddress.touched), 'has-success': (hostAddress.valid && hostAddress.touched)}">
+          <label for="inputName" class="col-sm-2 control-label" translate>{{'hypervisor.textHostAddress'}}</label>
+          <div class="col-sm-3">
+            <input sdlTooltip
+                   [mode]="'critical'"
+                   [isDisabled]="(hostAddress.valid && hostAddress.touched && hostAddress.valid) || hostAddress.untouched"
+                   [placement]="'top'"
+                   [sdlTooltip]="'common.textRequiredFieldSuggestion' | translate"
+                   [formControl]="hostAddress"
+                   [(ngModel)]="model.hostAddress"
+                   type="text"
+                   class="form-control"
+                   id="inputName"
+                   placeholder="vc1.mynetwork.com">
+          </div>
+        </div>
+        <identity-user-enter-select #user [model]="userInfo" [type]="userType"
+                                    [textUsername]="'common.textUsername'"
+                                    [textPassword]="'hypervisor.textPassword'"
+                                    [clsOfLabelCol]="'col-sm-2'"
+                                    [clsOfFieldCol]="'col-sm-3'"></identity-user-enter-select>
+        <div class="form-group row"
+             [ngClass]="{'has-error': (!portNumber.valid && portNumber.touched), 'has-success': (portNumber.valid && portNumber.touched)}">
+          <label for="inputPort" class="col-sm-2 control-label" translate>{{'hypervisor.textPort'}}</label>
+          <div class="col-sm-3">
+            <input [formControl]="portNumber" [(ngModel)]="model.portNumber" type="number" min="0" max="65535"
+                   class="form-control" id="inputPort" placeholder="443">
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="offset-sm-2 col-sm-2">
+            <div class="checkbox">
+              <ba-checkbox [(ngModel)]="model.sslConnection" (onChangeEvent)="onSslClick($event)"
+                           [label]="textUseSSL" [ngModelOptions]="{standalone: true}"
+                           translate></ba-checkbox>
+            </div>
+          </div>
+        </div>
+      </form>
+    </ba-card>
+    <h2 class="sdl-header" translate>{{'hypervisor.textOptions'}}</h2>
+    <ba-card>
+      <form class="form-horizontal" [formGroup]="optionsForm">
+        <div class="form-group row"
+             [ngClass]="{'has-error': (!snapshotConcurrency.valid && snapshotConcurrency.touched), 'has-success': (snapshotConcurrency.valid && snapshotConcurrency.touched)}">
+          <label for="snapshotConcurrency" class="col-sm-4 control-label custom-snapshot-label-width ">{{(isHyperV()?
+              'hypervisor.textConcurrentHyperVServer' : 'hypervisor.textConcurrentEsxServer') | translate }}</label>
+          <div class="col-sm-2">
+            <input [formControl]="snapshotConcurrency" min="1" [(ngModel)]="model.snapshotConcurrency"
+                   type="number" class="custom-snapshot-numberfield-width form-control"
+                   id="snapshotConcurrency">
+          </div>
+        </div>
+      </form>
+    </ba-card>
+  </div>
+  <div [hidden]="!isAWSEC2()">
+    <ba-card>
+      <div class="form-group row" [ngClass]="{'has-error': (!name.valid && name.touched), 'has-success': (name.valid && name.touched)}">
+        <label for="awsName" class="col-sm-3 control-label" translate>{{'awsec2.textAccountName'}}</label>
+        <div class="col-sm-4">
+          <input sdlTooltip
+                 [mode]="'critical'"
+                 [isDisabled]="(name.valid && name.touched) || name.untouched"
+                 [placement]="'top'"
+                 [sdlTooltip]="'common.textRequiredFieldSuggestion' | translate"
+                 [formControl]="name" [(ngModel)]="model.name" type="text" class="form-control" id="awsName">
+        </div>
+      </div>
+      <key-selector [model]="keySelectModel"
+                    [hideNameField]="true"
+                    [clsOfLabelCol]="'col-sm-3'" [clsOfFieldCol]="'col-sm-4'"
+                    [textAccessKeyLabel]="'accesskeys.textAccessKey'"
+                    [textSecretKeyLabel]="'accesskeys.textSecretKey'"></key-selector>
+    </ba-card>
+  </div>
+  <confirm-toolbar-component
+    (cancelEvent)="onCancelClick()"
+    (confirmEvent)="onSaveClick()"
+    [disableConfirmButton]="!isRegistrationFormValid()"
+    [splitButtons]="false"
+    [floatRight]="false"></confirm-toolbar-component>
+</div>

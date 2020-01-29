@@ -1,0 +1,25 @@
+<div [hidden]="mode !== 'list'">
+  <div class="align-right margin-bottom-10" *ngIf="canCreate">
+    <button class="sdl inline with-icon"
+            (click)="onAddClick()" translate>
+      <i class="bidi-add-new-white_16"></i>{{serverText}}
+    </button>
+  </div>
+  <app-server-table [type]="applicationType"></app-server-table>
+</div>
+<div [hidden]="mode === 'list'">
+  <app-registration-form
+    *ngIf="canCreate"
+    [onlyUserSelection]="onlyUserSelection"
+    [applicationType]="applicationType"
+    (editEvent)="onToggleFormElement($event)"
+    (formSubmitEvent)="onSuccessfulRegister($event)"
+    [hideOptions]="hideOptions"
+    [canDiscover]="canDoDiscover"
+    [propertiesEditText]="propertiesEditText"
+    [propertiesText]="propertiesText"
+    [showOsType]="showOsType"
+    [fieldWidth]="fieldWidth"
+    [labelWidth]="labelWidth"
+  ></app-registration-form>
+</div>

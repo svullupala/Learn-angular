@@ -1,0 +1,131 @@
+$separatorColor: #D0DADA;
+$selectedColor: #EDF4FF;
+$text-color-pop: #171717;
+$font-weight-pop: 500;
+
+.chart-container {
+  height: 100%;
+  width: 100%;
+
+  & > .header {
+    margin: 0 0 1.5rem 2rem;
+  }
+
+  & > .canvas-area {
+    max-width: 200px;
+    max-height: 200px;
+    margin: 0 auto;
+
+    & > .segment-label {
+      position: absolute;
+      float: left;
+      text-align: center;
+      width: 2rem;
+      font-size: 12px;
+      margin-bottom: 0;
+      color: $text-color-pop;
+    }
+
+    & > .banner {
+      position: absolute;
+      float: left;
+      margin-top: 88px;
+      margin-left: 36px;
+      text-align: center;
+      width: 128px;
+
+      & > .banner-primary {
+        font-size: 24px;
+        font-weight: $font-weight-pop;
+        color: $text-color-pop;
+      }
+
+      & > .banner-secondary {
+        font-size: 12px;
+        text-transform: lowercase;
+      }
+    }
+
+    & > .canvas {
+      width: 200px;
+      height: 200px;
+    }
+  }
+
+  & > .title {
+    margin: 2.5rem 0 0 2rem;
+    font-weight: $font-weight-pop;
+    color: $text-color-pop;
+
+    &.centered {
+      text-align: center;
+      margin-left: 0;
+    }
+  }
+
+  & > .channels-area {
+    & > .channels {
+      & > .channel {
+        display: flex;
+        flex-flow: row;
+        padding: .75rem 0;
+        border-bottom: 1px solid $separatorColor;
+        cursor: pointer;
+
+        &.selected {
+          background-color: $selectedColor;
+          outline-color: transparent;
+          cursor: auto;
+        }
+
+        &:first-child {
+          border-top: 1px solid $separatorColor;
+          margin-top: 1rem;
+        }
+
+        &.offset-separator {
+          width: calc(100% + 2rem);
+          padding: .75rem 1rem;
+          margin-left: -1rem;
+        }
+
+        .legend-color {
+          width: 1rem;
+          height: 1rem;
+          //box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.25);
+          position: relative;
+          margin-top: .5rem;
+        }
+
+        .legend-label {
+          flex: 1;
+          display: inline-block;
+          margin-left: 1rem;
+          white-space: nowrap;
+
+          & > .primary {
+            font-size: 16px;
+            font-weight: 600;
+            color: $text-color-pop;
+            margin: 0;
+          }
+
+          & > .secondary {
+            font-size: 12px;
+            margin: 0;
+          }
+        }
+
+        .legend-summary {
+          display: inline-block;
+          margin-left: 1rem;
+          min-width: 3rem;
+          white-space: nowrap;
+          font-weight: $font-weight-pop;
+          color: $text-color-pop;
+          text-align: left;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,28 @@
+<div class="card no-border" [ngClass]="{'masked': masked}">
+  <div *ngFor="let item of model">
+    <button class="btn btn-primary btn-xs" (click)="onDetailClick(item)" data-toggle="collapse"
+            [attr.aria-label]="(isExpanded(item)? 'common.textCollapse' : 'common.textExpand') | translate"
+            [attr.data-target]="'#' + getCollapsibleContainerId(item)">
+      <i [id]="getCollapsibleOperatorId(item)" [class]="isExpanded(item)? 'ion-chevron-down' : 'ion-chevron-right'"></i>
+    </button>
+    <label class="control-label nowrap bold">{{item.name | rolesecuritygroupname}}
+    </label>
+    <hr>
+    <div [attr.id]="getCollapsibleContainerId(item)" class="collapse indent" [ngClass]="{'in': isExpanded(item)}" role="form">
+      <div *ngFor="let perm of item.permissions">
+        <div class="side-by-side-wrapper">
+          <div class="side-by-side-left">
+            <label class="control-label nowrap">{{perm.displayName}}
+            </label>
+          </div>
+          <div class="side-by-side-right">
+            <label class="control-label nowrap">{{perm.belongsToNames.join(', ')}}
+            </label>
+          </div>
+        </div>
+        <hr>
+      </div>
+    </div>
+    <br>
+  </div>
+</div>

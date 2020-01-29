@@ -1,0 +1,81 @@
+<div class="card" style="border-bottom: 1px solid #D8D8D8; margin: 0; min-width: 500px;">
+  <div class="card-body" style="height: auto; padding-bottom: 0; padding-left: 20px; padding-right: 20px;">
+    <div class="form-group row">
+      <div class="col-sm-5" style="width: 13rem;">
+        <div class="btn-group view">
+          <div class="nowrap">
+            <label class="control-label" translate>{{'common.textSortBy'}}</label>
+            <div class="btn-group">
+              <button id="btnGroupDrop1" type="button" class="btn btn-default dropdown-toggle dropdown-toggle-sdl"
+                      data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                {{activeSorter && activeSorter.displayName}}
+              </button>
+              <div class="dropdown-menu dropdown-menu-right dropdown-menu-sdl" aria-labelledby="btnGroupDrop1">
+                <a *ngFor="let sorter of sorters" class="dropdown-item  dropdown-item-sdl"
+                   tabindex="0" (keydown.enter)="onChangeSort(sorter)"
+                   (click)="onChangeSort(sorter)">{{sorter.displayName}}</a>
+              </div>
+              <button cdkMonitorElementFocus tabindex="0" type="button" [attr.aria-label]="'common.textSort' | translate" class="sdl sorter-button secondary"
+                      (click)="reverseSorter()" (keydown.enter)="reverseSorter()">
+                <i class="bidi-SortingArrow_Icon_16px"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-5" style="width: 14rem;">
+        <sdl-search-bar (search)="startSearch($event)"
+                        (clear)="startSearch('')"
+                        [isSupportClear]="true"
+                        [textPlaceholderLabel]="textSearchFor">
+        </sdl-search-bar>
+      </div>
+      <div class="col-sm-1" style="float: right; padding-left: 0px; padding-right: 0px;">
+        <filter-dropdown (onApplyEvent)="applyFilters($event)" [filterCatagories]="filterCatagories"></filter-dropdown>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="card transparent-card" style="text-align: center; margin-top: 25%;" [hidden]="runningJobs">
+  <h2 class="sdl-header" translate>{{'job.textNoAvailableJobs'}}</h2>
+</div>
+<div class="card card-scroll disable-scroll" style="height: 89.8%;" [hidden]="!runningJobs">
+  <div #infiniteScrollContainer class="scroll-container">
+  <table role="presentation">
+    <tbody>
+      <tr *ngFor="let job of model.records; trackBy: trackByModel"
+               tabindex="0" (keydown.enter)="toggleSelect(job, model.records, $event, true)"
+               (click)="toggleSelect(job, model.records, $event, true); toggleSelectJobSession()" [ngClass]="{'active-row': isSelected(job, true)}">
+        <td>
+          <job-item [job]="job" [hideChart]="hideChart" [isHistory]="isHistory"></job-item>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="toolbar">
+    <div class="row">
+      <div class="col-xs-4" style="padding: 0px;">
+          <refresh-button-basic [defaultState]="autoRefreshState"
+                            [isEnabled]="autoRefreshState"
+                            [rate]="30000"
+                            [tickEnabled]="autoRefreshState"
+                            (onTick)="refresh()"
+                            [buttonLabel]="'common.textAutoRefreshButton' | translate"
+                            [buttonDisabledLabel]="'common.textRefreshPauseButton' | translate"
+                            ></refresh-button-basic>
+      </div>
+      <div class="col-xs-8" style="padding: 0px;">
+          <paging-toolbar (refresh)="refresh($event)"
+                        [model]="model"
+                        [supportedMode]="'infiniteScrolling'"
+                        [displayedCount]="displayedCount"
+                        [infiniteScrollContainer]="infiniteScrollContainer"
+                        (jumpTo)="onJumpTo($event)"
+                        (scrolled)="onScrollDown($event)"
+                        (scrolledUp)="onScrollUp($event)"
+                        (beforeRefresh)="onBeforeRefresh($event)"></paging-toolbar>
+      </div>
+  </div>
+  </div>
+</div>

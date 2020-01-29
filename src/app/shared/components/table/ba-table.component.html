@@ -1,0 +1,57 @@
+<div class="table-container">
+  <cdk-table class="table" #table [dataSource]="data">
+    <ng-container *ngFor="let column of columnDef" [cdkColumnDef]="column.id">
+      <cdk-header-cell
+        [style.width]="column.width"
+        (click)="handleSort(column.id)"
+        [ngClass]="{
+          'st-sort-accent': column.sortable,
+          'st-sort-descent': column.sortable?.direction === 'DESC'
+        }"
+        class="header-cell"
+        cdk-header-cell
+        *cdkHeaderCellDef
+        >{{ column.header }}</cdk-header-cell
+      >
+
+      <ng-container *ngIf="!column.dynamicCellComponent">
+        <cdk-cell
+          [style.width]="column.width"
+          class="table-cell"
+          cdk-cell
+          *cdkCellDef="let row"
+        >
+          {{ row[column.id] }}</cdk-cell
+        >
+      </ng-container>
+
+      <ng-container *ngIf="column.dynamicCellComponent">
+        <cdk-cell
+          [style.width]="column.width"
+          class="table-cell"
+          cdk-cell
+          *cdkCellDef="let row"
+        >
+          <ng-container
+            dynamicCell
+            [component]="column.dynamicCellComponent"
+            [inputs]="element[column.id]"
+          >
+          </ng-container>
+        </cdk-cell>
+      </ng-container>
+    </ng-container>
+
+    <cdk-header-row
+      class="header-row"
+      *cdkHeaderRowDef="displayedColumns"
+    ></cdk-header-row>
+
+    <cdk-row
+      (click)="handleSelect(row)"
+      [ngClass]="{ 'table-row-selected': selectedRow === row }"
+      class="table-row"
+      *cdkRowDef="let row; columns: displayedColumns"
+    ></cdk-row>
+  </cdk-table>
+</div>

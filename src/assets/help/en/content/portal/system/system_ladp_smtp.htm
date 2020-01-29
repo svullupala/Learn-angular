@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-us" xml:lang="en-us" class="task _Skins_HTML5_topnav_IBMOEM" data-mc-search-type="Stem" data-mc-help-system-file-name="Default.xml" data-mc-path-to-help-system="../../../" data-mc-has-content-body="True" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic;Default" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="System">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>LDAP / SMTP</title>
+        <link rel="icon" href="../../Resources/images/IBM-icon-48.ico" />
+        <link href="../../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Tablet.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Mobile.css" rel="stylesheet" />
+        <link href="../../../Skins/Fluid/stylesheets/foundation.6.2.3.css" rel="stylesheet" />
+        <link href="../../../Skins/Fluid/stylesheets/styles.css" rel="stylesheet" />
+        <link href="../../../Skins/Fluid/stylesheets/tablet.css" rel="stylesheet" />
+        <link href="../../../Skins/Fluid/stylesheets/mobile.css" rel="stylesheet" />
+        <style>/*&lt;meta /&gt;*/
+
+.button.remove-highlight-button
+{
+	-pie-background: url('../../../Skins/Default/Stylesheets/Images/highlight.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.expand-all-button
+{
+	-pie-background: url('../../../Skins/Default/Stylesheets/Images/expand.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.print-button
+{
+	-pie-background: url('../../../Skins/Default/Stylesheets/Images/printer.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.collapse-all-button
+{
+	-pie-background: url('../../../Skins/Default/Stylesheets/Images/collapse.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.needs-pie
+{
+	behavior: url('../../../Resources/Scripts/PIE-no-motw.htc');
+}
+
+</style>
+        <link href="../../resources/stylesheets/styles_topnavi.css" rel="stylesheet" />
+        <script src="../../../Resources/Scripts/custom.modernizr.js">
+        </script>
+        <script src="../../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/require.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/require.config.js">
+        </script>
+        <script src="../../../Resources/Scripts/foundation.6.2.3_custom.js">
+        </script>
+        <script src="../../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div class="foundation-wrap off-canvas-wrapper">
+            <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper="">
+                <aside class="off-canvas position-right" id="offCanvas" data-off-canvas="" data-position="right" data-mc-ignore="true">
+                    <ul class="off-canvas-drilldown vertical menu off-canvas-list" data-drilldown="" data-mc-back-link="Back" data-mc-css-tree-node-expanded="is-drilldown-submenu-parent" data-mc-css-tree-node-collapsed="is-drilldown-submenu-parent" data-mc-css-sub-menu="vertical menu slide-in-right is-drilldown-submenu" data-mc-include-indicator="False" data-mc-include-icon="False" data-mc-include-parent-link="True" data-mc-include-back="True" data-mc-defer-expand-event="True" data-mc-expand-event="click.zf.drilldown" data-mc-toc="True">
+                    </ul>
+                </aside>
+                <div class="off-canvas-content inner-wrap" data-off-canvas-content="">
+                    <div>
+                        <nav class="title-bar tab-bar" data-mc-ignore="true">
+                            <div class="middle title-bar-section outer-row clearfix">
+                                <div class="relative clearfix"><a class="logo" href="../about/about_application_overview.htm" alt="Logo"></a>
+                                    <div class="navigation-wrapper nocontent">
+                                        <ul class="navigation clearfix" data-mc-css-tree-node-has-children="has-children" data-mc-css-sub-menu="sub-menu" data-mc-expand-event="mouseenter" data-mc-top-nav-menu="True" data-mc-max-depth="4" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                                            <li class="placeholder" style="visibility:hidden"><a>placeholder</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <button class="menu-icon" data-toggle="offCanvas"><span></span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="nav-search row outer-row">
+                                <form class="search" action="#">
+                                    <div class="search-bar search-bar-container needs-pie">
+                                        <input class="search-field needs-pie" type="search" placeholder="Search the help system" />
+                                        <div class="search-filter-wrapper">
+                                            <div class="search-filter">
+                                                <div class="search-filter-content">
+                                                    <ul>
+                                                        <li>All Files</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="search-submit-wrapper" dir="ltr">
+                                            <div class="search-submit" title="Search">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </nav>
+                    </div>
+                    <section class="main-section">
+                        <div class="row outer-row" data-mc-content-body="True">
+                            <div class="buttons popup-container clearfix topicToolbarProxy mc-component nocontent" style="margin-left: 0px; float: right; mc-topic-toolbar-items: RemoveHighlight ExpandAll CollapseAll Print;">
+                                <div class="button-group-container-left">
+                                    <button class="button needs-pie remove-highlight-button" title="Remove Highlights">
+                                        <img src="../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="remove highlight" />
+                                    </button>
+                                    <button class="button needs-pie expand-all-button" data-state1-class="expand-all-button" data-state2-class="collapse-all-button" data-state2-title="Collapse all" title="Expand all" data-state1-title="Expand all">
+                                        <img src="../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="expand all" />
+                                    </button>
+                                    <button class="button needs-pie print-button" title="Print">
+                                        <img src="../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="print" />
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="nocontent">
+                                <div class="MCBreadcrumbsBox_0 breadcrumbs" data-mc-breadcrumbs-divider=" &gt; " data-mc-breadcrumbs-count="3" data-mc-toc="True"><span class="MCBreadcrumbsPrefix">You are here: </span>
+                                </div>
+                            </div>
+                            <h1>LDAP / SMTP</h1>
+                            <p>System Administrators can add LDAP&#160;and SMTP&#160;providers to <span class="ProductNames_LongShortECX_Short">IBM Spectrum Protect Plus</span> through the LDAP / SMTP&#160;pane. Adding an LDAP&#160;provider enables LDAP users to be provisioned and access <span class="ProductNames_LongShortECX_Short">IBM Spectrum Protect Plus</span> using LDAP&#160;usernames and passwords. Adding an SMTP server enables email communications to be sent from <span class="ProductNames_LongShortECX_Short">IBM Spectrum Protect Plus</span>. Note that only one SMTP server and one LDAP&#160;server can be associated with <span class="ProductNames_LongShortECX_Short">IBM Spectrum Protect Plus</span>.</p>
+                            <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />To register an LDAP provider:</a></span>
+                                <div class="MCDropDownBody dropDownBody">
+                                    <ol>
+                                        <li value="1" data-mc-conditions="Default.1012 navigation">From the navigation menu, expand <b>System Configuration</b>, then click <b>LDAP / SMTP</b>.</li>
+                                        <li value="2">From the LDAP&#160;table, click <span class="Strong">Add </span> <img src="../../resources/images/new_icons/plus.png" style="vertical-align: text-top;border-left-style: solid;border-left-width: 0px;border-left-color: #000000;border-right-style: solid;border-right-width: 0px;border-right-color: #000000;border-top-style: solid;border-top-width: 0px;border-top-color: #000000;border-bottom-style: solid;border-bottom-width: 0px;border-bottom-color: #000000;" alt="Add icon" /> . The LDAP&#160;Settings pane displays.</li>
+                                        <li value="3">Populate the fields:</li>
+                                        <li class="indent_strong" data-mc-autonum=""><span class="autonumber"><span></span></span>Host Address</li>
+                                        <li class="Indent_Level2" data-mc-autonum=""><span class="autonumber"><span></span></span>The IP address or resolvable logical node name of the LDAP server.</li>
+                                        <li class="indent_strong" data-mc-autonum=""><span class="autonumber"><span></span></span>Port</li>
+                                        <li class="Indent_Level2" data-mc-autonum=""><span class="autonumber"><span></span></span>The port on which the LDAP server is listening.  The typical default port is 389 for non SSL connections or 636 for SSL connections.</li>
+                                        <li class="indent_strong" data-mc-autonum=""><span class="autonumber"><span></span></span>SSL</li>
+                                        <li class="Indent_Level2" data-mc-autonum=""><span class="autonumber"><span></span></span>Enable to establish a secure connection to the LDAP&#160;server.</li>
+                                        <li class="indent_strong" data-mc-autonum=""><span class="autonumber"><span></span></span>Use existing user</li>
+                                        <li class="Indent_Level2" data-mc-autonum=""><span class="autonumber"><span></span></span>Enable to select a previously entered username and password for the provider from the <b>Credentials</b> field. </li>
+                                        <li class="indent_strong" data-mc-autonum=""><span class="autonumber"><span></span></span>Bind Name</li>
+                                        <li class="Indent_Level2" data-mc-autonum=""><span class="autonumber"><span></span></span>The Bind Distinguished Name used for authenticating the connection to the LDAP server. <span class="ProductNames_LongShortECX_Short">IBM Spectrum Protect Plus</span> supports simple bind.</li>
+                                        <li class="indent_strong" data-mc-autonum=""><span class="autonumber"><span></span></span>Password</li>
+                                        <li class="Indent_Level2" data-mc-autonum=""><span class="autonumber"><span></span></span>The password associated with the Bind Distinguished Name.</li>
+                                        <li class="indent_strong" data-mc-autonum=""><span class="autonumber"><span></span></span>Base DN</li>
+                                        <li class="Indent_Level2" data-mc-autonum=""><span class="autonumber"><span></span></span>The location where users and groups can be found.</li>
+                                        <li class="indent_strong" data-mc-autonum=""><span class="autonumber"><span></span></span>User Filter</li>
+                                        <li class="Indent_Level2" data-mc-autonum=""><span class="autonumber"><span></span></span>A filter  to select only those users under the Base DN that match certain criteria. An example of a valid default user filter is <span class="Strong">cn={0}</span>.</li>
+                                        <li class="Indent_Level2" data-mc-autonum=""><span class="autonumber"><span></span></span>To enable authentication using the <a name="kanchor4"></a>sAMAccountName Windows user naming attribute, set the User Filter to <b>samaccountname={0}</b>. When this filter is set, users log in to <span class="ProductNames_LongShortECX_Short">IBM Spectrum Protect Plus</span> using only using their username; a domain is not required. </li>
+                                        <li class="Indent_Level2" data-mc-autonum=""><span class="autonumber"><span></span></span>To enable authentication using the user principal name (UPN) naming attribute, set the User Filter to <b>userprincipalname={0}</b>. When this filter is set, users log in to <span class="ProductNames_LongShortECX_Short">IBM Spectrum Protect Plus</span> using the username@domain format.</li>
+                                        <li class="Indent_Level2" data-mc-autonum=""><span class="autonumber"><span></span></span>To enable authentication using an e-mail address associated with LDAP, set the User Filter to <b>mail={0}</b>.</li>
+                                        <li class="Indent_Level2" data-mc-autonum=""><span class="autonumber"><span></span></span>Note that this entry also controls the type of user name that appears in <span class="ProductNames_LongShortECX_Short">IBM Spectrum Protect Plus</span> display of users.</li>
+                                        <li class="indent_strong" data-mc-autonum=""><span class="autonumber"><span></span></span>User RDN&#160;</li>
+                                        <li class="Indent_Level2" data-mc-autonum=""><span class="autonumber"><span></span></span>The relative distinguished path for the user. Specify the path where user records can be found. An example of a valid default RDN is:</li>
+                                        <li class="Indent_Level2" data-mc-autonum=""><span class="autonumber"><span></span></span><span class="Strong">cn=Users</span>
+                                        </li>
+                                        <li class="indent_strong" data-mc-autonum=""><span class="autonumber"><span></span></span>Group RDN&#160;</li>
+                                        <li class="Indent_Level2" data-mc-autonum=""><span class="autonumber"><span></span></span>The relative distinguished path for the group. Specify the path where group records can be found if the group is at a different level than the user path. </li>
+                                        <li value="4">Click <span class="Strong">Save</span>. <span class="ProductNames_LongShortECX_Short">IBM Spectrum Protect Plus</span> first confirms a network connection and then adds the provider to the database.</li>
+                                        <li class="indent" data-mc-autonum=""><span class="autonumber"><span></span></span>If a message appears indicating that the connection is unsuccessful, review your entries. If your entries are correct and the connection is unsuccessful, contact a system administrator to review the connections.</li>
+                                    </ol>
+                                </div>
+                            </div>
+                            <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />To register an SMTP provider:</a></span>
+                                <div class="MCDropDownBody dropDownBody">
+                                    <ol>
+                                        <li value="1" data-mc-conditions="Default.1012 navigation">From the navigation menu, expand <b>System Configuration</b>, then click <b>LDAP / SMTP</b>.</li>
+                                        <li value="2">From the SMTP table, click <span class="Strong">Add </span> <img src="../../resources/images/new_icons/plus.png" style="vertical-align: text-top;border-left-style: solid;border-left-width: 0px;border-left-color: #000000;border-right-style: solid;border-right-width: 0px;border-right-color: #000000;border-top-style: solid;border-top-width: 0px;border-top-color: #000000;border-bottom-style: solid;border-bottom-width: 0px;border-bottom-color: #000000;" alt="Add icon" /> . The SMTP&#160;Settings pane displays.</li>
+                                        <li value="3">Populate the fields:</li>
+                                        <li class="indent_strong" data-mc-autonum=""><span class="autonumber"><span></span></span>Host Address</li>
+                                        <li class="Indent_Level2" data-mc-autonum=""><span class="autonumber"><span></span></span>A resolvable IP&#160;address or a resolvable path and machine name.</li>
+                                        <li class="indent_strong" data-mc-autonum=""><span class="autonumber"><span></span></span>Port</li>
+                                        <li class="Indent_Level2" data-mc-autonum=""><span class="autonumber"><span></span></span>The communications port of the provider you are adding. The typical default port is 25 for non SSL connections or 443 for SSL connections.</li>
+                                        <li class="indent_strong" data-mc-autonum=""><span class="autonumber"><span></span></span>Username</li>
+                                        <li class="Indent_Level2" data-mc-autonum=""><span class="autonumber"><span></span></span>The name used to access the provider.</li>
+                                        <li class="indent_strong" data-mc-autonum=""><span class="autonumber"><span></span></span>Password</li>
+                                        <li class="Indent_Level2" data-mc-autonum=""><span class="autonumber"><span></span></span>The password associated with the username.</li>
+                                        <li class="indent_strong" data-mc-autonum=""><span class="autonumber"><span></span></span>Timeout</li>
+                                        <li class="Indent_Level2" data-mc-autonum=""><span class="autonumber"><span></span></span>Set the email timeout value in milliseconds. </li>
+                                        <li class="indent_strong" data-mc-autonum=""><span class="autonumber"><span></span></span>From Address</li>
+                                        <li class="Indent_Level2" data-mc-autonum=""><span class="autonumber"><span></span></span>Set the address to be associated with email communications from <span class="ProductNames_LongShortECX_Short">IBM Spectrum Protect Plus</span>.</li>
+                                        <li class="indent_strong" data-mc-autonum=""><span class="autonumber"><span></span></span>Subject Prefix</li>
+                                        <li class="Indent_Level2" data-mc-autonum=""><span class="autonumber"><span></span></span>Set a prefix to add to the email subject lines sent from <span class="ProductNames_LongShortECX_Short">IBM Spectrum Protect Plus</span>.</li>
+                                        <li value="4">Click <span class="Strong">Save</span>. <span class="ProductNames_LongShortECX_Short">IBM Spectrum Protect Plus</span> first confirms a network connection and then adds the provider to the database.</li>
+                                        <li class="indent" data-mc-autonum=""><span class="autonumber"><span></span></span>If a message appears indicating that the connection is unsuccessful, review your entries. If your entries are correct and the connection is unsuccessful, contact a system administrator to review the connections.</li>
+                                    </ol>
+                                </div>
+                            </div>
+                            <p>&#160;</p>
+                            <hr width="100%" size="0" align="center" />
+                            <p style="text-align: left;"><span class="Strong" style="font-size: 10pt;">IBM Spectrum Protect Plus</span> <span class="Strong" style="font-size: 10pt;">10.1.2</span> <![CDATA[ ]]></p>
+                            <p style="font-size: 8pt;">Licensed Material - Property of IBM Corp. © IBM Corporation and other(s) <span class="GeneralYear">2018</span>. IBM is a registered trademark of the IBM Corporation in the United States, other countries, or both. <span style="font-size: 10pt;"><span style="font-size: 8pt;">| </span></span><span style="font-size: 8pt;" class="SystemShortDate">8/23/2018</span></p>
+                        </div>
+                    </section><a data-close="true"></a>
+                </div>
+            </div>
+            <script>/* <![CDATA[ */$(document).foundation();/* ]]> */</script>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,47 @@
+<div [ngClass]="{'masked': masked}" #userEditContainer>
+  <div class="card viewport100 with-scroll">
+    <div class="card-header dark-card-header-standalone" translate>{{stepTitle}}</div>
+    <div class="card-body">
+      <form class="form-horizontal" [formGroup]="form">
+        <div *ngIf="onlyOneUser && models[0].phantom  && step !== 2" class="form-group row"
+             [ngClass]="{'has-error': (!method.valid && method.touched), 'has-success': (method.valid && method.touched)}">
+          <label class="col-sm-4 control-label" translate>{{'users.textUserTypePrompt'}}</label>
+          <div class="col-sm-8">
+            <select class="custom-select" (change)="onTypeChange($event)" [formControl]="method" [(ngModel)]="models[0].type"
+                    class="form-control" style="max-width: 16rem;">
+              <option hidden value="" [selected]="models[0].phantom" translate>{{'users.textSelectUserGroup'}}</option>
+              <option value="NATIVE_USER" translate>{{'users.textIndividualNewUser'}}</option>
+              <option value="LDAP_GROUP" translate>{{'users.textLdapGroup'}}</option>
+            </select>
+          </div>
+        </div>
+          <user-edit-setting 
+            [minPasswordLength]="minPasswordLength" 
+            [hidden]="step !== 1" [models]="models" 
+            [ldapGroupList]="ldapGroupList" 
+            [mode]="mode"
+            [showLdapGroupTable]="showLdapGroupTable">
+        </user-edit-setting>
+          <user-edit-resource *ngIf="onlyOneUser" [hidden]="step !== 2" [models]="models"
+                              [selectedRoles]="selectedRoles"></user-edit-resource>
+      </form>
+    </div>
+  </div>
+  <button (click)="onCancelClick()" class="sdl inline" type="button" translate>
+    {{'common.textCancel'}}
+  </button>
+  <div class="right">
+    <button [hidden]="!hasPrev()" [disabled]="!prevValid()" (click)="onPrevClick()" class="sdl inline" [ngClass]="{'disabled': !prevValid()}"
+            type="button" translate>
+      {{models[0].phantom ? 'users.textBackToUserRole' : 'users.textModifySettingsStep'}}
+    </button>
+    <button [hidden]="!hasNext()" [disabled]="!nextValid()" (click)="onNextClick()" class="sdl inline" [ngClass]="{'disabled': !nextValid()}"
+            type="button" translate>
+      {{models[0].phantom ? 'users.textContinue' : 'users.textModifyResourcesStep'}}
+    </button>
+    <button [hidden]="!hasSubmit()" [disabled]="!isValid()" (click)="onSubmitClick()" class="sdl inline" [ngClass]="{'disabled': !isValid()}"
+            type="button" translate>
+      {{models[0].phantom ? 'users.textCreateUser' : 'users.textUpdateUser'}}
+    </button>
+  </div>
+</div>

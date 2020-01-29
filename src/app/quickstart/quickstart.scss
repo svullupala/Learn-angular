@@ -1,0 +1,39 @@
+@import "../theme/sass/conf/conf";
+
+.title {
+  background-color: $brand !important;
+  color: #FFFFFF !important;
+  font-weight: $font-bold !important;
+}
+
+.content {
+  font-size: 1rem !important;
+  text-align: left !important;
+  line-height: 1.5rem !important;
+  white-space: pre-wrap !important;
+}
+
+.centered-modal {
+  position: fixed;
+  top: 50% !important;
+  left: 50% !important;
+  padding-top: inherit !important;
+  transform: translate(-50%, -50%);
+}
+
+.modal {
+  min-height: 450px;
+  .modal-content {
+    color: $dropdown-text;
+    border: none;
+    box-shadow: rgba(0, 0, 0, 0.14) 0 0 10px;
+    .modal-header {
+      border: none;
+      color: white !important;
+      .modal-title {
+        color: #FFFFFF !important;
+      }
+    }
+  }
+}
+

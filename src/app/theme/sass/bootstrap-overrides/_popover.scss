@@ -1,0 +1,34 @@
+@import '../conf/_sdl-mixins.scss';
+@import '../conf/_variables.scss';
+
+.popover {
+  @include setBorderColorActions();
+  font-family: $font-family;
+  border-radius: 0px;
+}
+
+.popover-arrow {
+  border-left-color: $gray70 !important;
+  &:focus {
+    border-left-color: $cerulean50 !important;
+  }
+  &:active {
+    border-left-color: $cerulean50 !important;
+  }
+  &:hover {
+    border-left-color: $cerulean50 !important;
+  }
+}
+
+div.popover-content {
+  padding: 0px;
+  &.popover-body > div {
+    @include setBackgroundColorActions();
+    @include setColorActions();
+    cursor: pointer;
+    padding: 0 8px 0 16px;
+    > label {
+      margin-top: 5px;
+    }
+  }
+}

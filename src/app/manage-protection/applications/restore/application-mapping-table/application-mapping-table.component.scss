@@ -1,0 +1,73 @@
+.no-top-border {
+  border-top: 0;
+}
+
+.offset-path-table {
+  margin-left: -20px;
+}
+
+.green-text {
+  color: #2ecc00;
+}
+
+.yellow-text {
+  color: #ffdc00;
+}
+
+.red-text {
+  color: #E62325;
+}
+
+.large-text {
+  font-size: 24px;
+}
+
+.align-left {
+  text-align: left;
+}
+
+.align-center {
+  text-align: center;
+}
+
+.align-right {
+  text-align: right;
+}
+
+.logs {
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.collapsible-col {
+  width: 40px;
+}
+
+.operation-col {
+  max-width: 120px;
+}
+
+.log-type-col {
+  width: 50px;
+}
+
+.normal-col {
+  width: calc(calc(100% - 40px) / 8);
+}
+
+.normal-col2 {
+  width: calc(calc(100% - 100px) / 8);
+}
+
+.capitalize {
+  text-transform: capitalize;
+}
+
+.show {
+  display: block !important;
+}
+.hide {
+  display: none !important;
+}

@@ -1,0 +1,74 @@
+<ng-container *ngIf="isMainView">
+  <div class="align-right toolbar">
+    <label style="color: red; font-size: 24px; font-weight: bold; margin-right: 2rem">
+      10.1.7 Inventory project in progress
+    </label>
+    <button class="sdl inline" (click)="onAddClick()"
+            translate>{{'application.textAddApplicationServer'}}</button>
+  </div>
+  <dynamic-tabset [tabs]="tabs" (select)="onSwitchMode($event)"></dynamic-tabset>
+  <ng-template #db2>
+    <db2-inventory *ngIf="applicationType === 'db2'"
+                   (itemSelect)="onItemSelect($event)"
+                   (itemEdit)="onItemEdit($event)"
+                   (assignPolicy)="onAssignPolicy($event)"
+                   (editRunSettings)="onEditRunSettings($event)"></db2-inventory>
+  </ng-template>
+  <ng-template #exch>
+    <exch-inventory *ngIf="applicationType === 'exch'"
+                    (itemSelect)="onItemSelect($event)"
+                    (itemEdit)="onItemEdit($event)"
+                    (assignPolicy)="onAssignPolicy($event)"
+                    (editRunSettings)="onEditRunSettings($event)"></exch-inventory>
+  </ng-template>
+  <ng-template #office365>
+    <exchonline-inventory *ngIf="applicationType === 'office365'"
+                          (itemSelect)="onItemSelect($event)"
+                          (itemEdit)="onItemEdit($event)"
+                          (assignPolicy)="onAssignPolicy($event)"
+                          (editRunSettings)="onEditRunSettings($event)"></exchonline-inventory>
+  </ng-template>
+  <ng-template #mongo>
+    <mongo-inventory *ngIf="applicationType === 'mongo'"
+                     (itemSelect)="onItemSelect($event)"
+                     (itemEdit)="onItemEdit($event)"
+                     (assignPolicy)="onAssignPolicy($event)"
+                     (editRunSettings)="onEditRunSettings($event)"></mongo-inventory>
+  </ng-template>
+  <ng-template #oracle>
+    <oracle-inventory *ngIf="applicationType === 'oracle'"
+                      (itemSelect)="onItemSelect($event)"
+                      (itemEdit)="onItemEdit($event)"
+                      (assignPolicy)="onAssignPolicy($event)"
+                      (editRunSettings)="onEditRunSettings($event)"></oracle-inventory>
+  </ng-template>
+  <ng-template #sql>
+    <sql-inventory *ngIf="applicationType === 'sql'"
+                   (itemSelect)="onItemSelect($event)"
+                   (itemEdit)="onItemEdit($event)"
+                   (assignPolicy)="onAssignPolicy($event)"
+                   (editRunSettings)="onEditRunSettings($event)"></sql-inventory>
+  </ng-template>
+</ng-container>
+<ng-container *ngIf="(isViewerView || isAssignPolicyView) && selectedItem">
+  <application-viewer
+    [model]="selectedItem"
+    [view]="applicationView"
+    [hidden]="isAssignPolicyView"
+    [textBackToTarget]="'menubar.submenu.textManageApplications'"
+    (backTo)="onBackTo()"
+    (onAssignPolicy)="onAssignPolicy($event)"
+    (onEditRunSettings)="onEditRunSettings($event)"
+  ></application-viewer>
+</ng-container>
+
+<ng-container *ngIf="isAssignPolicyView">
+  <applications-assign-policy
+    [view]="applicationView"
+    [assignPolicyTo]="assignPolicyTo"
+    [applicationType]="applicationType"
+    [selectedTab]="selectedAssignPolicyTab"
+    [runSettingsEditMode]="runSettingsEditMode"
+    (closeView)="onCloseAssignPolicyView()"
+  ></applications-assign-policy>
+</ng-container>

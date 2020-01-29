@@ -1,0 +1,9 @@
+<i class="bidi-status-warning"></i><label style="font-weight: bold; font-size: medium; margin-left: 10px; margin-bottom: 20px;" translate>{{'global-preferences.textWarningMessage'}}</label>
+<ng-container *ngFor="let i of objectKeys(schemaGroup)">
+    <preferences-category 
+        [preferenceData]="schemaGroup[i]" 
+        [header]="i"
+        (clickingReset)="clickingReset($event)"
+        (detectingValueChange)="detectingValueChange($event)">
+    </preferences-category>
+</ng-container>

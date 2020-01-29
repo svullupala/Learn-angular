@@ -1,0 +1,62 @@
+//overrides backstop of modal
+.modal-backdrop {
+  background-color: #F0F3F6;
+}
+
+.modal {
+  .modal-content {
+    color: $gray70;
+    border-top: $cerulean50 4px solid;
+    border-radius: 0;
+    border-right: none;
+    border-bottom: none;
+    border-left: none;
+    box-shadow: rgba(0, 0, 0, 0.14) 0 0 10px;
+    .modal-body {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+    .modal-header {
+      border: none;
+      color: $gray70;
+      font-size: 1.77rem;
+      padding-top: 1.5rem;
+      padding-bottom: 1.5rem;
+      padding-left: 2rem;
+      padding-right: 2rem;
+      .modal-title {
+        color: $gray70;
+        font-size: 1.77rem;
+      }
+    }
+
+    .modal-footer {
+      border: none;
+      background-color: #f6f6f6;
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+      padding-left: 0;
+      padding-right: 2rem;
+      margin-top: 2rem;
+    }
+
+    .close {
+      outline: none;
+      height: 40px;
+      width: 40px;
+    }
+  }
+}
+
+.modal-hr-sdl {
+  border: 1px solid #949394;
+}
+
+.modal-footer {
+  border: none;
+  background-color: #f6f6f6;
+}
+
+.margin-right-1rem {
+  margin-right: 1rem;
+}

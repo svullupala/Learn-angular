@@ -1,0 +1,13 @@
+<h2 class="sdl-header" translate>{{'application.textOptions'}}</h2>
+<ba-card>
+  <template #optionsContainer></template>
+</ba-card>
+<button class="sdl inline"
+        [disabled]="!isValid()"
+        [ngClass]="{'disabled': !isValid()}"
+        (click)="onApplyOptionsClick()"
+        type="button" data-toggle="collapse"
+        data-target="#collapsedboptions"
+        aria-expanded="false" translate>
+  {{'common.textSave' | translate}}
+</button>

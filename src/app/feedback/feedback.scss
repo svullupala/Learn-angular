@@ -1,0 +1,73 @@
+@import "../theme/sass/conf/conf";
+
+.title {
+  background-color: $brand;
+  color: #FFFFFF;
+  font-family: $font-family;
+  font-weight: $font-bold;
+  text-transform: uppercase;
+}
+
+.privacy {
+  float: left;
+  line-height: 32px;
+  height: 32px;
+}
+
+.feedbackLargeIcon {
+  content: url($branding-ibm-root + '/logo/nps-chat.png');
+  height: 108px;
+  width: 108px;
+}
+
+.feedbackSmallIcon {
+  content: url($branding-ibm-root + '/logo/nps-maximize.png');
+  height: 16px;
+  width:  16px;
+  margin: 1px;
+}
+
+.side-by-side-wrapper {
+  display: flex;
+  flex-flow: row;
+  min-height: 100%;
+  margin: 20px 5px;
+}
+
+.side-by-side-left {
+  flex: 1;
+  margin: 16px;
+}
+
+.side-by-side-right {
+  flex: 4;
+  margin: 16px 16px 16px 64px;
+  line-height: 20px;
+}
+
+.large {
+  font-family: $font-family;
+  font-size: 24px;
+  padding: 0 0 20px 0;
+}
+
+.regular {
+  font-family: $font-family;
+  font-size: 16px;
+  overflow-wrap: break-word;
+}
+
+.rightmargin10 {
+  margin-right: 10px;
+}
+
+.modal {
+  .modal-dialog {
+    .modal-content {
+      border: none;
+      .modal-title {
+        color: white;
+      }
+    }
+  }
+}

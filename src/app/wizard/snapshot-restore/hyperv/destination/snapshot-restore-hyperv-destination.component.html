@@ -1,0 +1,48 @@
+<div class="destination">
+  <div class="title" translate>{{'wizard.job.textSetDestinationTitle'}}</div>
+  <div class="desc" translate>{{'wizard.job.textSetDestinationDesc'}}</div>
+  <div class="content">
+    <div class="input-demo radio-demo row">
+      <div class="col-md-4">
+        <label class="radio-inline custom-radio nowrap">
+          <input type="radio" name="inlineRadioDestinationOptions"
+                 id="inlineRadio4"
+                 value="original" checked [(ngModel)]="model.destinationType"
+                 (ngModelChange)="onHostClusterClick(true)">
+          <span translate>{{ 'hypervisor.textOriginalHostOrCluster'}}</span>
+        </label>
+      </div>
+      <div class="col-md-3">
+        <label class="radio-inline custom-radio nowrap">
+          <input type="radio" name="inlineRadioDestinationOptions"
+                 [(ngModel)]="model.destinationType" value="alternate"
+                 id="inlineRadio5" (ngModelChange)="onHostClusterClick(false)">
+          <span translate>{{'hypervisor.textAlternateHostOrCluster'}}</span>
+        </label>
+      </div>
+    </div>
+    <ba-card [hidden]="model.originalHostCluster">
+      <host-cluster-table
+        (hostSelected)="saveDestination()"
+        [enableEsxUser]="model.destinationType === 'esx'"
+        [target]="target" [hypervisorType]="model.hypervisorType"></host-cluster-table>
+    </ba-card>
+    <div *ngIf="showVdiskCard()">
+      <h6 translate>{{'vmware.destinationvdiskText'}}</h6>
+      <vdisk-component
+        [mapVdiskInfo]="model.mapvdiskPayload"
+        [hypervisorType]="model.hypervisorType"
+        [sourceList]="model.source"></vdisk-component>
+    </div>
+  </div>
+</div>
+<ng-template #summary>
+  <div class="summary">
+    <div class="content">
+      <div class="property">
+        <label class="name">{{'wizard.job.textDestinationSummary' | translate}}</label>
+        <label class="value">{{model.originalHostCluster? ('hypervisor.textOriginalHostOrCluster' | translate) : ('hypervisor.textAlternateHostOrCluster' | translate) + ' - ' + (destinationName || ('wizard.job.textEmpty' | translate))}}</label>
+      </div>
+    </div>
+  </div>
+</ng-template>

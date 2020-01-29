@@ -1,0 +1,112 @@
+[
+  {
+    "method": "GET",
+    "pattern": "/api/storage/2101/management/preference",
+    "response": [
+      {
+        "links": {
+          "self": {
+            "rel": "self",
+            "href": "http://172.20.239.242:8082/api/storage/2101/management/preference/concurrentBackup",
+            "hreflang": null,
+            "media": null,
+            "title": null,
+            "type": null,
+            "deprecation": null
+          },
+          "up": {
+            "rel": "up",
+            "href": "http://172.20.239.242:8082/api/storage/2101/management",
+            "hreflang": null,
+            "media": null,
+            "title": null,
+            "type": null,
+            "deprecation": null
+          },
+          "edit": {
+            "rel": "edit",
+            "href": "http://172.20.239.242:8082/api/storage/2101/management/preference/concurrentBackup",
+            "hreflang": null,
+            "media": null,
+            "title": null,
+            "type": null,
+            "deprecation": null
+          },
+          "reset": {
+            "rel": "action",
+            "href": "http://172.20.239.242:8082/api/storage/2101/management/preference/concurrentBackup?action=reset",
+            "hreflang": null,
+            "media": null,
+            "title": null,
+            "type": null,
+            "deprecation": null
+          }
+        },
+        "id": "concurrentBackup",
+        "name": "concurrentBackup",
+        "nameKey": "concurrentBackup",
+        "type": "list",
+        "typeKey": "pref.type.list",
+        "value": {
+          "type": "list",
+          "typeKey": "pref.type.list",
+          "defaultValue": "Unlimited",
+          "value": "Unlimited",
+          "values": [
+            {
+              "name": "VMorDatabasestreams",
+              "nameKey": "VM or Database streams",
+              "type": "integer",
+              "typeKey": "pref.type.integer",
+              "value": {
+                "type": "integer",
+                "typeKey": "pref.type.integer",
+                "defaultValue": 1000,
+                "value": 100,
+                "values": null
+              },
+              "values": null,
+              "optionName": "Limit",
+              "option": "Limit",
+              "id": "VMorDatabasestreams"
+            },
+            {
+              "name": null,
+              "nameKey": null,
+              "type": null,
+              "typeKey": null,
+              "value": {
+                "type": null,
+                "typeKey": null,
+                "defaultValue": null,
+                "value": null,
+                "values": null
+              },
+              "values": null,
+              "optionName": "Pause",
+              "option": "Pause",
+              "id": null
+            },
+            {
+              "name": null,
+              "nameKey": null,
+              "type": null,
+              "typeKey": null,
+              "value": {
+                "type": null,
+                "typeKey": null,
+                "defaultValue": null,
+                "value": -1,
+                "values": null
+              },
+              "values": null,
+              "optionName": "Unlimited",
+              "option": "Unlimited",
+              "id": null
+            }
+          ]
+        }
+      }
+    ]
+  }
+]

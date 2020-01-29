@@ -1,0 +1,93 @@
+<ul class="al-msg-center clearfix">
+  <li class="dropdown">
+    <refresh-button-basic
+      [hideAutoRefreshBtn]="true"
+      [defaultState]="true" [rate]="15000" [tickEnabled]="true"
+      (onTick)="loadAlertMessages()"></refresh-button-basic>
+    <button cdkMonitorElementFocus title="{{'alert.textTitle' | translate}}" class="btn btn-default profile-toggle-link dropdown-toggle" id="msg-dd" data-toggle="dropdown"
+            aria-expanded="false" (click)="onBellClick()">
+      <i class="bidi-bell_24"></i>
+      <div class="count" [ngClass]="{'nnplus': unreadCount>99}" *ngIf="unreadCount">
+        {{unreadCount>99 ? '99+' : unreadCount}}
+      </div>
+      <div *ngIf="unreadCount" class="notification-ring"></div>
+    </button>
+
+    <div class="top-dropdown-menu dropdown-menu msg-dropdown" aria-labelledby="msg-dd" (click)="onClick($event)">
+      <i class="dropdown-arr"></i>
+      <div class="header clearfix">
+        <strong translate>{{'alert.textTitle'}}</strong>
+        <div class="header-menu side-by-side-wrapper">
+          <a href="javascript:void(0)" (click)="onViewEventLogClick()" translate>{{'alert.textViewEventLog'}}</a>
+          <div class="spliter"></div>
+          <a *ngIf="model && model.hasLink('clearall')" href="javascript:void(0)" (click)="onClearAllAlertsClick()" translate>{{'alert.textClearAllAlerts'}}</a>
+        </div>
+      </div>
+      <div class="msg-list">
+        <table border="0" role="presentation">
+          <tbody>
+          <tr *ngIf="!alertCount" class="no-top-border nodata">
+            <td colspan=5>
+              <span translate>{{'alert.textNoAlertMessages'}}</span>
+            </td>
+          </tr>
+          <ng-container *ngFor="let msg of records; trackBy: trackByModel">
+            <tr>
+              <td class="img-area" rowspan="2">
+                <i class="bidi-status-normal"
+                   *ngIf="(msg.type || '').toLowerCase() == 'info'"></i>
+                <i class="bidi-status-warning"
+                   *ngIf="(msg.type || '').toLowerCase() == 'warn'"></i>
+                <i class="bidi-status-error"
+                   *ngIf="(msg.type || '').toLowerCase() == 'error'"></i>
+              </td>
+              <td class="msg-area" colspan="5">
+                {{ msg.message }}
+              </td>
+            </tr>
+            <tr class="no-top-border">
+              <td class="time-area" colspan="2">
+                {{ msg.alertTime | amDateFormat: 'll'}} {{ msg.alertTime | amDateFormat: 'LTS'}}
+              </td>
+              <td class="operate-area" colspan="1">
+                <a *ngIf="msg.hasLink('log')" href="javascript:void(0)" (click)="onViewLogClick(msg)" translate>{{'alert.textViewLog'}}</a>
+              </td>
+              <td class="operate-area" colspan="1">
+                <a *ngIf="msg.hasLink('clear')" href="javascript:void(0)" (click)="onClearAlertClick(msg)" translate>{{'alert.textClear'}}</a>
+              </td>
+            </tr>
+          </ng-container>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </li>
+</ul>
+<ng-template #logTemplate>
+  <div [ngClass]="{'masked': isMasked()}">
+    <table border="0" class="offset-table logs">
+      <tbody>
+      <ng-template let-log ngFor [ngForOf]="logDs.records | paging: logDs.json()" [ngForTrackBy]="trackByModel">
+        <tr>
+          <td class="align-center log-type-col">
+            <i class="bidi-status-normal"
+               *ngIf="(log.type || '').toLowerCase() == 'info'"></i>
+            <i class="bidi-status-warning"
+               *ngIf="(log.type || '').toLowerCase() == 'warn'"></i>
+            <i class="bidi-status-error"
+               *ngIf="(log.type || '').toLowerCase() == 'error'"></i>
+          </td>
+          <td class="nowrap align-left">{{log.logTime | amDateFormat: 'll LTS'}}
+          </td>
+          <td class="wrap"
+              [ngClass]="{'red-text': (log.type || '').toLowerCase() == 'error' }">{{ log.message }}
+          </td>
+        </tr>
+      </ng-template>
+      </tbody>
+    </table>
+    <div class="paging-toolbar">
+      <paging-toolbar [model]="logDs"></paging-toolbar>
+    </div>
+  </div>
+</ng-template>

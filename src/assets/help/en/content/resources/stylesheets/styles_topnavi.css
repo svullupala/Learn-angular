@@ -1,0 +1,1334 @@
+@namespace MadCap url(http://www.madcapsoftware.com/Schemas/MadCap.xsd);
+/*<meta />*/
+
+/* H1 to H6 Styles */
+/* Main Paragraph Style */
+/* FieldDef, Filepath, Emphasis, Code for p, span, and li Styles */
+
+body
+{
+	font-family: Arial;
+	mc-hyphenate: never;
+}
+
+h1
+{
+	font-weight: bold;
+	font-size: 24pt;
+	mc-next-tag: p;
+	padding-top: 0px;
+	orphans: 3;
+	widows: 3;
+	color: #000000;
+}
+
+h2
+{
+	font-weight: bold;
+	font-size: 18.0pt;
+	mc-next-tag: p;
+	padding-top: 10px;
+	orphans: 3;
+	widows: 3;
+	color: #000000;
+}
+
+h3
+{
+	font-weight: bold;
+	mc-next-tag: p;
+	padding-top: 0px;
+	orphans: 3;
+	widows: 3;
+	font-size: 16pt;
+	color: #000000;
+}
+
+h4
+{
+	font-weight: bold;
+	font-size: 12.0pt;
+	mc-next-tag: p;
+	padding-top: 0px;
+	orphans: 3;
+	widows: 3;
+	color: #000000;
+}
+
+h5
+{
+	font-weight: bold;
+	font-size: 10.0pt;
+	color: #005496;
+	mc-next-tag: p;
+	padding-top: 0px;
+	orphans: 3;
+	widows: 3;
+}
+
+h6
+{
+	font-weight: bold;
+	font-size: 8.0pt;
+	color: #005496;
+	mc-next-tag: p;
+	padding-top: 0px;
+	orphans: 3;
+	widows: 3;
+}
+
+p
+{
+	font-size: 12.0pt;
+	border: solid 0px;
+	mc-next-tag: p;
+	padding: 0px;
+	margin-left: 0px;
+	margin-right: 0px;
+	line-height: 20px;
+	margin-bottom: 10px;
+	margin-top: 10px;
+}
+
+ol,
+ul
+{
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+
+img
+{
+	border: solid 1px #000000;
+}
+
+img.Borderless
+{
+	border-bottom-width: 0px;
+	border-left-width: 0px;
+	border-right-width: 0px;
+	border-top-width: 0px;
+	border: none 0px;
+	border-bottom-color: #ffffff;
+	border-left-color: #ffffff;
+	border-right-color: #ffffff;
+	border-top-color: #ffffff;
+}
+
+img.Thumbnail
+{
+	
+}
+
+img.BorderlessThumbnail
+{
+	border-bottom-width: 0px;
+	border-left-width: 0px;
+	border-right-width: 0px;
+	border-top-width: 0px;
+	border: none 0px;
+	border-bottom-color: #ffffff;
+	border-left-color: #ffffff;
+	border-right-color: #ffffff;
+	border-top-color: #ffffff;
+}
+
+a.Popup
+{
+	
+}
+
+MadCap|expandingHead
+{
+	font-style: italic;
+	font-weight: normal;
+	cursor: hand;
+	text-decoration: none;
+	color: #006600;
+}
+
+MadCap|expandingBody
+{
+	color: #777777;
+	font-style: italic;
+}
+
+MadCap|dropDownHotspot
+{
+	cursor: hand;
+	text-decoration: none;
+	color: #006600;
+	font-style: italic;
+	font-weight: bold;
+}
+
+p.Emphasis
+{
+	font-style: italic;
+}
+
+p.Code
+{
+	font-family: 'Courier New';
+	font-size: 13pt;
+	widows: 4;
+	orphans: 4;
+}
+
+p.CodeStrong
+{
+	font-family: 'Courier New';
+	font-size: 13pt;
+	font-weight: bold;
+}
+
+p.Strong
+{
+	font-weight: bold;
+	margin-top: 5px;
+}
+
+span.Emphasis
+{
+	font-style: italic;
+}
+
+span.Code
+{
+	font-family: 'Courier New';
+	font-size: 13pt;
+}
+
+span.CodeStrong
+{
+	font-family: 'Courier New';
+	font-size: 13pt;
+	font-weight: bold;
+}
+
+span.Strong
+{
+	font-weight: bold;
+}
+
+li.FieldDef
+{
+	font-weight: bold;
+}
+
+li.Filepath
+{
+	font-weight: bold;
+}
+
+li.Emphasis
+{
+	font-style: italic;
+}
+
+li.Code
+{
+	font-family: 'Courier New';
+	font-size: 13pt;
+}
+
+li.CodeStrong
+{
+	font-family: 'Courier New';
+	font-size: 13pt;
+	font-weight: bold;
+}
+
+li.SystemVariable
+{
+	font-style: italic;
+}
+
+li
+{
+	margin-top: 5px;
+	margin-bottom: 5px;
+	line-height: 20px;
+	orphans: 2;
+	widows: 2;
+}
+
+li.Strong
+{
+	font-weight: bold;
+}
+
+ol
+{
+	margin-left: 20px;
+	margin-bottom: 15px;
+	margin-right: 5px;
+	margin-top: 5px;
+	padding-left: 5px;
+}
+
+ol.NTW
+{
+	margin-left: 20px;
+	padding-left: 5px;
+}
+
+ul
+{
+	margin-left: 15px;
+	margin-bottom: 15px;
+	margin-right: 5px;
+	margin-top: 5px;
+	padding-left: 5px;
+}
+
+ul.NTW
+{
+	padding-left: 5px;
+	margin-left: 15px;
+	text-indent: 2px;
+}
+
+div.Note
+{
+	margin-bottom: 3px;
+	margin-top: 3px;
+	padding-bottom: 3px;
+	padding-top: 3px;
+}
+
+div.Tip
+{
+	margin-bottom: 3px;
+	margin-top: 3px;
+	padding-bottom: 3px;
+	padding-top: 3px;
+}
+
+div.Warning
+{
+	border-bottom-style: none;
+	border-left-style: none;
+	border-right-style: none;
+	border-top-style: none;
+	border: none 0px;
+	border-bottom: solid 1px;
+	border-top: solid 1px;
+	border-bottom-color: #000000;
+	border-top-color: #000000;
+	margin-bottom: 6px;
+	margin-top: 6px;
+	padding-bottom: 6px;
+	padding-top: 6px;
+}
+
+span.TipGreen
+{
+	font-weight: bold;
+	font-style: normal;
+	color: #00b050;
+}
+
+span.WarningRed
+{
+	color: #ff0000;
+	font-weight: bold;
+	font-style: normal;
+}
+
+span.NoteBlue
+{
+	font-weight: bold;
+	font-style: normal;
+	color: #6600cc;
+}
+
+div.footer
+{
+	border-top: solid 1px #000000;
+	font-size: note;
+}
+
+p.ImageCenter
+{
+	text-align: center;
+}
+
+p.CopyrightLeft
+{
+	font-size: 10pt;
+}
+
+p.CopyrightCenter
+{
+	font-size: 10pt;
+	text-align: center;
+}
+
+span.SearchHighlight
+{
+	background-color: #ffff00;
+}
+
+@media non-print
+{
+	img.Thumbnail
+	{
+		mc-thumbnail: popup;
+		mc-thumbnail-max-height: 150px;
+	}
+
+	img.BorderlessThumbnail
+	{
+		mc-thumbnail: popup;
+		mc-thumbnail-max-height: 150px;
+	}
+
+	img.MCPopupFullImage
+	{
+		border: solid 0px;
+	}
+
+	div.MCPopupContainer
+	{
+		border-bottom-width: 0px;
+		border-left-width: 0px;
+		border-right-width: 0px;
+		border-top-width: 0px;
+		border: none 0px;
+		padding: 0px;
+	}
+
+	p.TOCishTitles
+	{
+		page-break-inside: auto;
+	}
+
+	MadCap|xref
+	{
+		mc-format: '{paratext}';
+	}
+
+	dd
+	{
+		font-size: 12pt;
+	}
+
+	li.indent
+	{
+		counter-increment: none;
+		list-style: none;
+		mc-auto-number-format: '{ }';
+		display: block;
+		margin-left: 0px;
+	}
+
+	p.CaptionForImage
+	{
+		text-align: center;
+	}
+
+	li.indent_strong
+	{
+		counter-increment: none;
+		list-style: none;
+		mc-auto-number-format: '{ }';
+		font-weight: bold;
+	}
+
+	p.Indent
+	{
+		
+	}
+
+	div.WhyThisMatters
+	{
+		
+	}
+
+	h1
+	{
+		color: #000000;
+	}
+
+	h1.h1TOC
+	{
+		color: #000000;
+	}
+
+	h1.H0_DPBackMatter
+	{
+		color: #000000;
+	}
+}
+
+@media print
+{
+	MadCap|xref
+	{
+		mc-format: '{color blue}{u}{paratext}{/u}{/color} on page {b}{page}{/b}';
+	}
+
+	MadCap|xref.IntExt
+	{
+		mc-format: '{b}{title}{/b}, on page {b}{page}{/b}';
+	}
+
+	a.ExternalPDF
+	{
+		mc-format: '{u}{color blue}{title}{/color}{/u} on page {page} of the {filename}';
+	}
+
+	MadCap|relatedTopicsControlListItemLink
+	{
+		mc-format: '{color blue}{u}{title}{/u}{/color}, on page {b}{page}{/b}';
+	}
+
+	MadCap|glossaryProxy
+	{
+		border-top-style: none;
+		border-top-color: #ffffff;
+		page-break-inside: auto;
+	}
+
+	MadCap|indexProxy
+	{
+		border-top-style: none;
+		border-top-color: #ffffff;
+		page-break-inside: auto;
+	}
+
+	h1
+	{
+		
+	}
+
+	p
+	{
+		line-height: normal;
+		font-size: 11pt;
+	}
+
+	p.SubHeading
+	{
+		
+	}
+
+	li
+	{
+		font-size: 11pt;
+	}
+
+	ol
+	{
+		font-size: 11pt;
+	}
+
+	dt
+	{
+		font-size: 11pt;
+	}
+
+	MadCap|keyword
+	{
+		font-size: 11pt;
+	}
+
+	MadCap|glossaryTerm
+	{
+		font-size: 11pt;
+	}
+
+	div.GlossaryPageDefinition
+	{
+		font-size: 11pt;
+	}
+
+	div.GlossaryPageEntry
+	{
+		font-size: 11pt;
+	}
+
+	div.GlossaryPageHeading
+	{
+		font-size: 18pt;
+	}
+
+	p.TOCishTitles
+	{
+		page-break-inside: auto;
+	}
+
+	MadCap|tocProxy
+	{
+		page-break-inside: auto;
+	}
+
+	p.TOC1
+	{
+		page-break-inside: auto;
+		color: #005396;
+	}
+
+	p.TOC2
+	{
+		page-break-inside: auto;
+	}
+
+	p.TOC3
+	{
+		page-break-inside: auto;
+	}
+
+	p.TOC9
+	{
+		page-break-inside: auto;
+	}
+
+	p.TOC8
+	{
+		page-break-inside: auto;
+	}
+
+	p.TOC7
+	{
+		page-break-inside: auto;
+	}
+
+	p.TOC6
+	{
+		page-break-inside: auto;
+	}
+
+	dl
+	{
+		
+	}
+
+	h1.h1_Chapter
+	{
+		mc-auto-number-format: 'GH:Chapter {n+}: ';
+	}
+
+	p.CoverTitle
+	{
+		font-size: 30pt;
+	}
+
+	p.CoverTitleSub
+	{
+		font-weight: bold;
+		font-style: italic;
+		font-size: 30pt;
+	}
+
+	h3
+	{
+		font-size: 18pt;
+	}
+
+	dd
+	{
+		font-size: 11pt;
+	}
+
+	p.CaptionForImage
+	{
+		line-height: 12pt;
+		font-size: 10pt;
+	}
+
+	h1.h1TOC
+	{
+		mc-heading-level: 0;
+	}
+
+	div.WhyThisMatters
+	{
+		width: 250px;
+	}
+}
+
+/* The following two styles (img.MCPopupFullImage, and div.MCPopupContainer) allow for pop up images (the larger image after clicking) to be completely borderless */
+
+/*	border-top: solid 1px;
+	border-top-color: #000000; */
+
+/*	border-bottom: solid 1px;
+	border-bottom-color: #000000; */
+
+p.SubHeading
+{
+	font-weight: bold;
+	font-style: italic;
+	margin-top: 20px;
+	margin-bottom: 10px;
+	widows: 3;
+	orphans: 3;
+	font-size: 14pt;
+}
+
+p.ListHeading
+{
+	font-weight: bold;
+	margin-top: 20px;
+	margin-bottom: 10px;
+	orphans: 3;
+	widows: 3;
+}
+
+p.CategoryHLine
+{
+	font-weight: bold;
+	font-size: 16pt;
+	margin-top: 20px;
+	margin-bottom: 10px;
+	border: solid 0px;
+	border-bottom-width: 1px;
+	orphans: 3;
+	widows: 3;
+}
+
+caption
+{
+	padding-top: 10px;
+	padding-bottom: 10px;
+	font-size: 12pt;
+	font-family: Arial;
+}
+
+p.tdForceCenter
+{
+	text-align: center;
+}
+
+p.tdForceLeft
+{
+	text-align: left;
+}
+
+p.tdForceRight
+{
+	text-align: right;
+}
+
+td ul
+{
+	padding-right: 0px;
+	margin-left: 10px;
+}
+
+td ol
+{
+	padding-right: 0px;
+	margin-left: 20px;
+}
+
+div.Indent
+{
+	margin-left: 25px;
+	padding: 5px;
+}
+
+MadCap|xref
+{
+	mc-format: '{paratext}';
+}
+
+MadCap|relatedTopics.Prerequesites
+{
+	mc-label: 'Prerequesites:';
+	mc-format: '{title}';
+	mc-help-control-display: list;
+	font-weight: bold;
+}
+
+MadCap|relationshipsHeading.Prerequisite
+{
+	mc-label: 'Prerequisites:';
+}
+
+MadCap|relationshipsHeading
+{
+	font-size: 10pt;
+}
+
+MadCap|relationshipsItem
+{
+	font-size: 10pt;
+}
+
+MadCap|relationshipsHeading.concept
+{
+	font-size: 10pt;
+}
+
+MadCap|relationshipsHeading.reference
+{
+	font-size: 10pt;
+}
+
+MadCap|relationshipsHeading.task
+{
+	font-size: 10pt;
+}
+
+div.Prerequisite
+{
+	padding-left: 3px;
+	padding-right: 3px;
+	margin-left: 55px;
+	margin-right: 55px;
+	border-left: solid 0px;
+	border-right: solid 0px;
+	padding-bottom: 10px;
+	padding-top: 5px;
+	border-bottom: none 0px;
+	background-color: #cccccc;
+}
+
+div.Postrequisite
+{
+	padding-left: 3px;
+	padding-right: 3px;
+	margin-left: 55px;
+	margin-right: 55px;
+	border-left: solid 0px;
+	border-right: solid 0px;
+	padding-bottom: 10px;
+	border-top: none 0px;
+	padding-top: 5px;
+	margin-top: 20px;
+	background-color: #cccccc;
+}
+
+MadCap|relationshipsProxy.Prerequisites
+{
+	mc-format: '{title}';
+}
+
+MadCap|relatedTopics.Postrequisites
+{
+	font-weight: bold;
+	mc-help-control-display: list;
+	mc-format: '{title}';
+	mc-label: 'Postrequisite(s):';
+}
+
+MadCap|xref.IntExt
+{
+	mc-format: '{title}';
+}
+
+ol ol
+{
+	margin-bottom: 15px;
+	margin-top: 5px;
+}
+
+ol ul
+{
+	margin-bottom: 15px;
+	margin-top: 5px;
+	list-style: disc outside none;
+}
+
+ul ol
+{
+	margin-bottom: 15px;
+	margin-top: 5px;
+}
+
+ul ul
+{
+	margin-bottom: 15px;
+	margin-top: 5px;
+	list-style: disc outside none;
+}
+
+MadCap|variable.Strong
+{
+	font-weight: bold;
+}
+
+MadCap|variable.Emphasis
+{
+	font-style: italic;
+}
+
+MadCap|snippetBlock
+{
+	margin-bottom: 5px;
+	margin-top: 10px;
+}
+
+li.Code
+{
+	font-family: 'Courier New';
+}
+
+td
+{
+	orphans: 3;
+	widows: 3;
+}
+
+div
+{
+	orphans: 2;
+	widows: 2;
+}
+
+a.ExternalPDF
+{
+	
+}
+
+dt
+{
+	font-size: 12pt;
+	margin-top: 10px;
+	padding-bottom: 10px;
+	font-weight: bold;
+	orphans: 3;
+	widows: 3;
+}
+
+dd
+{
+	margin-left: 15px;
+	margin-right: 5px;
+	orphans: 3;
+	widows: 3;
+	font-size: 12pt;
+}
+
+p.PostPreRelTitleLeft
+{
+	text-align: left;
+	padding-left: 0px;
+	margin-left: 0.07in;
+}
+
+span.PostPreRelTitle
+{
+	font-weight: bold;
+}
+
+MadCap|dropDownHead
+{
+	font-style: italic;
+	font-weight: bold;
+}
+
+MadCap|toggler
+{
+	font-style: italic;
+	font-weight: bold;
+}
+
+MadCap|relatedTopicsControlListItemLink
+{
+	mc-format: '{H1}';
+}
+
+div.RelatedTopic
+{
+	padding-left: 3px;
+	padding-right: 3px;
+	margin-left: 55px;
+	margin-right: 55px;
+	border-left: solid 0px;
+	border-right: solid 0px;
+	padding-bottom: 10px;
+	border-top: none 0px;
+	padding-top: 5px;
+	margin-top: 20px;
+	background-color: #cccccc;
+}
+
+MadCap|tocProxy
+{
+	border-top-style: none;
+	border-top-color: #ffffff;
+}
+
+p.TOCishTitles
+{
+	font-weight: bold;
+	mc-next-tag: p;
+	font-size: 24pt;
+	text-align: center;
+	margin-bottom: 10px;
+	margin-top: 10px;
+	padding-bottom: 0px;
+	page-break-inside: auto;
+	page-break-after: avoid;
+}
+
+dl
+{
+	orphans: 3;
+	widows: 3;
+}
+
+MadCap|indexProxy
+{
+	
+}
+
+p.CoverTitle
+{
+	font-weight: bold;
+	mc-next-tag: p;
+	padding-bottom: 0px;
+	color: #005496;
+	padding-top: 0px;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	font-size: 30pt;
+	line-height: 36pt;
+	font-family: DINPro-Bold;
+	font-style: normal;
+	text-decoration: none;
+}
+
+p.CoverTitleSub
+{
+	mc-next-tag: p;
+	padding-bottom: 0px;
+	color: #005496;
+	padding-top: 0px;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	font-weight: bold;
+	font-style: italic;
+	font-size: 30pt;
+	font-family: DINPro-Bold;
+	line-height: 36pt;
+}
+
+p.Gray10pt
+{
+	font-size: 10pt;
+	color: #a9a9a9;
+}
+
+p.Title24
+{
+	font-size: 24pt;
+	line-height: normal;
+	margin-bottom: 0px;
+	margin-top: 0px;
+}
+
+div.GlossaryPageHeading
+{
+	font-size: 18pt;
+	border-bottom-style: solid;
+	border-bottom-width: 1px;
+	border-bottom-color: black;
+}
+
+div.GlossaryPageTerm
+{
+	font-size: 11pt;
+}
+
+div.RelatedTopicInline
+{
+	padding-left: 3px;
+	padding-right: 3px;
+	border-left: solid 0px;
+	border-right: solid 0px;
+	padding-bottom: 10px;
+	border-top: none 0px;
+	padding-top: 5px;
+	margin-top: 20px;
+	background-color: #ffffff;
+}
+
+p.TOC1
+{
+	page-break-inside: auto;
+	color: #005396;
+}
+
+p.IndexHeading
+{
+	mc-auto-number-position: inside-head;
+	mc-auto-number-offset: 0px;
+	text-align: left;
+	font-size: 18pt;
+	text-decoration: none;
+	padding-left: 0px;
+	padding-right: 0px;
+	padding-top: 0px;
+	padding-bottom: 0px;
+	border-left-style: solid;
+	border-left-width: 0px;
+	border-right-style: solid;
+	border-right-width: 0px;
+	border-top-style: solid;
+	border-top-width: 0px;
+	border-bottom-style: solid;
+	border-bottom-width: 1px;
+}
+
+p.Index1
+{
+	mc-auto-number-position: inside-head;
+	mc-leader-indent: 5pt;
+}
+
+MadCap|xref.IndexPageNumber
+{
+	mc-format: '{h1}';
+}
+
+p.H1forTOC
+{
+	font-weight: bold;
+	font-size: 24pt;
+	color: #005496;
+	mc-next-tag: p;
+	padding-top: 0px;
+	orphans: 3;
+	widows: 3;
+}
+
+p.DocID
+{
+	color: #a9a9a9;
+	font-size: 8pt;
+	font-family: Arial;
+}
+
+span.xRef
+{
+	text-decoration: underline;
+	color: #0000ff;
+}
+
+h1.H0_DPBackMatter
+{
+	font-weight: bold;
+	font-size: 24pt;
+	mc-next-tag: p;
+	padding-top: 0px;
+	orphans: 3;
+	widows: 3;
+	color: #000000;
+}
+
+p.AcronymHeading
+{
+	mc-auto-number-position: inside-head;
+	mc-auto-number-offset: 0px;
+	text-align: left;
+	font-size: 18pt;
+	text-decoration: none;
+	font-weight: bold;
+	font-style: normal;
+	padding-left: 0px;
+	padding-right: 0px;
+	padding-top: 0px;
+	padding-bottom: 0px;
+	border-left-style: solid;
+	border-left-width: 0px;
+	border-right-style: solid;
+	border-right-width: 0px;
+	border-top-style: solid;
+	border-top-width: 0px;
+	border-bottom-style: solid;
+	border-bottom-width: 1px;
+}
+
+span.BestPracticeGold
+{
+	font-weight: bold;
+	font-style: normal;
+	color: #b8860b;
+}
+
+div.UserLeadin
+{
+	margin-left: 55px;
+	margin-right: 55px;
+	border-left: solid 0px;
+	border-right: solid 0px;
+	border-top: none 0px;
+	padding-left: 8px;
+	padding-right: 8px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	border-left-style: solid;
+	border-left-width: 0px;
+	border-right-style: solid;
+	border-right-width: 0px;
+	border-top-style: none;
+	border-top-width: 0px;
+	background-color: #c8d8e0;
+}
+
+td.Post
+{
+	orphans: 3;
+	widows: 3;
+	text-align: center;
+	color: #ffffff;
+	background-color: #006400;
+}
+
+td.Delete
+{
+	orphans: 3;
+	widows: 3;
+	color: #ffffff;
+	background-color: #ff0000;
+	text-align: center;
+}
+
+td.Get
+{
+	orphans: 3;
+	widows: 3;
+	background-color: #4169e1;
+	color: #ffffff;
+	text-align: center;
+}
+
+td.Put
+{
+	text-align: center;
+	color: #ffffff;
+	background-color: #ff8c00;
+}
+
+li.indent
+{
+	counter-increment: none;
+	list-style: none;
+	mc-auto-number-format: '{ }';
+	margin-left: auto;
+	display: block;
+}
+
+li.Indent_Level2
+{
+	counter-increment: none;
+	list-style: none;
+	mc-auto-number-format: '{ }';
+	margin-left: 15px;
+	display: block;
+}
+
+p.CaptionForImage
+{
+	font-family: Arial;
+	text-align: center;
+	vertical-align: top;
+	font-size: 10pt;
+	font-weight: normal;
+	margin-top: 2pt;
+	margin-bottom: 20pt;
+	line-height: 12pt;
+}
+
+p.Get
+{
+	orphans: 3;
+	widows: 3;
+	background-color: #4169e1;
+	color: #ffffff;
+	text-align: center;
+}
+
+p.Put
+{
+	text-align: center;
+	color: #ffffff;
+	background-color: #ff8c00;
+}
+
+p.Delete
+{
+	orphans: 3;
+	widows: 3;
+	color: #ffffff;
+	background-color: #ff0000;
+	text-align: center;
+}
+
+address.ResourceURL
+{
+	border: solid 1px;
+	border-color: #c0c0c0;
+	background-color: #ededed;
+	margin: 0px;
+	padding: 15px;
+	margin-left: 0px;
+	padding-left: 2px;
+}
+
+p.Post
+{
+	orphans: 3;
+	widows: 3;
+	text-align: center;
+	color: #ffffff;
+	background-color: #006400;
+}
+
+li.indent_strong
+{
+	counter-increment: none;
+	list-style: none;
+	mc-auto-number-format: '{ }';
+	margin-left: auto;
+	font-weight: bold;
+	display: block;
+}
+
+p.Indent
+{
+	margin-left: 15px;
+}
+
+h1.h1TOC
+{
+	font-weight: bold;
+	font-size: 24pt;
+	mc-next-tag: p;
+	padding-top: 0px;
+	orphans: 3;
+	widows: 3;
+	color: #000000;
+}
+
+div.WhyThisMatters
+{
+	padding-right: 3px;
+	border-right: solid 0px;
+	border-top: none 0px;
+	padding-top: 5px;
+	height: auto;
+	float: right;
+	background-color: #ffffff;
+	border-bottom: solid 1px #000000;
+	border-left: solid 1px #000000;
+	padding-bottom: 10px;
+	border-bottom-color: #000000;
+	border-bottom-width: 1px;
+	border-bottom-style: dotted;
+	border-left-style: dotted;
+	width: 300px;
+	padding-left: 10px;
+	margin-left: 10px;
+}
+
+div.KeepTogether
+{
+	page-break-inside: avoid;
+}
+

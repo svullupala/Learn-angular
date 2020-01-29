@@ -1,0 +1,52 @@
+<h2 class="sdl-header" translate>{{'fileRestore.textFilters' | translate}}</h2>
+<ba-card>
+  <vm-search-select (vmSelect)="onVmSelect($event)" (vmDeselect)="onVmDeselect($event)"
+                    [selectMode]="1" [from]="'recovery'"
+                    [alwaysShowSelectedArea]="true"
+                    [hideCounter]="true"
+                    [showPath]="false"
+                    [vmLabel]="''"
+                    [selectedVMsLabel]="'fileRestore.textVirtualMachine' | translate"></vm-search-select>
+  <div class="row">
+    <div class="col-md-3">
+      <label class="control-label" translate>
+        {{'fileRestore.textDateRange'}}
+      </label>
+    </div>
+    <div class="col-sm-6">
+      <input [attr.aria-label]="'fileRestore.textDateRange' | translate"
+             class="form-control" #drpElement #drp="bsDaterangepicker" readonly="readonly" bsDaterangepicker
+             [bsConfig]="bsConfig"
+             [(ngModel)]="model.dateRange"
+             (keydown)="onDateRangeKeyDown(drp, $event)">
+    </div>
+    <!--<div class="col-sm-2">-->
+    <!--<button class="sdl inline small" (click)="drp.toggle()" translate>{{'fileRestore.textPick'}}</button>-->
+    <!--</div>-->
+  </div>
+  <div class="row">
+    <div class="col-md-3">
+      <label class="control-label" translate>
+        {{'fileRestore.textOsType'}}
+      </label>
+    </div>
+    <div class="col-sm-6">
+      <select class="form-control" [(ngModel)]="model.osType" >
+        <option value="" selected translate>{{ 'fileRestore.textNoLimit' }}</option>
+        <option value="linux" translate>{{ 'fileRestore.textLinux' }}</option>
+        <option value="windows" translate>{{ 'fileRestore.textWindows' }}</option>
+      </select>
+    </div>
+  </div>
+  <div class="row">
+      <div class="col-md-3">
+        <label class="control-label" translate>
+          {{'fileRestore.textFolderPath'}}
+        </label>
+      </div>
+      <div class="col-sm-6">
+        <input [attr.aria-label]="'fileRestore.textFolderPath' | translate" class="form-control" [(ngModel)]="model.folderPath" >
+      </div>
+    </div>
+</ba-card>
+

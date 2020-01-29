@@ -1,0 +1,60 @@
+<div [ngClass]="{ masked: maskList }">
+  <div *ngIf="isDisabled()">
+    <i class="bidi-status-warning"></i>
+    <label style="margin-left: 10px;">{{
+      "storage.textConfigureNetworksDisabled" | translate
+    }}</label>
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th translate>{{ "common.textName" }}</th>
+        <th translate>{{ "storage.textMACAddress" }}</th>
+        <th translate>{{ "storage.textIPAddress" }}</th>
+        <th translate>{{ "storage.textData" }}</th>
+        <th translate>{{ "storage.textReplication" }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of networkList">
+        <td>
+          {{ item.name }}
+          <i
+            *ngIf="isManagement(item)"
+            [tooltip]="'storage.textManagementNetwork' | translate"
+            tabindex="0"
+            class="ion-information-circled"
+          ></i>
+        </td>
+        <td>{{ item.hwAddr }}</td>
+        <td>{{ item.ip4Addr }}</td>
+
+        <td class="checkbox-column">
+          <label class="custom-checkbox">
+            <input
+              type="checkbox"
+              [checked]="isData(item)"
+              [disabled]="disableServiceTypes(item)"
+              (change)="onChange(item, 'data')"
+              aria-label="..."
+            />
+            <span></span>
+          </label>
+        </td>
+
+        <td class="checkbox-column">
+          <label class="custom-checkbox">
+            <input
+              type="checkbox"
+              [checked]="isReplication(item)"
+              [disabled]="disableServiceTypes(item)"
+              (change)="onChange(item, 'repl')"
+              aria-label="..."
+            />
+            <span></span>
+          </label>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

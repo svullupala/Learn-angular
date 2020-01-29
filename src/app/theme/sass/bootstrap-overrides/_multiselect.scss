@@ -1,0 +1,90 @@
+@import '../conf/_sdl-mixins.scss';
+
+span.fa.fa-angle-down {
+  font-size: 12pt !important;
+  right: 1px !important;
+}
+
+span.fa.fa-angle-up {
+  font-size: 12pt !important;
+  right: 1px !important;
+}
+
+.c-btn {
+  border-radius: 0px !important;
+  border-color: $gray70 !important;
+  background-color: transparent;
+  color: $gray70 !important;
+  min-height: 2.5em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  @include setBorderColorActions();
+}
+
+.c-token {
+  background: transparent !important;
+  span {
+    color: $gray70 !important;
+    cursor: pointer
+  }
+}
+
+.selected-list{
+  button{
+    box-shadow: none !important;
+  }
+}
+
+.pure-checkbox {
+  color: $nc3 !important;
+  border-color: $gray70 !important;
+  @include setBackgroundColorActions();
+}
+
+
+.pure-checkbox input[type="checkbox"]:checked + label:before{
+  color: $nc3  !important;
+  border: 1px solid $gray70 !important;
+  background: $gray70 !important;
+  background-color: transparent !important;
+  @include setBorderColorActions();
+}
+
+.pure-checkbox input[type="checkbox"] + label:before {
+  color: $nc3 !important;
+  border: 1px solid $gray70 !important;
+  background-color: transparent !important;
+  @include setBorderColorActions();
+}
+
+.pure-checkbox input[type="checkbox"] + label:after {
+  border-color: $gray70 !important;
+  background-color: transparent !important;
+}
+
+.dropdown-list{
+  padding-top: 0px;
+  ul::-webkit-scrollbar-thumb{
+    border-radius: 0px !important;
+  }
+}
+
+.list-area {
+  box-shadow: none !important;
+  border-radius: 0px !important;
+  border: 1px solid $gray70 !important;
+  margin-top: -15px !important;
+  @include setBorderColorActions();
+}
+
+.arrow-up {
+  border-bottom: 15px solid #ededed !important;
+  display: none;
+}
+
+@keyframes borderscale {
+  50% {
+    box-shadow: none !important;
+  }
+}

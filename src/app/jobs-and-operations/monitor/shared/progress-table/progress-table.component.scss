@@ -1,0 +1,16 @@
+table {
+  table-layout: fixed;
+}
+
+.word-break-td {
+  word-wrap: break-word
+}
+
+.scroll-container {
+  height: calc(100% - 2rem);
+  overflow-y: auto;
+}
+
+.full-height {
+  height: 100%;
+}

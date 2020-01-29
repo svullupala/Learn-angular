@@ -1,0 +1,12 @@
+<ba-card baCardClass="dark-card" title="{{'identities.textIdentities' | translate}}">
+  <div class="align-right margin-bottom-10" [ngClass]="{'hidden': mode !== 'list'}">
+    <button class="sdl inline with-icon" [ngClass]="{'disabled': !canCreate}" [disabled]="!canCreate" (click)="onAddClick()" translate>
+      <i class="bidi-add-new-white_16"></i>{{'identities.textAddIdentity'}}
+    </button>
+  </div>
+  <identities-table (deleteClick)="onDeleteClick($event)" (editClick)="onEditClick($event)"
+                    (dataLoad)="onIdentitiesLoad($event)"
+                    [ngClass]="{'hidden': mode !== 'list', 'masked': masked}"></identities-table>
+  <identities-edit *ngIf="canCreate" (saveClick)="loadData(true)" (cancelClick)="onCancelClick()"
+                   [ngClass]="{'hidden': mode !== 'edit'}"></identities-edit>
+</ba-card>

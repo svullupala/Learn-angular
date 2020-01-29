@@ -1,0 +1,24 @@
+<div [ngClass]="{'masked': masked}">
+  <h2 class="sdl-header" translate>{{'certificates.textCertificateProperties'}}</h2>
+  <ba-card>
+    <div class="form-horizontal">
+      <div class="form-group row">
+        <label class="col-sm-2 control-label" translate>{{'common.textType'}}</label>
+        <div class="col-sm-3">
+          <select class="form-control" [(ngModel)]="selectedCloudType">
+            <option *ngFor="let type of cloudTypes" [ngValue]="type">{{type}}</option>
+          </select>
+        </div>
+      </div>
+      <cloud-certificate-selector [clsOfLabelCol]="'col-sm-2'" [browseOnly]="true"
+        [type]="selectedCloudType">
+      </cloud-certificate-selector>
+    </div>
+  </ba-card>
+  <confirm-toolbar-component
+    (cancelEvent)="onCancelClick()"
+    (confirmEvent)="onSaveClick()"
+    [disableConfirmButton]="!isValid()"
+    [splitButtons]="false"
+    [floatRight]="false"></confirm-toolbar-component>
+</div>

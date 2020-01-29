@@ -1,0 +1,37 @@
+<script src="ldap-register/ldap-register.component.ts"></script>
+<ba-card>
+<dynamic-tabset [tabs]="tabs"></dynamic-tabset>
+</ba-card>
+
+<ng-template #ldapServer>
+  <ba-card>
+    <div class="align-right margin-bottom-10" [ngClass]="{'hidden': ldapMode !== 'list'}">
+      <button class="sdl inline with-icon" [ngClass]="{'disabled': isLdapAddDisabled()}"
+        [disabled]="isLdapAddDisabled()" *ngIf="ldapEntries !== undefined" (click)="onAddLdapClick()" translate>
+        <i class="bidi-add-new-white_16"></i>{{'ldap-smtp.textAddLdapServer'}}
+      </button>
+    </div>
+    <ldap-table *ngIf="ldapEntries !== undefined" [ldapEntries]="ldapEntries" (onEdit)="onEditLdap($event)"
+      (onUnregister)="unregisterLdap($event)"
+      [ngClass]="{'hidden': ldapMode !== 'list', 'masked': ldapEntries === undefined}"></ldap-table>
+    <ldap-register [users]="users" [formLabel]="'ldap.title' | translate" (onSubmit)="registerLdap($event)"
+      (onCancel)="ldapResetForm()" [ngClass]="{'hidden': ldapMode !== 'edit', 'masked': masked}"></ldap-register>
+  </ba-card>
+
+</ng-template>
+
+<ng-template #smtpServer>
+  <ba-card>
+    <div class="align-right margin-bottom-10" [ngClass]="{'hidden': smtpMode !== 'list'}">
+      <button class="sdl inline with-icon" [ngClass]="{'disabled': isSmtpAddDisabled()}"
+        [disabled]="isSmtpAddDisabled()" (click)="onAddSmtpClick()" translate>
+        <i class="bidi-add-new-white_16"></i>{{'ldap-smtp.textAddSmtpServer'}}
+      </button>
+    </div>
+    <smtp-table *ngIf="smtpEntries !== undefined" [smtpEntries]="smtpEntries" (onEdit)="onEditSmtp($event)"
+      (onUnregister)="unregisterSmtp($event)"
+      [ngClass]="{'hidden': smtpMode !== 'list', 'masked': smtpEntries === undefined}"></smtp-table>
+    <smtp-register [users]="users" [formLabel]="'smtp.title' | translate" (onSubmit)="registerSmtp($event)"
+      (onCancel)="smtpResetForm()" [ngClass]="{'hidden': smtpMode !== 'edit', 'masked': masked}"></smtp-register>
+  </ba-card>
+</ng-template>

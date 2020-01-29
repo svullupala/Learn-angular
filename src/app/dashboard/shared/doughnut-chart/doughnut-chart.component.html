@@ -1,0 +1,51 @@
+<div *ngIf="splitDonut; then split else original"></div>
+<ng-template #split>
+  <div class="padding-top-12em">
+    <div class="col-sm-6 col-md-6 col-lg-6">
+      <div class="col-sm-8 col-md-8 col-lg-8 chart-col-area">
+        <canvas #chartarea class="chart-area-2" id="chart-area-split"  width="250" height="250"></canvas>
+      </div>
+      <div class="col-sm-4 col-md-4 col-lg-4 channels-col-area">
+        <div class="channels-info" *ngIf="isReady()">
+          <div class="channels-info-item" *ngFor="let item of data">
+            <div class="legend-color-2" [ngStyle]="{'background-color': item.color }"></div>
+            <p [tooltip]="item.primaryLabel"><b>{{ ellipsisPath(item.primaryLabel) }}</b></p>
+            <p>{{ item.secondaryLabel }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6 col-md-6 col-lg-6">
+      <div class="col-sm-8 col-md-8 col-lg-8 chart-col-area">
+        <canvas #chartarea2 class="chart-area-2" id="chart-area2" width="250" height="250"></canvas>
+      </div>
+      <div class="col-sm-4 col-md-4 col-lg-4 channels-col-area">
+        <div class="channels-info" *ngIf="isReady()">
+          <div class="channels-info-item" *ngFor="let item of dataDb">
+            <div class="legend-color-2" [ngStyle]="{'background-color': item.color }"></div>
+            <p [tooltip]="item.primaryLabel"><b>{{ ellipsisPath(item.primaryLabel) }}</b></p>
+            <p>{{ item.secondaryLabel }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
+<ng-template #original>
+  <div class="container chart-container-area">
+    <div class="row chart-row-area">
+      <div class="col-lg-8 chart-col-area">
+        <canvas #chartarea3 class="chart-area" id="chart-area" width="250" height="250"></canvas>
+      </div>
+      <div class="col-lg-4 channels-col-area">
+        <div class="channels-info" *ngIf="isReady()">
+          <div class="channels-info-item" *ngFor="let item of data">
+            <div class="legend-color" [ngStyle]="{'background-color': item.color }"></div>
+            <p [tooltip]="item.primaryLabel"><b>{{ ellipsisPath(item.primaryLabel, 15) }}</b></p>
+            <p>{{item.secondaryLabel}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>

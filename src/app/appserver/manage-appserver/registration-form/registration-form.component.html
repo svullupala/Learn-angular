@@ -1,0 +1,202 @@
+<h2 class="sdl-header" translate>{{setTitle()}}</h2>
+<ba-card baCardClass="card medium-card with-scroll">
+  <form #appForm="ngForm">
+    <div *ngIf="isExchangeOnline; then exchonlinemain else appserver"></div>
+
+    <ng-template #exchonlinemain>
+      <h2 class="sdl-header" translate>{{'application.textTenantProperties'}}</h2>
+      <br>
+      <label translate>{{'application.textTenantHelpText'}}</label>
+      <ba-card>
+        <ng-template [ngTemplateOutlet]="tenant"></ng-template>
+      </ba-card>
+      <h2 class="sdl-header" translate>{{'application.textProxyProperties'}}</h2>
+      <br>
+      <label translate>{{'application.textProxyHelpText'}}</label>
+      <ba-card>
+        <ng-template [ngTemplateOutlet]="appserver"></ng-template>
+      </ba-card>
+    </ng-template>
+
+    <ng-template #appserver>
+      <div *ngIf="isKubernetesApplication" class="form-group row"
+          [ngClass]="{'has-error': (name && name.touched && !name.valid), 'has-success': (name && name.touched && name.valid)}">
+        <label [class]="baseLabelClass" for="hostAddress" translate>{{'application.textClusterName'}}</label>
+        <div [class]="baseFieldClass">
+          <input sdlTooltip
+            [mode]="'critical'"
+            [isDisabled]="(name.valid && name.touched && name.valid) || name.untouched"
+            [placement]="'top'"
+            [sdlTooltip]="'common.textRequiredFieldSuggestion' | translate"
+            type="text"
+            id="name"
+            name="name"
+            [container]="'body'"
+            [(ngModel)]="appserverPayloadModel.name"
+            required
+            #name="ngModel"
+            class="form-control">
+        </div>
+      </div>
+      <div class="form-group row"
+           [ngClass]="{'has-error': (hostAddress && hostAddress.touched && !hostAddress.valid), 'has-success': (hostAddress && hostAddress.touched && hostAddress.valid)}">
+        <label [class]="baseLabelClass" for="hostAddress" translate>{{'application.hostAddressText'}}</label>
+        <div [class]="baseFieldClass">
+          <input sdlTooltip
+                 [mode]="'critical'"
+                 [isDisabled]="(hostAddress.valid && hostAddress.touched && hostAddress.valid) || hostAddress.untouched"
+                 [placement]="'top'"
+                 [sdlTooltip]="'common.textRequiredFieldSuggestion' | translate"
+                 type="text"
+                 id="hostAddress"
+                 name="hostAddress"
+                 [container]="'body'"
+                 [(ngModel)]="appserverPayloadModel.hostAddress"
+                 required
+                 #hostAddress="ngModel"
+                 class="form-control">
+        </div>
+      </div>
+      <div *ngIf="onlyUserSelection; then onlyuserselectioncomponent else keyanduser"></div>
+      <ng-template #onlyuserselectioncomponent>
+          <identity-user-enter-select #identityUserSelect
+            [model]="appserverPayloadModel"
+            [textUsername]="'storage.textUserId'"
+            [textPassword]="'storage.textPassword'"
+            [clsOfLabelCol]="baseLabelClass"
+            [clsOfFieldCol]="baseFieldClass">
+          </identity-user-enter-select>
+      </ng-template>
+      <ng-template #keyanduser>
+          <div [hidden]="applicationType === 'exch' || applicationType === 'sql' || applicationType === 'k8s'" class="form-group row input-demo radio-demo">
+            <div class="col-md-3">
+              <label class="radio-inline custom-radio nowrap">
+                <input type="radio" [value]="true" name="registrationselection" [(ngModel)]="userRegistrationMode">
+                <span translate>{{'key.textUser'}}</span>
+              </label>
+            </div>
+            <div [hidden]="appserverPayloadModel.osType !== LINUX_TYPE" class="col-md-3">
+              <label class="radio-inline custom-radio nowrap">
+                <input type="radio" [value]="false" [(ngModel)]="userRegistrationMode" name="registrationselection">
+                <span translate>{{'key.textSshKey'}}</span>
+              </label>
+            </div>
+          </div>
+          <div [hidden]="userRegistrationMode">
+            <key-selector [clsOfLabelCol]="baseLabelClass"
+                        [clsOfFieldCol]="baseFieldClass"
+                        [onlySSHKeys]="true" [useExistingOnly]="true" ></key-selector>
+          </div>
+          <div [hidden]="!userRegistrationMode">
+            <identity-user-enter-select #identityUserSelect
+              [model]="appserverPayloadModel"
+              (loadedUserEvent)="onUsersLoaded()"
+              [textUsername]="'storage.textUserId'"
+              [textPassword]="'storage.textPassword'"
+              [clsOfLabelCol]="baseLabelClass"
+              [clsOfFieldCol]="baseFieldClass"></identity-user-enter-select>
+          </div>
+      </ng-template>
+      <div class="form-group row" *ngIf="showOsType">
+        <label [class]="baseLabelClass"  translate>{{'application.textOsType'}}</label>
+        <div [class]="baseFieldClass">
+          <select class="form-control" required name="osType" [(ngModel)]="appserverPayloadModel.osType" >
+            <option [value]="LINUX_TYPE" translate>{{ 'application.textLinux' }}
+            <option [value]="WINDOWS_TYPE" translate>{{ 'application.textWindows' }}
+            </option>
+          </select>
+        </div>
+      </div>
+    </ng-template>
+
+    <ng-template #tenant>
+      <div *ngIf="isExchangeOnline">
+        <div class="form-group row"
+             [ngClass]="{'has-error': (tenantName && tenantName.touched && !tenantName.valid), 'has-success': (tenantName && tenantName.touched && tenantName.valid)}">
+          <label [class]="baseLabelClass" for="tenantName" translate>{{'application.textTenantName'}}</label>
+          <div [class]="baseFieldClass">
+            <input sdlTooltip
+                   [mode]="'critical'"
+                   [isDisabled]="(tenantName.valid && tenantName.touched && tenantName.valid) || tenantName.untouched"
+                   [placement]="'top'"
+                   [sdlTooltip]="'common.textRequiredFieldSuggestion' | translate"
+                   type="text"
+                   id="tenantName"
+                   name="tenantName"
+                   [container]="'body'"
+                   [(ngModel)]="appserverPayloadModel.tenantName"
+                   required
+                   #tenantName="ngModel"
+                   class="form-control">
+          </div>
+        </div>
+        <div class="form-group row"
+             [ngClass]="{'has-error': (tenantID && tenantID.touched && !tenantID.valid), 'has-success': (tenantID && tenantID.touched && tenantID.valid)}">
+          <label [class]="baseLabelClass" for="tenantID" translate>{{'application.textTenantID'}}</label>
+          <div [class]="baseFieldClass">
+            <input sdlTooltip
+                   [mode]="'critical'"
+                   [isDisabled]="(tenantID.valid && tenantID.touched && tenantID.valid) || tenantID.untouched"
+                   [placement]="'top'"
+                   [sdlTooltip]="'common.textRequiredFieldSuggestion' | translate"
+                   type="text"
+                   id="tenantID"
+                   name="tenantID"
+                   [container]="'body'"
+                   [(ngModel)]="appserverPayloadModel.tenantID"
+                   required
+                   #tenantID="ngModel"
+                   class="form-control">
+          </div>
+        </div>
+        <identity-user-enter-select #tenantClientSelect
+                                    [model]="appserverPayloadModel.tenantClient"
+                                    [enterOnly]="true"
+                                    [noPlaceholder]="true"
+                                    [showHidePassword]="true"
+                                    [textUsername]="'application.textClientID'"
+                                    [textPassword]="'application.textClientSecret'"
+                                    [clsOfLabelCol]="baseLabelClass"
+                                    [clsOfFieldCol]="baseFieldClass"></identity-user-enter-select>
+      </div>
+    </ng-template>
+
+    <div class="form-group row" *ngIf="canDiscover">
+      <button class="sdl"
+              [ngClass]="{'disabled': !(appForm.form.valid && isIdentityComponentValid())}"
+              [disabled]="!(appForm.form.valid && isIdentityComponentValid())"
+              (click)="getInstances()" translate>{{isOracleApplication ? 'application.textGetDatabases' : 'application.textGetInstances'}}</button>
+      <div class="space-top-10">
+        <discovery-table [instances]="instances" [applicationType]="applicationType"></discovery-table>
+      </div>
+    </div>
+  </form>
+  <div [hidden]="isOptionsHidden() || isExchangeOnline">
+    <h2 class="sdl-header" translate>{{'application.textOptions'}}</h2>
+    <ba-card>
+      <form class="form-horizontal" [formGroup]="optionsForm">
+        <div class="form-group row"
+             [ngClass]="{'has-error': (!maxConcurrency.valid && maxConcurrency.touched), 'has-success': (maxConcurrency.valid && maxConcurrency.touched)}">
+          <label for="maxConcurrency" class="col-sm-4 control-label custom-snapshot-label-width ">
+            {{'application.textMaxConcurrency' | translate }}</label>
+          <div class="col-sm-2">
+            <input sdlTooltip
+                   [mode]="'critical'"
+                   [isDisabled]="(maxConcurrency.valid && maxConcurrency.touched) || maxConcurrency.untouched"
+                   [placement]="'left'"
+                   [sdlTooltip]="textRequiredFieldMinSuggestion"
+                   [formControl]="maxConcurrency" min="1" max="99" [(ngModel)]="appserverPayloadModel.maxConcurrency"
+                   type="number" class="custom-snapshot-numberfield-width form-control"
+                   id="maxConcurrency">
+          </div>
+        </div>
+      </form>
+    </ba-card>
+  </div>
+</ba-card>
+<confirm-toolbar-component
+  (cancelEvent)="onCancelClick()"
+  (confirmEvent)="onSubmit()"
+  [disableConfirmButton]="!isValid(appForm, optionsForm)"
+  [splitButtons]="true"
+  [floatRight]="false"></confirm-toolbar-component>

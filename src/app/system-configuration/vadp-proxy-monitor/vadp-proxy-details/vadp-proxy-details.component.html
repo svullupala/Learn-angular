@@ -1,0 +1,42 @@
+<h3>{{'vadpProxyMonitor.textProxyDetails' | translate}}</h3>
+<div class="container-fluid line-height-2" >
+  <div class="row">
+    <div class="col-sm-4">
+      <span  translate>{{ 'vadpProxyMonitor.table.serverAddress' }}</span>
+    </div>
+    <div class="col-sm-8">
+      <span>{{ vadp && vadp.ipAddr }}</span>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-4">
+      <span  translate>{{ 'hypervisor.textSite' }}</span>
+    </div>
+    <div class="col-sm-8">
+      <span>{{ vadp && vadp.siteName }}</span>
+    </div>
+  </div>
+  <div class="row" *ngIf="vadp && vadp.corecount !== undefined">
+    <div class="col-sm-4">
+      <span  translate>{{ 'vadpProxyMonitor.table.numberOfCores' }}</span>
+    </div>
+    <div class="col-sm-8">
+      <span>{{ vadp && vadp.corecount }}</span>
+    </div>
+  </div>
+  <div class="row" *ngIf="vadp && vadp.availablememory !== undefined">
+    <div class="col-sm-4">
+      <span  translate>{{ 'vadpProxyMonitor.table.availableMemory' }}</span>
+    </div>
+    <div class="col-sm-8">
+      <span>{{ vadp && vadp.availablememory | fileSize}}</span>
+    </div>
+  </div>
+</div>
+<vadp-action-schema
+  [textActionLabel]="textActionLabel"
+  [textActionOptions]="textActionOptions"
+  [model]="vadpSchema"
+  (run)="onVadpSave($event)"
+  [autoShow]="false"
+  (abort)="onAbort()"></vadp-action-schema>

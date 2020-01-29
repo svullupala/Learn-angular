@@ -1,0 +1,11 @@
+<div class="wizard-review-page">
+  <div class="title" translate>{{'wizard.textReview'}}</div>
+  <div class="description" translate>{{'wizard.textReviewDesc'}}</div>
+  <div class="content">
+    <ng-template let-se ngFor [ngForOf]="summaryEntries">
+      <div class="entry">
+        <ng-template [ngTemplateOutlet]="se.content"></ng-template>
+      </div>
+    </ng-template>
+  </div>
+</div>

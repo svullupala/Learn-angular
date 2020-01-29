@@ -1,0 +1,34 @@
+<ba-card baCardClass="dark-card" title="{{'resourceGroups.textResourceGroups' | translate}}" [ngClass]="{'hidden': mode === 'edit'}">
+  <div class="row">
+    <div class="align-right margin-bottom-10">
+      <button class="sdl inline with-icon" [ngClass]="{'disabled': !canCreate}" [disabled]="!canCreate" (click)="onCreateClick()" translate>
+        <i class="bidi-add-new-white_16"></i>{{'resourceGroups.textCreateResourceGroup'}}
+      </button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-6 users-left">
+      <sdl-search-bar (search)="startSearch($event)"
+                        [textPlaceholderLabel]="textSearchFor">
+      </sdl-search-bar>
+      <resource-group-table (resourceGroupsLoad)="onResourceGroupsLoad($event)"
+                              (emptyEvent)="emptySelectedGroups()"
+                              (selectionChange)="onSelectionChange($event)"
+                              (editClick)="onEditClick($event)"></resource-group-table>
+    </div>
+    <div class="col-lg-6">
+      <div class="card users-right">
+        <resource-group-details
+          [models]="selectedGroups"
+          (deleteUserClick)="onDeleteClick($event)"
+          (modifyResourcesClick)="onEditClick($event)"></resource-group-details>
+      </div>
+    </div>
+  </div>
+</ba-card>
+<div [hidden]="mode === 'list'">
+  <resource-group-edit (cancelClick)="onCancelClick()"
+                       (saveSuccess)="onSaveSuccess()"
+                       [model]="resourceGroup"
+                       [createLink]="createLink"></resource-group-edit>
+</div>

@@ -1,0 +1,35 @@
+<div class="status-item" tabindex="{{isClickable ? 0 : -1}}" (keydown.enter)="onClick()"
+  [ngStyle]="{'border-color': borderColor, 'background': fillColor, 'width': width, 'min-width': minWidth, 'max-width': maxWidth, 'cursor': _cursor}"
+  (click)="onClick()">
+  <div *ngIf="topLabel" class="top-label-area">
+    <label [ngClass]="{'wrap-label': wrapLabel}" [ngStyle]="{'color': topLabelColor }" translate>{{topLabel}}</label>
+  </div>
+  <div *ngIf="topIcon" style="float: right; padding: 5px 5px 0 0">
+    <i [ngClass]="topIcon"></i>
+  </div>
+  <div class="value-area" [ngStyle]="{'margin-left': (borderColor === 'transparent') ? 0 : ''}">
+    <label class="value"
+      [ngStyle]="{'color': labelColor, 'text-overflow': valueTextOverflow, 'overflow': valueOverflow, 'cursor': _cursor}"
+      [ngClass]="{'thin': valueThin, 'medium': valueMedium}">
+      {{value}}
+    </label>
+    <label *ngIf="seperator" class="seperator" [ngClass]="{'thin': seperatorThin, 'medium': seperatorMedium}"
+      [ngStyle]="{'color': seperatorColor }">
+      {{seperator}}
+    </label>
+    <label *ngIf="unit" class="unit" [ngClass]="{'thin': unitThin, 'medium': unitMedium}"
+      [ngStyle]="{'color': unitColor}">
+      {{unit}}
+    </label>
+    <div *ngIf="rightLabel" class="left-label-area">
+      <label [ngClass]="{'wrap-label': wrapLabel}" [ngStyle]="{'color': labelColor }" translate>{{rightLabel}}</label>
+    </div>
+  </div>
+  <div *ngIf="label" class="label-area">
+    <label [ngClass]="{'wrap-label': wrapLabel}" [ngStyle]="{'color': labelColor, 'cursor': _cursor }"
+      translate>{{label}}</label>
+  </div>
+  <div *ngIf="subLabel" class="sublabel-area">
+    <label translate>{{subLabel}}</label>
+  </div>
+</div>

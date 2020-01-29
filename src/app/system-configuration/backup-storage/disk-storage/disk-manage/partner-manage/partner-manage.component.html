@@ -1,0 +1,41 @@
+<div class="horizontal-scroll" [ngClass]="{'masked': maskList}">
+  <table>
+    <thead>
+      <tr>
+        <th class="action-icon-column"></th>
+        <th translate>{{'storage.textHostAddress'}}</th>
+        <th translate>{{'storage.textSite'}}</th>
+        <th translate>{{'storage.textCreated'}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of partnerList" class="no-top-border">
+        <td class="action-icon-format">
+          <i *ngIf="item.hasLink('remove')" (click)="onRemoveClick(item)" class="ion-close-round"></i>
+        </td>
+        <td>{{item.address}}</td>
+        <td>{{sites[item.siteId]}}</td>
+        <td>{{item.creationTime | amDateFormat: 'll LTS'}}</td>
+      </tr>
+    </tbody>
+  </table>
+  <br/>
+  <button class="btn btn-primary btn-xs" type="button" (click)="switchAddPartnersContainer()" aria-expanded="false" aria-controls="addPartnersContainer">
+    <i [class]="addPartnersExpanded? 'ion-minus' : 'ion-plus'"></i>
+  </button>
+  <div class="collapse" #addPartnersContainer id="addPartnersContainer">
+    <br>
+    <label class="control-label" translate>{{'storage.textSelectPartner'}}</label>
+    <div class="btn-group" role="group">
+      <button id="btnGroupDropPartner" type="button" style="margin-left:27px;"
+              class="btn btn-default dropdown-toggle  dropdown-toggle-sdl" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+        {{(selectedPartner && selectedPartner.name) || ('common.textSelect' | translate)}}
+      </button>
+      <div class="dropdown-menu dropdown-menu-sdl" aria-labelledby="btnGroupDropPartner">
+        <a *ngFor="let storage of storageList" tabindex="0" class="dropdown-item  dropdown-item-sdl"
+           clickOnEnterKeydown (click)="onSelectPartner(storage)">{{storage.hostAddress}}</a>
+      </div>
+    </div>
+  </div>
+</div>

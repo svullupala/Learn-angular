@@ -1,0 +1,40 @@
+<div *ngIf="isSummary; then summary else statistics"></div>
+<ng-template #summary>
+  <div class="card-block widget-card-block">
+    <h2 class="sdl-header" translate>{{ title }}</h2>
+    <div class="space-top-10">
+      <div class="text-center inline-block">
+        <i [style.font-size]="iconSize"
+           [tooltip]="vmTooltip"
+           [style.color]="iconColor" class="ion-android-laptop"></i>
+        <div class="text-center protection-padding">
+          <span [style.font-size]="countSize" [tooltip]="vmTooltip">{{value}}</span>
+        </div>
+      </div>
+      <div class="inline-block" style="width: 50px"></div>
+      <div class="inline-block">
+        <i [style.font-size]="iconSize"
+           [tooltip]="dbTooltip"
+           [style.color]="iconColor" class="ion-filing"></i>
+        <div class="text-center protection-padding">
+          <span [tooltip]="dbTooltip" [style.font-size]="countSize">{{dbValue}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
+<ng-template #statistics>
+  <div class="countercard">
+    <h2 class="sdl-header" translate>{{ title }}</h2>
+    <div class="text-center">
+      <i
+        [tooltip]="genericToolTip"
+        [style.font-size]="iconSize" [style.color]="iconColor" class="{{icon}}"></i>
+    </div>
+    <div class="text-center protection-padding">
+      <span
+        [tooltip]="genericToolTip"
+        [style.font-size]="countSize">{{ value}}</span>
+    </div>
+  </div>
+</ng-template>

@@ -1,0 +1,102 @@
+<form #subnetform="ngForm"  id="subnetform">
+    <div [hidden]="subnetRadioVal === 'system'">
+      <i class="bidi-status-warning"></i>
+      <span translate>{{'hypervisor.textVMMustPowerOn'}}</span>
+    </div>
+    <div class="input-demo">
+      <div>
+          <label class="radio-inline custom-radio">
+            <input type="radio"
+                   [(ngModel)]="subnetRadioVal"
+                   value="system"
+                   name="radioOptions" checked>
+            <span class="label" translate>{{ 'hypervisor.useSysDefinedIpText' }}</span>
+          </label>
+      </div>
+      <div>
+          <label class="radio-inline custom-radio">
+            <input type="radio" name="radioOptions"
+                   [(ngModel)]="subnetRadioVal"
+                   value="original">
+            <span class="label" translate>{{ 'hypervisor.useOriginalIpText' }}</span>
+          </label>
+      </div>
+      <div>
+          <label class="radio-inline custom-radio">
+            <input type="radio" name="radioOptions"
+                   [(ngModel)]="subnetRadioVal"
+                   value="mapping">
+            <span class="label" translate>{{ 'hypervisor.addMappingsSubnetText' }}</span>
+          </label>
+      </div>
+    </div>
+  <div id="addmapping" [hidden]="subnetRadioVal !== 'mapping'">
+    <div class="container-fluid">
+      <hr>
+      <div id="source" class="input-demo col-sm-6 form-horizontal">
+        <div class="row">
+          <subnet-list-table-component (editEvent)="onSubnetEdit($event)"
+                                       [subnetMappingList]="subnetList"
+                                       (deleteEvent)="reset()"></subnet-list-table-component>
+        </div>
+        <button class="btn btn-primary btn-xs"
+                (click)="switchMappingEditor()"
+                type="button" >
+          <i [class]="mappingEditorExpanded? 'ion-minus' : 'ion-plus'"></i>
+        </button>
+        <label translate>{{ 'hypervisor.addMappingText' }}</label>
+        <hr>
+        <div class="collapse row mapping-container-width" #mapping>
+          <div class="form-inline col-xs-6 col-md-6"
+               [ngClass]="{'has-success': isMappingAddressValid(),
+               'has-error': !isMappingAddressValid()}">
+            <button class="btn btn-primary"
+                    (click)="onAddSubnetMapping(subnetValue)"
+                    [disabled]="!isMappingsValid()"
+                    *ngIf="editMode === false"
+                    type="button">
+              <i class="ion-plus"></i>
+            </button>
+            <button class="sdl inline small" [ngClass]="{'disabled': !isMappingsValid()}"
+                    (click)="updateSubnetItem()"
+                    [disabled]="!isMappingsValid()"
+                    *ngIf="editMode === true"
+                    type="button">{{ 'common.updateText' | translate }}</button>
+            <input type="text"
+                   name="subnet"
+                   [(ngModel)]="subnetValue"
+                   (keydown)="onEnterPressed($event)"
+                   translate="yes"
+                   class="form-control ip-input-width"
+                   placeholder="{{'hypervisor.addSubnetText' | translate}}">
+          </div>
+          <div class="row form-inline">
+            <div class="form-group">
+              <label class="radio-inline custom-radio nowrap">
+                <input type="radio" name="radioOptions2" checked [value]="false"
+                       [(ngModel)]="staticAddress">
+                <span class="label" translate>{{ 'hypervisor.dhcpText' }}</span>
+              </label>
+            </div>
+            <div class="form-group">
+              <label class="radio-inline custom-radio nowrap">
+                <input type="radio" name="radioOptions2"
+                       [value]="true"
+                       [(ngModel)]="staticAddress">
+                <span class="label" translate>{{ 'hypervisor.staticText' }}</span>
+              </label>
+            </div>
+          </div>
+          <div class="container-fluid" id="subnetipform"  [hidden]="!staticAddress">
+            <br>
+            <h3 *ngIf="isValid">{{subnetValue}}</h3>
+            <basic-dynamic-form [formValues]="formValues"
+                                [enableCardLayout]="false"
+                                [enableSaveButton]="false"
+                                [enableCancelButton]="false"></basic-dynamic-form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

@@ -1,0 +1,21 @@
+<aside class="al-sidebar" (mouseleave)="hoverElemTop=outOfArea" sidebarResize>
+  <ul class="al-sidebar-list">
+    <li class="collapsible align-right">
+      <button class="btn btn-primary btn-xs ion-chevron-right"
+              [title]="(sidebarCollapsed ? 'common.textExpandMenu' : 'common.textCollapseMenu') | translate"
+              (click)="toggleMenu(true)"
+              [ngClass]="{'ion-chevron-right': sidebarCollapsed, 'ion-chevron-left': !sidebarCollapsed}">
+      </button>
+    </li>
+  </ul>
+  <ul id="al-sidebar-list" class="al-sidebar-list" baSlimScroll [baSlimScrollOptions]="{height: menuHeight}">
+    <ba-menu-item
+      [menuItem]="item"
+      [sidebarCollapsed]="sidebarCollapsed"
+      [firstLevel]="true"
+      (itemHover)="hoverItem($event)"
+      (toggleSubMenu)="toggleSubMenu($event)"
+      (clickLeafMenu)="clickLeafMenu($event)"
+      *ngFor="let item of menuItems"></ba-menu-item>
+  </ul>
+</aside>

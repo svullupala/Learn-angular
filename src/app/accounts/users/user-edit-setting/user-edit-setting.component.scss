@@ -1,0 +1,55 @@
+.vmiddle {
+  vertical-align: middle;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.vertical-scroll {
+  overflow-y: auto;
+}
+
+.uppercase {
+ text-transform: uppercase;
+}
+
+.action {
+  cursor: pointer;
+}
+
+.space-left {
+  margin-left: 10px;
+}
+
+.input-col {
+  max-width: 41rem; 
+}
+
+.ldap-table-list {
+  max-height: 30vh;
+  overflow: auto;
+  max-width: 58rem;
+  margin-left: 15px;
+}
+
+.search-area {
+  & div {
+    float: left
+  }
+}
+
+.view-all-button {
+  margin-top: 5px;
+  margin-right: -10px;
+  text-decoration: underline;
+  color: #047CC0;
+  cursor: pointer;
+  float: right; 
+  font-weight: bold;
+}
+
+.search-row {
+  margin-left: 0px;
+  margin-bottom: 10px;
+}

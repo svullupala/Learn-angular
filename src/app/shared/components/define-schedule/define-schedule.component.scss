@@ -1,0 +1,87 @@
+@import '../../../theme/sass/conf/_sdl-mixins.scss';
+@import '../../../theme/sass/conf/_mixins.scss';
+
+input[type="number"] {
+  width: 60px;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {  
+  height: 22px;
+}
+
+input[type="number"][disabled] {
+  opacity: 0.6 !important;
+}
+
+input[bsDatepicker][disabled] {
+  background-color: $neutral-color-3 !important;
+  cursor: not-allowed;
+  @include setBorderColorActions($gray70, $gray70);
+  @include setBackgroundColorActions($neutral-color-3);
+  opacity: 0.6 !important;
+  @include placeholderStyle($gray70, 0.6);
+}
+
+input[bsDatepicker] {
+  width: 166px;
+  height: 2.5em;
+  background-color: #ffffff;
+  border: 1px solid #464646;
+  border-radius: 0;
+  padding-left: .5rem;
+  box-shadow: none;
+  font-size: 14px;
+  &:read-only {
+    border-color: #464646;
+    color: #464646;
+  }
+  &.invalid {
+    border-color: #e85656 !important;
+  }
+}
+
+.schedule-display-string {
+  margin-top: 1em;
+  margin-left: 5.25em;
+}
+
+.space-right-10 {
+  margin-right: 10px;
+}
+
+.space-top-10 {
+  margin-top: 10px
+}
+
+.space-right-12 {
+  margin-right: 12px;
+}
+
+.disabled-label {
+  color: #dddddd;
+}
+
+.schedule-row {
+  padding-top: 10px;
+  &:first-child {
+    padding-top: 0;
+  }
+}
+
+.label-middle {
+  margin-top: 10px;
+}
+
+.space-right-5 {
+  margin-right: 5px;
+}
+
+.frequency-danger-label {
+  margin-left: 8px;
+  margin-top: 5px;
+}
+
+.frequency-danger-icon {
+  margin-left: 8px;
+}

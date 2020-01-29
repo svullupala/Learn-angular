@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-us" xml:lang="en-us" class="concept _Skins_HTML5_topnav_IBMOEM" data-mc-search-type="Stem" data-mc-help-system-file-name="Default.xml" data-mc-path-to-help-system="../../../" data-mc-has-content-body="True" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic;Default" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Setup|Getting Started">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>Create Backup Policies</title>
+        <link rel="icon" href="../../Resources/images/IBM-icon-48.ico" />
+        <link href="../../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Tablet.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Mobile.css" rel="stylesheet" />
+        <link href="../../../Skins/Fluid/stylesheets/foundation.6.2.3.css" rel="stylesheet" />
+        <link href="../../../Skins/Fluid/stylesheets/styles.css" rel="stylesheet" />
+        <link href="../../../Skins/Fluid/stylesheets/tablet.css" rel="stylesheet" />
+        <link href="../../../Skins/Fluid/stylesheets/mobile.css" rel="stylesheet" />
+        <style>/*&lt;meta /&gt;*/
+
+.button.remove-highlight-button
+{
+	-pie-background: url('../../../Skins/Default/Stylesheets/Images/highlight.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.expand-all-button
+{
+	-pie-background: url('../../../Skins/Default/Stylesheets/Images/expand.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.print-button
+{
+	-pie-background: url('../../../Skins/Default/Stylesheets/Images/printer.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.collapse-all-button
+{
+	-pie-background: url('../../../Skins/Default/Stylesheets/Images/collapse.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.needs-pie
+{
+	behavior: url('../../../Resources/Scripts/PIE-no-motw.htc');
+}
+
+</style>
+        <link href="../../resources/stylesheets/styles_topnavi.css" rel="stylesheet" />
+        <script src="../../../Resources/Scripts/custom.modernizr.js">
+        </script>
+        <script src="../../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/require.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/require.config.js">
+        </script>
+        <script src="../../../Resources/Scripts/foundation.6.2.3_custom.js">
+        </script>
+        <script src="../../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div class="foundation-wrap off-canvas-wrapper">
+            <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper="">
+                <aside class="off-canvas position-right" id="offCanvas" data-off-canvas="" data-position="right" data-mc-ignore="true">
+                    <ul class="off-canvas-drilldown vertical menu off-canvas-list" data-drilldown="" data-mc-back-link="Back" data-mc-css-tree-node-expanded="is-drilldown-submenu-parent" data-mc-css-tree-node-collapsed="is-drilldown-submenu-parent" data-mc-css-sub-menu="vertical menu slide-in-right is-drilldown-submenu" data-mc-include-indicator="False" data-mc-include-icon="False" data-mc-include-parent-link="True" data-mc-include-back="True" data-mc-defer-expand-event="True" data-mc-expand-event="click.zf.drilldown" data-mc-toc="True">
+                    </ul>
+                </aside>
+                <div class="off-canvas-content inner-wrap" data-off-canvas-content="">
+                    <div>
+                        <nav class="title-bar tab-bar" data-mc-ignore="true">
+                            <div class="middle title-bar-section outer-row clearfix">
+                                <div class="relative clearfix"><a class="logo" href="../about/about_application_overview.htm" alt="Logo"></a>
+                                    <div class="navigation-wrapper nocontent">
+                                        <ul class="navigation clearfix" data-mc-css-tree-node-has-children="has-children" data-mc-css-sub-menu="sub-menu" data-mc-expand-event="mouseenter" data-mc-top-nav-menu="True" data-mc-max-depth="4" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                                            <li class="placeholder" style="visibility:hidden"><a>placeholder</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <button class="menu-icon" data-toggle="offCanvas"><span></span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="nav-search row outer-row">
+                                <form class="search" action="#">
+                                    <div class="search-bar search-bar-container needs-pie">
+                                        <input class="search-field needs-pie" type="search" placeholder="Search the help system" />
+                                        <div class="search-filter-wrapper">
+                                            <div class="search-filter">
+                                                <div class="search-filter-content">
+                                                    <ul>
+                                                        <li>All Files</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="search-submit-wrapper" dir="ltr">
+                                            <div class="search-submit" title="Search">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </nav>
+                    </div>
+                    <section class="main-section">
+                        <div class="row outer-row" data-mc-content-body="True">
+                            <div class="buttons popup-container clearfix topicToolbarProxy mc-component nocontent" style="margin-left: 0px; float: right; mc-topic-toolbar-items: RemoveHighlight ExpandAll CollapseAll Print;">
+                                <div class="button-group-container-left">
+                                    <button class="button needs-pie remove-highlight-button" title="Remove Highlights">
+                                        <img src="../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="remove highlight" />
+                                    </button>
+                                    <button class="button needs-pie expand-all-button" data-state1-class="expand-all-button" data-state2-class="collapse-all-button" data-state2-title="Collapse all" title="Expand all" data-state1-title="Expand all">
+                                        <img src="../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="expand all" />
+                                    </button>
+                                    <button class="button needs-pie print-button" title="Print">
+                                        <img src="../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="print" />
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="nocontent">
+                                <div class="MCBreadcrumbsBox_0 breadcrumbs" data-mc-breadcrumbs-divider=" &gt; " data-mc-breadcrumbs-count="3" data-mc-toc="True"><span class="MCBreadcrumbsPrefix">You are here: </span>
+                                </div>
+                            </div>
+                            <h1>Create Backup Policies</h1>
+                            <p>Backup policies, which are also referred to as service level agreement (SLA) policies, define parameters that are applied to backup jobs. These parameters include the frequency and retention of backups.</p>
+                            <p style="font-weight: bold;">About this task</p>
+                            <p>The three default SLA policies are Gold, Silver, and Bronze. You can use these policies as they are or modify the policies. You can also create custom SLA policies.</p>
+                            <p>If a virtual machine is associated with multiple SLA policies, ensure that the policies are not scheduled to run concurrently. Either schedule the SLA policies to run with a significant amount of time between them, or combine them into a single SLA policy.</p>
+                            <p>For example purposes, this task does not include instructions for enabling replication for vSnap servers or for offloading to IBM Spectrum Protect™, which are optional features. For information about how to set up these features in the SLA policy, see <a href="../sla_policy/sla_policy_create.htm" class="MCXref xref" xrefformat="{paratext}">Configure SLA&#160;Policies</a>.</p>
+                            <p>Backup copies of data are called snapshots.</p>
+                            <p><b>Procedure</b>
+                            </p>
+                            <p>To create an SLA policy, complete the following steps:</p>
+                            <ol>
+                                <li value="1">In the navigation tree, click <b>Management Protection</b>, and then click <b>Policy Overview</b>.</li>
+                                <li value="2">Click <b>Add SLA&#160;Policy</b>. The New SLA&#160;Policy pane opens.</li>
+                                <li value="3">In the <b>Name</b> field, enter a name that provides a meaningful description of the SLA policy.</li>
+                                <li value="4">In the <b>Operational Protection</b> section under <b>Main Policy</b>, set the following options for backup operations. These operations occur on the vSnap servers that are defined in the <b>System Configuration &gt; Backup Storage &gt; Disk</b> window.</li>
+                                <li class="indent" style="font-weight: bold;" data-mc-autonum=""><span class="autonumber"><span></span></span>Retention</li>
+                                <li class="Indent_Level2" data-mc-autonum=""><span class="autonumber"><span></span></span>Specify the retention period or the number of snapshots to keep.</li>
+                                <li class="indent" style="font-weight: bold;" data-mc-autonum=""><span class="autonumber"><span></span></span>Frequency</li>
+                                <li class="Indent_Level2" data-mc-autonum=""><span class="autonumber"><span></span></span>Enter the frequency for backup operations.</li>
+                                <li class="indent" style="font-weight: bold;" data-mc-autonum=""><span class="autonumber"><span></span></span>Start Time</li>
+                                <li class="Indent_Level2" data-mc-autonum=""><span class="autonumber"><span></span></span>Enter the date and time that you want the backup operation to start.</li>
+                                <li class="indent" style="font-weight: bold;" data-mc-autonum=""><span class="autonumber"><span></span></span>Target Site</li>
+                                <li class="Indent_Level2" data-mc-autonum=""><span class="autonumber"><span></span></span>Select a primary or secondary backup destination.</li>
+                                <li class="Indent_Level2" data-mc-autonum=""><span class="autonumber"><span></span></span>If more than one primary or secondary storage site is available to <span class="ProductNames_LongShortECX_Short">IBM Spectrum Protect Plus</span>, the vSnap backup destination with the largest amount of available storage is used first.</li>
+                                <li class="indent" style="font-weight: bold;" data-mc-autonum=""><span class="autonumber"><span></span></span>Only use encrypted disk storage</li>
+                                <li class="Indent_Level2" data-mc-autonum=""><span class="autonumber"><span></span></span>Select this check box to back up data to encrypted vSnap servers if your environment includes a mixture of encrypted and unencrypted servers.</li>
+                                <li class="Indent_Level2" data-mc-autonum=""><span class="autonumber"><span></span></span><b>RESTRICTION</b>:&#160;If this option is selected and no encrypted vSnap servers are available, the associated job will fail.</li>
+                                <li value="5">Click <b>Save</b>. The SLA policy can now be applied to backup job definitions as shown in <a href="getting_started_create_backup_job.htm" class="MCXref xref" xrefformat="{paratext}">Create a Backup Job</a>.</li>
+                            </ol>
+                            <div class="RelatedTopic">
+                                <p class="PostPreRelTitleLeft"><span class="PostPreRelTitle">RELATED TOPICS:</span>
+                                </p>
+                                <ul>
+                                    <li value="1"><a href="../setup/setup_offloading.htm" class="MCXref xref" xrefformat="{paratext}">Offloading to IBM Spectrum Protect</a>
+                                    </li>
+                                    <li value="2"><a href="../sla_policy/sla_policy_create.htm" class="MCXref xref" xrefformat="{paratext}">Configure SLA&#160;Policies</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <p>&#160;</p>
+                            <hr width="100%" size="0" align="center" />
+                            <p style="text-align: left;"><span class="Strong" style="font-size: 10pt;">IBM Spectrum Protect Plus</span> <span class="Strong" style="font-size: 10pt;">10.1.2</span> <![CDATA[ ]]></p>
+                            <p style="font-size: 8pt;">Licensed Material - Property of IBM Corp. © IBM Corporation and other(s) <span class="GeneralYear">2018</span>. IBM is a registered trademark of the IBM Corporation in the United States, other countries, or both. <span style="font-size: 10pt;"><span style="font-size: 8pt;">| </span></span><span style="font-size: 8pt;" class="SystemShortDate">8/23/2018</span></p>
+                        </div>
+                    </section><a data-close="true"></a>
+                </div>
+            </div>
+            <script>/* <![CDATA[ */$(document).foundation();/* ]]> */</script>
+        </div>
+    </body>
+</html>

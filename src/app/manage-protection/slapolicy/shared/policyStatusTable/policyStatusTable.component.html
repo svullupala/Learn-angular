@@ -1,0 +1,149 @@
+<div class="manage-table-container">
+  <div class="manage-table-height" [ngClass]="{'masked': mask}">
+    <table>
+      <thead>
+        <tr>
+        <th class="collapsible-col align-center"></th>
+        <th class="normal-col" style="border-left: 0;" translate>{{'slapolicy.policyStatusTable.textPolicy'}}</th>
+        <th class="normal-col" translate>{{'slapolicy.policyStatusTable.textRPO'}}</th>
+        <th class="normal-col" *ngIf="subtype !== 'catalog'" translate>{{'slapolicy.policyStatusTable.textTotalVMs'}}</th>
+        <th class="normal-col" *ngIf="subtype !== 'catalog'" translate>{{'slapolicy.policyStatusTable.textSuccessfulVMs'}}</th>
+        <th class="normal-col" *ngIf="subtype !== 'catalog'" translate>{{'slapolicy.policyStatusTable.textFailedVMs'}}</th>
+        <th class="normal-col" translate>{{'slapolicy.policyStatusTable.textNextRunTime'}}</th>
+        <th class="normal-col" translate>{{'slapolicy.policyStatusTable.textStatus'}}</th>
+        <th class="normal-col" *ngIf="subtype !== 'catalog'" translate>{{ 'scripts.textOptions'}}</th>
+        <th class="operation-col align-center"></th>
+      </tr>
+      </thead>
+      <tbody>        
+        <tr [hidden]="!(records && records.length < 1)">
+          <td>
+            <i class="bidi-status-warning"></i>
+          </td>
+          <td colspan="3">
+            <span translate>{{'common.textThereIsNoEntries'}}</span>
+          </td>
+        </tr>
+        <ng-template let-item ngFor [ngForOf]="records | paging: paginateConfig.json()" [ngForTrackBy]="trackByModel">
+          <tr>
+            <td class="align-center">
+              <button [attr.aria-label]="(isExpanded(item) ? 'common.textCollapse' : 'common.textExpand') | translate"
+                      onCollapsableButtonDirective
+                      [collapsableElementRef]="sessiontable"
+                      [useArrow]="true"
+                      [collapsableSubject]="collapseAll"
+                      (clickEvent)="onDetailClick(item, false, true)"
+                      (onShowClickEvent)="setExpanded(item)"
+                      (onHideClickEvent)="setCollapsed(item)">
+              </button>
+            </td>
+            <td>{{item.name}}</td>
+            <td>{{item.spec | rpoDisplay }}</td>
+            <td *ngIf="subtype !== 'catalog'">{{item.getStatValue(objType, 'total')}}</td>
+            <td *ngIf="subtype !== 'catalog'">{{item.getStatValue(objType, 'success')}}</td>
+            <td *ngIf="subtype !== 'catalog'">{{item.getStatValue(objType, 'failed')}}</td>
+            <td>{{item.nextFireTime | amDateFormat: 'll LTS'}}</td>
+            <td>{{item.statusDisplayName}}</td>
+            <td *ngIf="subtype !== 'catalog'" class="action-icon-format align-center">
+              <i class="ion-clipboard" *ngIf="canConfigureOptions(item) && item.status !== undefined"
+                      [title]="'scripts.textToConfigureScriptsTooltip' | translate"
+                 tabindex="0" (keydown.enter)="onShowScripts(item)" (click)="onShowScripts(item)">
+              </i>
+            </td>
+            <td class="align-center">
+              <div class="btn-group" role="group">
+                <button [disabled]="!hasActions(item) || item.status === undefined" [attr.id]="getDropDownActionId(item)" type="button" class="btn btn-default dropdown-toggle dropdown-toggle-sdl noborder-dropdown"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" (click)="toggleDropDown(item, $event)">
+                  {{'job.textOperation' | translate}}
+                </button>
+                <div [attr.id]="getDropDownMenuId(item)" class="dropdown-menu dropdown-menu-sdl" [ngClass]="isDropDown(item)? 'show' : 'hide'" [attr.aria-labelledby]="getDropDownActionId(item)">
+                  <a tabindex="0" class="dropdown-item capitalize dropdown-item-sdl" *ngFor="let link of item.getActionLinks()"
+                     [hidden]="link.name === 'applyOptions'"
+                     clickOnEnterKeydown (click)="onExecuteAction(item, link)" translate>{{link.title || link.name}}</a>
+                </div>
+              </div>
+            </td>
+          </tr>
+          <td colspan=10 class="sessions">
+            <div class="offset-table align-left" #sessiontable [ngClass]="{'masked': item.metadata['sessionMask']}">
+              <table>
+                <thead>
+                <tr>
+                  <th class="collapsible-col log-type-col align-center" translate>{{'slapolicy.policyStatusTable.textLogFile'}}</th>
+                  <th class="normal-col2" translate>{{'slapolicy.policyStatusTable.textStartTime'}}</th>
+                  <th class="normal-col2" translate>{{'slapolicy.policyStatusTable.textEndTime'}}</th>
+                  <th class="normal-col2" translate>{{'slapolicy.policyStatusTable.textDuration'}}</th>
+                  <th class="normal-col2" translate>{{'slapolicy.policyStatusTable.textStatus'}}</th>
+                  <th class="normal-col2" *ngIf="subtype !== 'catalog'" translate>{{'slapolicy.policyStatusTable.textSubPolicyType'}}</th>
+                  <th class="normal-col2" *ngIf="subtype !== 'catalog'" translate>{{'slapolicy.policyStatusTable.textTotalVMs'}}</th>
+                  <th class="normal-col2" *ngIf="subtype !== 'catalog'" translate>{{'slapolicy.policyStatusTable.textSuccessfulVMs'}}</th>
+                  <th class="normal-col2" *ngIf="subtype !== 'catalog'" translate>{{'slapolicy.policyStatusTable.textFailedVMs'}}</th>
+                  <th class="operation-col align-center"></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngIf="item.sessions && item.sessions.length < 1">
+                  <td colspan=10 translate>{{'job.textNoJobSessions'}}</td>
+                </tr>
+                <ng-template let-session ngFor [ngForOf]="item.sessions" [ngForTrackBy]="trackByModel">
+                  <tr>
+                    <td class="align-center">
+                      <button [attr.aria-label]="(isExpanded(item, session) ? 'common.textCollapse' : 'common.textExpand') | translate"
+                              onCollapsableButtonDirective
+                              [collapsableElementRef]="logtable"
+                              [useArrow]="true"
+                              (onShowClickEvent)="setExpanded(item, session)"
+                              (onHideClickEvent)="setCollapsed(item, session)"
+                              (clickEvent)="onLogClick(item, session)">
+                      </button>
+                    </td>
+                    <td class="nowrap">{{session.start | amDateFormat: 'll LTS'}}</td>
+                    <td class="nowrap">{{session.end | amDateFormat: 'll LTS'}}</td>
+                    <td>{{session.duration | durationDisplay}}</td>
+                    <td>{{session.statusDisplay || session.status}}</td>
+                    <td *ngIf="subtype !== 'catalog'">{{session.subPolicyType | jobTypeDisplay}}</td>
+                    <td *ngIf="subtype !== 'catalog'">{{session.getStatValue(objType, 'total')}}</td>
+                    <td *ngIf="subtype !== 'catalog'">{{session.getStatValue(objType, 'success')}}</td>
+                    <td *ngIf="subtype !== 'catalog'">{{session.getStatValue(objType, 'failed')}}</td>
+                    <td class="align-center">
+                    <span *ngIf="canDownloadLogs(session)" tabindex="0" clickOnEnterKeydown (click)="onDownloadLogs(session)"
+                          class="link fa fa-cloud-download">
+                    </span>
+                    </td>
+                  </tr>
+                    <td colspan=10 class="logs">
+                      <div class="collapse align-left" #logtable>
+                        <job-log-table [autoLoad]="!!session.metadata['autoLoad']"
+                                       [autoRefreshMode]="true"
+                                       [jobSession]="session"
+                                       [filters]="jobTypeFilters"
+                                       (loadStart)="onLoadLogsStart($event)"
+                                       (loadEnd)="onLoadLogsEnd($event)">
+                        </job-log-table>
+                      </div>
+                    </td>
+                </ng-template>
+                <tbody>
+              </table>
+            </div>
+          </td>
+      </ng-template>
+      </tbody>
+    </table>
+  </div>
+  <br>
+  <paging-toolbar (pageChange)="onPageChange($event)" (refresh)="onRefresh()"
+                  [id]="paginateConfig.id" [total]="paginateConfig.totalItems"></paging-toolbar>
+  <refresh-button-basic [defaultState]="true" [rate]="30000" [tickEnabled]="true" (onTick)="autoRefresh()"></refresh-button-basic>
+  <job-action-schema *ngIf="showJobSchema" [textActionOptions]="textActionOptions" [model]="jobSchema" (run)="onJobRun($event)" (abort)="onAbort()"></job-action-schema>
+</div>
+<post-scripts-modal
+  [subtype]="subtype"
+  [showOptions]="showOptions"
+  [showInventoryBackupOption]="showInventoryBackupOption"
+  [showInventoryTimeoutOption]="showInventoryTimeoutOption"
+  [isScriptServerOnly]="isScriptServerOnly"
+  (save)="applyOptions(slaPolicy, $event)"
+  (show)="onShowModal()"
+  (hide)="onHideModal()"
+  [autoLoad]="false" [script]="options"></post-scripts-modal>

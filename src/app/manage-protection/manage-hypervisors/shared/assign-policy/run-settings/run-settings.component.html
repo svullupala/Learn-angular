@@ -1,0 +1,200 @@
+<ba-card [ngClass]="{ masked: mask }">
+  <div>
+    <div class="hv-run-settings-info">
+      <p [innerHTML]="formattedInfoText"></p>
+      <span
+        *ngIf="!editMode"
+        class="link icon-container"
+        style="text-align: right"
+        (click)="enableEditMode()"
+        translate
+      >
+        <svg ibmIconEdit16 class="icon-resource"></svg>{{ 'inventory.textEditRunSettings' }}
+      </span>
+    </div>
+    <div class="hv-run-settings-tabs">
+      <scroll-tabset [hidden]="!optionsLoaded" [tabs]="scrollTabs" [disabled]="!editMode"></scroll-tabset>
+
+      <ng-template #tabRunningBackup>
+        <div class="row">
+          <label class="col-sm-3 control-label">{{
+            'inventory.textRunningBackup' | translate
+          }}</label>
+          <div class="form-group col-sm-9">
+            <div class="hv-run-settings-input">
+              <div class="number-value">
+                <input
+                  type="number"
+                  min="1"
+                  max="10"
+                  class="form-control"
+                  id="priority"
+                  [(ngModel)]="model.priority"
+                  required
+                />
+              </div>
+              <label for="priority" class="col-sm-3 control-label" translate>
+                {{ 'Backup order priority' }}
+              </label>
+            </div>
+            <ba-checkbox
+              [(ngModel)]="model.skipReadonlyDS"
+              [baCheckboxClass]="'enabled'"
+              label="{{ 'hypervisor.textSkipReadonlyDS' | translate }}"
+              [disabled]="false"
+            >
+            </ba-checkbox>
+            <ba-checkbox
+              [(ngModel)]="model.skipIAMounts"
+              [baCheckboxClass]="'enabled'"
+              label="{{ 'hypervisor.textSkipIAMounts' | translate }}"
+              [disabled]="false"
+            >
+            </ba-checkbox>
+          </div>
+        </div>
+      </ng-template>
+
+      <ng-template #tabTakingSnapshot>
+        <div class="row">
+          <label class="col-sm-3 control-label">{{
+            'inventory.textTakingSnapshot' | translate
+          }}</label>
+          <div class="form-group col-sm-9">
+            <div class="hv-run-settings-input">
+              <div class="number-value">
+                <input
+                  type="number"
+                  min="1"
+                  class="form-control"
+                  id="snapshotRetries"
+                  [(ngModel)]="model.snapshotRetries"
+                  required
+                />
+              </div>
+              <label for="snapshotRetries" class="col-sm-3 control-label" translate>
+                {{ 'VM snapshot retry attempts' }}
+              </label>
+            </div>
+            <ba-checkbox
+              [(ngModel)]="model.makeApplicationConsistent"
+              [baCheckboxClass]="'enabled'"
+              label="{{ 'hypervisor.textMakeApplicationConsistent' | translate }}"
+              [disabled]="false"
+            >
+            </ba-checkbox>
+            <ba-checkbox
+              [(ngModel)]="model.fallbackToUnquiescedSnapshot"
+              [baCheckboxClass]="'enabled'"
+              label="{{ 'Skip temporary datastores mounted for Instant Access' | translate }}"
+              [disabled]="false"
+            >
+            </ba-checkbox>
+          </div>
+        </div>
+      </ng-template>
+
+      <ng-template #tabAgentInstructions>
+        <div class="row">
+          <label class="col-sm-3 control-label">{{
+            'inventory.textAgentInstructions' | translate
+          }}</label>
+          <div class="form-group col-sm-9">
+            <ba-checkbox
+              [(ngModel)]="model.enableLogTruncate"
+              [baCheckboxClass]="'enabled'"
+              label="{{ 'hypervisor.textLogTruncate' | translate }}"
+              [disabled]="false"
+            >
+            </ba-checkbox>
+            <ba-checkbox
+              [(ngModel)]="model.enableFH"
+              [baCheckboxClass]="'enabled'"
+              label="{{ 'hypervisor.textEnableFH' | translate }}"
+              [disabled]="false"
+            >
+            </ba-checkbox>
+            <div class="hv-run-settings-textarea">
+              <label class="control-label">{{ 'Exclude following files from backups:' }}</label>
+              <textarea
+                [attr.aria-label]="'hypervisor.textExcludeFiles' | translate"
+                [disabled]="!model.enableFH"
+                class="form-control dropdown-width"
+                type="text"
+                [placeholder]="'hypervisor.textExcludeFilesPlaceholder' | translate"
+                [(ngModel)]="model.FHExcludedPath"
+              ></textarea>
+            </div>
+          </div>
+        </div>
+      </ng-template>
+      <ng-template #tabUserAccess>
+        <div class="row">
+          <label class="col-sm-3 control-label">{{
+            'inventory.textUserAccessTab' | translate
+          }}</label>
+          <div class="form-group col-sm-9">
+            <identity-user-enter-select-v2
+              [model]="userInfo"
+              [textUsername]="'hypervisor.textGuestOSUsername'"
+              [textPassword]="'hypervisor.textGuestOSPassword'"
+              [enableSshIdentify]="true"
+              [disabled]="!model.enableFH"
+              (loadedUserEvent)="onLoadUsers()"
+            ></identity-user-enter-select-v2>
+          </div>
+        </div>
+      </ng-template>
+      <ng-template #tabDevelopingVADP>
+        <div class="row">
+          <label class="col-sm-3 control-label">{{
+            'inventory.textSelectingVADP' | translate
+          }}</label>
+          <div class="form-group col-sm-9">
+            <radio-selection [(ngModel)]="vadpSelection">
+              <ng-template
+                [radioSelectionFor]="'site'"
+                [radioSelectionLabel]="'inventory.textSelectVADPProxies' | translate"
+              >
+                <select
+                  class="form-control"
+                  [disabled]="vadpSelection !== 'site'"
+                  [(ngModel)]="selectedSite"
+                >
+                  <option [ngValue]="''" translate>{{ 'common.textDefault' }}</option>
+                  <option *ngFor="let site of sites" [ngValue]="site.url">{{ site.name }}</option>
+                </select>
+              </ng-template>
+              <ng-template
+                [radioSelectionFor]="'proxy'"
+                [radioSelectionLabel]="'inventory.textSelectSpecificVADP' | translate"
+              >
+                <div keyboardMultiselect [multiselect]="multiselect">
+                  <angular2-multiselect
+                    [settings]="getProxiesDropdownOptions()"
+                    [data]="dropdownList"
+                    #multiselect
+                    [(ngModel)]="selectedProxies"
+                    (onSelect)="onVADPProxySelect($event)"
+                    (onDeSelect)="onVADPProxyDeselect($event)"
+                  ></angular2-multiselect>
+                </div>
+              </ng-template>
+            </radio-selection>
+          </div>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+</ba-card>
+
+<ng-template [ngIf]="editMode && !mask">
+  <div class="hv-run-settings-actions">
+    <button class="sdl inline secondary" style="margin-right: 12px" (click)="onCancel()" translate>
+      {{ 'common.textCancel' }}
+    </button>
+    <button class="sdl inline" (click)="onSave()" translate>
+      {{ 'common.textSave' }}
+    </button>
+  </div>
+</ng-template>

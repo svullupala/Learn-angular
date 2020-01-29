@@ -1,0 +1,24 @@
+:host {
+  color: inherit;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+svg.status-icon {
+  color: inherit;
+  fill: currentColor;
+
+  &.default-theme.status-successful {
+    color: #24A249;
+  }
+
+  &.default-theme.status-warning {
+    color: #FDD13A;
+  }
+
+  &.default-theme.status-failed {
+    color: #DA1E28;
+  }
+}
+
+

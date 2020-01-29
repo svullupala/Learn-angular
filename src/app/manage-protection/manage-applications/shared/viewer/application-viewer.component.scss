@@ -1,0 +1,209 @@
+$text-color: #047CC0;
+$title-color: #464646;
+$background-color: #F3F3F3;
+$link-color: #1191E6;
+
+.application-viewer {
+  border: none;
+  position: relative;
+  margin-bottom: 0;
+  background-color: $background-color;
+
+  .viewer-header {
+    background-color: transparent;
+    height: 128px;
+    width: 100%;
+    padding: 2rem 2.5rem;
+
+    .header {
+      button.btn-back-to {
+        background: transparent;
+        color: $text-color;
+        border: 1px solid $text-color;
+        border-radius: 1rem;
+        width: 1rem;
+        height: 1rem;
+        min-width: 1rem;
+        min-height: 1rem;
+        padding: 0 1px 0 0;
+
+        &:before {
+          font-size: 12px;
+        }
+
+        &:hover {
+          cursor: pointer;
+        }
+
+        & > .icon-back-to {
+          height: 10px;
+          width: 10px;
+          margin-top: -2px;
+        }
+      }
+
+      label {
+
+        &:hover {
+          cursor: pointer;
+        }
+
+        &.btn-text {
+          color: $text-color;
+          text-align: left;
+        }
+
+        &.back-to-target {
+          font-weight: bold;
+          color: $text-color;
+          text-align: left;
+          line-height: 18px;
+        }
+      }
+    }
+
+    & > .title {
+      line-height: 2rem;
+      font-size: 2rem;
+      color: $title-color;
+    }
+
+    & > .subtitle {
+      vertical-align: middle;
+      position: relative;
+      height: 1rem;
+
+      & > .icon-storage {
+        position: absolute;
+        color: $title-color;
+      }
+
+      & > label {
+        margin-left: 1.2rem;
+      }
+    }
+  }
+
+  .viewer-body {
+    background-color: white;
+    padding: 2rem 2.5rem;
+    width: 100%;
+    min-height: 200px;
+    height: calc(100vh - 192px);
+    display: flex;
+    flex-direction: column;
+
+    & > .breadcrumb2 {
+      padding: 0;
+      display: inline-block;
+      min-height: 1rem;
+
+      .icon-storage {
+        margin-right: .4em;
+        color: $title-color;
+      }
+
+      .icon-resource {
+        margin-right: .4em;
+        color: $title-color;
+      }
+
+      span.link {
+        text-decoration: none;
+        color: $link-color;
+      }
+
+      li + li:before {
+        content: none;
+      }
+
+      li:after {
+        margin: 0 .5rem;
+        color: black;
+        content: "/\A0";
+      }
+    }
+
+    .icon-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .table {
+      background-color: $background-color;
+      max-height: calc(100% - 86px);
+      min-height: 200px;
+    }
+  }
+}
+
+button.btn.btn-toggle {
+  background-color: #5380A8;
+  color: #FFFFFF;
+}
+
+.slas-menu {
+  overflow-y: auto;
+}
+
+.search-bar {
+  width: 70%;
+}
+
+.search-category {
+  margin-top: 10px;
+}
+
+.filter {
+  button.btn {
+    width: 40px;
+    text-align: center;
+    padding: 0;
+
+    &:after {
+      content: none;
+    }
+  }
+
+  & > div > a.selected {
+    color: white !important;
+    background-color: $link-color;
+  }
+}
+
+.view {
+  float: right;
+  min-width: 200px;
+
+  button.btn {
+    width: 100%;
+
+    & > label.view-label {
+      width: calc(100% - 1rem);
+    }
+  }
+
+  .dropdown-menu-left {
+    right: 0;
+    margin-top: -2px;
+  }
+
+}
+
+.side-by-side-wrapper {
+  display: flex;
+  flex-flow: row;
+}
+
+.side-by-side-left {
+  flex: 4;
+}
+
+.side-by-side-right {
+  flex: 1;
+}
+
+.space-left-10 {
+  margin-left: 10px;
+}

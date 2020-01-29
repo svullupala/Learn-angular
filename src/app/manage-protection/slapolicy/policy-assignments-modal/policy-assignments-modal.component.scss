@@ -1,0 +1,40 @@
+.policy-assignments-modal {
+
+  @media (min-width: 1280px) {
+    .modal-lg {
+      max-width: 1200px;
+    }
+  }
+
+  .modal-header {
+    position: relative;
+    background-color: white;
+    border-bottom: 1px solid #C0BFC0;
+
+    & > .modal-title-wrapper {
+      display: flex;
+      flex-direction: column;
+
+      & > label.sdl-header {
+        font-weight: 500;
+        font-size: 24px;
+      }
+
+      & > .sub-title {
+        font-size: 16px;
+      }
+    }
+
+    & > .close {
+      position: absolute;
+      top: 15px;
+      right: 35px;
+      width: 14px;
+      margin-right: -2px;
+    }
+  }
+
+  .modal-body {
+    padding: 0;
+  }
+}

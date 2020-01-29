@@ -1,0 +1,62 @@
+<div [ngClass]="{'masked': masked}" #roleEditContainer>
+  <ba-card title="{{(model.phantom ? 'roles.textCreateRole' : 'roles.textEditRole') | translate}}"
+           baCardClass="dark-card viewport100 with-scroll">
+    <form class="form-horizontal" [formGroup]="form">
+      <div *ngIf="model.phantom" class="form-group row"
+           [ngClass]="{'has-error': (!method.valid && method.touched), 'has-success': (method.valid && method.touched)}">
+        <label class="col-sm-5 control-label" translate>
+          {{model.method === 'new' ? 'roles.textWouldLikeToCreateNewRole' : 'roles.textWouldLikeToCreateRole'}}
+        </label>
+        <div class="col-sm-7">
+          <select class="custom-select" [formControl]="method" [(ngModel)]="model.method" class="form-control"
+                  style="max-width: 12rem;">
+            <option hidden value="" [selected]="model.phantom" translate>{{'roles.textSelectMethod'}}</option>
+            <option value="new" translate>{{'roles.textNew'}}</option>
+            <option value="template" translate>{{'roles.textFromTemplate'}}</option>
+          </select>
+        </div>
+      </div>
+      <div *ngIf="!model.phantom || model.method">
+        <hr *ngIf="model.phantom">
+        <div class="form-group row"
+             [ngClass]="{'has-error': (!name.valid && name.touched), 'has-success': (name.valid && name.touched)}">
+          <label class="col-sm-5 control-label" translate>{{model.phantom ? 'roles.textNameOfNewRole' :
+            'roles.textNameOfRole'}}</label>
+          <div class="col-sm-3">
+            <input sdlTooltip
+              [mode]="'critical'"
+              [isDisabled]="(!name.valid && name.untouched) || (name.valid && name.touched) || name.untouched"
+              [placement]="'right'"
+              [sdlTooltip]="'common.textRequiredFieldSuggestion' | translate"
+                   [attr.aria-label]="(model.phantom ? 'roles.textNameOfNewRole' : 'roles.textNameOfRole') | translate"
+              [formControl]="name" [(ngModel)]="model.name" type="text" class="form-control">
+          </div>
+        </div>
+        <div *ngIf="model.phantom && model.method === 'template'" class="form-group row"
+             [ngClass]="{'has-error': (!template.valid && template.touched), 'has-success': (template.valid && template.touched)}">
+          <label class="col-sm-5 control-label" translate>
+            {{'roles.textWhichRoleAsTemplate'}}
+          </label>
+          <div class="col-sm-3">
+            <select class="custom-select" [formControl]="template" [(ngModel)]="model.template" (change)="onTemplateChange()" class="form-control">
+              <option *ngFor="let role of cannedRoles" [ngValue]="role.id"> {{ role.name }}</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-5 control-label bold" translate>{{'roles.textPermissionGroups'}}</label>
+        </div>
+        <div class="form-group row">
+          <permission-group-select [value]="model.virtualresources"></permission-group-select>
+        </div>
+      </div>
+    </form>
+  </ba-card>
+  <confirm-toolbar-component
+    (cancelEvent)="onCancelClick()"
+    (confirmEvent)="onSaveClick()"
+    [disableConfirmButton]="!isValid()"
+    [splitButtons]="true"
+    [confirmText]="(model.phantom ? 'roles.textCreateRole' : 'roles.textUpdateRole') | translate"
+  ></confirm-toolbar-component>
+</div>

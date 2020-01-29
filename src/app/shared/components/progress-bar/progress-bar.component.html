@@ -1,0 +1,50 @@
+<div class="container">
+  <div class="row" *ngIf="topLeftLabel !== undefined || topRightLabel !== undefined">
+      <div class="col-lg-4:nowrap label-col">
+        <span class="font-weight-bold">{{topLeftLabel}}</span>
+        <span class="total-label-col font-weight-bold text-right">{{topRightLabel}}</span>
+     </div>
+  </div>
+  <div class="row" *ngIf="topLeftSubLabel !== undefined || topRightSubLabel !== undefined">
+    <div class="col-lg-4:nowrap label-col">
+      <span class="font-weight-normal">{{topLeftSubLabel}}</span>
+      <span class="total-label-col font-weight-normal ">{{topRightSubLabel}}</span>
+    </div>
+  </div>
+  <div class="row" *ngIf="label !== undefined || totalLabel !== undefined">
+    <div class="col-lg-4:nowrap label-col">
+      <p>
+        <span class="font-weight-bold">{{label}}</span>
+        <i><span class="font-weight-normal">{{subLabel}}</span></i>
+      </p>
+    </div>
+    <div *ngIf="totalLabel !== undefined" class="col-lg-4 total-label-col">
+      <p class="font-weight-normal text-right">{{totalLabel}}
+        <i> <span class="font-weight-normal">{{subTotalLabel}}</span></i>
+      </p>
+    </div>
+  </div>
+  <div class="row">
+    <div *ngIf="leftLabel !== undefined" [ngClass]="'col-lg-' + leftLabelColWidth" class="left-label-col">
+      <p class="font-weight-normal text-right left-label-text">{{leftLabel}}</p>
+    </div>
+    <div [ngClass]="[progressColClass, progressColTypeClass]" class="progress-bar-col">
+      <div class="progress" [ngClass]="progressBarTypeClass">
+        <div class="progress-bar" role="progressbar"
+             [ngClass]="[status, progressBarTypeClass, transition]"
+             [attr.aria-valuenow]="currentPercentage" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{width: currentPercentage + '%'}">
+          <span *ngIf="barLabel !== undefined" class="sr-only">{{barLabel}}</span>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="rightLabel !== undefined" [ngClass]="'col-lg-' + rightLabelColWidth" class="right-label-col">
+      <p class="font-weight-normal text-left right-label-text">{{rightLabel}}</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-4:nowrap bottom-label-col">
+      <span class="font-weight-bold">{{bottomLabel}}</span>
+      <span class="font-weight-normal">{{usedLabel}}</span>
+    </div>
+  </div>
+</div>

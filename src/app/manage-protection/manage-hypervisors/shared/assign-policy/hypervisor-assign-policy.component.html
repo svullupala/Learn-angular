@@ -1,0 +1,33 @@
+<div class="hypervisor-assign-policy">
+  <div class="hypervisor-assign-policy-header">
+    <h3 class="title">{{ assignPolicyTo.name }}</h3>
+    <div>
+      <hypervisor-icon [model]="assignPolicyTo" class="icon-resource"></hypervisor-icon>
+      {{ resourcesDisplayName$ | async }}
+    </div>
+    <button
+      cdkFocusRegionStart
+      type="button"
+      class="close hypervisor-assign-policy-close"
+      aria-label="Close"
+      (click)="onClose()"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <dynamic-tabset [tabs]="tabs" (select)="onSelectTab($event)"></dynamic-tabset>
+  <ng-template #policyTemp>
+    <hypervisor-assign-policy-policies
+      [assignPolicyTo]="assignPolicyTo"
+      [hypervisorType]="hypervisorType"
+    ></hypervisor-assign-policy-policies>
+  </ng-template>
+  <ng-template #runSettingsTemp>
+    <hypervisor-assign-policy-run-settings
+      [assignPolicyTo]="assignPolicyTo"
+      [isActive]="selectedTab === 'runSettings'"
+      [hypervisorType]="hypervisorType"
+      [editMode]="runSettingsEditMode"
+    ></hypervisor-assign-policy-run-settings>
+  </ng-template>
+</div>

@@ -1,0 +1,53 @@
+<div class="source">
+  <div class="title" translate>{{'wizard.job.textSelectSlaTitle'}}</div>
+  <div class="desc" translate>{{'wizard.job.textSelectSlaDesc'}}</div>
+  <div class="content">
+    <div class="col-lg-4">
+      <div class="btn-group space-left-10" role="group" aria-label="Filter">
+        <div class="btn-group" role="group" [ngClass]="{'masked': mask}">
+          <button id="btnGroupDrop2" type="button" class="btn btn-default dropdown-toggle  dropdown-toggle-sdl"
+                  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            {{(model.selectedPolicy && model.selectedPolicy.name) || 'hypervisor.textSelectPolicy' | translate}}
+          </button>
+          <div class="dropdown-menu slas-menu scrollable-menu dropdown-menu-sdl" aria-labelledby="btnGroupDrop2">
+            <a *ngFor="let policy of policies" tabindex="0" class="dropdown-item dropdown-item-sdl" clickOnEnterKeydown (click)="onSlaClick(policy)">{{policy.name}}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-8" *ngIf="model.selectedPolicy">
+      <div class="card-title space-top-10">
+        <h2 class="sdl-header">
+          {{'wizard.textPolicyDetails' | translate}}
+        </h2>
+        <label>{{model.selectedPolicy ? model.selectedPolicy.name : ''}}</label>
+        <br>
+        <br>
+        <h2 class="sdl-header">
+          {{'common.textFrequency' | translate}}
+        </h2>
+        <label>
+          {{model.selectedPolicy.spec.subpolicy[0].trigger && model.selectedPolicy.spec.subpolicy[0].trigger.frequency ? (model.selectedPolicy.spec | rpoDisplay) : 'common.textScheduleDisabled' | translate}}
+        </label>
+        <br>
+        <br>
+        <h2 class="sdl-header">
+          {{'common.textRetention' | translate}}
+        </h2>
+        <label>
+          {{model.selectedPolicy.spec | subPolicyDisplay: ((model.selectedPolicy && model.selectedPolicy.spec && model.selectedPolicy.spec.subpolicy && model.selectedPolicy.spec.subpolicy[0] && model.selectedPolicy.spec.subpolicy[0].type === 'SNAPSHOT') ? 'snapshot' : 'replication') | async }}
+        </label>
+      </div>
+    </div>
+  </div>
+</div>
+<ng-template #summary>
+  <div class="summary">
+    <div class="content">
+      <div class="property">
+        <label class="name" translate>{{'wizard.job.textSelectSlaSummary'}}</label>
+        <label class="value">{{(model.selectedPolicy ? model.selectedPolicy.name : '') || ('wizard.job.textEmpty' | translate)}}</label>
+      </div>
+    </div>
+  </div>
+</ng-template>

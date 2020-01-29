@@ -1,0 +1,153 @@
+<div>
+  <div class="log-type-filter align-right row margin-bottom-10">
+    <label translate>{{'job.textFilterJobLogLabel'}}</label>
+    <div class="log-type-list" keyboardMultiselect [multiselect]="multiselect">
+      <angular2-multiselect [settings]="dropdownSettings" #multiselect
+                            [data]="selectableLogTypes"
+                            [(ngModel)]="selectedLogTypes"
+                            (onSelect)="onLogTypeSelect($event)"
+                            (onDeSelect)="onLogTypeDeselect($event)"
+      ></angular2-multiselect>
+    </div>
+  </div>
+  <div class="horizontal-scroll" #jobcontainer>
+  <table>
+    <thead>
+    <tr>
+      <th class="collapsible-col align-center"></th>
+      <th class="normal-col sortable" [ngClass]="{'st-sort-ascent': isAsc('name'), 'st-sort-descent': isDesc('name')}"
+          tabindex="0" clickOnEnterKeydown (click)="onSort('name')" translate>{{'job.textName'}}</th>
+      <th class="normal-col" translate>{{'job.textType'}}</th>
+      <th class="normal-col sortable" [ngClass]="{'st-sort-ascent': isAsc('status'), 'st-sort-descent': isDesc('status')}"
+          tabindex="0" clickOnEnterKeydown (click)="onSort('status')" translate>{{'job.textStatus'}}</th>
+      <th class="normal-col sortable" [ngClass]="{'st-sort-ascent': isAsc('nextFireTime'), 'st-sort-descent': isDesc('nextFireTime')}"
+          tabindex="0" clickOnEnterKeydown (click)="onSort('nextFireTime')"
+          translate>{{'job.textNextRuntime'}}</th>
+      <th class="normal-col sortable" [ngClass]="{'st-sort-ascent': isAsc('lastRunTime'), 'st-sort-descent': isDesc('lastRunTime')}"
+          tabindex="0" clickOnEnterKeydown (click)="onSort('lastRunTime')" translate>{{'job.textLastRuntime'}}</th>
+      <th class="operation-col align-center"></th>
+    </tr>
+    </thead>
+    <tbody>
+    <ng-template let-item ngFor [ngForOf]="model.records | paging: model.json()" [ngForTrackBy]="trackByModel">
+      <tr>
+        <td class="align-center">
+          <button [attr.aria-label]="(isExpanded(item) ? 'common.textCollapse' : 'common.textExpand') | translate"
+                  onCollapsableButtonDirective
+                  [useArrow]="true"
+                  (onShowClickEvent)="setExpanded(item)"
+                  (onHideClickEvent)="setCollapsed(item)"
+                  [collapsableSubject]="collapseAllSubject"
+                  [collapsableElementRef]="sessionstable"
+                  (click)="onDetailClick(item)"
+                  [id]="getCollapsibleOperatorId(item)">
+          </button>
+        </td>
+        <td>{{item.name | ondemandSessionName}}</td>
+        <td>{{item.type | jobTypeDisplay}}</td>
+        <td>{{item.status}}</td>
+        <td>{{item.nextFireTime | amDateFormat: 'll LTS'}}</td>
+        <td>{{item.lastRunTime | amDateFormat: 'll LTS'}}</td>
+        <td class="align-center" >
+          <dropdown [value]="'job.textOperation' | translate"
+                    [scrollableHolder]="jobcontainer"
+                    [scrollableHolderMargin]="24"
+                    [noBorder]="true"
+                    (onSelect)="onExecuteAction(item, $event)"
+                    [id]="getDropDownMenuId(item)"
+                    [dropMenuRight]="true"
+                    [key]="'title'"
+                    [values]="getActionLinks(item)"></dropdown>
+        </td>
+      </tr>
+        <td colspan=9 class="sessions">
+          <div class="offset-table align-left" #sessionstable>
+            <table>
+              <thead>
+              <tr>
+                <th class="collapsible-col log-type-col align-center" translate>{{'job.textLogFile'}}</th>
+                <th class="normal-col2" translate>{{'job.textStartTime'}}</th>
+                <th class="normal-col2" translate>{{'job.textEndTime'}}</th>
+                <th class="normal-col2" translate>{{'job.textDuration'}}</th>
+                <th class="normal-col2" translate>{{'job.textStatus'}}</th>
+                <th *ngIf="item.vmRelevant" class="normal-col2" translate>{{'job.textSubPolicyType'}}</th>
+                <th *ngIf="item.vmRelevant" class="normal-col2" translate>{{'job.textTotalVMs'}}</th>
+                <th *ngIf="item.vmRelevant" class="normal-col2" translate>{{'job.textSuccessfulVMs'}}</th>
+                <th *ngIf="item.vmRelevant" class="normal-col2" translate>{{'job.textFailedVMs'}}</th>
+                <th class="operation-col align-center"></th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngIf="item.metadata['hasNoSessions']">
+                <td colspan=9 translate>{{'job.textNoJobSessions'}}</td>
+              </tr>
+              <ng-template let-session ngFor [ngForOf]="sessionPaginationReady(item)? (sessionPaginationModel(item).records | paging: sessionPaginationModel(item).json()) : item.sessions" [ngForTrackBy]="trackByModel">
+                <tr>
+                  <td class="align-center">
+                    <button [attr.aria-label]="(isExpanded(item, session) ? 'common.textCollapse' : 'common.textExpand') | translate"
+                            (click)="onLogClick(item, session)"
+                            onCollapsableButtonDirective
+                            (onShowClickEvent)="setExpanded(item, session)"
+                            (onHideClickEvent)="setCollapsed(item, session)"
+                            [useArrow]="true"
+                            [id]="getCollapsibleOperatorId(item, session)"
+                            [collapsableElementRef]="logtable">
+                    </button>
+                  </td>
+                  <td class="nowrap align-left">{{session.start | amDateFormat: 'll LTS'}}</td>
+                  <td class="nowrap align-left">{{session.end | amDateFormat: 'll LTS'}}</td>
+                  <td>{{session.duration | durationDisplay}}</td>
+                  <td>{{session.statusDisplay || session.status}}</td>
+                  <td *ngIf="item.vmRelevant">{{session.subPolicyType | jobTypeDisplay}}</td>
+                  <td *ngIf="item.vmRelevant">{{session.getStatValue('', 'total')}}</td>
+                  <td *ngIf="item.vmRelevant">{{session.getStatValue('', 'success')}}</td>
+                  <td *ngIf="item.vmRelevant">{{session.getStatValue('', 'failed')}}</td>
+                  <td class="align-center" (clickOutside)="onClickDropDownOutside(session)">
+                    <span *ngIf="canDownloadLogs(session)" tabindex="0" clickOnEnterKeydown (click)="onDownloadLogs(session)"
+                          class="link fa fa-cloud-download">
+                    </span>
+                    <div *ngIf="session.hasActionLinksExceptExpire()" class="btn-group" role="group">
+                      <button [attr.id]="getDropDownActionId(session)" type="button" class="btn btn-default dropdown-toggle dropdown-toggle-sdl"
+                              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" (click)="toggleDropDown(session)">
+                        {{'job.textOperation' | translate}}
+                      </button>
+                      <div [attr.id]="getDropDownMenuId(session)" class="dropdown-menu dropdown-menu-right dropdown-menu-sdl" [ngClass]="isDropDown(session)? 'show' : 'hide'" [attr.aria-labelledby]="getDropDownActionId(session)">
+                        <a tabindex="0" class="dropdown-item capitalize dropdown-item-sdl" translate clickOnEnterKeydown (click)="onExecuteSessionAction(session, link)" *ngFor="let link of session.getActionLinksExceptExpire(); trackBy: trackByLinkModel">{{link.title || link.name}}</a>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+                  <td colspan=9 class="logs">
+                    <div class="offset-table align-left" #logtable >
+                      <job-log-table [autoLoad]="!!session.metadata['autoLoad']"
+                                     [autoRefreshMode]="true"
+                                     [locateMode]="session.metadata['locateLogMode']"
+                                     [locateLogId]="session.metadata['locateLogId']"
+                                     [filters]="logFilters"
+                                     [jobSession]="session"
+                                     (loadStart)="onLoadLogsStart($event)"
+                                     (loadEnd)="onLoadLogsEnd($event)"
+                                     (logLocated)="onLogLocated($event)">
+                      </job-log-table>
+                    </div>
+                  </td>
+              </ng-template>
+              </tbody>
+            </table>
+            <div class="space-top-10 align-right session-toolbar">
+              <paging-toolbar *ngIf="sessionPaginationReady(item)"
+                              [model]="sessionPaginationModel(item)"
+                              [id]="sessionPaginationModel(item).id"></paging-toolbar>
+            </div>
+          </div>
+        </td>
+    </ng-template>
+    </tbody>
+  </table>
+  </div>
+  <br/>
+  <paging-toolbar (pageChange)="onPageChange($event)" (refresh)="onRefresh($event)"
+                  [model]="model"></paging-toolbar>
+  <refresh-button-basic [defaultState]="!locateMode" [rate]="30000" [tickEnabled]="true" (onTick)="refresh()"></refresh-button-basic>
+  <job-action-schema *ngIf="showJobSchema" [textActionOptions]="textActionOptions" [model]="jobSchema" (run)="onJobRun($event)" (abort)="onAbort()"></job-action-schema>
+</div>

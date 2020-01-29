@@ -1,0 +1,19 @@
+<div class="space-top-10"
+     [hidden]="hideRegistration"
+     [ngClass]="{'masked': maskedContainer}" #cloudcontainer>
+  <ba-card baCardClass="dark-card viewport100 with-scroll" title="{{(editMode ? 'repositoryserver.textUpdateRegistrationRepositoryServer'
+  : 'repositoryserver.textRegistrationRepositoryServer') | translate }}">
+    <div class="form-horizontal">
+      <cloud-schema 
+          [model]="selectedCloudSchema"
+          [hiddenParams]="['accessKey', 'enableDeepArchive']"
+      ></cloud-schema>
+      <div>
+        <div>
+          <cloud-certificate-selector [clsOfLabelCol]="'col-sm-2'"
+                                      [type]="'sp'"></cloud-certificate-selector>
+        </div>
+      </div>
+    </div>
+  </ba-card>
+</div>

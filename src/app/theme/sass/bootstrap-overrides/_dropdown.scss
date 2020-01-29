@@ -1,0 +1,46 @@
+@import '../conf/_sdl-mixins.scss';
+
+.dropdown-item {
+  line-height: 1;
+}
+
+.dropdown-menu {
+  font-size: inherit;
+  z-index: 200;
+}
+
+.dropdown-item-sdl {
+  padding: 0.75em 1em 0.75em 1em;
+  @include setBackgroundColorActions();
+  @include setColorActions();
+}
+
+.dropdown-menu-sdl {
+  font-size: inherit;
+  color: $nc3;
+  border-color: $gray70 !important;
+  border-radius: 0 !important;
+  height: auto !important;
+  max-height: 200px !important;
+  overflow-x: hidden !important;
+  @include setBorderColorActions();
+  @include setColorActions();
+}
+
+button.dropdown-toggle-sdl {
+  border-color: $gray70 !important;
+  height: 2.5em;
+  //width: 15em;
+  text-align: left;
+  @include setBorderColorActions();
+  @include setColorActions();
+}
+
+button.dropdown-toggle-sdl[disabled] {
+  border-color: $gray70 !important;
+  background-color: $neutral-color-3 !important;
+  cursor: not-allowed;
+  @include setBorderColorActions($gray70, $gray70);
+  @include setBackgroundColorActions($neutral-color-3);
+  @include placeholderStyle($gray70, 0.6);
+}

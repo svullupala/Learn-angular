@@ -1,0 +1,51 @@
+<div class="auth-main">
+  <div class="auth-block">
+    <img src="assets/img/app/branding/ibm/logo/SPP_128px.svg" alt="{{'login.title' | translate}}"
+      style="display: block; margin: 0 auto; padding: 0; width: 128px;">
+    <h1>IBM <span id="name2">Spectrum </span><span id="name3">Protect Plus</span></h1>
+    <div [ngClass]="{'hidden': isBrowserValid}" style="text-align: center;">
+      <h5>{{getCurrentBrowserMessage()}}</h5>
+      <h5 translate>{{'login.textSupportedMessage'}}</h5>
+        <h6> Firefox: 55.0.3</h6>
+          <h6>Google Chrome: 60.0.3112</h6>
+            <h6>Microsoft Edge (EdgeHTML): 15.15063</h6>
+      
+    </div>
+    <form cdkTrapFocus cdkTrapFocusAutoCapture="true" [formGroup]="form" (ngSubmit)="onSubmit(form.value)"
+      class="form-horizontal" [ngClass]="{'hidden': !serverIsReady}">
+      <div
+        [ngClass]="{'has-error': (!username.valid && username.touched), 'has-success': (username.valid && username.touched), 'hidden': !isBrowserValid}">
+        <input #inputUsername cdkFocusInitial cdkFocusRegionStart [formControl]="username"
+          [attr.aria-label]="'login.textEnterYourUsername' | translate" type="text" class="form-control auth-input"
+          id="inputUsername" placeholder="{{'login.username' | translate}}">
+      </div>
+      <div class="margin8"></div>
+      <div
+        [ngClass]="{'has-error': (!password.valid && password.touched), 'has-success': (password.valid && password.touched), 'hidden': !isBrowserValid}">
+        <input [formControl]="password" [attr.aria-label]="'login.textEnterYourPassword' | translate" type="password"
+          class="form-control auth-input" id="inputPassword" placeholder="{{'login.password' | translate}}">
+      </div>
+      <div class="submitBox" [ngClass]="{'hidden': !isBrowserValid}">
+        <button cdkFocusRegionEnd [disabled]="!form.valid" type="submit" class="btn btn-primary btn-auth"
+          translate>{{'login.sign_in'}}</button>
+      </div>
+    </form>
+  </div>
+</div>
+<div class="auth-footer">
+  <img src="assets/img/app/branding/ibm/logo/ibmLogoWhite_64.png" alt="{{'login.ibm' | translate}}" id="ibmlogo">
+  <label id="version" *ngIf="show">{{buildInfo}}</label>
+  <label id="copyright" translate>{{'about.copyright'}}</label>
+</div>
+<msgbox-alert [autoShow]="false" [simplyMask]="simplyMask"></msgbox-alert>
+<error-handler></error-handler>
+<change-password
+  (passwordChange)="onPasswordChange($event)"
+  (passwordChangeAbort)="onPasswordChangeAbort()"
+  [autoShow]="false"
+  [userName]="isOsPasswordExpired ? 'serveradmin' : username.value"
+  [minPasswordLength]="minPasswordLength"
+  [changeOsPassword]="isOsPasswordExpired"
+  [isLoggedIn]="session.isValidSession()">
+</change-password>
+<initialize-system (okClick)="afterInitSystem()"></initialize-system>

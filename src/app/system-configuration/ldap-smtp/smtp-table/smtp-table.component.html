@@ -1,0 +1,47 @@
+<table>
+  <thead>
+    <tr>
+      <th class="action-icon-column"></th>
+      <th class="action-icon-column"></th>
+      <th translate>{{'smtp.hostAddress'}}</th>
+      <th translate>{{'smtp.username'}}</th>
+      <th translate>{{'smtp.timeout'}}</th>
+      <th translate>{{'smtp.fromAddress'}}</th>
+      <th translate>{{'smtp.subjectPrefix'}}</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody *ngIf="isRecords()">
+    <tr>
+      <td class="action-icon-format">
+        <i *ngIf="smtp.hasLink('delete')" tabindex="0" (keydown.enter)="unregister(smtp)" (click)="unregister(smtp)" class="ion-close-round" ></i>
+      </td>
+      <td class="action-icon-format">
+        <i *ngIf="smtp.hasLink('edit')" tabindex="0" (keydown.enter)="edit(smtp)" (click)="edit(smtp)" class="ion-edit"></i>
+      </td>
+      <td>{{smtp.hostAddress}}</td>
+      <td>{{smtp.username}}</td>
+      <td>{{smtp.timeout}}</td>
+      <td>{{smtp.fromAddress}}</td>
+      <td>{{smtp.subjectPrefix}}</td>
+      <td class="align-center" (clickOutside)="onClickDropDownOutside(session)">
+        <div class="btn-group" role="group">
+          <button [attr.id]="getDropDownActionId(smtp)" type="button" class="btn btn-default dropdown-toggle dropdown-toggle-sdl noborder"
+                  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" (click)="toggleDropDown(smtp)">
+            {{'job.textOperation' | translate}}
+          </button>
+          <div [attr.id]="getDropDownMenuId(smtp)" class="dropdown-menu dropdown-menu-right dropdown-menu-sdl" [ngClass]="isDropDown(smtp)? 'show' : 'hide'" [attr.aria-labelledby]="getDropDownActionId(smtp)">
+            <a tabindex="0" class="dropdown-item capitalize dropdown-item-sdl" translate clickOnEnterKeydown (click)="onExecuteSessionAction(smtp, link)" *ngFor="let link of smtp.getLinks('action'); trackBy: trackByLinkModel">{{link.title || link.name}}</a>
+          </div>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<base-modal-component #rerun [title]="'ldap-smtp.textTestSmtp' | translate"
+                      [disableConfirmButton]="((notificationComponent.errorCondition()) && (notificationComponent.getNotification().length === 0)) ||
+                            disableConfirmButton"
+                      [confirmBtnText]="'ldap-smtp.textTestSmtp' | translate" (onSave)="testNotification()"
+                      (onCancel)="notificationComponent.emptyNotificationList()" >
+  <notification-component></notification-component>
+</base-modal-component>

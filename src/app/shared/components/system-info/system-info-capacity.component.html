@@ -1,0 +1,24 @@
+<div class="card-block widget-card-block">
+    <div class="row progress-bar-row">
+      <div class="col-lg-12">
+       <progress-bar *ngIf="data1" [status]="getProgressBarStatusFileSystem(data1)" [label]="textData1"
+                  [percentage]="data1.util"
+                  [totalLabel] = "getData1TotalLabel(data1)"></progress-bar>
+      </div>
+    </div>
+    <div class="row progress-bar-row">
+      <div class="col-lg-12">
+        <progress-bar *ngIf="data2" [status]="getProgressBarStatusFileSystem(data2)" [label]="textData2"
+                  [percentage]="data2.util"
+                  [totalLabel] = "getData1TotalLabel(data2)"></progress-bar>
+      </div>
+    </div>
+    <div class="row progress-bar-row">
+      <div class="col-lg-12">
+        <progress-bar *ngIf="data3" [status]="getProgressBarStatusFileSystem(data3)" [label]="textData3"
+                  [percentage]="data3.util"
+                  [totalLabel] = "getData1TotalLabel(data3)"></progress-bar>
+      </div>
+    </div>
+</div>
+

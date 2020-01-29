@@ -1,0 +1,34 @@
+<div class="applications-assign-policy">
+  <div class="applications-assign-policy-header">
+    <h3 class="title">{{ assignPolicyTo.name }}</h3>
+    <div>
+      <application-icon [model]="assignPolicyTo" class="icon-resource"></application-icon>
+      {{ resourcesDisplayName$ | async }}
+    </div>
+    <button
+      cdkFocusRegionStart
+      type="button"
+      class="close applications-assign-policy-close"
+      aria-label="Close"
+      (click)="onClose()"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <dynamic-tabset [tabs]="tabs" (select)="onSelectTab($event)"></dynamic-tabset>
+  <ng-template #policyTemp>
+    <applications-assign-policy-policies
+      [assignPolicyTo]="assignPolicyTo"
+      [applicationType]="applicationType"
+    ></applications-assign-policy-policies>
+  </ng-template>
+  <ng-template #runSettingsTemp>
+    <applications-assign-policy-run-settings
+      [assignPolicyTo]="assignPolicyTo"
+      [isActive]="selectedTab === 'runSettings'"
+      [applicationType]="applicationType"
+      [view]="view"
+      [editMode]="runSettingsEditMode"
+    ></applications-assign-policy-run-settings>
+  </ng-template>
+</div>

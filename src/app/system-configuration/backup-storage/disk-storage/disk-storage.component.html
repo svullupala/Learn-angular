@@ -1,0 +1,23 @@
+<ba-card title="{{'storage.textDiskStorage' | translate}}" baCardClass="dark-card" [ngClass]="{'hidden': mode !== 'list', 'masked': masked}">
+  <div class="align-right margin-bottom-10">
+    <button *ngIf="showCreateDiskButton" class="sdl inline with-icon" (click)="onAddClick()" translate>
+      <i class="bidi-add-new-white_16"></i>{{'storage.textAddDiskStorage' | translate}}
+    </button>
+  </div>
+  <disk-table
+    [siteMap]="siteMap"
+    [siteDropdownData]="siteDropdownData"
+    [storageFilter]="['vsnap']" (editClick)="onEditClick($event)" (manageClick)="onManageClick($event)" (showCreateDisk)="setCreateDiskButton($event)"></disk-table>
+</ba-card>
+<ba-card [title]="cardTitle" baCardClass="dark-card" [ngClass]="{'hidden': mode !== 'edit'}">
+  <disk-edit [storageFilter]="['vsnap']"
+             [siteMap]="siteMap"
+             [siteDropdownData]="siteDropdownData"
+             (cancelClick)="onCancelClick()" (saveClick)="onSaveClick($event)"></disk-edit>
+</ba-card>
+<ba-card title="{{'storage.textManageVSnap'| translate }} {{' ' + model.name }}" baCardClass="dark-card" [ngClass]="{'hidden': mode !== 'manage'}">
+  <disk-manage
+    [siteMap]="siteMap"
+    [siteDropdownData]="siteDropdownData"
+    (cancelClick)="onCancelClick()"></disk-manage>
+</ba-card>

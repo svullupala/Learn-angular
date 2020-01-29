@@ -1,0 +1,54 @@
+$ibm-design-icons-path: "~ibm-design-icons/dist/";
+$ibm-design-icons-path-png: $ibm-design-icons-path + "png/";
+$ibm-design-icons-path-svg: $ibm-design-icons-path + "svg/";
+
+@mixin idi-svg-icon($url, $width:'', $height:'') {
+  display: inline-block;
+  background: url($url) no-repeat center;
+  background-size: contain;
+  vertical-align: middle;
+  @if ($width != '') {
+    width: $width + px;
+  }
+  @if ($height != '') {
+    height: $height + px;
+  }
+}
+
+@mixin ibm-svg-icon-class($iconName, $path, $width:'', $height:'') {
+  .#{'idi-' + $iconName} {
+    @include idi-svg-icon($ibm-design-icons-path-svg + $path + $iconName + '.svg', $width, $height);
+  }
+}
+
+@mixin idi-png-icon($url, $width, $height) {
+  display: inline-block;
+  width: $width + px;
+  height: $height + px;
+  background: url($url) no-repeat center center;
+  background-size: $width + px $height + px;
+}
+
+@mixin ibm-png-icon-class($iconName, $path, $width, $height) {
+  .#{'idi-' + $iconName} {
+    @include idi-png-icon($ibm-design-icons-path-png + $path + $iconName + '.png', $width, $height);
+  }
+}
+/**
+  Includes required IBM design icons here. for examples -
+
+  1. include a png icon:
+    @include ibm-png-icon-class('add-new_16', 'action-based/', 16, 16);
+
+    then you can use it in HTML file - <i class="idi-add-new_16"></i>
+
+
+  2. include a svg icon:
+    @include ibm-svg-icon-class('search_32', 'action-based/', 32, 32);
+
+    then you can use it in HTML file - <i class="idi-search_32"></i>
+*/
+
+// @include ibm-png-icon-class('add-new_16', 'action-based/', 16, 16);
+
+@include ibm-svg-icon-class('search_32', 'action-based/', 32, 32);

@@ -1,0 +1,50 @@
+<div class="page-top clearfix" baScrollPosition maxHeight="50" (scrollChange)="scrolledChanged($event)"
+     [ngClass]="{scrolled: isScrolled}">
+  <div>
+    <a cdkMonitorElementFocus href="javascript:void(0)" (click)="onLogoClick()" class="al-logo clearfix">
+      <img src="assets/img/app/branding/ibm/logo/spp-white-32x32.svg"
+           alt="IBM Spectrum Protect Plus"
+           style="display: block; margin: 16px;">
+    </a>
+    <div class="trial-info" *ngIf="isTrialVersion()">
+      <span class="trial-title">{{ 'license.textTrial' | translate }}</span>
+      <span class="expiration">{{ textExpirationDate }}</span>
+    </div>
+  </div>
+  <div class="user-profile clearfix container-fluid">
+    <div #dropdown class="dropdown al-user-profile user" [ngClass]="{'user-icon': userIconMode}">
+      <button sdlTooltip [placement]="'left'" [triggers]="''" [sdlTooltip]="toolTip" [mode]="'info'" [isOpen]="toolTip !== undefined"
+          cdkMonitorElementFocus class="btn btn-default profile-toggle-link dropdown-toggle" [ngClass]="{'user-icon': userIconMode}" id="user-profile-dd" data-toggle="dropdown" aria-expanded="false">
+        <label *ngIf="!userIconMode" class="user-label">{{welcomeText}}</label>
+        <i *ngIf="!userIconMode" class="ion-chevron-down" style="margin: 20px 16px;"></i>
+        <i *ngIf="userIconMode" class="bidi-user_24 user-icon" title="{{welcomeText}}" style="margin: 20px;"></i>
+      </button>
+      <ul tabindex="0" #highlightableContainer
+        class="dropdown-menu top-dropdown-menu profile-dropdown" aria-labelledby="user-profile-dd" (click)="OnMenuClick($event.target)">
+        <li #about class="dropdown-item list-item-padding" id="about"
+            (itemSelected)="OnMenuClick(about)" highlightable>{{'common.aboutText' | translate}}</li>
+        <li #whatsnew class="dropdown-item list-item-padding" id="whatsnew"
+            (itemSelected)="OnMenuClick(whatsnew)" highlightable>{{'common.textWhatsNew' | translate }}</li>
+        <li *ngIf="isDownloadLogCapable" class="dropdown-item list-item-padding" id="downloadlogs" (click)="onDownloadLogs()"
+            (itemSelected)="onDownloadLogs()" highlightable>{{'job.textDownloadLogs' | translate}}</li>
+        <!-- <li #launchtesttool class="dropdown-item list-item-padding" id="launchtesttool"
+            (itemSelected)="OnMenuClick(launchtesttool)" highlightable>{{'common.textLaunchTestTool' | translate}}</li> -->
+        <li class="dropdown-item list-item-padding" id="downloadtesttool" (click)="onDownloadTestTool()"
+            (itemSelected)="onDownloadTestTool()" highlightable>{{'common.textDownloadTestTool' | translate}}</li>
+        <li #launchapi class="dropdown-item list-item-padding" id="launchapi"
+            (itemSelected)="OnMenuClick(launchapi)" highlightable>{{'doc.textRestApi' | translate}}</li>
+        <li #quickstart class="dropdown-item list-item-padding" id="quickstart"
+            (itemSelected)="OnMenuClick(quickstart)" highlightable>{{'quickstart.textShowQuickStart' | translate}}</li>
+        <!--<li class="dropdown-item" id="settings">Settings</li>-->
+        <li #logout class="dropdown-item list-item-padding" id="logout"
+            (itemSelected)="OnMenuClick(logout)" highlightable>{{'common.signOutText' | translate}}</li>
+      </ul>
+    </div>
+    <div class="al-user-profile help">
+      <button cdkMonitorElementFocus title="{{'common.helpText' | translate}}" class="btn btn-default" id="launch-help" (click)="onLaunchHelp()">
+        <i class="bidi-help" style="margin: 20px 16px; fill:#FFFFFF"></i>
+      </button>
+    </div>
+    <ba-msg-center></ba-msg-center>
+  </div>
+</div>

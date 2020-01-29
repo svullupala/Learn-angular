@@ -1,0 +1,83 @@
+<form class="form-horizontal" [formGroup]="form">
+  <div [hidden]="!model.phantom" class="form-group" style="margin-left: -1px;">
+    <label class="control-label" translate>{{'storage.textFollowSPPBlueprint'}}</label>
+  </div>
+  <div class="form-group row"
+    [ngClass]="{'has-error': (!hostAddress.valid && hostAddress.touched), 'has-success': (hostAddress.valid && hostAddress.touched)}">
+    <label for="inputName" class="col-sm-2 control-label" translate>{{'storage.textHostAddress'}}</label>
+    <div class="col-sm-3">
+      <input sdlTooltip [mode]="'critical'"
+        [isDisabled]="(hostAddress.valid && hostAddress.touched && hostAddress.valid) || hostAddress.untouched"
+        [placement]="'right'" [sdlTooltip]="'common.textRequiredFieldSuggestion' | translate"
+        [formControl]="hostAddress" [(ngModel)]="model.hostAddress" type="text" class="form-control" id="inputName"
+        placeholder="vc1.mynetwork.com">
+    </div>
+  </div> 
+
+  <div class="form-group row"
+    [ngClass]="{'has-error': (!site.valid && site.touched), 'has-success': (site.valid && site.touched)}">
+    <label for="inputSite" class="col-sm-2 control-label" translate>{{'storage.textSite'}}</label>
+    <div class="col-sm-3">
+      <select [formControl]="site" [(ngModel)]="model.site" (change)="onChangeSite()" type="text" class="form-control"
+        id="inputSite">
+        <ng-container *ngFor="let site of siteDropdownData">
+          <option *ngIf="site.demo === false" [ngValue]="site.id">{{site.name}}</option>
+        </ng-container>
+      </select>
+    </div>
+  </div>
+  <div *ngIf="model.site === 'new'" class="form-group row"
+    [ngClass]="{'has-error': !isSiteNameValid(), 'has-success': isSiteNameValid()}">
+    <label for="inputNewSiteName" class="col-sm-2 control-label" translate></label>
+    <div class="col-sm-3">
+      <input [ngModelOptions]="{standalone: true}" [(ngModel)]="model.siteName" type="text" class="form-control"
+        id="inputNewSiteName" placeholder="{{'storage.textSiteName' | translate}}">
+    </div>
+  </div>
+  <div class="form-group row"
+    [ngClass]="{'has-error': (!type.valid && type.touched), 'has-success': (type.valid && type.touched)}"
+    [hidden]="storageFilter.length === 1">
+    <label for="selectType" class="col-sm-2 control-label" translate>{{'storage.textType'}}</label>
+    <div class="col-sm-3">
+      <select [formControl]="type" [(ngModel)]="model.type" type="text" class="form-control" id="selectType">
+        <option *ngIf="storageFilter.indexOf('netapp') != -1" value="netapp" translate>{{ 'storage.textNetapp'}}
+        </option>
+        <option *ngIf="storageFilter.indexOf('ibmxiv') != -1" value="ibmxiv" translate>{{
+          'storage.textIbmSpectrumAccelerate'}}
+        </option>
+        <option *ngIf="storageFilter.indexOf('ibmsvc') != -1" value="ibmsvc" translate>{{
+          'storage.textIbmSpectrumVirtualize'}}
+        </option>
+        <option *ngIf="storageFilter.indexOf('pure') != -1" value="pure" translate>{{ 'storage.textPure'}}
+        </option>
+        <option *ngIf="storageFilter.indexOf('emcvnx') != -1" value="emcvnx" translate>{{ 'storage.textEmc'}}
+        </option>
+        <option *ngIf="storageFilter.indexOf('vsnap') != -1" value="vsnap" translate>{{ 'storage.textVsnap'}}
+        </option>
+      </select>
+    </div>
+  </div>
+  <identity-user-enter-select [model]="userInfo" [type]="userType" [textUsername]="'storage.textUserId'"
+    [textPassword]="'storage.textPassword'" [clsOfLabelCol]="'col-sm-2'" [clsOfFieldCol]="'col-sm-3'" [noPlaceholder]="true">
+  </identity-user-enter-select>
+  <div class="form-group row"
+    [ngClass]="{'has-error': (!portNumber.valid && portNumber.touched), 'has-success': (portNumber.valid && portNumber.touched)}"
+    [hidden]="model.type === 'vsnap'">
+    <label for="inputPort" class="col-sm-2 control-label" translate>{{'storage.textPort'}}</label>
+    <div class="col-sm-3">
+      <input [formControl]="portNumber" [(ngModel)]="model.portNumber" type="number" min="0" max="65535"
+        class="form-control" id="inputPort" placeholder="443">
+    </div>
+  </div>
+  <div class="form-group row" [hidden]="model.type === 'vsnap'">
+    <div class="offset-sm-2 col-sm-2">
+      <div class="checkbox">
+        <ba-checkbox [(ngModel)]="model.sslConnection" [label]="textUseSSL" [ngModelOptions]="{standalone: true}"
+          translate></ba-checkbox>
+      </div>
+    </div>
+  </div>
+</form>
+<confirm-toolbar-component (cancelEvent)="onCancelClick()" (confirmEvent)="onSaveClick()"
+  [disableConfirmButton]="!isRegistrationFormValid()" [splitButtons]="false" [floatRight]="false">
+</confirm-toolbar-component>

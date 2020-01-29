@@ -1,0 +1,24 @@
+<div class="hypervisor-list">
+  <div class="hypervisor-list-search">
+    <sdl-async-search-bar
+      [displayFieldKey]="'name'"
+      [searchAction]="search.bind(this)"
+      [textPlaceholderLabel]="'vmware.textSearchForVMsAndFolders' | translate"
+      (selectResult)="onSelectSearchResult($event)"
+    >
+    </sdl-async-search-bar>
+    <a class="hypervisor-list-advanced-search-link" href="#">
+      {{ 'vmware.textAdvancedSearch' | translate }}
+    </a>
+  </div>
+  <h3 class="section-headline hypervisor-list-headline">
+    {{ 'vmware.textTotalVCenters' | translate }} {{ totalRecords }}
+  </h3>
+  <div class="hypervisor-list-items">
+    <vmare-vcenter-card *ngFor="let item of records" [item]="item"
+                        (select)="onItemSelect($event)"
+                        (edit)="onItemEdit($event)"
+                        (remove)="onItemRemove($event)"
+    ></vmare-vcenter-card>
+  </div>
+</div>

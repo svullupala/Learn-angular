@@ -1,0 +1,33 @@
+<div style="height: 330px;" [ngClass]="{'masked': mask}">
+  <div style="height: 300px; overflow: auto;">
+    <div class="horizontal-scroll">
+      <table>
+        <thead>
+        <tr>
+          <th width="3%"></th>
+          <th translate>{{'hypervisor.textItem'}}</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr [hidden]="!(records === undefined || records.length < 1)">
+          <td>
+            <i class="bidi-status-warning"></i>
+          </td>
+          <td colspan="3">
+            <span>{{ 'hypervisor.addToBackupListText' | translate }}</span>
+          </td>
+        </tr>
+        <tr *ngFor="let item of records; let i = index" class="no-top-border">
+          <td>
+            <button class="btn btn-danger btn-xs"  (click)="remove(item)" type="button"
+                    [attr.aria-label]="'common.textDeselect' | translate">
+              <i class="ion-minus"></i>
+            </button>
+          </td>
+          <td ngClass="nowrap">{{item.name}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,71 @@
+<div class="scroll outer-jobs-container-style">
+  <div class="jobs-table-style overflow">
+    <table>
+      <thead>
+      <tr>
+        <th [title]="tableType === 'application' ? ('common.textDatabaseName' | translate) : ''" translate>{{'hypervisor.textResources'}}</th>
+        <th translate>{{'job.textType'}}</th>
+        <th class="action-icon-column"></th>
+        <th *ngIf="enableApplicationServerColumn" translate>{{'common.textApplicationServers'}}</th>
+        <th [title]="tableType === 'application' ? ('common.textRecoveryPath' | translate) : ''" *ngIf="enableMountPointColumn" translate>{{'common.textMountPoints'}}</th>
+        <th translate>{{'scripts.textLastUpdated'}}</th>
+        <th class="operation-col align-center "></th>
+      </tr>
+      </thead>
+      <tbody>
+        <tr [hidden]="!(clones && clones.length < 1)">
+          <td>
+            <i class="bidi-status-warning"></i>
+          </td>
+          <td colspan="3">
+              <span translate>{{'common.textThereIsNoEntries'}}</span>
+          </td>
+        </tr>
+      <tr *ngFor="let item of clones | paging: jobPaginateConfig.json(); trackBy: trackByModel" class="no-top-border">
+        <td ngClass="ellipsis" [title]="item && item.getVmList()">{{item && item.getVmList()}}</td>
+        <td ngClass="ellipsis" [title]="item.subTypeDisplayName">{{item.subTypeDisplayName}}</td>
+        <td class="action-icon-format">
+          <button [title]="'common.textClickForAdditionalInfo' | translate"
+                  style="background-color: transparent; border: none;"
+                  (click)="onRestoreInfoClick(item)" *ngIf="item.hasPostRestoreMessage() || item.hasPostRestoreCommand()">
+            <img src="{{ ( 'app/misc/info.png' | baAppPicture )}}"
+                 alt="{{'common.textInfoAltText' | translate}}" width="16" height="16">
+          </button>
+        </td>
+        <td *ngIf="enableApplicationServerColumn" class="ellipsis" [title]="item.postRestoreInfoApplicationServers || ''">
+          {{item.postRestoreInfoApplicationServers}}</td>
+        <td *ngIf="enableMountPointColumn" class="ellipsis" [title]="item.mountPoints || ''">
+          {{item.mountPoints}}</td>
+        <td>{{item.lastUpdate | amDateFormat: 'll LTS'}}</td>
+        <td class="align-center">
+          <div class="btn-group" role="group">
+            <button id="btnGroupDrop3" type="button" class="btn btn-default dropdown-toggle dropdown-toggle-sdl noborder"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              {{'hypervisor.textOperation' | translate}}
+            </button>
+            <div class="dropdown-menu dropdown-menu-sdl" aria-labelledby="btnGroupDrop3">
+              <a tabindex="0" clickOnEnterKeydown class="dropdown-item dropdown-item-sdl capitalize" translate *ngFor="let link of item.getActionLinks()"
+              [hidden]="link.name === 'expireall'" (click)="onExecuteAction(link.href)">{{link.title || link.name}}</a>
+            </div>
+          </div>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="container-fluid form-inline">
+    <refresh-button-basic [defaultState]="true" [rate]="30000"
+                           [tickEnabled]="true" (onTick)="loadData()"></refresh-button-basic>
+    <paging-toolbar
+      (pageChange)="onPageChange($event)" (refresh)="loadData()"
+                    [id]="jobPaginateConfig.id" [total]="jobPaginateConfig.totalItems"></paging-toolbar>
+  </div>
+</div>
+<ng-template #postRestoreTemplate>
+  <div>
+    <label class="form-control-label">{{jobSessionWithPostRestoreInfo && jobSessionWithPostRestoreInfo.postRestoreInfoMessage}}</label>
+  </div>
+  <div>
+    <label class="form-control-label">{{jobSessionWithPostRestoreInfo && jobSessionWithPostRestoreInfo.postRestoreInfoCommand}}</label>
+  </div>
+</ng-template>

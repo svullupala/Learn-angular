@@ -1,0 +1,72 @@
+@import "../../theme/sass/conf/conf";
+
+@media screen and (min-width: 1620px) {
+  .row.shift-up {
+    > * {
+      margin-top: -573px;
+    }
+  }
+}
+
+@media screen and (max-width: 1620px) {
+  .card.feed-panel.large-card {
+    height: 824px;
+  }
+}
+
+.card {
+  border: 0;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.space {
+  height: 45px;
+}
+
+.align-right {
+  text-align: right;
+}
+
+.align-title-bar {
+  margin-top: -50px;
+}
+
+.side-by-side-wrapper {
+  display: flex;
+  flex-flow: row;
+  height: calc(100vh - 350px);
+}
+
+.side-by-side-left {
+  flex: 2;
+  margin-right: 0.75rem;
+  overflow: auto;
+}
+
+.side-by-side-right {
+  flex: 3;
+  margin-left: 0.75rem;
+  border: solid;
+  border-width: 1px;
+  overflow: auto;
+}
+
+.capitalize {
+  text-transform: capitalize;
+}
+
+.users-left {
+  height: calc(100vh - 360px);
+  min-height: 325px;
+  overflow: auto;
+}
+
+.users-right {
+  height: calc(100vh - 360px);
+  min-height: 325px;
+  overflow: auto;
+  border: 1px solid grey;
+}

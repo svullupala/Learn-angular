@@ -1,0 +1,35 @@
+<div class="form-inline">
+  <div class="form-group email-space" *ngFor="let notification of notificationList; let i = index">
+    <label class="label label-size">{{ notification && notification }}</label>
+    <button class="close"
+            (click)="onRemoveNotification(i)"
+            title="{{'notification.removeRecipentText' | translate}}"
+            aria-label="Close"><span>&times;</span>
+    </button>
+  </div>
+</div>
+<form [formGroup]="notificationForm"  class="align-left form-horizontal">
+  <div [ngClass]="{'has-success': !error && email.touched,
+        'has-error': error && email.touched}">
+    <input sdlTooltip 
+           [mode]="'critical'"
+           [isDisabled]="(!validate() && email.untouched) || (validate() && email.touched)" 
+           [placement]="'top'" 
+           [sdlTooltip]="'notification.errorSuggestion' | translate" 
+           type="email"
+           translate="yes"
+           [formControl]="email"
+           (keydown)="onEnterPressed($event)"
+           [(ngModel)]="email.value"
+           class="form-control"
+           placeholder="{{'notification.recipentPlaceholderText' | translate}}">
+  </div>
+  <button class="btn btn-primary btn-xs"
+          [disabled]="!validate()"
+          (click)="onAddNotification()"
+          type="button" >
+    <i class="ion-plus"></i>
+  </button>
+  <label translate>{{ 'notification.addRecipentText' }}</label>
+</form>
+

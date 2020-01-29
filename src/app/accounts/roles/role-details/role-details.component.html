@@ -1,0 +1,48 @@
+<div class="card with-scroll" [ngClass]="{'masked': masked}">
+  <div class="card-title space-top-10">
+    <h2>
+      <i *ngIf="onlyOneRole" class="i-rbac_role"></i>
+      <label>
+        {{hasRoles ? title : ('roles.textNoRolesSelected' | translate)}}
+      </label>
+      <i [hidden]="isCanned" tabindex="0" class="right action ion-more" container="body"
+         #popoverElement #popover="bs-popover" [popover]="popMenu" outsideClick="true" placement="left"></i>
+    </h2>
+  </div>
+  <div class="card-body">
+    <div *ngIf="hasRoles && !onlyOneRole" class="form-group row">
+      <table class="table table-hover">
+        <tbody>
+        <ng-template let-item ngFor [ngForOf]="models">
+          <tr class="no-top-border">
+            <td class="normal-col bold align-left">{{item.name}}</td>
+          </tr>
+        </ng-template>
+        </tbody>
+      </table>
+    </div>
+    <div *ngIf="hasRoles" class="form-group row view">
+      <div class="form-group">
+        <label class="control-label bold uppercase" translate>
+          {{'roles.textPermissionGroups'}}
+        </label>
+      </div>
+      <permission-role [roles]="models"></permission-role>
+    </div>
+    <div *ngIf="!hasRoles" class="form-group row">
+      <i class="i-rbac_role"></i>
+      <label class="control-label" translate>
+        {{'roles.textSelectRoleToSeeDetails'}}
+      </label>
+    </div>
+    <br>
+  </div>
+</div>
+<ng-template #popMenu>
+  <div (click)="onModifyRoleClick()" [hidden]="!canModify">
+    <label class="action" translate>{{'roles.textEditRole'}}</label>
+  </div>
+  <div (click)="onDeleteRoleClick()" [hidden]="!canModify">
+    <label class="action" translate>{{'roles.textDeleteRole'}}</label>
+  </div>
+</ng-template>

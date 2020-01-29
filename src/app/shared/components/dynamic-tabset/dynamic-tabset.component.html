@@ -1,0 +1,24 @@
+<tabset>
+  <tab *ngFor="let item of tabs"
+       [active]="item.active"
+       (select)="onSelect(item)"
+       (deselect)="onDeselect(item)"
+       [disabled]="item.disabled"
+       [removable]="item.removable"
+       (removed)="removeTab(item)"
+       [customClass]="item.customClass || 'defaultClass'">
+    <div *ngIf="hasPlainContent(item)">{{item.content}}</div>
+    <ng-template *ngIf="!hasPlainContent(item)" [ngTemplateOutlet]="item.content"></ng-template>
+    <ng-template tabHeading>
+      <span><img
+        *ngIf="item.active && item.refresh"
+        sdlTooltip
+        [placement]="'right'"
+        [sdlTooltip]="('dashboard.textLastRefreshedAt' | translate) + ' ' + (lastRefreshedAt | amDateFormat: 'LTS')"
+        [container]="'body'"
+        (click)="onRefresh()"
+        style="float: right; margin-left: 3px; margin-top: -3px"
+        src="assets/img/refresh-tab.svg">{{item.title}}</span>
+    </ng-template>
+  </tab>
+</tabset>

@@ -1,0 +1,11 @@
+<div class="container version-view">
+  <div class="row version-row">
+    <div class="col-lg-6 version-col">
+      <select class="version-selector" [(ngModel)]="selectedVersion" (change)="onSelectVersion()">
+        <option class="version-selector" *ngFor="let version of versions; let i = index" [ngValue]=i><div class="option-select">{{textVersion + ' ' + version.data.id}}</div></option>
+      </select>
+    </div>
+  </div>
+<br>
+<ng-container #versioncontainer></ng-container>
+</div>

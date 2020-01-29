@@ -1,0 +1,30 @@
+.bold {
+  font-weight: bold;
+}
+
+.indent {
+  padding-left: 0.9rem;
+}
+
+.side-by-side-wrapper {
+  display: flex;
+  flex-flow: row;
+}
+
+.side-by-side-left {
+  flex: 2;
+}
+
+.side-by-side-right {
+  flex: 1;
+}
+
+hr {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.delete-icon {
+  color: #e85656;
+  cursor: pointer;
+}

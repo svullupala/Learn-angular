@@ -1,0 +1,29 @@
+<ba-card baCardClass="dark-card" title="{{'roles.textRoles' | translate}}" [ngClass]="{'hidden': mode !== 'list'}">
+  <div class="row">
+    <div class="align-right margin-bottom-10">
+      <button class="sdl inline with-icon" [ngClass]="{'disabled': !canCreate}" [disabled]="!canCreate" (click)="onCreateClick()" translate>
+        <i class="bidi-add-new-white_16"></i>{{'roles.textCreateRole'}}
+      </button>
+    </div>
+  </div>
+  <div class="row">
+      <div class="col-lg-6 users-left">
+          <sdl-search-bar (search)="startSearch($event)"
+                          [textPlaceholderLabel]="textSearchFor">
+          </sdl-search-bar>
+          <role-table (rolesLoad)="onRolesLoad($event)"
+          (selectionChange)="onSelectionChange()"></role-table>
+      </div>
+      <div class="col-lg-6">
+        <div class="card users-right">
+          <role-details [models]="selectedRoles"
+                        (editClick)="onEditClick($event)"
+                        (refreshEvent)="onTableRefresh()"></role-details>
+        </div>
+      </div>
+  </div>
+</ba-card>
+<div *ngIf="mode === 'edit'">
+  <role-edit (cancelClick)="onCancelClick()" (saveSuccess)="onSaveSuccess()" [model]="role"
+             [createLink]="createLink"></role-edit>
+</div>

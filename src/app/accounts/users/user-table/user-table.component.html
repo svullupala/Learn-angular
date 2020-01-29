@@ -1,0 +1,27 @@
+<div class="horizontal-scroll" [ngClass]="{'masked': masked}">
+  <table class="selectable fixed" tabindex="0" #highlightableContainer>
+    <thead>
+    <tr>
+      <th class="normal-col sortable" [ngClass]="{'st-sort-ascent': isAsc('name'), 'st-sort-descent': isDesc('name')}"
+          tabindex="0" clickOnEnterKeydown (click)="onSort('name')" translate>{{ 'common.textName' }}</th>
+      <th class="normal-col" translate>{{ 'users.textRole' }}</th>
+    </tr>
+    </thead>
+    <tbody>
+    <ng-template let-item ngFor [ngForOf]="model.records | paging: model.json()">
+      <tr (click)="toggleSelect(item, model.records, $event)" [ngClass]="{'selected': isSelected(item)}"
+          (itemSelected)="toggleSelect($event.data, model.records, $event.event)"
+          [item]="item" highlightable>
+        <td class="normal-col">
+          <i *ngIf="item.type === 'LDAP_GROUP'" [title]="item.typeDisplayName" class="ion-ios-people"></i>
+          <i *ngIf="item.type === 'NATIVE_USER'" [title]="item.typeDisplayName" class="ion-person"></i>
+          {{item.name}}
+        </td>
+        <td>{{item.roleNames.join(', ')}}</td>
+      </tr>
+    </ng-template>
+    </tbody>
+  </table>
+  <paging-toolbar [model]="model" [noPageNumber]="false" (startGoPage)="mask()"
+                  (refresh)="onRefresh()" (pageChange)="onPageChange($event)"></paging-toolbar>
+</div>

@@ -1,0 +1,89 @@
+<div class="hypervisor-registration" [ngClass]="{'masked': masked}">
+  <div class="modal-header">
+    <div class="modal-title-wrapper">
+      <label class="modal-title" translate><h2 class="sdl-header" translate>{{getTitleText()}}</h2></label>
+    </div>
+    <button type="button" class="close pull-right" (click)="hide()" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    <hr class="modal-hr">
+  </div>
+  <div class="modal-body">
+    <form class="form-horizontal side-by-side-wrapper">
+      <div class="side-by-side-left">
+        <div class="form-group"
+             [ngClass]="{'has-error': !model.hostAddress && touched.hostAddress, 'has-success': model.hostAddress && touched.hostAddress}">
+          <label for="hostAddress" class="control-label" translate>{{'hypervisor.textHostAddress'}}</label>
+          <div class="input-value">
+            <input sdlTooltip
+                   [mode]="'critical'"
+                   [isDisabled]="!touched.hostAddress || model.hostAddress"
+                   [sdlTooltip]="'common.textRequiredFieldSuggestion' | translate"
+                   [(ngModel)]="model.hostAddress"
+                   (blur)="onBlur('hostAddress')"
+                   placement="top"
+                   container="body"
+                   type="text"
+                   class="form-control"
+                   id="hostAddress"
+                   name="hostAddress"
+                   placeholder="vc1.mynetwork.com">
+          </div>
+        </div>
+        <div class="form-group"
+             [ngClass]="{'has-error': !model.portNumber && touched.portNumber, 'has-success': model.portNumber && touched.portNumber}">
+          <label for="portNumber" class="control-label" translate>{{'hypervisor.textPort'}}</label>
+          <div class="input-value">
+            <input [(ngModel)]="model.portNumber"
+                   (blur)="onBlur('portNumber')"
+                   type="number" min="0" max="65535"
+                   class="form-control" id="portNumber"
+                   name="portNumber" placeholder="443">
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="checkbox">
+            <ba-checkbox [(ngModel)]="model.sslConnection" name="sslConnection"
+                         (onChangeEvent)="onSslClick($event)"
+                         [label]="textUseSSL"></ba-checkbox>
+          </div>
+        </div>
+        <div class="form-group"
+             [ngClass]="{'has-error': model.snapshotConcurrency < 1 && touched.snapshotConcurrency, 'has-success': model.snapshotConcurrency >= 1 && touched.snapshotConcurrency}">
+          <label for="snapshotConcurrency"
+                 class="control-label">{{'hypervisor.textConcurrentServer' | translate }}</label>
+          <div class="input-value">
+            <input min="1" [(ngModel)]="model.snapshotConcurrency"
+                   (blur)="onBlur('snapshotConcurrency')"
+                   type="number" class="form-control"
+                   id="snapshotConcurrency"
+                   name="snapshotConcurrency">
+          </div>
+        </div>
+      </div>
+      <div class="side-by-side-right">
+        <div class="form-group">
+          <label for="snapshotConcurrency"
+                 class="control-label">{{'inventory.textUserAccess' | translate }}</label>
+          <identity-user-enter-select-v2
+            #user
+            [model]="userInfo"
+            (loadedUserEvent)="onUsersLoaded()"
+            [type]="userType"
+            [textUsername]="'common.textUsername'"
+            [textPassword]="'hypervisor.textPassword'">
+          </identity-user-enter-select-v2>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <confirm-toolbar-component
+      (cancelEvent)="onCancelClick()"
+      (confirmEvent)="onSaveClick()"
+      [confirmText]="'common.textConfirm' | translate"
+      [disableConfirmButton]="!isRegistrationFormValid()"
+      [splitButtons]="false"
+      [floatRight]="false"></confirm-toolbar-component>
+  </div>
+</div>

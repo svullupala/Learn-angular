@@ -1,0 +1,85 @@
+<div [ngClass]="{'full-height': infiniteScrollingMode, 'masked': mask}">
+    <div #infiniteScrollContainer [ngClass]="{'scroll-container': infiniteScrollingMode}">
+        <table style="table-layout: fixed;">
+            <thead>
+                <tr>
+                    <th class="sortable" style="width: 10px;"
+                        [ngClass]="{'st-sort-ascent': isAsc('vmName'), 'st-sort-descent': isDesc('vmName')}"
+                        tabindex="0" clickOnEnterKeydown (click)="onSort('vmName')" translate>{{'job.textName'}}
+                    </th>
+                    <th class="sortable" style="width: 10px;"
+                        [ngClass]="{'st-sort-ascent': isAsc('sortHost'), 'st-sort-descent': isDesc('sortHost')}"
+                        tabindex="0" clickOnEnterKeydown (click)="onSort('sortHost')" [hidden]="isCollapsed" translate>
+                        {{'job.textHost'}}
+                    </th>
+                    <th class="sortable" style="width: 50px;"
+                        [ngClass]="{'st-sort-ascent': isAsc('sortLocation'), 'st-sort-descent': isDesc('sortLocation')}"
+                        tabindex="0" clickOnEnterKeydown (click)="onSort('sortLocation')" [hidden]="isCollapsed"
+                        translate>
+                        {{'job.textLocation'}}
+                    </th>
+                    <th class="sortable" style="width: 10px;"
+                        [ngClass]="{'st-sort-ascent': isAsc('sortvSnap'), 'st-sort-descent': isDesc('sortvSnap')}"
+                        tabindex="0" clickOnEnterKeydown (click)="onSort('sortvSnap')" translate>{{'job.textvSnap'}}
+                    </th>
+                    <th class="sortable" style="width: 50px;" [hidden]="isCollapsed" tabindex="0" clickOnEnterKeydown translate>
+                        {{'job.textvSnapVolumes'}}
+                    </th>
+                    <th class="sortable" style="width: 5px;"
+                        [ngClass]="{'st-sort-ascent': isAsc('sortProxy'), 'st-sort-descent': isDesc('sortProxy')}"
+                        tabindex="0" clickOnEnterKeydown (click)="onSort('sortProxy')" translate>{{'job.textProxy'}}
+                    </th>
+                    <th class="sortable" style="width: 10px;"
+                        [ngClass]="{'st-sort-ascent': isAsc('jobId'), 'st-sort-descent': isDesc('jobId')}" tabindex="0"
+                        clickOnEnterKeydown (click)="onSort('jobId')" [hidden]="isCollapsed" translate>
+                        {{'job.textThroughput'}}
+                    </th>
+                    <th class="sortable" style="width: 50px;"
+                        [ngClass]="{'st-sort-ascent': isAsc('sortProgress'), 'st-sort-descent': isDesc('sortProgress')}"
+                        tabindex="0" clickOnEnterKeydown (click)="onSort('sortProgress')" translate>
+                        {{'job.textProgress'}}
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngIf="progressDataResource && progressDataResource.length === 0">
+                    <td [attr.colspan]="getColspan()" style="text-align:center;" translate>
+                        {{'job.textNoAvailableResources'}}
+                    <td>
+                </tr>
+                <tr *ngFor="let resource of progressDataResource" tabindex="0">
+                    <td class="word-break-td" title="{{resource.vmName || ''}}" style="width: 10px;">{{resource.vmName}}
+                    </td>
+                    <td class="word-break-td" [hidden]="isCollapsed" title="{{resource.host || ''}}"
+                        style="width: 10px;">
+                        {{ellipsisPath(resource.host, 15)}}</td>
+                    <td class="word-break-td" [hidden]="isCollapsed" title="{{resource.location || ''}}"
+                        style="width: 50px;">
+                        {{ellipsisPath(resource.location, 30)}}</td>
+                    <td class="word-break-td" style="width: 10px;" title="{{resource.vSnapUsed || ''}}">
+                        {{ellipsisPath(resource.vSnapUsed, 15)}}</td>
+                    <td class="word-break-td" [hidden]="isCollapsed" style="width: 50px;"
+                        title="{{getVsnapVolumes(resource.vsnapVolumes) || ''}}">
+                        {{getVsnapVolumes(resource.vsnapVolumes)}}</td>
+                    <td class="word-break-td" style="width: 5px;">{{resource.proxyUsed}}</td>
+                    <td class="word-break-td" [hidden]="isCollapsed" style="width: 10px;">{{resource.throughPut}}</td>
+                    <td style="width: 50px;">
+                        <progress-bar *ngIf="resource.percentageCompleted !== null"
+                            [leftLabel]="getBarLabel(resource)" [leftLabelColWidth]="'2'" [status]="'normal'"
+                            [isTransition]="progressTransition" [percentage]="resource.percentageCompleted"
+                            [type]="'thin'">
+                        </progress-bar>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="paging-toolbar">
+        <paging-toolbar [id]="paginateConfig.id" [total]="paginateConfig.totalItems"
+            [supportedMode]="'infiniteScrolling'" [displayedCount]="displayedCount"
+            [infiniteScrollContainer]="infiniteScrollContainer" [resetEntryNumber]="isDifferentJobSessionClicked"
+            (pageChange)="onPageChange($event)" (refresh)="onRefresh()" (jumpTo)="onJumpTo($event)"
+            (scrolled)="onScrollDown($event)" (scrolledUp)="onScrollUp($event)">
+        </paging-toolbar>
+    </div>
+</div>

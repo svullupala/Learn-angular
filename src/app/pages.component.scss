@@ -1,0 +1,14 @@
+.banner-message {
+  color: #C0BFC0;
+  font-size: 16px;
+}
+
+.banner-link {
+  cursor: pointer;
+  font-size: 16px;
+  color: #56ACF2;
+  text-decoration: off;
+  &:hover {
+    text-decoration: underline;
+  }
+}

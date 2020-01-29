@@ -1,0 +1,14 @@
+:host {
+  display: flex;
+}
+
+.scroll-tabset-tabname {
+  margin-right: 30px;
+  padding-bottom: 5px;
+  cursor: pointer;
+
+  &--active {
+    border-bottom: 2px solid #057bc0;
+    font-weight: 500;
+  }
+}

@@ -1,0 +1,30 @@
+<div class="source">
+  <div class="title" translate>{{'wizard.job.textSourceSelectTitle'}}</div>
+  <div class="desc" translate>{{'wizard.job.textSourceSelectBackupDesc'}}</div>
+  <div class="content">
+    <div class="search-bar">
+      <sdl-search-bar (search)="startSearch(true, ($event === '') ? '*' : $event)"
+                      [isSupportClear]="true"
+                      (clear)="onClearSearch()">
+      </sdl-search-bar>
+    </div>
+    <div class="row">
+      <div class="col-lg-8">
+        <application-backup-source-table #backupSources (sourceAdded)="addSelection($event)" [applicationType]="'mongo'"></application-backup-source-table>
+      </div>
+      <div class="col-lg-4">
+        <application-backup-selection-table #backupSelections></application-backup-selection-table>
+      </div>
+    </div>
+  </div>
+</div>
+<ng-template #summary>
+  <div class="summary">
+    <div class="content">
+      <div class="property">
+        <label class="name">{{'wizard.job.textSourceSelectSummary' | translate}}</label>
+        <label class="value">{{summaryValue || ('wizard.job.textEmpty' | translate)}}</label>
+      </div>
+    </div>
+  </div>
+</ng-template>

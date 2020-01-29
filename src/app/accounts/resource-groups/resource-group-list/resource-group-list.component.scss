@@ -1,0 +1,99 @@
+@import "../../../theme/sass/conf/conf";
+
+/* Style the list */
+ul.breadcrumb2arrow {
+  list-style: none;
+  // background-color: blue;
+  font-size: 14px;
+  //   border: 1px solid white;
+  border-radius: 4px;
+  margin-left: -10px;
+  margin-top: 1em;
+}
+
+
+/* Display list items side by side */
+ul.breadcrumb2arrow li {
+  display: inline;
+}
+
+/* Add a arrow symbol (>) before/behind each list item */
+ul.breadcrumb2arrow li+li:before {
+  padding: 8px;
+  color: inherit;
+  content: "\003e";
+}
+
+.delete-icon {
+  color: #e85656;
+  cursor: pointer;
+}
+
+.no-top-border {
+  border-top: 0;
+}
+
+.large-text {
+  font-size: 24px;
+}
+
+.table {
+  table-layout: fixed;
+}
+
+.table th {
+  border-top: 0;
+  border-bottom: 0;
+}
+
+.table td {
+  border-top: 0;
+  border-bottom: 0;
+  padding: 0;
+  vertical-align: middle;
+  line-height: 0px;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.align-right {
+  text-align: right !important;
+}
+
+.normal-col {
+  width: calc(calc(90% - 40px) / 3);
+  word-break: break-all;
+}
+
+.icon-col {
+  width: 5%;
+  word-break: break-all;
+}
+
+.operation-col {
+  max-width: 120px;
+}
+
+.capitalize {
+  text-transform: capitalize;
+}
+
+.table > thead > tr > th:first-child {
+  padding-left: 0.75rem;
+}
+
+.table > tbody > tr > td:first-child {
+  padding-left: 0.75rem;
+}
+
+.overflow {
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.icon-format {
+  padding-left: 2em !important;
+  padding-bottom: 1.25em !important;
+}

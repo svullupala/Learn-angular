@@ -1,0 +1,11 @@
+<h2 class="sdl-header" translate>{{'hypervisor.textOptions'}}</h2>
+<ba-card>
+  <template #optionsContainer></template>
+</ba-card>
+<button (click)="onApplyOptionsClick()" class="sdl inline" type="button"
+        aria-expanded="false" translate>
+  {{'hypervisor.textSave'}}
+</button>
+<button *ngIf="canTest()" (click)="onTestClick()" class="sdl inline" type="button" translate>
+  {{'hypervisor.textTest'}}
+</button>

@@ -1,0 +1,68 @@
+<div class="disk-table-container">
+  <div class="disk-table table-dropdown-holder" #diskcontainer [ngClass]="{'masked': maskList}">
+    <table>
+      <thead>
+        <tr>
+          <th class="action-icon-column"></th>
+          <th class="action-icon-column"></th>
+          <th class="action-icon-column"></th>
+          <th translate>{{'storage.textHostAddress'}}</th>
+          <th translate>{{'storage.textSite'}}</th>
+          <!--          <th translate>{{'storage.textType'}}</th> -->
+          <th translate class="version-th">{{'storage.textVersion'}}</th>
+          <th translate class="capacity-th">{{'storage.textStatus'}}</th>
+          <th class="align-center" width="20px"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of storageTableData"
+            [ngClass]="{'active-row': model.storageId === item.storageId}">
+          <td class="action-icon-format">
+            <i *ngIf="item.hasLink('delete')"
+               tabindex="0" (keydown.enter)="onDeleteClick(item)" (click)="onDeleteClick(item)" class="ion-close-round"></i>
+          </td>
+          <td class="action-icon-format">
+            <i *ngIf="item.hasLink('edit') && item.demo === false"
+               tabindex="0" (keydown.enter)="onEditClick(item)" (click)="onEditClick(item)" class="ion-edit"></i>
+          </td>
+          <td class="action-icon-format">
+            <i *ngIf="item.hasLink('managementDisk') && item.hasLink('managementPool') && (item.initializeStatus | lowercase) === 'ready' && item.demo === false"
+               tabindex="0" (keydown.enter)="onManageClick(item)" (click)="onManageClick(item)" class="ion-settings"></i>
+          </td>
+          <td>{{item.hostAddress}}</td>
+          <td>{{siteMap[item.site]}}</td>
+           <!--         <td>{{item.type}}</td> -->
+          <td>{{item.version}}</td>
+          <td sdlTooltip [sdlTooltip]="getToolTipLabel(item)" [mode]="getToolTipMode(item)" [placement]="'left'"
+            *ngIf="hasCapacityIsReady(item)">
+              <div class="progress-bar">
+                <progress-bar [leftLabel]="getBarLabel(item)" [leftLabelColWidth]="'2'"
+                              [status]="getProgressBarStatus(item)"
+                              [isTransition]="progressTransition"
+                              [topRightSubLabel]="getCapacityLabel(item)"
+                              [percentage]="getPercentage(item)" [type]="'thin'"></progress-bar>
+              </div>
+          </td>
+          <td class="status-label" *ngIf="!hasCapacityIsReady(item)"> {{item.initializeStatusDisplayName || item.initializeStatus}} </td>
+          <td class="align-center">
+            <dropdown [value]="'job.textOperation' | translate"
+                      [scrollableHolder]="diskcontainer"
+                      [scrollableHolderMargin]="24"
+                      [noBorder]="true"
+                      [isDisabled]="getActionLinks(item).length === 0"
+                      (onSelect)="onExecuteAction(item, $event)"
+                      [id]="getDropDownMenuId(item)"
+                      [dropMenuRight]="true"
+                      [key]="'title'"
+                      [values]="getActionLinks(item)"></dropdown>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <br/>
+    <paging-toolbar (refresh)="handleAutoRefreshOfVsnaps()"
+                    [id]="paginateConfig.id" [total]="paginateConfig.totalItems">
+    </paging-toolbar>
+    <refresh-button-basic [defaultState]="true" [rate]="30000" [tickEnabled]="true" (onTick)="handleAutoRefreshOfVsnaps()"></refresh-button-basic>
+  </div>
+</div>

@@ -1,0 +1,63 @@
+@import "../../../theme/sass/_global.scss";
+
+.green-text {
+  color: #2ecc00;
+}
+
+.yellow-text {
+  color: #ffdc00;
+}
+
+.red-text {
+  color: #E62325;
+}
+
+.large-text {
+  font-size: 24px;
+}
+
+.align-left {
+  text-align: left;
+}
+
+.align-center {
+  text-align: center;
+}
+
+.align-right {
+  text-align: right;
+}
+
+.jobs-table-style {
+  height: 300px;
+}
+
+.outer-jobs-container-style {
+  height: 375px;
+}
+
+.overflow {
+  overflow: auto;
+}
+
+.show {
+  display: block !important;
+}
+
+.hide {
+  display: none !important;
+}
+
+.log-type-filter {
+  padding: 0 15px;
+  & > label {
+    margin: 0;
+    padding-right: 10px;
+    height: 35px;
+    line-height: 35px;
+  }
+  & > .log-type-list {
+    float: right;
+    min-width: 108px;
+  }
+}

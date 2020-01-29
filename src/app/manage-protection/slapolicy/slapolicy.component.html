@@ -1,0 +1,29 @@
+<ba-card baCardClass="dark-card no-border with-scroll"
+           [ngClass]="{'hidden': mode !== 'list'}"
+           title="{{'slapolicy.textProtectionSummary' | translate}}">
+    <div class="row">
+      <div class="col-md-8 col-lg-8">
+        <slacompliance [rate]="60000"></slacompliance>
+      </div>
+      <div class="col-md-4 col-lg-4">
+        <protected-vm [rate]="60000"></protected-vm>
+        <unprotected-vm [rate]="55000"></unprotected-vm>
+      </div>
+    </div>
+</ba-card>
+<ba-card title="{{'slapolicy.textSLAPolicies' | translate}}" baCardClass="dark-card" [ngClass]="{'hidden': mode !== 'list'}">
+  <div class="align-right space">
+    <button *ngIf="canCreate" class="sdl inline with-icon" (click)="onCreateClick()" translate>
+      <i class="bidi-add-new-white_16"></i>{{'slapolicy.textAddSLAPolicy'}}
+    </button>
+    <div class="space"></div>
+  </div>
+  <br>
+  <policy-table (deleteClick)="onDeleteClick($event)"
+                (editClick)="onEditClick($event)"
+                (dataLoad)="onPoliciesLoad($event)">
+  </policy-table>
+</ba-card>
+<div [ngClass]="{'hidden': mode === 'list'}">
+  <policy-edit *ngIf="canCreate" (saveSuccess)="onSaveSuccess()" (cancelClick)="onCancelClick()"></policy-edit>
+</div>

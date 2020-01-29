@@ -1,0 +1,3030 @@
+[{
+  "method": "GET",
+  "pattern": "jobsession",
+  "response": {
+    "links": {
+      "self": {
+        "rel": "self",
+        "href": "http://ecxbed3:8082/api/endeavour/jobsession?pageSize=50&pageStartIndex=0&sort=%5B%7B%22property%22:%22lastRunTime%22,%22direction%22:%22DESC%22%7D%5D&filter=%5B%7B%22property%22:%22status%22,%22value%22:%22RUNNING%22,%22op%22:%22%3D%22%7D%5D",
+        "hreflang": null,
+        "media": null,
+        "title": null,
+        "type": null,
+        "deprecation": null
+      },
+      "up": {
+        "rel": "up",
+        "href": "http://ecxbed3:8082/api/endeavour/jobsession",
+        "hreflang": null,
+        "media": null,
+        "title": null,
+        "type": null,
+        "deprecation": null
+      }
+    },
+    "total": 4,
+    "page": 1,
+    "sessions": [
+        {
+            "actions": [
+                {
+                    "actionType": "RESUME",
+                    "name": "end_iv",
+                    "parameters": null,
+                    "schemaURL": null,
+                    "title": "Cleanup"
+                },
+                {
+                    "actionType": "RESUME",
+                    "name": "rrp",
+                    "parameters": null,
+                    "schemaURL": null,
+                    "title": "Move to Production"
+                },
+                {
+                    "actionType": "RESUME",
+                    "name": "clone",
+                    "parameters": null,
+                    "schemaURL": null,
+                    "title": "Clone"
+                }
+            ],
+            "description": null,
+            "displayName": null,
+            "duration": 25442,
+            "end": 1536772933938,
+            "expirationTime": null,
+            "expired": false,
+            "expiresAt": null,
+            "hasCatalog": false,
+            "hasCondensed": false,
+            "id": "1536772908249",
+            "indexStatus": null,
+            "jobId": "1019",
+            "jobName": "onDemandRestore_1536772904974",
+            "lastUpdate": 1536772934630,
+            "links": {
+                "clone": {
+                    "href": "https://172.20.239.116/api/endeavour/jobsession/1536772908249?action=resume&actionname=clone",
+                    "rel": "action",
+                    "title": "Clone"
+                },
+                "concurrentjobs": {
+                    "href": "https://172.20.239.116/api/endeavour/jobsession?filter=%5B%7B%22property%22%3A%22start%22%2C%22op%22%3A%22%3C%3D%22%2C%22value%22%3A1536772933938%7D%2C%7B%22property%22%3A%22end%22%2C%22op%22%3A%22%3E%3D%22%2C%22value%22%3A1536772908496%7D%2C%7B%22property%22%3A%22status%22%2C%22op%22%3A%22%3D%22%2C%22value%22%3A%5B%22COMPLETED%22%2C%22RUNNING%22%2C%22FAILED%22%2C%22PARTIAL%22%2C%22PENDING%22%2C%22WAITING%22%2C%22CANCELLED%22%2C%22CANCELLING%22%2C%22PAUSED%22%2C%22PAUSING%22%2C%22STOPPED%22%2C%22STOPPING%22%2C%22SUSPENDED%22%2C%22SUSPENDING%22%2C%22UNKNOWN%22%5D%7D%5D",
+                    "rel": "related"
+                },
+                "csv": {
+                    "href": "https://172.20.239.116/api/endeavour/log/job/download/csv?filter=%5B%7B%22property%22%3A%22jobsessionId%22%2C%22value%22%3A%221536772908249%22%7D%5D&esessionid=048a3d87a4294cf28752471951701c30",
+                    "rel": "related"
+                },
+                "diagnostics": {
+                    "href": "https://172.20.239.116/api/endeavour/log/job/download/diagnostics?filter=%5B%7B%22property%22%3A%22jobsessionId%22%2C%22value%22%3A%221536772908249%22%7D%5D&esessionid=048a3d87a4294cf28752471951701c30",
+                    "rel": "related"
+                },
+                "end_iv": {
+                    "href": "https://172.20.239.116/api/endeavour/jobsession/1536772908249?action=resume&actionname=end_iv",
+                    "rel": "action",
+                    "title": "Cleanup"
+                },
+                "expireall": {
+                    "href": "https://172.20.239.116/api/endeavour/jobsession/1536772908249?action=expireall",
+                    "rel": "action",
+                    "title": "Expire All Job Sessions"
+                },
+                "job": {
+                    "href": "https://172.20.239.116/api/endeavour/job/1019",
+                    "rel": "related"
+                },
+                "log": {
+                    "href": "https://172.20.239.116/api/endeavour/log/job?filter=%5B%7B%22property%22%3A%22jobsessionId%22%2C%22value%22%3A%221536772908249%22%7D%5D",
+                    "rel": "related"
+                },
+                "relatedSession": {
+                    "href": "https://172.20.239.116/api/endeavour/jobsession/1536772908249",
+                    "rel": "self"
+                },
+                "rrp": {
+                    "href": "https://172.20.239.116/api/endeavour/jobsession/1536772908249?action=resume&actionname=rrp",
+                    "rel": "action",
+                    "title": "Move to Production"
+                },
+                "self": {
+                    "href": "https://172.20.239.116/api/endeavour/jobsession/1536772908249",
+                    "rel": "self"
+                },
+                "statistics": {
+                    "href": "https://172.20.239.116/api/endeavour/jobsession/statistics/1536772908249",
+                    "rel": "related"
+                },
+                "tasks": {
+                    "href": "https://172.20.239.116/api/endeavour/jobsession/1536772908249/task",
+                    "rel": "related"
+                },
+                "up": {
+                    "href": "https://172.20.239.116/api/endeavour/jobsession",
+                    "rel": "up"
+                }
+            },
+            "numTasks": 2,
+            "percent": 100,
+            "policySnapshot": {
+                "description": "",
+                "id": "1019",
+                "name": "onDemandRestore_1536772904974",
+                "script": {
+                    "continueScriptsOnError": false,
+                    "postGuest": null,
+                    "postGuestSnap": null,
+                    "postScript": null,
+                    "postSnap": null,
+                    "preGuest": null,
+                    "preGuestSnap": null,
+                    "preScript": null,
+                    "preSnap": null
+                },
+                "serviceId": "serviceprovider.recovery.hypervisor",
+                "spec": {
+                    "source": [
+                        {
+                            "href": "https://172.20.239.116/api/hypervisor/1003/vm/e968d01123779f1d03996115649c4855?from=recovery",
+                            "id": "e968d01123779f1d03996115649c4855",
+                            "include": true,
+                            "metadata": {
+                                "name": "SahilDummy13"
+                            },
+                            "resourceType": "vm",
+                            "version": {
+                                "href": "https://172.20.239.116/api/hypervisor/1003/vm/e968d01123779f1d03996115649c4855/version/latest?from=recovery",
+                                "metadata": {
+                                    "name": "Use Latest",
+                                    "useLatest": true
+                                }
+                            }
+                        }
+                    ],
+                    "subpolicy": [
+                        {
+                            "destination": {
+                                "mapRRPdatastore": {},
+                                "mapsubnet": {},
+                                "mapvirtualnetwork": {},
+                                "systemDefined": true
+                            },
+                            "name": "onDemandRestore_1536772904974",
+                            "option": {
+                                "allowsessoverwrite": true,
+                                "allowvmoverwrite": false,
+                                "autocleanup": true,
+                                "continueonerror": true,
+                                "mode": "test",
+                                "poweron": false,
+                                "protocolpriority": "iSCSI",
+                                "restorevmtag": true,
+                                "vmscripts": false
+                            },
+                            "source": {
+                                "copy": {
+                                    "isOffload": null,
+                                    "site": {
+                                        "href": "https://172.20.239.116/api/site/1000"
+                                    }
+                                }
+                            },
+                            "type": "IV"
+                        }
+                    ]
+                },
+                "subType": "vmware",
+                "type": "recovery",
+                "version": "3.1"
+            },
+            "previousLastTask": 0,
+            "properties": {
+                "hasJobAlreadyRerun": false,
+                "statistics": [
+                    {
+                        "failed": 0,
+                        "names": [
+                            "SahilDummy13-test1536772908249"
+                        ],
+                        "resourceType": "vm",
+                        "skipped": 0,
+                        "success": 1,
+                        "total": 1
+                    }
+                ]
+            },
+            "rerunnable": false,
+            "results": "Instant VM Restore test active",
+            "retention": 0,
+            "retentionUnit": null,
+            "serviceId": "serviceprovider.recovery.hypervisor",
+            "start": 1536772908496,
+            "statistics": null,
+            "status": "RESOURCE ACTIVE",
+            "statusDisplayName": "Resource active",
+            "subPolicyType": null,
+            "subPolicyTypeDisplayName": null,
+            "subType": "vmware",
+            "subTypeDisplayName": "VMware",
+            "type": "recovery",
+            "typeDisplayName": "Recovery",
+            "userUpdate": false,
+            "wormProtected": false
+      }, 
+      {
+          "links": {
+              "self": {
+                  "rel": "self",
+                  "href": "https://am-107.devad.catalogic.us/api/endeavour/jobsession/1562788583163"
+              },
+              "up": {
+                  "rel": "up",
+                  "href": "https://am-107.devad.catalogic.us/api/endeavour/jobsession"
+              },
+              "job": {
+                  "rel": "related",
+                  "href": "https://am-107.devad.catalogic.us/api/endeavour/job/1034"
+              },
+              "tasks": {
+                  "rel": "related",
+                  "href": "https://am-107.devad.catalogic.us/api/endeavour/jobsession/1562788583163/task"
+              },
+              "concurrentjobs": {
+                  "rel": "related",
+                  "href": "https://am-107.devad.catalogic.us/api/endeavour/jobsession?filter=%5B%7B%22property%22%3A%22start%22%2C%22op%22%3A%22%3C%3D%22%2C%22value%22%3A9223372036854775807%7D%2C%7B%22property%22%3A%22end%22%2C%22op%22%3A%22%3E%3D%22%2C%22value%22%3A1562788583877%7D%2C%7B%22property%22%3A%22status%22%2C%22op%22%3A%22%3D%22%2C%22value%22%3A%5B%22COMPLETED%22%2C%22RUNNING%22%2C%22FAILED%22%2C%22PARTIAL%22%2C%22PENDING%22%2C%22WAITING%22%2C%22CANCELLED%22%2C%22CANCELLING%22%2C%22PAUSED%22%2C%22PAUSING%22%2C%22STOPPED%22%2C%22STOPPING%22%2C%22SUSPENDED%22%2C%22SUSPENDING%22%2C%22UNKNOWN%22%5D%7D%5D"
+              },
+              "statistics": {
+                  "rel": "related",
+                  "href": "https://am-107.devad.catalogic.us/api/endeavour/jobsession/statistics/1562788583163"
+              },
+              "relatedSession": {
+                  "rel": "self",
+                  "href": "https://am-107.devad.catalogic.us/api/endeavour/jobsession/1562788583163"
+              },
+              "cancel": {
+                  "rel": "action",
+                  "href": "https://am-107.devad.catalogic.us/api/endeavour/jobsession/1562788583163?action=cancel",
+                  "title": "Cancel"
+              },
+              "log": {
+                  "rel": "related",
+                  "href": "https://am-107.devad.catalogic.us/api/endeavour/log/job?filter=%5B%7B%22property%22%3A%22jobsessionId%22%2C%22value%22%3A%221562788583163%22%7D%5D"
+              },
+              "csv": {
+                  "rel": "related",
+                  "href": "https://am-107.devad.catalogic.us/api/endeavour/log/job/download/csv?filter=%5B%7B%22property%22%3A%22jobsessionId%22%2C%22value%22%3A%221562788583163%22%7D%5D&esessionid=6376784e5942421fbdbdded47c1d7e90"
+              },
+              "diagnostics": {
+                  "rel": "related",
+                  "href": "https://am-107.devad.catalogic.us/api/endeavour/log/job/download/diagnostics?filter=%5B%7B%22property%22%3A%22jobsessionId%22%2C%22value%22%3A%221562788583163%22%7D%5D&esessionid=6376784e5942421fbdbdded47c1d7e90"
+              },
+              "expireall": {
+                  "rel": "action",
+                  "href": "https://am-107.devad.catalogic.us/api/endeavour/jobsession/1562788583163?action=expireall",
+                  "title": "Expire All Job Sessions"
+              }
+          },
+          "jobName": "TESTJOBSESSION_WITH_STATS",
+          "jobId": "1044",
+          "type": "recovery",
+          "typeDisplayName": "Recovery",
+          "subType": "vmware",
+          "subTypeDisplayName": "VMware",
+          "subPolicyType": null,
+          "subPolicyTypeDisplayName": null,
+          "serviceId": "serviceprovider.recovery.hypervisor",
+          "displayName": null,
+          "start": 1562788583877,
+          "end": null,
+          "duration": 249277,
+          "status": "RUNNING",
+          "statusDisplayName": "Running",
+          "indexStatus": null,
+          "description": null,
+          "results": "Instant VM Restore starting test...",
+          "properties": {
+              "statistics": [
+                  {
+                      "resourceType": "vm",
+                      "total": 9990,
+                      "success": 2000,
+                      "failed": 1000,
+                      "skipped": 3000,
+                      "names": [
+                          "andrew"
+                      ]
+                  }
+              ]
+          },
+          "numTasks": 2,
+          "previousLastTask": 0,
+          "lastUpdate": 1562788827510,
+          "percent": 0,
+          "expiresAt": null,
+          "expirationTime": null,
+          "retention": 0,
+          "retentionUnit": null,
+          "expired": false,
+          "hasCatalog": false,
+          "hasCondensed": false,
+          "wormProtected": false,
+          "rerunnable": false,
+          "userUpdate": false,
+          "actions": [],
+          "statistics": null,
+          "policySnapshot": {
+              "id": "1034",
+              "name": "onDemandRestore_1562788583527",
+              "type": "recovery",
+              "subType": "vmware",
+              "serviceId": "serviceprovider.recovery.hypervisor",
+              "version": "3.1",
+              "spec": {
+                  "source": [
+                      {
+                          "href": "https://am-107.devad.catalogic.us/api/hypervisor/1002/vm/450ab907d879b3c1bdb0f3fa55075dc4?from=recovery",
+                          "metadata": {
+                              "name": "alm2"
+                          },
+                          "resourceType": "vm",
+                          "id": "450ab907d879b3c1bdb0f3fa55075dc4",
+                          "include": true,
+                          "version": {
+                              "href": "https://am-107.devad.catalogic.us/api/hypervisor/1002/version/vm.450ab907d879b3c1bdb0f3fa55075dc4.1559681210005?from=recovery",
+                              "copy": {
+                                  "href": "https://am-107.devad.catalogic.us/api/hypervisor/1002/vm/450ab907d879b3c1bdb0f3fa55075dc4/copy/2102.snapshot.36?from=recovery"
+                              },
+                              "metadata": {
+                                  "useLatest": false,
+                                  "protectionTime": 1559681251141
+                              }
+                          }
+                      }
+                  ],
+                  "subpolicy": [
+                      {
+                          "type": "IV",
+                          "destination": {
+                              "systemDefined": true,
+                              "mapvirtualnetwork": {},
+                              "mapRRPdatastore": {},
+                              "mapsubnet": {},
+                              "mapvm": {}
+                          },
+                          "source": null,
+                          "option": {
+                              "poweron": false,
+                              "allowvmoverwrite": false,
+                              "continueonerror": true,
+                              "autocleanup": true,
+                              "allowsessoverwrite": true,
+                              "restorevmtag": true,
+                              "mode": "test",
+                              "vmscripts": false,
+                              "protocolpriority": "iSCSI",
+                              "IR": false,
+                              "streaming": false
+                          },
+                          "name": "onDemandRestore_1562788583527"
+                      }
+                  ]
+              },
+              "description": "",
+              "script": {
+                  "preScript": null,
+                  "postScript": null,
+                  "preSnap": null,
+                  "postSnap": null,
+                  "preGuest": null,
+                  "postGuest": null,
+                  "preGuestSnap": null,
+                  "postGuestSnap": null,
+                  "continueScriptsOnError": false
+              }
+          },
+          "id": "1562788583117"
+      },
+      {
+        "links": {
+          "self": {
+            "rel": "self",
+            "href": "http://ecxbed3:8082/api/endeavour/jobsession/1537981167063"
+          },
+          "up": {
+            "rel": "up",
+            "href": "http://ecxbed3:8082/api/endeavour/jobsession"
+          },
+          "job": {
+            "rel": "related",
+            "href": "http://ecxbed3:8082/api/endeavour/job/1008"
+          },
+          "tasks": {
+            "rel": "related",
+            "href": "http://ecxbed3:8082/api/endeavour/jobsession/1537981167063/task"
+          },
+          "statistics": {
+            "rel": "related",
+            "href": "http://ecxbed3:8082/api/endeavour/jobsession/statistics/1537981167063"
+          },
+          "log": {
+            "rel": "related",
+            "href": "http://ecxbed3:8082/api/endeavour/log/job?filter=%5B%7B%22property%22%3A%22jobsessionId%22%2C%22value%22%3A%221537981167063%22%7D%5D"
+          },
+          "csv": {
+            "rel": "related",
+            "href": "http://ecxbed3:8082/api/endeavour/log/job/download/csv?filter=%5B%7B%22property%22%3A%22jobsessionId%22%2C%22value%22%3A%221537981167063%22%7D%5D&esessionid=332349392554448eb90ba8f37bfedddb"
+          },
+          "diagnostics": {
+            "rel": "related",
+            "href": "http://ecxbed3:8082/api/endeavour/log/job/download/diagnostics?filter=%5B%7B%22property%22%3A%22jobsessionId%22%2C%22value%22%3A%221537981167063%22%7D%5D&esessionid=332349392554448eb90ba8f37bfedddb"
+          }
+        },
+        "jobName": "exch_gmtest2_appServerMountPoints_SPP-7838_EXTRA_LONG_NAME",
+        "jobId": "1008",
+        "type": "protection",
+        "subType": "exch",
+        "subPolicyType": "BACKUP",
+        "serviceId": "serviceprovider.protection.application",
+        "displayName": null,
+        "start": 1537981168600,
+        "end": null,
+        "duration": 266201,
+        "status": "RUNNING",
+        "indexStatus": null,
+        "description": null,
+        "results": null,
+        "properties": {
+          "statistics": [
+            {
+              "resourceType": "database",
+              "total": 10,
+              "success": 1,
+              "failed": 0,
+              "skipped": 0,
+              "names": [
+                "alm4-clone00_appServerMountPoints_SPP-7838"
+              ]
+            }
+          ],
+          "postRestoreInfo": {
+            "message": "TEST message",
+            "appServerNames" : ["172.20.46.46", "172.20.46.47", "172.20.46.47", "172.20.46.47",
+              "172.20.46.47", "172.20.46.47", "172.20.46.47"],
+            "mountPoints" : ["/mnt/spp/vsnap/vpool6/fs112", "/mnt/spp/vsnap/vpool6/fs112", "/mnt/spp/vsnap/vpool6/fs112",
+              "/mnt/spp/vsnap/vpool6/fs112", "/mnt/spp/vsnap/vpool6/fs112", "/mnt/spp/vsnap/vpool6/fs112"],
+            "appServerMountPoints": [
+              {
+			          "appServerName": "172.20.4.52_b",
+			          "mountPoints": [ "c:\\ProgramData\\SPP\\mnt\\SPPR_336787b3130f49afada4697fdb9cb0c5_1555444459000_1555443910053\\" ]
+		          },
+              {
+			          "appServerName": "172.20.4.52_a",
+			          "mountPoints": [ "c:\\ProgramData\\SPP\\mnt\\SPPR_336787b3130f49afada4697fdb9cb0c5_1555444459000_1555443910053\\" ]
+		          },
+              {
+			          "appServerName": "172.20.4.52_c",
+			          "mountPoints": [ 
+                    "c:\\ProgramData\\SPP\\mnt\\SPPR_336787b3130f49afada4697fdb9cb0c5_ONE\\",
+                    "c:\\ProgramData\\SPP\\mnt\\SPPR_336787b3130f49afada4697fdb9cb0c5_TWO\\",
+                    "c:\\ProgramData\\SPP\\mnt\\SPPR_336787b3130f49afada4697fdb9cb0c5_THREE\\"
+                ]
+		          }
+	          ] 
+          }
+        },
+        "numTasks": 2,
+        "lastUpdate": 1537981169196,
+        "percent": 0,
+        "expiresAt": null,
+        "expirationTime": null,
+        "retention": 0,
+        "retentionUnit": null,
+        "expired": false,
+        "hasCatalog": false,
+        "userUpdate": false,
+        "actions": null,
+        "statistics": null,
+        "policySnapshot": {
+          "id": "1008",
+          "name": "exch_gmtest2_nomsg",
+          "type": "protection",
+          "subType": "exch",
+          "serviceId": "serviceprovider.protection.application",
+          "version": "3.0",
+          "spec": {
+            "source": [],
+            "storageworkflow": [
+              {
+                "id": "2102",
+                "name": "gmtest2",
+                "href": "https://ecxbed3/api/spec/storageprofile/2102"
+              }
+            ],
+            "option": {
+              "logbackup": {
+                "performlogbackup": true,
+                "rpo": {
+                  "frequency": 15,
+                  "frequencyType": "",
+                  "triggerTime": ""
+                }
+              }
+            }
+          },
+          "description": "",
+          "script": null
+        },
+        "id": "1537981167000"
+      },
+      {
+        "links": {
+          "self": {
+            "rel": "self",
+            "href": "http://ecxbed3:8082/api/endeavour/jobsession/1537981167063"
+          },
+          "up": {
+            "rel": "up",
+            "href": "http://ecxbed3:8082/api/endeavour/jobsession"
+          },
+          "job": {
+            "rel": "related",
+            "href": "http://ecxbed3:8082/api/endeavour/job/1008"
+          },
+          "tasks": {
+            "rel": "related",
+            "href": "http://ecxbed3:8082/api/endeavour/jobsession/1537981167063/task"
+          },
+          "statistics": {
+            "rel": "related",
+            "href": "http://ecxbed3:8082/api/endeavour/jobsession/statistics/1537981167063"
+          },
+          "log": {
+            "rel": "related",
+            "href": "http://ecxbed3:8082/api/endeavour/log/job?filter=%5B%7B%22property%22%3A%22jobsessionId%22%2C%22value%22%3A%221537981167063%22%7D%5D"
+          },
+          "csv": {
+            "rel": "related",
+            "href": "http://ecxbed3:8082/api/endeavour/log/job/download/csv?filter=%5B%7B%22property%22%3A%22jobsessionId%22%2C%22value%22%3A%221537981167063%22%7D%5D&esessionid=332349392554448eb90ba8f37bfedddb"
+          },
+          "diagnostics": {
+            "rel": "related",
+            "href": "http://ecxbed3:8082/api/endeavour/log/job/download/diagnostics?filter=%5B%7B%22property%22%3A%22jobsessionId%22%2C%22value%22%3A%221537981167063%22%7D%5D&esessionid=332349392554448eb90ba8f37bfedddb"
+          }
+        },
+        "jobName": "exch_gmtest2_noCmd_SPP-5051",
+        "jobId": "1009",
+        "type": "protection",
+        "subType": "exch",
+        "subPolicyType": "BACKUP",
+        "serviceId": "serviceprovider.protection.application",
+        "displayName": null,
+        "start": 1537981168600,
+        "end": null,
+        "duration": 266201,
+        "status": "RUNNING",
+        "indexStatus": null,
+        "description": null,
+        "results": null,
+        "properties": {
+          "statistics": [
+            {
+              "resourceType": "vm",
+              "total": 10,
+              "success": 3,
+              "failed": 0,
+              "skipped": 1,
+              "names": [
+                "alm4-clone00_noCmd_SPP-5051"
+              ]
+            }
+          ],
+          "postRestoreInfo": {
+            "message": "TEST message",
+            "appServerNames" : ["172.20.46.46", "172.20.46.47", "172.20.46.47", "172.20.46.47",
+              "172.20.46.47", "172.20.46.47", "172.20.46.47"],
+            "mountPoints" : ["/mnt/spp/vsnap/vpool6/fs112", "/mnt/spp/vsnap/vpool6/fs112", "/mnt/spp/vsnap/vpool6/fs112",
+              "/mnt/spp/vsnap/vpool6/fs112", "/mnt/spp/vsnap/vpool6/fs112", "/mnt/spp/vsnap/vpool6/fs112"]
+          }
+        },
+        "numTasks": 2,
+        "lastUpdate": 1537981169196,
+        "percent": 0,
+        "expiresAt": null,
+        "expirationTime": null,
+        "retention": 0,
+        "retentionUnit": null,
+        "expired": false,
+        "hasCatalog": false,
+        "userUpdate": false,
+        "actions": null,
+        "statistics": null,
+        "policySnapshot": {
+          "id": "1008",
+          "name": "exch_gmtest2_nomsg",
+          "type": "protection",
+          "subType": "exch",
+          "serviceId": "serviceprovider.protection.application",
+          "version": "3.0",
+          "spec": {
+            "source": [],
+            "storageworkflow": [
+              {
+                "id": "2102",
+                "name": "gmtest2",
+                "href": "https://ecxbed3/api/spec/storageprofile/2102"
+              }
+            ],
+            "option": {
+              "logbackup": {
+                "performlogbackup": true,
+                "rpo": {
+                  "frequency": 15,
+                  "frequencyType": "",
+                  "triggerTime": ""
+                }
+              }
+            }
+          },
+          "description": "",
+          "script": null
+        },
+        "id": "1537981167002"
+      },
+      {
+        "links": {
+          "self": {
+            "rel": "self",
+            "href": "http://ecxbed3:8082/api/endeavour/jobsession/1537981167063"
+          },
+          "up": {
+            "rel": "up",
+            "href": "http://ecxbed3:8082/api/endeavour/jobsession"
+          },
+          "job": {
+            "rel": "related",
+            "href": "http://ecxbed3:8082/api/endeavour/job/1008"
+          },
+          "tasks": {
+            "rel": "related",
+            "href": "http://ecxbed3:8082/api/endeavour/jobsession/1537981167063/task"
+          },
+          "statistics": {
+            "rel": "related",
+            "href": "http://ecxbed3:8082/api/endeavour/jobsession/statistics/1537981167063"
+          },
+          "log": {
+            "rel": "related",
+            "href": "http://ecxbed3:8082/api/endeavour/log/job?filter=%5B%7B%22property%22%3A%22jobsessionId%22%2C%22value%22%3A%221537981167063%22%7D%5D"
+          },
+          "csv": {
+            "rel": "related",
+            "href": "http://ecxbed3:8082/api/endeavour/log/job/download/csv?filter=%5B%7B%22property%22%3A%22jobsessionId%22%2C%22value%22%3A%221537981167063%22%7D%5D&esessionid=332349392554448eb90ba8f37bfedddb"
+          },
+          "diagnostics": {
+            "rel": "related",
+            "href": "http://ecxbed3:8082/api/endeavour/log/job/download/diagnostics?filter=%5B%7B%22property%22%3A%22jobsessionId%22%2C%22value%22%3A%221537981167063%22%7D%5D&esessionid=332349392554448eb90ba8f37bfedddb"
+          }
+        },
+        "jobName": "exch_gmtest2_noMsg_SPP-5051",
+        "jobId": "1010",
+        "type": "protection",
+        "subType": "exch",
+        "subPolicyType": "BACKUP",
+        "serviceId": "serviceprovider.protection.application",
+        "displayName": null,
+        "start": 1537981168600,
+        "end": null,
+        "duration": 266201,
+        "status": "RUNNING",
+        "indexStatus": null,
+        "description": null,
+        "results": null,
+        "properties": {
+          "statistics": [
+            {
+              "resourceType": "vm",
+              "total": 10,
+              "success": 5,
+              "failed": 1,
+              "skipped": 0,
+              "names": [
+                "alm4-clone00_noMsg_SPP-5051"
+              ]
+            }
+          ],
+          "postRestoreInfo": {
+            "command": "TEST command",
+            "appServerNames" : ["172.20.46.46", "172.20.46.47", "172.20.46.47", "172.20.46.47",
+              "172.20.46.47", "172.20.46.47", "172.20.46.47"],
+            "mountPoints" : ["/mnt/spp/vsnap/vpool6/fs112", "/mnt/spp/vsnap/vpool6/fs112", "/mnt/spp/vsnap/vpool6/fs112",
+              "/mnt/spp/vsnap/vpool6/fs112", "/mnt/spp/vsnap/vpool6/fs112", "/mnt/spp/vsnap/vpool6/fs112"]
+          }
+        },
+        "numTasks": 2,
+        "lastUpdate": 1537981169196,
+        "percent": 0,
+        "expiresAt": null,
+        "expirationTime": null,
+        "retention": 0,
+        "retentionUnit": null,
+        "expired": false,
+        "hasCatalog": false,
+        "userUpdate": false,
+        "actions": null,
+        "statistics": null,
+        "policySnapshot": {
+          "id": "1008",
+          "name": "exch_gmtest2_nomsg",
+          "type": "protection",
+          "subType": "exch",
+          "serviceId": "serviceprovider.protection.application",
+          "version": "3.0",
+          "spec": {
+            "source": [],
+            "storageworkflow": [
+              {
+                "id": "2102",
+                "name": "gmtest2",
+                "href": "https://ecxbed3/api/spec/storageprofile/2102"
+              }
+            ],
+            "option": {
+              "logbackup": {
+                "performlogbackup": true,
+                "rpo": {
+                  "frequency": 15,
+                  "frequencyType": "",
+                  "triggerTime": ""
+                }
+              }
+            }
+          },
+          "description": "",
+          "script": null
+        },
+        "id": "1537981167003"
+      },
+      {
+        "links": {
+          "self": {
+            "rel": "self",
+            "href": "http://ecxbed3:8082/api/endeavour/jobsession/1537981167063"
+          },
+          "up": {
+            "rel": "up",
+            "href": "http://ecxbed3:8082/api/endeavour/jobsession"
+          },
+          "job": {
+            "rel": "related",
+            "href": "http://ecxbed3:8082/api/endeavour/job/1008"
+          },
+          "tasks": {
+            "rel": "related",
+            "href": "http://ecxbed3:8082/api/endeavour/jobsession/1537981167063/task"
+          },
+          "statistics": {
+            "rel": "related",
+            "href": "http://ecxbed3:8082/api/endeavour/jobsession/statistics/1537981167063"
+          },
+          "log": {
+            "rel": "related",
+            "href": "http://ecxbed3:8082/api/endeavour/log/job?filter=%5B%7B%22property%22%3A%22jobsessionId%22%2C%22value%22%3A%221537981167063%22%7D%5D"
+          },
+          "csv": {
+            "rel": "related",
+            "href": "http://ecxbed3:8082/api/endeavour/log/job/download/csv?filter=%5B%7B%22property%22%3A%22jobsessionId%22%2C%22value%22%3A%221537981167063%22%7D%5D&esessionid=332349392554448eb90ba8f37bfedddb"
+          },
+          "diagnostics": {
+            "rel": "related",
+            "href": "http://ecxbed3:8082/api/endeavour/log/job/download/diagnostics?filter=%5B%7B%22property%22%3A%22jobsessionId%22%2C%22value%22%3A%221537981167063%22%7D%5D&esessionid=332349392554448eb90ba8f37bfedddb"
+          }
+        },
+        "jobName": "exch_gmtest2_noMsgOrCmd_SPP-5051",
+        "jobId": "1011",
+        "type": "protection",
+        "subType": "exch",
+        "subPolicyType": "BACKUP",
+        "serviceId": "serviceprovider.protection.application",
+        "displayName": null,
+        "start": 1537981168600,
+        "end": null,
+        "duration": 266201,
+        "status": "RUNNING",
+        "indexStatus": null,
+        "description": null,
+        "results": null,
+        "properties": {
+          "statistics": [
+            {
+              "resourceType": "vm",
+              "total": 10,
+              "success": 5,
+              "failed": 1,
+              "skipped": 3,
+              "names": [
+                "alm4-clone00_noMsgOrCmd_SPP-5051"
+              ]
+            }
+          ],
+          "postRestoreInfo": {
+            "appServerNames" : ["172.20.46.46", "172.20.46.47", "172.20.46.47", "172.20.46.47",
+              "172.20.46.47", "172.20.46.47", "172.20.46.47"],
+            "mountPoints" : ["/mnt/spp/vsnap/vpool6/fs112", "/mnt/spp/vsnap/vpool6/fs112", "/mnt/spp/vsnap/vpool6/fs112",
+              "/mnt/spp/vsnap/vpool6/fs112", "/mnt/spp/vsnap/vpool6/fs112", "/mnt/spp/vsnap/vpool6/fs112"]
+          }
+        },
+        "numTasks": 2,
+        "lastUpdate": 1537981169196,
+        "percent": 0,
+        "expiresAt": null,
+        "expirationTime": null,
+        "retention": 0,
+        "retentionUnit": null,
+        "expired": false,
+        "hasCatalog": false,
+        "userUpdate": false,
+        "actions": null,
+        "statistics": null,
+        "policySnapshot": {
+          "id": "1008",
+          "name": "exch_gmtest2_nomsg",
+          "type": "protection",
+          "subType": "exch",
+          "serviceId": "serviceprovider.protection.application",
+          "version": "3.0",
+          "spec": {
+            "source": [],
+            "storageworkflow": [
+              {
+                "id": "2102",
+                "name": "gmtest2",
+                "href": "https://ecxbed3/api/spec/storageprofile/2102"
+              }
+            ],
+            "option": {
+              "logbackup": {
+                "performlogbackup": true,
+                "rpo": {
+                  "frequency": 15,
+                  "frequencyType": "",
+                  "triggerTime": ""
+                }
+              }
+            }
+          },
+          "description": "",
+          "script": null
+        },
+        "id": "1537981167004"
+      },
+      {
+        "links": {
+          "self": {
+            "rel": "self",
+            "href": "http://ecxbed3:8082/api/endeavour/jobsession/1537981167063"
+          },
+          "up": {
+            "rel": "up",
+            "href": "http://ecxbed3:8082/api/endeavour/jobsession"
+          },
+          "job": {
+            "rel": "related",
+            "href": "http://ecxbed3:8082/api/endeavour/job/1008"
+          },
+          "tasks": {
+            "rel": "related",
+            "href": "http://ecxbed3:8082/api/endeavour/jobsession/1537981167063/task"
+          },
+          "statistics": {
+            "rel": "related",
+            "href": "http://ecxbed3:8082/api/endeavour/jobsession/statistics/1537981167063"
+          },
+          "log": {
+            "rel": "related",
+            "href": "http://ecxbed3:8082/api/endeavour/log/job?filter=%5B%7B%22property%22%3A%22jobsessionId%22%2C%22value%22%3A%221537981167063%22%7D%5D"
+          },
+          "csv": {
+            "rel": "related",
+            "href": "http://ecxbed3:8082/api/endeavour/log/job/download/csv?filter=%5B%7B%22property%22%3A%22jobsessionId%22%2C%22value%22%3A%221537981167063%22%7D%5D&esessionid=332349392554448eb90ba8f37bfedddb"
+          },
+          "diagnostics": {
+            "rel": "related",
+            "href": "http://ecxbed3:8082/api/endeavour/log/job/download/diagnostics?filter=%5B%7B%22property%22%3A%22jobsessionId%22%2C%22value%22%3A%221537981167063%22%7D%5D&esessionid=332349392554448eb90ba8f37bfedddb"
+          }
+        },
+        "jobName": "exch_gmtest2_noMsgOrCmd_SPP-5051",
+        "jobId": "1011",
+        "type": "protection",
+        "subType": "exch",
+        "subPolicyType": "BACKUP",
+        "serviceId": "serviceprovider.protection.application",
+        "displayName": null,
+        "start": 1537981168600,
+        "end": null,
+        "duration": 266201,
+        "status": "RUNNING",
+        "indexStatus": null,
+        "description": null,
+        "results": null,
+        "properties": {
+          "statistics": [
+            {
+              "resourceType": "vm",
+              "total": 10,
+              "success": 5,
+              "failed": 2,
+              "skipped": 3,
+              "names": [
+                "alm4-clone00_noMsgOrCmd_SPP-5051"
+              ]
+            }
+          ],
+          "postRestoreInfo": {
+            "appServerNames" : ["172.20.46.46", "172.20.46.47", "172.20.46.47", "172.20.46.47",
+              "172.20.46.47", "172.20.46.47", "172.20.46.47"],
+            "mountPoints" : ["/mnt/spp/vsnap/vpool6/fs112", "/mnt/spp/vsnap/vpool6/fs112", "/mnt/spp/vsnap/vpool6/fs112",
+              "/mnt/spp/vsnap/vpool6/fs112", "/mnt/spp/vsnap/vpool6/fs112", "/mnt/spp/vsnap/vpool6/fs112"]
+          }
+        },
+        "numTasks": 2,
+        "lastUpdate": 1537981169196,
+        "percent": 0,
+        "expiresAt": null,
+        "expirationTime": null,
+        "retention": 0,
+        "retentionUnit": null,
+        "expired": false,
+        "hasCatalog": false,
+        "userUpdate": false,
+        "actions": null,
+        "statistics": null,
+        "policySnapshot": {
+          "id": "1008",
+          "name": "exch_gmtest2_nomsg",
+          "type": "protection",
+          "subType": "exch",
+          "serviceId": "serviceprovider.protection.application",
+          "version": "3.0",
+          "spec": {
+            "source": [],
+            "storageworkflow": [
+              {
+                "id": "2102",
+                "name": "gmtest2",
+                "href": "https://ecxbed3/api/spec/storageprofile/2102"
+              }
+            ],
+            "option": {
+              "logbackup": {
+                "performlogbackup": true,
+                "rpo": {
+                  "frequency": 15,
+                  "frequencyType": "",
+                  "triggerTime": ""
+                }
+              }
+            }
+          },
+          "description": "",
+          "script": null
+        },
+        "id": "1537981167019"
+      },
+      {
+        "links": {
+          "self": {
+            "rel": "self",
+            "href": "http://ecxbed3:8082/api/endeavour/jobsession/1537981167063"
+          },
+          "up": {
+            "rel": "up",
+            "href": "http://ecxbed3:8082/api/endeavour/jobsession"
+          },
+          "job": {
+            "rel": "related",
+            "href": "http://ecxbed3:8082/api/endeavour/job/1008"
+          },
+          "tasks": {
+            "rel": "related",
+            "href": "http://ecxbed3:8082/api/endeavour/jobsession/1537981167063/task"
+          },
+          "statistics": {
+            "rel": "related",
+            "href": "http://ecxbed3:8082/api/endeavour/jobsession/statistics/1537981167063"
+          },
+          "log": {
+            "rel": "related",
+            "href": "http://ecxbed3:8082/api/endeavour/log/job?filter=%5B%7B%22property%22%3A%22jobsessionId%22%2C%22value%22%3A%221537981167063%22%7D%5D"
+          },
+          "csv": {
+            "rel": "related",
+            "href": "http://ecxbed3:8082/api/endeavour/log/job/download/csv?filter=%5B%7B%22property%22%3A%22jobsessionId%22%2C%22value%22%3A%221537981167063%22%7D%5D&esessionid=332349392554448eb90ba8f37bfedddb"
+          },
+          "diagnostics": {
+            "rel": "related",
+            "href": "http://ecxbed3:8082/api/endeavour/log/job/download/diagnostics?filter=%5B%7B%22property%22%3A%22jobsessionId%22%2C%22value%22%3A%221537981167063%22%7D%5D&esessionid=332349392554448eb90ba8f37bfedddb"
+          }
+        },
+        "jobName": "exch_gmtest2_msg",
+        "jobId": "1022",
+        "type": "protection",
+        "subType": "exch",
+        "subPolicyType": "BACKUP",
+        "serviceId": "serviceprovider.protection.application",
+        "displayName": null,
+        "start": 1537981168600,
+        "end": null,
+        "duration": 266201,
+        "status": "RUNNING",
+        "indexStatus": null,
+        "description": null,
+        "results": null,
+        "properties": {
+          "statistics": [
+            {
+              "resourceType": "database",
+              "total": 10,
+              "success": 0,
+              "failed": 2,
+              "skipped": 0,
+              "names": [
+                "alm4-clone00"
+              ]
+            }
+          ],
+          "postRestoreInfo": {
+            "message": "hello world",
+            "command": "command",
+            "appServerNames" : ["172.20.46.46", "172.20.46.47", "172.20.46.47", "172.20.46.47",
+              "172.20.46.47", "172.20.46.47", "172.20.46.47"],
+            "mountPoints" : ["/mnt/spp/vsnap/vpool6/fs112", "/mnt/spp/vsnap/vpool6/fs112", "/mnt/spp/vsnap/vpool6/fs112",
+              "/mnt/spp/vsnap/vpool6/fs112", "/mnt/spp/vsnap/vpool6/fs112", "/mnt/spp/vsnap/vpool6/fs112"]
+          }
+        },
+        "numTasks": 2,
+        "lastUpdate": 1537981169196,
+        "percent": 0,
+        "expiresAt": null,
+        "expirationTime": null,
+        "retention": 0,
+        "retentionUnit": null,
+        "expired": false,
+        "hasCatalog": false,
+        "userUpdate": false,
+        "actions": null,
+        "statistics": null,
+        "policySnapshot": {
+          "id": "1008",
+          "name": "exch_gmtest2_msg",
+          "type": "protection",
+          "subType": "exch",
+          "serviceId": "serviceprovider.protection.application",
+          "version": "3.0",
+          "spec": {
+            "source": [],
+            "storageworkflow": [
+              {
+                "id": "2102",
+                "name": "gmtest2",
+                "href": "https://ecxbed3/api/spec/storageprofile/2102"
+              }
+            ],
+            "option": {
+              "logbackup": {
+                "performlogbackup": true,
+                "rpo": {
+                  "frequency": 15,
+                  "frequencyType": "",
+                  "triggerTime": ""
+                }
+              }
+            }
+          },
+          "description": "",
+          "script": null
+        },
+        "id": "1537981167018"
+      },
+      {
+        "links": {
+          "self": {
+            "rel": "self",
+            "href": "http://ecxbed3:8082/api/endeavour/jobsession/1537981167063"
+          },
+          "up": {
+            "rel": "up",
+            "href": "http://ecxbed3:8082/api/endeavour/jobsession"
+          },
+          "job": {
+            "rel": "related",
+            "href": "http://ecxbed3:8082/api/endeavour/job/1008"
+          },
+          "tasks": {
+            "rel": "related",
+            "href": "http://ecxbed3:8082/api/endeavour/jobsession/1537981167063/task"
+          },
+          "statistics": {
+            "rel": "related",
+            "href": "http://ecxbed3:8082/api/endeavour/jobsession/statistics/1537981167063"
+          },
+          "log": {
+            "rel": "related",
+            "href": "http://ecxbed3:8082/api/endeavour/log/job?filter=%5B%7B%22property%22%3A%22jobsessionId%22%2C%22value%22%3A%221537981167063%22%7D%5D"
+          },
+          "csv": {
+            "rel": "related",
+            "href": "http://ecxbed3:8082/api/endeavour/log/job/download/csv?filter=%5B%7B%22property%22%3A%22jobsessionId%22%2C%22value%22%3A%221537981167063%22%7D%5D&esessionid=332349392554448eb90ba8f37bfedddb"
+          },
+          "diagnostics": {
+            "rel": "related",
+            "href": "http://ecxbed3:8082/api/endeavour/log/job/download/diagnostics?filter=%5B%7B%22property%22%3A%22jobsessionId%22%2C%22value%22%3A%221537981167063%22%7D%5D&esessionid=332349392554448eb90ba8f37bfedddb"
+          }
+        },
+        "jobName": "exch_gmtest2_msg",
+        "jobId": "1023",
+        "type": "protection",
+        "subType": "exch",
+        "subPolicyType": "BACKUP",
+        "serviceId": "serviceprovider.protection.application",
+        "displayName": null,
+        "start": 1537981168600,
+        "end": null,
+        "duration": 266201,
+        "status": "RUNNING",
+        "indexStatus": null,
+        "description": null,
+        "results": null,
+        "properties": {
+          "statistics": [
+            {
+              "resourceType": "database",
+              "total": 10,
+              "success": 0,
+              "failed": 6,
+              "skipped": 0,
+              "names": [
+                "alm4-clone00"
+              ]
+            }
+          ],
+          "postRestoreInfo": {
+            "message": "hello world",
+            "command": "command",
+            "appServerNames" : ["172.20.46.46", "172.20.46.47", "172.20.46.47", "172.20.46.47",
+              "172.20.46.47", "172.20.46.47", "172.20.46.47"],
+            "mountPoints" : ["/mnt/spp/vsnap/vpool6/fs112", "/mnt/spp/vsnap/vpool6/fs112", "/mnt/spp/vsnap/vpool6/fs112",
+              "/mnt/spp/vsnap/vpool6/fs112", "/mnt/spp/vsnap/vpool6/fs112", "/mnt/spp/vsnap/vpool6/fs112"]
+          }
+        },
+        "numTasks": 2,
+        "lastUpdate": 1537981169196,
+        "percent": 0,
+        "expiresAt": null,
+        "expirationTime": null,
+        "retention": 0,
+        "retentionUnit": null,
+        "expired": false,
+        "hasCatalog": false,
+        "userUpdate": false,
+        "actions": null,
+        "statistics": null,
+        "policySnapshot": {
+          "id": "1008",
+          "name": "exch_gmtest2_msg",
+          "type": "protection",
+          "subType": "exch",
+          "serviceId": "serviceprovider.protection.application",
+          "version": "3.0",
+          "spec": {
+            "source": [],
+            "storageworkflow": [
+              {
+                "id": "2102",
+                "name": "gmtest2",
+                "href": "https://ecxbed3/api/spec/storageprofile/2102"
+              }
+            ],
+            "option": {
+              "logbackup": {
+                "performlogbackup": true,
+                "rpo": {
+                  "frequency": 15,
+                  "frequencyType": "",
+                  "triggerTime": ""
+                }
+              }
+            }
+          },
+          "description": "",
+          "script": null
+        },
+        "id": "1537981167005"
+      },
+      {
+        "links": {
+          "self": {
+            "rel": "self",
+            "href": "http://ecxbed3:8082/api/endeavour/jobsession/1537981167063"
+          },
+          "up": {
+            "rel": "up",
+            "href": "http://ecxbed3:8082/api/endeavour/jobsession"
+          },
+          "job": {
+            "rel": "related",
+            "href": "http://ecxbed3:8082/api/endeavour/job/1008"
+          },
+          "tasks": {
+            "rel": "related",
+            "href": "http://ecxbed3:8082/api/endeavour/jobsession/1537981167063/task"
+          },
+          "statistics": {
+            "rel": "related",
+            "href": "http://ecxbed3:8082/api/endeavour/jobsession/statistics/1537981167063"
+          },
+          "log": {
+            "rel": "related",
+            "href": "http://ecxbed3:8082/api/endeavour/log/job?filter=%5B%7B%22property%22%3A%22jobsessionId%22%2C%22value%22%3A%221537981167063%22%7D%5D"
+          },
+          "csv": {
+            "rel": "related",
+            "href": "http://ecxbed3:8082/api/endeavour/log/job/download/csv?filter=%5B%7B%22property%22%3A%22jobsessionId%22%2C%22value%22%3A%221537981167063%22%7D%5D&esessionid=332349392554448eb90ba8f37bfedddb"
+          },
+          "diagnostics": {
+            "rel": "related",
+            "href": "http://ecxbed3:8082/api/endeavour/log/job/download/diagnostics?filter=%5B%7B%22property%22%3A%22jobsessionId%22%2C%22value%22%3A%221537981167063%22%7D%5D&esessionid=332349392554448eb90ba8f37bfedddb"
+          }
+        },
+        "jobName": "exch_gmtest2_msg",
+        "jobId": "1024",
+        "type": "protection",
+        "subType": "exch",
+        "subPolicyType": "BACKUP",
+        "serviceId": "serviceprovider.protection.application",
+        "displayName": null,
+        "start": 1537981168600,
+        "end": null,
+        "duration": 266201,
+        "status": "RUNNING",
+        "indexStatus": null,
+        "description": null,
+        "results": null,
+        "properties": {
+          "statistics": [
+            {
+              "resourceType": "database",
+              "total": 10,
+              "success": 0,
+              "failed": 8,
+              "skipped": 0,
+              "names": [
+                "alm4-clone00"
+              ]
+            }
+          ],
+          "postRestoreInfo": {
+            "message": "hello world",
+            "command": "command",
+            "appServerNames" : ["172.20.46.46", "172.20.46.47", "172.20.46.47", "172.20.46.47",
+              "172.20.46.47", "172.20.46.47", "172.20.46.47"],
+            "mountPoints" : ["/mnt/spp/vsnap/vpool6/fs112", "/mnt/spp/vsnap/vpool6/fs112", "/mnt/spp/vsnap/vpool6/fs112",
+              "/mnt/spp/vsnap/vpool6/fs112", "/mnt/spp/vsnap/vpool6/fs112", "/mnt/spp/vsnap/vpool6/fs112"]
+          }
+        },
+        "numTasks": 2,
+        "lastUpdate": 1537981169196,
+        "percent": 0,
+        "expiresAt": null,
+        "expirationTime": null,
+        "retention": 0,
+        "retentionUnit": null,
+        "expired": false,
+        "hasCatalog": false,
+        "userUpdate": false,
+        "actions": null,
+        "statistics": null,
+        "policySnapshot": {
+          "id": "1008",
+          "name": "exch_gmtest2_msg",
+          "type": "protection",
+          "subType": "exch",
+          "serviceId": "serviceprovider.protection.application",
+          "version": "3.0",
+          "spec": {
+            "source": [],
+            "storageworkflow": [
+              {
+                "id": "2102",
+                "name": "gmtest2",
+                "href": "https://ecxbed3/api/spec/storageprofile/2102"
+              }
+            ],
+            "option": {
+              "logbackup": {
+                "performlogbackup": true,
+                "rpo": {
+                  "frequency": 15,
+                  "frequencyType": "",
+                  "triggerTime": ""
+                }
+              }
+            }
+          },
+          "description": "",
+          "script": null
+        },
+        "id": "1537981167006"
+      },
+      {
+        "links": {
+          "self": {
+            "rel": "self",
+            "href": "http://ecxbed3:8082/api/endeavour/jobsession/1537981167063"
+          },
+          "up": {
+            "rel": "up",
+            "href": "http://ecxbed3:8082/api/endeavour/jobsession"
+          },
+          "job": {
+            "rel": "related",
+            "href": "http://ecxbed3:8082/api/endeavour/job/1008"
+          },
+          "tasks": {
+            "rel": "related",
+            "href": "http://ecxbed3:8082/api/endeavour/jobsession/1537981167063/task"
+          },
+          "statistics": {
+            "rel": "related",
+            "href": "http://ecxbed3:8082/api/endeavour/jobsession/statistics/1537981167063"
+          },
+          "log": {
+            "rel": "related",
+            "href": "http://ecxbed3:8082/api/endeavour/log/job?filter=%5B%7B%22property%22%3A%22jobsessionId%22%2C%22value%22%3A%221537981167063%22%7D%5D"
+          },
+          "csv": {
+            "rel": "related",
+            "href": "http://ecxbed3:8082/api/endeavour/log/job/download/csv?filter=%5B%7B%22property%22%3A%22jobsessionId%22%2C%22value%22%3A%221537981167063%22%7D%5D&esessionid=332349392554448eb90ba8f37bfedddb"
+          },
+          "diagnostics": {
+            "rel": "related",
+            "href": "http://ecxbed3:8082/api/endeavour/log/job/download/diagnostics?filter=%5B%7B%22property%22%3A%22jobsessionId%22%2C%22value%22%3A%221537981167063%22%7D%5D&esessionid=332349392554448eb90ba8f37bfedddb"
+          }
+        },
+        "jobName": "exch_gmtest2_msg",
+        "jobId": "1025",
+        "type": "protection",
+        "subType": "exch",
+        "subPolicyType": "BACKUP",
+        "serviceId": "serviceprovider.protection.application",
+        "displayName": null,
+        "start": 1537981168600,
+        "end": null,
+        "duration": 266201,
+        "status": "RUNNING",
+        "indexStatus": null,
+        "description": null,
+        "results": null,
+        "properties": {
+          "statistics": [
+            {
+              "resourceType": "database",
+              "total": 10,
+              "success": 0,
+              "failed": 10,
+              "skipped": 0,
+              "names": [
+                "alm4-clone00"
+              ]
+            }
+          ],
+          "postRestoreInfo": {
+            "message": "hello world",
+            "command": "command",
+            "appServerNames" : ["172.20.46.46", "172.20.46.47", "172.20.46.47", "172.20.46.47",
+              "172.20.46.47", "172.20.46.47", "172.20.46.47"],
+            "mountPoints" : ["/mnt/spp/vsnap/vpool6/fs112", "/mnt/spp/vsnap/vpool6/fs112", "/mnt/spp/vsnap/vpool6/fs112",
+              "/mnt/spp/vsnap/vpool6/fs112", "/mnt/spp/vsnap/vpool6/fs112", "/mnt/spp/vsnap/vpool6/fs112"]
+          }
+        },
+        "numTasks": 2,
+        "lastUpdate": 1537981169196,
+        "percent": 0,
+        "expiresAt": null,
+        "expirationTime": null,
+        "retention": 0,
+        "retentionUnit": null,
+        "expired": false,
+        "hasCatalog": false,
+        "userUpdate": false,
+        "actions": null,
+        "statistics": null,
+        "policySnapshot": {
+          "id": "1008",
+          "name": "exch_gmtest2_msg",
+          "type": "protection",
+          "subType": "exch",
+          "serviceId": "serviceprovider.protection.application",
+          "version": "3.0",
+          "spec": {
+            "source": [],
+            "storageworkflow": [
+              {
+                "id": "2102",
+                "name": "gmtest2",
+                "href": "https://ecxbed3/api/spec/storageprofile/2102"
+              }
+            ],
+            "option": {
+              "logbackup": {
+                "performlogbackup": true,
+                "rpo": {
+                  "frequency": 15,
+                  "frequencyType": "",
+                  "triggerTime": ""
+                }
+              }
+            }
+          },
+          "description": "",
+          "script": null
+        },
+        "id": "1537981167007"
+      },
+      {
+        "links": {
+          "self": {
+            "rel": "self",
+            "href": "http://ecxbed3:8082/api/endeavour/jobsession/1537981167063"
+          },
+          "up": {
+            "rel": "up",
+            "href": "http://ecxbed3:8082/api/endeavour/jobsession"
+          },
+          "job": {
+            "rel": "related",
+            "href": "http://ecxbed3:8082/api/endeavour/job/1008"
+          },
+          "tasks": {
+            "rel": "related",
+            "href": "http://ecxbed3:8082/api/endeavour/jobsession/1537981167063/task"
+          },
+          "statistics": {
+            "rel": "related",
+            "href": "http://ecxbed3:8082/api/endeavour/jobsession/statistics/1537981167063"
+          },
+          "log": {
+            "rel": "related",
+            "href": "http://ecxbed3:8082/api/endeavour/log/job?filter=%5B%7B%22property%22%3A%22jobsessionId%22%2C%22value%22%3A%221537981167063%22%7D%5D"
+          },
+          "csv": {
+            "rel": "related",
+            "href": "http://ecxbed3:8082/api/endeavour/log/job/download/csv?filter=%5B%7B%22property%22%3A%22jobsessionId%22%2C%22value%22%3A%221537981167063%22%7D%5D&esessionid=332349392554448eb90ba8f37bfedddb"
+          },
+          "diagnostics": {
+            "rel": "related",
+            "href": "http://ecxbed3:8082/api/endeavour/log/job/download/diagnostics?filter=%5B%7B%22property%22%3A%22jobsessionId%22%2C%22value%22%3A%221537981167063%22%7D%5D&esessionid=332349392554448eb90ba8f37bfedddb"
+          }
+        },
+        "jobName": "exch_gmtest2_msg",
+        "jobId": "1012",
+        "type": "protection",
+        "subType": "exch",
+        "subPolicyType": "BACKUP",
+        "serviceId": "serviceprovider.protection.application",
+        "displayName": null,
+        "start": 1537981168600,
+        "end": null,
+        "duration": 266201,
+        "status": "RUNNING",
+        "indexStatus": null,
+        "description": null,
+        "results": null,
+        "properties": {
+          "statistics": [
+            {
+              "resourceType": "vm",
+              "total": 10,
+              "success": 2,
+              "failed": 0,
+              "skipped": 0,
+              "names": [
+                "alm4-clone00"
+              ]
+            }
+          ],
+          "postRestoreInfo": {
+            "message": "hello world",
+            "command": "command",
+            "appServerNames" : ["172.20.46.46", "172.20.46.47", "172.20.46.47", "172.20.46.47",
+              "172.20.46.47", "172.20.46.47", "172.20.46.47"],
+            "mountPoints" : ["/mnt/spp/vsnap/vpool6/fs112", "/mnt/spp/vsnap/vpool6/fs112", "/mnt/spp/vsnap/vpool6/fs112",
+              "/mnt/spp/vsnap/vpool6/fs112", "/mnt/spp/vsnap/vpool6/fs112", "/mnt/spp/vsnap/vpool6/fs112"]
+          }
+        },
+        "numTasks": 2,
+        "lastUpdate": 1537981169196,
+        "percent": 0,
+        "expiresAt": null,
+        "expirationTime": null,
+        "retention": 0,
+        "retentionUnit": null,
+        "expired": false,
+        "hasCatalog": false,
+        "userUpdate": false,
+        "actions": null,
+        "statistics": null,
+        "policySnapshot": {
+          "id": "1008",
+          "name": "exch_gmtest2_msg",
+          "type": "protection",
+          "subType": "exch",
+          "serviceId": "serviceprovider.protection.application",
+          "version": "3.0",
+          "spec": {
+            "source": [],
+            "storageworkflow": [
+              {
+                "id": "2102",
+                "name": "gmtest2",
+                "href": "https://ecxbed3/api/spec/storageprofile/2102"
+              }
+            ],
+            "option": {
+              "logbackup": {
+                "performlogbackup": true,
+                "rpo": {
+                  "frequency": 15,
+                  "frequencyType": "",
+                  "triggerTime": ""
+                }
+              }
+            }
+          },
+          "description": "",
+          "script": null
+        },
+        "id": "1537981167023"
+      },
+      {
+        "links": {
+          "self": {
+            "rel": "self",
+            "href": "http://ecxbed3:8082/api/endeavour/jobsession/1537981167063"
+          },
+          "up": {
+            "rel": "up",
+            "href": "http://ecxbed3:8082/api/endeavour/jobsession"
+          },
+          "job": {
+            "rel": "related",
+            "href": "http://ecxbed3:8082/api/endeavour/job/1008"
+          },
+          "tasks": {
+            "rel": "related",
+            "href": "http://ecxbed3:8082/api/endeavour/jobsession/1537981167063/task"
+          },
+          "statistics": {
+            "rel": "related",
+            "href": "http://ecxbed3:8082/api/endeavour/jobsession/statistics/1537981167063"
+          },
+          "log": {
+            "rel": "related",
+            "href": "http://ecxbed3:8082/api/endeavour/log/job?filter=%5B%7B%22property%22%3A%22jobsessionId%22%2C%22value%22%3A%221537981167063%22%7D%5D"
+          },
+          "csv": {
+            "rel": "related",
+            "href": "http://ecxbed3:8082/api/endeavour/log/job/download/csv?filter=%5B%7B%22property%22%3A%22jobsessionId%22%2C%22value%22%3A%221537981167063%22%7D%5D&esessionid=332349392554448eb90ba8f37bfedddb"
+          },
+          "diagnostics": {
+            "rel": "related",
+            "href": "http://ecxbed3:8082/api/endeavour/log/job/download/diagnostics?filter=%5B%7B%22property%22%3A%22jobsessionId%22%2C%22value%22%3A%221537981167063%22%7D%5D&esessionid=332349392554448eb90ba8f37bfedddb"
+          }
+        },
+        "jobName": "exch_gmtest2_msg",
+        "jobId": "1012",
+        "type": "protection",
+        "subType": "exch",
+        "subPolicyType": "BACKUP",
+        "serviceId": "serviceprovider.protection.application",
+        "displayName": null,
+        "start": 1537981168600,
+        "end": null,
+        "duration": 266201,
+        "status": "RUNNING",
+        "indexStatus": null,
+        "description": null,
+        "results": null,
+        "properties": {
+          "statistics": [
+            {
+              "resourceType": "vm",
+              "total": 10,
+              "success": 4,
+              "failed": 0,
+              "skipped": 0,
+              "names": [
+                "alm4-clone00"
+              ]
+            }
+          ],
+          "postRestoreInfo": {
+            "message": "hello world",
+            "command": "command",
+            "appServerNames" : ["172.20.46.46", "172.20.46.47", "172.20.46.47", "172.20.46.47",
+              "172.20.46.47", "172.20.46.47", "172.20.46.47"],
+            "mountPoints" : ["/mnt/spp/vsnap/vpool6/fs112", "/mnt/spp/vsnap/vpool6/fs112", "/mnt/spp/vsnap/vpool6/fs112",
+              "/mnt/spp/vsnap/vpool6/fs112", "/mnt/spp/vsnap/vpool6/fs112", "/mnt/spp/vsnap/vpool6/fs112"]
+          }
+        },
+        "numTasks": 2,
+        "lastUpdate": 1537981169196,
+        "percent": 0,
+        "expiresAt": null,
+        "expirationTime": null,
+        "retention": 0,
+        "retentionUnit": null,
+        "expired": false,
+        "hasCatalog": false,
+        "userUpdate": false,
+        "actions": null,
+        "statistics": null,
+        "policySnapshot": {
+          "id": "1008",
+          "name": "exch_gmtest2_msg",
+          "type": "protection",
+          "subType": "exch",
+          "serviceId": "serviceprovider.protection.application",
+          "version": "3.0",
+          "spec": {
+            "source": [],
+            "storageworkflow": [
+              {
+                "id": "2102",
+                "name": "gmtest2",
+                "href": "https://ecxbed3/api/spec/storageprofile/2102"
+              }
+            ],
+            "option": {
+              "logbackup": {
+                "performlogbackup": true,
+                "rpo": {
+                  "frequency": 15,
+                  "frequencyType": "",
+                  "triggerTime": ""
+                }
+              }
+            }
+          },
+          "description": "",
+          "script": null
+        },
+        "id": "1537981167022"
+      },
+      {
+        "links": {
+          "self": {
+            "rel": "self",
+            "href": "http://ecxbed3:8082/api/endeavour/jobsession/1537981167063"
+          },
+          "up": {
+            "rel": "up",
+            "href": "http://ecxbed3:8082/api/endeavour/jobsession"
+          },
+          "job": {
+            "rel": "related",
+            "href": "http://ecxbed3:8082/api/endeavour/job/1008"
+          },
+          "tasks": {
+            "rel": "related",
+            "href": "http://ecxbed3:8082/api/endeavour/jobsession/1537981167063/task"
+          },
+          "statistics": {
+            "rel": "related",
+            "href": "http://ecxbed3:8082/api/endeavour/jobsession/statistics/1537981167063"
+          },
+          "log": {
+            "rel": "related",
+            "href": "http://ecxbed3:8082/api/endeavour/log/job?filter=%5B%7B%22property%22%3A%22jobsessionId%22%2C%22value%22%3A%221537981167063%22%7D%5D"
+          },
+          "csv": {
+            "rel": "related",
+            "href": "http://ecxbed3:8082/api/endeavour/log/job/download/csv?filter=%5B%7B%22property%22%3A%22jobsessionId%22%2C%22value%22%3A%221537981167063%22%7D%5D&esessionid=332349392554448eb90ba8f37bfedddb"
+          },
+          "diagnostics": {
+            "rel": "related",
+            "href": "http://ecxbed3:8082/api/endeavour/log/job/download/diagnostics?filter=%5B%7B%22property%22%3A%22jobsessionId%22%2C%22value%22%3A%221537981167063%22%7D%5D&esessionid=332349392554448eb90ba8f37bfedddb"
+          }
+        },
+        "jobName": "exch_gmtest2_msg",
+        "jobId": "1012",
+        "type": "protection",
+        "subType": "exch",
+        "subPolicyType": "BACKUP",
+        "serviceId": "serviceprovider.protection.application",
+        "displayName": null,
+        "start": 1537981168600,
+        "end": null,
+        "duration": 266201,
+        "status": "RUNNING",
+        "indexStatus": null,
+        "description": null,
+        "results": null,
+        "properties": {
+          "statistics": [
+            {
+              "resourceType": "vm",
+              "total": 10,
+              "success": 8,
+              "failed": 0,
+              "skipped": 0,
+              "names": [
+                "alm4-clone00"
+              ]
+            }
+          ],
+          "postRestoreInfo": {
+            "message": "hello world",
+            "command": "command",
+            "appServerNames" : ["172.20.46.46", "172.20.46.47", "172.20.46.47", "172.20.46.47",
+              "172.20.46.47", "172.20.46.47", "172.20.46.47"],
+            "mountPoints" : ["/mnt/spp/vsnap/vpool6/fs112", "/mnt/spp/vsnap/vpool6/fs112", "/mnt/spp/vsnap/vpool6/fs112",
+              "/mnt/spp/vsnap/vpool6/fs112", "/mnt/spp/vsnap/vpool6/fs112", "/mnt/spp/vsnap/vpool6/fs112"]
+          }
+        },
+        "numTasks": 2,
+        "lastUpdate": 1537981169196,
+        "percent": 0,
+        "expiresAt": null,
+        "expirationTime": null,
+        "retention": 0,
+        "retentionUnit": null,
+        "expired": false,
+        "hasCatalog": false,
+        "userUpdate": false,
+        "actions": null,
+        "statistics": null,
+        "policySnapshot": {
+          "id": "1008",
+          "name": "exch_gmtest2_msg",
+          "type": "protection",
+          "subType": "exch",
+          "serviceId": "serviceprovider.protection.application",
+          "version": "3.0",
+          "spec": {
+            "source": [],
+            "storageworkflow": [
+              {
+                "id": "2102",
+                "name": "gmtest2",
+                "href": "https://ecxbed3/api/spec/storageprofile/2102"
+              }
+            ],
+            "option": {
+              "logbackup": {
+                "performlogbackup": true,
+                "rpo": {
+                  "frequency": 15,
+                  "frequencyType": "",
+                  "triggerTime": ""
+                }
+              }
+            }
+          },
+          "description": "",
+          "script": null
+        },
+        "id": "1537981167021"
+      },
+      {
+        "links": {
+          "self": {
+            "rel": "self",
+            "href": "http://ecxbed3:8082/api/endeavour/jobsession/1537981167063"
+          },
+          "up": {
+            "rel": "up",
+            "href": "http://ecxbed3:8082/api/endeavour/jobsession"
+          },
+          "job": {
+            "rel": "related",
+            "href": "http://ecxbed3:8082/api/endeavour/job/1008"
+          },
+          "tasks": {
+            "rel": "related",
+            "href": "http://ecxbed3:8082/api/endeavour/jobsession/1537981167063/task"
+          },
+          "statistics": {
+            "rel": "related",
+            "href": "http://ecxbed3:8082/api/endeavour/jobsession/statistics/1537981167063"
+          },
+          "log": {
+            "rel": "related",
+            "href": "http://ecxbed3:8082/api/endeavour/log/job?filter=%5B%7B%22property%22%3A%22jobsessionId%22%2C%22value%22%3A%221537981167063%22%7D%5D"
+          },
+          "csv": {
+            "rel": "related",
+            "href": "http://ecxbed3:8082/api/endeavour/log/job/download/csv?filter=%5B%7B%22property%22%3A%22jobsessionId%22%2C%22value%22%3A%221537981167063%22%7D%5D&esessionid=332349392554448eb90ba8f37bfedddb"
+          },
+          "diagnostics": {
+            "rel": "related",
+            "href": "http://ecxbed3:8082/api/endeavour/log/job/download/diagnostics?filter=%5B%7B%22property%22%3A%22jobsessionId%22%2C%22value%22%3A%221537981167063%22%7D%5D&esessionid=332349392554448eb90ba8f37bfedddb"
+          }
+        },
+        "jobName": "exch_gmtest2_msg",
+        "jobId": "1012",
+        "type": "protection",
+        "subType": "exch",
+        "subPolicyType": "BACKUP",
+        "serviceId": "serviceprovider.protection.application",
+        "displayName": null,
+        "start": 1537981168600,
+        "end": null,
+        "duration": 266201,
+        "status": "RUNNING",
+        "indexStatus": null,
+        "description": null,
+        "results": null,
+        "properties": {
+          "statistics": [
+            {
+              "resourceType": "vm",
+              "total": 10,
+              "success": 10,
+              "failed": 0,
+              "skipped": 0,
+              "names": [
+                "alm4-clone00"
+              ]
+            }
+          ],
+          "postRestoreInfo": {
+            "message": "hello world",
+            "command": "command",
+            "appServerNames" : ["172.20.46.46", "172.20.46.47", "172.20.46.47", "172.20.46.47",
+              "172.20.46.47", "172.20.46.47", "172.20.46.47"],
+            "mountPoints" : ["/mnt/spp/vsnap/vpool6/fs112", "/mnt/spp/vsnap/vpool6/fs112", "/mnt/spp/vsnap/vpool6/fs112",
+              "/mnt/spp/vsnap/vpool6/fs112", "/mnt/spp/vsnap/vpool6/fs112", "/mnt/spp/vsnap/vpool6/fs112"]
+          }
+        },
+        "numTasks": 2,
+        "lastUpdate": 1537981169196,
+        "percent": 0,
+        "expiresAt": null,
+        "expirationTime": null,
+        "retention": 0,
+        "retentionUnit": null,
+        "expired": false,
+        "hasCatalog": false,
+        "userUpdate": false,
+        "actions": null,
+        "statistics": null,
+        "policySnapshot": {
+          "id": "1008",
+          "name": "exch_gmtest2_msg",
+          "type": "protection",
+          "subType": "exch",
+          "serviceId": "serviceprovider.protection.application",
+          "version": "3.0",
+          "spec": {
+            "source": [],
+            "storageworkflow": [
+              {
+                "id": "2102",
+                "name": "gmtest2",
+                "href": "https://ecxbed3/api/spec/storageprofile/2102"
+              }
+            ],
+            "option": {
+              "logbackup": {
+                "performlogbackup": true,
+                "rpo": {
+                  "frequency": 15,
+                  "frequencyType": "",
+                  "triggerTime": ""
+                }
+              }
+            }
+          },
+          "description": "",
+          "script": null
+        },
+        "id": "1537981167020"
+      },
+      {
+        "links": {
+          "self": {
+            "rel": "self",
+            "href": "http://ecxbed3:8082/api/endeavour/jobsession/1537981414168"
+          },
+          "up": {
+            "rel": "up",
+            "href": "http://ecxbed3:8082/api/endeavour/jobsession"
+          },
+          "job": {
+            "rel": "related",
+            "href": "http://ecxbed3:8082/api/endeavour/job/1001"
+          },
+          "tasks": {
+            "rel": "related",
+            "href": "http://ecxbed3:8082/api/endeavour/jobsession/1537981414168/task"
+          },
+          "statistics": {
+            "rel": "related",
+            "href": "http://ecxbed3:8082/api/endeavour/jobsession/statistics/1537981414168"
+          },
+          "log": {
+            "rel": "related",
+            "href": "http://ecxbed3:8082/api/endeavour/log/job?filter=%5B%7B%22property%22%3A%22jobsessionId%22%2C%22value%22%3A%221537981414168%22%7D%5D"
+          },
+          "csv": {
+            "rel": "related",
+            "href": "http://ecxbed3:8082/api/endeavour/log/job/download/csv?filter=%5B%7B%22property%22%3A%22jobsessionId%22%2C%22value%22%3A%221537981414168%22%7D%5D&esessionid=332349392554448eb90ba8f37bfedddb"
+          },
+          "diagnostics": {
+            "rel": "related",
+            "href": "http://ecxbed3:8082/api/endeavour/log/job/download/diagnostics?filter=%5B%7B%22property%22%3A%22jobsessionId%22%2C%22value%22%3A%221537981414168%22%7D%5D&esessionid=332349392554448eb90ba8f37bfedddb"
+          }
+        },
+        "jobName": "Maintenance",
+        "jobId": "1001",
+        "type": "maintenance",
+        "subType": "maintenance",
+        "subPolicyType": null,
+        "serviceId": "serviceprovider.maintenance",
+        "displayName": null,
+        "start": 1537981414854,
+        "end": null,
+        "duration": 19947,
+        "status": "RUNNING",
+        "indexStatus": null,
+        "description": null,
+        "results": null,
+        "properties": null,
+        "numTasks": 14,
+        "lastUpdate": 1537981424782,
+        "percent": 92,
+        "expiresAt": null,
+        "expirationTime": null,
+        "retention": 0,
+        "retentionUnit": null,
+        "expired": false,
+        "hasCatalog": false,
+        "userUpdate": false,
+        "actions": null,
+        "statistics": null,
+        "policySnapshot": {
+          "id": "1001",
+          "name": "Maintenance",
+          "type": "maintenance",
+          "subType": "maintenance",
+          "serviceId": "serviceprovider.maintenance",
+          "version": "2.0",
+          "spec": null,
+          "description": "Auto generated",
+          "script": null
+        },
+        "id": "1537981414109"
+      },
+      {
+        "links": {
+          "self": {
+            "rel": "self",
+            "href": "http://ecxbed3:8082/api/endeavour/jobsession/1537981417025"
+          },
+          "up": {
+            "rel": "up",
+            "href": "http://ecxbed3:8082/api/endeavour/jobsession"
+          },
+          "job": {
+            "rel": "related",
+            "href": "http://ecxbed3:8082/api/endeavour/job/1003"
+          },
+          "tasks": {
+            "rel": "related",
+            "href": "http://ecxbed3:8082/api/endeavour/jobsession/1537981417025/task"
+          },
+          "statistics": {
+            "rel": "related",
+            "href": "http://ecxbed3:8082/api/endeavour/jobsession/statistics/1537981417025"
+          },
+          "log": {
+            "rel": "related",
+            "href": "http://ecxbed3:8082/api/endeavour/log/job?filter=%5B%7B%22property%22%3A%22jobsessionId%22%2C%22value%22%3A%221537981417025%22%7D%5D"
+          },
+          "csv": {
+            "rel": "related",
+            "href": "http://ecxbed3:8082/api/endeavour/log/job/download/csv?filter=%5B%7B%22property%22%3A%22jobsessionId%22%2C%22value%22%3A%221537981417025%22%7D%5D&esessionid=332349392554448eb90ba8f37bfedddb"
+          },
+          "diagnostics": {
+            "rel": "related",
+            "href": "http://ecxbed3:8082/api/endeavour/log/job/download/diagnostics?filter=%5B%7B%22property%22%3A%22jobsessionId%22%2C%22value%22%3A%221537981417025%22%7D%5D&esessionid=332349392554448eb90ba8f37bfedddb"
+          }
+        },
+        "jobName": "Inventory_null_properties",
+        "jobId": "1003",
+        "type": "catalog",
+        "subType": "hypervisor",
+        "subPolicyType": null,
+        "serviceId": "serviceprovider.catalog.hypervisor",
+        "displayName": null,
+        "start": 1537981417648,
+        "end": null,
+        "duration": 17154,
+        "status": "RUNNING",
+        "indexStatus": null,
+        "description": null,
+        "results": "Started",
+        "properties": null,
+        "numTasks": 5,
+        "lastUpdate": 1537981434753,
+        "percent": 68,
+        "expiresAt": null,
+        "expirationTime": null,
+        "retention": 0,
+        "retentionUnit": null,
+        "expired": false,
+        "hasCatalog": false,
+        "userUpdate": false,
+        "actions": null,
+        "statistics": null,
+        "policySnapshot": {
+          "id": "1003",
+          "name": "Default Hypervisor Inventory",
+          "type": "catalog",
+          "subType": "hypervisor",
+          "serviceId": "serviceprovider.catalog.hypervisor",
+          "version": null,
+          "spec": {
+            "source": [
+              {
+                "href": "http://localhost:8082/api/hypervisor/1001",
+                "resourceType": "hypervisor",
+                "name": "172.19.7.43",
+                "id": "1001",
+                "include": true,
+                "metadata": {
+                  "path": ":",
+                  "name": "172.19.7.43"
+                }
+              },
+              {
+                "href": "http://localhost:8082/api/hypervisor/1002",
+                "resourceType": "hypervisor",
+                "name": "tsmvc.ad.catalogic.us",
+                "id": "1002",
+                "include": true,
+                "metadata": {
+                  "path": ":",
+                  "name": "tsmvc.ad.catalogic.us"
+                }
+              },
+              {
+                "href": "http://localhost:8082/api/hypervisor/1003",
+                "resourceType": "hypervisor",
+                "name": "vcqa2.ad.catalogic.us",
+                "id": "1003",
+                "include": true,
+                "metadata": {
+                  "path": ":",
+                  "name": "vcqa2.ad.catalogic.us"
+                }
+              },
+              {
+                "href": "http://localhost:8082/api/hypervisor/1004",
+                "resourceType": "hypervisor",
+                "name": "hyperv2k16svr3.devad.catalogic.us",
+                "id": "1004",
+                "include": true,
+                "metadata": {
+                  "path": ":",
+                  "name": "hyperv2k16svr3.devad.catalogic.us"
+                }
+              }
+            ],
+            "option": {
+              "retention": "3"
+            },
+            "notification": []
+          },
+          "description": "",
+          "script": null
+        },
+        "id": "1537981417010"
+      },
+      {
+        "links": {
+          "self": {
+            "rel": "self",
+            "href": "http://ecxbed3:8082/api/endeavour/jobsession/1537981417025"
+          },
+          "up": {
+            "rel": "up",
+            "href": "http://ecxbed3:8082/api/endeavour/jobsession"
+          },
+          "job": {
+            "rel": "related",
+            "href": "http://ecxbed3:8082/api/endeavour/job/1003"
+          },
+          "tasks": {
+            "rel": "related",
+            "href": "http://ecxbed3:8082/api/endeavour/jobsession/1537981417025/task"
+          },
+          "statistics": {
+            "rel": "related",
+            "href": "http://ecxbed3:8082/api/endeavour/jobsession/statistics/1537981417025"
+          },
+          "log": {
+            "rel": "related",
+            "href": "http://ecxbed3:8082/api/endeavour/log/job?filter=%5B%7B%22property%22%3A%22jobsessionId%22%2C%22value%22%3A%221537981417025%22%7D%5D"
+          },
+          "csv": {
+            "rel": "related",
+            "href": "http://ecxbed3:8082/api/endeavour/log/job/download/csv?filter=%5B%7B%22property%22%3A%22jobsessionId%22%2C%22value%22%3A%221537981417025%22%7D%5D&esessionid=332349392554448eb90ba8f37bfedddb"
+          },
+          "diagnostics": {
+            "rel": "related",
+            "href": "http://ecxbed3:8082/api/endeavour/log/job/download/diagnostics?filter=%5B%7B%22property%22%3A%22jobsessionId%22%2C%22value%22%3A%221537981417025%22%7D%5D&esessionid=332349392554448eb90ba8f37bfedddb"
+          }
+        },
+        "jobName": "Default Hypervisor Inventory",
+        "jobId": "1099",
+        "type": "catalog",
+        "subType": "hypervisor",
+        "subPolicyType": null,
+        "serviceId": "serviceprovider.catalog.hypervisor",
+        "displayName": null,
+        "start": 1537981417648,
+        "end": null,
+        "duration": 17154,
+        "status": "RUNNING",
+        "indexStatus": null,
+        "description": null,
+        "results": "Started",
+        "properties": null,
+        "numTasks": 5,
+        "lastUpdate": 1537981434753,
+        "percent": 68,
+        "expiresAt": null,
+        "expirationTime": null,
+        "retention": 0,
+        "retentionUnit": null,
+        "expired": false,
+        "hasCatalog": false,
+        "userUpdate": false,
+        "actions": null,
+        "statistics": null,
+        "policySnapshot": {
+          "id": "1003",
+          "name": "Default Hypervisor Inventory",
+          "type": "catalog",
+          "subType": "hypervisor",
+          "serviceId": "serviceprovider.catalog.hypervisor",
+          "version": null,
+          "spec": {
+            "source": [
+              {
+                "href": "http://localhost:8082/api/hypervisor/1001",
+                "resourceType": "hypervisor",
+                "name": "172.19.7.43",
+                "id": "1001",
+                "include": true,
+                "metadata": {
+                  "path": ":",
+                  "name": "172.19.7.43"
+                }
+              },
+              {
+                "href": "http://localhost:8082/api/hypervisor/1002",
+                "resourceType": "hypervisor",
+                "name": "tsmvc.ad.catalogic.us",
+                "id": "1002",
+                "include": true,
+                "metadata": {
+                  "path": ":",
+                  "name": "tsmvc.ad.catalogic.us"
+                }
+              },
+              {
+                "href": "http://localhost:8082/api/hypervisor/1003",
+                "resourceType": "hypervisor",
+                "name": "vcqa2.ad.catalogic.us",
+                "id": "1003",
+                "include": true,
+                "metadata": {
+                  "path": ":",
+                  "name": "vcqa2.ad.catalogic.us"
+                }
+              },
+              {
+                "href": "http://localhost:8082/api/hypervisor/1004",
+                "resourceType": "hypervisor",
+                "name": "hyperv2k16svr3.devad.catalogic.us",
+                "id": "1004",
+                "include": true,
+                "metadata": {
+                  "path": ":",
+                  "name": "hyperv2k16svr3.devad.catalogic.us"
+                }
+              }
+            ],
+            "option": {
+              "retention": "3"
+            },
+            "notification": []
+          },
+          "description": "",
+          "script": null
+        },
+        "id": "1537981417011"
+      },
+      {
+        "links": {
+          "self": {
+            "rel": "self",
+            "href": "http://ecxbed3:8082/api/endeavour/jobsession/1537981417025"
+          },
+          "up": {
+            "rel": "up",
+            "href": "http://ecxbed3:8082/api/endeavour/jobsession"
+          },
+          "job": {
+            "rel": "related",
+            "href": "http://ecxbed3:8082/api/endeavour/job/1003"
+          },
+          "tasks": {
+            "rel": "related",
+            "href": "http://ecxbed3:8082/api/endeavour/jobsession/1537981417025/task"
+          },
+          "statistics": {
+            "rel": "related",
+            "href": "http://ecxbed3:8082/api/endeavour/jobsession/statistics/1537981417025"
+          },
+          "log": {
+            "rel": "related",
+            "href": "http://ecxbed3:8082/api/endeavour/log/job?filter=%5B%7B%22property%22%3A%22jobsessionId%22%2C%22value%22%3A%221537981417025%22%7D%5D"
+          },
+          "csv": {
+            "rel": "related",
+            "href": "http://ecxbed3:8082/api/endeavour/log/job/download/csv?filter=%5B%7B%22property%22%3A%22jobsessionId%22%2C%22value%22%3A%221537981417025%22%7D%5D&esessionid=332349392554448eb90ba8f37bfedddb"
+          },
+          "diagnostics": {
+            "rel": "related",
+            "href": "http://ecxbed3:8082/api/endeavour/log/job/download/diagnostics?filter=%5B%7B%22property%22%3A%22jobsessionId%22%2C%22value%22%3A%221537981417025%22%7D%5D&esessionid=332349392554448eb90ba8f37bfedddb"
+          }
+        },
+        "jobName": "Default Hypervisor Inventory",
+        "jobId": "1024",
+        "type": "catalog",
+        "subType": "hypervisor",
+        "subPolicyType": null,
+        "serviceId": "serviceprovider.catalog.hypervisor",
+        "displayName": null,
+        "start": 1537981417648,
+        "end": null,
+        "duration": 17154,
+        "status": "RUNNING",
+        "indexStatus": null,
+        "description": null,
+        "results": "Started",
+        "properties": null,
+        "numTasks": 5,
+        "lastUpdate": 1537981434753,
+        "percent": 68,
+        "expiresAt": null,
+        "expirationTime": null,
+        "retention": 0,
+        "retentionUnit": null,
+        "expired": false,
+        "hasCatalog": false,
+        "userUpdate": false,
+        "actions": null,
+        "statistics": null,
+        "policySnapshot": {
+          "id": "1003",
+          "name": "Default Hypervisor Inventory",
+          "type": "catalog",
+          "subType": "hypervisor",
+          "serviceId": "serviceprovider.catalog.hypervisor",
+          "version": null,
+          "spec": {
+            "source": [
+              {
+                "href": "http://localhost:8082/api/hypervisor/1001",
+                "resourceType": "hypervisor",
+                "name": "172.19.7.43",
+                "id": "1001",
+                "include": true,
+                "metadata": {
+                  "path": ":",
+                  "name": "172.19.7.43"
+                }
+              },
+              {
+                "href": "http://localhost:8082/api/hypervisor/1002",
+                "resourceType": "hypervisor",
+                "name": "tsmvc.ad.catalogic.us",
+                "id": "1002",
+                "include": true,
+                "metadata": {
+                  "path": ":",
+                  "name": "tsmvc.ad.catalogic.us"
+                }
+              },
+              {
+                "href": "http://localhost:8082/api/hypervisor/1003",
+                "resourceType": "hypervisor",
+                "name": "vcqa2.ad.catalogic.us",
+                "id": "1003",
+                "include": true,
+                "metadata": {
+                  "path": ":",
+                  "name": "vcqa2.ad.catalogic.us"
+                }
+              },
+              {
+                "href": "http://localhost:8082/api/hypervisor/1004",
+                "resourceType": "hypervisor",
+                "name": "hyperv2k16svr3.devad.catalogic.us",
+                "id": "1004",
+                "include": true,
+                "metadata": {
+                  "path": ":",
+                  "name": "hyperv2k16svr3.devad.catalogic.us"
+                }
+              }
+            ],
+            "option": {
+              "retention": "3"
+            },
+            "notification": []
+          },
+          "description": "",
+          "script": null
+        },
+        "id": "1537981417012"
+      },
+      {
+        "links": {
+          "self": {
+            "rel": "self",
+            "href": "http://ecxbed3:8082/api/endeavour/jobsession/1537981417025"
+          },
+          "up": {
+            "rel": "up",
+            "href": "http://ecxbed3:8082/api/endeavour/jobsession"
+          },
+          "job": {
+            "rel": "related",
+            "href": "http://ecxbed3:8082/api/endeavour/job/1003"
+          },
+          "tasks": {
+            "rel": "related",
+            "href": "http://ecxbed3:8082/api/endeavour/jobsession/1537981417025/task"
+          },
+          "statistics": {
+            "rel": "related",
+            "href": "http://ecxbed3:8082/api/endeavour/jobsession/statistics/1537981417025"
+          },
+          "log": {
+            "rel": "related",
+            "href": "http://ecxbed3:8082/api/endeavour/log/job?filter=%5B%7B%22property%22%3A%22jobsessionId%22%2C%22value%22%3A%221537981417025%22%7D%5D"
+          },
+          "csv": {
+            "rel": "related",
+            "href": "http://ecxbed3:8082/api/endeavour/log/job/download/csv?filter=%5B%7B%22property%22%3A%22jobsessionId%22%2C%22value%22%3A%221537981417025%22%7D%5D&esessionid=332349392554448eb90ba8f37bfedddb"
+          },
+          "diagnostics": {
+            "rel": "related",
+            "href": "http://ecxbed3:8082/api/endeavour/log/job/download/diagnostics?filter=%5B%7B%22property%22%3A%22jobsessionId%22%2C%22value%22%3A%221537981417025%22%7D%5D&esessionid=332349392554448eb90ba8f37bfedddb"
+          }
+        },
+        "jobName": "Default Hypervisor Inventory",
+        "jobId": "1025",
+        "type": "catalog",
+        "subType": "hypervisor",
+        "subPolicyType": null,
+        "serviceId": "serviceprovider.catalog.hypervisor",
+        "displayName": null,
+        "start": 1537981417648,
+        "end": null,
+        "duration": 17154,
+        "status": "RUNNING",
+        "indexStatus": null,
+        "description": null,
+        "results": "Started",
+        "properties": null,
+        "numTasks": 5,
+        "lastUpdate": 1537981434753,
+        "percent": 68,
+        "expiresAt": null,
+        "expirationTime": null,
+        "retention": 0,
+        "retentionUnit": null,
+        "expired": false,
+        "hasCatalog": false,
+        "userUpdate": false,
+        "actions": null,
+        "statistics": null,
+        "policySnapshot": {
+          "id": "1003",
+          "name": "Default Hypervisor Inventory",
+          "type": "catalog",
+          "subType": "hypervisor",
+          "serviceId": "serviceprovider.catalog.hypervisor",
+          "version": null,
+          "spec": {
+            "source": [
+              {
+                "href": "http://localhost:8082/api/hypervisor/1001",
+                "resourceType": "hypervisor",
+                "name": "172.19.7.43",
+                "id": "1001",
+                "include": true,
+                "metadata": {
+                  "path": ":",
+                  "name": "172.19.7.43"
+                }
+              },
+              {
+                "href": "http://localhost:8082/api/hypervisor/1002",
+                "resourceType": "hypervisor",
+                "name": "tsmvc.ad.catalogic.us",
+                "id": "1002",
+                "include": true,
+                "metadata": {
+                  "path": ":",
+                  "name": "tsmvc.ad.catalogic.us"
+                }
+              },
+              {
+                "href": "http://localhost:8082/api/hypervisor/1003",
+                "resourceType": "hypervisor",
+                "name": "vcqa2.ad.catalogic.us",
+                "id": "1003",
+                "include": true,
+                "metadata": {
+                  "path": ":",
+                  "name": "vcqa2.ad.catalogic.us"
+                }
+              },
+              {
+                "href": "http://localhost:8082/api/hypervisor/1004",
+                "resourceType": "hypervisor",
+                "name": "hyperv2k16svr3.devad.catalogic.us",
+                "id": "1004",
+                "include": true,
+                "metadata": {
+                  "path": ":",
+                  "name": "hyperv2k16svr3.devad.catalogic.us"
+                }
+              }
+            ],
+            "option": {
+              "retention": "3"
+            },
+            "notification": []
+          },
+          "description": "",
+          "script": null
+        },
+        "id": "1537981417013"
+      },
+      {
+        "links": {
+          "self": {
+            "rel": "self",
+            "href": "http://ecxbed3:8082/api/endeavour/jobsession/1537981417025"
+          },
+          "up": {
+            "rel": "up",
+            "href": "http://ecxbed3:8082/api/endeavour/jobsession"
+          },
+          "job": {
+            "rel": "related",
+            "href": "http://ecxbed3:8082/api/endeavour/job/1003"
+          },
+          "tasks": {
+            "rel": "related",
+            "href": "http://ecxbed3:8082/api/endeavour/jobsession/1537981417025/task"
+          },
+          "statistics": {
+            "rel": "related",
+            "href": "http://ecxbed3:8082/api/endeavour/jobsession/statistics/1537981417025"
+          },
+          "log": {
+            "rel": "related",
+            "href": "http://ecxbed3:8082/api/endeavour/log/job?filter=%5B%7B%22property%22%3A%22jobsessionId%22%2C%22value%22%3A%221537981417025%22%7D%5D"
+          },
+          "csv": {
+            "rel": "related",
+            "href": "http://ecxbed3:8082/api/endeavour/log/job/download/csv?filter=%5B%7B%22property%22%3A%22jobsessionId%22%2C%22value%22%3A%221537981417025%22%7D%5D&esessionid=332349392554448eb90ba8f37bfedddb"
+          },
+          "diagnostics": {
+            "rel": "related",
+            "href": "http://ecxbed3:8082/api/endeavour/log/job/download/diagnostics?filter=%5B%7B%22property%22%3A%22jobsessionId%22%2C%22value%22%3A%221537981417025%22%7D%5D&esessionid=332349392554448eb90ba8f37bfedddb"
+          }
+        },
+        "jobName": "Default Hypervisor Inventory",
+        "jobId": "1026",
+        "type": "catalog",
+        "subType": "hypervisor",
+        "subPolicyType": null,
+        "serviceId": "serviceprovider.catalog.hypervisor",
+        "displayName": null,
+        "start": 1537981417648,
+        "end": null,
+        "duration": 17154,
+        "status": "RUNNING",
+        "indexStatus": null,
+        "description": null,
+        "results": "Started",
+        "properties": null,
+        "numTasks": 5,
+        "lastUpdate": 1537981434753,
+        "percent": 68,
+        "expiresAt": null,
+        "expirationTime": null,
+        "retention": 0,
+        "retentionUnit": null,
+        "expired": false,
+        "hasCatalog": false,
+        "userUpdate": false,
+        "actions": null,
+        "statistics": null,
+        "policySnapshot": {
+          "id": "1003",
+          "name": "Default Hypervisor Inventory",
+          "type": "catalog",
+          "subType": "hypervisor",
+          "serviceId": "serviceprovider.catalog.hypervisor",
+          "version": null,
+          "spec": {
+            "source": [
+              {
+                "href": "http://localhost:8082/api/hypervisor/1001",
+                "resourceType": "hypervisor",
+                "name": "172.19.7.43",
+                "id": "1001",
+                "include": true,
+                "metadata": {
+                  "path": ":",
+                  "name": "172.19.7.43"
+                }
+              },
+              {
+                "href": "http://localhost:8082/api/hypervisor/1002",
+                "resourceType": "hypervisor",
+                "name": "tsmvc.ad.catalogic.us",
+                "id": "1002",
+                "include": true,
+                "metadata": {
+                  "path": ":",
+                  "name": "tsmvc.ad.catalogic.us"
+                }
+              },
+              {
+                "href": "http://localhost:8082/api/hypervisor/1003",
+                "resourceType": "hypervisor",
+                "name": "vcqa2.ad.catalogic.us",
+                "id": "1003",
+                "include": true,
+                "metadata": {
+                  "path": ":",
+                  "name": "vcqa2.ad.catalogic.us"
+                }
+              },
+              {
+                "href": "http://localhost:8082/api/hypervisor/1004",
+                "resourceType": "hypervisor",
+                "name": "hyperv2k16svr3.devad.catalogic.us",
+                "id": "1004",
+                "include": true,
+                "metadata": {
+                  "path": ":",
+                  "name": "hyperv2k16svr3.devad.catalogic.us"
+                }
+              }
+            ],
+            "option": {
+              "retention": "3"
+            },
+            "notification": []
+          },
+          "description": "",
+          "script": null
+        },
+        "id": "1537981417014"
+      },
+      {
+        "links": {
+          "self": {
+            "rel": "self",
+            "href": "http://ecxbed3:8082/api/endeavour/jobsession/1537981417025"
+          },
+          "up": {
+            "rel": "up",
+            "href": "http://ecxbed3:8082/api/endeavour/jobsession"
+          },
+          "job": {
+            "rel": "related",
+            "href": "http://ecxbed3:8082/api/endeavour/job/1003"
+          },
+          "tasks": {
+            "rel": "related",
+            "href": "http://ecxbed3:8082/api/endeavour/jobsession/1537981417025/task"
+          },
+          "statistics": {
+            "rel": "related",
+            "href": "http://ecxbed3:8082/api/endeavour/jobsession/statistics/1537981417025"
+          },
+          "log": {
+            "rel": "related",
+            "href": "http://ecxbed3:8082/api/endeavour/log/job?filter=%5B%7B%22property%22%3A%22jobsessionId%22%2C%22value%22%3A%221537981417025%22%7D%5D"
+          },
+          "csv": {
+            "rel": "related",
+            "href": "http://ecxbed3:8082/api/endeavour/log/job/download/csv?filter=%5B%7B%22property%22%3A%22jobsessionId%22%2C%22value%22%3A%221537981417025%22%7D%5D&esessionid=332349392554448eb90ba8f37bfedddb"
+          },
+          "diagnostics": {
+            "rel": "related",
+            "href": "http://ecxbed3:8082/api/endeavour/log/job/download/diagnostics?filter=%5B%7B%22property%22%3A%22jobsessionId%22%2C%22value%22%3A%221537981417025%22%7D%5D&esessionid=332349392554448eb90ba8f37bfedddb"
+          }
+        },
+        "jobName": "Default Hypervisor Inventory",
+        "jobId": "1027",
+        "type": "catalog",
+        "subType": "hypervisor",
+        "subPolicyType": null,
+        "serviceId": "serviceprovider.catalog.hypervisor",
+        "displayName": null,
+        "start": 1537981417648,
+        "end": null,
+        "duration": 17154,
+        "status": "RUNNING",
+        "indexStatus": null,
+        "description": null,
+        "results": "Started",
+        "properties": null,
+        "numTasks": 5,
+        "lastUpdate": 1537981434753,
+        "percent": 68,
+        "expiresAt": null,
+        "expirationTime": null,
+        "retention": 0,
+        "retentionUnit": null,
+        "expired": false,
+        "hasCatalog": false,
+        "userUpdate": false,
+        "actions": null,
+        "statistics": null,
+        "policySnapshot": {
+          "id": "1003",
+          "name": "Default Hypervisor Inventory",
+          "type": "catalog",
+          "subType": "hypervisor",
+          "serviceId": "serviceprovider.catalog.hypervisor",
+          "version": null,
+          "spec": {
+            "source": [
+              {
+                "href": "http://localhost:8082/api/hypervisor/1001",
+                "resourceType": "hypervisor",
+                "name": "172.19.7.43",
+                "id": "1001",
+                "include": true,
+                "metadata": {
+                  "path": ":",
+                  "name": "172.19.7.43"
+                }
+              },
+              {
+                "href": "http://localhost:8082/api/hypervisor/1002",
+                "resourceType": "hypervisor",
+                "name": "tsmvc.ad.catalogic.us",
+                "id": "1002",
+                "include": true,
+                "metadata": {
+                  "path": ":",
+                  "name": "tsmvc.ad.catalogic.us"
+                }
+              },
+              {
+                "href": "http://localhost:8082/api/hypervisor/1003",
+                "resourceType": "hypervisor",
+                "name": "vcqa2.ad.catalogic.us",
+                "id": "1003",
+                "include": true,
+                "metadata": {
+                  "path": ":",
+                  "name": "vcqa2.ad.catalogic.us"
+                }
+              },
+              {
+                "href": "http://localhost:8082/api/hypervisor/1004",
+                "resourceType": "hypervisor",
+                "name": "hyperv2k16svr3.devad.catalogic.us",
+                "id": "1004",
+                "include": true,
+                "metadata": {
+                  "path": ":",
+                  "name": "hyperv2k16svr3.devad.catalogic.us"
+                }
+              }
+            ],
+            "option": {
+              "retention": "3"
+            },
+            "notification": []
+          },
+          "description": "",
+          "script": null
+        },
+        "id": "1537981417015"
+      },
+      {
+        "links": {
+          "self": {
+            "rel": "self",
+            "href": "http://ecxbed3:8082/api/endeavour/jobsession/1537981417025"
+          },
+          "up": {
+            "rel": "up",
+            "href": "http://ecxbed3:8082/api/endeavour/jobsession"
+          },
+          "job": {
+            "rel": "related",
+            "href": "http://ecxbed3:8082/api/endeavour/job/1003"
+          },
+          "tasks": {
+            "rel": "related",
+            "href": "http://ecxbed3:8082/api/endeavour/jobsession/1537981417025/task"
+          },
+          "statistics": {
+            "rel": "related",
+            "href": "http://ecxbed3:8082/api/endeavour/jobsession/statistics/1537981417025"
+          },
+          "log": {
+            "rel": "related",
+            "href": "http://ecxbed3:8082/api/endeavour/log/job?filter=%5B%7B%22property%22%3A%22jobsessionId%22%2C%22value%22%3A%221537981417025%22%7D%5D"
+          },
+          "csv": {
+            "rel": "related",
+            "href": "http://ecxbed3:8082/api/endeavour/log/job/download/csv?filter=%5B%7B%22property%22%3A%22jobsessionId%22%2C%22value%22%3A%221537981417025%22%7D%5D&esessionid=332349392554448eb90ba8f37bfedddb"
+          },
+          "diagnostics": {
+            "rel": "related",
+            "href": "http://ecxbed3:8082/api/endeavour/log/job/download/diagnostics?filter=%5B%7B%22property%22%3A%22jobsessionId%22%2C%22value%22%3A%221537981417025%22%7D%5D&esessionid=332349392554448eb90ba8f37bfedddb"
+          }
+        },
+        "jobName": "Default Hypervisor Inventory",
+        "jobId": "1028",
+        "type": "catalog",
+        "subType": "hypervisor",
+        "subPolicyType": null,
+        "serviceId": "serviceprovider.catalog.hypervisor",
+        "displayName": null,
+        "start": 1537981417648,
+        "end": null,
+        "duration": 17154,
+        "status": "RUNNING",
+        "indexStatus": null,
+        "description": null,
+        "results": "Started",
+        "properties": null,
+        "numTasks": 5,
+        "lastUpdate": 1537981434753,
+        "percent": 68,
+        "expiresAt": null,
+        "expirationTime": null,
+        "retention": 0,
+        "retentionUnit": null,
+        "expired": false,
+        "hasCatalog": false,
+        "userUpdate": false,
+        "actions": null,
+        "statistics": null,
+        "policySnapshot": {
+          "id": "1003",
+          "name": "Default Hypervisor Inventory",
+          "type": "catalog",
+          "subType": "hypervisor",
+          "serviceId": "serviceprovider.catalog.hypervisor",
+          "version": null,
+          "spec": {
+            "source": [
+              {
+                "href": "http://localhost:8082/api/hypervisor/1001",
+                "resourceType": "hypervisor",
+                "name": "172.19.7.43",
+                "id": "1001",
+                "include": true,
+                "metadata": {
+                  "path": ":",
+                  "name": "172.19.7.43"
+                }
+              },
+              {
+                "href": "http://localhost:8082/api/hypervisor/1002",
+                "resourceType": "hypervisor",
+                "name": "tsmvc.ad.catalogic.us",
+                "id": "1002",
+                "include": true,
+                "metadata": {
+                  "path": ":",
+                  "name": "tsmvc.ad.catalogic.us"
+                }
+              },
+              {
+                "href": "http://localhost:8082/api/hypervisor/1003",
+                "resourceType": "hypervisor",
+                "name": "vcqa2.ad.catalogic.us",
+                "id": "1003",
+                "include": true,
+                "metadata": {
+                  "path": ":",
+                  "name": "vcqa2.ad.catalogic.us"
+                }
+              },
+              {
+                "href": "http://localhost:8082/api/hypervisor/1004",
+                "resourceType": "hypervisor",
+                "name": "hyperv2k16svr3.devad.catalogic.us",
+                "id": "1004",
+                "include": true,
+                "metadata": {
+                  "path": ":",
+                  "name": "hyperv2k16svr3.devad.catalogic.us"
+                }
+              }
+            ],
+            "option": {
+              "retention": "3"
+            },
+            "notification": []
+          },
+          "description": "",
+          "script": null
+        },
+        "id": "1537981417016"
+      },
+      {
+          "actions": [],
+          "description": null,
+          "displayName": null,
+          "duration": 299368,
+          "end": null,
+          "expirationTime": null,
+          "expired": false,
+          "expiresAt": null,
+          "hasCatalog": false,
+          "hasCondensed": false,
+          "id": "1564462784224",
+          "indexStatus": null,
+          "jobId": "1389",
+          "jobName": "vmware_offloadFromRetro",
+          "lastUpdate": 1564463062376,
+          "links": {
+              "cancel": {
+                  "href": "https://172.20.239.55/api/endeavour/jobsession/1564462784224?action=cancel",
+                  "rel": "action",
+                  "title": "Cancel"
+              },
+              "concurrentjobs": {
+                  "href": "https://172.20.239.55/api/endeavour/jobsession?filter=%5B%7B%22property%22%3A%22start%22%2C%22op%22%3A%22%3C%3D%22%2C%22value%22%3A9223372036854775807%7D%2C%7B%22property%22%3A%22end%22%2C%22op%22%3A%22%3E%3D%22%2C%22value%22%3A1564462785584%7D%2C%7B%22property%22%3A%22status%22%2C%22op%22%3A%22%3D%22%2C%22value%22%3A%5B%22COMPLETED%22%2C%22RUNNING%22%2C%22FAILED%22%2C%22PARTIAL%22%2C%22PENDING%22%2C%22WAITING%22%2C%22CANCELLED%22%2C%22CANCELLING%22%2C%22PAUSED%22%2C%22PAUSING%22%2C%22STOPPED%22%2C%22STOPPING%22%2C%22SUSPENDED%22%2C%22SUSPENDING%22%2C%22UNKNOWN%22%5D%7D%5D",
+                  "rel": "related"
+              },
+              "csv": {
+                  "href": "https://172.20.239.55/api/endeavour/log/job/download/csv?filter=%5B%7B%22property%22%3A%22jobsessionId%22%2C%22value%22%3A%221564462784224%22%7D%5D&esessionid=bb0669b91e8645659f36d6fcf5086246",
+                  "rel": "related"
+              },
+              "diagnostics": {
+                  "href": "https://172.20.239.55/api/endeavour/log/job/download/diagnostics?filter=%5B%7B%22property%22%3A%22jobsessionId%22%2C%22value%22%3A%221564462784224%22%7D%5D&esessionid=bb0669b91e8645659f36d6fcf5086246",
+                  "rel": "related"
+              },
+              "expireall": {
+                  "href": "https://172.20.239.55/api/endeavour/jobsession/1564462784224?action=expireall",
+                  "rel": "action",
+                  "title": "Expire All Job Sessions"
+              },
+              "job": {
+                  "href": "https://172.20.239.55/api/endeavour/job/1389",
+                  "rel": "related"
+              },
+              "log": {
+                  "href": "https://172.20.239.55/api/endeavour/log/job?filter=%5B%7B%22property%22%3A%22jobsessionId%22%2C%22value%22%3A%221564462784224%22%7D%5D",
+                  "rel": "related"
+              },
+              "relatedSession": {
+                  "href": "https://172.20.239.55/api/endeavour/jobsession/1564462784224",
+                  "rel": "self"
+              },
+              "self": {
+                  "href": "https://172.20.239.55/api/endeavour/jobsession/1564462784224",
+                  "rel": "self"
+              },
+              "statistics": {
+                  "href": "https://172.20.239.55/api/endeavour/jobsession/statistics/1564462784224",
+                  "rel": "related"
+              },
+              "tasks": {
+                  "href": "https://172.20.239.55/api/endeavour/jobsession/1564462784224/task",
+                  "rel": "related"
+              },
+              "up": {
+                  "href": "https://172.20.239.55/api/endeavour/jobsession",
+                  "rel": "up"
+              }
+          },
+          "numTasks": 2,
+          "percent": 36,
+          "policySnapshot": {
+              "description": "",
+              "id": "1395",
+              "name": "vmware_offloadFromRetro",
+              "script": {
+                  "continueScriptsOnError": false,
+                  "postGuest": null,
+                  "postGuestSnap": null,
+                  "postScript": null,
+                  "postSnap": null,
+                  "preGuest": null,
+                  "preGuestSnap": null,
+                  "preScript": null,
+                  "preSnap": null
+              },
+              "serviceId": "serviceprovider.protection.hypervisor",
+              "spec": {
+                  "notification": [],
+                  "option": {
+                      "maxtasks": 0,
+                      "skipreadonlydatastores": true,
+                      "vmsnapshot": {
+                          "concurrentsnapshotsonesx": 3,
+                          "consistency": false,
+                          "consistencyvms": [],
+                          "includememory": false,
+                          "scriptvms": [],
+                          "takesnapshot": false,
+                          "truncateapplicationlogs": false
+                      }
+                  },
+                  "source": [],
+                  "storageworkflow": [
+                      {
+                          "href": "https://172.20.239.55/api/spec/storageprofile/251",
+                          "id": "251",
+                          "name": "offloadFromRetro"
+                      }
+                  ]
+              },
+              "subType": "vmware",
+              "type": "protection",
+              "version": "3.0"
+          },
+          "previousLastTask": 0,
+          "properties": {
+              "Discovering virtual machines that need to be protected": "Done (Total:3)",
+              "Finding data stores that need to be protected": "Done (Total:3)",
+              "Finding storage information of RDM volumes": "Done (Total:0)",
+              "Finding storage information of hypervisor volumes": "Done (Total:3)",
+              "Finding virtual disks of virtual machines": "Done (Total:6)",
+              "Performing VADP backup(s)": "In progress(2 of 3 [ rkhire_hyperVm3_2: 0% ])",
+              "statistics": [
+                  {
+                      "failed": 0,
+                      "jobSessionId": 0,
+                      "names": [
+                          "rkhire_hyperVm3",
+                          "rkhire_hyperVm3_2"
+                      ],
+                      "policyId": null,
+                      "resourceType": "vm",
+                      "skipped": 0,
+                      "startTime": 0,
+                      "success": 3,
+                      "total": 3
+                  }
+              ]
+          },
+          "rerunnable": false,
+          "results": null,
+          "retention": 0,
+          "retentionUnit": null,
+          "serviceId": "serviceprovider.protection.hypervisor",
+          "start": 1564462785584,
+          "statistics": null,
+          "status": "RUNNING",
+          "statusDisplayName": "Running",
+          "subPolicyType": "BACKUP",
+          "subPolicyTypeDisplayName": "Backup",
+          "subType": "vmware",
+          "subTypeDisplayName": "VMware",
+          "type": "protection",
+          "typeDisplayName": "Protection",
+          "userUpdate": false,
+          "wormProtected": false
+      }
+    ]
+  }
+}]

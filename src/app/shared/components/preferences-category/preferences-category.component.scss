@@ -1,0 +1,156 @@
+@import "../../../theme/sass/conf/conf";
+
+$grey-ish-color-than-base-font-color-light: #cbcbcb;
+
+.form-control {
+  border: none !important;
+}
+.custom-select {
+  border: 1px solid black !important;
+  // height: 2.2rem !important;
+}
+
+label.todo-checkbox > span:before {
+  border: 1px solid #047CC0;
+}
+
+.input-group.input-field-light.error-input {
+  border: 1px solid red;
+}
+
+.input-group.input-field-light {
+  border: 1px solid $gray70;
+  background: transparent;
+  height: 2.5em;
+  //width: 15em;
+  input[type=number] {
+    color: $gray70;
+    background: transparent;
+    height: 100%;
+    border: 0;
+    outline: none;
+    //padding: 0.75rem;
+
+    &:focus {
+      border-color: $cerulean50;
+      color: $gray70;
+    }
+    &:active {
+      border-color: $cerulean50;
+      color: $gray70;
+    }
+    &:hover {
+      border-color: $cerulean50;
+    }
+  }
+  input::-webkit-input-placeholder {
+    color: $nc3;
+  }
+  input::-moz-placeholder {
+    color: $nc3;
+  }
+  &.cdk-keyboard-focused, &.cdk-program-focused {
+    border-color: $cerulean50;
+    #search-button {
+      border-color: $cerulean50;
+      #search-icon {
+        color: $cerulean50;
+      }
+      @include branding-ibm-svg-icon-class('search_16', 'search-hover_16', 'action-based/', 16, 16);
+      &.cdk-program-focused {
+        outline: $keyboard-focused-outline-width $keyboard-focused-outline-style-dashed $keyboard-focused-outline-color;
+        outline-offset: .15em;
+      }
+    }
+  }
+}
+
+input:focus::-webkit-input-placeholder {
+    color: transparent !important;
+}
+input:focus::-moz-placeholder{
+  color: transparent !important;
+}
+
+input::-webkit-input-placeholder {
+  opacity: 0.5;
+}
+
+input::-moz-placeholder {
+  opacity: 0.5;
+}
+
+.input-field-light:hover, .input-field-light:focus {
+  border-color: $cerulean50;
+}
+
+.input-field-light[_ngcontent-c20]:hover, .input-field-light[_ngcontent-c20]:focus {
+  border-color: #047CC0 !important;
+}
+
+.input-field-light > input:disabled {
+  border-color: $gray70;
+  color: $gray70;
+  background-color: #fcfcfc;
+}     
+
+.input-group-btn {
+  border: 0;
+  width: 2.5rem;
+  height: 100%;
+  padding: 0;
+}
+
+#clear-button {
+  padding: 0;
+  border-width: 0 0 0 0;
+  border-color: black;
+  width: 100%;
+  height: 100%;
+  &:focus {
+    border: 2px solid yellow;
+    width: 100%;
+    height: 100%;
+  }
+  &:active {
+    border: none;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+  }
+}
+
+#clear-icon {
+  width: 16px !important;
+  height: 16px !important;
+  color: $gray50;
+}
+
+/* Remove spinbox from number input */
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+input[type='number'] {
+  -moz-appearance:textfield;
+}
+
+label.custom-checkbox.green-box > input:checked + span:before {
+  background-color: green;
+  cursor: default;
+}
+
+.updated-text {
+  text-overflow: ellipsis;
+  display: block;
+  cursor: default;
+  margin-top: 10%;
+}
+
+// Used for sub-fields
+.add-tab-space {
+  padding-left: 4rem;
+}
+

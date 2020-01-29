@@ -1,0 +1,53 @@
+<div class="options">
+  <div class="title" translate>{{'wizard.job.textOptionsTitle'}}</div>
+  <div class="desc" translate>{{'wizard.job.textOptionsDesc'}}</div>
+  <div class="content">
+    <div class="section" [hidden]="true">
+      <h6 class="section-title" translate>{{'application.textRecoveryOptions'}}</h6>
+      <div class="section-content">
+        <application-pit-component [applicationType]="applicationType"
+                                   [restoreItems]="getRestoreList()"
+                                   [applicationOptions]="model.subOption"
+                                   [workflowType]="model.subPolicyType"
+                                   [granularMode]="model.runType === 'granular'"
+                                   [disablePitOnly]="isOffload || recurring"
+                                   [enablePitOnly]="model.onDemandPIT"
+                                   [disabled]="model.subPolicyType === 'IA'"
+                                   [hideByIdOption]="true">
+        </application-pit-component>
+      </div>
+    </div>
+    <div class="section" [hidden]="model.subPolicyType === 'IA'">
+      <h6 class="section-title" translate [hidden]="true">{{'application.textApplicationOptions'}}</h6>
+      <div class="section-content">
+        <application-options
+          [restoreType]="model.runType"
+          [applicationType]="applicationType"
+          [options]="model.subOption">
+        </application-options>
+      </div>
+    </div>
+    <div class="section" [hidden]="true">
+      <h6 class="section-title" translate>{{'common.advancedOptionsText'}}</h6>
+      <div class="section-content offset">
+        <basic-dynamic-form
+          [formValues]="formValues"
+          [enableSaveButton]="false"
+          [enableCardLayout]="false"
+          [enableCancelButton]="false">
+        </basic-dynamic-form>
+      </div>
+    </div>
+  </div>
+</div>
+<ng-template #summary>
+  <div class="summary">
+    <div class="title" translate>{{'wizard.job.textSelectJobOptionsTitle'}}</div>
+    <div class="content">
+      <div class="property" *ngIf="!isSubPolicyTypeIA && hasMaxParallelStreams">
+          <label class="name">{{'application.textMaxParallelStreamsExchOnline' | translate}}</label>
+          <label class="value">{{applicationOption.maxParallelStreams}}</label>
+      </div>
+    </div>
+  </div>
+</ng-template>

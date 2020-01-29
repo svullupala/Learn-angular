@@ -1,0 +1,180 @@
+@import "../../../theme/sass/conf/conf";
+
+.modal {
+  padding-top: 20px;
+  .modal-content {
+    color: $dropdown-text;
+    border-top: $cerulean50 4px solid;
+    border-radius: 0;
+    border-right: none;
+    border-bottom: none;
+    border-left: none;
+    box-shadow: rgba(0, 0, 0, 0.14) 0 0 10px;
+    .modal-header {
+      border: none;
+      color: $gray50;
+      font-size: 1.77rem;
+      padding-top: 1.5rem;
+      padding-bottom: 1.5rem;
+    }
+  }
+
+  .spinning-wheel-wrapper {
+    display: table;
+    height: 100%;
+    margin: 0 auto;
+    background: transparent;
+    .dialog {
+      display: table-cell;
+      vertical-align: middle;
+      background: transparent;
+      .has-spinning-wheel {
+        border: 0 !important;
+        width: 100%;
+        .spinning-wheel-container {
+          height: 100%;
+          background: transparent !important;
+          border: 0 !important;
+          display: table;
+          .spinning-wheel {
+            vertical-align: middle;
+            display: table-cell;
+          }
+        }
+      }
+    }
+  }
+}
+
+.modal-buttons .btn {
+  margin-right: 20px;
+}
+
+.centered-modal {
+  position: fixed;
+  top: 50% !important;
+  left: 50% !important;
+  padding-top: inherit !important;
+  transform: translate(-50%, -50%);
+}
+
+.message {
+  color: $gray70;
+}
+
+.side-by-side-wrapper {
+  display: flex;
+  flex-flow: row;
+}
+
+.side-by-side-left {
+  margin-right: 0.75rem;
+  margin-top: -0.5rem;
+}
+
+.side-by-side-right {
+  flex: 1;
+  white-space: pre-wrap;
+}
+
+.question {
+  margin-top: -1rem !important;
+}
+
+.details {
+  max-width: 100%;
+}
+
+.danger-button {
+  background-color: #e85656 !important;
+}
+
+.button-details {
+  width: auto;
+}
+
+// notification
+.notification-contianer {
+  position: fixed;
+  top: 80px;
+  right: 20px;
+  z-index: 100;
+  .notification {
+    animation-duration: 2s;
+    animation-name: slidein;
+    background-color: #047cc0;
+    width: 350px;
+    height: 125px;
+    padding-left: 5px;
+    margin-bottom: 10px;
+    .notification-content {
+      height: inherit;
+      background-color: #deedf7;
+      .close-button {
+        padding: 5px;
+      }
+      .notification-title {
+        padding: 10px 20px;
+        font-size: 18px;
+        font-weight: 600;
+        .title-body {
+          display: flex;
+          .check-icon-body {
+            height: 20px;
+            width: 20px;
+            background-color: #24A249;
+            border-radius: 50%;
+            display: inline-block;
+            text-align: center
+          }
+          .title-text {
+            padding-top: 4px;
+            margin-left: 10px;
+          }
+        }
+      }
+      .notification-body {
+        padding: 10px 20px 5px;
+      }
+    }
+  }
+  .success {
+    background-color: #24A249;
+    .notification-content {
+      background-color: #CEF3D1;
+    }
+  }
+  .warning {
+    background-color: $orange30;
+    .notification-content {
+      background-color: $orange1;
+    }
+  }
+  .critical {
+    background-color: $red50;
+    .notification-content {
+      background-color: $red1;
+      .notification-title .title-body .title-text {
+        margin-left: 0;
+      }
+    }
+  }
+  .standard {
+    background-color: $gray50;
+    .notification-content {
+      background-color: $gray10;
+      .notification-title .title-body .title-text {
+        margin-left: 0;
+      }
+    }
+  }
+}
+
+@keyframes slidein {
+  from {
+    margin-left: 100%;
+  }
+  to {
+    margin-left: 0%;
+  }
+}

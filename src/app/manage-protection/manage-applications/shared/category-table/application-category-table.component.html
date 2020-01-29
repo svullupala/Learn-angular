@@ -1,0 +1,99 @@
+<div class="application-category-table" [ngClass]="{'masked': mask}">
+  <div class="paging-table">
+    <table>
+      <thead>
+      <tr>
+        <th class="sortable"
+            [ngClass]="{'st-sort-ascent': isAsc('name'), 'st-sort-descent': isDesc('name')}"
+            tabindex="0" clickOnEnterKeydown (click)="onSort('name')" translate>
+          {{'application.textName'}}
+        </th>
+        <th translate>{{ 'fileRestore.textPath' }}</th>
+        <th class="sortable"
+            [ngClass]="{'st-sort-ascent': isAsc('storageProfileName'), 'st-sort-descent': isDesc('storageProfileName')}"
+            tabindex="0" clickOnEnterKeydown (click)="onSort('storageProfileName')" translate>
+          {{'inventory.textPolicyCoverage'}}
+        </th>
+        <th *ngIf="!unprotected" translate>{{'inventory.textStatusOfLastJobRun'}}</th>
+        <th class="menu"></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr [hidden]="!(records && records.length < 1)">
+        <td>
+          <carbon-icon type="warning" class="icon-warning"></carbon-icon>
+        </td>
+        <td colspan="4">
+          <span translate>{{'common.textThereIsNoEntries'}}</span>
+        </td>
+      </tr>
+      <tr *ngFor="let item of records | paging: paginateConfig.json()">
+        <td>{{item.name}}
+        </td>
+        <td title="{{item.location || ''}}">{{ ellipsisPath(item) }}</td>
+        <td title="{{item.tooltipOfPolicyCoverage}}">
+          <span *ngIf="item.countOfPolicyCoverage > 0" class="policy first ellipsis"
+                [ngClass]="{'full-width': item.countOfPolicyCoverage === 1}">
+              {{item.storageProfiles[0]}}
+          </span>
+          <span *ngIf="item.countOfPolicyCoverage > 1" class="policy other">
+            {{otherPolicies(item)}}
+          </span>
+          <span *ngIf="item.countOfPolicyCoverage === 0"
+                class="link" (click)="onAssignPolicyClick(item)">
+            {{'inventory.textAssignPolicy' | translate}}
+          </span>
+        </td>
+        <td *ngIf="!unprotected">
+          <ng-container *ngIf="outOfTotal(item)">
+            <div *ngFor="let si of item.statusOfLastJobRun" class="status-item"
+                 [hidden]="isStatusItemHidden(si)">
+              <status-icon [model]="si" class="icon-resource {{si.status}}" [tooltipEnabled]="true"
+                           [defaultTheme]="false"></status-icon>
+              <span>{{si.count}}</span>
+            </div>
+            <label class="out-of-label" translate>{{'inventory.textOutOf'}}</label>{{outOfTotal(item)}}
+          </ng-container>
+        </td>
+        <td class="menu">
+          <div class="btn-group action-menu-dropdown" role="group">
+            <button
+              type="button"
+              class="action-menu-dropdown-menu-btn icon-container"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              <svg ibmIconOverflowMenuVertical16></svg>
+            </button>
+            <div
+              class="dropdown-menu dropdown-menu-sdl dropdown-menu-right"
+            >
+              <a
+                tabindex="0"
+                class="dropdown-item first-capitalize dropdown-item-sdl"
+                (click)="onAssignPolicyClick(item)"
+                clickOnEnterKeydown
+                translate>{{'inventory.textAssignPolicy'}}</a>
+              <a
+                tabindex="0"
+                class="dropdown-item first-capitalize dropdown-item-sdl"
+                (click)="onEditRunSettingsClick(item)"
+                clickOnEnterKeydown
+                translate>{{'inventory.textEditRunSettings'}}</a>
+            </div>
+          </div>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="paging-dockbar">
+    <paging-dockbar (pageChange)="onPageChange($event)" (refresh)="onRefresh()"
+                    (pageSizeChange)="onPageSizeChange($event)"
+                    [hideRefreshButton]="false"
+                    [id]="paginateConfig.id" [total]="paginateConfig.totalItems"
+                    [itemsPerPage]="paginateConfig.itemsPerPage"
+                    [currentPage]="paginateConfig.currentPage"></paging-dockbar>
+  </div>
+</div>

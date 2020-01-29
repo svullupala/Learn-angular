@@ -1,0 +1,15 @@
+<div class="horizontal-scroll" [ngClass]="{'masked': masked}">
+  <div class="form-group row" *ngFor="let row of rowData">
+    <ng-template let-item ngFor [ngForOf]="row">
+      <div *ngIf="item" class="indent col-sm-4">
+        <label class="control-label nowrap">
+          <input type="checkbox" class="vmiddle" [(ngModel)]="item.metadata['selected']" (change)="onPermissionGroupChange(item)">{{item.name | rolesecuritygroupname}}
+        </label>
+        <div class="indent2" *ngFor="let perm of item.permissions">
+          <input type="checkbox" class="vmiddle" [(ngModel)]="perm.metadata['selected']" (change)="onPermissionEntryChange(item, perm)"
+                 [attr.aria-label]="perm.displayName">{{perm.displayName}}
+        </div>
+      </div>
+    </ng-template>
+  </div>
+</div>

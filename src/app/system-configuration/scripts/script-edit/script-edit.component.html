@@ -1,0 +1,42 @@
+<div [ngClass]="{'hidden': mode !== 'list'}">
+  <div class="align-right margin-bottom-10" *ngIf="canAdd()">
+    <button class="sdl inline with-icon"
+            (click)="onAddClick()" translate>
+      <i class="bidi-add-new-white_16"></i>{{'scripts.textAdd'}}
+    </button>
+  </div>
+  <ng-content ></ng-content>
+</div>
+<div [ngClass]="{'hidden': mode === 'list'}">
+  <h2 class="sdl-header">{{(mode === 'edit' ? 'scripts.textUpdate' : 'scripts.textAdd') | translate }}</h2>
+  <ba-card>
+    <form *ngIf="!!uploaderOptions" class="form-horizontal">
+      <div [ngClass]="{'hidden': mode !== 'edit'}" class="form-group row">
+        <label class="col-sm-2 control-label" translate>{{'scripts.textCurrentScript'}}</label>
+        <label class="col-sm-6 control-label" translate>{{model.name}}</label>
+      </div>
+      <div class="form-group row">
+        <label class="col-sm-2 control-label" translate>{{mode === 'edit' ? 'scripts.textScript' :
+          'scripts.textNewScript'}}</label>
+        <div class="col-sm-6">
+          <label>{{textSelectedFileLabel}}</label>
+          <button class="sdl inline small" (click)="onBrowseClick()" translate>
+            {{'scripts.textBrowse'}}
+            <input #scriptUploader ngFileSelect hidden="true" type="file"
+                   [options]="uploaderOptions"
+                   [events]="inputUploadEvents"
+                   (onUpload)="handleUpload($event)"
+                   (change)="handleUpdateFileName($event)"
+                   (beforeUpload)="beforeUpload($event)">
+          </button>
+        </div>
+      </div>
+    </form>
+  </ba-card>
+  <confirm-toolbar-component
+    (cancelEvent)="onCancelClick()"
+    (confirmEvent)="startUpload()"
+    [disableConfirmButton]="!isValid()"
+    [splitButtons]="false"
+    [floatRight]="false"></confirm-toolbar-component>
+</div>

@@ -1,0 +1,54 @@
+  <div class="checkbox">
+    <label class="custom-checkbox" translate>
+      <input type="checkbox" [(ngModel)]="enableLogBackup">
+      <span>{{'application.textEnableLogbackup' | translate }}</span>
+    </label>
+  </div>
+  <ba-card [hidden]="!enableLogBackup">
+    <div class="form-group row">
+      <label class="control-label col-sm-3 line-height-30" translate>{{'application.textLogbackupFrequency'}}</label>
+      <div class="col-sm-9">
+        <define-schedule [hideMonthlyType]="true"
+                         [enableMinMax]="true"
+                         [hideLabel]="true"
+                         [hideStartTime]="true"
+                         [hideStartHourAndMinute] = "false" 
+                         [defaultType] = "'SUBHOURLY'"
+                         [defaultFrequency] = '30'
+                         [hideWeeklyType]="true"></define-schedule>
+      </div>
+    </div>
+  </ba-card>
+  <br [hidden]="enableLogBackup">
+  <br [hidden]="enableLogBackup">
+  <div class="input-demo radio-demo row">
+    <div class="col-md-12 col-lg-6">
+      <label class="radio-inline custom-radio">
+        <input type="radio" name="inlineRadioStreamOptions"
+               value="SINGLE_FILE"
+               (ngModelChange)="onSequenceClick()"
+               [(ngModel)]="model.dbFilesForParallelStreams">
+        <span class="prevent-line-break" translate>{{'application.textSingleFile'}}</span>
+      </label>
+    </div>
+    <div class="col-md-12 col-lg-6">
+      <label class="radio-inline custom-radio">
+        <input type="radio" name="inlineRadioStreamOptions"
+               value="MULTIPLE_FILES"
+               (ngModelChange)="onParallelClick()"
+               [(ngModel)]="model.dbFilesForParallelStreams">
+        <span class="prevent-line-break" translate>{{'application.textMultipleFiles'}}</span>
+      </label>
+    </div>
+    <br>
+    <br>
+  </div>
+  <div class="form-group row">
+    <label for="maxParallelStreams" class="col-sm-3 control-label line-height-30" translate>
+      {{'application.textMaxParallelStreams'}}
+    </label>
+    <div class="col-sm-2" style="margin-left: 15px;">
+      <input type="number" min="1" class="form-control" id="maxParallelStreams"
+             [(ngModel)]="model.maxParallelStreams">
+    </div>
+  </div>

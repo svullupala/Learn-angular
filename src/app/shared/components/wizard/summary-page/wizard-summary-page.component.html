@@ -1,0 +1,17 @@
+<div class="wizard-summary-page">
+  <div class="title" translate>{{'wizard.textSummary'}}</div>
+  <div class="description" translate>{{textDesc || 'wizard.textSummaryDesc'}}</div>
+  <div class="content">
+    <ng-template *ngIf="hasSummaryEntries" let-se ngFor [ngForOf]="summaryEntries">
+      <div class="entry">
+        <div *ngIf="!!se.title" class="title">{{se.title | translate}}</div>
+        <ng-template [ngTemplateOutlet]="se.content"></ng-template>
+      </div>
+    </ng-template>
+    <div *ngIf="!hasSummaryEntries" class="entry">
+        <textarea class="details" rows="20" readonly="true">
+          {{prettyDetails}}
+        </textarea>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,4 @@
+<div class="content-top clearfix">
+  <h1 class="al-title" [ngClass]="{'al-title-full': isFullScreen}">{{ activePageTitle | translate}}</h1>
+  <h1 tabindex="0" (keyup.enter)="onClose()"><i [hidden]="!isFullScreen" (click)="onClose()" class="ion-android-close al-close-icon"></i></h1>
+</div>

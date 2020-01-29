@@ -1,0 +1,46 @@
+<div class="inventory-stat-options-dropdown btn-group dropdown"
+     placement="bottom right" (clickOutside)="onClickOutside($event, dropdown)"
+     dropdown #dropdown="bs-dropdown" [autoClose]="false" role="group"
+     (onShown)="focusContainer()" (onHidden)="onHidden(dropdown, btn)">
+  <button #btn
+          dropdownToggle
+          id="btnInventoryStatOptionsDopdown" type="button" [attr.aria-label]="'common.textSelectFilter' | translate"
+          class="filter-button"
+          [ngClass]="{ 'active': dropdown.isOpen }"
+          aria-haspopup="true" aria-expanded="false">
+    <carbon-icon type="settings" class="icon-settings"></carbon-icon>
+  </button>
+  <div #container *dropdownMenu tabindex="0"
+       class="dropdown-menu dropdown-menu-sdl dropdown-menu-right dropdown-menu-style"
+       [ngStyle]="{width: menuWidth || 'auto'}"
+       aria-labelledby="btnInventoryStatOptionsDopdown">
+    <div class="card" style="margin: 0;">
+      <div class="card-body">
+        <div *ngFor="let option of options" class="option">
+          <label class="category-header" *ngIf="!!option.header" translate>{{option.header.name}}</label>
+          <carbon-icon *ngIf="hasTooltip(option)"
+                       type="info--glyph" class="info-icon" sdlTooltip
+                       container="body"
+                       placement="right"
+                       [sdlTooltip]="tooltip"
+          ></carbon-icon>
+          <div class="container side-by-side-wrapper">
+            <ng-container *ngFor="let category of option.categories">
+              <div class="category" [ngClass]="{'selected': isSelected(option, category)}">
+                <button (click)="onSelectChange(option, category)"
+                        aria-label="...">
+                  <span translate>{{category.name}}</span>
+                </button>
+              </div>
+            </ng-container>
+          </div>
+          <ng-template #tooltip>
+            <div class="header-tooltip">
+              {{option.tooltip | translate}}
+            </div>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

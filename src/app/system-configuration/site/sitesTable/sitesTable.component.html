@@ -1,0 +1,33 @@
+<div class="sites-table-container">
+  <div class="sites-table">
+    <table>
+      <thead>
+      <tr>
+        <th class="action-icon-column"></th>
+        <th class="action-icon-column"></th>
+        <th class="sortable" [ngClass]="{'st-sort-ascent': isAsc('name'), 'st-sort-descent': isDesc('name')}"
+            tabindex="0" clickOnEnterKeydown (click)="onSort('name')" translate>{{'common.textName'}}</th>
+        <th class="sortable" [ngClass]="{'st-sort-ascent': isAsc('throttles'), 'st-sort-descent': isDesc('throttles')}"
+            tabindex="0" clickOnEnterKeydown (click)="onSort('throttles')" translate>{{'common.textThrottleRateDisplay'}}</th>
+        <th translate hidden>{{'common.textType'}}</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let item of sitesTableData">
+        <td class="action-icon-format">
+          <i *ngIf="canDelete(item)" tabindex="0" (keydown.enter)="onDeleteClick(item)" (click)="onDeleteClick(item)" class="ion-close-round"></i>
+        </td>
+        <td class="action-icon-format">
+          <i *ngIf="canEdit(item)" tabindex="0" (keydown.enter)="onEditClick(item)" (click)="onEditClick(item)" class="ion-edit"></i>
+        </td>
+        <td>{{item.name}}</td>
+        <td>{{item.throttleRate}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <br/>
+  <paging-toolbar (refresh)="onRefresh()"
+                  [id]="paginateConfig.id" [total]="paginateConfig.totalItems">
+  </paging-toolbar>
+</div>

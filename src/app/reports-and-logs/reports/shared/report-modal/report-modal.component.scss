@@ -1,0 +1,55 @@
+@import '../../../../theme/sass/conf/conf';
+
+.modal-title {
+  font-size: 20px !important;
+}
+
+.modal-header {
+  position: relative;
+
+  .close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    width: 14px;
+    margin-right: -2px;
+  }
+}
+
+.modal-body ::ng-deep dynamic-tabset .nav-tabs .nav-link {
+  padding: 0.1em 1em;
+}
+
+.modal-body ::ng-deep dynamic-tabset .tab-content {
+  max-height: 410px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.modal-footer {
+  margin-top: 1rem !important;
+}
+
+.modal-title-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-subtitle {
+  color: #8b898b;
+  font-size: 17px;
+}
+
+.masked {
+  margin-bottom: 40px;
+
+  &:before {
+    background-color: #fff;
+    opacity: 1;
+  }
+}
+
+.schedule-modal-checkbox {
+  display: block;
+  margin: -20px 0 30px 0;
+}

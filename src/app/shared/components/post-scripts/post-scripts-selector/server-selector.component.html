@@ -1,0 +1,13 @@
+<div class="form-inline sub-group-space">
+  <label class="control-label label-width">{{textLabel}}</label>
+  <select class="form-control dropdown-width" [(ngModel)]="modelField" (ngModelChange)="onChange.emit($event)">
+    <option [hidden]="!isScriptServer" [ngValue]="appserver" *ngFor="let appserver of scriptServers">{{ appserver.hostAddress }}
+    </option>
+    <option [hidden]="isScriptServer" [ngValue]="appserver" *ngFor="let appserver of applicationServers">{{ appserver.hostAddress }}
+    </option>
+  </select>
+  <i *ngIf="((isScriptServer && scriptServers && scriptServers.length < 1) ||
+  (!isScriptServer && applicationServers && applicationServers.length < 1))"
+     class="bidi-status-warning" [title]="textNoServers"></i>
+</div>
+

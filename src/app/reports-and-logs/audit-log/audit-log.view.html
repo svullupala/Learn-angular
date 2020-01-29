@@ -1,0 +1,31 @@
+<div class="align-right toolbar">
+  <button *ngIf="hasDownloadPermission" (click)="onDownloadClick()" type="button" class="sdl inline"
+          translate>{{'auditlog.textDownload'}}
+  </button>
+</div>
+<script src="audit-log.view.ts"></script>
+<ba-card baCardClass="dark-card" title="{{'auditlog.textAuditLogSearch' | translate}}">
+  <sdl-search-bar (search)="searchSubmit($event)"
+                  [textPlaceholderLabel]="placeholderLabel">
+  </sdl-search-bar>
+  <audit-log-search-options></audit-log-search-options>
+  <h2 class="sdl-header" translate>{{'auditlog.textSearchOutput'}}</h2>
+  <ba-card>
+    <div [ngClass]="{'masked': loading}">
+      <auditlog-table [auditLogsData]="auditLogsData"
+                      [paginateConfig]="paginateConfig"
+                      [infiniteScrollingMode]="infiniteScrollingMode"></auditlog-table>
+      <paging-toolbar [id]="paginateConfig.id"
+                      [total]="paginateConfig.totalItems"
+                      [supportedMode]="'both'"
+                      [displayedCount]="displayedCount"
+                      [infiniteScrollContainer]="infiniteScrollContainer"
+                      (pageChange)="onPageChange($event)"
+                      (refresh)="onRefresh()"
+                      (jumpTo)="onJumpTo($event)"
+                      (scrolled)="onScrollDown($event)"
+                      (scrolledUp)="onScrollUp($event)">
+      </paging-toolbar>
+    </div>
+  </ba-card>
+</ba-card>

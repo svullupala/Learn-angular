@@ -1,0 +1,33 @@
+<div class="manage-table-container" [ngClass]="{'masked': masked}">
+  <div class="manage-table-height">
+    <table>
+      <thead>
+      <tr>
+        <th class="action-icon-column"></th>
+        <th class="action-icon-column"></th>
+        <th translate>{{ 'common.textName' }}</th>
+        <th translate>{{ 'cloud.textProvider' }}</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let cloud of model.records; trackBy: trackByFn">
+        <td class="action-icon-format">
+          <i [title]="'common.textUnregister' | translate" *ngIf="cloud.hasLink('delete')" tabindex="0" (keydown.enter)="onUnregisterCloud(cloud)" (click)="onUnregisterCloud(cloud)" class="ion-close-round"></i>
+        </td>
+        <td class="action-icon-format">
+          <i *ngIf="cloud.hasLink('edit')" tabindex="0" (keydown.enter)="onEditCloudClick(cloud)" (click)="onEditCloudClick(cloud)" class="ion-edit"></i>
+        </td>
+        <td class="icon-format">
+          <span>{{cloud.name}}</span>
+        </td>
+        <td>{{cloud.provider}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="paging-toolbar">
+    <paging-toolbar [model]="model" [noPageNumber]="false"
+                    (startGoPage)="mask()" (refresh)="onRefresh()"
+                    (pageChange)="onPageChange($event)"></paging-toolbar>
+  </div>
+</div>

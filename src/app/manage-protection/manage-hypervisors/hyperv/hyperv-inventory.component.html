@@ -1,0 +1,17 @@
+<div class="inventory side-by-side-wrapper">
+  <div class="side-by-side-left">
+    <hyperv-stat-chart [view]="view" (itemSelect)="onStatCategorySelect($event)"></hyperv-stat-chart>
+  </div>
+  <div class="side-by-side-right">
+    <hypervisor-list [hidden]="inCategoryView" [hypervisorType]="hypervisorType"
+                     (itemEdit)="onItemEdit($event)"
+                     (itemSelect)="onItemSelect($event)"></hypervisor-list>
+    <div class="category" *ngIf="inCategoryView">
+      <hypervisor-category-view [category]="selectedCategory"
+                                [view]="view"
+                                (assignPolicy)="onAssignPolicy($event)"
+                                (editRunSettings)="onEditRunSettings($event)"
+                                (close)="onCategoryViewClose()"></hypervisor-category-view>
+    </div>
+  </div>
+</div>

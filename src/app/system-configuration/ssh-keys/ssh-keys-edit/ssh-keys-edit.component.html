@@ -1,0 +1,58 @@
+<div [ngClass]="{'masked': masked}">
+  <h2 class="sdl-header" translate>{{'key.textSshKeyProperties'}}</h2>
+  <ba-card>
+    <form class="form-horizontal" [formGroup]="form">
+      <div class="form-group row"
+        [ngClass]="{'has-error': (!name.valid && name.touched), 'has-success': (name.valid && name.touched)}">
+        <label for="sshname" class="col-sm-2 control-label" translate>{{'common.textName'}}</label>
+        <div class="col-sm-3">
+          <input sdlTooltip [mode]="'critical'"
+            [isDisabled]="(!name.valid && name.untouched) || (name.valid && name.touched)" [placement]="'right'"
+            [sdlTooltip]="'common.textRequiredFieldSuggestion' | translate" [formControl]="name"
+            [(ngModel)]="model.name" type="text" class="form-control" id="sshname">
+        </div>
+      </div>
+      <div class="form-group row"
+        [ngClass]="{'has-error': (!user.valid && user.touched), 'has-success': (user.valid && user.touched)}">
+        <label for="user" class="col-sm-2 control-label" translate>{{'key.textUser'}}</label>
+        <div class="col-sm-3">
+          <input sdlTooltip [mode]="'critical'"
+            [isDisabled]="(!user.valid && user.untouched) || (user.valid && user.touched)" [placement]="'right'"
+            [sdlTooltip]="'common.textRequiredFieldSuggestion' | translate" [formControl]="user"
+            [(ngModel)]="model.user" type="text" class="form-control" id="user">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label [ngClass]="'col-sm-2 control-label'" class="control-label" translate>{{'key.textEncrypted'}}</label>
+        <div [ngClass]="clsOfFieldCol || 'col-sm-1'" style="margin-top: 8px">
+          <ba-checkbox [(ngModel)]="model.isEncrypted" [ngModelOptions]="{standalone: true}"
+            [baCheckboxClass]="'enabled'" [disabled]="false">
+          </ba-checkbox>
+        </div>
+      </div>
+      <div *ngIf="model.isEncrypted" class="form-group row"
+        [ngClass]="{'has-error': (model.isEncrypted && (!model.passphrase || model.passphrase === undefined || model.passphrase.length === 0)), 'has-success': (passphrase.valid && passphrase.touched)}">
+        <label for="passphrase" class="col-sm-2 control-label" translate>{{'key.textPassphrase'}}</label>
+        <div class="col-sm-3">
+          <input sdlTooltip [mode]="'critical'"
+            [isDisabled]="!(model.isEncrypted && (!model.passphrase || model.passphrase === undefined || model.passphrase.length === 0))"
+            [placement]="'right'" [sdlTooltip]="'common.textRequiredFieldSuggestion' | translate"
+            [formControl]="passphrase" [(ngModel)]="model.passphrase" class="form-control" id="passphrase" type="password">
+        </div>
+      </div>
+
+      <div class="form-group row"
+        [ngClass]="{'has-error': (!privateKey.valid && privateKey.touched), 'has-success': (privateKey.valid && privateKey.touched)}"> 
+        <label for="privateKey" class="col-sm-2 control-label" translate>{{'key.textPrivateKey'}}</label>
+        <div class="col-sm-3">
+          <textarea sdlTooltip [mode]="'critical'"
+            [isDisabled]="(!privateKey.valid && privateKey.untouched) || (privateKey.valid && privateKey.touched)"
+            [placement]="'right'" [sdlTooltip]="'common.textRequiredFieldSuggestion' | translate"
+            [formControl]="privateKey" [(ngModel)]="model.privatekey" class="form-control" id="privateKey"></textarea>
+        </div>
+      </div>
+    </form>
+  </ba-card>
+  <confirm-toolbar-component (cancelEvent)="onCancelClick()" (confirmEvent)="onSaveClick()"
+    [disableConfirmButton]="!isValid()" [splitButtons]="false" [floatRight]="false"></confirm-toolbar-component>
+</div>

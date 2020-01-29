@@ -1,0 +1,15 @@
+<div class="space-top-10">
+    <resource-selector-component
+      [records]="records"
+      [dataset]="dataset"
+      [masked]="masked"
+      [breadcrumbs]="breadcrumbs"
+      [addAllItem]="addAllItem"
+      [resourceType]="'resourceGroups.textSlaPolicy' | translate"
+      [hideSearchBar]="true"
+      [hideBreadcrumbs]="true"
+      [paginateConfig]="paginateConfig"
+      (onPageChangeEvent)="onRefresh()"
+      (onRefreshEvent)="onRefresh()"
+    ></resource-selector-component>
+</div>

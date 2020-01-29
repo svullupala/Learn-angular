@@ -1,0 +1,98 @@
+$row-separator-color: #dcdcdc;
+$warning-color: #f5bd00;
+$infoIconColor: #0062FF;
+
+.hypervisor-table {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  & > .paging-table {
+    flex: 1;
+    overflow: auto;
+
+    th.menu:before {
+      content: none;
+    }
+
+    td.menu {
+      text-align: center;
+      padding: 5px;
+    }
+
+    .icon-resource {
+      margin-right: 5px;
+      margin-top: 3.5px;
+    }
+
+    .content {
+      white-space: nowrap;
+    }
+
+    .icon-warning {
+      color: $warning-color;
+    }
+
+    .info-icon {
+      color: $infoIconColor;
+      margin-right: 5px;
+    }
+
+    .status-item {
+      display: inline-block;
+      margin-right: 1rem;
+    }
+
+    .action-menu-dropdown {
+
+      .action-menu-dropdown-menu-btn {
+        width: 34px;
+        height: 35px;
+        padding: 0;
+      }
+
+      &.open {
+        .action-menu-dropdown-menu-btn {
+          border: 0;
+          outline: none;
+          box-shadow: 1px 1px 5px #b5b5b5;
+        }
+      }
+
+      .icon-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .dropdown-item {
+        &:nth-child(2) {
+          border-top: 1px solid $row-separator-color;
+        }
+      }
+
+      .first-capitalize {
+        text-transform: lowercase;
+
+        &:first-letter {
+          text-transform: capitalize;
+        }
+      }
+    }
+  }
+
+  & > .paging-dockbar {
+    height: auto;
+  }
+}
+
+.info-tooltip {
+  text-align: left;
+  min-width: 200px;
+  white-space: nowrap;
+
+  label:last-child {
+    margin-bottom: 0;
+  }
+}
+

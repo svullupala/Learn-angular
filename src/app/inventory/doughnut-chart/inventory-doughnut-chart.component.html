@@ -1,0 +1,29 @@
+<div class="inventory-doughnut-chart chart-container">
+  <div class="header" translate>{{header}}</div>
+  <div class="canvas-area">
+    <label class="segment-label" *ngFor="let pos of labelPositions; let i = index" [ngStyle]="labelStyle(pos, i)">
+      {{data && data[i] ? percentage(data[i]) : ''}}
+    </label>
+    <label class="banner" *ngIf="!noData"><span class="banner-primary">{{bannerPrimay}}</span>
+      <br/><span class="banner-secondary">{{bannerSecondary}}</span></label>
+    <canvas #chartarea class="canvas" width="200" height="200"></canvas>
+  </div>
+  <div class="title" [ngClass]="{'centered': titleCentered}" translate>{{title}}</div>
+  <div class="channels-area">
+    <div class="channels" *ngIf="isReady()">
+      <div class="channel offset-separator" *ngFor="let item of data"
+           tabindex="0" clickOnEnterKeydown sdlTooltip
+           placement="top center"
+           [sdlTooltip]="tooltip(item)"
+           [ngClass]="{'selected': isSelected(item)}"
+           (click)="onChannelClick(item)">
+        <div class="legend-color" [ngStyle]="{'background-color': item.color }"></div>
+        <div class="legend-label">
+          <label class="primary">{{ ellipsisPath(item.primaryLabel, 15) }}</label>
+          <br/><label class="secondary" translate>{{ item.secondaryLabel }}</label>
+        </div>
+        <div class="legend-summary">{{item.summary}}</div>
+      </div>
+    </div>
+  </div>
+</div>

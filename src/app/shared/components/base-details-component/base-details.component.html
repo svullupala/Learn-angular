@@ -1,0 +1,74 @@
+<div class="side-by-side-wrapper">
+  <div class="side-by-side-left">
+    <ng-content select="div.table-content"></ng-content>
+  </div>
+  <div class="side-by-side-right">
+    <div class="card">
+      <div class="card-title space-top-10">
+        <h2>
+          <i [hidden]="!onlyOneResource" [class]="headerIcon"></i>
+          <label>
+            {{hasResources ? title : (textNoResourceSelected)}}
+          </label>
+          <i [hidden]="!onlyOneResource || !enablePopover" tabindex="0"
+             class="right action ion-more" container="body"
+             #popoverElement #popover="bs-popover" [popover]="popMenu" outsideClick="true" placement="left"></i>
+        </h2>
+      </div>
+      <div class="card-body">
+        <div *ngIf="multiSelect"
+             [hidden]="onlyOneResource"
+             class="form-group row">
+          <label *ngIf="topTableText" class="control-label" translate>
+            {{ topTableText }}
+          </label>
+          <table class="table table-hover">
+            <tr class="no-top-border" *ngFor="let model of models">
+              <td class="normal-col bold align-left">{{model.name || model.displayName}}</td>
+            </tr>
+          </table>
+        </div>
+        <div [hidden]="hasResources">
+          <div class="form-group row" *ngFor="let item of iconList;">
+            <i [class]="item.iconClass"></i>
+            <label class="control-label" translate>
+              {{ item.resourceString }}
+            </label>
+          </div>
+        </div>
+        <div [hidden]="!hasResources" class="form-group row">
+          <ng-content select="div.details-content"></ng-content>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<ng-template #popMenu>
+  <div *ngIf="useActionLinks; then action else noaction"></div>
+  <ng-template #action>
+    <div *ngIf="demoFlagIsSet(models[0]); then displayList1 else displayList2"></div> 
+    <ng-template #displayList1>
+      <div (click)="onDoActionClick(link)" *ngFor="let link of getActionLinks(models[0]); trackBy: trackByLinkModel">
+          <div *ngIf="checkActionResourceString(link)">
+            <div (click)="onDoActionClick(link)">
+              <label class="action">{{ getActionResourceString(link) }}</label>
+            </div>
+          </div>
+      </div>    
+    </ng-template>            
+    <ng-template #displayList2>
+      <div (click)="onDoActionClick(link)" *ngFor="let link of getActionLinks(models[0]); trackBy: trackByLinkModel">
+        <label class="action">{{ getActionResourceString(link) }}</label>
+      </div>
+    </ng-template>
+  </ng-template>
+
+  <ng-template #noaction>
+    <div (click)="onModifyResourcesClick()" [hidden]="!canModifyResources()">
+      <label class="action" translate>{{ textModifyResource }}</label>
+    </div>
+    <div (click)="onDeleteClick()" [hidden]="!canDeleteResource()">
+      <label class="action" translate>{{ textDelete }}</label>
+    </div>
+  </ng-template>
+</ng-template>

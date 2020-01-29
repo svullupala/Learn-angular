@@ -1,0 +1,179 @@
+<ng-container *ngTemplateOutlet="view"></ng-container>
+
+<ng-template #history>
+  <div class="card">
+    <div class="card-body no-padding-bottom" style="padding-right: 40px;">
+      <div class="row">
+        <div class="col-xs-9">
+          <div class="row">
+            <div class="col-xs-12">
+              <h2 class="sdl-header">
+                <label class="label-job-name">{{job && job.jobName}}</label>
+              </h2>
+            </div>
+          </div>
+          <div *ngIf="isOnDemandJob()" class="row">
+            <div class="col-xs-12">
+                <label style="font-style:italic;margin-bottom:0px;" >{{job.subTypeDisplayName}}</label>
+            </div>
+          </div>
+          <div class="row row-info">
+            <div class="col-xs-12">
+              <ul class="nowrap">
+                <li>
+                  <span translate>{{'common.textTypeColon'}}</span>
+                  <span>{{job && job.type | jobTypeDisplay}}</span>
+                  <span>{{job.subPolicyType | jobSubPolicyTypeDisplay}}</span>
+                </li>
+                <li>
+                  <span translate>{{'job.textStatusColon'}}</span>
+                  <span>{{job && (job.statusDisplay || job.status)}}</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="row row-info">
+            <div class="col-xs-12">
+              <ul class="nowrap">
+                <li>
+                  <span translate>{{'job.textStartTimeColon'}}</span>
+                  <span>{{job && job.start | amDateFormat: 'll LTS'}}</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div [hidden]="!isStats()" class="col-xs-3">
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="row">
+                  <span style="margin-bottom: 5px;">{{textSuccess}}</span>
+                  <span style="float: right">{{(job.stats['success']) ? job.stats['success'] : 0}}</span>
+              </div>
+              <div class="row">
+                  <span style="margin-bottom: 5px;">{{textFailed}}</span>
+                  <span style="float: right">{{(job.stats['failed']) ? job.stats['failed'] : 0}}</span>
+              </div>
+              <div class="row">
+                  <span style="margin-bottom: 5px;">{{textSkipped}}</span>
+                  <span style="float: right">{{(job.stats['skipped']) ? job.stats['skipped'] : 0}}</span>
+              </div>
+            </div> 
+          </div>
+        </div>
+      </div>
+      <div class="row row-info">
+        <div class="col-xs-8">
+          <ul class="nowrap">
+            <li [hidden]="job && job.status === 'ABORTED'">
+              <span translate>{{'job.textColonDuration'}}</span>
+              <span>{{job && job.duration | durationDisplay: durationType}}</span>
+            </li>
+          </ul>
+        </div>
+        <div [hidden]="!isStats()" class="col-xs-4" style="padding-right: 0px;">
+          <ul class="nowrap">
+            <li>
+              <span>{{totalLabel}}</span>
+              <span style="float: right">{{total}}</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #running>
+  <div class="card">
+    <div class="card-body no-padding-bottom">
+      <div class="row">
+        <div class="col-xs-10">
+          <div class="row">
+            <div class="col-xs-12">
+              <h2 class="sdl-header">
+                <label class="label-job-name">{{job && job.jobName}}</label>
+              </h2>
+            </div>
+          </div>
+          <div *ngIf="isOnDemandJob()" class="row">
+            <div class="col-xs-12">
+                <label style="font-style:italic;margin-bottom:0px;">{{job.subTypeDisplayName}}</label>
+            </div>
+          </div>
+          <div class="row row-info">
+            <div class="col-xs-12">
+              <ul class="nowrap">
+                <li>
+                  <span translate>{{'common.textTypeColon'}}</span>
+                  <span>{{job && job.type | jobTypeDisplay}}</span>
+                  <span>{{job.subPolicyType | jobSubPolicyTypeDisplay}}</span>
+                </li>
+                <li>
+                  <span translate>{{'job.textColonActivity'}}</span>
+                  <span>{{job && (job.statusDisplay || job.status)}}</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="row row-info">
+            <div class="col-xs-12">
+              <ul class="nowrap">
+                <li>
+                  <span translate>{{'job.textStartTimeColon'}}</span>
+                  <span>{{job && job.start | amDateFormat: 'll LTS'}}</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-2" style="padding: 0px;"[mode]="'standard'" [sdlTooltip]="tooltipStats" [placement]="'left'">
+            <div *ngIf="isStats() && !isHistory" [hidden]="hideChart" style="margin-top: -10%;">
+              <percentage-doughnut-chart  [chartId]="job.id" 
+                  [percentage]="percentage" 
+                  [chartSize]="80"
+                  [chartThickness]="12"
+                  [hasAnimation]="false" [progressColor]="progressColor"></percentage-doughnut-chart>
+            </div>
+        </div>
+      </div>
+      <div class="row row-info">
+        <div class="col-xs-6">
+          <ul>
+            <li>
+              <span translate>{{'job.textColonDuration'}}</span>
+              <span>{{job && job.duration | durationDisplay: durationType}}</span>
+            </li>
+          </ul>
+        </div>
+        <div class="col-xs-6">
+          <div *ngIf="isStats()" style="float: right">
+            <span>{{(resourceType | translate) + ' ' + textCompleted + ' '}}</span>
+            <span>{{completed + '/' + total}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #details>
+  <div class="card max-height-110" #details>
+    <div class="card-body">
+      <h2 class="sdl-header">{{(job && job.jobName) && (job.jobName | ondemandSessionName)}}</h2>
+      <div class="space-top-1rem">
+        <ul>
+          <li>
+            <span translate>{{'common.textTypeColon'}}</span>
+            <span>{{job && job.type | jobTypeDisplay}}</span>
+            <span>{{job && job.subPolicyType | jobSubPolicyTypeDisplay}}</span>
+          </li>
+          <li *ngIf="job && job.start">
+            <span translate>{{'job.textStartTimeColon'}}</span>
+            <span>{{job && job.start | amDateFormat: 'll LTS'}}</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</ng-template>

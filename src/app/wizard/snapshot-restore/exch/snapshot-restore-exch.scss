@@ -1,0 +1,89 @@
+$summary-text-color: #1C496D;
+
+.source, .snapshot, .destination, .run-type, .options, .schedule, .scripts {
+  background-color: transparent;
+  text-align: left;
+  & > .title {
+    font-size: 24px;
+    line-height: 2.5rem;
+  }
+  & > .desc {
+    font-size: 14px;
+    line-height: 1.25rem;
+  }
+  & > .content {
+    font-size: 14px;
+    margin-top: 2rem;
+  }
+}
+
+.snapshot {
+  & > .content {
+    & > .note {
+      margin-bottom: 1rem;
+    }
+  }
+}
+
+.run-type {
+  & > .content {
+    font-size: 14px;
+    margin-top: 2rem;
+    margin-right: 2rem;
+    & > .section {
+      & > .section-title {
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+      }
+      & > .section-content {
+        &.offset {
+          margin-left: 1rem;
+        }
+      }
+    }
+    & > .filter {
+      margin-bottom: 1rem;
+    }
+
+    & > .types {
+      display: flex;
+      flex-flow: column;
+      align-items: center;
+      & > .item {
+        margin-top: 2rem;
+        width: 150px;
+      }
+    }
+    & > .mapping {
+      margin-top: 2rem;
+    }
+  }
+}
+
+.summary {
+  text-align: left;
+  color: $summary-text-color;
+
+  & > .title {
+    font-size: 16px;
+    line-height: 2rem;
+    font-weight: bold;
+  }
+  & > .content, .section {
+    font-size: 14px;
+
+    & > .property {
+      line-height: 24px;
+
+      & > .name {
+        white-space: nowrap;
+        min-width: 300px; // experimental
+      }
+      & > .value {
+        white-space: normal;
+        font-weight: bold;
+        vertical-align: top;
+      }
+    }
+  }
+}

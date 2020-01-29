@@ -1,0 +1,28 @@
+<table>
+  <thead>
+    <tr>
+      <th class="action-icon-column"></th>
+      <th class="action-icon-column"></th>
+      <th translate>{{'ldap.hostAddress'}}</th>
+      <th translate>{{'ldap.baseDN'}}</th>
+      <th translate>{{'ldap.userFilter'}}</th>
+      <th translate>{{'ldap.userRDN'}}</th>
+      <th translate>{{'ldap.groupRDN'}}</th>
+    </tr>
+  </thead>
+  <tbody *ngIf="isRecords()">
+    <tr>
+      <td class="action-icon-format">
+        <i *ngIf="ldap.hasLink('delete')" tabindex="0" (keydown.enter)="unregister(ldap)" (click)="unregister(ldap)" class="ion-close-round" ></i>
+      </td>
+      <td class="action-icon-format">
+        <i *ngIf="ldap.hasLink('edit')" tabindex="0" (keydown.enter)="edit(ldap)" (click)="edit(ldap)" class="ion-edit"></i>
+      </td>
+      <td>{{ldap.hostAddress}}</td>
+      <td>{{ldap.baseDN}}</td>
+      <td>{{ldap.userFilter}}</td>
+      <td>{{ldap.userRDN}}</td>
+      <td>{{ldap.groupRDN}}</td>
+    </tr>
+  </tbody>
+</table>

@@ -1,0 +1,983 @@
+[
+  {
+    "method": "GET",
+    "pattern": "log",
+    "response": {
+      "links": {
+        "self": {
+          "rel": "self",
+          "href": "https://ecxbed3/api/endeavour/log/job?filter=%5B%7B%22property%22:%22jobsessionId%22,%22value%22:%221537981167063%22,%22op%22:%22=%22%7D,%7B%22property%22:%22type%22,%22value%22:%5B%22SUMMARY%22,%22INFO%22,%22WARN%22,%22ERROR%22%5D,%22op%22:%22IN%22%7D%5D&pageSize=25&sort=%5B%7B%22property%22:%22logTime%22,%22direction%22:%22ASC%22%7D%5D",
+          "hreflang": null,
+          "media": null,
+          "title": null,
+          "type": null,
+          "deprecation": null
+        },
+        "nextPage": {
+          "rel": "next",
+          "href": "https://ecxbed3/api/endeavour/log/job?filter=%5B%7B%22property%22:%22jobsessionId%22,%22value%22:%221537981167063%22,%22op%22:%22=%22%7D,%7B%22property%22:%22type%22,%22value%22:%5B%22SUMMARY%22,%22INFO%22,%22WARN%22,%22ERROR%22%5D,%22op%22:%22IN%22%7D%5D&sort=%5B%7B%22property%22:%22logTime%22,%22direction%22:%22ASC%22%7D%5D&pageSize=25&pageStartIndex=25",
+          "hreflang": null,
+          "media": null,
+          "title": null,
+          "type": null,
+          "deprecation": null
+        },
+        "lastPage": {
+          "rel": "last",
+          "href": "https://ecxbed3/api/endeavour/log/job?filter=%5B%7B%22property%22:%22jobsessionId%22,%22value%22:%221537981167063%22,%22op%22:%22=%22%7D,%7B%22property%22:%22type%22,%22value%22:%5B%22SUMMARY%22,%22INFO%22,%22WARN%22,%22ERROR%22%5D,%22op%22:%22IN%22%7D%5D&sort=%5B%7B%22property%22:%22logTime%22,%22direction%22:%22ASC%22%7D%5D&pageSize=25&pageStartIndex=325",
+          "hreflang": null,
+          "media": null,
+          "title": null,
+          "type": null,
+          "deprecation": null
+        },
+        "csv": {
+          "rel": "related",
+          "href": "https://ecxbed3/api/endeavour/log/job/download/csv?filter=%5B%7B%22property%22%3A%22jobsessionId%22%2C%22value%22%3A%221537981167063%22%7D%5D&esessionid=b9c6cc4f6a70413589383501bee63c8d",
+          "hreflang": null,
+          "media": null,
+          "title": null,
+          "type": null,
+          "deprecation": null
+        },
+        "diagnostics": {
+          "rel": "related",
+          "href": "https://ecxbed3/api/endeavour/log/job/download/diagnostics?filter=%5B%7B%22property%22%3A%22jobsessionId%22%2C%22value%22%3A%221537981167063%22%7D%5D&esessionid=b9c6cc4f6a70413589383501bee63c8d",
+          "hreflang": null,
+          "media": null,
+          "title": null,
+          "type": null,
+          "deprecation": null
+        }
+      },
+      "logs": [
+        {
+          "links": {
+            "self": {
+              "rel": "self",
+              "href": "https://ecxbed3/api/endeavour/log/job/5babbaf0c2dc8e2c55ca434a",
+              "hreflang": null,
+              "media": null,
+              "title": null,
+              "type": null,
+              "deprecation": null
+            },
+            "up": {
+              "rel": "up",
+              "href": "https://ecxbed3/api/endeavour/log/job",
+              "hreflang": null,
+              "media": null,
+              "title": null,
+              "type": null,
+              "deprecation": null
+            }
+          },
+          "name": "",
+          "type": "INFO",
+          "category": "NONSERVICE",
+          "logTime": 1537981168020,
+          "modName": "com.catalogic.ecx.serviceprovider.protection.application.cal.ProtectionJobExecutor",
+          "jobId": null,
+          "jobsessionTaskId": null,
+          "jobsessionId": 1537981167063,
+          "sessionId": null,
+          "threadId": "http-nio-8082-exec-20",
+          "policyId": null,
+          "message": "===== Starting job for policy exch_gmtest2 (ID:1008) on Wednesday, September 26, 2018 4:59:28 PM UTC.  id 1537981167063 =====",
+          "properties": null,
+          "requesterIp": null,
+          "id": "5babbaf0c2dc8e2c55ca434a"
+        },
+        {
+          "links": {
+            "self": {
+              "rel": "self",
+              "href": "https://ecxbed3/api/endeavour/log/job/5babbaf0c2dc8e2c55ca4349",
+              "hreflang": null,
+              "media": null,
+              "title": null,
+              "type": null,
+              "deprecation": null
+            },
+            "up": {
+              "rel": "up",
+              "href": "https://ecxbed3/api/endeavour/log/job",
+              "hreflang": null,
+              "media": null,
+              "title": null,
+              "type": null,
+              "deprecation": null
+            }
+          },
+          "name": "",
+          "type": "INFO",
+          "category": "NONSERVICE",
+          "logTime": 1537981168021,
+          "modName": "com.catalogic.ecx.serviceprovider.protection.application.cal.ProtectionJobExecutor",
+          "jobId": null,
+          "jobsessionTaskId": null,
+          "jobsessionId": 1537981167063,
+          "sessionId": null,
+          "threadId": "http-nio-8082-exec-20",
+          "policyId": null,
+          "message": "IBM Spectrum Protect Plus version 999.0.0-850",
+          "properties": null,
+          "requesterIp": null,
+          "id": "5babbaf0c2dc8e2c55ca4349"
+        },
+        {
+          "links": {
+            "self": {
+              "rel": "self",
+              "href": "https://ecxbed3/api/endeavour/log/job/5babbaf0c2dc8e2c55ca4353",
+              "hreflang": null,
+              "media": null,
+              "title": null,
+              "type": null,
+              "deprecation": null
+            },
+            "up": {
+              "rel": "up",
+              "href": "https://ecxbed3/api/endeavour/log/job",
+              "hreflang": null,
+              "media": null,
+              "title": null,
+              "type": null,
+              "deprecation": null
+            }
+          },
+          "name": "",
+          "type": "INFO",
+          "category": "NONSERVICE",
+          "logTime": 1537981168187,
+          "modName": "com.catalogic.ecx.serviceprovider.protection.application.cal.ProtectionJobExecutor",
+          "jobId": null,
+          "jobsessionTaskId": null,
+          "jobsessionId": 1537981167063,
+          "sessionId": null,
+          "threadId": "http-nio-8082-exec-20",
+          "policyId": null,
+          "message": "This job will protect application instances and databases with log backup.",
+          "properties": null,
+          "requesterIp": null,
+          "id": "5babbaf0c2dc8e2c55ca4353"
+        },
+        {
+          "links": {
+            "self": {
+              "rel": "self",
+              "href": "https://ecxbed3/api/endeavour/log/job/5babbaf0c2dc8e2c55ca4354",
+              "hreflang": null,
+              "media": null,
+              "title": null,
+              "type": null,
+              "deprecation": null
+            },
+            "up": {
+              "rel": "up",
+              "href": "https://ecxbed3/api/endeavour/log/job",
+              "hreflang": null,
+              "media": null,
+              "title": null,
+              "type": null,
+              "deprecation": null
+            }
+          },
+          "name": "",
+          "type": "INFO",
+          "category": "NONSERVICE",
+          "logTime": 1537981168187,
+          "modName": "com.catalogic.ecx.serviceprovider.protection.application.cal.ProtectionJobExecutor",
+          "jobId": null,
+          "jobsessionTaskId": null,
+          "jobsessionId": 1537981167063,
+          "sessionId": null,
+          "threadId": "http-nio-8082-exec-20",
+          "policyId": null,
+          "message": "This job contains at least two types of tasks: job resolution and protection.",
+          "properties": null,
+          "requesterIp": null,
+          "id": "5babbaf0c2dc8e2c55ca4354"
+        },
+        {
+          "links": {
+            "self": {
+              "rel": "self",
+              "href": "https://ecxbed3/api/endeavour/log/job/5babbaf0c2dc8e2c55ca4374",
+              "hreflang": null,
+              "media": null,
+              "title": null,
+              "type": null,
+              "deprecation": null
+            },
+            "up": {
+              "rel": "up",
+              "href": "https://ecxbed3/api/endeavour/log/job",
+              "hreflang": null,
+              "media": null,
+              "title": null,
+              "type": null,
+              "deprecation": null
+            }
+          },
+          "name": "",
+          "type": "INFO",
+          "category": "NONSERVICE",
+          "logTime": 1537981168644,
+          "modName": "com.catalogic.ecx.serviceprovider.protection.application.cal.resolve.ResolveTaskExecutor",
+          "jobId": 0,
+          "jobsessionTaskId": 1,
+          "jobsessionId": 1537981167063,
+          "sessionId": null,
+          "threadId": "asyncTaskExecutor-688",
+          "policyId": "0",
+          "message": "----- Policy resolution task 1 is starting. -----",
+          "properties": null,
+          "requesterIp": null,
+          "id": "5babbaf0c2dc8e2c55ca4374"
+        },
+        {
+          "links": {
+            "self": {
+              "rel": "self",
+              "href": "https://ecxbed3/api/endeavour/log/job/5babbaf0c2dc8e2c55ca4376",
+              "hreflang": null,
+              "media": null,
+              "title": null,
+              "type": null,
+              "deprecation": null
+            },
+            "up": {
+              "rel": "up",
+              "href": "https://ecxbed3/api/endeavour/log/job",
+              "hreflang": null,
+              "media": null,
+              "title": null,
+              "type": null,
+              "deprecation": null
+            }
+          },
+          "name": "",
+          "type": "INFO",
+          "category": "NONSERVICE",
+          "logTime": 1537981168644,
+          "modName": "com.catalogic.ecx.serviceprovider.protection.application.cal.resolve.ResolveTaskExecutor",
+          "jobId": 0,
+          "jobsessionTaskId": 1,
+          "jobsessionId": 1537981167063,
+          "sessionId": null,
+          "threadId": "asyncTaskExecutor-688",
+          "policyId": "0",
+          "message": "----- Number of elements in policy 0 -----",
+          "properties": null,
+          "requesterIp": null,
+          "id": "5babbaf0c2dc8e2c55ca4376"
+        },
+        {
+          "links": {
+            "self": {
+              "rel": "self",
+              "href": "https://ecxbed3/api/endeavour/log/job/5babbaf0c2dc8e2c55ca437f",
+              "hreflang": null,
+              "media": null,
+              "title": null,
+              "type": null,
+              "deprecation": null
+            },
+            "up": {
+              "rel": "up",
+              "href": "https://ecxbed3/api/endeavour/log/job",
+              "hreflang": null,
+              "media": null,
+              "title": null,
+              "type": null,
+              "deprecation": null
+            }
+          },
+          "name": "",
+          "type": "INFO",
+          "category": "NONSERVICE",
+          "logTime": 1537981168675,
+          "modName": "com.catalogic.ecx.serviceprovider.protection.application.cal.resolve.ResolveTaskExecutor",
+          "jobId": 0,
+          "jobsessionTaskId": 1,
+          "jobsessionId": 1537981167063,
+          "sessionId": null,
+          "threadId": "asyncTaskExecutor-688",
+          "policyId": "0",
+          "message": "----- Policy resolution task 1 completed in 31 ms with status COMPLETED. ----- ",
+          "properties": null,
+          "requesterIp": null,
+          "id": "5babbaf0c2dc8e2c55ca437f"
+        },
+        {
+          "links": {
+            "self": {
+              "rel": "self",
+              "href": "https://ecxbed3/api/endeavour/log/job/5babbaf0c2dc8e2c55ca4382",
+              "hreflang": null,
+              "media": null,
+              "title": null,
+              "type": null,
+              "deprecation": null
+            },
+            "up": {
+              "rel": "up",
+              "href": "https://ecxbed3/api/endeavour/log/job",
+              "hreflang": null,
+              "media": null,
+              "title": null,
+              "type": null,
+              "deprecation": null
+            }
+          },
+          "name": "UNKNOWN",
+          "type": "SUMMARY",
+          "category": "NONSERVICE",
+          "logTime": 1537981168681,
+          "modName": "com.catalogic.ecx.serviceprovider.protection.application.cal.protection.ProtectionTaskExecutor",
+          "jobId": 0,
+          "jobsessionTaskId": 2,
+          "jobsessionId": 1537981167063,
+          "sessionId": null,
+          "threadId": "asyncTaskExecutor-689",
+          "policyId": "0",
+          "message": "----- Starting Protection task 2. -----",
+          "properties": null,
+          "requesterIp": null,
+          "id": "5babbaf0c2dc8e2c55ca4382"
+        },
+        {
+          "links": {
+            "self": {
+              "rel": "self",
+              "href": "https://ecxbed3/api/endeavour/log/job/5babbaf1c2dc8e2c55ca43a2",
+              "hreflang": null,
+              "media": null,
+              "title": null,
+              "type": null,
+              "deprecation": null
+            },
+            "up": {
+              "rel": "up",
+              "href": "https://ecxbed3/api/endeavour/log/job",
+              "hreflang": null,
+              "media": null,
+              "title": null,
+              "type": null,
+              "deprecation": null
+            }
+          },
+          "name": "",
+          "type": "INFO",
+          "category": "NONSERVICE",
+          "logTime": 1537981169307,
+          "modName": "com.catalogic.ecx.serviceprovider.protection.application.cal.protection.DatabaseProtectionHandler",
+          "jobId": 0,
+          "jobsessionTaskId": 2,
+          "jobsessionId": 1537981167063,
+          "sessionId": null,
+          "threadId": "asyncTaskExecutor-689",
+          "policyId": "0",
+          "message": "Following databases are selected for backup by this job",
+          "properties": null,
+          "requesterIp": null,
+          "id": "5babbaf1c2dc8e2c55ca43a2"
+        },
+        {
+          "links": {
+            "self": {
+              "rel": "self",
+              "href": "https://ecxbed3/api/endeavour/log/job/5babbaf1c2dc8e2c55ca43a3",
+              "hreflang": null,
+              "media": null,
+              "title": null,
+              "type": null,
+              "deprecation": null
+            },
+            "up": {
+              "rel": "up",
+              "href": "https://ecxbed3/api/endeavour/log/job",
+              "hreflang": null,
+              "media": null,
+              "title": null,
+              "type": null,
+              "deprecation": null
+            }
+          },
+          "name": "",
+          "type": "INFO",
+          "category": "NONSERVICE",
+          "logTime": 1537981169307,
+          "modName": "com.catalogic.ecx.serviceprovider.protection.application.cal.protection.DatabaseProtectionHandler",
+          "jobId": 0,
+          "jobsessionTaskId": 2,
+          "jobsessionId": 1537981167063,
+          "sessionId": null,
+          "threadId": "asyncTaskExecutor-689",
+          "policyId": "0",
+          "message": "jxwdag1 --> [mailboxdagdb2]",
+          "properties": null,
+          "requesterIp": null,
+          "id": "5babbaf1c2dc8e2c55ca43a3"
+        },
+        {
+          "links": {
+            "self": {
+              "rel": "self",
+              "href": "https://ecxbed3/api/endeavour/log/job/5babbaf1c2dc8e2c55ca43a4",
+              "hreflang": null,
+              "media": null,
+              "title": null,
+              "type": null,
+              "deprecation": null
+            },
+            "up": {
+              "rel": "up",
+              "href": "https://ecxbed3/api/endeavour/log/job",
+              "hreflang": null,
+              "media": null,
+              "title": null,
+              "type": null,
+              "deprecation": null
+            }
+          },
+          "name": "",
+          "type": "INFO",
+          "category": "NONSERVICE",
+          "logTime": 1537981169307,
+          "modName": "com.catalogic.ecx.serviceprovider.protection.application.cal.discovery.ProtectionDiscoveryHandler",
+          "jobId": 0,
+          "jobsessionTaskId": 2,
+          "jobsessionId": 1537981167063,
+          "sessionId": null,
+          "threadId": "asyncTaskExecutor-689",
+          "policyId": "0",
+          "message": "Application server(s) for database group jxwdag1:[172.20.3.70, 172.20.3.112]",
+          "properties": null,
+          "requesterIp": null,
+          "id": "5babbaf1c2dc8e2c55ca43a4"
+        },
+        {
+          "links": {
+            "self": {
+              "rel": "self",
+              "href": "https://ecxbed3/api/endeavour/log/job/5babbaf1c2dc8e2c55ca43a5",
+              "hreflang": null,
+              "media": null,
+              "title": null,
+              "type": null,
+              "deprecation": null
+            },
+            "up": {
+              "rel": "up",
+              "href": "https://ecxbed3/api/endeavour/log/job",
+              "hreflang": null,
+              "media": null,
+              "title": null,
+              "type": null,
+              "deprecation": null
+            }
+          },
+          "name": "UNKNOWN",
+          "type": "INFO",
+          "category": "NONSERVICE",
+          "logTime": 1537981169308,
+          "modName": "com.catalogic.ecx.serviceprovider.protection.application.cal.discovery.ProtectionDiscoveryWorker",
+          "jobId": 1008,
+          "jobsessionTaskId": 2,
+          "jobsessionId": 1537981167063,
+          "sessionId": null,
+          "threadId": "pool-1450-thread-1",
+          "policyId": "1008",
+          "message": "Performing discovery on application server 172.20.3.70",
+          "properties": null,
+          "requesterIp": null,
+          "id": "5babbaf1c2dc8e2c55ca43a5"
+        },
+        {
+          "links": {
+            "self": {
+              "rel": "self",
+              "href": "https://ecxbed3/api/endeavour/log/job/5babbaf1c2dc8e2c55ca43a7",
+              "hreflang": null,
+              "media": null,
+              "title": null,
+              "type": null,
+              "deprecation": null
+            },
+            "up": {
+              "rel": "up",
+              "href": "https://ecxbed3/api/endeavour/log/job",
+              "hreflang": null,
+              "media": null,
+              "title": null,
+              "type": null,
+              "deprecation": null
+            }
+          },
+          "name": "UNKNOWN",
+          "type": "INFO",
+          "category": "NONSERVICE",
+          "logTime": 1537981169309,
+          "modName": "com.catalogic.ecx.serviceprovider.protection.application.cal.discovery.ProtectionDiscoveryWorker",
+          "jobId": 1008,
+          "jobsessionTaskId": 2,
+          "jobsessionId": 1537981167063,
+          "sessionId": null,
+          "threadId": "pool-1450-thread-2",
+          "policyId": "1008",
+          "message": "Performing discovery on application server 172.20.3.112",
+          "properties": null,
+          "requesterIp": null,
+          "id": "5babbaf1c2dc8e2c55ca43a7"
+        },
+        {
+          "links": {
+            "self": {
+              "rel": "self",
+              "href": "https://ecxbed3/api/endeavour/log/job/5babbaf1c2dc8e2c55ca43c1",
+              "hreflang": null,
+              "media": null,
+              "title": null,
+              "type": null,
+              "deprecation": null
+            },
+            "up": {
+              "rel": "up",
+              "href": "https://ecxbed3/api/endeavour/log/job",
+              "hreflang": null,
+              "media": null,
+              "title": null,
+              "type": null,
+              "deprecation": null
+            }
+          },
+          "name": "",
+          "type": "INFO",
+          "category": "NONSERVICE",
+          "logTime": 1537981169365,
+          "modName": "com.catalogic.ecx.deploy.winrm.WinRMDeployer",
+          "jobId": 1008,
+          "jobsessionTaskId": 2,
+          "jobsessionId": 1537981167063,
+          "sessionId": null,
+          "threadId": "pool-1450-thread-1",
+          "policyId": "1008",
+          "message": "SPP log dir=/data/log/apps/1537981167063/172.20.3.70/2018-09-26T16_59_29_365Z",
+          "properties": null,
+          "requesterIp": null,
+          "id": "5babbaf1c2dc8e2c55ca43c1"
+        },
+        {
+          "links": {
+            "self": {
+              "rel": "self",
+              "href": "https://ecxbed3/api/endeavour/log/job/5babbaf1c2dc8e2c55ca43cd",
+              "hreflang": null,
+              "media": null,
+              "title": null,
+              "type": null,
+              "deprecation": null
+            },
+            "up": {
+              "rel": "up",
+              "href": "https://ecxbed3/api/endeavour/log/job",
+              "hreflang": null,
+              "media": null,
+              "title": null,
+              "type": null,
+              "deprecation": null
+            }
+          },
+          "name": "",
+          "type": "INFO",
+          "category": "NONSERVICE",
+          "logTime": 1537981169382,
+          "modName": "com.catalogic.ecx.deploy.winrm.WinRMDeployer",
+          "jobId": 1008,
+          "jobsessionTaskId": 2,
+          "jobsessionId": 1537981167063,
+          "sessionId": null,
+          "threadId": "pool-1450-thread-2",
+          "policyId": "1008",
+          "message": "SPP log dir=/data/log/apps/1537981167063/172.20.3.112/2018-09-26T16_59_29_382Z",
+          "properties": null,
+          "requesterIp": null,
+          "id": "5babbaf1c2dc8e2c55ca43cd"
+        },
+        {
+          "links": {
+            "self": {
+              "rel": "self",
+              "href": "https://ecxbed3/api/endeavour/log/job/5babbb05c2dc8e2c55ca4440",
+              "hreflang": null,
+              "media": null,
+              "title": null,
+              "type": null,
+              "deprecation": null
+            },
+            "up": {
+              "rel": "up",
+              "href": "https://ecxbed3/api/endeavour/log/job",
+              "hreflang": null,
+              "media": null,
+              "title": null,
+              "type": null,
+              "deprecation": null
+            }
+          },
+          "name": "",
+          "type": "INFO",
+          "category": "NONSERVICE",
+          "logTime": 1537981189270,
+          "modName": "com.catalogic.ecx.remoteexecutor.impl.RemoteExecutorUtils",
+          "jobId": 1008,
+          "jobsessionTaskId": 2,
+          "jobsessionId": 1537981167063,
+          "sessionId": null,
+          "threadId": "pool-1450-thread-2",
+          "policyId": "1008",
+          "message": "[172.20.3.112] Spectrum Protect Plus Exchange Agent",
+          "properties": null,
+          "requesterIp": null,
+          "id": "5babbb05c2dc8e2c55ca4440"
+        },
+        {
+          "links": {
+            "self": {
+              "rel": "self",
+              "href": "https://ecxbed3/api/endeavour/log/job/5babbb05c2dc8e2c55ca4442",
+              "hreflang": null,
+              "media": null,
+              "title": null,
+              "type": null,
+              "deprecation": null
+            },
+            "up": {
+              "rel": "up",
+              "href": "https://ecxbed3/api/endeavour/log/job",
+              "hreflang": null,
+              "media": null,
+              "title": null,
+              "type": null,
+              "deprecation": null
+            }
+          },
+          "name": "",
+          "type": "INFO",
+          "category": "NONSERVICE",
+          "logTime": 1537981189271,
+          "modName": "com.catalogic.ecx.remoteexecutor.impl.RemoteExecutorUtils",
+          "jobId": 1008,
+          "jobsessionTaskId": 2,
+          "jobsessionId": 1537981167063,
+          "sessionId": null,
+          "threadId": "pool-1450-thread-2",
+          "policyId": "1008",
+          "message": "[172.20.3.112] Start to get network information",
+          "properties": null,
+          "requesterIp": null,
+          "id": "5babbb05c2dc8e2c55ca4442"
+        },
+        {
+          "links": {
+            "self": {
+              "rel": "self",
+              "href": "https://ecxbed3/api/endeavour/log/job/5babbb05c2dc8e2c55ca443f",
+              "hreflang": null,
+              "media": null,
+              "title": null,
+              "type": null,
+              "deprecation": null
+            },
+            "up": {
+              "rel": "up",
+              "href": "https://ecxbed3/api/endeavour/log/job",
+              "hreflang": null,
+              "media": null,
+              "title": null,
+              "type": null,
+              "deprecation": null
+            }
+          },
+          "name": "",
+          "type": "INFO",
+          "category": "NONSERVICE",
+          "logTime": 1537981189271,
+          "modName": "com.catalogic.ecx.remoteexecutor.impl.RemoteExecutorUtils",
+          "jobId": 1008,
+          "jobsessionTaskId": 2,
+          "jobsessionId": 1537981167063,
+          "sessionId": null,
+          "threadId": "pool-1450-thread-2",
+          "policyId": "1008",
+          "message": "[172.20.3.112] Start to get iscsi initiator",
+          "properties": null,
+          "requesterIp": null,
+          "id": "5babbb05c2dc8e2c55ca443f"
+        },
+        {
+          "links": {
+            "self": {
+              "rel": "self",
+              "href": "https://ecxbed3/api/endeavour/log/job/5babbb05c2dc8e2c55ca4441",
+              "hreflang": null,
+              "media": null,
+              "title": null,
+              "type": null,
+              "deprecation": null
+            },
+            "up": {
+              "rel": "up",
+              "href": "https://ecxbed3/api/endeavour/log/job",
+              "hreflang": null,
+              "media": null,
+              "title": null,
+              "type": null,
+              "deprecation": null
+            }
+          },
+          "name": "",
+          "type": "INFO",
+          "category": "NONSERVICE",
+          "logTime": 1537981189271,
+          "modName": "com.catalogic.ecx.remoteexecutor.impl.RemoteExecutorUtils",
+          "jobId": 1008,
+          "jobsessionTaskId": 2,
+          "jobsessionId": 1537981167063,
+          "sessionId": null,
+          "threadId": "pool-1450-thread-2",
+          "policyId": "1008",
+          "message": "[172.20.3.112] Succeed to get iscsi initiator",
+          "properties": null,
+          "requesterIp": null,
+          "id": "5babbb05c2dc8e2c55ca4441"
+        },
+        {
+          "links": {
+            "self": {
+              "rel": "self",
+              "href": "https://ecxbed3/api/endeavour/log/job/5babbb05c2dc8e2c55ca4443",
+              "hreflang": null,
+              "media": null,
+              "title": null,
+              "type": null,
+              "deprecation": null
+            },
+            "up": {
+              "rel": "up",
+              "href": "https://ecxbed3/api/endeavour/log/job",
+              "hreflang": null,
+              "media": null,
+              "title": null,
+              "type": null,
+              "deprecation": null
+            }
+          },
+          "name": "",
+          "type": "INFO",
+          "category": "NONSERVICE",
+          "logTime": 1537981189271,
+          "modName": "com.catalogic.ecx.remoteexecutor.impl.RemoteExecutorUtils",
+          "jobId": 1008,
+          "jobsessionTaskId": 2,
+          "jobsessionId": 1537981167063,
+          "sessionId": null,
+          "threadId": "pool-1450-thread-2",
+          "policyId": "1008",
+          "message": "[172.20.3.112] Start to get fc initiators",
+          "properties": null,
+          "requesterIp": null,
+          "id": "5babbb05c2dc8e2c55ca4443"
+        },
+        {
+          "links": {
+            "self": {
+              "rel": "self",
+              "href": "https://ecxbed3/api/endeavour/log/job/5babbb05c2dc8e2c55ca4445",
+              "hreflang": null,
+              "media": null,
+              "title": null,
+              "type": null,
+              "deprecation": null
+            },
+            "up": {
+              "rel": "up",
+              "href": "https://ecxbed3/api/endeavour/log/job",
+              "hreflang": null,
+              "media": null,
+              "title": null,
+              "type": null,
+              "deprecation": null
+            }
+          },
+          "name": "",
+          "type": "INFO",
+          "category": "NONSERVICE",
+          "logTime": 1537981189271,
+          "modName": "com.catalogic.ecx.remoteexecutor.impl.RemoteExecutorUtils",
+          "jobId": 1008,
+          "jobsessionTaskId": 2,
+          "jobsessionId": 1537981167063,
+          "sessionId": null,
+          "threadId": "pool-1450-thread-2",
+          "policyId": "1008",
+          "message": "[172.20.3.112] Starting Application Discovery for BACKUP job",
+          "properties": null,
+          "requesterIp": null,
+          "id": "5babbb05c2dc8e2c55ca4445"
+        },
+        {
+          "links": {
+            "self": {
+              "rel": "self",
+              "href": "https://ecxbed3/api/endeavour/log/job/5babbb05c2dc8e2c55ca4444",
+              "hreflang": null,
+              "media": null,
+              "title": null,
+              "type": null,
+              "deprecation": null
+            },
+            "up": {
+              "rel": "up",
+              "href": "https://ecxbed3/api/endeavour/log/job",
+              "hreflang": null,
+              "media": null,
+              "title": null,
+              "type": null,
+              "deprecation": null
+            }
+          },
+          "name": "",
+          "type": "INFO",
+          "category": "NONSERVICE",
+          "logTime": 1537981189271,
+          "modName": "com.catalogic.ecx.remoteexecutor.impl.RemoteExecutorUtils",
+          "jobId": 1008,
+          "jobsessionTaskId": 2,
+          "jobsessionId": 1537981167063,
+          "sessionId": null,
+          "threadId": "pool-1450-thread-2",
+          "policyId": "1008",
+          "message": "[172.20.3.112] Component object has been initialized",
+          "properties": null,
+          "requesterIp": null,
+          "id": "5babbb05c2dc8e2c55ca4444"
+        },
+        {
+          "links": {
+            "self": {
+              "rel": "self",
+              "href": "https://ecxbed3/api/endeavour/log/job/5babbb05c2dc8e2c55ca4447",
+              "hreflang": null,
+              "media": null,
+              "title": null,
+              "type": null,
+              "deprecation": null
+            },
+            "up": {
+              "rel": "up",
+              "href": "https://ecxbed3/api/endeavour/log/job",
+              "hreflang": null,
+              "media": null,
+              "title": null,
+              "type": null,
+              "deprecation": null
+            }
+          },
+          "name": "",
+          "type": "INFO",
+          "category": "NONSERVICE",
+          "logTime": 1537981189271,
+          "modName": "com.catalogic.ecx.remoteexecutor.impl.RemoteExecutorUtils",
+          "jobId": 1008,
+          "jobsessionTaskId": 2,
+          "jobsessionId": 1537981167063,
+          "sessionId": null,
+          "threadId": "pool-1450-thread-2",
+          "policyId": "1008",
+          "message": "[172.20.3.112] VSS for discovery has been initialized",
+          "properties": null,
+          "requesterIp": null,
+          "id": "5babbb05c2dc8e2c55ca4447"
+        },
+        {
+          "links": {
+            "self": {
+              "rel": "self",
+              "href": "https://ecxbed3/api/endeavour/log/job/5babbb05c2dc8e2c55ca4448",
+              "hreflang": null,
+              "media": null,
+              "title": null,
+              "type": null,
+              "deprecation": null
+            },
+            "up": {
+              "rel": "up",
+              "href": "https://ecxbed3/api/endeavour/log/job",
+              "hreflang": null,
+              "media": null,
+              "title": null,
+              "type": null,
+              "deprecation": null
+            }
+          },
+          "name": "",
+          "type": "INFO",
+          "category": "NONSERVICE",
+          "logTime": 1537981189271,
+          "modName": "com.catalogic.ecx.remoteexecutor.impl.RemoteExecutorUtils",
+          "jobId": 1008,
+          "jobsessionTaskId": 2,
+          "jobsessionId": 1537981167063,
+          "sessionId": null,
+          "threadId": "pool-1450-thread-2",
+          "policyId": "1008",
+          "message": "[172.20.3.112] Starting appdiscovery",
+          "properties": null,
+          "requesterIp": null,
+          "id": "5babbb05c2dc8e2c55ca4448"
+        },
+        {
+          "links": {
+            "self": {
+              "rel": "self",
+              "href": "https://ecxbed3/api/endeavour/log/job/5babbb05c2dc8e2c55ca4446",
+              "hreflang": null,
+              "media": null,
+              "title": null,
+              "type": null,
+              "deprecation": null
+            },
+            "up": {
+              "rel": "up",
+              "href": "https://ecxbed3/api/endeavour/log/job",
+              "hreflang": null,
+              "media": null,
+              "title": null,
+              "type": null,
+              "deprecation": null
+            }
+          },
+          "name": "",
+          "type": "INFO",
+          "category": "NONSERVICE",
+          "logTime": 1537981189271,
+          "modName": "com.catalogic.ecx.remoteexecutor.impl.RemoteExecutorUtils",
+          "jobId": 1008,
+          "jobsessionTaskId": 2,
+          "jobsessionId": 1537981167063,
+          "sessionId": null,
+          "threadId": "pool-1450-thread-2",
+          "policyId": "1008",
+          "message": "[172.20.3.112] End of getting network information",
+          "properties": null,
+          "requesterIp": null,
+          "id": "5babbb05c2dc8e2c55ca4446"
+        }
+      ],
+      "page": 1,
+      "total": 335
+    }
+  }]

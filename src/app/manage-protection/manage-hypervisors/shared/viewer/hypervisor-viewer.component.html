@@ -1,0 +1,84 @@
+<div class="hypervisor-viewer">
+  <div class="viewer-header">
+    <div class="header">
+      <button class="btn-back-to"
+              (click)="onBackToClick()"
+              [title]="('inventory.textBackTo' | translate) + ' ' + (textBackToTarget | translate)">
+        <carbon-icon type="chevron--left" class="icon-back-to"></carbon-icon>
+      </button>
+      <label class="btn-text" (click)="onBackToClick()" translate>{{'inventory.textBackTo'}}</label>
+      <label class="back-to-target" (click)="onBackToClick()" translate>{{textBackToTarget}}</label>
+    </div>
+    <label class="title" translate>{{title}}</label>
+    <div class="subtitle">
+      <carbon-icon type="storage" class="icon-storage"></carbon-icon>
+      <label translate>{{subtitle}}</label>
+    </div>
+  </div>
+  <div class="viewer-body">
+    <ul class="breadcrumb2">
+      <li [hidden]="breadcrumbs && breadcrumbs.length">{{'inventory.textLoading' | translate}}</li>
+      <li *ngFor="let breadcrumb of breadcrumbs;let idx=index">
+        <carbon-icon *ngIf="idx === 0" type="storage" class="icon-storage"></carbon-icon>
+        <hypervisor-icon *ngIf="idx > 0 && !!breadcrumb.resource" [model]="breadcrumb.resource" class="icon-resource"></hypervisor-icon>
+        <span tabindex="0" (keydown.enter)="onBreadcrumbClick(breadcrumb,$event)"
+              (click)="onBreadcrumbClick(breadcrumb,$event)" class='link'>{{breadcrumb.title}}</span>
+      </li>
+    </ul>
+    <div class="side-by-side-wrapper">
+      <div class="side-by-side-left">
+        <div class="side-by-side-wrapper">
+          <div class="search-bar">
+            <sdl-search-bar (search)="startSearch(true, ($event === '') ? '*' : $event)"
+                            [isSupportClear]="true"
+                            (clear)="onClearSearch()"
+                            [textPlaceholderLabel]="textSearchFor">
+            </sdl-search-bar>
+          </div>
+          <div [hidden]="!isTagView()" class="btn-group space-left-10">
+            <label class="custom-checkbox search-category">
+              <input type="checkbox" [(ngModel)]="searchCategory">
+              <span>{{ 'hypervisor.textSearchCategory' | translate }}</span>
+            </label>
+          </div>
+          <div class="btn-group space-left-10" role="group" aria-label="Filter">
+            <div class="btn-group filter" role="group">
+              <button id="btnGroupDrop2" type="button" class="btn btn-default dropdown-toggle dropdown-toggle-sdl icon-container"
+                      data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                      [title]="'inventory.textPolicyCoverageFilter' | translate">
+                  <svg ibmIconFilter16></svg>
+              </button>
+              <div class="dropdown-menu slas-menu scrollable-menu dropdown-menu-sdl" aria-labelledby="btnGroupDrop2">
+                <a *ngFor="let item of slas" tabindex="0" class="dropdown-item dropdown-item-sdl"
+                   [ngClass]="{'selected': sla && sla.value === item.value}"
+                   clickOnEnterKeydown
+                   (click)="onSlaClick(item)">{{item.name}}</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="side-by-side-right">
+        <div class="btn-group view" role="group">
+          <button id="btnGroupDrop1" type="button" class="btn btn-default dropdown-toggle dropdown-toggle-sdl"
+                  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <label class="view-label">{{view ? ('common.textViewColon' | translate) + ' ' + view.name : ''}}</label>
+          </button>
+          <div class="dropdown-menu dropdown-menu-left dropdown-menu-sdl" aria-labelledby="btnGroupDrop1">
+            <a *ngFor="let item of views" tabindex="0" class="dropdown-item  dropdown-item-sdl"
+               clickOnEnterKeydown (click)="onViewClick(item)">{{item.name}}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="table">
+      <hypervisor-table
+        [view]="view"
+        [model]="model"
+        (loadEvent)="onLoad($event)"
+        (onAssignPolicy)="onClickAssignPolicy($event)"
+        (onEditRunSettings)="onClickEditRunSettings($event)"
+      ></hypervisor-table>
+    </div>
+  </div>
+</div>

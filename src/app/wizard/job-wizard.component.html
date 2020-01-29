@@ -1,0 +1,27 @@
+<wizard *ngIf="active"
+        [maximize]="true"
+        [isContentMaximized]="isContentMaximized"
+        [registry]="registry"
+        [model]="model"
+        [delayLoad]="true"
+        [sidebarNavigable]="true"
+        [nextOnceWorkflowSelected]="true"
+        [interactWithSkipOptionalPages]="false"
+        [textBackToTarget]="textBackToTarget"
+        [showOverallSummary]="showOverallSummary"
+        [enablePreview]="enablePreview"
+        [textPreview]="textPreview"
+        [allowedCategories]="allowedCategories"
+        (startPagesEvent)="onStartPages($event)"
+        (beforeCancelEvent)="onWizardBeforeCancel($event)"
+        (cancelEvent)="onWizardCancel()"
+        (submitEvent)="onWizardSubmit($event)">
+</wizard>
+<ng-template #starterDesc>
+  <label>{{('wizard.job.textDesc1' | translate) + ' '}}<span>{{'wizard.job.textDesc2' | translate}}</span>.
+    <i class="bidi-status-info"></i>
+    <br>{{('wizard.job.textDesc3' | translate) + ' '}}<span>{{'wizard.job.textDesc4' | translate}}</span>
+    {{'wizard.job.textDesc5' | translate}}
+  </label>
+</ng-template>
+

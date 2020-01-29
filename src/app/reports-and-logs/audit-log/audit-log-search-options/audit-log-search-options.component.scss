@@ -1,0 +1,34 @@
+@import "../../../theme/sass/conf/conf";
+
+.form-control {
+  background-color: #ffffff;
+  color: $dropdown-text;
+  margin-bottom: 5px;
+}
+
+.input[type="checkbox"] + label span {
+  display: inline-block;
+  width: 19px;
+  height: 19px;
+}
+
+ul.a {
+  list-style-type: none;
+}
+
+label {
+  line-height: 30px;
+}
+
+.disabled {
+  & label {
+    /* for "disabled" effect */
+    color: #CCC;
+  }
+  & select {
+    pointer-events: none;
+    /* for "disabled" effect */
+    opacity: 0.5;
+    background: #CCC;
+  }
+}

@@ -1,0 +1,119 @@
+@import '../theme/sass/conf/conf';
+
+.wrapper {
+  padding: 0 15px;
+}
+
+.h4 {
+  color: #595859
+}
+
+.dash-row {
+  margin-top: 15px;
+}
+
+.sdl-header {
+  color: #777677;
+  line-height: 1.25rem
+}
+
+.sdl.secondary {
+  border-width: 1px;
+}
+
+.widget {
+  margin-top: 2rem;
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+.dashboard-col {
+  height: 100%;
+  justify-content: center;
+}
+
+.right-align {
+  float: right;
+  display: inline;
+  width: auto;
+}
+
+.left-align {
+  float: left;
+  display: inline;
+  width: auto;
+}
+
+.row {
+}
+
+.dashboard-item {
+  @media (max-width: 1200px) {
+    margin-bottom: 15px;
+  }
+}
+
+.item-list {
+  &.right {
+    float: right;
+  }
+  .item-col {
+    text-align: center;
+    justify-content: center;
+    margin: 0.5rem 1rem;
+  }
+  .item-col-left {
+    text-align: left;
+    justify-content: left;
+    margin: 0.5rem 1rem 0.5rem 0rem;
+  }
+  .item-col-right {
+    text-align: right;
+    justify-content: right;
+    margin: 0.5rem 0rem 0.5rem 1rem;
+  }
+  .spliter-col {
+    width: 15px;
+    text-align: center;
+    .spliter {
+      height: 80px;
+      margin-top: 5px;
+      width: 0;
+      display: inline-block;
+      border: 1px solid $cool-gray10;
+    }
+    display: none;
+    @media (min-width: 1800px) {
+      display: block;
+    }
+  }
+
+  .short {
+    ::ng-deep circle-summary-chart .status-item {
+      min-width: 125px;
+      width: 65%;
+    }
+  }
+
+  .long {
+    ::ng-deep circle-summary-chart .status-item {
+      min-width: 125px;
+      width: 90%;
+    }
+  }
+
+}
+
+.pull-down-content {
+  margin-top: 10px;
+}
+
+.dashboard-view-btn {
+  position: absolute;
+  bottom: 9px;
+  right: 8px;
+}
+
+.d-flex {
+  display: flex;
+}

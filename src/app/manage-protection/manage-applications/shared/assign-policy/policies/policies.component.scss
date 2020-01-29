@@ -1,0 +1,65 @@
+:host {
+  ::ng-deep ba-card > .card > .card-body {
+    padding: 0;
+  }
+}
+
+.applications-policies-content {
+  width: 65%;
+}
+
+.applications-policies-list {
+  padding: 2rem;
+  height: calc(100vh - 315px);
+}
+
+.applications-policies-resources {
+  width: 35%;
+  padding: 2rem;
+  border-left: 1px solid #d0dada;
+  background-color: #f9f9f9;
+}
+
+.applications-policies-actions {
+  padding: 16px 2rem;
+  align-items: center;
+  background-color: #f9f9f9;
+
+  .side-by-side-wrapper {
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.applications-policies-table {
+  overflow: scroll;
+  margin-top: 2rem;
+  height: calc(100% - 60px);
+
+  label.custom-checkbox {
+    height: 18px;
+  }
+
+  label.custom-checkbox > span {
+    margin-right: -16px;
+  }
+
+  .inventory-table tbody tr td {
+    vertical-align: top;
+  }
+}
+
+.applications-policies-info {
+  display: flex;
+  justify-content: space-between;
+}
+
+.icon-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .icon-resource {
+    margin-right: 6px
+  }
+}

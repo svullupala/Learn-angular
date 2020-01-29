@@ -1,0 +1,31 @@
+<div class="datastore">
+  <div class="title" translate>{{'wizard.job.textSetDatastoreTitle'}}</div>
+  <div class="desc" translate>{{'wizard.job.textSetDatastoreDesc'}}</div>
+  <div class="content">
+    <div *ngIf="!showDatastoreCard()">
+      <label translate>{{model.workflowType === 'IA' ? 'wizard.textNoDatastoreIAMsg' : 'wizard.textNoDatastoreMsg'}}</label>
+    </div>
+    <div *ngIf="showDatastoreCard()">
+      <ba-card>
+        <datastore-component
+          [sourceList]="model.source"
+          [datastoreSelections]="model.mapDatastorePayload"></datastore-component>
+      </ba-card>
+    </div>
+  </div>
+</div>
+<ng-template #summary>
+  <div class="summary">
+    <div class="content">
+      <div class="property">
+        <label class="name" translate>{{'wizard.job.textDatastoreSummary'}}</label>
+        <label class="value" *ngIf="!summaryPayload">{{'wizard.job.textEmpty' | translate}}</label>
+        <label class="value">
+          <div *ngFor="let item of summaryPayload">
+            {{item.name}} - {{item.destination}}
+          </div>
+        </label>
+      </div>
+    </div>
+  </div>
+</ng-template>

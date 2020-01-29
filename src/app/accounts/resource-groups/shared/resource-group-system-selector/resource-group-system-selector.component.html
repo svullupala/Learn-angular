@@ -1,0 +1,36 @@
+<div class="space-top-10">
+  <label class="control-label" translate>{{'resourceGroups.textChooseSystemType'}}</label>
+  <div>
+    <select class="form-control" [(ngModel)]="systemType" (change)="loadData()">
+      <option value="certificate" translate>{{ 'resourceGroups.textCertificates' }}</option>
+      <option value="cloud" translate>{{ 'resourceGroups.textCloud' }}</option>
+      <option value="disk" translate>{{ 'resourceGroups.textDisk' }}</option>
+      <option value="key" translate>{{ 'resourceGroups.textKeys' }}</option>
+      <option value="ldap" translate>{{ 'ldap-smtp.textLdap' }}</option>
+      <option value="logs" translate>{{ 'resourceGroups.textLogs' }}</option>
+      <option value="repo" translate>{{ 'resourceGroups.textRepositoryServers' }}</option>
+      <option value="script" translate>{{ 'scripts.title' }}</option>
+      <option value="scriptserver" translate>{{'resourceGroups.textScriptServers'}}</option>
+      <option value="site" translate>{{ 'storage.textSite' }}</option>
+      <option value="smtp" translate>{{ 'ldap-smtp.textSmtp' }}</option>
+      <option value="proxy" translate>{{ 'hypervisor.textSelectVADPProxy' }}</option>
+    </select>
+  </div>
+  <div [hidden]="systemType === undefined">
+    <resource-selector-component
+      [records]="records"
+      [dataset]="dataset"
+      [masked]="masked"
+      [breadcrumbs]="breadcrumbs"
+      [addAllItem]="addAllItem"
+      [hideAllButton]="hideAllButton"
+      [hideSearchBar]="true"
+      [hideBreadcrumbs]="true"
+      [resourceType]="'resourceGroups.textSystem' | translate"
+      [paginateConfig]="paginateConfig"
+      (navigateEvent)="loadCustomReports($event)"
+      (onPageChangeEvent)="onRefresh()"
+      (onRefreshEvent)="onRefresh()"
+    ></resource-selector-component>
+  </div>
+</div>

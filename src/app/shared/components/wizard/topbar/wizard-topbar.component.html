@@ -1,0 +1,16 @@
+<div class="header">
+  <button class="ion-chevron-left"
+          [hidden]="btn.hidden"
+          [ngClass]="{'disabled' : btn.disabled}"
+          [disabled]="btn.disabled"
+          (click)="onButtonClick(btn)"
+          [title]="btn.text | translate">
+  </button>
+  <label class="btn-text" (click)="onButtonClick(btn)" translate>{{btn.text}}</label>
+  <label class="back-to-target" (click)="onButtonClick(btn)" translate>{{textBackToTarget}}</label>
+</div>
+<div><label class="title" translate>{{title}}</label><label *ngIf="!!subtitle" class="title">&nbsp;-&nbsp;</label><label *ngIf="!!subtitle" class="title" translate>{{subtitle}}</label></div>
+<div>
+  <label *ngIf="isStringDesc" translate>{{description}}</label>
+  <ng-template *ngIf="!isStringDesc" [ngTemplateOutlet]="description"></ng-template>
+</div>

@@ -1,0 +1,139 @@
+<ba-card [ngClass]="{ masked: mask }">
+  <div>
+    <div class="apps-run-settings-info">
+      <p [innerHTML]="formattedInfoText"></p>
+      <span *ngIf="!editMode" class="link icon-container" style="text-align: right" (click)="enableEditMode()" translate>
+        <svg ibmIconEdit16 class="icon-resource"></svg>{{ 'inventory.textEditRunSettings' }}
+      </span>
+    </div>
+    <div class="apps-run-settings-tabs">
+      <scroll-tabset [hidden]="!optionsLoaded" [tabs]="scrollTabs" [disabled]="!editMode"></scroll-tabset>
+
+      <ng-template #tabLogBackup>
+        <div class="row">
+          <label class="col-sm-3 control-label">{{ 'Log Backup' | translate }}</label>
+          <div class="form-group col-sm-9">
+            <ba-checkbox
+              [(ngModel)]="enableLogBackup"
+              [baCheckboxClass]="'enabled'"
+              [disabled]="isEnableLogBackupDisabled()"
+              label="{{ 'Enable Log Backup' | translate }}"
+            >
+            </ba-checkbox>
+          </div>
+        </div>
+        <div [hidden]="!enableLogBackup" class="row">
+          <div class="offset-sm-3 col-sm-9">
+            <label class="control-label line-height-30" translate>{{
+              'application.textLogbackupFrequency'
+            }}</label>
+            <define-schedule
+              [hideMonthlyType]="true"
+              [enableMinMax]="true"
+              [hideLabel]="true"
+              [hideStartTime]="true"
+              [hideStartHourAndMinute]="false"
+              [defaultType]="'SUBHOURLY'"
+              [defaultFrequency]="30"
+              [hideWeeklyType]="true"
+            ></define-schedule>
+          </div>
+          <div *ngIf="dynamicOptions.truncateSourceLogs" class="offset-sm-3 col-sm-9">
+            <div class="form-group" style="margin-top: 20px">
+              <ba-checkbox
+                [(ngModel)]="purgePrimaryLogs"
+                [baCheckboxClass]="'enabled'"
+                label="{{ 'application.textPurgePrimaryLogs' | translate }}"
+              >
+              </ba-checkbox>
+            </div>
+          </div>
+          <div *ngIf="dynamicOptions.primaryLogRetention" class="offset-sm-3 col-sm-9">
+            <div class="apps-run-settings-input">
+              <input
+                type="number"
+                min="1"
+                class="form-control number-value"
+                id="primaryLogRetentionDays"
+                [(ngModel)]="model.primaryLogRetentionDays"
+              />
+              <label for="primaryLogRetentionDays" class="col-sm-3 control-label" translate>
+                {{ 'application.textPrimaryLogsRetentionDays' }}
+              </label>
+            </div>
+          </div>
+        </div>
+      </ng-template>
+
+      <ng-template #tabParallelStreams>
+        <div class="row">
+          <label class="col-sm-3 control-label">{{ 'Parallel Streams' | translate }}</label>
+          <div class="form-group col-sm-9">
+            <div *ngIf="dynamicOptions.parallelStreamRadio" class="row" style="margin-bottom: 20px">
+              <div class="col-md-12 col-lg-6">
+                <label class="radio-inline custom-radio">
+                  <input
+                    type="radio"
+                    name="inlineRadioStreamOptions"
+                    value="SINGLE_FILE"
+                    [(ngModel)]="model.dbFilesForParallelStreams"
+                  />
+                  <span class="prevent-line-break" translate>{{ 'application.textSingleFile' }}</span>
+                </label>
+              </div>
+              <div class="col-md-12 col-lg-6">
+                <label class="radio-inline custom-radio">
+                  <input
+                    type="radio"
+                    name="inlineRadioStreamOptions"
+                    value="MULTIPLE_FILES"
+                    [(ngModel)]="model.dbFilesForParallelStreams"
+                  />
+                  <span class="prevent-line-break" translate>{{ 'application.textMultipleFiles' }}</span>
+                </label>
+              </div>
+            </div>
+            <div class="apps-run-settings-input">
+              <input
+                type="number"
+                min="1"
+                class="form-control number-value"
+                id="maxParallelStreams"
+                [(ngModel)]="model.maxParallelStreams"
+              />
+              <label for="maxParallelStreams" class="col-sm-3 control-label" translate>
+                {{ 'application.textMaxParallelStreams' }}
+              </label>
+            </div>
+            <div *ngIf="dynamicOptions.backupPreferredNode">
+              <label class="control-label" translate>{{ 'application.textBackupPreferredNode' }}</label>
+              <div>
+                <select class="custom-select form-control" [(ngModel)]="model.backupPreferredNode">
+                  <option [ngValue]="''" translate>{{ 'application.textSelectBackupPreferredNode' }}</option>
+                  <option *ngFor="let vm of appServerVms" [ngValue]="vm.url">{{ vm.appServerName }}</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-template>
+
+      <ng-template [ngIf]="editMode && !mask">
+        <div class="apps-run-settings-actions">
+          <button class="sdl inline secondary" style="margin-right: 12px" (click)="onCancel()" translate>
+            {{ 'common.textCancel' }}
+          </button>
+          <button
+            class="sdl inline"
+            [disabled]="!isValid()"
+            [ngClass]="{ disabled: !isValid() }"
+            (click)="onSave()"
+            translate
+          >
+            {{ 'common.textSave' }}
+          </button>
+        </div>
+      </ng-template>
+    </div>
+  </div></ba-card
+>

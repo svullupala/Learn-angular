@@ -1,0 +1,29 @@
+<script src="audit-log-table.component.ts"></script>
+<div class="manage-table-container">
+  <div class="manage-table-height" #infiniteScrollContainer>
+    <table *ngIf="isRecords()">
+      <thead>
+      <tr>
+        <th translate>{{'auditlog.table.accessTime'}}</th>
+        <th translate>{{'auditlog.table.serverTime'}}</th>
+        <th translate>{{'auditlog.table.requesterIp'}}</th>
+        <th translate>{{'auditlog.table.user'}}</th>
+        <th translate>{{'auditlog.table.groups'}}</th>
+        <th translate>{{'auditlog.table.operation'}}</th>
+        <th translate>{{'auditlog.table.description'}}</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let item of (infiniteScrollingMode ? getRecords() : (getRecords() | paging: paginateConfig.json()))">
+        <td>{{item.accessTime | amDateFormat: 'll LTS'}}</td>
+        <td>{{item.serverTime | amDateFormat: 'll LTS'}}</td>
+        <td>{{item.requesterIp}}</td>
+        <td>{{item.user}}</td>
+        <td>{{item.groups}}</td>
+        <td>{{item.operation}}</td>
+        <td>{{item.description}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

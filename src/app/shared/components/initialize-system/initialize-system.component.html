@@ -1,0 +1,15 @@
+<div bsModal #lgModal="bs-modal" class="modal fade" [config]="{backdrop: 'static', keyboard : false}" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div cdkTrapFocus class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" translate>{{'storage.textInitializeFilesystem'}}</h4>
+      </div>
+      <div class="modal-body" translate>{{'storage.textInitializeFilesystemBody'}}
+      </div>
+      <div class="modal-footer" >
+        <button cdkFocusRegionStart class="sdl inline small" (click)="onOkClick()" translate>{{'storage.textInitialize'}}</button>
+        <button cdkFocusRegionEnd class="sdl inline small" (click)="onOkClick(true)" translate>{{'storage.textInitializeWithEncryption'}}</button>
+      </div>
+    </div>
+  </div>
+</div>

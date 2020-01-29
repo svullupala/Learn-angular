@@ -1,0 +1,25 @@
+<ba-sidebar *ngIf="!isSidebarHidden"></ba-sidebar>
+<ba-page-top (logo)="onLogo()"
+             (onGetLicenseEvent)="handleFeedback($event)"
+             (about)="onAbout()" (quickstart)="onQuickStart()"
+             (downloadlogs)="onDownloadLogs()" (downloadtesttool)="onDownloadTestTool()"
+             (whatsnew)="onWhatsNew()"
+             (logout)="onLogout()"
+              ></ba-page-top>
+<div [ngClass]="(isSidebarHidden) ? 'al-main-full' : 'al-main'">
+  <ba-banner [hidden]="!showBanner" (onClose)="onCloseBanner(true)">
+    <span class="banner-message">{{textWhatsNewBanner}}</span>
+    <span (click)="onWhatsNew()" class="banner-link" translate>{{'common.textSeeDetails'}}</span>
+  </ba-banner>
+  <div class="al-content" [ngClass]="{'mask-page-content': maskPage}">
+    <ba-content-top></ba-content-top>
+    <router-outlet></router-outlet>    
+  </div>
+</div>
+<msgbox-alert [autoShow]= "false"></msgbox-alert>
+<error-handler (sessionExpired)="onSessionExpired()"></error-handler>
+<logout *ngIf="isSessionExpired"></logout>
+<downloader></downloader>
+<about-dialog *ngIf="showAbout" (hide)="onAbout(true)"></about-dialog>
+<quickstart *ngIf="showQuickStart" (hide)="onQuickStart(true)"></quickstart>
+<feedback *ngIf="showFeedback" (hide)="onShowFeedback(true)"></feedback>

@@ -1,0 +1,8 @@
+<h2 class="sdl-header" translate>{{formLabel}}</h2>
+<ba-card>
+  <basic-dynamic-form [formValues]="formQuestions"
+                      [enableCardLayout]="false"
+                      [idPrefix]="'smtpRegister'"
+                      (onSubmitEvent)="onSubmitEvent($event)"
+                      (onCancelEvent)="onCancelEvent()"></basic-dynamic-form>
+</ba-card>

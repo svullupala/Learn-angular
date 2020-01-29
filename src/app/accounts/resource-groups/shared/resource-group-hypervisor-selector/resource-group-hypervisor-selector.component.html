@@ -1,0 +1,46 @@
+<div class="space-top-10">
+  <div class="row">
+    <div class="col-lg-6">
+      <div>
+        <label class="control-label" translate>{{'resourceGroups.textChooseAServerType'}}</label>
+      </div>
+      <select class="form-control" [(ngModel)]="hypervisorType" (change)="loadDefaultData()">
+        <option value="vmware" translate>{{ 'vmware.textVMware' }}</option>
+        <option value="hyperv" translate>{{ 'hyperv.textTitle' }}</option>
+        <option value="awsec2" translate>{{ 'awsec2.textTitle' }}</option>
+      </select>
+    </div>
+    <div class="col-lg-6" [hidden]="hypervisorType === undefined || isAWSEC2()">
+      <div>
+        <label class="control-label" translate>{{'resourceGroups.textChooseAViewType'}}</label>
+      </div>
+      <select class="form-control" [(ngModel)]="viewValue" (change)="loadData()">
+        <option value="vms" translate>{{ 'hypervisor.textVMs' }}</option>
+        <option value="vmview" [hidden]="isHyperV()" translate>{{ 'hypervisor.textVmAndTemplates'}}</option>
+        <option value="tagview" [hidden]="isHyperV()" translate>{{'hypervisor.textVMCategoryTagView'}}</option>
+        <option value="storageview" translate>{{ 'hypervisor.textDatastore' }}</option>
+        <option value="hostview" [hidden]="isHyperV()" translate>{{ 'hypervisor.textHostsAndClustersView' }}</option>
+      </select>
+    </div>
+  </div>
+</div>
+<div [hidden]="(hypervisorType === undefined && viewValue === undefined)">
+    <resource-selector-component
+      [records]="records"
+      [dataset]="dataset"
+      [masked]="masked"
+      [breadcrumbs]="breadcrumbs"
+      [hideBreadcrumbs]="searchResultView"
+      [addAllItem]="addAllItem"
+      [hideAllButton]="!isFirstLevel()"
+      [resourceType]="'resourceGroups.textHypervisor' | translate"
+      [applicationType]="applicationTypeText"
+      (onBreadcrumbClickEvent)="onBreadcrumbClick($event)"
+      [view]="viewValue"
+      [paginateConfig]="paginateConfig"
+      (navigateEvent)="navigate($event)"
+      (onPageChangeEvent)="onRefresh()"
+      (onRefreshEvent)="onRefresh()"
+      (onSearchEvent)="onSearch($event)"
+    ></resource-selector-component>
+</div>

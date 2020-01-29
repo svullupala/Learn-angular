@@ -1,0 +1,16 @@
+@import '../../sass/conf/conf';
+
+.collapsible {
+  height: $sidebar-collapsible-pane-height;
+  line-height: $sidebar-collapsible-pane-height;
+  background: $sidebar-collapsible-pane-color;
+  .btn {
+    width: $sidebar-collapsible-pane-btn-width;
+    height: $sidebar-collapsible-pane-btn-height;
+    background-color: $sidebar-collapsible-btn-color !important;
+    color: $sidebar-text-gray;
+    &:hover {
+      color: $sidebar-text;
+    }
+  }
+}

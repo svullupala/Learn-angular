@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-us" xml:lang="en-us" class="reference _Skins_HTML5_topnav_IBMOEM" data-mc-search-type="Stem" data-mc-help-system-file-name="Default.xml" data-mc-path-to-help-system="../../../" data-mc-has-content-body="True" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic;Default" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Setup|Requirements">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>File Indexing and Restore Requirements</title>
+        <link rel="icon" href="../../Resources/images/IBM-icon-48.ico" />
+        <link href="../../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Tablet.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Mobile.css" rel="stylesheet" />
+        <link href="../../../Skins/Fluid/stylesheets/foundation.6.2.3.css" rel="stylesheet" />
+        <link href="../../../Skins/Fluid/stylesheets/styles.css" rel="stylesheet" />
+        <link href="../../../Skins/Fluid/stylesheets/tablet.css" rel="stylesheet" />
+        <link href="../../../Skins/Fluid/stylesheets/mobile.css" rel="stylesheet" />
+        <style>/*&lt;meta /&gt;*/
+
+.button.remove-highlight-button
+{
+	-pie-background: url('../../../Skins/Default/Stylesheets/Images/highlight.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.expand-all-button
+{
+	-pie-background: url('../../../Skins/Default/Stylesheets/Images/expand.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.print-button
+{
+	-pie-background: url('../../../Skins/Default/Stylesheets/Images/printer.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.collapse-all-button
+{
+	-pie-background: url('../../../Skins/Default/Stylesheets/Images/collapse.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.needs-pie
+{
+	behavior: url('../../../Resources/Scripts/PIE-no-motw.htc');
+}
+
+</style>
+        <link href="../../resources/stylesheets/styles_topnavi.css" rel="stylesheet" />
+        <script src="../../../Resources/Scripts/custom.modernizr.js">
+        </script>
+        <script src="../../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/require.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/require.config.js">
+        </script>
+        <script src="../../../Resources/Scripts/foundation.6.2.3_custom.js">
+        </script>
+        <script src="../../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div class="foundation-wrap off-canvas-wrapper">
+            <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper="">
+                <aside class="off-canvas position-right" id="offCanvas" data-off-canvas="" data-position="right" data-mc-ignore="true">
+                    <ul class="off-canvas-drilldown vertical menu off-canvas-list" data-drilldown="" data-mc-back-link="Back" data-mc-css-tree-node-expanded="is-drilldown-submenu-parent" data-mc-css-tree-node-collapsed="is-drilldown-submenu-parent" data-mc-css-sub-menu="vertical menu slide-in-right is-drilldown-submenu" data-mc-include-indicator="False" data-mc-include-icon="False" data-mc-include-parent-link="True" data-mc-include-back="True" data-mc-defer-expand-event="True" data-mc-expand-event="click.zf.drilldown" data-mc-toc="True">
+                    </ul>
+                </aside>
+                <div class="off-canvas-content inner-wrap" data-off-canvas-content="">
+                    <div>
+                        <nav class="title-bar tab-bar" data-mc-ignore="true">
+                            <div class="middle title-bar-section outer-row clearfix">
+                                <div class="relative clearfix"><a class="logo" href="../about/about_application_overview.htm" alt="Logo"></a>
+                                    <div class="navigation-wrapper nocontent">
+                                        <ul class="navigation clearfix" data-mc-css-tree-node-has-children="has-children" data-mc-css-sub-menu="sub-menu" data-mc-expand-event="mouseenter" data-mc-top-nav-menu="True" data-mc-max-depth="4" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                                            <li class="placeholder" style="visibility:hidden"><a>placeholder</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <button class="menu-icon" data-toggle="offCanvas"><span></span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="nav-search row outer-row">
+                                <form class="search" action="#">
+                                    <div class="search-bar search-bar-container needs-pie">
+                                        <input class="search-field needs-pie" type="search" placeholder="Search the help system" />
+                                        <div class="search-filter-wrapper">
+                                            <div class="search-filter">
+                                                <div class="search-filter-content">
+                                                    <ul>
+                                                        <li>All Files</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="search-submit-wrapper" dir="ltr">
+                                            <div class="search-submit" title="Search">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </nav>
+                    </div>
+                    <section class="main-section">
+                        <div class="row outer-row" data-mc-content-body="True">
+                            <div class="buttons popup-container clearfix topicToolbarProxy mc-component nocontent" style="margin-left: 0px; float: right; mc-topic-toolbar-items: RemoveHighlight ExpandAll CollapseAll Print;">
+                                <div class="button-group-container-left">
+                                    <button class="button needs-pie remove-highlight-button" title="Remove Highlights">
+                                        <img src="../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="remove highlight" />
+                                    </button>
+                                    <button class="button needs-pie expand-all-button" data-state1-class="expand-all-button" data-state2-class="collapse-all-button" data-state2-title="Collapse all" title="Expand all" data-state1-title="Expand all">
+                                        <img src="../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="expand all" />
+                                    </button>
+                                    <button class="button needs-pie print-button" title="Print">
+                                        <img src="../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="print" />
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="nocontent">
+                                <div class="MCBreadcrumbsBox_0 breadcrumbs" data-mc-breadcrumbs-divider=" &gt; " data-mc-breadcrumbs-count="3" data-mc-toc="True"><span class="MCBreadcrumbsPrefix">You are here: </span>
+                                </div>
+                            </div>
+                            <h1>File Indexing and Restore Requirements</h1>
+                            <p>Review the following requirements for indexing and restoring files through <span class="ProductNames_LongShortECX_Short">IBM Spectrum Protect Plus</span>. </p>
+                            <p class="SubHeading">General Considerations</p>
+                            <p>iSCSI disks that are directly mapped to the guest operating system will not be indexed. Supported volumes include VMDK&#160;or VHDX&#160;volumes that are mounted through the configuration of the associated virtual machine. </p>
+                            <p class="SubHeading">VMware Requirements</p>
+                            <p>In the virtual machine settings under Advanced Configuration, the <i>disk.enableUUID</i> setting must be present and set to true.</p>
+                            <p class="SubHeading">Windows Requirements</p>
+                            <ul>
+                                <li value="1">Supported operating systems: Windows Server 2008 R2, Windows Server 2012 R2 and Windows Server 2016</li>
+                                <li value="2">Supported file systems: NTFS, ReFS, CsvFS</li>
+                            </ul>
+                            <p><span class="ProductNames_LongShortECX_Short">IBM Spectrum Protect Plus</span> supports only the operating systems available to your hypervisors. Review your hypervisor's documentation for information about supported operating systems. </p>
+                            <p>File indexing and restore operations support SCSI disks in a Hyper-V environment. IDE disks are not supported. Note that Generation 1 virtual machines require IDE boot disks, however if additional SCSI&#160;disks are available, file indexing and restore operations will be supported on those disks. </p>
+                            <p>Windows Remote Shell (WinRM) must be enabled.</p>
+                            <p><span class="NoteBlue">Note:</span><![CDATA[	]]><span class="ProductNames_LongShortECX_Short">IBM Spectrum Protect Plus</span> can protect and restore virtual machines with other file systems, but only the file systems listed above are eligible for file indexing and restore.</p>
+                            <p>When file indexing is performed in a Windows environment, the following directories on the resource are skipped: /Drivers, /Program Files, /Program Files (x86), /Windows, and /winnt. Files within these directories are not added to the <span class="ProductNames_LongShortECX_Short">IBM Spectrum Protect Plus</span> Inventory and are not available for file recovery. </p>
+                            <p>Ensure the latest version of VMware Tools is installed on VMware virtual machines, and Hyper-V Integration Services is installed on your Hyper-V virtual machines. </p>
+                            <p style="font-weight: bold;">          Space Requirements</p>
+                            <p>  The C drive must have sufficient temporary space to save the file indexing results.</p>
+                            <p style="font-weight: bold;">          Connectivity Requirements</p>
+                            <ul>
+                                <li value="1">The hostname of the <span class="ProductNames_LongShortECX_Short">IBM Spectrum Protect Plus</span> appliance should be resolvable from the Windows virtual machine. If the hostname of the <span class="ProductNames_LongShortECX_Short">IBM Spectrum Protect Plus</span> appliance is not resolvable, add the IP&#160;address of the  appliance in the <i>ecxAddress</i> field in the <span class="ProductNames_LongShortECX_Short">IBM Spectrum Protect Plus</span> configuration file, which can be found in the following location on the appliance:&#160;</li>
+                                <li class="indent" data-mc-autonum=""><span class="autonumber"><span></span></span>/opt/virgo/repository/ecx-usr/deploy.vmware.vmdeployer.json</li>
+                                <li value="2">The IP address of the virtual machine selected for indexing must be visible to the vSphere client or Hyper-V Manager.</li>
+                                <li value="3">The Windows virtual machine selected for indexing must allow outgoing connections to port 22 (ssh) on the <span class="ProductNames_LongShortECX_Short">IBM Spectrum Protect Plus</span> appliance.</li>
+                                <li value="4">All firewalls must be configured to allow <span class="ProductNames_LongShortECX_Short">IBM Spectrum Protect Plus</span> to connect to the server through WinRM.</li>
+                            </ul>
+                            <p style="font-weight: bold;">Authentication and Privilege Requirements</p>
+                            <p>The credentials specified for the virtual machine must include a user with the following privileges:</p>
+                            <ul>
+                                <li value="1">The user identity must have the "Log on as a service" right, which is assigned through the Administrative Tools control panel on the local machine (Local Security Policy &gt; Local Policies &gt; User Rights Assignment &gt; Log on as a service). For more information about the "Log on as a service" right, see <a href="https://technet.microsoft.com/en-us/library/cc794944.aspx" target="_blank">https://technet.microsoft.com/en-us/library/cc794944.aspx</a>.</li>
+                                <li value="2">The default security policy uses the Windows NTLM protocol, and the user identity follows the default <b>domain\Name</b> format if the Hyper-V virtual machine is attached to a domain. The format   <b>&lt;local administrator&gt;</b> is used if the user is a local administrator. Note that credentials must be established for the associated virtual machine through the Guest OS Username and Guest OS Password option within the associated backup job definition.</li>
+                                <li value="3">The system login credential must have the permissions of the local administrator.</li>
+                            </ul>
+                            <p style="font-weight: bold;">Kerberos Requirements</p>
+                            <ul>
+                                <li value="1">Kerberos-based authentication can be enabled through a configuration file on the <span class="ProductNames_LongShortECX_Short">IBM Spectrum Protect Plus</span> appliance. This will override the default Windows NTLM protocol. Note that Kerberos does not allow local user accounts to be used and is only suitable for environments in which all machines are on a single domain.</li>
+                                <li value="2">For Kerberos-based authentication only, the user identity must be specified in the username@FQDN format. The username must be able to authenticate using the registered password to obtain a ticket-granting ticket (TGT) from the key distribution center (KDC) on the domain specified by the fully qualified domain name.</li>
+                                <li value="3">Kerberos authentication also requires that the clock skew between the Domain Controller and the <span class="ProductNames_LongShortECX_Short">IBM Spectrum Protect Plus</span> appliance is less than 5 minutes. Note that the default Windows NTLM protocol is not time dependent.</li>
+                            </ul>
+                            <p class="SubHeading">Linux Requirements</p>
+                            <ul>
+                                <li value="1">Supported operating systems: Red Hat Enterprise Linux 6.4+, CentOS 6.4+, Red Hat Enterprise Linux 7.0+, CentOS 7.0+, SUSE&#160;Linux Enterprise Server 12.0+</li>
+                                <li value="2">Supported file systems: ext2, ext3, ext4, XFS.</li>
+                            </ul>
+                            <p>A file system created on a newer kernel version may not be mountable on a system with an older kernel, in which case restoring files from the newer to the older system is not supported.</p>
+                            <p><span class="ProductNames_LongShortECX_Short">IBM Spectrum Protect Plus</span> supports only the operating systems available to your hypervisors. Review your hypervisor's documentation for information about supported operating systems. </p>
+                            <p><span class="NoteBlue">Note:</span><![CDATA[	]]><span class="ProductNames_LongShortECX_Short">IBM Spectrum Protect Plus</span> can protect and restore virtual machines with other file systems, but only the file systems listed above are eligible for file indexing and restore.</p>
+                            <p>When file indexing is performed in a Linux environment, the following directories on the resource are skipped:&#160;/tmp, /usr/bin, /Drivers, /bin, and /sbin. Files in virtual filesystems like /proc, /sys, and /dev are also skipped. Files within these directories are not added to the <span class="ProductNames_LongShortECX_Short">IBM Spectrum Protect Plus</span> Inventory and are not available for file recovery. </p>
+                            <p style="font-weight: bold;">Software Requirements</p>
+                            <ul>
+                                <li value="1">Python version 2.6.x or 2.7.x must be installed.</li>
+                                <li value="2">When file systems are indexed, temporary metadata files are generated under the /tmp directory and then deleted as soon as the indexing is complete. The amount of free space required for the metadata depends on the total number of files present on the system. Ensure that there is approximately 350 MB of free space per 1 million files.</li>
+                                <li value="3">Red Hat Enterprise Linux / CentOS 6.x only: Ensure the <i>util-linux-ng package</i> is up-to-date by running <code>yum update util-linux-ng</code>. Depending on your version or distribution, the package may be named <i>util-linux</i>.</li>
+                                <li value="4">If data resides on LVM volumes, ensure the LVM version is 2.02.118 or later. Run <code>lvm version</code> to check the version and run <code>yum update lvm2</code> to update the package if necessary.</li>
+                                <li value="5">If data resides on LVM volumes, the <i>lvm2-lvmetad</i> service must be disabled as it can interfere with <span class="ProductNames_LongShortECX_Short">IBM Spectrum Protect Plus</span>'s ability to mount and resignature volume group snapshots/clones. To disable:</li>
+                                <ul style="list-style-type: circle;">
+                                    <li value="1"><code>systemctl stop lvm2-lvmetad</code>
+                                    </li>
+                                    <li value="2"><code>systemctl disable lvm2-lvmetad</code>
+                                    </li>
+                                    <li value="3">Edit the file <i>/etc/lvm/lvm.conf</i> and set <code>use_lvmetad = 0</code></li>
+                                </ul>
+                            </ul>
+                            <p class="Indent"> For a discussion of the  lvmetad service, see<br /><![CDATA[  ]]><a href="https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/6/html/Logical_Volume_Manager_Administration/metadatadaemon.html" target="_blank">https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/6/html/Logical_Volume_Manager_Administration/metadatadaemon.html</a>.</p>
+                            <ul>
+                                <li value="1">If data resides on XFS file systems and the version of xfsprogs is between 3.2.0 and 4.1.9, the file restore can fail due to a known issue in xfsprogs that causes corruption of a clone/snapshot file system when its UUID is modified.  To resolve this issue, update xfsprogs to version 4.2.0 or above. For more information, see <a href="https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=782012" target="_blank">https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=782012</a>.</li>
+                            </ul>
+                            <p style="font-weight: bold;">Connectivity Requirements</p>
+                            <p>The SSH service must be running on port 22 on the server, and any firewalls must be configured to allow <span class="ProductNames_LongShortECX_Short">IBM Spectrum Protect Plus</span> to connect to the server through SSH. The SFTP subsystem for SSH must also be enabled. For SFTP configuration information, see <a href="https://en.wikibooks.org/wiki/OpenSSH/Cookbook/File_Transfer_with_SFTP" target="_blank">https://en.wikibooks.org/wiki/OpenSSH/Cookbook/File_Transfer_with_SFTP</a>.</p>
+                            <p style="font-weight: bold;">Authentication and Privilege Requirements</p>
+                            <p>The credentials specified for the virtual machine must specify a user that has the following sudo privileges:</p>
+                            <ul>
+                                <li value="1">The <i>sudoers</i> configuration must allow the user to run commands without a password.</li>
+                                <li value="2">The !<i>requiretty</i> setting must be set.</li>
+                            </ul>
+                            <p>The recommended approach is to create a dedicated <span class="ProductNames_LongShortECX_Short">IBM Spectrum Protect Plus</span> Agent user with the following privileges. Sample configuration:</p>
+                            <ul>
+                                <li value="1">Create user: <code>useradd -m sppagent</code></li>
+                                <li value="2">Set a password: <code>passwd sppagent</code></li>
+                                <li value="3">Place the following lines at the end of your sudoers configuration file, typically <i>/etc/sudoers</i>. If your existing sudoers file is configured to import configurations from another directory (for example, /etc/sudoers.d), you can also place the lines in a new file in that directory:</li>
+                                <ul style="list-style-type: circle;">
+                                    <li value="1"><code>Defaults:sppagent !requiretty</code>
+                                    </li>
+                                    <li value="2"><code>sppagent ALL=(root) NOPASSWD:ALL</code>
+                                    </li>
+                                </ul>
+                            </ul>
+                            <div class="RelatedTopic">
+                                <p class="PostPreRelTitleLeft"><span class="PostPreRelTitle">RELATED TOPICS:</span>
+                                </p>
+                                <ul>
+                                    <li value="1"><a href="../file_restore/file_restore_restore.htm" class="MCXref xref" xrefformat="{paratext}">Restore a File</a>
+                                    </li>
+                                    <li value="2"><a href="system_requirements_general.htm" class="MCXref xref" xrefformat="{paratext}">System Requirements</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <p>&#160;</p>
+                            <hr width="100%" size="0" align="center" />
+                            <p style="text-align: left;"><span class="Strong" style="font-size: 10pt;">IBM Spectrum Protect Plus</span> <span class="Strong" style="font-size: 10pt;">10.1.2</span> <![CDATA[ ]]></p>
+                            <p style="font-size: 8pt;">Licensed Material - Property of IBM Corp. © IBM Corporation and other(s) <span class="GeneralYear">2018</span>. IBM is a registered trademark of the IBM Corporation in the United States, other countries, or both. <span style="font-size: 10pt;"><span style="font-size: 8pt;">| </span></span><span style="font-size: 8pt;" class="SystemShortDate">8/23/2018</span></p>
+                        </div>
+                    </section><a data-close="true"></a>
+                </div>
+            </div>
+            <script>/* <![CDATA[ */$(document).foundation();/* ]]> */</script>
+        </div>
+    </body>
+</html>

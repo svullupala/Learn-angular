@@ -1,0 +1,57 @@
+<div class="manage-table-container" [ngClass]="{'masked': maskList}">
+  <div class="manage-table-height">
+    <table>
+      <thead>
+      <tr>
+        <th class="action-icon-column"></th>
+        <th class="action-icon-column"></th>
+        <th translate>{{'common.textName'}}</th>
+        <th translate>{{'reports.textSchedule'}}</th>
+        <th translate>{{'common.textStartTime'}}</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let item of records | paging: paginateConfig.json()" class="no-top-border">
+        <td class="action-icon-format">
+          <i tabindex="0" clickOnEnterKeydown (click)="onDeleteClick(item)" class="ion-close-round"></i>
+        </td>
+        <td class="action-icon-format">
+          <i tabindex="0" clickOnEnterKeydown (click)="onEditClick(item)" class="ion-edit"></i>
+        </td>
+        <td class="align-left">{{item.name}}</td>
+        <td class="align-left">{{item | rpoDisplay: true}}</td>
+        <td class="align-left">{{(item.trigger) ? (item.trigger.activateDate | amDateFormat: 'll LTS') : ''}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <div style="text-align: right;">
+    <paging-toolbar (pageChange)="onPageChange($event)" (refresh)="onRefresh()"
+                    [id]="paginateConfig.id" [total]="paginateConfig.totalItems"></paging-toolbar>
+  </div>
+</div>
+<p>
+  <button class="btn btn-primary btn-xs"
+          [attr.aria-label]="(editorExpanded ? 'common.textCollapse' : 'common.textExpand') | translate"
+          (click)="switchEditor()"
+          type="button" aria-expanded="false"
+          aria-controls="schedulerestoreoptions">
+    <i [class]="editorExpanded? 'ion-minus' : 'ion-plus'"></i>
+  </button>
+</p>
+<div class="collapse" id="schedulerestoreoptions" #schedulerestoreoptions [ngClass]="{'masked': maskOptions}" role="form">
+  <ba-card translate title="{{ isEdit ? textEditRestore : textCreateRestore}}">
+    <input type="text"
+           [(ngModel)]="scheduleName"
+           [disabled]="isEdit"
+           placeholder="{{ 'common.textName' | translate }}"
+           class="text-width form-control">
+    <br>
+    <define-schedule [hideStartTime]="false"></define-schedule>
+    <br>
+    <button (click)="onSaveClick()"
+            type="button" class="sdl inline" [ngClass]="{'disabled': !isValid()}"
+            [disabled]="!isValid()"
+            translate>{{'common.textSave'}}</button>
+  </ba-card>
+</div>

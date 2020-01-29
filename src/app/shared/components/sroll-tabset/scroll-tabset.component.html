@@ -1,0 +1,23 @@
+<div class="scroll-tabset">
+  <div class="scroll-tabset-header">
+    <scroll-tabset-tabs
+      [tabs]="_tabs"
+      [contentElement]="contentElement"
+      (tabChanged)="onChangeTab($event)"
+    ></scroll-tabset-tabs>
+  </div>
+
+  <div
+    #content
+    class="scroll-tabset-content"
+  >
+    <div
+      #tabs
+      *ngFor="let tab of _tabs"
+      class="scroll-tabset-section"
+      [ngClass]="{ 'scroll-tabset-section--disabled': disabled || tab.disabled }"
+    >
+      <ng-template [ngTemplateOutlet]="tab.content"></ng-template>
+    </div>
+  </div>
+</div>

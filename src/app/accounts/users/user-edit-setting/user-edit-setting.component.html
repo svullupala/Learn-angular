@@ -1,0 +1,112 @@
+<hr>
+<form class="form-horizontal" [formGroup]="form">
+  <div *ngIf="!models[0].phantom && onlyOneUser" class="form-group row">
+    <i class="i-rbac_user"></i>
+    <label>{{models[0].name}}</label>
+  </div>
+  <div *ngIf="!onlyOneUser" class="form-group row">
+    <label *ngFor="let user of models" class="col-sm-9 control-label">{{user.name}}</label>
+  </div>
+  <hr *ngIf="!models[0].phantom">
+  <div *ngIf="!models[0].isSuperUser() && models[0].type !== 'LDAP_GROUP' && isSettings()" class="form-group row"
+    [ngClass]="{'has-error': (!name.valid && name.touched), 'has-success': (name.valid && name.touched)}">
+    <label class="col-sm-3 control-label" translate>{{'users.textNameOfUser'}}</label>
+    <div class="col-sm-9 input-col">
+      <input sdlTooltip [mode]="'critical'"
+        [isDisabled]="(!name.valid && name.untouched) || (name.valid && name.touched) || name.untouched"
+        [placement]="'right'" [sdlTooltip]="'common.textRequiredFieldSuggestion' | translate"
+        [attr.aria-label]="'users.textNameOfUser' | translate" [formControl]="name" [(ngModel)]="models[0].name"
+        type="text" class="form-control">
+      <p>
+        <label class="control-label" translate>{{textCommonUsername}}</label>
+      </p>
+    </div>
+  </div>
+  <div [hidden]="!needPassword() || models[0].type === 'LDAP_GROUP' || !isPassword()" class="form-group row"
+    [ngClass]="{'has-error': !passwordValid() && this.password.touched, 'has-success': (passwordValid() && password.touched)}">
+    <label class="col-sm-3 control-label" translate>{{'common.textPassword'}}</label>
+    <div class="col-sm-9 input-col">
+      <input sdlTooltip [mode]="'critical'"
+        [isDisabled]="(!passwordValid() && password.untouched) || (passwordValid() && password.touched)"
+        [placement]="'right'" [sdlTooltip]="passwordSuggestion" [attr.aria-label]="'common.textPassword' | translate"
+        [formControl]="password" [(ngModel)]="models[0].password" [type]="showPassword ? 'text' : 'password'"
+        class="form-control">
+      <p>
+        <label class="control-label" translate>{{passwordTip}}</label>
+    </div>
+    <label class="control-label">
+      <i class="ion-eye action" tabindex="0" (keydown.enter)="togglePasswordVisibility()"
+        (click)="togglePasswordVisibility()" translate>{{showPassword ? 'users.textHide': 'users.textShow'}}</i>
+    </label>
+  </div>
+  <div [hidden]="models[0].type === 'NATIVE_USER' || !models[0].phantom">
+    <div class="row">
+      <label class="col-sm-3 control-label bold uppercase" translate>{{'users.textSelectLdapGroup'}}</label>
+    </div>
+    <div class="row">
+      <label class="col-sm-3 control-label" translate>{{'users.textSearchLabel'}}</label>
+      <div class="col-sm-9 input-col">
+        <p (click)="getLdapList()" class="view-all-button" translate>{{textViewAll}}</p>
+      </div>
+    </div>
+    <div class="row search-row">
+      <label class="col-sm-3 control-label" translate>{{'users.textRelativePathLabel'}}</label>
+      <div class="col-sm-9 input-col search-area">
+        <input class="form-control" type="text" style="height: 36px;" [(ngModel)]="relativePath" [ngModelOptions]="{standalone: true}" 
+            [placeholder]="textRelativePathPlaceholder">
+      </div>
+    </div>
+    <div class="row search-row">
+      <label class="col-sm-3 control-label" translate>{{'ldap-smtp.textSearchForLdap'}}</label>
+      <div class="col-sm-9 input-col search-area">
+        <sdl-search-bar (search)="startSearch($event, relativePath)" [textPlaceholderLabel]="'ex. admin administrator operator'"></sdl-search-bar>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="showLdapGroupTable" class="form-group row">
+    <div class="col-sm-12 ldap-table-list">
+      <ldap-list-table [ldapGroupList]="ldapGroupList" [masked]="masked"
+        (selectionChange)="onSelectionChange($event)">
+      </ldap-list-table>
+    </div>
+  </div>
+  <div [hidden]="!needOldPassword()" class="form-group row"
+    [ngClass]="{'has-error': !oldPasswordValid() && this.oldPassword.touched, 'has-success': (oldPasswordValid() && oldPassword.touched)}">
+    <label class="col-sm-3 control-label" translate>{{'common.textOldPassword'}}</label>
+    <div class="col-sm-3">
+      <input [formControl]="oldPassword" [(ngModel)]="models[0].oldPassword"
+        [type]="showOldPassword ? 'text' : 'password'" [attr.aria-label]="'common.textOldPassword' | translate"
+        class="form-control">
+    </div>
+    <label class="control-label">
+      <i class="ion-eye action" tabindex="0" (keydown.enter)="toggleOldPasswordVisibility()"
+        (click)="toggleOldPasswordVisibility()" translate>{{showOldPassword ? 'users.textHide': 'users.textShow'}}</i>
+    </label>
+  </div>
+  <div [hidden]="!isRole()">
+    <div class="form-group row">
+      <label class="col-sm-3 control-label bold uppercase" translate>{{'users.textAssignRole'}}</label>
+    </div>
+    <div *ngIf="!models[0].isSuperUser()" class="form-group">
+      <div *ngFor="let role of roles">
+        <label class="custom-checkbox nowrap">
+          <input type="checkbox" class="vmiddle" [ngModelOptions]="{standalone: true}"
+            [(ngModel)]="role.metadata['selected']" (change)="onRoleChange(role)">
+          <span>{{role.name}}</span>
+        </label>
+      </div>
+    </div>
+    <ng-template *ngIf="models[0].isSuperUser()" let-item ngFor [ngForOf]="models[0].roleNames">
+      <div class="form-group row">
+        <label class="col-sm-6 control-label">
+          {{item.valueOf()}}
+        </label>
+      </div>
+    </ng-template>
+    <div class="form-group row">
+      <label class="col-sm-3 control-label bold uppercase" translate>{{'users.textPermissionGroups'}}</label>
+    </div>
+    <permission-role *ngIf="!models[0].isSuperUser()" [roles]="selectedRoles"></permission-role>
+    <div *ngIf="models[0].isSuperUser()" translate>{{'users.textSuperUserHasAllPermissions'}}</div>
+  </div>
+</form>

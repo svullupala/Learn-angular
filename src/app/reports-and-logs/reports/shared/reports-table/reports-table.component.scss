@@ -1,0 +1,17 @@
+:host {
+  .play-circle-icon {
+    margin-bottom: 3px;
+    height: 19px;
+    width: 19px;
+    cursor: pointer;
+  }
+}
+
+.action-icon-format i {
+  padding: 0;
+}
+.wrapper {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}

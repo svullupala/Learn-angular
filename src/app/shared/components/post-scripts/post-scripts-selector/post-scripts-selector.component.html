@@ -1,0 +1,107 @@
+<div>
+  <div class="checkbox sub-group-space">
+    <div class="checkbox">
+      <label class="custom-checkbox" translate>
+        <input type="checkbox" [(ngModel)]="model.enablePreGuest">
+        <span translate>{{ 'scripts.textPreScript' }}</span>
+      </label>
+    </div>
+  </div>
+  <div class="sub-group" [hidden]="!model.enablePreGuest">
+    <div class="checkbox sub-group-space">
+      <div [hidden]="isScriptServerOnly" class="checkbox">
+        <label class="custom-checkbox" translate>
+          <input type="checkbox" [checked]="preChecked" [(ngModel)]="model.isPreScriptServer"
+              (click)="handlePreTypeChange()">
+          <span>{{textUseScriptServer}}</span>
+        </label>
+      </div>
+    </div>
+    <scripts-selector-component
+      (onChange)="onPreScriptSelection($event)"
+      [textNone]="'scripts.textNoScriptsAvail' | translate"
+      [modelField]='model.preGuestScript'
+      [scripts]='scripts'
+      [textLabel]="'scripts.textScriptLabel' | translate"></scripts-selector-component>
+    <server-selector-component
+      (onChange)="onPreServerSelection($event)"
+      [textLabel]="preServerLabel"
+      [textNoServers]="textNoServers | translate"
+      [scriptServers]="scriptServers"
+      [isScriptServer]="preChecked"
+      [applicationServers]="applicationServers"
+      [modelField]='model.preGuestAppserver'></server-selector-component>
+  </div>
+    <div class="checkbox sub-group-space">
+      <div class="checkbox">
+        <label class="custom-checkbox" translate>
+          <input type="checkbox" [(ngModel)]="model.enablePostGuest">
+          <span translate>{{ 'scripts.textPostScript' }}</span>
+        </label>
+      </div>
+    </div>
+  <div class="sub-group" [hidden]="!model.enablePostGuest">
+    <div class="checkbox sub-group-space">
+      <div [hidden]="isScriptServerOnly" class="checkbox">
+        <label class="custom-checkbox" translate>
+          <input type="checkbox" [checked]="postChecked" [(ngModel)]="model.isPostScriptServer"
+              (click)="handlePostTypeChange()">
+          <span>{{textUseScriptServer}}</span>
+        </label>
+      </div>
+    </div>
+    <scripts-selector-component
+      (onChange)="onPostScriptSelection($event)"
+      [textNone]="'scripts.textNoScriptsAvail' | translate"
+      [modelField]='model.postGuestScript'
+      [scripts]='scripts'
+      [textLabel]="'scripts.textScriptLabel' | translate"></scripts-selector-component>
+    <server-selector-component
+      (onChange)="onPostServerSelection($event)"
+      [textLabel]="postServerLabel"
+      [textNoServers]="textNoServers | translate"
+      [isScriptServer]="postChecked"
+      [scriptServers]="scriptServers"
+      [applicationServers]="applicationServers"
+      [modelField]="model.postGuestAppserver"></server-selector-component>
+  </div>
+  <div class="checkbox sub-group-space">
+    <div class="checkbox">
+      <label class="custom-checkbox" translate>
+        <input type="checkbox" [(ngModel)]="model.continueScriptsOnError">
+        <span translate>{{ 'scripts.textContinueScriptsOnError' }}</span>
+      </label>
+    </div>
+  </div>
+  <div [hidden]="!showOptions">
+    <div [hidden]="!showInventoryBackupOption" class="checkbox sub-group-space">
+      <div class="checkbox">
+        <label class="custom-checkbox" translate>
+          <input type="checkbox" [(ngModel)]="model.policyOption.runInventory">
+          <span translate>{{ 'scripts.textRunInventory' }}</span>
+        </label>
+      </div>
+    </div>
+    <div [hidden]="!showInventoryTimeoutOption || !showInventoryBackupOption" 
+        class="form-inline sub-group-space">
+      <label class="control-label label-width"
+        [ngClass]="{'disabled' : !model.policyOption.runInventory}"
+        translate>{{'scripts.textInventoryTimeout'}}</label>
+      <input class="form-control dropdown-width numerical" type="number" min="1" max="60" 
+          [ngClass]="{'disabled' : !model.policyOption.runInventory}"
+          [disabled]="!model.policyOption.runInventory"
+          [(ngModel)]="model.policyOption.protectionInventoryWaitTimeout">
+    </div>
+    <div class="form-inline sub-group-space">
+        <label class="control-label label-width" translate>{{'scripts.textExcludeResources'}}</label>
+        <input class="form-control dropdown-width" type="text" [placeholder]="(subtype + '.textExcludePlaceholder') | translate"
+               [(ngModel)]="model.policyOption.excluderesources">
+    </div>
+    <div class="form-inline sub-group-space">
+      <label class="control-label label-width" translate>{{'scripts.textForceBaseResources'}}</label>
+      <input class="form-control dropdown-width" type="text" [placeholder]="(subtype + '.textForceBasePlaceholder' ) | translate"
+             [(ngModel)]="model.policyOption.forcebaseresources">
+      <br><br><label class="control-label warning-info" translate>{{'scripts.textForceBaseResourcesWarning'}}</label>
+    </div>
+  </div>
+</div>

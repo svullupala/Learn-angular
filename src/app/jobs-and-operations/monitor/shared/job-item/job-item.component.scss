@@ -1,0 +1,94 @@
+ul {
+  display: inline;
+  list-style: none;
+  padding: 0;
+  li {
+    display: inline;
+    margin-left: .5rem;
+    &:first-child {
+      margin-left: 0;
+    }
+    &:after {
+      margin-left: .75rem;
+      content: "\007c";
+    }
+    &:last-child::after {
+      content: none;
+    }
+    span:first-child {
+      color: #1c496d;
+      margin-right: 2px;
+    }
+  }
+}
+
+.row-info {
+  margin-top: 10px;
+}
+
+@media only screen and (max-width: 1366px) {
+  ul.nowrap {
+    white-space: inherit;
+  }
+}
+
+@media only screen and (min-width: 1367px) {
+  ul.nowrap {
+    white-space: nowrap;
+  }
+}
+
+div.card.add-border.no-side-borders {
+  margin: 0;
+  /*border-bottom: none;*/
+}
+
+.no-padding-bottom {
+  padding-bottom: 0;
+}
+
+label.control-label span:first-child {
+  color: #1c496d;
+  margin-right: 2px;
+}
+
+.space-top-1rem {
+  margin-top: 1rem;
+}
+
+.wrapper {
+  display: flex;
+  flex-flow: row;
+}
+
+.flex-1 {
+  flex: 1;
+}
+
+
+div.space-top-1rem.wrapper {
+  div.flex-1 {
+    span:first-child {
+      color: #1c496d;
+      margin-right: 2px;
+    }
+    &:nth-child(even) {
+      &:after {
+        content: "\007c";
+      }
+    }
+  }
+}
+
+div {
+  background-color: transparent;
+}
+
+.max-height-110 {
+  max-height: 110px;
+}
+
+.label-job-name {
+    display: block;
+    word-wrap: break-word;
+}

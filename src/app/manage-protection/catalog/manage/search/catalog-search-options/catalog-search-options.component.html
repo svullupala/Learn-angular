@@ -1,0 +1,48 @@
+<h2 class="sdl-header" translate>{{'catalog.textFilters'}}</h2>
+<ba-card>
+  <div class="row">
+    <div class="col-md-3">
+      <label class="control-label" translate>
+        {{'catalog.textType'}}
+      </label>
+    </div>
+    <div class="col-sm-6">
+      <select class="form-control" [(ngModel)]="model.type" >
+        <option value="" selected translate>{{ 'catalog.textNoLimit' }}</option>
+        <option value="serviceprovider.protection.hypervisor" translate>{{ 'catalog.textTypeHypervisor' }}</option>
+        <option value="serviceprovider.protection.application" translate>{{ 'catalog.textTypeDatabase' }}</option>
+        <option value="serviceprovider.protection.catalog" translate>{{ 'catalog.textTypeCatalog' }}</option>
+      </select>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-3">
+      <label class="control-label" translate>
+        {{'catalog.textSubpolicyType'}}
+      </label>
+    </div>
+    <div class="col-sm-6">
+      <select class="form-control" [(ngModel)]="model.subPolicyType" >
+        <option value="" selected translate>{{ 'catalog.textSubpolicyNoLimit' }}</option>
+        <option value="BACKUP" translate>{{ 'catalog.textSubpolicyTypeBackup' }}</option>
+        <option value="REPLICATION" translate>{{ 'catalog.textSubpolicyTypeReplication' }}</option>
+        <option value="SPPOFFLOAD" translate>{{ 'catalog.textSubpolicyTypeOffload' }}</option>
+        <option value="SPPARCHIVE" translate>{{ 'catalog.textSubpolicyTypeArchive' }}</option>
+      </select>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-3">
+      <label class="control-label" translate>
+        {{'catalog.textDateRange'}}
+      </label>
+    </div>
+    <div class="col-sm-6">
+      <input [attr.aria-label]="'catalog.textDateRange' | translate"
+             class="form-control" #drpElement #drp="bsDaterangepicker" readonly="readonly" bsDaterangepicker
+             [bsConfig]="bsConfig"
+             [(ngModel)]="model.dateRange"
+             (keydown)="onDateRangeKeyDown(drp, $event)">
+    </div>
+  </div>
+</ba-card>

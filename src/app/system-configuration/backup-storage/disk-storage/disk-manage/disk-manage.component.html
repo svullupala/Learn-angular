@@ -1,0 +1,273 @@
+<div class="align-right download-margin">
+  <button
+    class="sdl secondary inline"
+    (click)="onDownloadLogsClick()"
+    translate
+  >
+    {{ "storage.textDownloadLogs" | translate }}
+  </button>
+</div>
+
+<dynamic-tabset [tabs]="tabs" (select)="onSwitchMode($event)"></dynamic-tabset>
+
+<ng-template #networkManage>
+  <h2 class="sdl-header optionHeaderDescription" translate>
+    {{ "storage.textConfigureNetworks" }}
+  </h2>
+  <label translate>{{ "storage.textConfigureNetworksDescription" }}</label>
+  <span class="help-link" (click)="onHelpClick('vsnapNetworkConfig')" translate>
+    {{ "whatsNew.textLearnMore" }}
+    <carbon-icon [type]="'launch'"></carbon-icon>
+  </span>
+  <div
+    class="optionPanel pull-down-confirm-toolbar"
+    [ngClass]="{ masked: maskNetworks }"
+  >
+    <network-manage [networkList]="availableNetworks"></network-manage>
+  </div>
+  <confirm-toolbar-component
+    (cancelEvent)="onCancelClick()"
+    (confirmEvent)="onSaveNetworkSettings()"
+    [disableConfirmButton]="checkNetworkStatus()"
+    [cancelText]="textClose"
+    [floatRight]="false"
+  >
+  </confirm-toolbar-component>
+</ng-template>
+
+<ng-template #preferenceOptions>
+  <h2 class="sdl-header optionHeader" translate>
+    {{ "storage.textConfigurePreferences" }}
+  </h2>
+  <div
+    class="optionPanel pull-down-confirm-toolbar"
+    [ngClass]="{ masked: setMaskVsnapPreferences }"
+  >
+    <vsnap-preferences
+      [vsnapPreferenceData]="vsnapPreferenceData"
+      [storageItem]="storageItem"
+    >
+    </vsnap-preferences>
+  </div>
+  <confirm-toolbar-component
+    (cancelEvent)="onCancelClick()"
+    [cancelText]="textClose"
+    [hideConfirmButton]="true"
+    [disableConfirmButton]="true"
+    [floatRight]="false"
+  >
+  </confirm-toolbar-component>
+</ng-template>
+
+<ng-template #activeDirectoryOptions>
+  <div [ngClass]="{ masked: setMaskActiveDirectory }">
+    <h2 class="sdl-header optionHeader" translate>
+      {{
+        showFullyQualifiedDomainName
+          ? "storage.textConfigureJoinActiveDirectory"
+          : "storage.textConfigureLeaveActiveDirectory"
+      }}
+    </h2>
+    <div class="optionPanel">
+      <active-directory
+        [storageItem]="storageItem"
+        (maskActiveDirectory)="maskActiveDirectory($event)"
+        (onCancelClick)="onCancelClick()"
+      >
+      </active-directory>
+    </div>
+    <confirm-toolbar-component
+      (cancelEvent)="activeDirectoryComponent.onCancel()"
+      (confirmEvent)="
+        showFullyQualifiedDomainName
+          ? activeDirectoryComponent.onJoin()
+          : activeDirectoryComponent.onLeave()
+      "
+      [confirmText]="showFullyQualifiedDomainName ? textJoin : textLeave"
+      [cancelText]="textClose"
+      [splitButtons]="false"
+      [floatRight]="false"
+      [disableConfirmButton]="
+        activeDirectoryComponent == null ||
+        activeDirectoryComponent.isDisabled()
+      "
+    >
+    </confirm-toolbar-component>
+  </div>
+</ng-template>
+
+<ng-template #storageOptions>
+  <h2 class="sdl-header optionHeader" translate>
+    {{ "storage.textStorageOptions" }}
+  </h2>
+  <div [ngClass]="{ masked: maskSettings }">
+    <br />
+    <div [ngClass]="{ 'disabled-container': !!poolError }">
+      <div class="optionPanel">
+        <div class="row checkbox-row">
+          <div class="col-sm-12">
+            <ba-checkbox
+              *ngIf="selectedPool && selectedPool.compression !== undefined"
+              [(ngModel)]="selectedPool.compression"
+              [label]="textCompression"
+              [ngModelOptions]="{ standalone: true }"
+              translate
+            ></ba-checkbox>
+          </div>
+        </div>
+        <div class="row checkbox-row">
+          <div class="col-sm-12">
+            <ba-checkbox
+              *ngIf="selectedPool && selectedPool.deduplication !== undefined"
+              [(ngModel)]="selectedPool.deduplication"
+              [label]="textDeduplication"
+              [ngModelOptions]="{ standalone: true }"
+              translate
+            ></ba-checkbox>
+          </div>
+        </div>
+        <div *ngIf="encryption !== undefined" class="row checkbox-row">
+          <div class="col-sm-12">
+            <ba-checkbox
+              [(ngModel)]="encryption"
+              [label]="textEncryptionEnabled"
+              [disabled]="true"
+              [ngModelOptions]="{ standalone: true }"
+              translate
+            ></ba-checkbox>
+          </div>
+          <br />
+        </div>
+        <div *ngIf="encryption !== undefined" class="col-sm-12">
+          <i [class]="'bidi-status-info'" style="padding-left:50px"></i
+          ><label style="color: #DDDDDD" translate>{{
+            "storage.textEncryptionOptionMessage"
+          }}</label>
+        </div>
+        <br />
+        <br />
+        <!-- <div class="row control-label-row">
+          <div class="col-sm-2">
+            <label for="streamType" style="padding-left:17px; margin-bottom:0;" translate>{{'storage.textStreams'}}</label>
+          </div>
+          <div *ngIf="!!selectedPool" class="col-sm-10 inline-wrapper">
+            <select id="streamType" class="form-control"
+                    style="width:130px;height:35px;"
+                    [(ngModel)]="selectedPool.selectedStreamValue">
+              <option *ngFor="let item of selectedPool.streamOptions" [ngValue]="item.id" translate>{{item.name | translate}}</option>
+            </select>
+            <div *ngIf="selectedPool.selectedStreamValue === 1"
+                 [ngClass]="{'has-error': (selectedPool.selectedStreamValue == null || (selectedPool.selectedStreamValue === 1 && selectedPool.streamValue == null)), 'has-success': (isMaxStreamsValid())}">
+              <input sdlTooltip [mode]="'critical'" [placement]="'right'" [isDisabled]="!(selectedPool.selectedStreamValue === 1 && selectedPool.streamValue === null)"
+                     style="width:130px;height:35px;"
+                     [sdlTooltip]="'common.textRequiredFieldSuggestion' | translate" type="number"
+                     [(ngModel)]="selectedPool.streamValue" id="maxStreams" min="1"
+                     (keydown)="onHandleKeyDown($event)">
+            </div>
+            <label  style="padding-left:13px;margin-bottom:0"  translate>{{'storage.VMDatabaseStreams'}}</label>
+          </div>
+        </div> -->
+      </div>
+      <confirm-toolbar-component
+        (cancelEvent)="onCancelClick()"
+        (confirmEvent)="onSettingsSaveClick(selectedPool)"
+        [cancelText]="textClose"
+        [splitButtons]="false"
+        [floatRight]="false"
+        [disableConfirmButton]="!!poolError"
+      ></confirm-toolbar-component>
+    </div>
+    <div *ngIf="poolError" class="warning-info">
+      <i class="bidi-status-warning"></i>{{ poolError.description }}
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #diskOptions>
+  <h2 class="sdl-header optionHeaderDescription" translate>
+    {{ "storage.textAddNewDisks" }}
+  </h2>
+  <label translate>{{ "storage.textAddNewDisksInfo" }}</label>
+  <div [ngClass]="{ 'disabled-container': !!diskError }">
+    <div class="optionPanel" [ngClass]="maskUnusedDisks ? 'masked' : ''">
+      <div class="horizontal-scroll">
+        <table>
+          <thead>
+            <tr>
+              <th translate>{{ "storage.textSelect" }}</th>
+              <th translate>{{ "storage.textDisk" }}</th>
+              <th translate>{{ "storage.textSize" }}</th>
+              <th translate>{{ "storage.textVendor" }}</th>
+              <th translate>{{ "storage.textModel" }}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              [hidden]="!(unusedDisks === undefined || unusedDisks.length < 1)"
+            >
+              <td>
+                <i class="bidi-status-warning"></i>
+              </td>
+              <td colspan="4">
+                <span>{{ "storage.addDisksToVsnapMessage" | translate }}</span>
+              </td>
+            </tr>
+            <tr *ngFor="let item of unusedDisks" class="no-top-border">
+              <td>
+                <input type="checkbox" (change)="setDiskSelected(item)" />
+              </td>
+              <td>{{ item.name }}</td>
+              <td>{{ item.size | storageSize }}</td>
+              <td>{{ item.vendor }}</td>
+              <td>{{ item.model }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <br />
+    </div>
+    <confirm-toolbar-component
+      (cancelEvent)="onCancelClick()"
+      (confirmEvent)="onAssignDisksSaveClick()"
+      [cancelText]="textClose"
+      [splitButtons]="false"
+      [floatRight]="false"
+      [disableConfirmButton]="disableDiskBtn"
+    ></confirm-toolbar-component>
+  </div>
+  <div *ngIf="diskError" class="warning-info offset">
+    <i class="bidi-status-warning"></i>{{ diskError.description }}
+  </div>
+</ng-template>
+
+<ng-template #partnerOptions>
+  <h2 class="sdl-header optionHeader" translate>
+    {{ "storage.textConfigurePartners" }}
+  </h2>
+  <br />
+  <div [ngClass]="{ 'disabled-container': !!partnerError }">
+    <div class="optionPanel" [ngClass]="maskPartners ? 'masked' : ''">
+      <partner-manage
+        [partnerList]="storagePartners"
+        [sites]="siteMap"
+        [storageParent]="model.storageId"
+        [managePartner]="managePartners"
+        (reloadPartners)="loadPartners(model)"
+      ></partner-manage>
+    </div>
+    <confirm-toolbar-component
+      (cancelEvent)="onCancelClick()"
+      (confirmEvent)="partnerManageComponent.onAddClick()"
+      [cancelText]="textClose"
+      [splitButtons]="false"
+      [floatRight]="false"
+      [disableConfirmButton]="
+        partnerManageComponent == null || partnerManageComponent.isDisabled()
+      "
+      [confirmText]="textAddPartner"
+    ></confirm-toolbar-component>
+  </div>
+  <div *ngIf="partnerError" class="warning-info offset">
+    <i class="bidi-status-warning"></i>{{ partnerError.description }}
+  </div>
+</ng-template>

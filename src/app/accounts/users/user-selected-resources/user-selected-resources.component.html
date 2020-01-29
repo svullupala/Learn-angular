@@ -1,0 +1,28 @@
+<div class="card no-border">
+  <br>
+  <div class="card-title indent">
+    <label translate>
+      {{'users.textSelectedResources'}}
+    </label>
+  </div>
+  <div class="card-body">
+    <label *ngIf="!records || records.length < 1" class="control-label nowrap" translate>
+      {{'users.textNoResourcesSelected'}}
+    </label>
+    <div *ngFor="let item of records">
+      <div class="side-by-side-wrapper">
+        <div class="side-by-side-left">
+          <label class="control-label nowrap">{{item.name}}
+          </label>
+        </div>
+        <div class="side-by-side-right align-right">
+          <label class="control-label nowrap">
+            <i class="ion-ios-minus delete-icon" tabindex="0" (keydown.enter)="remove(item)" (click)="remove(item)"></i>
+          </label>
+        </div>
+      </div>
+      <hr>
+    </div>
+    <br>
+  </div>
+</div>

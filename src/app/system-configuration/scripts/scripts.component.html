@@ -1,0 +1,13 @@
+<ba-card baCardClass="dark-card" title="{{textScripts}}">
+  <script-edit [createUrl]="createUrl" (onUploadCompleted)="onUploadCompleted()">
+    <script-table (scriptsLoad)="onScriptsLoad($event)" (deleteClick)="onDeleteClick($event)"
+                  (editClick)="onEditClick($event)" (downloadClick)="onDownloadClick($event)"></script-table>
+  </script-edit>
+</ba-card>
+<ba-card baCardClass="dark-card" title="{{textScriptServers}}">
+  <manage-app-server
+    [applicationType]="applicationType"
+    [filters]="filters"
+    [labelWidth]="4"
+    [fieldWidth]="6"></manage-app-server>
+</ba-card>

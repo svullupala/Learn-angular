@@ -1,0 +1,109 @@
+.details-header {
+  border: none;
+  background-color: #f6f6f6;
+  //padding-top: 1rem;
+  //padding-bottom: 1rem;
+  //padding-left: 0;
+  //padding-right: 2rem;
+  //margin-top: 2rem;
+}
+
+.expand-button {
+  margin-top: 0.5rem;
+  margin-left: 0.5rem;
+}
+
+.wrapper {
+  display: flex;
+  flex-flow: row;
+}
+
+.flex-1 {
+  flex: 1;
+}
+
+.flex-5 {
+  flex: 5;
+}
+
+.float-left {
+  float: left;
+}
+
+.float-right {
+  float: right;
+}
+
+div.card-body {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.space-top-1rem {
+  margin-top: 1rem;
+}
+
+.padding-top-75rem {
+  padding-top: .75rem;
+}
+
+.padding-top-pt-5rem {
+  padding-top: .5rem;
+}
+
+.transparent-card {
+  background-color: transparent;
+}
+
+ul {
+  display: inline;
+  list-style: none;
+  padding: 0;
+  li {
+    display: inline;
+    margin-left: .5rem;
+    &:first-child {
+      margin-left: 0;
+    }
+    &:after {
+      margin-left: .75rem;
+      content: "\007c";
+    }
+    &:last-child::after {
+      content: none;
+    }
+    span:first-child {
+      color: #1c496d;
+      margin-right: 2px;
+    }
+  }
+}
+
+@media only screen and (max-width: 1366px) {
+  ul.nowrap {
+    white-space: inherit;
+  }
+}
+
+@media only screen and (min-width: 1367px) {
+  ul.nowrap {
+    white-space: nowrap;
+  }
+}
+
+span:first-child {
+  color: #1c496d;
+  margin-right: 2px;
+}
+
+.normal-container {
+  height: 70%;
+  margin: 2em;
+  overflow-y: hidden;
+}
+
+.scroll-container {
+  height: 70%;
+  margin: 2em;
+  overflow-y: auto;
+}

@@ -1,0 +1,19 @@
+table {
+  border: none;
+  > thead > tr {
+    border: none;
+    background-color: transparent;
+    > th {
+      border: none;
+    }
+  }
+}
+tr > td > div > span {
+  margin-left: 15px;
+}
+
+ul {
+  display: inline;
+  list-style: none;
+  padding: 0;
+}

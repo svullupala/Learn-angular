@@ -1,0 +1,30 @@
+<div bsModal #scriptModal="bs-modal"
+     class="modal fade centered-modal" [config]="{backdrop: 'static', keyboard : false}">
+  <div cdkTrapFocus class="modal-content" [ngClass]="{'masked': mask}">
+    <div class="modal-header">
+      <div class="form-inline">
+        <label  class="form-control-label script-label-size" translate>{{ 'scripts.textConfigureOptions' }}</label>
+        <button cdkFocusRegionStart type="button" class="close pull-right" (click)="hide()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    </div>
+    <div class="modal-body">
+      <post-scripts-selector-component
+        [subtype]="subtype"
+        [showOptions]="showOptions"
+        [showInventoryBackupOption]="showInventoryBackupOption"
+        [showInventoryTimeoutOption]="showInventoryTimeoutOption"
+        [script]="script"
+        [isScriptServerOnly]="isScriptServerOnly"
+        [autoLoad]="autoLoad"></post-scripts-selector-component>
+    </div>
+    <div class="modal-footer">
+      <button cdkFocusRegionEnd type="button"
+              [disabled]="!isValid()"
+              (click)="save()"
+              [ngClass]="{'disabled': !isValid()}"
+              class="sdl inline small" translate>{{'common.textSave'}}</button>
+    </div>
+  </div>
+</div>

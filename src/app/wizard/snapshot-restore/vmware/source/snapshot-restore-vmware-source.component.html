@@ -1,0 +1,66 @@
+<div class="source">
+  <div class="title" translate>{{'wizard.job.textSourceSelectTitle'}}</div>
+  <div class="desc" translate>{{'wizard.job.textSourceSelectDescHypervisor'}}</div>
+  <div class="content">
+    <div class="row">
+      <div class="col-lg-8">
+        <div class="side-by-side-wrapper">
+          <div class="row">
+            <div class="col-lg-6">
+              <sdl-search-bar (search)="startSearch(true, $event)"
+                              [textPlaceholderLabel]="'common.textSearchFor' | translate">
+              </sdl-search-bar>
+            </div>
+            <div class="col-lg-6">
+              <div class="btn-group text-right side-by-side-right" role="group">
+                <div class="nowrap">
+                  <label class="control-label" translate>{{'hypervisor.textView'}}</label>
+                  <div class="btn-group" role="group">
+                    <button id="btnGroupDrop1" type="button" class="btn btn-default dropdown-toggle dropdown-toggle-sdl"
+                            data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                      {{view && view.name}}
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-sdl" aria-labelledby="btnGroupDrop1">
+                      <a *ngFor="let item of views" tabindex="0" clickOnEnterKeydown class="dropdown-item dropdown-item-sdl" (click)="onViewClick(item)">{{item.name}}</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-lg-8">
+          <ul class="breadcrumb2">
+            <li *ngFor="let breadcrumb of breadcrumbs">
+              <span tabindex="0" (keydown.enter)="onBreadcrumbClick(breadcrumb,$event)" (click)="onBreadcrumbClick(breadcrumb,$event)" class="link">{{breadcrumb.title}}</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-8">
+          <hypervisor-restore-source-table [hypervisorType]="model.hypervisorType"
+                                 [view]="view"
+                                 (addClick)="onAddClick($event)"></hypervisor-restore-source-table>
+        </div>
+        <div class="col-lg-4">
+          <hypervisor-restore-selection-table (onRemoveItem)="removeRestoreItem()"></hypervisor-restore-selection-table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<ng-template #summary>
+  <div class="summary">
+    <div class="content">
+      <div class="property">
+        <label class="name">{{'wizard.job.textSourceSelectSummary' | translate}}</label>
+        <label class="value">{{summaryValue || ('wizard.job.textEmpty' | translate)}}</label>
+      </div>
+    </div>
+  </div>
+</ng-template>

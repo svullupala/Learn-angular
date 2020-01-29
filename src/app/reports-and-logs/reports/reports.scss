@@ -1,0 +1,92 @@
+@media screen and (min-width: 1620px) {
+  .row.shift-up {
+    > * {
+      margin-top: -573px;
+    }
+  }
+}
+
+@media screen and (max-width: 1620px) {
+  .card.feed-panel.large-card {
+    height: 824px;
+  }
+}
+
+.user-stats-card {
+  .card-title {
+    padding: 0 0 15px;
+  }
+}
+
+.blurCalendar {
+  height: 475px;
+}
+
+.schedule-padding {
+  padding-left: 25px;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.warning {
+  margin-bottom: 5px;
+}
+
+.reports-loader {
+  position: absolute;
+  right: -7px;
+  top: -50px;
+  display: flex;
+  align-items: center;
+
+  ::ng-deep loader-basic {
+    margin-top: -2px;
+  }
+}
+
+$text-color: #047cc0;
+$title-color: #464646;
+
+.back-to-btn {
+  display: flex;
+
+  .ion-chevron-left {
+    background: transparent;
+    color: $text-color;
+    border: 1px solid $text-color;
+    border-radius: 1rem;
+    width: 1rem;
+    height: 1rem;
+    min-width: 1rem;
+    min-height: 1rem;
+    padding: 0 1px 0 0;
+    &:before {
+      font-size: 12px;
+    }
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  div {
+    cursor: pointer;
+  }
+
+  label {
+    &:hover {
+      cursor: pointer;
+    }
+    &.back-to-btn-text {
+      color: $text-color;
+      text-align: left;
+    }
+    &.back-to-btn-target {
+      font-weight: bold;
+      color: $text-color;
+      text-align: left;
+      line-height: 18px;
+    }
+  }
+}

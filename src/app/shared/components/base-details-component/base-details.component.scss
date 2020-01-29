@@ -1,0 +1,77 @@
+.card {
+  padding-left: 0.75rem !important;
+  border: none;
+}
+.no-top-border {
+  border-top: 0;
+}
+
+.table {
+  table-layout:fixed;
+}
+
+.table th {
+  border-top: 0;
+  border-bottom: 0;
+}
+
+.table td {
+  border-top: 0;
+  border-bottom: 0;
+  padding: 0;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.align-left {
+  text-align: left !important;
+}
+
+.normal-col {
+  width: 50%;
+  word-break: break-all;
+}
+
+.table > tbody > tr > td:first-child {
+  padding-left: 0.75rem;
+}
+
+.right {
+  float: right;
+  padding-right: 0.75rem;
+}
+
+.action {
+  cursor: pointer;
+}
+
+.details-border {
+  border: solid;
+  border-width: 2px 0 0 3px;
+}
+
+.details-margin-left {
+  margin-left: 0.75rem;
+}
+
+.side-by-side-wrapper {
+  display: flex;
+  flex-flow: row;
+  height: calc(100vh - 350px);
+}
+
+.side-by-side-left {
+  flex: 2;
+  margin-right: 0.75rem;
+  overflow: auto;
+}
+
+.side-by-side-right {
+  flex: 3;
+  margin-left: 0.75rem;
+  border: solid;
+  border-width: 1px;
+  overflow: auto;
+}

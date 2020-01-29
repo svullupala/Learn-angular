@@ -1,0 +1,14 @@
+<div class="left-pane">
+  <label *ngIf="allowSkipOptionalPages" class="custom-checkbox skip-optional">
+    <input type="checkbox" [(ngModel)]="skipOptionalPages" (change)="onSkipOptionalPagesChange()">
+    <span>{{'wizard.textSkipOptionalPages' | translate }}</span>
+  </label>
+  <label class="message">{{message}}</label>
+</div>
+<button class="sdl inline" *ngFor="let btn of buttons"
+        [hidden]="btn.hidden"
+        [ngClass]="{'disabled' : btn.disabled, 'back': btn.value === 'back'}"
+        [disabled]="btn.disabled"
+        (click)="onButtonClick(btn)" translate>
+  {{btn.text}}
+</button>

@@ -1,0 +1,30 @@
+<div class="horizontal-scroll" [ngClass]="{'masked': masked}">
+  <table class="selectable static" tabindex="0" #highlightableContainer>
+    <thead>
+    <tr>
+      <th translate>{{'catalog.textBackupTime'}}</th>
+      <th translate>{{'application.textSlaPolicy'}}</th>
+      <th translate>{{'common.textAvailable'}}</th>
+    </tr>
+    </thead>
+    <tbody>
+    <ng-template let-item ngFor [ngForOf]="model.records | paging: model.json()">
+      <tr [ngClass]="{'selected': hasCopySelected(item)}" highlightable
+          [item]="item"
+          (itemSelected)="toggleSelect($event.data, model.records, $event.event, true)"
+          (click)="toggleVersionSelect(item, model.records, $event)">
+        <td class="nowrap">{{item.protectionTime | amDateFormat: 'll LTS'}}</td>
+        <td>{{item.slapolicy}}</td>
+        <td class="nowrap copies">
+          <span *ngFor="let copy of item.copies" clickOnEnterKeydown tabindex="0"
+                class="copy link" [ngClass]="{'selected': isCopySelected(item, copy)}"
+                (click)="toggleCopySelect(copy, item, model.records, $event)">{{copyTitle(copy) | translate}}</span>
+        </td>
+      </tr>
+    </ng-template>
+    </tbody>
+  </table>
+  <paging-toolbar [model]="model" [noPageNumber]="false" (startGoPage)="mask()" (refresh)="onRefresh()"
+                  (pageChange)="onPageChange($event)"></paging-toolbar>
+  <div *ngIf="hasSelection()" class="selection"><label>{{textSelection}}</label></div>
+</div>

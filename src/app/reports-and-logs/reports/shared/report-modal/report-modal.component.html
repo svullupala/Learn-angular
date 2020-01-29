@@ -1,0 +1,114 @@
+<div class="modal-header">
+  <div class="modal-title-wrapper">
+    <label class="modal-title" translate>{{ getModalTitle() }}</label>
+    <i class="modal-subtitle">{{ item?.displayName }}</i>
+  </div>
+  <button
+    cdkFocusRegionStart
+    type="button"
+    class="close pull-right"
+    (click)="hide()"
+    aria-label="Close"
+  >
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body" [ngClass]="{ masked: isLoading }">
+  <dynamic-tabset
+    #tabset
+    *ngIf="
+      modalType !== 'run' && modalType !== 'schedule';
+      else modalType === 'run' ? parameters : schedule
+    "
+    [hidden]="isLoading"
+    [tabs]="tabs"
+    (select)="onSwitchMode($event)"
+  ></dynamic-tabset>
+  <ng-template #parameters>
+    <report-custom
+      *ngIf="modalType === 'run'"
+      [report]="item"
+      [createLink]="null"
+      [tabContentEl]="tabsContentEl"
+    ></report-custom>
+    <report-custom
+      *ngIf="
+        modalType === 'custom-create' || modalType === 'custom-run' || modalType === 'custom-update'
+      "
+      [report]="item"
+      [createLink]="createLink"
+      [tabContentEl]="tabsContentEl"
+      (onSaveValid)="onSaveCustomReportValid($event)"
+      [isSaveCustomReport]="true"
+      [disableAllFields]="modalType === 'custom-run'"
+    >
+    </report-custom>
+  </ng-template>
+  <ng-template #schedule>
+    <br />
+    <ba-checkbox
+      [(ngModel)]="displaySchedule"
+      *ngIf="canDisplayDefineScheduleCheckbox()"
+      [baCheckboxClass]="'enabled'"
+      label="{{ 'reports.textDefineSchedule' | translate }}"
+      [disabled]="false"
+      class="schedule-modal-checkbox"
+    >
+    </ba-checkbox>
+    <div [hidden]="!displaySchedule" style="max-width: 374px">
+      <define-schedule [hideStartTime]="false"></define-schedule>
+      <div [hidden]="!defineSchedule">
+        <div *ngIf="!hasNotification()" class="warning" translate>
+          {{ 'reports.textAddAtLeastOneRecipient' }}
+        </div>
+        <notification-component></notification-component>
+      </div>
+    </div>
+  </ng-template>
+</div>
+<div class="modal-footer">
+  <button class="sdl inline secondary" style="margin-left: 2rem" (click)="hide()" translate>
+    {{ 'common.textCancel' }}
+  </button>
+  <button
+    *ngIf="mode === 'parameters' && (modalType === 'run' || modalType === 'custom-run')"
+    cdkFocusRegionEnd
+    class="sdl inline"
+    [disabled]="isLoading"
+    [ngClass]="{ disabled: isLoading }"
+    (click)="onRunClick()"
+    translate
+  >
+    {{ 'reports.textRun' }}
+  </button>
+  <button
+    *ngIf="modalType === 'schedule'"
+    (click)="onRunScheduledReportClick()"
+    [disabled]="!isScheduleSaveValid() && item && item.hasLink('run')"
+    type="button"
+    class="sdl inline"
+    [ngClass]="{
+      disabled: !(isScheduleSaveValid() && item && item.hasLink('run'))
+    }"
+    data-toggle="collapse"
+    data-target="#schedulereports"
+    translate
+  >
+    {{
+      item && item.trigger && item.trigger.activateDate
+        ? 'reports.textUpdateSchedule'
+        : 'reports.textSchedule'
+    }}
+  </button>
+  <button
+    *ngIf="modalType === 'custom-create' || modalType === 'custom-update'"
+    cdkFocusRegionEnd
+    class="sdl inline"
+    [disabled]="!checkIsSaveCustomReportValid() || isLoading"
+    (click)="onSaveCustomReportClick()"
+    [ngClass]="{ disabled: !checkIsSaveCustomReportValid() || isLoading }"
+    translate
+  >
+    {{ modalType === 'custom-create' ? 'reports.textSaveReport' : 'reports.textUpdateReport' }}
+  </button>
+</div>

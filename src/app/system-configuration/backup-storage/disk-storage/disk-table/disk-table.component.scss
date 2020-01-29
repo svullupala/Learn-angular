@@ -1,0 +1,40 @@
+.status-label {
+  padding-left: 1.3rem;
+  color: #666666;
+}
+
+.progress-bar {
+  padding-top: 0;
+}
+
+.capacity-th {
+  width: 25%;
+}
+
+.version-th {
+  width: 15%;
+}
+
+.noborder:hover {
+  border-color: #047CC0 !important;
+}
+
+.noborder:focus {
+  border-color: #047CC0 !important;
+}
+
+.noborder {
+  border-color: transparent !important;
+}
+
+.disk-table-container {
+  overflow: auto;
+}
+
+.disk-table {
+  
+}
+
+.table-dropdown-holder {
+  min-height: 300px;
+}

@@ -1,0 +1,86 @@
+.inline-wrapper {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+}
+
+.download-margin {
+  margin-bottom: -12px;
+}
+
+.disabled-container {
+  pointer-events: none;
+  opacity: 0.5;
+  label {
+    color: #ccc;
+  }
+  * {
+    pointer-events: none;
+    opacity: 0.5;
+  }
+}
+
+.optionHeaderDescription {
+  margin-top: 1rem;
+  + label {
+    margin-top: 0.5rem;
+  }
+}
+
+.optionHeader {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.optionPanel {
+  min-height: 14rem;
+  margin-top: 1rem;
+}
+
+.pull-down-confirm-toolbar {
+  margin-bottom: 2%;
+}
+
+.help-link {
+  color: #1c496d;
+  text-decoration: off;
+  margin-left: 5px;
+  padding-bottom: 1px;
+  font-weight: 600;
+  &:hover {
+    cursor: pointer;
+    border-bottom-style: solid;
+    border-width: 0.5px;
+  }
+}
+
+.warning-info {
+  display: inline-block;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  &.offset {
+    margin-left: 2rem;
+  }
+  i {
+    margin-right: 1rem;
+  }
+}
+
+.row {
+  &.checkbox-row {
+    margin-left: 18px;
+  }
+  &.control-label-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 35px;
+    margin-bottom: 9px;
+    > .col-sm-3 {
+      padding-top: 12px;
+    }
+  }
+  > .col-sm-9 {
+    max-width: 500px;
+  }
+}

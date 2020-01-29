@@ -1,0 +1,65 @@
+<div class="card" [ngClass]="{'masked': masked}">
+  <div class="card-title space-top-10">
+    <h2>
+      <i *ngIf="onlyOneUser" class="i-rbac_user"></i>
+      <label>
+        {{hasUsers ? title : ('users.textNoUsersSelected' | translate)}}
+      </label>
+      <i [hidden]="!hasMore || canModifyNothing()" tabindex="0" class="right action ion-more" container="body"
+         #popoverElement #popover="bs-popover" [popover]="popMenu" outsideClick="true" placement="left"></i>
+    </h2>
+  </div>
+  <div class="card-body">
+    <!--
+    <div *ngIf="selectedUsersWithDiffRoles" class="form-group row">
+      <label class="control-label" translate>
+        {{'users.textSelectedUsersWithDiffRoles'}}
+      </label>
+      <label class="control-label" translate>
+        {{'users.textOnlyCanModifyResources'}}
+      </label>
+    </div>
+     -->
+    <div *ngIf="hasUsers && !onlyOneUser" class="form-group row">
+      <table class="table table-hover">
+        <tbody>
+        <ng-template let-item ngFor [ngForOf]="models">
+          <tr class="no-top-border">
+            <td class="normal-col bold align-left">{{item.name}}</td>
+            <td class="align-left">{{item.roleNames.join(', ')}}</td>
+          </tr>
+        </ng-template>
+        </tbody>
+      </table>
+    </div>
+    <div *ngIf="onlyOneUser" class="form-group row card">
+      <user-view [model]="models[0]"></user-view>
+    </div>
+    <div *ngIf="!hasUsers" class="form-group row">
+      <i class="i-rbac_user"></i>
+      <label class="control-label" translate>
+        {{'users.textSelectUserToSeeDetails'}}
+      </label>
+    </div>
+    <div *ngIf="!hasUsers" class="form-group row">
+      <i class="i-rbac_role"></i>
+      <label class="control-label" translate>
+        {{'users.textSelectUserToAssignRoles'}}
+      </label>
+    </div>
+    <div *ngIf="!hasUsers" class="form-group row">
+      <i class="i-rbac_multipleUsers"></i>
+      <label class="control-label" translate>
+        {{'users.textSelectUsersToAssignRoles'}}
+      </label>
+    </div>
+    <br>
+  </div>
+</div>
+<ng-template #popMenu>
+  <div (click)="onModifySettingsClick()" *ngIf="canModifySettings()"><label class="action" translate>{{'users.textModifySettings'}}</label> </div>
+  <div (click)="onModifyRolesClick()" *ngIf="canModifyRoles()"><label class="action" translate>{{'users.textModifyRoles'}}</label> </div>
+  <div (click)="onModifyResourcesClick()" *ngIf="canModifyResources()"><label class="action" translate>{{'users.textModifyResources'}}</label> </div>
+  <div (click)="onDeleteUserClick()" *ngIf="canDeleteUser()"><label class="action" translate>{{'users.textDeleteUser'}}</label></div>
+  <div (click)="onChangePasswordClick()" *ngIf="canChangePassword(models[0]) && !canModifySettings() && onlyOneUser"><label class="action" translate>{{'users.textChangePassword'}}</label></div>
+</ng-template>

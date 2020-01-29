@@ -1,0 +1,22 @@
+<div bsModal #modal="bs-modal" class="modal fade" (keydown.esc)="onKeyDownEnterEsc()"
+     (keydown.enter)="onKeyDownEnterEsc()" [config]="{backdrop: 'static', keyboard : false}" tabindex="-1" role="dialog"
+     aria-hidden="true">
+  <div class="modal-dialog">
+    <div cdkTrapFocus class="modal-content">
+      <button cdkFocusRegionStart cdkFocusRegionEnd class="close" id="closer" (click)="hide()" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <div class="modal-header">
+        <!--<label class="modal-title" translate>{{title}}</label>-->
+      </div>
+      <div class="modal-body">
+        <img *ngIf="logo" [attr.src]="logo | baAppPicture" alt="{{'login.title' | translate}}" class="logo">
+        <h1>IBM <span id="name2">Spectrum </span><span id="name3">Protect Plus</span></h1>
+        <label id="version">{{buildInfo}}</label>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <label id="copyright">{{copyright}}</label>
+    </div>
+  </div>
+</div>

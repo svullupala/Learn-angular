@@ -1,0 +1,34 @@
+side-by-side-wrapper {
+  display: flex;
+  flex-flow: row;
+}
+
+.side-by-side-left {
+  flex: 1;
+}
+
+.side-by-side-right {
+}
+
+.inventory-stat-options {
+  & > .view {
+    width: 100%;
+
+    button.btn {
+      width: 100%;
+
+      & > label.view-label {
+        width: calc(100% - 1rem);
+      }
+    }
+
+    .dropdown-menu-left {
+      right: 0;
+      margin-top: -2px;
+    }
+  }
+
+  & > .options-dropdown {
+    margin-left: 1rem;
+  }
+}

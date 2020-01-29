@@ -1,0 +1,66 @@
+<div class="space-top-10">
+  <label class="control-label" translate>{{'resourceGroups.textChooseResources'}}</label>
+  <div [hidden]="hideSearchBar">
+    <sdl-search-bar [textPlaceholderLabel]="textPlaceholderLabel ? textPlaceholderLabel : ('common.textSearchFor' | translate)"
+                    (search)="onSearch($event)"></sdl-search-bar>
+  </div>
+  <div [ngClass]="{'masked': masked}">
+    <div *ngIf="breadcrumbs" class="row" [hidden]="hideBreadcrumbs">
+      <ul class="breadcrumb2">
+        <li *ngFor="let breadcrumb of breadcrumbs; let i = index">
+          <span tabindex="0" clickOnEnterKeydown (click)="onBreadcrumbClick(breadcrumb,$event)" class="link">{{breadcrumb.title}}</span>
+        </li>
+      </ul>
+    </div>
+    <div style="height: auto; overflow: auto;">
+      <table role="presentation">
+        <tbody>
+          <tr *ngIf="!isAllHidden()" [ngClass]="{'active-row': selectAllItem}">
+            <td class="checkbox-column" width="5%">
+              <label class="custom-checkbox">
+                <input type="checkbox"
+                       [(ngModel)]="selectAllItem"
+                       [hidden]="isAllHidden()"
+                       (ngModelChange)="selectAll()"
+                       aria-label="...">
+                <span></span>
+              </label>
+            </td>
+            <td width="95%" [hidden]="isAllHidden()">{{ (addAllItem && addAllItem.title) ? addAllItem.title : ('resourceGroups.textAll' | translate) }}</td>
+          </tr>
+          <tr *ngFor="let item of records | paging: paginateConfig && paginateConfig.json(); trackBy: trackByFn()"
+              [ngClass]="{'active-row': item.metadata['selected']}">
+            <td class="checkbox-column" width="5%">
+              <label class="custom-checkbox">
+                <input type="checkbox"
+                       [(ngModel)]="item.metadata['selected']"
+                       (ngModelChange)="onSelectChange(item)"
+                       aria-label="...">
+                <span></span>
+              </label>
+            </td>
+            <td width="95%">
+              <span [ngClass]="{'link': canNavigate(item)}" tabindex="0" (keydown.enter)="navigate(item,$event)" (click)="navigate(item,$event)">{{item.name || item.displayName}}</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="space-top-10">
+    <div class="paging-toolbar">
+      <paging-toolbar
+        (refresh)="onRefresh()"
+        [id]="paginateConfig.id"
+        (pageChange)="onPageChange($event)"
+        [maxSize]="5"
+        [total]="paginateConfig.totalItems"
+      ></paging-toolbar>
+    </div>
+    <confirm-toolbar-component [floatRight]="false"
+                               [hideCancelButton]="true"
+                               [disableConfirmButton]="!hasSelection()"
+                               (confirmEvent)="onAddResources()"
+                               [confirmText]="'resourceGroups.textAddResources' | translate"></confirm-toolbar-component>
+  </div>
+</div>

@@ -1,0 +1,9 @@
+<div class="left-pane">
+</div>
+<button class="sdl inline" *ngFor="let btn of buttons"
+        [hidden]="btn.hidden"
+        [ngClass]="{'disabled' : btn.disabled}"
+        [disabled]="btn.disabled"
+        (click)="onButtonClick(btn)" translate>
+  {{btn.text}}
+</button>

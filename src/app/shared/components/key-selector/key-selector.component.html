@@ -1,0 +1,124 @@
+<div [formGroup]="form">
+  <div class="form-group row" *ngIf="!useExistingOnly">
+    <label [ngClass]="clsOfLabelCol || 'col-sm-3'" class="control-label" style="margin-top:-8px;" translate>{{'key.textUseExistingKey'}}</label>
+    <div [ngClass]="clsOfFieldCol || 'col-sm-3'">
+      <ba-checkbox [(ngModel)]="model.useExisting" [ngModelOptions]="{standalone: true}"
+                   [baCheckboxClass]="'enabled'"
+                   [disabled]="disabled">
+      </ba-checkbox>
+    </div>
+  </div>
+  <div *ngIf="onlySSHKeys; then ssh else nossh"></div>
+  <ng-template #ssh>
+    <div class="form-group row"
+         [hidden]="model.useExisting || hideNameField"
+         [ngClass]="{'has-error': (!name.valid && name.touched), 'has-success': (name.valid && name.touched)}">
+      <label for="sshname" class="col-sm-2 control-label" translate>{{'common.textName'}}</label>
+      <div class="col-sm-3">
+        <input sdlTooltip
+               [disabled]="disabled"
+               [mode]="'critical'"
+               [isDisabled]="(!name.valid && name.untouched) || (name.valid && name.touched)"
+               [placement]="'right'"
+               [sdlTooltip]="'common.textRequiredFieldSuggestion' | translate"
+               [formControl]="name" [(ngModel)]="model.name" type="text" class="form-control" id="sshname">
+      </div>
+    </div>
+    <div class="form-group row"
+         [hidden]="model.useExisting"
+         [ngClass]="{'has-error': (!user.valid && user.touched), 'has-success': (user.valid && user.touched)}">
+      <label for="user" class="col-sm-2 control-label" translate>{{'key.textUser'}}</label>
+      <div class="col-sm-3">
+        <input sdlTooltip
+               [disabled]="disabled"
+               [mode]="'critical'"
+               [isDisabled]="(!user.valid && user.untouched) || (user.valid && user.touched)"
+               [placement]="'right'"
+               [sdlTooltip]="'common.textRequiredFieldSuggestion' | translate"
+               [formControl]="user" [(ngModel)]="model.user" type="text" class="form-control" id="user">
+      </div>
+    </div>
+    <div class="form-group row"
+         [hidden]="model.useExisting"
+         [ngClass]="{'has-error': (!privateKey.valid && privateKey.touched), 'has-success': (privateKey.valid && privateKey.touched)}">
+      <label for="privateKey" class="col-sm-2 control-label" translate>{{'key.textPrivateKey'}}</label>
+      <div class="col-sm-3">
+        <textarea
+          sdlTooltip
+          [mode]="'critical'"
+          [disabled]="disabled"
+          [isDisabled]="(!privateKey.valid && privateKey.untouched) || (privateKey.valid && privateKey.touched)"
+          [placement]="'right'"
+          [sdlTooltip]="'common.textRequiredFieldSuggestion' | translate"
+          [formControl]="privateKey" [(ngModel)]="model.privatekey" class="form-control" id="privateKey"
+        ></textarea>
+      </div>
+    </div>
+  </ng-template>
+  <ng-template #nossh>
+    <div class="form-group row" [hidden]="model.useExisting || hideNameField"
+         [ngClass]="{'has-error': (!name.valid && name.touched), 'has-success': (name.valid && name.touched)}">
+      <label class="control-label" [ngClass]="clsOfLabelCol || 'col-sm-3'" translate>{{'key.textKeyName'}}</label>
+      <div [ngClass]="clsOfFieldCol || 'col-sm-3'">
+        <input sdlTooltip
+               [disabled]="disabled"
+               [mode]="'critical'"
+               [isDisabled]="(!name.valid && name.untouched) || (name.valid && name.touched) || name.untouched"
+               [placement]="'right'"
+               [sdlTooltip]="'common.textRequiredFieldSuggestion' | translate"
+               [attr.aria-label]="'key.textKeyName'  | translate"
+               type="text" [formControl]="name" class="form-control" [(ngModel)]="model.name">
+      </div>
+    </div>
+    <div class="form-group row" [hidden]="model.useExisting"
+         [ngClass]="{'has-error': (!access.valid && access.touched), 'has-success': (access.valid && access.touched)}">
+      <label class="control-label" [ngClass]="clsOfLabelCol || 'col-sm-3'" translate>{{ textAccessKeyLabel || 'key.textAccessKey'}}</label>
+      <div [ngClass]="clsOfFieldCol || 'col-sm-3'">
+        <input sdlTooltip
+               [disabled]="disabled"
+               [mode]="'critical'"
+               [isDisabled]="(!access.valid && access.untouched) || (access.valid && access.touched) || access.untouched"
+               [placement]="'right'"
+               [sdlTooltip]="'common.textRequiredFieldSuggestion' | translate"
+               [attr.aria-label]="(textAccessKeyLabel || 'key.textAccessKey') | translate"
+               type="text" [formControl]="access" class="form-control" [(ngModel)]="model.access">
+      </div>
+    </div>
+    <div class="form-group row" [hidden]="model.useExisting"
+         [ngClass]="{'has-error': (!secret.valid && secret.touched), 'has-success': (secret.valid && secret.touched)}">
+      <label class="control-label" [ngClass]="clsOfLabelCol || 'col-sm-3'" translate>{{textSecretKeyLabel || 'key.textSecretKey'}}</label>
+      <div [ngClass]="clsOfFieldCol || 'col-sm-3'">
+        <input sdlTooltip
+               [disabled]="disabled"
+               [mode]="'critical'"
+               [isDisabled]="(!secret.valid && secret.untouched) || (secret.valid && secret.touched) || secret.untouched"
+               [placement]="'right'"
+               [sdlTooltip]="'common.textRequiredFieldSuggestion' | translate"
+               [attr.aria-label]="(textSecretKeyLabel || 'key.textSecretKey') | translate"
+               [type]="showPassword ? 'text' : 'password'" [formControl]="secret" class="form-control" [(ngModel)]="model.secret">
+      </div>
+      <label class="control-label">
+        <i class="ion-eye action" tabindex="0" (keydown.enter)="togglePasswordVisibility()" (click)="togglePasswordVisibility()" translate>{{showPassword ? 'users.textHide': 'users.textShow'}}</i>
+      </label>
+    </div>
+  </ng-template>
+  <div class="form-group row" [hidden]="!model.useExisting">
+    <label class="control-label" [ngClass]="clsOfLabelCol || 'col-sm-3'" translate>{{ onlySSHKeys ? 'key.textSelectSshKey' : 'key.textSelectKey'}}</label>
+    <div [ngClass]="clsOfFieldCol || 'col-sm-3'">
+      <select class="form-control"
+              [(ngModel)]="model.key" (ngModelChange)="onSelectKey()"
+              [ngModelOptions]="{standalone: true}" [disabled]="disabled">
+        <option *ngFor="let key of records" [ngValue]="key">{{ key.name }}
+        </option>
+      </select>
+    </div>
+  </div>
+  <button class="sdl inline small" [ngClass]="{'disabled' : !isValid()}"
+          *ngIf="enableAddKeyBtn"
+          [disabled]="!isValid()"
+          [hidden]="model.useExisting"
+          (click)="createKey()"
+          type="button" translate>
+    {{'key.textAddKey'}}
+  </button>
+</div>

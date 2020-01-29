@@ -1,0 +1,43 @@
+<div class="horizontal-scroll manage-table-container" [ngClass]="{'masked': masked}">
+  <div class="manage-table-height">
+    <table>
+      <thead>
+      <tr>
+        <th class="action-icon-column"></th>
+        <th class="action-icon-column"></th>
+        <th translate>{{ hostAddressText }}</th>
+        <th class="operation-col align-center"></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let appServer of appServerList">
+        <td class="action-icon-format">
+          <i *ngIf="appServer.hasLink('delete')" tabindex="0" clickOnEnterKeydown (click)="onUnregisterAppserver(appServer)" class="ion-close-round"></i>
+        </td>
+        <td class="action-icon-format">
+          <i *ngIf="appServer.hasLink('edit')" tabindex="0" clickOnEnterKeydown (click)="onEditAppserver(appServer)" class="ion-edit"></i>
+        </td>
+        <td>{{ appServer.hostAddress }}</td>
+        <td class="align-center">
+          <div class="btn-group" role="group">
+            <button [attr.id]="getDropDownActionId(appServer)" type="button" class="btn btn-default dropdown-toggle dropdown-toggle-sdl noborder"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              {{'hypervisor.textOperation' | translate}}
+            </button>
+            <div class="dropdown-menu dropdown-menu-sdl" [attr.aria-labelledby]="getDropDownActionId(appServer)">
+              <a tabindex="0" class="dropdown-item capitalize dropdown-item-sdl" *ngFor="let link of appServer.getActionLinks()"
+                 clickOnEnterKeydown (click)="onExecuteAction(appServer, link)" translate>{{link.title}}</a>
+            </div>
+          </div>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <br>
+  <paging-toolbar (refresh)="onRefresh()" [total]="appServerList.length"></paging-toolbar>
+  <!--<paging-toolbar [model]="appServerList" (pageChange)="onPageChange($event)" (refresh)="onRefresh()"></paging-toolbar>-->
+</div>
+<msgbox-alert [autoShow]="false"></msgbox-alert>
+<error-handler></error-handler>
+<config-groups [model]="testResult" (abortClick)="onAbortTestClick()"></config-groups>

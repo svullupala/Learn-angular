@@ -1,0 +1,20 @@
+.percentage-doughnut-chart-container {
+    position: relative;
+    overflow: hidden;
+    .percentage-doughnut-chart-label {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 16px;
+        font-weight: bold;
+    }
+    .percentage-half-doughnut-chart-label {
+        position: absolute;
+        left: 50%;
+        bottom: 0;
+        transform: translate(-50%, -50%);
+        font-size: 16px;
+        font-weight: bold;
+    }
+}

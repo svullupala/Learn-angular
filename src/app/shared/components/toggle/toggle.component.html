@@ -1,0 +1,12 @@
+<div class="toggle btn-group" role="group">
+  <button class="switch" (click)="toggle()" sdlTooltip
+          [disabled]="disabled"
+          [ngClass]="{'disabled': disabled}"
+          [ngStyle]="switchStyle"
+          [sdlTooltip]="hoverTooltip"
+          [isDisabled]="disabled || !hoverTooltip">
+    <span class="slider" [ngClass]="{'advanced': value}" [ngStyle]="sliderStyle"></span>
+  </button>
+  <label *ngIf="!value && !!disableLabel" class="title" translate>{{disableLabel}}</label>
+  <label *ngIf="value && !!enableLabel" class="title" translate>{{enableLabel}}</label>
+</div>

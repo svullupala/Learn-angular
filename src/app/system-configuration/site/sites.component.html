@@ -1,0 +1,12 @@
+<ba-card baCardClass="dark-card" title="{{'site.textSites' | translate}}" [ngClass]="{'hidden': mode !== 'list'}">
+  <div class="align-right margin-bottom-10">
+    <button class="sdl inline with-icon"
+            (click)="onAddClick()" translate>
+      <i class="bidi-add-new-white_16"></i>{{'site.textAddSite'}}
+    </button>
+  </div>
+  <sites-table (deleteClick)="onDeleteClick($event)" (editClick)="onEditClick($event)"></sites-table>
+</ba-card>
+<ba-card baCardClass="dark-card" title="{{'site.textSiteProperties' | translate}}" [ngClass]="{'hidden': mode !== 'edit'}">
+  <site-edit (saveClick)="loadData(true)" (cancelClick)="onCancelClick()" [disableAddSite]="sitesTable.disableAddSite"></site-edit>
+</ba-card>

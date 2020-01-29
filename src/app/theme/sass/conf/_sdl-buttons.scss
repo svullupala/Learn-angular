@@ -1,0 +1,141 @@
+//SDL Buttons
+//See https://codepen.io/poofichu/pen/NXrgKY
+
+$Cerulean50: #047CC0;
+$Cerulean60: #175d8d;
+$Cerulean70: #1c496d;
+$Cerulean30: #56ACF2;
+$Gray50: #777677;
+$white: #FFFFFF;
+
+.button-container {
+  display: flex;
+  button {
+    margin: 1em;
+  }
+}
+
+button.sdl {
+  background-color: $Cerulean50;
+  border-radius: 2px;
+  border: 2px solid $Cerulean50;
+  color: $white;
+  display: block;
+  font-size: .875rem;
+  height: 2.5rem;
+  min-width: 8rem;
+  padding: 0 1rem;
+
+  &:hover {
+    background-color: $Cerulean60;
+    border-color: $Cerulean60;
+    cursor: pointer;
+    &.disabled {
+      cursor: not-allowed;
+    }
+  }
+
+  &:focus {
+    background-color: $Cerulean60;
+    border-color: $Cerulean60;
+    outline: 1px dashed white;
+    outline-offset: -.25em;
+    border-radius: 2px;
+  }
+
+  &:active {
+    background-color: $Cerulean70;
+    border-color: $Cerulean70;
+  }
+}
+
+.sdl.secondary {
+  background-color: white;
+  color: $Cerulean50;
+
+  &:hover {
+    background-color: $Cerulean60;
+    color: $white;
+  }
+
+  &:focus {
+    background-color: $Cerulean60;
+    border-color: $Cerulean60;
+    color: $white;
+  }
+
+  &:active {
+    background-color: $Cerulean70;
+    border-color: $Cerulean70;
+    color: $white;
+  }
+}
+
+.sdl.tertiary {
+  background-color: transparent;
+  border-color: transparent;
+  color: $Cerulean50;
+  padding: 0 1rem;
+  text-decoration: underline;
+
+  &:hover,
+  &:focus,
+  &:active {
+    background-color: transparent;
+    border-color: transparent;
+    color: $Cerulean60;
+  }
+}
+
+.sdl.ghost {
+  background-color: transparent;
+  border-color: transparent;
+  color: $Cerulean50;
+
+  &:hover {
+    background-color: $Cerulean60;
+    color: $white;
+  }
+
+  &:focus {
+    background-color: $Cerulean60;
+    border-color: $Cerulean60;
+    color: $white;
+  }
+
+  &:active {
+    background-color: $Cerulean70;
+    border-color: $Cerulean70;
+    color: $white;
+  }
+}
+
+.sdl.disabled {
+  opacity: .6;
+  background-color: $Gray50;
+  border-color: $Gray50;
+
+  &:hover, &:focus, &:active {
+    background-color: $Gray50;
+    border-color: $Gray50;
+  }
+}
+
+//SMALL BUTTONS
+
+button.sdl.small {
+  height: 1.5rem;
+  min-width: 5rem;
+}
+
+//INLINE BLOCK
+button.sdl.inline {
+  display: inline-block;
+}
+
+//WITH ICON
+button.sdl.with-icon {
+  i {
+    margin-right: 1rem;
+  }
+}

@@ -1,0 +1,82 @@
+.hypervisor-registration {
+
+  .modal-header {
+    position: relative;
+    padding-bottom: 0;
+
+    & > .modal-title-wrapper {
+      display: flex;
+      flex-direction: column;
+
+      & > label > .sdl-header {
+        font-weight: normal;
+        font-size: 24px;
+      }
+    }
+
+    & > .close {
+      position: absolute;
+      top: 0;
+      right: 1rem;
+      width: 14px;
+    }
+
+    & > .modal-hr {
+      border-color: #D0DADA;
+    }
+  }
+
+  .modal-body {
+    padding: 0 2rem;
+
+    .side-by-side-wrapper {
+      display: flex;
+      flex-flow: row;
+      overflow-x: auto;
+      padding-bottom: 1rem;
+    }
+
+    .side-by-side-left {
+      flex: 1;
+      border-right: 1px solid #D0DADA;
+    }
+
+    .side-by-side-right {
+      flex: 1;
+      margin-left: 2rem;
+
+      ::ng-deep label.col-sm-2.control-label {
+        width: 250px;
+      }
+
+      .control-label {
+        width: 250px;
+        line-height: 1.5;
+        margin-bottom: .5rem;
+      }
+    }
+
+    .form-group {
+
+      & > label.control-label {
+        padding-right: 2rem;
+        line-height: 1.5;
+        margin-bottom: .5rem;
+      }
+
+      & > .input-value {
+        padding-left: 0;
+        width: 85%;
+
+        & > input[type="number"] {
+          width: 20%;
+          min-width: 50px;
+        }
+      }
+    }
+  }
+
+  .modal-footer {
+    margin-top: 0;
+  }
+}

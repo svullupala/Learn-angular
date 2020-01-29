@@ -1,0 +1,126 @@
+<div class="row">
+  <div class="col-sm-12">
+    <h4 translate>{{'dashboard.textCoverageTitle'}}</h4>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xl-4 col-lg-4 col-sm-12 dashboard-item">
+    <ba-card baCardClass="dashboard-card">
+      <div class="row">
+        <div class="col-sm-12">
+          <h2 class="sdl-header" translate>{{'dashboard.textSourceProtectionCardTitle'}}</h2>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6 overflow-hidden">
+          <div class="item-list">
+            <div class="item-col-left">
+              <circle-summary-chart
+                [value]="totalResources"
+                [topLabel]="'dashboard.textTotalSources'"
+                [topLabelColor]="cerulean70Color"
+                [borderColor]="'transparent'"></circle-summary-chart>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 overflow-hidden">
+          <div class="item-list">
+            <div class="item-col">
+              <circle-summary-chart
+                [value]="(totalResources === 0) ? 0 : (protectedResources / totalResources) * 100 | number: '1.0-2'"
+                [unit]="'%'"
+                [topLabel]="'dashboard.textProtectionCoverage'"
+                [topLabelColor]="cerulean70Color"
+                [borderColor]="'transparent'"> </circle-summary-chart>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row progress-bar-row">
+        <div class="col-sm-12" style="padding-bottom: 32px">
+          <progress-bar [status]="getCoverageStatus()" [topLeftLabel]="protectedResources"
+            [topLeftSubLabel]="'dashboard.textSourcesProtected' | translate"
+            [topRightLabel]="(totalResources >= protectedResources) ? totalResources - protectedResources : 0"
+            [topRightSubLabel]="'dashboard.textUnprotected' | translate"
+            [percentage]="(totalResources >= protectedResources) ? (protectedResources / totalResources) * 100 : 100"
+            [usedLabel]="textPctUsed" [type]="'thin'"></progress-bar>
+        </div>
+      </div>
+    </ba-card>
+  </div>
+  <div class="col-xl-8 col-lg-8 col-sm-12">
+    <ba-card baCardClass="dashboard-card">
+      <div class="row">
+        <div class="col-sm-12">
+          <h2 class="sdl-header" translate>{{'dashboard.textPoliciesCardTitle'}}</h2>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-2">
+          <div *ngIf="totalPolicies" class="item-list">
+            <div class="item-col-left">
+              <circle-summary-chart [value]="totalPolicies" [topLabel]="'dashboard.textTotalPolicies'"
+                [topLabelColor]="cerulean70Color" [borderColor]="'transparent'"></circle-summary-chart>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-10 pull-down-content">
+          <div class="row">
+            <div class="col-sm-12">
+              <h5 translate>{{'dashboard.textLargestPoliciesLabel'}}</h5>
+            </div>
+          </div>
+          <div *ngIf="policyMap" class="row">
+            <div class="col-sm-12">
+              <div class="item-list">
+                <div class="item-col-left">
+                  <circle-summary-chart *ngIf="policyMap[0]"
+                    [valueTextOverflow]="'ellipsis'" [valueOverflow]="'hidden'"
+                    [label]="getSourcesForPolicyMap0()"
+                    [value]="policyMap[0].name" [valueMedium]="true" [fillColor]="fillColor" [width]="'auto'"
+                    [title]="policyMap[0].name"
+                    [minWidth]="'20%'" [maxWidth]="'100%'" [borderColor]="fillColor"></circle-summary-chart>
+                  </div>
+                </div>
+            </div>
+          </div>
+          <br>
+          <div *ngIf="policyMap" class="row" style="margin-top: -15px;">
+            <div class="col-sm-5">
+              <div class="item-list">
+                <div class="item-col-left">
+                  <circle-summary-chart *ngIf="policyMap[1]"
+                    [valueTextOverflow]="'ellipsis'" [valueOverflow]="'hidden'"
+                    [label]="getSourcesForPolicyMap1()"
+                    [value]="policyMap[1].name" [valueMedium]="true" [fillColor]="fillColor" [width]="'auto'"
+                    [title]="policyMap[1].name"
+                    [minWidth]="'50%'" [maxWidth]="'100%'" [borderColor]="fillColor"></circle-summary-chart>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-5">
+              <div class="item-list">
+                <div class="item-col-left">
+                  <circle-summary-chart *ngIf="policyMap[2]"
+                    [valueTextOverflow]="'ellipsis'" [valueOverflow]="'hidden'"
+                    [label]="getSourcesForPolicyMap2()"
+                    [value]="policyMap[2].name" [valueMedium]="true" [fillColor]="fillColor" [width]="'auto'"
+                    [title]="policyMap[2].name"
+                    [minWidth]="'50%'" [maxWidth]="'100%'" [borderColor]="fillColor"></circle-summary-chart>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-2" style="padding-top: 58px; padding-right: 8px;">
+              <div class="item-list">
+                <div class="item-col-right">
+                  <button *ngIf="policyMap && hasViewPermission()" class="sdl secondary inline small right-align" type="button" (click)="onViewPolicies()"
+                    translate>{{'dashboard.textViewButton'}}</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ba-card>
+  </div>
+</div>

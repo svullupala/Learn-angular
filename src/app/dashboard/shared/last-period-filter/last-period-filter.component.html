@@ -1,0 +1,25 @@
+<div class="last-period-filter">
+  <div *ngIf="title" class="filter-title" translate>{{ title }}</div>
+  <div class="filter side-by-side-wrapper no-scroll">
+    <select #select cdkMonitorElementFocus class="custom-select form-control" [(ngModel)]="selectedLastPeriod"
+            (ngModelChange)="onLastPeriodSelect()" (blur)="onSelectCollapse()" (click)="onSelectSwitch()"
+            (keydown)="onSelectKeydown($event)">
+      <option value=4 translate>{{ 'dashboard.textLast4Hours' }}</option>
+      <option value=12 translate>{{ 'dashboard.textLast12Hours' }}</option>
+      <option value=24 translate>{{ 'dashboard.textLast24Hours' }}</option>
+      <option value=48 translate>{{ 'dashboard.textLast48Hours' }}</option>
+      <option value=72 translate>{{ 'dashboard.textLast72Hours' }}</option>
+      <option value=168 translate>{{ 'dashboard.textLast7Days' }}</option>
+      <option *ngIf="extraTimes" value=720 translate>{{ 'dashboard.textLast30Days' }}</option>
+      <option *ngIf="extraTimes" value=4320 translate>{{ 'dashboard.textLast6Months' }}</option>
+    </select>
+    <div class="select-ex" [ngClass]="{'focus': cdkFocused(select)}">
+      <span class="select-icon">
+        <i [ngClass]="{'ion-chevron-up': selectExpanded, 'ion-chevron-down': !selectExpanded}"></i>
+      </span>
+    </div>
+    <button *ngIf="showRefresh" type="button" class="sdl secondary" (click)="refresh()" translate>{{'dashboard.textRefresh'}}</button>
+    <label *ngIf="lastRefreshedAt" translate>{{'dashboard.textLastRefreshedAt'}}</label><label *ngIf="lastRefreshedAt">{{'&nbsp;' + (lastRefreshedAt | amDateFormat:
+    'LTS')}}</label>
+  </div>
+</div>

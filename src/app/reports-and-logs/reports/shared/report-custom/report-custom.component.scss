@@ -1,0 +1,11 @@
+@import "../../../../theme/sass/conf/conf";
+
+/deep/ label.custom-checkbox > span {
+  margin-top: 10px;
+}
+
+.report-custom-headline {
+  display: inline-block;
+  padding-bottom: 24px;
+  font-size: 18px;
+}

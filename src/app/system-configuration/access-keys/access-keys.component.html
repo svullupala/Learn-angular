@@ -1,0 +1,7 @@
+<div class="align-right margin-bottom-10" [ngClass]="{'hidden': mode !== 'list'}">
+  <button class="sdl inline with-icon" *ngIf="!keysTable.disableAddKeys" (click)="onAddClick()" translate>
+    <i class="bidi-add-new-white_16"></i>{{'accesskeys.textAddAccessKey' | translate}}
+  </button>
+</div>
+<keys-table (deleteClick)="onDeleteClick($event)" (editClick)="onEditClick($event)" [ngClass]="{'hidden': mode !== 'list'}"></keys-table>
+<keys-edit (saveClick)="loadData(true)" (cancelClick)="onCancelClick()" [disableAddKeys]="keysTable.disableAddKeys" [ngClass]="{'hidden': mode !== 'edit'}"></keys-edit>

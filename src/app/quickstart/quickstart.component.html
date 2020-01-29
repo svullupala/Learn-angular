@@ -1,0 +1,26 @@
+<div bsModal #lgModal="bs-modal" class="modal centered-modal fade" [config]="{backdrop: 'static', keyboard : false}"
+     role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+    <div cdkTrapFocus class="modal-content">
+      <div class="modal-header title">
+        <h4 class="modal-title" translate>{{ 'quickstart.title '}}</h4>
+      </div>
+      <div class="modal-body" translate>
+        <br>
+        <br>
+        <div class="content" translate>{{'quickstart.textContent'}}</div>
+        <br>
+        <br>
+        <label class="custom-checkbox">
+          <input cdkFocusRegionStart type="checkbox"
+                 [(ngModel)]="showAtLogin">
+          <span>{{'quickstart.textShowAtLogin' | translate}}</span>
+        </label>
+      </div>
+      <div class="modal-footer">
+        <button class="sdl inline secondary small pull-left" style="margin-left: 2rem" (click)="onOkClick()" translate>{{'common.textClose'}}</button>
+        <button cdkFocusRegionEnd class="sdl inline small pull-right" (click)="onOpenClick()" translate>{{'quickstart.textOpenQuickStart'}}</button>
+      </div>
+    </div>
+  </div>
+</div>

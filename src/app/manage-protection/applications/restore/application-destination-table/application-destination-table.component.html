@@ -1,0 +1,57 @@
+<div style="height: 425px;" [ngClass]="{'masked': masked}">
+    <br>
+    <br>
+    <div class="row">
+      <div class="col-lg-6" style="width: 245px;">
+        <sdl-search-bar (search)="startSearch(($event === '') ? '*' : $event)"
+             [isSupportClear]="true"
+             (clear)="onClearSearch()"
+             [textPlaceholderLabel]="'application.textSearchForInstance' | translate">
+        </sdl-search-bar>
+      </div>
+    </div>
+    <ul class="breadcrumb2" >
+      <li *ngFor="let breadcrumb of breadcrumbs">
+        <span class="link" tabindex="0" (keydown.enter)="onBreadcrumbClick(breadcrumb,$event)" (click)="onBreadcrumbClick(breadcrumb,$event)">{{breadcrumb.title}}</span>
+      </li>
+    </ul>
+    <div style="height: 300px; overflow: auto;">
+      <table>
+        <thead>
+          <tr>
+            <th class="checkbox-column"></th>
+            <th translate>{{'hypervisor.textName'}}</th>
+            <th *ngIf="isSearch()" translate>{{'common.textApplicationServers'}}</th>
+            <th [hidden]="isDbLevel" translate>{{ 'common.textVersion' }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of records; trackBy: trackByAppFn"
+              [ngClass]="{'disabled': item.disable, 'active-row': isSelected(item)}">
+            <td class="checkbox-column">
+              <label *ngIf="item.resourceType !== 'databasegroup'" class="custom-radio">
+                <input  type="radio"
+                        name="destination"
+                        [(ngModel)]="selectedInstance"
+                        [value]="item"
+                        (click)="onSelect(item)" [disabled]="item.disable"
+                        [hidden]="item.resourceType === 'databasegroup'"
+                        aria-label="...">
+                <span></span>
+              </label>
+            </td>
+            <td class="icon-format">
+              <i class="fa fa-database"></i>
+              <span [ngClass]="{'link': canNavigate(item)}" tabindex="0" (keydown.enter)="navigate(item,$event)" (click)="navigate(item,$event)">{{item.name}}</span>
+            </td>
+            <td *ngIf="isSearch()">{{getAppServerNames(item)}}</td>
+            <td [hidden]="isDbLevel">{{item.version}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="paging-toolbar">
+      <paging-toolbar (pageChange)="onPageChange($event)" (refresh)="refresh()"
+                      [id]="paginateConfig.id" [total]="paginateConfig.totalItems"></paging-toolbar>
+    </div>
+</div>

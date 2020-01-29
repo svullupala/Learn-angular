@@ -1,0 +1,87 @@
+<div class="wizard {{theme}}" [ngClass]="{'maximize' : maximize}">
+  <div class="wizard-header topbar" [hidden]="hideTopbar">
+    <wizard-topbar [textBackToTarget]="textBackToTarget" [title]="title" [subtitle]="subtitle"
+                   [description]="description"
+                   (backTo)="onCancel()"></wizard-topbar>
+  </div>
+  <div class="wizard-body side-by-side-wrapper content"
+       [ngClass]="{'maximize' : maximize, 'starting': hasStarter && !started}">
+    <div class="starter" *ngIf="hasStarter && !started">
+      <wizard-starter [categories]="categories"
+                      [allowedCategories]="allowedCategories"
+                      (startEvent)="onStartPages($event)"></wizard-starter>
+    </div>
+    <div class="leftbar" *ngIf="started" [hidden]="!sidebarVisible" [ngClass]="{'with-view-bar': hasAdvancedPages, 'dark-masked': inPreview}">
+      <div class="view-bar" *ngIf="hasAdvancedPages">
+        <toggle [disabled]="isActivePageAdvanced"
+                [enableLabel]="textAdvancedView || 'wizard.textAdvancedView'"
+                [disableLabel]="textDefaultView || 'wizard.textDefaultView'"
+                [initValue]="isAdvancedView"
+                (toggleEvent)="onToggleView($event)"></toggle>
+      </div>
+      <div class="summary-bar">
+        <i tabindex="0" class="bidi-status-info"
+           [hidden]="!showOverallSummary"
+           sdlTooltip
+           [mode]="'standard'"
+           [triggers]="'hover focus'"
+           [placement]="'right'"
+           [sdlTooltip]="summary"></i></div>
+      <div class="sidebar" [ngClass]="{'with-view-bar': hasAdvancedPages, 'with-preview-bar': enablePreview}">
+        <wizard-sidebar [theme]="theme" [items]="sidebarItems" [doneItemSelectable]="sidebarNavigable"
+                        (itemSelectEvent)="onSidebarItemSelect($event)"></wizard-sidebar>
+      </div>
+      <div class="preview-bar" *ngIf="enablePreview">
+        <button sdlTooltip
+                [placement]="'top center'"
+                [sdlTooltip]="previewTooltip"
+                [ngClass]="{'secondary': inPreview}"
+                [isDisabled]="inPreview"
+                class="preview sdl inline" (click)="onPreview()" translate>
+          {{ textPreview || 'wizard.textPreview' }}
+        </button>
+      </div>
+    </div>
+    <div class="preview-view" *ngIf="started" [hidden]="!inPreview" [ngClass]="{'hidden': !inPreview}">
+      <div class="preview-head" *ngIf="inPreview">
+        <button class="close" (click)="onClosePreview()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="preview-body">
+        <wizard-page-container #previewPageContainer [key]="previewKey"></wizard-page-container>
+      </div>
+    </div>
+    <div class="pages" *ngIf="started" [hidden]="inPreview" [ngClass]="{'hidden': inPreview}">
+      <wizard-page-container *ngFor="let item of pages"
+                             [hidden]="!item.active" [key]="item.key"></wizard-page-container>
+    </div>
+  </div>
+  <div class="wizard-footer toolbar" *ngIf="started">
+    <wizard-toolbar [hidden]="inPreview"
+                    [alwaysHideCancel]="true"
+                    [alwaysHideNext]="alwaysHideNext"
+                    [allowSkipOptionalPages]="interactWithSkipOptionalPages"
+                    (skipOptional)="onSkipOptional($event)"
+                    (previous)="onPrevious()"
+                    (next)="onNext()"
+                    (submit)="onSubmit()"></wizard-toolbar>
+    <wizard-preview-toolbar *ngIf="inPreview"
+                    (close)="onClosePreview()"></wizard-preview-toolbar>
+  </div>
+</div>
+<ng-template #summary>
+  <div class="summary">
+    <div class="title" translate>{{'wizard.textSummary'}}</div>
+    <div class="content">
+      <ng-template let-se ngFor [ngForOf]="summaryEntries">
+        <ng-template [ngTemplateOutlet]="se.content"></ng-template>
+      </ng-template>
+    </div>
+  </div>
+</ng-template>
+<ng-template #previewTooltip>
+  <div class="preview-tooltip">
+    {{'wizard.textPreviewTooltip' | translate}}
+  </div>
+</ng-template>

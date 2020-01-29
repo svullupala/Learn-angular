@@ -1,0 +1,14 @@
+<div class="btn-group dropdown" role="group">
+  <button [attr.id]="'btnGroupDropSite-' + id" type="button" class="btn btn-default dropdown-toggle dropdown-toggle-sdl"
+          [disabled]="disabled" [ngClass]="(noBorder) && 'noborder'" (click)="onClick()"
+         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+         {{current}}
+  </button>
+  <div #menu [attr.id]="id" *ngIf="!empty" class="dropdown-menu dropdown-menu-sdl"
+       [ngClass]="{'dropdown-menu-right': dropMenuRight}"
+       [attr.aria-labelledby]="'btnGroupDropSite-' + id">
+      <a *ngFor="let type of values" tabindex="0" class="dropdown-item dropdown-item-sdl"
+         clickOnEnterKeydown (click)="onSelectEvent(type)">{{type[key]}}</a>
+  </div>
+</div>
+

@@ -1,0 +1,18 @@
+<wizard [maximize]="true"
+        [registry]="registry"
+        [model]="model"
+        [delayLoad]="true"
+        [textBackToTarget]="textBackToTarget"
+        [showOverallSummary]="showOverallSummary"
+        (startPagesEvent)="onStartPages($event)"
+        (beforeCancelEvent)="onWizardBeforeCancel($event)"
+        (cancelEvent)="onWizardCancel()"
+        (submitEvent)="onWizardSubmit($event)">
+</wizard>
+<ng-template #starterDesc>
+  <label>{{'wizard.report.textDesc1' | translate}}<span class="keyword">{{'wizard.report.textDesc2' | translate}}</span>.
+    <i class="bidi-status-info"></i>
+    <br>{{'wizard.report.textDesc3' | translate}}<span class="keyword">{{'wizard.report.textDesc4' | translate}}</span>
+    {{'wizard.report.textDesc5' | translate}}
+  </label>
+</ng-template>

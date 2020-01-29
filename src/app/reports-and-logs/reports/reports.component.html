@@ -1,0 +1,48 @@
+<div [ngClass]="{ masked: isLoading }" style="position: relative">
+  <dynamic-tabset [hidden]="isReportViever" [tabs]="tabs"></dynamic-tabset>
+
+  <div [hidden]="isReportViever">
+    <ng-template #reports>
+      <ba-card>
+        <reports-table
+          #reportsTable
+          (onRunReport)="onRunReport($event)"
+          (onCreateOrUpdateCustomReport)="onCreateOrUpdateCustomReport($event)"
+          (onScheduleReport)="onScheduleReport($event)"
+          (reportsLoad)="onReportsLoad($event)"
+          [categories]="categories"
+        ></reports-table>
+      </ba-card>
+    </ng-template>
+    <ng-template #customReports>
+      <ba-card>
+        <reports-table
+          #customReportsTable
+          (onRunReport)="onRunReport($event)"
+          (onCreateOrUpdateCustomReport)="onCreateOrUpdateCustomReport($event)"
+          [isCustomReports]="true"
+          [categories]="categories"
+        ></reports-table>
+      </ba-card>
+    </ng-template>
+  </div>
+
+  <ng-container *ngIf="isReportViever">
+    <div class="back-to-btn">
+      <div (click)="onBackBtnClick()">
+        <button class="ion-chevron-left" [title]="'wizard.textBackTo' | translate"></button>
+        <label class="back-to-btn-text" translate>{{ 'wizard.textBackTo' }}</label>
+        <label class="back-to-btn-target" translate>{{ 'reports.textReports' }}</label>
+      </div>
+    </div>
+    <ba-card
+      baCardClass="dark-card"
+      title="{{ reportInstance && reportInstanceDisplayName }}"
+      [ngClass]="{ hidden: !reportInstance }"
+    >
+      <div class="card-block">
+        <report-viewer [instance]="reportInstance"></report-viewer>
+      </div>
+    </ba-card>
+  </ng-container>
+</div>

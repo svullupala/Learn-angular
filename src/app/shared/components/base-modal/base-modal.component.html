@@ -1,0 +1,33 @@
+<div bsModal #modal="bs-modal" class="modal fade" (keydown.esc)="onAbort()"
+     [config]="{backdrop: 'static', keyboard : false}" tabindex="-1" role="dialog"
+     aria-hidden="true">
+  <div class="modal-dialog">
+    <div cdkTrapFocus class="modal-content">
+      <button cdkFocusRegionStart class="close" (click)="onAbort()" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <div class="modal-header">
+        <label class="modal-title">{{title}}</label>
+        <hr class="modal-hr-sdl">
+      </div>
+      <div class="modal-body">
+        <ng-content></ng-content>
+      </div>
+      <div class="modal-footer" *ngIf="enableButtons">
+       <confirm-toolbar-component
+       [splitButtons]="splitButtons"
+       (cancelEvent)="onCancelEvent()"
+       (confirmEvent)="onSaveEvent()"
+       [confirmText]="confirmBtnText"
+       [cancelText]="cancelBtnText"
+       [largeBtn]="largeBtn"
+       [disableConfirmButton]="disableConfirmButton"
+       [disableCancelButton]="disableCancelButton"
+       [hideConfirmButton]="hideConfirmButton"
+       [hideCancelButton]="hideCancelButton"
+       [floatRight]="floatRight"
+       ></confirm-toolbar-component>
+      </div>
+    </div>
+  </div>
+</div>

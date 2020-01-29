@@ -1,0 +1,11 @@
+@import "~normalize.css";
+@import "~ngx-bootstrap/datepicker/bs-datepicker";
+@import "theme/theme";
+
+// z-index guidelines 
+// Base (all items) =>  0-100 (most items should be at 0 or auto)
+// Menus, dropdowns, user interaction items => 101-200
+// Pop-ups/modals => 201-300
+// Error high priority items that should never be hidden => 301-400
+
+

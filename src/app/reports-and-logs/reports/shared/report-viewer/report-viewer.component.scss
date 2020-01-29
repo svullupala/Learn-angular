@@ -1,0 +1,15 @@
+.viewer {
+  width: 100%;
+  background-color: white;
+  .btn-toolbar {
+    float: right;
+    background-color: transparent;
+  }
+  .report {
+    width: 100%;
+    height: 1000px;
+    overflow: auto;
+    background-color: white;
+  }
+}
+

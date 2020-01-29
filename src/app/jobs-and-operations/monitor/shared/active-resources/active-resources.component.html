@@ -1,0 +1,9 @@
+<ba-card>
+  <ba-card baCardClass="dark-card" title="{{'hypervisor.textActiveClonesApplication' | translate}}">
+    <clone-table [serviceIds]="jobServiceIdsApplication" [enableApplicationServerColumn]="true" [tableType]="'application'"
+               [enableMountPointColumn]="true"></clone-table>
+  </ba-card>
+  <ba-card baCardClass="dark-card" title="{{'hypervisor.textActiveClonesHypervisor' | translate}}">
+    <clone-table [serviceIds]="jobServiceIdsHypervisor"></clone-table>
+  </ba-card>
+</ba-card>

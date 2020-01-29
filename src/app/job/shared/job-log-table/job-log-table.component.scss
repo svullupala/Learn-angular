@@ -1,0 +1,58 @@
+.green-text {
+  color: #2ecc00;
+}
+
+.yellow-text {
+  color: #ffdc00;
+}
+
+.red-text {
+  color: #E62325;
+}
+
+.large-text {
+  font-size: 24px;
+}
+
+.align-center {
+  text-align: center;
+}
+
+.align-right {
+  text-align: right;
+}
+
+.log-type-col {
+  width: 50px;
+}
+
+.paging-toolbar /deep/ .label {
+  display: inline !important;
+}
+
+table {
+  border: none;
+  > thead > tr {
+    border: none;
+    background-color: transparent;
+    > th {
+      border: none;
+    }
+  }
+}
+tr > td > div > span {
+  margin-left: 15px;
+}
+
+.full-height {
+  height: 100%;
+}
+
+.scroll-container {
+  height: calc(100% - 2rem);
+  overflow-y: auto;
+}
+
+.bidi-status-normal {
+  background: none;
+}

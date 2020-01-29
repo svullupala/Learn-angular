@@ -1,0 +1,36 @@
+<ba-checkbox [(ngModel)]="model.overwriteExistingFolderFile" [baCheckboxClass]="'enabled'"
+             [label]="'fileRestore.textOverwriteExistingFilesFolder' | translate"
+             [disabled]="false"></ba-checkbox>
+<br>
+<h6 translate>{{'fileRestore.textDestination'}}</h6>
+<ba-card>
+  <div>
+    <label class="radio-inline custom-radio nowrap">
+      <input #prevFocusEl type="radio" name="inlineRadioDestination" checked [value]="true" [(ngModel)]="model.restoreFileToOriginal">
+      <span translate>{{'fileRestore.textRestoreFileToOriginalLocation'}}</span>
+    </label>
+  </div>
+  <div>
+    <label class="radio-inline custom-radio nowrap">
+      <input type="radio" name="inlineRadioDestination" [value]="false" [(ngModel)]="model.restoreFileToOriginal">
+      <span translate>{{'fileRestore.textRestoreFileToAlternativeLocation'}}</span>
+    </label>
+  </div>
+  <div disableKeyboard [on]="model.restoreFileToOriginal" [direction]="tabDirection"
+       [prevFocusEl]="prevFocusEl" [nextFocusEl]="nextFocusEl"
+       class="destination-vm" [ngClass]="{'disabled': model.restoreFileToOriginal}">
+    <vm-search-select (vmSelect)="onVmSelect($event)" (vmDeselect)="onVmDeselect($event)"
+                      [selectMode]="1" [browse]="true" [hideSelectedArea]="true"
+                      [hideLabelArea]="true" [hypervisorType]="hypervisorType || ''">
+    </vm-search-select>
+  </div>
+  <div disableKeyboard [on]="model.restoreFileToOriginal" [direction]="tabDirection"
+       [prevFocusEl]="prevFocusEl" [nextFocusEl]="nextFocusEl"
+       class="target-path" [ngClass]="{'disabled': model.restoreFileToOriginal}">
+    <label class="control-label">
+      <span translate>{{'fileRestore.textDestinationFolder'}}</span>
+    </label>
+    <input [attr.aria-label]="'fileRestore.textTargetPathInVM' | translate"
+           class="control-control" type="text" [(ngModel)]="model.targetPath" placeholder="{{'fileRestore.textTargetPathInVM' | translate}}">
+  </div>
+</ba-card>

@@ -1,0 +1,73 @@
+.hv-run-settings-info {
+  display: flex;
+  justify-content: space-between;
+}
+
+.hv-run-settings-tabs {
+  margin-top: 2rem;
+}
+
+.hv-run-settings-input {
+  display: flex;
+  align-items: center;
+  margin-bottom: 18px;
+
+  .number-value {
+    width: 5rem;
+  }
+
+  label {
+    margin-bottom: 0;
+  }
+}
+
+.hv-run-settings-textarea {
+  textarea {
+    max-width: 380px;
+  }
+
+  .control-label {
+    margin: 18px 0;
+  }
+}
+
+.hv-run-settings-actions {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 16px 2rem;
+  width: 100%;
+  background-color: #f9f9f9;
+
+  &--disabled {
+    pointer-events: none;
+    opacity: 0.7;
+  }
+}
+
+:host {
+  ::ng-deep radio-selection .radio-selection-wrapper {
+    max-width: 700px;
+  }
+
+  ::ng-deep scroll-tabset .scroll-tabset-content {
+    max-height: calc(100vh - 450px);
+  }
+
+  .masked {
+    display: block;
+  }
+}
+
+.icon-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .icon-resource {
+    margin-right: 6px
+  }
+}

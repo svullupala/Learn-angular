@@ -1,0 +1,30 @@
+<div class="manage-table-container" [ngClass]="{'masked': masked}">
+  <div class="manage-table-height">
+    <table class="fixed">
+      <thead>
+      <tr>
+        <th class="action-icon-column"></th>
+        <th class="normal-col" translate>{{'catalog.textName'}}</th>
+        <th class="normal-col" translate>{{'catalog.textLocation'}}</th>
+        <th class="normal-col" translate>{{'catalog.textType'}}</th>
+      </tr>
+      </thead>
+      <tbody>
+      <ng-template let-item ngFor [ngForOf]="model.records | paging: model.json()">
+        <tr>
+          <td class="action-icon-format">
+            <i *ngIf="item.hasLink('deletefromcatalog')" (click)="onDeleteFromCatalogAction(item)" class="ion-close-round" ></i>
+          </td>
+          <td class="normal-col">{{item.name}}</td>
+          <td class="normal-col">{{item.locationString}}</td>
+					<td class="normal-col">{{item.typeString}}</td>
+        </tr>
+      </ng-template>
+      </tbody>
+    </table>
+  </div>
+  <paging-toolbar [model]="model" [noPageNumber]="true"
+                  [hideRefreshButton]="true"
+                  (startGoPage)="mask()" (refresh)="onRefresh()"
+                  (pageChange)="onPageChange($event)"></paging-toolbar>
+</div>

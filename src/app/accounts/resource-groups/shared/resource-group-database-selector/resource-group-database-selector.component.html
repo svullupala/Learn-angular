@@ -1,0 +1,48 @@
+<div class="space-top-10">
+  <div class="row">
+    <div class="col-lg-6">
+      <div>
+        <label class="control-label" translate>{{'resourceGroups.textChooseADatabase'}}</label>
+      </div>
+      <select class="form-control" [(ngModel)]="applicationType" (change)="loadDataResetView()">
+        <option value="db2" translate>{{ 'application.textDb2' }}</option>
+        <option value="exch" translate>{{ 'application.textExchange' }}</option>
+        <option value="mongo" translate>{{ 'application.textMongoDb' }}</option>
+        <option value="oracle" translate>{{ 'application.textOracle' }}</option>
+        <option value="sql" translate>{{ 'application.textSql' }}</option>
+        <option value="office365" translate>{{ 'application.textExchangeOnline' }}</option>
+      </select>
+    </div>
+    <div class="col-lg-6" [hidden]="!isViewSupported()">
+      <div>
+        <label class="control-label" translate>{{'resourceGroups.textChooseAViewType'}}</label>
+      </div>
+      <select class="form-control" [(ngModel)]="typeView" (change)="loadData()">
+        <option value="applicationview" translate>{{'application.standaloneText'}}</option>
+        <option [hidden]="!isSql()" value="databasegroupview" translate>{{'application.alwaysonText'}}</option>
+        <option [hidden]="!isExch()" value="databasegroupview" translate>{{'application.textDatabaseAvailGroups'}}</option>
+      </select>
+    </div>
+  </div>
+  <div [hidden]="applicationType === undefined">
+    <resource-selector-component
+      [records]="records"
+      [dataset]="dataset"
+      [masked]="masked"
+      [breadcrumbs]="breadcrumbs"
+      [hideBreadcrumbs]="searchResultView"
+      [hideAllButton]="!isFirstLevel()"
+      [addAllItem]="addAllItem"
+      [resourceType]="'resourceGroups.textApplication' | translate"
+      [ignoreBreadCrumb]="true"
+      (onBreadcrumbClickEvent)="onBreadcrumbClick($event)"
+      [view]="view"
+      [paginateConfig]="paginateConfig"
+      [applicationType]="applicationTypeText"
+      (navigateEvent)="navigate($event)"
+      (onPageChangeEvent)="onRefresh()"
+      (onRefreshEvent)="onRefresh()"
+      (onSearchEvent)="onSearch($event)"
+    ></resource-selector-component>
+  </div>
+</div>

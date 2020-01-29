@@ -1,0 +1,233 @@
+@import "../../sass/conf/conf";
+
+:host.masked {
+  display: block;
+}
+
+.card-image {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  min-width: 294px;
+  max-width: 294px;
+  min-height: 130px;
+  max-height: 130px;
+  margin-left: -1.5px;
+  margin-top: -1.5px;
+  border-radius: 2px 2px 0px 0px;
+  border-color: transparent;
+  border-left-style: solid;
+  border-right-style: solid;
+  border-top-style: solid;
+  border-width: 1.5px;
+  background-color: white;
+}
+
+.body-title-icon {
+  width: 20px;
+  height: 20px;
+  margin-left: 0px;
+  margin-right: 10px;
+  margin-bottom: 4px;
+}
+
+.card-link {
+  color: $hyperlink-color;
+  cursor: pointer;
+  text-decoration: off;
+  padding-bottom: 2px;
+  &.maybe-long-text {
+    white-space: nowrap;
+  }
+  > i {
+    &:not(.maybe-long-text) {
+      margin-left: 8px;
+    }
+    &.maybe-long-text.offset {
+      margin-left: 8px;
+    }
+    margin-bottom: 4px;
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.body-title {
+  margin-bottom: 10px;
+}
+
+.transparent-card {
+  @include scrollbars(.4em, rgba(0, 0, 0, 0.6), rgba(255, 255, 255, 0.7));
+  width: 100%;
+  max-width: 304px;
+  min-width: 304px;
+  max-height: 293px;
+  min-height: 293px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: $card-transparent-background;
+
+  span.card-link {
+    color: $card-transparent-link;
+    font-size: 14px;
+    margin-left: 0px;
+    &:hover {
+      cursor: pointer;
+      border-bottom-style: solid;
+      border-width: 0.5px;
+    }
+  }
+
+  h2.sdl-header.body-title {
+    color: $card-transparent-title;
+    margin-left: -14px
+  }
+
+  div.card-body {
+    padding: 1rem;
+  }
+
+  > .card-header {
+    background-color: $normal-header-bg;
+    border-radius: 0 !important;
+    padding: 1rem 2rem;
+    height: auto;
+    h2.card-title {
+      color: $label-text;
+      font-size: 1.125rem;
+      font-weight: bold;
+      line-height: 1.5rem;
+      margin: 0;
+    }
+  }
+  &.medium-card {
+    height: $medium-card-height;
+  }
+  &.viewport100-210 {
+    height: calc(100vh - 210px);
+  }
+  &.viewport100 {
+    height: calc(100vh - 240px);
+  }
+  &.no-border {
+    border: none;
+  }
+  &.with-scroll {
+    overflow-y: auto;
+    .card-body {
+      height: 100%;
+    }
+  }
+}
+
+.card {
+  &.midnight-card {
+    border: transparent;
+    border-style: solid;
+    border-width: 1.5px;
+    border-radius: 2px;
+    &:hover {
+      border-color: $card-midnight-link;
+      border-style: solid;
+      border-width: 1.5px;
+      border-radius: 2px;
+      cursor: pointer;
+      span.card-link {
+        border-bottom-style: solid;
+        border-width: 0.5px;
+      }
+
+      .card-image {
+        border-color: $card-midnight-link;
+        border-left-style: solid;
+        border-right-style: solid;
+        border-top-style: solid;
+        border-width: 1.5px;
+      }
+    }
+  }
+}
+
+.dashboard-card {
+  margin: 0px;
+  &.four-col {
+    width: 368px;
+    height: 265px;
+  }
+
+  &.eight-col {
+    width: 752px;
+    height: 265px;
+  }
+
+  div.card-body {
+    height: 265px;
+    padding: 1rem;
+  }
+}
+
+.midnight-card {
+  @include scrollbars(.4em, rgba(0, 0, 0, 0.6), rgba(255, 255, 255, 0.7));
+  width: 100%;
+  max-width: 294px;
+  min-width: 294px;
+  max-height: 300px;
+  min-height: 300px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: $card-midnight-background;
+
+  span.card-link {
+    color: $card-midnight-link;
+    font-size: 14px;
+  }
+
+  p {
+    position: absolute;
+    bottom: -8px;
+    left: 15px;
+  }
+
+  h2.sdl-header.body-title {
+    color: $card-midnight-title;
+    margin-bottom: 2px;
+  }
+
+  div.card-body {
+    padding: 1rem;
+  }
+
+  > .card-header {
+    background-color: $normal-header-bg;
+    border-radius: 0 !important;
+    padding: 1rem 2rem;
+    height: auto;
+    h2.card-title {
+      color: $label-text;
+      font-size: 1.125rem;
+      font-weight: bold;
+      line-height: 1.5rem;
+      margin: 0;
+    }
+  }
+  &.medium-card {
+    height: $medium-card-height;
+  }
+  &.viewport100-210 {
+    height: calc(100vh - 210px);
+  }
+  &.viewport100 {
+    height: calc(100vh - 240px);
+  }
+  &.no-border {
+    border: none;
+  }
+  &.with-scroll {
+    overflow-y: auto;
+    .card-body {
+      height: 100%;
+    }
+  }
+}
+

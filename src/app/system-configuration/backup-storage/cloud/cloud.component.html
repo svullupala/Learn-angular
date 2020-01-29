@@ -1,0 +1,19 @@
+<ba-card baCardClass="dark-card" title="{{'cloud.textCloudServers' | translate}}" [hidden]="addCloud">
+  <div class="align-right margin-bottom-10">
+    <button class="sdl inline with-icon" [ngClass]="{'disabled': !canCreate()}"
+            [disabled]="!canCreate()" (click)="onAddCloudClick()" translate>
+      <i class="bidi-add-new-white_16"></i>{{'cloud.textAddCloud'}}
+    </button>
+  </div>
+  <cloud-table (editCloudEvent)="onEditCloudClick($event)"></cloud-table>
+</ba-card>
+<cloud-registration [hideRegistration]="!addCloud" (onSuccessfulRegister)="onSuccessfulRegister()"></cloud-registration>
+<confirm-toolbar-component
+  [confirmText]="editMode ? ('common.updateText' | translate) : ('common.textRegister' | translate)"
+  (confirmEvent)="onRegisterCloudProvider()"
+  [disableConfirmButton]="!canRegister()"
+  (cancelEvent)="onCancelClick()"
+  [splitButtons]="true"
+  [hideConfirmButton]="!addCloud"
+  [hideCancelButton]="!addCloud"
+></confirm-toolbar-component>

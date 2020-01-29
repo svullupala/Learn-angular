@@ -1,0 +1,120 @@
+<div style="padding-left: 2rem;" *ngIf="storageItem != null">
+  <form class="form-horizontal" [formGroup]="form">
+    <div class="form-group row" *ngIf="!showField">
+      <label class="col-sm-4 control-label" translate>{{
+        "storage.activeDirectory.textWorkgroup"
+      }}</label>
+      <label class="col-sm-8 control-label ad-val-col">{{
+        storageItem.activeDirectoryInfo.workgroup
+      }}</label>
+    </div>
+    <div class="form-group row" *ngIf="!showField">
+      <label class="col-sm-4 control-label" translate>{{
+        "storage.activeDirectory.textQualifiedDomainNamevSnap"
+      }}</label>
+      <label class="col-sm-8 control-label ad-val-col">{{
+        storageItem.activeDirectoryInfo.domain
+      }}</label>
+    </div>
+    <div
+      *ngIf="showField"
+      [ngClass]="{
+        'has-error':
+          !qualifiedDomainNamevSnap.valid && qualifiedDomainNamevSnap.touched,
+        'has-success':
+          qualifiedDomainNamevSnap.valid && qualifiedDomainNamevSnap.touched
+      }"
+      class="form-group row"
+    >
+      <label class="col-sm-4 control-label" translate>{{
+        "storage.activeDirectory.textQualifiedDomainNamevSnap"
+      }}</label>
+      <div class="col-sm-8 input-col ad-val-col">
+        <input
+          [formControl]="qualifiedDomainNamevSnap"
+          sdlTooltip
+          [mode]="'critical'"
+          [isDisabled]="
+            (qualifiedDomainNamevSnap.valid &&
+              qualifiedDomainNamevSnap.touched) ||
+            qualifiedDomainNamevSnap.untouched
+          "
+          [placement]="'right'"
+          [sdlTooltip]="'common.textRequiredFieldSuggestion' | translate"
+          [placeholder]="
+            'storage.activeDirectory.textQualifiedDomainNamePlaceholder'
+              | translate
+          "
+          type="text"
+          class="form-control"
+        />
+      </div>
+    </div>
+    <div
+      class="form-group row"
+      [ngClass]="{
+        'has-error':
+          !activeDirectoryServerUsername.valid &&
+          activeDirectoryServerUsername.touched,
+        'has-success':
+          activeDirectoryServerUsername.valid &&
+          activeDirectoryServerUsername.touched
+      }"
+    >
+      <label class="col-sm-4 control-label" translate
+        >{{ "storage.activeDirectory.textActiveDirectoryServerUsername" }}
+      </label>
+      <div class="col-sm-8 input-col ad-val-col">
+        <input
+          [formControl]="activeDirectoryServerUsername"
+          sdlTooltip
+          [mode]="'critical'"
+          [isDisabled]="
+            (activeDirectoryServerUsername.valid &&
+              activeDirectoryServerUsername.touched) ||
+            activeDirectoryServerUsername.untouched
+          "
+          [placement]="'right'"
+          [sdlTooltip]="'common.textRequiredFieldSuggestion' | translate"
+          [placeholder]="
+            'storage.activeDirectory.textActiveDirectoryServerUsernamePlaceholder'
+              | translate
+          "
+          type="text"
+          class="form-control"
+        />
+      </div>
+    </div>
+    <div
+      class="form-group row"
+      [ngClass]="{
+        'has-error':
+          !activeDirectoryServerPassword.valid &&
+          activeDirectoryServerPassword.touched,
+        'has-success':
+          activeDirectoryServerPassword.valid &&
+          activeDirectoryServerPassword.touched
+      }"
+    >
+      <label class="col-sm-4 control-label" translate
+        >{{ "storage.activeDirectory.textActiveDirectoryServerPassword" }}
+      </label>
+      <div class="col-sm-8 input-col ad-val-col">
+        <input
+          [formControl]="activeDirectoryServerPassword"
+          sdlTooltip
+          [mode]="'critical'"
+          [isDisabled]="
+            (activeDirectoryServerPassword.valid &&
+              activeDirectoryServerPassword.touched) ||
+            activeDirectoryServerPassword.untouched
+          "
+          [placement]="'right'"
+          [sdlTooltip]="'common.textRequiredFieldSuggestion' | translate"
+          type="password"
+          class="form-control"
+        />
+      </div>
+    </div>
+  </form>
+</div>

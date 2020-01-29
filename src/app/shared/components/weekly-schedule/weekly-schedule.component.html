@@ -1,0 +1,57 @@
+<div class="weekly-schedule">
+  <div class="time-axis-icon no-scroll" [ngStyle]="iconAxisStyle()">
+    <ng-template let-iconTick ngFor [ngForOf]="iconTicks">
+      <div class="time-axis-icon-tick" [ngStyle]="iconTickStyle(iconTick)">
+        <i [ngClass]="iconTick.icon"></i>
+      </div>
+    </ng-template>
+  </div>
+  <div class="time-axis-x side-by-side-wrapper no-scroll" [ngStyle]="xAxisStyle()">
+    <ng-template let-tick ngFor [ngForOf]="xAxisTicks">
+      <div class="time-axis-x-tick">
+        <label [title]="xTickTitle(tick)" [ngStyle]="xAxisTickLabelStyle(tick)">{{xTickFormat(tick)}}</label>
+      </div>
+    </ng-template>
+  </div>
+  <div class="side-by-side-wrapper">
+    <div class="chart">
+      <table #canvas class="canvas" onselectstart="return false;">
+        <thead>
+        <tr>
+          <th class="operable">
+            <button (click)="onAllClick()" translate>{{'application.textAll'}}</button>
+          </th>
+          <ng-template let-col ngFor [ngForOf]="cellCols">
+            <th class="cell-col" tabindex="0" clickOnEnterKeydown (click)="onColClick(col)">
+            </th>
+          </ng-template>
+        </tr>
+        </thead>
+        <tbody>
+        <ng-template let-item ngFor [ngForOf]="schedule">
+          <tr class="cell-row">
+            <td class="operable">
+              <button (click)="onDayClick(item)">{{item.title}}</button>
+            </td>
+            <ng-template let-cell ngFor [ngForOf]="item.cells">
+              <td class="cell" tabindex="0" clickOnEnterKeydown (click)="onCellClick(item, cell, $event)" [ngStyle]="cellStyle(cell)">
+              </td>
+            </ng-template>
+          </tr>
+        </ng-template>
+        </tbody>
+      </table>
+      <div *ngIf="!hideSummary" class="summary">
+        {{summary}}
+      </div>
+    </div>
+    <div class="legends">
+      <div class="legend">
+        <div class="enable"></div>
+        <label translate>{{'application.textEnabled'}}</label></div>
+      <div class="legend">
+        <div class="disable"></div>
+        <label translate>{{'application.textDisabled'}}</label></div>
+    </div>
+  </div>
+</div>

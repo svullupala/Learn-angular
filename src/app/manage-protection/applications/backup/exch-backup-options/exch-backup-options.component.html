@@ -1,0 +1,42 @@
+<div class="checkbox">
+  <label class="custom-checkbox" translate>
+    <input type="checkbox" [(ngModel)]="enableLogBackup" [disabled]="!logBackupValid">
+    <span>{{'application.textEnableLogbackup' | translate }}</span>
+  </label>
+</div>
+<ba-card [hidden]="!enableLogBackup">
+  <div class="form-group row">
+    <label class="control-label col-sm-3 line-height-30" translate>{{'application.textLogbackupFrequency'}}</label>
+    <div class="col-sm-9">
+      <define-schedule [hideMonthlyType]="true"
+                       [enableMinMax]="true"
+                       [hideLabel]="true"
+                       [hideStartTime]="true"
+                       [hideStartHourAndMinute] = "false"
+                       [defaultType] = "'SUBHOURLY'"
+                       [defaultFrequency] = '30'
+                       [startTimeLabelMarginClass]="'space-right-12'"
+                       [hideWeeklyType]="true"></define-schedule>
+    </div>
+  </div>
+</ba-card>
+<br [hidden]="enableLogBackup">
+<br [hidden]="enableLogBackup">
+<div class="form-group row">
+  <label for="maxParallelStreams" class="col-sm-3 control-label line-height-30" translate>
+    {{'application.textMaxParallelStreams'}}
+  </label>
+  <div class="col-sm-2">
+    <input type="number" min="1" style="margin-left: 15px;" class="form-control" id="maxParallelStreams"
+           [(ngModel)]="model.maxParallelStreams">
+  </div>
+</div>
+<div class="form-group row" *ngIf="showNodeSelection()">
+  <label class="col-sm-3 control-label" translate>{{'application.textBackupPreferredNode'}}</label>
+  <div class="col-sm-3">
+    <select class="custom-select form-control" [(ngModel)]="model.backupPreferredNode">
+      <option [ngValue]="''" translate>{{'application.textSelectBackupPreferredNode'}}</option>
+      <option *ngFor="let vm of appServerVms" [ngValue]="vm.url">{{ vm.appServerName }}</option>
+    </select>
+  </div>
+</div>

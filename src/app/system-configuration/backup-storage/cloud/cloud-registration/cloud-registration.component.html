@@ -1,0 +1,101 @@
+<div class="space-top-10"
+     [hidden]="hideRegistration"
+     [ngClass]="{'masked': maskedContainer}" #cloudcontainer>
+  <ba-card baCardClass="dark-card viewport100 with-scroll" title="{{(editMode ? 'cloud.textUpdateCloud' : 'cloud.textCloudReg') | translate }}">
+    <div class="form-horizontal">
+      <div class="form-group row">
+        <label class="col-sm-3 control-label" translate>{{cloudParam && cloudParam.promptText}}</label>
+        <div class="col-sm-4">
+         <select class="form-control" [attr.aria-label]="cloudParam && cloudParam.promptText" (change)="onProviderChange()"
+                 [(ngModel)]="selectedCloudType" [disabled]="editMode">
+          <option *ngFor="let type of cloudTypes" [hidden]="type.value === 'sp'" [ngValue]="type.value">{{type.name}}</option>
+         </select>
+        </div>
+      </div>
+      <cloud-schema (formValueChangesEvent)="handleSchemaValueChanges($event)" [model]="selectedCloudSchema"
+        [credentialWarningText]="'cloud.textHMACWarning' | translate"
+        [hiddenParams]="['accessKey', 'enableDeepArchive']"
+        [isAzure]="selectedCloudType === 'azure'"></cloud-schema>
+      <div [hidden]="!selectedCloudType || isCertificateSupport(selectedCloudType)">
+        <div [hidden]="!selectedCloudType || isCertificateSupport(selectedCloudType)">
+          <cloud-certificate-selector [clsOfLabelCol]="'col-sm-3'"
+                                      [type]="selectedCloudType"></cloud-certificate-selector>
+        </div>
+      </div>
+      <div class="form-group row" [hidden]="buckets === undefined">
+        <label class="col-sm-3 control-label" translate>{{editMode && isBucketPopulated ? 'cloud.textSelectedOffloadBucket' : 'cloud.textSelectOffloadBucket'}}</label>
+         <div class="col-sm-4"
+              placement="right" [hidden]="editMode && isBucketPopulated"
+              [sdlTooltip]="'cloud.textNoBuckets' | translate"
+              mode="warning"
+              [isDisabled]="hasBuckets">
+          <select
+            class="form-control"
+            [attr.aria-label]="(editMode && isBucketPopulated ? 'cloud.textSelectedOffloadBucket' : 'cloud.textSelectOffloadBucket') | translate"
+            [(ngModel)]="selectedBucket"
+            (click)="handleClickSelect()" (change)="onClickingOffloadOption($event)">
+            <option hidden [ngValue]="undefined"></option>
+            <option *ngFor="let bucket of buckets" [ngValue]="bucket">{{bucket.name}}</option>
+          </select>
+        </div>
+        <div class="col-sm-4" [hidden]="!editMode || !isBucketPopulated">
+          <label class="control-label" translate>{{ selectedBucket && selectedBucket.name }}</label>
+        </div>
+        <div class="col-sm-5" [hidden]="!(isProvider('aws') || isProvider('cos')) || (editMode && isBucketPopulated)">
+          <i class="bidi-status-warning"></i>
+          <label class="offsetleft" translate>{{'cloud.textLifecycleBucketWarning'}}</label>
+        </div>
+      </div>
+      <div class="form-group row" [hidden]="buckets === undefined">
+        <label class="col-sm-3 control-label" translate>{{editMode && isArchiveBucketPopulated ? 'cloud.textSelectedArchiveBucket' : 'cloud.textSelectArchiveBucket'}}</label>
+         <div class="col-sm-4" [hidden]="editMode && isArchiveBucketPopulated"
+              placement="right"
+              [sdlTooltip]="'cloud.textNoBuckets' | translate"
+              mode="warning"
+              [isDisabled]="hasBuckets">
+          <select class="form-control"
+              [attr.aria-label]="(editMode && isArchiveBucketPopulated? 'cloud.textSelectedArchiveBucket' : 'cloud.textSelectArchiveBucket') | translate"
+              [(ngModel)]="selectedArchiveBucket"
+              (click)="handleClickSelect()" (change)="onClickingArchiveOption($event)"
+            >
+            <option hidden [ngValue]="undefined"></option>
+            <option *ngFor="let archiveBucket of buckets" [ngValue]="archiveBucket">{{archiveBucket.name}}</option>
+          </select>
+        </div>
+        <div class="col-sm-4" [hidden]="!editMode || !isArchiveBucketPopulated">
+          <label class="control-label" translate>{{ selectedArchiveBucket && selectedArchiveBucket.name }}</label>
+        </div>
+        <div class="col-sm-5" [hidden]="!(isProvider('aws') || isProvider('cos')) || (editMode && isArchiveBucketPopulated)">
+          <i class="bidi-status-warning"></i>
+          <label class="offsetleft" translate>{{'cloud.textLifecycleBucketWarning'}}</label>
+        </div>
+      </div>
+      <div class="form-group row" [hidden]="editMode || buckets === undefined || selectedBucket || selectedArchiveBucket">
+        <div class="col-sm-3"></div>
+        <div class="col-sm-10">
+          <label class="offsetleft" translate>{{'cloud.textSelectBucketMessage'}}</label>
+        </div>
+      </div>
+    </div>
+    <div class="form-group row" *ngIf="getParamSchema('enableDeepArchive') !== undefined && isArchiveBucketPopulated">
+      <label class="col-sm-3 control-label">{{getParamSchema('enableDeepArchive').promptText}}</label>
+      <div class="col-sm-4">
+        <label class="custom-checkbox">
+          <input [(ngModel)]="getParamSchema('enableDeepArchive').value" type="checkbox">
+          <span></span>
+        </label>
+      </div>
+    </div>      
+    <button class="sdl inline" [ngClass]="{'disabled': !isValidForConnection()}"
+            *ngIf="!editMode"
+            [hidden]="selectedCloudSchema === undefined"
+            [disabled]="!isValidForConnection()" type="button" translate (click)="getBuckets()">
+      {{'cloud.textGetBucket'}}
+    </button>
+    <button class="sdl inline"
+            [hidden]="!editMode || (isArchiveBucketPopulated && isBucketPopulated)"
+             type="button" translate (click)="getBuckets()">
+      {{'cloud.textGetBucket'}}
+    </button>
+  </ba-card>
+</div>

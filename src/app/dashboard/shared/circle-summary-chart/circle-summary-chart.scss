@@ -1,0 +1,123 @@
+@import '../../../theme/sass/conf/conf';
+
+$Cerulean70: #1c496d;
+
+.status-item {
+  display: inline-block;
+  width: auto;
+  min-width: 130px;
+  height: 80px;
+  color: $default-text;
+  vertical-align: baseline;
+  text-align: left;
+  border-radius: 4px;
+  text-shadow: none;
+  line-height: 16px;
+  background-color: transparent;
+  border: 2px solid $cool-gray10;
+  .value-area {
+    height: 50%;
+    width: auto;
+    display: flex;
+    justify-content: left;
+    margin-left: 16px;
+    margin-right: 8px;
+    label {
+      height: 2.25rem;
+      line-height: 3rem;
+      font-size: 2rem; //36px
+      font-weight: bold;
+      color: $Cerulean70;
+      margin-bottom: 0;
+      white-space: nowrap;
+    }
+    label.medium {
+      height: 1.5rem;
+      line-height: 1.5rem;
+      font-size: 1.5rem;
+      font-weight: normal;
+      margin-top: 15px;
+    }
+    label.thin {
+      height: 14px;
+      line-height: 14px;
+      font-size: 14px;
+      font-weight: normal;
+      margin-top: 8px;
+    }
+  }
+  .label-area,
+  .sublabel-area {
+    text-align: left;
+    margin-left: 16px;
+    margin-right: 5px;
+    display: flex;
+    justify-content: left;
+    label {
+      font-size: 0.7rem;
+      line-height: 0.75rem;
+      color: $gray70;
+      &.wrap-label {
+        white-space: pre-wrap;
+      }
+    }
+  }
+  .label-area {
+    margin-top: 0.75rem;
+  }
+  .top-label-area {
+    text-align: left;
+    margin-bottom: 0;
+    label {
+      margin: 0;
+    }
+  }
+
+  .left-label-area {
+    text-align: left;
+    margin-left: 5px;
+    margin-top: 25px;
+    display: flex;
+    justify-content: left;
+    label {
+      font-size: 0.75rem;
+      line-height: 0.75rem;
+      color: $gray70;
+      &.wrap-label {
+        white-space: pre-wrap;
+      }
+    }
+  }
+
+  .sublabel-area {
+    margin-top: 0;
+  }
+}
+
+.bidi-icon {
+  display: inline-block;
+  background-size: contain !important;
+  vertical-align: middle;
+  width: 16px;
+  height: 16px;
+}
+
+.bidi-failed-disabled {
+  @extend .bidi-icon;
+  background: url('../../../../assets/img/app/branding/ibm/status/failed-disabled.svg') no-repeat center;
+}
+
+.bidi-warning-disabled {
+  @extend .bidi-icon;
+  background: url('../../../../assets/img/app/branding/ibm/status/warning-disabled.svg') no-repeat center;
+}
+
+.bidi-failed-active {
+  @extend .bidi-icon;
+  background: url('../../../../assets/img/app/branding/ibm/status/failed-active.svg') no-repeat center;
+}
+
+.bidi-warning-active {
+  @extend .bidi-icon;
+  background: url('../../../../assets/img/app/branding/ibm/status/warning-active.svg') no-repeat center;
+}

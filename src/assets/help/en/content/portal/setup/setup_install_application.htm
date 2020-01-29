@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-us" xml:lang="en-us" class="task _Skins_HTML5_topnav_IBMOEM" data-mc-search-type="Stem" data-mc-help-system-file-name="Default.xml" data-mc-path-to-help-system="../../../" data-mc-has-content-body="True" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic;Default" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Setup">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>Install IBM Spectrum Protect Plus as a VMware Virtual Appliance</title>
+        <link rel="icon" href="../../Resources/images/IBM-icon-48.ico" />
+        <link href="../../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Tablet.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Mobile.css" rel="stylesheet" />
+        <link href="../../../Skins/Fluid/stylesheets/foundation.6.2.3.css" rel="stylesheet" />
+        <link href="../../../Skins/Fluid/stylesheets/styles.css" rel="stylesheet" />
+        <link href="../../../Skins/Fluid/stylesheets/tablet.css" rel="stylesheet" />
+        <link href="../../../Skins/Fluid/stylesheets/mobile.css" rel="stylesheet" />
+        <style>/*&lt;meta /&gt;*/
+
+.button.remove-highlight-button
+{
+	-pie-background: url('../../../Skins/Default/Stylesheets/Images/highlight.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.expand-all-button
+{
+	-pie-background: url('../../../Skins/Default/Stylesheets/Images/expand.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.print-button
+{
+	-pie-background: url('../../../Skins/Default/Stylesheets/Images/printer.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.collapse-all-button
+{
+	-pie-background: url('../../../Skins/Default/Stylesheets/Images/collapse.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.needs-pie
+{
+	behavior: url('../../../Resources/Scripts/PIE-no-motw.htc');
+}
+
+</style>
+        <link href="../../resources/stylesheets/styles_topnavi.css" rel="stylesheet" />
+        <script src="../../../Resources/Scripts/custom.modernizr.js">
+        </script>
+        <script src="../../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/require.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/require.config.js">
+        </script>
+        <script src="../../../Resources/Scripts/foundation.6.2.3_custom.js">
+        </script>
+        <script src="../../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div class="foundation-wrap off-canvas-wrapper">
+            <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper="">
+                <aside class="off-canvas position-right" id="offCanvas" data-off-canvas="" data-position="right" data-mc-ignore="true">
+                    <ul class="off-canvas-drilldown vertical menu off-canvas-list" data-drilldown="" data-mc-back-link="Back" data-mc-css-tree-node-expanded="is-drilldown-submenu-parent" data-mc-css-tree-node-collapsed="is-drilldown-submenu-parent" data-mc-css-sub-menu="vertical menu slide-in-right is-drilldown-submenu" data-mc-include-indicator="False" data-mc-include-icon="False" data-mc-include-parent-link="True" data-mc-include-back="True" data-mc-defer-expand-event="True" data-mc-expand-event="click.zf.drilldown" data-mc-toc="True">
+                    </ul>
+                </aside>
+                <div class="off-canvas-content inner-wrap" data-off-canvas-content="">
+                    <div>
+                        <nav class="title-bar tab-bar" data-mc-ignore="true">
+                            <div class="middle title-bar-section outer-row clearfix">
+                                <div class="relative clearfix"><a class="logo" href="../about/about_application_overview.htm" alt="Logo"></a>
+                                    <div class="navigation-wrapper nocontent">
+                                        <ul class="navigation clearfix" data-mc-css-tree-node-has-children="has-children" data-mc-css-sub-menu="sub-menu" data-mc-expand-event="mouseenter" data-mc-top-nav-menu="True" data-mc-max-depth="4" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                                            <li class="placeholder" style="visibility:hidden"><a>placeholder</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <button class="menu-icon" data-toggle="offCanvas"><span></span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="nav-search row outer-row">
+                                <form class="search" action="#">
+                                    <div class="search-bar search-bar-container needs-pie">
+                                        <input class="search-field needs-pie" type="search" placeholder="Search the help system" />
+                                        <div class="search-filter-wrapper">
+                                            <div class="search-filter">
+                                                <div class="search-filter-content">
+                                                    <ul>
+                                                        <li>All Files</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="search-submit-wrapper" dir="ltr">
+                                            <div class="search-submit" title="Search">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </nav>
+                    </div>
+                    <section class="main-section">
+                        <div class="row outer-row" data-mc-content-body="True">
+                            <div class="buttons popup-container clearfix topicToolbarProxy mc-component nocontent" style="margin-left: 0px; float: right; mc-topic-toolbar-items: RemoveHighlight ExpandAll CollapseAll Print;">
+                                <div class="button-group-container-left">
+                                    <button class="button needs-pie remove-highlight-button" title="Remove Highlights">
+                                        <img src="../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="remove highlight" />
+                                    </button>
+                                    <button class="button needs-pie expand-all-button" data-state1-class="expand-all-button" data-state2-class="collapse-all-button" data-state2-title="Collapse all" title="Expand all" data-state1-title="Expand all">
+                                        <img src="../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="expand all" />
+                                    </button>
+                                    <button class="button needs-pie print-button" title="Print">
+                                        <img src="../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="print" />
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="nocontent">
+                                <div class="MCBreadcrumbsBox_0 breadcrumbs" data-mc-breadcrumbs-divider=" &gt; " data-mc-breadcrumbs-count="3" data-mc-toc="True"><span class="MCBreadcrumbsPrefix">You are here: </span>
+                                </div>
+                            </div>
+                            <h1><a name="kanchor3"></a><a name="Install"></a>Install <span class="ProductNames_LongShortECX_Short">IBM Spectrum Protect Plus</span> as a VMware Virtual Appliance</h1>
+                            <p>To install <span class="ProductNames_LongShortECX_Short">IBM Spectrum Protect Plus</span>, deploy an OVF template.  This creates a virtual appliance containing the <span class="ProductNames_LongShortECX_Short">IBM Spectrum Protect Plus</span> application.   A local vSnap server that is already named and registered is also installed on the virtual machine.</p>
+                            <p> It is recommended that you work with your network administrator when configuring network properties.</p>
+                            <p>This topic is for VMware environments. For Hyper-V installation instructions, see <a href="setup_install_application_hyperv.htm" class="MCXref xref" xrefformat="{paratext}">Install IBM Spectrum Protect Plus as a Hyper-V&#160;Virtual Appliance</a>. </p>
+                            <div class="Prerequisite" data-mc-conditions="Default.Exclude_QSG">
+                                <p class="PostPreRelTitleLeft"><span class="PostPreRelTitle"> BEFORE&#160;YOU&#160;BEGIN:</span>
+                                </p>
+                                <ul>
+                                    <li value="1">Review <span class="ProductNames_LongShortECX_Short">IBM Spectrum Protect Plus</span> system requirements. See <a href="../system_requirements/system_requirements_general.htm" class="MCXref xref" xrefformat="{paratext}">System Requirements</a>.</li>
+                                    <li value="2">Before deployment, run MD5 Checksum on the downloaded OVA file. Ensure the generated checksum matches the one provided in the MD5 Checksum file, which is part of the software download.</li>
+                                    <li value="3">You may need to configure an IP&#160;address pool associated with the VM network where you plan to deploy <span class="ProductNames_LongShortECX_Short">IBM Spectrum Protect Plus</span>. Correct configuration of the IP address pool includes the setup of IP address range (if used), network prefix, gateway, DNS search string, and a DNS server IP address. </li>
+                                    <li value="4">To use DHCP instead of a static IP&#160;address, leave all fields blank when prompted to enter network properties. If you don't have access to a DHCP server and want to use a static IP address,  assign a static IP address with the NetworkManager Text User Interface (nmtui). See <a href="#To_assign_a_static_IP_with_NetworkManager_Text_User_Interface_(nmtui)" class="MCXref xref" xrefformat="{paratext}">To assign a static IP with NetworkManager Text User Interface (nmtui)</a>. </li>
+                                    <li value="5">To change the IP&#160;address allocation type after <span class="ProductNames_LongShortECX_Short">IBM Spectrum Protect Plus</span> deploys, redeploy the virtual machine. </li>
+                                    <li value="6">If the hostname of the <span class="ProductNames_LongShortECX_Short">IBM Spectrum Protect Plus</span> appliance changes after deployment, either through user intervention or if a new IP address is acquired through DNS, the <span class="ProductNames_LongShortECX_Short">IBM Spectrum Protect Plus</span> appliance must be rebooted.</li>
+                                    <li value="7">For later versions of vSphere, the vSphere Web Client may be required to deploy <span class="ProductNames_LongShortECX_Short">IBM Spectrum Protect Plus</span> appliances. </li>
+                                    <li value="8">Note that <span class="ProductNames_LongShortECX_Short">IBM Spectrum Protect Plus</span> has not been tested for IPv6 environments. </li>
+                                </ul>
+                            </div>
+                            <p class="ListHeading" data-mc-conditions="Default.Exclude_QSG">To install <span class="ProductNames_LongShortECX_Short">IBM Spectrum Protect Plus</span> as a virtual appliance:</p>
+                            <ol>
+                                <li value="1">Use the vSphere Client to deploy <span class="ProductNames_LongShortECX_Short">IBM Spectrum Protect Plus</span>. From the <span class="Strong">File</span> menu, choose <span class="Strong">Deploy OVF Template</span>. If using the vSphere Web Client, click <b>Create/Register VM</b>, then select <b>Deploy a virtual machine from an OFV or OVA&#160;file</b>. Click <b>Next</b>. </li>
+                                <li value="2">Specify the location of the <span class="ProductNames_LongShortECX_Short">IBM Spectrum Protect Plus</span> OVA template file and select it. Click <span class="Strong">Next</span>. </li>
+                                <li value="3">Review the template details and accept the End User License Agreement. Click <span class="Strong">Next</span>. </li>
+                                <li value="4">Provide a meaningful name for the template, which becomes the name of your virtual machine. Identify an appropriate location to deploy the virtual machine. Click <span class="Strong">Next</span>.</li>
+                                <li value="5">Identify the datacenter, server, and resource pool for deployment. When prompted to select storage, select from datastores already configured on the destination host. The virtual machine configuration file and virtual disk files are stored on the datastore. Select a datastore large enough to accommodate the virtual machine and all of its virtual disk files. Click <span class="Strong">Next</span>. </li>
+                                <li value="6">Select a disk format to store the virtual disks. It is recommended that you select thick provisioning, which is preselected for optimized performance. Thin provisioning requires less disk space, but may impact performance. Click <span class="Strong">Next</span>. </li>
+                                <li value="7">Select networks for the deployed template to use. Several available networks on the ESX&#160;server may be available by clicking Destination Networks. Select a destination network that allows you to define the appropriate IP&#160;address allocation for the&#160;virtual machine deployment. Click <span class="Strong">Next</span>. </li>
+                                <li value="8">Enter network properties for the virtual machine's default gateway, DNS, IP&#160;address, and network prefix. It is recommended to work with your network administrator when configuring network properties.</li>
+                                <li class="indent" data-mc-autonum=""><span class="autonumber"><span></span></span>If you are using DHCP instead of static IP address, bypass the fields in this dialog, and click Next.  If you don't have access to a DHCP server and want to use a static IP address,  assign a static IP with the NetworkManager Text User Interface (nmtui). See <a href="#To_assign_a_static_IP_with_NetworkManager_Text_User_Interface_(nmtui)" class="MCXref xref" xrefformat="{paratext}">To assign a static IP with NetworkManager Text User Interface (nmtui)</a>. </li>
+                                <li class="indent" data-mc-autonum=""><span class="autonumber"><span></span></span>Note that a default gateway must be configured properly before deployment. Multiple DNS&#160;strings are supported, and must be separated by commas without the use of spaces. </li>
+                                <li class="indent" data-mc-autonum=""><span class="autonumber"><span></span></span>The network prefix should be specified by a network administrator. The network prefix must be entered using CIDR&#160;notation; valid values are between 1 and 32.</li>
+                                <li value="9">Click <span class="Strong">Next</span>.</li>
+                                <li value="10">Review your template selections. Click <span class="Strong">Finish</span> to exit the wizard and to start deployment of the OVF template. Deployment might take significant time.</li>
+                                <li value="11">After OVF template deployment completes, power on your newly created virtual machine. This can be done from vSphere Client.</li>
+                                <p><span class="NoteBlue">Note:</span> The virtual machine must remain powered on for the <span class="ProductNames_LongShortECX_Short">IBM Spectrum Protect Plus</span> application to be accessible.</p>
+                                <li value="12">Make a note of the IP address of the newly created virtual machine. This is needed to log on to the application. Find the IP address in vSphere Client by clicking your newly created virtual machine and looking in the <span class="Strong">Summary</span> tab.</li>
+                                <p><span class="NoteBlue">Note:</span> You must allow several minutes for <span class="ProductNames_LongShortECX_Short">IBM Spectrum Protect Plus</span> to initialize completely.</p>
+                            </ol>
+                            <p class="ListHeading"><a name="To_assign_a_static_IP_with_NetworkManager_Text_User_Interface_(nmtui)"></a>To assign a static IP with NetworkManager Text User Interface (nmtui)</p>
+                            <p>A network administrator can assign static IP&#160;addresses with the NetworkManager Text User Interface (nmtui), which is a CentOS tool used to configure networking options. </p>
+                            <ol>
+                                <li value="1">Ensure the newly imported <span class="ProductNames_LongShortECX_Short">IBM Spectrum Protect Plus</span> virtual machine is powered on. Log in to the <span class="ProductNames_LongShortECX_Short">IBM Spectrum Protect Plus</span> virtual machine's console as <b>serveradmin</b>. The initial password is <b>sppDP758-SysXyz</b>.</li>
+                                <li value="2">From a CentOS&#160;command line, enter <code>nmtui</code> to open the NetworkManager Text User Interface. Navigate the interface with arrow keys and press Enter to make a selection.</li>
+                                <li value="3">From the main menu, select <b>Edit a connection</b>.</li>
+                                <li value="4">Select the network connection, then select <b>Edit</b>. </li>
+                                <li value="5">On the Edit Connection screen, enter an available static IP address that is not already in use. </li>
+                                <li value="6">Select <b>OK</b>&#160;to save the static IP&#160;configuration.</li>
+                            </ol>
+                            <p class="ListHeading">Upload the Product Key</p>
+                            <p>After the trial period ends, a valid product key is required to access <span class="ProductNames_LongShortECX_Short">IBM Spectrum Protect Plus</span> and all of its features. </p>
+                            <ol>
+                                <li value="1">Save the product key to a computer with Internet access. Make a note of the location  on your computer.</li>
+                                <li value="2">From a supported browser, enter the following URL to access the Administrative Console of the virtual machine where <span class="ProductNames_LongShortECX_Short">IBM Spectrum Protect Plus</span> is deployed: </li>
+                                <li class="indent" data-mc-autonum=""><span class="autonumber"><span></span></span><span class="Emphasis">https://&lt;HOSTNAME&gt;:8090/</span>
+                                </li>
+                                <li class="indent" data-mc-autonum=""><span class="autonumber"><span></span></span> where <span class="Emphasis">&lt;HOSTNAME&gt;</span> is the IP address of the virtual machine where the application is deployed.</li>
+                                <li value="3">In the login window, select an Authentication Type. To log in as an <span class="ProductNames_LongShortECX_Short">IBM Spectrum Protect Plus</span> user with SYSADMIN&#160;privileges, select <span style="font-weight: bold;" class="ProductNames_LongShortECX_Short">IBM Spectrum Protect Plus</span> from the Authentication Type drop-down menu, then enter your administrator username and password. To login as a System user, select <b>System</b> from the <b>Authentication Type</b> drop-down menu, then enter the System password to access the Administrative Console. The default System password is <b>sppadLG235</b>. You will be prompted to change this password during the first login. </li>
+                                <li value="4">Click <span class="Strong">Manage your licenses</span>. Click <b>Choose File</b>, then browse for the product key on your computer, then click <span class="Strong">Upload new license</span>. </li>
+                                <li value="5">Click <span class="Strong">Logout</span>.</li>
+                            </ol>
+                            <div class="Postrequisite" data-mc-conditions="Default.Exclude_QSG">
+                                <p class="PostPreRelTitleLeft"><span class="PostPreRelTitle">NEXT STEPS:</span>
+                                </p>
+                                <ul>
+                                    <li value="1">Reboot the newly create virtual appliance if you are using a static IP address instead of DHCP.</li>
+                                    <li value="2" data-mc-conditions="Default.Exclude_QSG">Start <span class="ProductNames_LongShortECX_Short">IBM Spectrum Protect Plus</span> and begin using it from any supported web browser. <MadCap:conditionalText data-mc-conditions="Default.IBM_knowledgecenter_REMOVE">See <a href="setup_start_application.htm" class="MCXref xref" xrefformat="{paratext}">Start IBM Spectrum Protect Plus</a>.</MadCap:conditionalText></li>
+                                </ul>
+                            </div>
+                            <div class="RelatedTopic" data-mc-conditions="Default.Exclude_QSG,Default.IBM_knowledgecenter_REMOVE">
+                                <p class="PostPreRelTitleLeft"><span class="PostPreRelTitle">RELATED TOPICS:</span>
+                                </p>
+                                <ul>
+                                    <li value="1"><a href="setup_start_application.htm" class="MCXref xref" xrefformat="{paratext}">Start IBM Spectrum Protect Plus</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <p>&#160;</p>
+                            <hr width="100%" size="0" align="center" />
+                            <p style="text-align: left;"><span class="Strong" style="font-size: 10pt;">IBM Spectrum Protect Plus</span> <span class="Strong" style="font-size: 10pt;">10.1.2</span> <![CDATA[ ]]></p>
+                            <p style="font-size: 8pt;">Licensed Material - Property of IBM Corp. © IBM Corporation and other(s) <span class="GeneralYear">2018</span>. IBM is a registered trademark of the IBM Corporation in the United States, other countries, or both. <span style="font-size: 10pt;"><span style="font-size: 8pt;">| </span></span><span style="font-size: 8pt;" class="SystemShortDate">8/23/2018</span></p>
+                        </div>
+                    </section><a data-close="true"></a>
+                </div>
+            </div>
+            <script>/* <![CDATA[ */$(document).foundation();/* ]]> */</script>
+        </div>
+    </body>
+</html>

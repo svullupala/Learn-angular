@@ -1,0 +1,33 @@
+@import '../../../../theme/sass/conf/conf';
+
+.item-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  .item-col {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 1rem;
+    max-width: 200px;
+  }
+  &.col-md-9 {
+    width: 74%;
+  }
+  .spliter-col {
+    width: 15px;
+    text-align: center;
+    .spliter {
+      height: 100px;
+      margin-top: 5px;
+      width: 0;
+      display: inline-block;
+      border: 1px solid $cool-gray10;
+    }
+    display: none;
+    @media (min-width: 1800px) {
+      display: block;
+    }
+  }
+}

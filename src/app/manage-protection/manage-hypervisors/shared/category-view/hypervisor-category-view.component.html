@@ -1,0 +1,33 @@
+<div class="hypervisor-category-view">
+  <div class="search-bar">
+    <sdl-search-bar (search)="startSearch($event === '' ? '*' : $event)"
+                    [isSupportClear]="true"
+                    (clear)="onClearSearch()"
+                    [textPlaceholderLabel]="textSearchFor">
+    </sdl-search-bar>
+    <a class="advanced-search-link" href="javascript:void(0)">
+      {{ 'vmware.textAdvancedSearch' | translate }}
+    </a>
+    <button type="button" class="close" aria-label="Close" (click)="onClose()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <h3 class="section-headline title">
+    {{ titleTpl | translate }} {{ totalRecords }}
+    <carbon-icon tabindex="0" type="restart" class="refresh-icon" sdlTooltip
+                 clickOnEnterKeydown
+                 placement="right"
+                 [hidden]="!hasChangeDetectedIcon"
+                 [sdlTooltip]="'inventory.textChangeDetected' | translate"
+                 (click)="onRefreshClick()"
+    ></carbon-icon>
+  </h3>
+  <div class="category-table">
+    <hypervisor-category-table
+      [view]="view"
+      [category]="category"
+      (assignPolicy)="onAssignPolicy($event)"
+      (editRunSettings)="onEditRunSettings($event)"
+    ></hypervisor-category-table>
+  </div>
+</div>

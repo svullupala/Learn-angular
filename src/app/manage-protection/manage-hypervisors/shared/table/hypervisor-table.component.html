@@ -1,0 +1,125 @@
+<div class="hypervisor-table" [ngClass]="{'masked': mask}">
+  <div class="paging-table">
+    <table class="inventory-table">
+      <thead>
+      <tr>
+        <th class="sortable"
+            [ngClass]="{'st-sort-ascent': isAsc('name'), 'st-sort-descent': isDesc('name')}"
+            tabindex="0" clickOnEnterKeydown (click)="onSort('name')" translate>
+          {{'hypervisor.textName'}}
+        </th>
+        <th *ngIf="canShowPath" translate>{{ 'fileRestore.textPath' }}</th>
+        <th *ngIf="canShowOsType" translate>{{'hypervisor.textOsType'}}</th>
+        <th translate>{{'inventory.textContents'}}</th>
+        <th translate>{{'inventory.textSize'}}</th>
+        <th class="sortable"
+            [ngClass]="{'st-sort-ascent': isAsc('storageProfileName'), 'st-sort-descent': isDesc('storageProfileName')}"
+            tabindex="0" clickOnEnterKeydown (click)="onSort('storageProfileName')" translate>
+          {{'inventory.textPolicyCoverage'}}
+        </th>
+        <th translate>{{'inventory.textStatusOfLastJobRun'}}</th>
+        <th class="menu"></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr [hidden]="!(records && records.length < 1)">
+        <td>
+          <carbon-icon type="warning" class="icon-warning"></carbon-icon>
+        </td>
+        <td colspan="7">
+          <span translate>{{'common.textThereIsNoEntries'}}</span>
+        </td>
+      </tr>
+      <tr *ngFor="let item of records | paging: paginateConfig.json()">
+        <td class="icon-format">
+          <hypervisor-icon [model]="item" class="icon-resource"></hypervisor-icon>
+          <span [ngClass]="{'link': canNavigate(item)}" tabindex="0" (keydown.enter)="navigate(item,$event)"
+                (click)="navigate(item,$event)">{{item.name}}</span>
+        </td>
+        <td *ngIf="canShowPath" title="{{item.location || ''}}">{{ ellipsisPath(item) }}</td>
+        <td *ngIf="canShowOsType" title="{{item.osType || ''}}">
+          {{ellipsisPath(item.osType)}}
+        </td>
+        <td>
+          <div *ngFor="let ci of item.contents" class="content">
+            <hypervisor-icon [model]="ci" class="icon-resource"></hypervisor-icon>
+            <span>{{ci.count + ' ' + (ci.label | translate)}}</span>
+          </div>
+        </td>
+        <td>
+          {{item.size > 0 ? (item.size | fileSizeObservable | async) : '' }}
+        </td>
+        <td>
+          <ng-container *ngFor="let pi of item.storageProfiles;let idx=index">
+            <br *ngIf="item.countOfPolicyCoverage === 2 && idx === 1"/>
+            <label *ngIf="idx === 0 || item.countOfPolicyCoverage === 2 && idx === 1">{{pi}}</label>
+          </ng-container>
+          <span *ngIf="item.countOfPolicyCoverage === 0"
+                class="link" (click)="onClickAssignPolicy(item)">
+            {{'inventory.textAssignPolicy' | translate}}
+          </span>
+          <div *ngIf="item.countOfPolicyCoverage > 2">
+            <carbon-icon type="info--glyph" class="info-icon" sdlTooltip
+                         container="body"
+                         placement="left"
+                         [sdlTooltip]="tooltip"
+            ></carbon-icon>
+            {{'inventory.textOtherPolicies' | translate}}
+          </div>
+          <ng-template #tooltip>
+            <div class="info-tooltip">
+              <ng-container *ngFor="let opi of item.otherPolicies;let idx=index">
+                <br *ngIf="idx > 0"/>
+                <label>{{opi}}</label>
+              </ng-container>
+            </div>
+          </ng-template>
+        </td>
+        <td>
+          <div *ngFor="let si of item.statusOfLastJobRun" class="status-item">
+            <status-icon [model]="si" class="icon-resource" tabindex="-1"></status-icon>
+            <span>{{si.count}}</span>
+          </div>
+        </td>
+        <td class="menu">
+          <div class="btn-group action-menu-dropdown" role="group">
+            <button
+              type="button"
+              class="action-menu-dropdown-menu-btn icon-container"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              <svg ibmIconOverflowMenuVertical16></svg>
+            </button>
+            <div
+              class="dropdown-menu dropdown-menu-sdl dropdown-menu-right"
+            >
+              <a
+                tabindex="0"
+                class="dropdown-item first-capitalize dropdown-item-sdl"
+                (click)="onClickAssignPolicy(item)"
+                clickOnEnterKeydown
+                translate>{{'inventory.textAssignPolicy'}}</a>
+              <a
+                tabindex="0"
+                class="dropdown-item first-capitalize dropdown-item-sdl"
+                (click)="onClickEditRunSettings(item)"
+                clickOnEnterKeydown
+                translate>{{'inventory.textEditRunSettings'}}</a>
+            </div>
+          </div>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="paging-dockbar">
+    <paging-dockbar (pageChange)="onPageChange($event)" (refresh)="onRefresh()"
+                    (pageSizeChange)="onPageSizeChange($event)"
+                    [hideRefreshButton]="false"
+                    [id]="paginateConfig.id" [total]="paginateConfig.totalItems"
+                    [itemsPerPage]="paginateConfig.itemsPerPage"
+                    [currentPage]="paginateConfig.currentPage"></paging-dockbar>
+  </div>
+</div>

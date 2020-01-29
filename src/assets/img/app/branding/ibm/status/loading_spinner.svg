@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="bx--loading__svg" viewBox="-75 -75 150 150">
+<defs>
+    <style type="text/css"><![CDATA[
+	.bx--loading__svg {
+	    fill: transparent;
+	    stroke: #047CC0;
+	    stroke-width: 7;
+	    stroke-linecap: butt;
+	    stroke-dasharray: 240;
+	    stroke-dashoffset: 40;
+	}
+
+      ]]></style>
+
+ </defs>
+    <title>Loading</title>
+    <circle cx="0" cy="0" r="37.5" />
+</svg>

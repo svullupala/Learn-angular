@@ -1,0 +1,40 @@
+<div class="">
+  <span class="applications-recent-jobs-title" translate>{{ 'inventory.textRecentJobs' }}</span>
+
+  <div>
+    <div *ngIf="!recentJobs.length">
+      <p>
+        <i class="bidi-status-info" style="margin-right: 10px"></i
+        ><strong>{{ 'inventory.textNoRecentJobs' | translate }}</strong>
+      </p>
+      <p translate>
+        {{ 'inventory.textRecentJobsInfo1' }}
+      </p>
+      <p translate>{{ 'inventory.textRecentJobsInfo2' }}</p>
+    </div>
+    <table *ngIf="!!recentJobs.length" class="inventory-table">
+      <thead>
+        <tr>
+          <th width="50%" translate>{{ 'inventory.textJobType' }}</th>
+          <th width="50%" translate>{{ 'inventory.textLastRun' }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of recentJobs" class="no-top-border">
+          <td>
+            <div class="applications-recent-jobs-cell">
+              <span class="type">Backup</span>
+              <span class="scheduled">{{ 'inventory.textFirstJobScheduled' | translate }}</span>
+              <span class="date">05/21/2020 at 3:00PM</span>
+            </div>
+          </td>
+          <td>
+            <button class="sdl inline secondary medium-1" translate>
+              {{ 'common.textRunNow' }}
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

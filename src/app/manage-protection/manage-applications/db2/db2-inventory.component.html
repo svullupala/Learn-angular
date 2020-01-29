@@ -1,0 +1,17 @@
+<div class="inventory side-by-side-wrapper">
+  <div class="side-by-side-left">
+    <db2-stat-chart (itemSelect)="onStatCategorySelect($event)"></db2-stat-chart>
+  </div>
+  <div class="side-by-side-right">
+    <application-list [hidden]="inCategoryView" [applicationType]="applicationType"
+                      (itemEdit)="onItemEdit($event)"
+                      (itemSelect)="onItemSelect($event)"></application-list>
+    <div class="category" *ngIf="inCategoryView">
+      <application-category-view [category]="selectedCategory"
+                                 [view]="view"
+                                 (assignPolicy)="onAssignPolicy($event)"
+                                 (editRunSettings)="onEditRunSettings($event)"
+                                 (close)="onCategoryViewClose()"></application-category-view>
+    </div>
+  </div>
+</div>

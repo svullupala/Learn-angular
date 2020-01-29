@@ -1,0 +1,32 @@
+<table>
+  <thead>
+  <tr>
+    <th class="normal-col2" translate>{{'monitoring.textJobName'}}</th>
+    <th class="normal-col2" translate>{{'monitoring.textStatus'}}</th>
+    <th class="normal-col2" translate>{{'monitoring.textType'}}</th>
+    <th class="normal-col2" translate>{{'monitoring.textStartEnd'}}</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let session of sessionList" tabindex="0">
+    <!--<tr *ngFor="let session of sessions; trackBy: trackByModel"-->
+        <!--tabindex="0" (keydown.enter)="toggleSelect(job, model.records, $event, true)"-->
+        <!--(click)="toggleSelect(job, model.records, $event)" [ngClass]="{'active-row': isSelected(job, true)}">-->
+      <td>{{session.jobName}}</td>
+      <td>{{session.statusDisplay}}</td>
+      <td>{{session.type | jobTypeDisplay}} {{session.subPolicyType | jobSubPolicyTypeDisplay}}</td>
+      <td class="nowrap align-left">
+        <ul>
+          <li>
+            <span>{{'monitoring.textStartColon' | translate}}</span>
+            <span>{{session.start | amDateFormat: 'll LTS'}}</span>
+          </li>
+          <li>
+            <span *ngIf="session.status === 'RUNNING'">{{'monitoring.textRunning' | translate}}</span>
+            <span *ngIf="session.status !== 'RUNNING'">{{'monitoring.textEndColon' | translate}}</span>
+            <span *ngIf="session.status !== 'RUNNING'">{{session.end | amDateFormat: 'll LTS'}}</span>
+          </li>
+        </ul>
+    </tr>
+  </tbody>
+</table>

@@ -1,0 +1,55 @@
+<div style="height: 330px;" [ngClass]="{'masked': mask}">
+  <div style="height: 300px; overflow: auto;">
+    <table>
+      <thead>
+      <tr>
+        <th translate>{{ nameText }}</th>
+        <th translate [hidden]="true">{{ 'application.textLocation' }}</th>
+        <th [hidden]="isDbLevel || !isDb2" class="partition-column" translate>{{ 'application.textHost' }}</th>
+        <th [hidden]="isDbLevel" translate>{{ 'common.textVersion' }}</th>
+        <th [hidden]="!isDbSearch" translate>{{ 'application.textLocation' }}</th>
+        <th translate>{{ slaPolicyText }}</th>
+        <th translate [hidden]="!hideLogBackupCol() || applicationType === 'office365' || applicationType === 'k8s'">{{ 'application.textEligibleForLogBackup' }}</th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr [hidden]="!(records && records.length < 1)">
+        <td>
+          <i class="bidi-status-warning"></i>
+        </td>
+        <td colspan="3">
+          <span translate>{{'common.textThereIsNoEntries'}}</span>
+        </td>
+      </tr>
+      <tr *ngFor="let item of records | paging: paginateConfig.json(); trackBy: dbTrackByFn" [ngClass]="{'active-row': item.metadata['selected']}">
+        <td class="icon-format">
+          <i [ngClass]="getResourceIcon(item)"></i>
+          <span>{{applicationType === 'office365' ? item.parseName : item.name}}</span>
+        </td>
+        <td [hidden]="isDbLevel || !isDb2">{{item | partitionDisplay }}</td>
+        <td [hidden]="isDbLevel" translate>{{ item.version }}</td>
+        <td [hidden]="!isDbSearch" translate>{{ item.parseLocation }}</td>
+        <td>
+          {{(item.storageProfiles || []).join(', ')}}
+        </td>
+        <td
+          [hidden]="!hideLogBackupCol()  || applicationType === 'office365'"
+          [ngClass]="{'help-pointer': !item.isLogBackupEligible()}"
+          [title]="item.isLogbackupEligibleReason()" translate>{{ item.isLogBackupEligible() | boolean }}
+        </td>
+        <td>
+          <button class="btn btn-primary btn-xs" (click)="onAddClick(item)" type="button"
+                  [attr.aria-label]="'common.textSelect' | translate">
+            <i class="ion-plus"></i>
+          </button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="paging-toolbar">
+    <paging-toolbar (pageChange)="onPageChange($event)" (refresh)="onRefresh()"
+                    [id]="paginateConfig.id" [total]="paginateConfig.totalItems"></paging-toolbar>
+  </div>
+</div>

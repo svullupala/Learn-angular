@@ -1,0 +1,17 @@
+.wizard-preview-page {
+  background-color: transparent;
+  text-align: left;
+  & > .title {
+    font-size: 24px;
+    line-height: 2.5rem;
+  }
+  & > .description {
+    font-size: 14px;
+    line-height: 1.25rem;
+  }
+  & > .content {
+    & > .entry {
+      margin-top: 2rem;
+    }
+  }
+}

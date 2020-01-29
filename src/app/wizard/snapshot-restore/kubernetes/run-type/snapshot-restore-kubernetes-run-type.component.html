@@ -1,0 +1,67 @@
+<div class="run-type">
+  <div class="title" translate>{{'wizard.job.textRunTypeTitle'}}</div>
+  <div class="desc" translate>{{'wizard.job.textRunTypeDesc'}}</div>
+  <div class="content">
+    <div *ngIf="model.isSystemDbFlag">
+      <label translate>{{'application.textErrSysList'}}</label>
+      <br>
+      <br>
+    </div>
+    <div class="input-demo radio-demo row">
+      <div class="col-md-3">
+        <div class="item">
+          <label class="radio-inline custom-radio nowrap">
+            <input type="radio"
+                   [(ngModel)]="model.runType"
+                   [disabled]="model.onDemandPIT"
+                   (ngModelChange)="setIaType()"
+                   name="inlineRadioOptions" value="IA">
+            <span translate>{{'application.textInstantAccess'}}</span>
+          </label>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="item">
+          <label class="radio-inline custom-radio nowrap">
+            <input type="radio"
+                   [(ngModel)]="model.runType"
+                   [disabled]="model.isSystemDbFlag"
+                   (ngModelChange)="setRestoreType()"
+                   name="inlineRadioOptions" value="production">
+            <span translate>{{'application.textProduction'}}</span>
+          </label>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="item">
+          <label class="radio-inline custom-radio nowrap">
+            <input type="radio"
+                   name="inlineRadioOptions"
+                   [(ngModel)]="model.runType"
+                   [disabled]="model.isSystemDbFlag"
+                   (ngModelChange)="setRestoreType()"
+                   value="test">
+            <span translate>{{'application.textTest'}}</span>
+          </label>
+        </div>
+      </div>
+    </div>
+    <div class="mapping" [hidden]="hideMappingsTable() || (hidePathRenaming() && disableNameMapping())">
+      <application-mapping-table
+        [hidePathMapping]="hidePathRenaming()"
+        [disableNameMapping]="disableNameMapping()"
+        [applicationType]="model.workflow"
+        [dbRenamingCharLimit]="8"></application-mapping-table>
+    </div>
+  </div>
+</div>
+<ng-template #summary>
+  <div class="summary">
+    <div class="content">
+      <div class="property">
+        <label class="name">{{'wizard.job.textRunTypeSummary' | translate}}</label>
+        <label class="value">{{getTypeString() | translate}}</label>
+      </div>
+    </div>
+  </div>
+</ng-template>

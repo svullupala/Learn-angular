@@ -1,0 +1,54 @@
+<div class="network">
+  <div class="title" translate>{{'wizard.job.textSetNetworkTitle'}}</div>
+  <div class="desc" translate>{{'wizard.job.textSetNetworkDesc'}}</div>
+  <div class="content">
+    <div *ngIf="!showNetworkCard()">
+      <label translate>{{model.workflowType === 'IA' ? 'wizard.textNoNetworkIAMsg' : 'wizard.textNoNetworkMsg'}}</label>
+    </div>
+    <div *ngIf="showNetworkCard()">
+      <h6 translate>{{'hypervisor.networkText'}}</h6>
+      <ba-card>
+        <div class="row" *ngIf="model.originalHostCluster">
+          <div class="col-md-5">
+            <label class="radio-inline custom-radio">
+              <input type="radio" [value]="true" checked name="systemDefinedOptions" [(ngModel)]="model.systemDefined">
+              <span translate>{{ 'hypervisor.originalHostClusterSysDefinedText' }}</span>
+            </label>
+          </div>
+          <div class="col-md-5">
+            <label class="radio-inline custom-radio">
+              <input type="radio" [value]="false" name="systemDefinedOptions" [(ngModel)]="model.systemDefined">
+              <span translate>{{ 'hypervisor.originalHostClusterNotSysDefinedText' }}</span>
+            </label>
+          </div>
+        </div>
+        <virtual-network-component *ngIf="!model.originalHostCluster || model.destination === 'esx'"
+                                   [subnets]="model.mapSubnetPayload"
+                                   [hypervisorType]="model.hypervisorType"
+                                   [enableEsxUser]="model.destination === 'esx'"
+                                   [mapVirtualNetwork]="model.mapNetworkPayload"
+                                   [sourceList]="model.source"></virtual-network-component>
+      </ba-card>
+    </div>
+  </div>
+</div>
+<ng-template #summary>
+  <div class="summary">
+    <div class="content">
+      <div class="property">
+        <label class="name" translate>{{'wizard.job.textIPConfiguration'}}</label>
+        <label class="value" *ngIf="model.systemDefined">{{'hypervisor.originalHostClusterSysDefinedText' | translate}}</label>
+        <label class="value" *ngIf="!model.systemDefined">{{'hypervisor.originalHostClusterNotSysDefinedText' | translate}}</label>
+      </div>
+      <div class="property" *ngIf="!model.originalHostCluster || model.destination === 'esx'">
+        <label class="name" translate>{{'wizard.job.textNetworkSummary'}}</label>
+        <label class="value" *ngIf="!summaryPayload">{{'wizard.job.textEmpty' | translate}}</label>
+        <label class="value">
+          <div *ngFor="let item of summaryPayload">
+            {{item.name}} - {{item.production}} - {{item.test}}
+          </div>
+        </label>
+      </div>
+    </div>
+  </div>
+</ng-template>

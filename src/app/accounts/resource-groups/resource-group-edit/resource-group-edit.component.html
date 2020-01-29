@@ -1,0 +1,73 @@
+<div [ngClass]="{'masked': masked}" #resourceGroupEditContainer>
+  <ba-card
+    baCardClass="viewport100 dark-card with-scroll"
+    title="{{(model.phantom ? 'resourceGroups.textCreateResourceGroup' : 'resourceGroups.textEditResourceGroup') | translate}}">
+    <form class="form-horizontal" [formGroup]="form">
+      <div class="form-group row"
+           [ngClass]="{'has-error': (!name.valid && name.touched), 'has-success': (name.valid && name.touched)}">
+        <label class="col-sm-4 control-label" translate>{{model.phantom ? 'resourceGroups.textNameOfNewResourceGroup'
+          :
+          'resourceGroups.textNameOfResourceGroup'}}</label>
+        <div class="col-sm-8">
+          <input sdlTooltip
+              [mode]="'critical'"
+              [isDisabled]="(!name.valid && name.untouched) || (name.valid && name.touched) || name.untouched"
+              [placement]="'right'"
+              [sdlTooltip]="'common.textRequiredFieldSuggestion' | translate"
+                 [attr.aria-label]="(model.phantom ? 'resourceGroups.textNameOfNewResourceGroup' : 'resourceGroups.textNameOfResourceGroup') | translate"
+            [formControl]="name" [(ngModel)]="model.name" type="text" class="form-control" style="max-width: 15rem;">
+        </div>
+      </div>
+      <div [hidden]="model && !model.phantom" class="form-group row"
+           [ngClass]="{'has-error': (!model.method && method.touched), 'has-success': (model.method && method.touched)}">
+        <label class="col-sm-4 control-label" translate>
+          {{model.method === 'new' ? 'resourceGroups.textWouldLikeToCreateNewResourceGroup' :
+          'resourceGroups.textWouldLikeToCreateResourceGroup'}}
+        </label>
+        <div class="col-sm-8">
+          <select class="custom-select" [formControl]="method" [(ngModel)]="model.method"
+                  (change)="onMethodSelect()"
+                  class="form-control" style="max-width: 15rem;">
+            <option hidden [value]="null" [selected]="model.phantom" translate>{{'resourceGroups.textSelectMethod'}}</option>
+            <option value="new" translate>{{'resourceGroups.textNew'}}</option>
+            <option value="template" translate>{{'resourceGroups.textFromTemplate'}}</option>
+          </select>
+        </div>
+      </div>
+      <div>
+        <div [hidden]="!(model.phantom && model.method === 'template')" class="form-group row"
+             [ngClass]="{'has-error': (!template.valid && template.touched), 'has-success': (template.valid && template.touched)}">
+          <hr>
+          <label class="col-sm-3 control-label" translate>
+            {{'resourceGroups.textWhichResourceGroupAsTemplate'}}
+          </label>
+          <div class="col-sm-3">
+            <select class="custom-select" [formControl]="template" [(ngModel)]="model.template" (change)="onTemplateSelect()" class="form-control">
+              <option *ngFor="let resourceGroup of cannedResourceGroups" [ngValue]="resourceGroup"> {{
+                resourceGroup.name }}
+              </option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </form>
+    <div class="row" [hidden]="model.method == null">
+      <div class="side-by-side-wrapper-groups">
+        <div class="side-by-side-left-groups">
+          <resource-group-selector [hideBorder]="true"></resource-group-selector>
+        </div>
+        <div class="side-by-side-right-groups">
+          <resource-group-list [hideBorder]="true"></resource-group-list>
+        </div>
+      </div>
+    </div>
+    </ba-card>
+  <confirm-toolbar-component
+    [splitButtons]="true"
+    (cancelEvent)="onCancelClick()"
+    (confirmEvent)="onSaveClick()"
+    [disableConfirmButton]="!isValid()"
+    [hideConfirmButton]="model.method == null"
+    [confirmText]="(model.method == 'edit') ? ('resourceGroups.textEditResource' | translate)
+                        : ('resourceGroups.textCreateResource' | translate)"></confirm-toolbar-component>
+</div>

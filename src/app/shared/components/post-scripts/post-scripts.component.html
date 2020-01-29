@@ -1,0 +1,17 @@
+<div class="btn-group" role="group">
+  <button type="button"
+          [disabled]="!slaPolicy.hasLink('applyPolicyOptions')"
+          [title]="(!slaPolicy.hasLink('applyPolicyOptions') ? 'scripts.textToConfigureScriptsTooltip' : '') | translate"
+          class="btn btn-default btn-with-icon button-border-none" (click)="onShowScripts()">
+    <i class="ion-clipboard"></i>
+    {{ (scriptsConfigured ? 'scripts.textConfigured' : 'scripts.textNotConfigured') | translate}}
+  </button>
+</div>
+<post-scripts-modal
+  [subtype]="subtype"
+  [showOptions]="showOptions"
+  [isScriptServerOnly]="isScriptServerOnly"
+  (save)="applyScripts($event)"
+  (show)="onPostScriptsModalShow()"
+  (hide)="onPostScriptsModalHide()"
+  [autoLoad]="autoLoad" [script]="slaPolicy.script"></post-scripts-modal>

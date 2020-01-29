@@ -1,0 +1,49 @@
+<div class="source">
+  <div class="title" translate>{{'wizard.job.textSourceSelectTitle'}}</div>
+  <div class="desc" translate>{{'wizard.job.textSourceSelectDescApplication'}}</div>
+  <div class="content">
+    <div class="row">
+      <div class="col-lg-8">
+        <div class="side-by-side-wrapper">
+          <div class="row">
+            <div class="col-lg-12">
+              <sdl-search-bar (search)="startSearch($event)"
+                              [textPlaceholderLabel]="'common.textSearchFor' | translate">
+              </sdl-search-bar>
+            </div>
+          </div>
+        </div>
+        <ul class="breadcrumb2">
+          <li *ngFor="let breadcrumb of breadcrumbs">
+            <span tabindex="0" clickOnEnterKeydown (click)="onBreadcrumbClick(breadcrumb,$event)" [ngClass]="{'link': canNavigateBreadCrumb(breadcrumb)}" >{{breadcrumb.title}}</span>
+          </li>
+        </ul>
+      </div>
+      <div class="row">
+        <div class="col-lg-8">
+          <application-restore-source-table
+            [applicationType]="applicationType"
+            (addClick)="onAddClick($event)"
+            [filters]="filters"
+            (refreshSearchEvent)="startSearch()"></application-restore-source-table>
+        </div>
+        <div class="col-lg-4">
+          <application-restore-selection-table
+            [applicationType]="applicationType"
+            (onRemoveItem)="onRemoveItem()"></application-restore-selection-table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<ng-template #summary>
+  <div class="summary">
+    <div class="title"></div>
+    <div class="content">
+      <div class="property">
+        <label class="name">{{'wizard.job.textSourceSelectSummary' | translate}}</label>
+        <label class="value">{{summaryValue || ('wizard.job.textEmpty' | translate)}}</label>
+      </div>
+    </div>
+  </div>
+</ng-template>

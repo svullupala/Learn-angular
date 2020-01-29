@@ -1,0 +1,289 @@
+@import '../../../theme/sass/conf/conf';
+@import '../baMsgCenter/baMsgCenter';
+
+.page-top {
+  background-color: $cool-gray80;
+  position: fixed;
+  z-index: 200;
+  box-shadow: 2px 0 3px rgba(0, 0, 0, 0.5);
+  height: 64px;
+  width: 100%;
+  min-width: $resMin;
+  padding: 0;
+
+  .dropdown-toggle::after {
+    display: none;
+  }
+}
+
+.trial-info {
+  float: left;
+  color: $cool-gray10;
+  .trial-title {
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 16px;
+    height: 16px;
+    display: block;
+    margin: 16px 0 0 1rem;
+  }
+  .expiration {
+    font-size: 12px;
+    line-height: 16px;
+    height: 16px;
+    display: block;
+    margin: 0 0 16px 1rem;
+    @include branding-ibm-svg-icon-class('idea_16', 'idea-cool-gray-10_24', 'object-based/', 16, 16);
+    i {
+      margin-left: 0.5rem;
+      &:hover {
+        cursor: default;
+      }
+    }
+  }
+}
+
+.blur {
+  .page-top.scrolled {
+    background-color: rgba(black, 0.85)
+  }
+}
+
+a.al-logo {
+  color: $sidebar-text;
+  float: left;
+  outline: none !important;
+  height: 100%;
+  width: 64px; /* Always set as collapse menu width */
+  background-color: $brand;
+}
+
+a.al-logo:hover {
+  color: $primary;
+}
+
+.user-profile {
+  float: right;
+  min-width: 230px;
+  padding-right: 0;
+  height: 100%;
+}
+
+.al-user-profile {
+  float: right;
+  transition: all .15s ease-in-out;
+  padding: 0;
+  height: 100%;
+  &.help {
+    width: 56px;
+    margin-right: 1rem;
+  }
+  &.user {
+    label.user-label {
+      font-size: 12pt;
+      margin: 0;
+    }
+    & > button > i {
+      display: inline-block;
+      width: 24px;
+      height: 24px;
+      line-height: 24px;
+      vertical-align: middle;
+      padding-top: 2px;
+    }
+    &.user-icon {
+      width: 64px;
+    }
+  }
+  border: 0;
+  opacity: 1;
+  position: relative;
+  button {
+    display: block;
+  }
+  #user-profile-dd {
+    height: 100%;
+    padding: 0;
+    border: 0;
+    padding-left: 2rem;
+    background-color: $cool-gray70;
+    &.user-icon {
+      padding-left: 0;
+      @include branding-ibm-svg-icon-class('user_24', 'user-cool-gray-10_32', 'object-based/', 24, 24);
+    }
+  }
+  #launch-help {
+    height: 100%;
+    padding: 0;
+    border: 0;
+    background-color: transparent;
+    @include branding-ibm-svg-icon-class('help', 'help', 'object-based/', 24, 24);
+  }
+}
+
+#user-profile-dd {
+  color: $cool-gray10;
+  &:hover, &:active {
+    background-color: $cool-gray70;
+    color: white;
+    &.user-icon {
+      @include branding-ibm-svg-icon-class('user_24', 'user-white_32', 'object-based/', 24, 24);
+    }
+  }
+}
+
+#launch-help {
+  &:hover, &:active {
+    background-color: $cool-gray70;
+    @include branding-ibm-svg-icon-class('help', 'help', 'object-based/', 24, 24);
+  }
+}
+
+.open #user-profile-dd {
+  background-color: $cool-gray70;
+  @include branding-ibm-svg-icon-class('user_24', 'user-white_32', 'object-based/', 24, 24);
+  border-bottom: 2px solid $cerulean50;
+  i.ion-chevron-down {
+    transform: rotate(180deg);
+  }
+}
+
+a.refresh-data {
+  color: $sidebar-text;
+  font-size: 13px;
+  text-decoration: none;
+  font-weight: $font-normal;
+  float: right;
+  margin-top: 13px;
+  margin-right: 26px;
+
+  &:hover {
+    color: $warning !important;
+  }
+}
+
+a.collapse-menu-link {
+  font-size: 31px;
+  cursor: pointer;
+  display: block;
+  text-decoration: none;
+  line-height: 42px;
+  color: $sidebar-text;
+  padding: 0;
+  float: left;
+  margin: 11px 0 0 25px;
+
+  &:hover {
+    text-decoration: none;
+    color: $warning;
+  }
+}
+
+.al-skin-dropdown {
+  float: right;
+  margin-top: 14px;
+  margin-right: 26px;
+
+  .tpl-skin-panel {
+    max-height: 300px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
+}
+
+.icon-palette {
+  display: inline-block;
+  width: 14px;
+  height: 13px;
+  @include bg('theme/palette.png');
+  background-size: cover;
+}
+
+.search {
+  text-shadow: none;
+  font-size: 13px;
+  line-height: 25px;
+  transition: all 0.5s ease;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 162px;
+  float: left;
+  margin: 20px 0 0 30px;
+
+  label {
+    cursor: pointer;
+  }
+  i {
+    width: 16px;
+    display: inline-block;
+    cursor: pointer;
+    padding-left: 1px;
+    font-size: 16px;
+    margin-right: 13px;
+  }
+  input {
+    color: $sidebar-text;
+    background: none;
+    border: none;
+    outline: none;
+    width: 120px;
+    padding: 0;
+    margin: 0 0 0 -3px;
+    height: 27px;
+  }
+}
+
+@media screen and (max-width: $resS) {
+  .search {
+    display: none;
+  }
+}
+
+@media screen and (max-width: $resXS) {
+  .page-top {
+    padding: 0;
+  }
+}
+
+@media (max-width: $resXXS) {
+  .user-profile {
+    min-width: 136px;
+  }
+  a.refresh-data {
+    margin-right: 10px;
+  }
+  a.collapse-menu-link {
+    margin-left: 10px;
+  }
+
+  .al-skin-dropdown {
+    display: none;
+  }
+}
+
+.profile-toggle-link{
+  cursor: pointer;
+}
+
+i.myprofilepic {
+  font-size: 45px;
+  color: white;
+}
+
+.list-item-padding {
+  padding: 8px 16px;
+  height: 32px;
+  &:hover {
+    background: $cool-gray70;
+  }
+}
+
+.fa {
+  width: 20px;
+  text-align: center;
+}
+
+.dropdown-item {
+  line-height: 16px !important;
+  cursor: pointer;
+}

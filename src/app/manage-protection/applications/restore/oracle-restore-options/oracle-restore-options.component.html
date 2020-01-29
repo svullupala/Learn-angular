@@ -1,0 +1,37 @@
+<div class="checkbox">
+  <label class="custom-checkbox" translate>
+    <input type="checkbox" [(ngModel)]="model.overwriteExistingDb">
+    <span>{{'application.textOverwriteDatabase' | translate }}</span>
+  </label>
+</div>
+<br>
+<div class="row" [hidden]="hideMaxParallelStreams">
+  <label for="maxParallelStreams" class="col-sm-4 control-label wrap" translate>
+    {{'application.textMaxParallelStreams'}}
+  </label>
+  <div class="col-sm-2">
+    <input type="number" min="1" class="form-control" id="maxParallelStreams"
+           [(ngModel)]="model.maxParallelStreams">
+  </div>
+</div>
+<div class="row">
+  <br>
+  <label class="col-sm-4 control-label wrap" translate>{{'application.textInitParams'}}</label>
+  <div class="col-sm-3">
+    <select class="form-control" [(ngModel)]="model.initParams">
+      <option [value]="'source'" translate> {{'application.textSource'}}</option>
+      <option [value]="'template'" translate> {{'application.textTemplate'}}</option>
+    </select>
+  </div>
+</div>
+<div class="row" [hidden]="model.initParams === 'source'">
+  <br>
+  <label class="col-sm-4 control-label wrap" translate>{{'application.textAddPath'}}</label>
+  <div class="col-sm-3">
+    <input type="text"
+           [attr.aria-label]="'application.textAddPath' | translate"
+           class="form-control"
+           [(ngModel)]="model.initParamsTemplateFile"
+           placeholder="/some/path/template.ora">
+  </div>
+</div>

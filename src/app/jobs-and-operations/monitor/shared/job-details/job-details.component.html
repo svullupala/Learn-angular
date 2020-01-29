@@ -1,0 +1,146 @@
+<div>
+  <button
+    class="btn btn-primary btn-xs ion-chevron-left expand-button"
+    [title]="(expandJobLog ? 'common.textCollapse' : 'common.textExpand') | translate"
+    (click)="toggleExpandJobLog($event)"
+    [ngClass]="{ 'ion-chevron-right': expandJobLog, 'ion-chevron-left': !expandJobLog }"
+  ></button>
+</div>
+<div class="card transparent-card" style="text-align: center; margin-top: 25%;" [hidden]="hasJobSession">
+  <h2 class="sdl-header" translate>{{ 'job.textSelectJobViewInfo' }}</h2>
+</div>
+<div class="clearfix" [hidden]="!hasJobSession">
+  <div class="float-left">
+    <job-item [isList]="false" [job]="jobSession"></job-item>
+  </div>
+  <div class="card float-right transparent-card">
+    <div class="card-body" style="padding-top: 2rem;">
+      <div class="card float-right transparent-card">
+        <div *ngIf="jobSession && jobSession.hasActionLinksExceptExpire()" class="btn-group" role="group">
+          <button
+            id="btnGroupDropActionsSessions"
+            type="button"
+            class="btn btn-default dropdown-toggle dropdown-toggle-sdl"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+            (click)="toggleDropDown(jobSession)"
+          >
+            {{ 'job.textOperation' | translate }}
+          </button>
+          <div
+            [attr.id]="getDropDownMenuId(jobSession)"
+            class="dropdown-menu dropdown-menu-right dropdown-menu-sdl"
+            [ngClass]="isDropDown(jobSession) ? 'show' : 'hide'"
+            aria-labelledby="btnGroupDropActionsSessions"
+          >
+            <a
+              tabindex="0"
+              class="dropdown-item capitalize dropdown-item-sdl"
+              translate
+              clickOnEnterKeydown
+              (click)="onExecuteSessionAction(jobSession, link)"
+              *ngFor="let link of jobSession.getActionLinksExceptExpire(); trackBy: trackByLinkModel"
+              >{{ link.title || link.name }}</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="card transparent-card" [hidden]="!hasJobSession">
+  <div class="card-body" style="height: auto;">
+    <div class="clearfix">
+      <div class="float-left">
+        <div class="btn-group">
+          <tab-button-group
+            [buttonProgress]="'job.textProgress' | translate"
+            [jobSession]="jobSession"
+            [buttonJobLog]="'job.textJobLog' | translate"
+            [buttonConcurrentJobs]="'job.textConcurrentJobs' | translate"
+            (onSelectTab)="onSelectTab($event)"
+          >
+          </tab-button-group>
+        </div>
+      </div>
+      <div class="float-right">
+        <button class="sdl secondary" (click)="onDownloadLogs($event)" translate>
+          {{ 'job.textDownloadZip' }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="card transparent-card">
+  <div class="card-body" style="height: auto;">
+    <div class="clearfix">
+      <div [hidden]="!showLogFilters" class="float-left">
+        <div class="padding-top-pt-5rem">
+          <ul>
+            <li>
+              <span translate>{{ 'job.textFailedColon' }}</span>
+              <span>{{ jobSession && jobSession.failedResources }}</span>
+            </li>
+            <li>
+              <span translate>{{ 'job.textSuccessColon' }}</span>
+              <span>{{ jobSession && jobSession.successfulResources }}</span>
+            </li>
+            <li>
+              <span translate>{{ 'job.textTotalColon' }}</span>
+              <span>{{ jobSession && jobSession.totalResources }}</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div [hidden]="!showProgressFilters" class="float-right">
+        <filter-dropdown
+          [filterCatagories]="progressFilterCategories"
+          (onApplyEvent)="onApplyProgressFilters($event)"
+          [tooltipPlacement]="'left'"
+        ></filter-dropdown>
+      </div>
+      <div [hidden]="!showLogFilters" class="float-right">
+        <filter-dropdown
+          [filterCatagories]="filterCatagories"
+          (onApplyEvent)="onApplyLogFilters($event)"
+          [tooltipPlacement]="'left'"
+        ></filter-dropdown>
+      </div>
+    </div>
+  </div>
+</div>
+<div
+  class="card"
+  [ngClass]="{
+    'normal-container': tabContentDisplayed === 'JOB_LOG' || tabContentDisplayed === 'PROGRESS',
+    'scroll-container': tabContentDisplayed !== 'JOB_LOG' || tabContentDisplayed !== 'PROGRESS',
+    masked: isJobLogMasked
+  }"
+  [hidden]="!hasJobSession"
+>
+  <progress-table
+    [isDifferentJobSessionClicked]="isDifferentJobSessionClicked"
+    [isCollapsed]="!expandJobLog"
+    [hidden]="tabContentDisplayed !== 'PROGRESS'"
+  >
+  </progress-table>
+  <job-log-table
+    [infiniteScrollingMode]="true"
+    [jumpToLastPageEnabled]="true"
+    [isDifferentJobSessionClicked]="isDifferentJobSessionClicked"
+    [hidden]="tabContentDisplayed !== 'JOB_LOG'"
+    [autoLoad]="false"
+    (loadEnd)="loadLog($event, false)"
+    (loadStart)="loadLog($event, true)"
+  >
+  </job-log-table>
+  <job-session-table [hidden]="tabContentDisplayed !== 'CONCURRENT_JOBS'"> </job-session-table>
+  <job-action-schema
+    *ngIf="showJobSchema"
+    [textActionOptions]="textActionOptions"
+    [model]="jobSchema"
+    (run)="onJobRun($event)"
+    (abort)="onAbort()"
+  ></job-action-schema>
+</div>

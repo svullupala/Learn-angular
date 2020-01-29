@@ -1,0 +1,27 @@
+<div class="btn-group">
+  <button
+    *ngIf="isProgressTabDisplayed()"
+    type="button"
+    class="sdl"
+    [ngClass]="{ secondary: isButtonProgressNgClassEnabled }"
+    (click)="onClickEvent('PROGRESS')"
+  >
+    {{ buttonProgress }}
+  </button>
+  <button
+    type="button"
+    class="sdl"
+    [ngClass]="{ secondary: isButtonJobLogStyledNgClassEnabled }"
+    (click)="onClickEvent('JOB_LOG')"
+  >
+    {{ buttonJobLog }}
+  </button>
+  <button
+    type="button"
+    class="sdl"
+    [ngClass]="{ secondary: isButtonConcurrentJobsNgClassEnabled }"
+    (click)="onClickEvent('CONCURRENT_JOBS')"
+  >
+    {{ buttonConcurrentJobs }}
+  </button>
+</div>

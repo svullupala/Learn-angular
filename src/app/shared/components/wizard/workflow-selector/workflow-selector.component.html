@@ -1,0 +1,37 @@
+<div class="workflow-selector">
+  <div class="title" translate>{{'wizard.textWorkflowSelectorTitle'}}</div>
+  <div class="description" translate>{{'wizard.textWorkflowSelectorDesc'}}</div>
+  <div class="content">
+    <h2 *ngIf="hasHypervisor" translate style="margin-top: 2rem">{{'common.textHypervisors'}}</h2>
+    <ng-template let-entry ngFor [ngForOf]="applicableEntries">
+      <div *ngIf="entry.value.category === 'hypervisor'" clickOnEnterKeydown
+           tabindex="0"
+           class="entry" [ngClass]="{'selected': isSelected(entry)}"
+           (click)="onEntryClick(entry)">
+        <label translate>{{entry.name}}</label>
+      </div>
+    </ng-template>
+    <h2 *ngIf="hasApplication" translate style="margin-top: 2rem">{{'common.textApplications'}}</h2>
+    <ng-template let-entry ngFor [ngForOf]="applicableEntries">
+      <div *ngIf="entry.value.category === 'application'" clickOnEnterKeydown
+           tabindex="0"
+           class="entry" [ngClass]="{'selected': isSelected(entry)}"
+           (click)="onEntryClick(entry)">
+        <label translate>{{entry.name}}</label>
+      </div>
+    </ng-template>
+  </div>
+</div>
+<ng-template #summary>
+  <div class="summary">
+    <div class="title"></div>
+    <div class="content">
+      <div class="property">
+        <label class="name">
+          {{'wizard.textWorkflowSelectorSummary' | translate}}
+        </label>
+        <label class="value" translate>{{workflow || 'wizard.job.textEmpty'}}</label>
+      </div>
+    </div>
+  </div>
+</ng-template>

@@ -1,0 +1,77 @@
+@import "../../../../theme/sass/conf/conf";
+
+button.btn.btn-with-icon {
+  text-align: left;
+  font-size: 1.25em !important;
+  margin-right: 0px !important;
+}
+
+button.button-border-none {
+  border: none !important;
+}
+
+button.cdk-mouse-focused {
+  outline: $keyboard-focused-outline-width $keyboard-focused-outline-style-dashed $keyboard-focused-outline-color;
+}
+
+.modal {
+  height: 100%;
+  display: inline !important;
+  .modal-content {
+    color: $dropdown-text;
+  }
+  font: 14px/16px $font-family;
+}
+
+.modal-content {
+  font: 14px/16px $font-family;
+  color: #666666;
+}
+
+.modal-header {
+  border: none;
+}
+
+.modal-footer {
+  border: none;
+}
+
+.close {
+  outline: none;
+  float: right;
+  font-size: 1.5rem;
+  font-weight: bold;
+  line-height: 1;
+  color: #000;
+  text-shadow: 0 1px 0 #fff;
+  opacity: .2;
+}
+
+.modal-buttons .btn {
+  margin-right: 20px;
+}
+
+.centered-modal {
+  top: 65% !important;
+  left: 50% !important;
+  padding-top: inherit !important;
+  transform: translate(-50%, -50%);
+}
+
+.script-label-size {
+  font-size: 17px;
+}
+
+.modal-font {
+  font: 14px/16px $font-family;
+  color: #7d7d7d;
+}
+
+label {
+  font: 14px/16px $font-family;
+  color: #7d7d7d;
+}
+
+pit-icon-size {
+  font-size: 1.25em !important;
+}

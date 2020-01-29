@@ -1,0 +1,74 @@
+<ba-card baCardClass="dark-card" title="{{title}}">
+    <form class="form-horizontal" [formGroup]="form">
+        <div class="form-group row" *ngFor="let item of preferenceList; let i = index" style="margin-bottom:0;">
+            <label class="col-sm-6 col-form-label" style="max-width: 35%;" [ngClass]="{'add-tab-space': item.addTabSpace}">{{item.name}}</label>
+            <div class="col-sm-6" style="max-width: 30%;">
+                <!-- String or integer input field -->
+                <div *ngIf="item.typeKey==='pref.type.integer' || item.typeKey==='pref.type.string'"
+                    class="input-group input-field-light" [ngClass]="{'error-input': item.showToolTip, 'masked': item.maskPreference}"
+                    cdkMonitorSubtreeFocus styl>                    
+                    <input
+                        sdlTooltip [mode]="'critical'"
+                        [sdlTooltip]="item.showToolTip ? textInvalidEntry : ''"
+                        [ngClass]="{ 'error-input': item.showToolTip }"
+                        [type]="getInputType(item.typeKey)" 
+                        class="form-control" 
+                        title="{{item.name}}"
+                        [value]="item.value" 
+                        attr.id="preference{{title}}{{i}}" 
+                        formControlName="preference"
+                        name="preference{{i}}" 
+                        placeholder="{{item.defaultValue}}"
+                        (change)="onDetectingValueChange($event, item.defaultValue, item.typeKey, item.url, i)"
+                        (ngModelChange)="handleInputValue($event, i, item.url, item.typeKey)"
+                        (keydown)="onKeyDown($event, item.typeKey)">
+                    <!-- Reset button -->
+                    <div aria-hidden="true" [hidden]="false" class="input-group-btn">
+                        <button 
+                            id="clear-button" 
+                            type="button" 
+                            [hidden]="!item.showClearIcon"
+                            class="btn btn-default"
+                            (click)="onClickingReset(i, item.url)">
+                            <i id="clear-icon" class="ion-close-circled"></i>
+                        </button>
+                    </div>  
+                </div>
+                <!-- Boolean input field -->
+                <label *ngIf="item.typeKey==='pref.type.boolean'"
+                    class="todo-checkbox custom-checkbox custom-input-success">
+                    <input
+                        type="checkbox"
+                        [checked]="item.value === null ? item.defaultValue : item.value"
+                        (change)="onDetectingValueChange($event, item.defaultValue, item.typeKey, item.url, i)">
+                    <span class="cut-with-dots"></span>
+                </label>
+                <!-- Select dropdown input field     -->
+                <div *ngIf="item.typeKey==='pref.type.list'" [ngClass]="{'masked': item.maskPreference}">
+                    <select
+                        name="preference{{i}}"
+                        fromControlName="preference"
+                        class="form-control custom-select"
+                        style="max-height: 2.2rem;"
+                        (ngModelChange)="onSelectingDropdownOption($event, item.defaultValue, item.typeKey, item.url, i)"
+                        [(ngModel)]="item.value"
+                        [ngModelOptions]="{standalone: true}">
+                        <option *ngFor="let i of item.values"
+                            [ngValue]="i.option" [selected]="item.value===i.option">{{i.optionName}}
+                        </option>
+                    </select>
+                </div>
+            </div>
+            <!-- Updated Checkbox -->
+            <div class="col-sm-3">
+                <label *ngIf="item.updatedCheckbox" class="custom-checkbox green-box custom-input-success">
+                    <input
+                        type="checkbox"
+                        [checked]="true" 
+                        (click)="preventUncheck($event)">
+                    <span class="updated-text">{{textUpdated}}</span>
+                </label>
+            </div>
+        </div>
+    </form>
+</ba-card>

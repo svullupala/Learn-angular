@@ -1,0 +1,41 @@
+<div style="height: 330px;" [ngClass]="{'masked': masked}">
+  <div style="height: 300px; overflow: auto;">
+    <table>
+      <thead>
+      <tr>
+        <th class="action-icon-column"></th>
+        <th class="action-icon-column"></th>
+        <th >{{getHostNameText()}}</th>
+        <th class="operation-col align-center"></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let item of records | paging: paginateConfig.json()">
+        <td class="action-icon-format">
+          <i tabindex="0" (keydown.enter)="onDeleteClick(item)" (click)="onDeleteClick(item)" *ngIf="item.hasLink('delete')" class="ion-close-round"></i>
+        </td>
+        <td class="action-icon-format">
+          <i tabindex="0" (keydown.enter)="onEditClick(item)" (click)="onEditClick(item)" *ngIf="item.hasLink('edit')" class="ion-edit"></i>
+        </td>
+        <td>{{item.hostAddress}}</td>
+        <td class="align-center">
+          <div class="btn-group" role="group">
+            <button [attr.id]="getDropDownActionId(item)" type="button" class="btn btn-default dropdown-toggle dropdown-toggle-sdl noborder"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              {{'hypervisor.textOperation' | translate}}
+            </button>
+            <div class="dropdown-menu dropdown-menu-sdl" [attr.aria-labelledby]="getDropDownActionId(item)">
+              <a tabindex="0" class="dropdown-item capitalize dropdown-item-sdl" *ngFor="let link of item.getActionLinks()"
+                 clickOnEnterKeydown (click)="onExecuteAction(item, link)" translate>{{link.title ? link.title : link.name}}</a>
+            </div>
+          </div>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <div style="text-align: right;">
+    <paging-toolbar (pageChange)="onPageChange($event)" (refresh)="onRefresh()"
+                    [id]="paginateConfig.id" [total]="paginateConfig.totalItems"></paging-toolbar>
+  </div>
+</div>

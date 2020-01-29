@@ -1,0 +1,87 @@
+<ba-card baCardClass="dark-card viewport100-210" title="{{'vadpProxyMonitor.textVadpProxies' | translate}}" [hidden]="registerProxy">
+  <div class="align-right margin-bottom-10">
+    <button class="sdl inline with-icon" [ngClass]="{'disabled': !canPushInstall}"
+            [disabled]="!canPushInstall"
+            (click)="onRegisterProxyClick()" translate>
+      <i class="bidi-add-new-white_16"></i>{{'vadpProxyMonitor.textRegisterProxy'}}
+    </button>
+  </div>
+  <base-details-component
+    [textNoResourceSelected]="'vadpProxyMonitor.textVadpNotSelected' | translate"
+    (onDoAction)="onExecuteAction($event)"
+    [models]="vadpWithTaskInfo ? [vadpWithTaskInfo] : []"
+    [iconList]="iconList"
+    [hide]="registerProxy"
+    [headerIcon]="'dummy-class'"
+    [multiSelect]="false"
+    [enablePopover]="!canRegister"
+    [useActionLinks]="true">
+    <div class="card table-content" [ngClass]="{'masked': tableMask}">
+      <vadp-proxy-status-table
+        [sites]="sites"
+        (refresh)="getRecords()"
+        [vadpData]="vadpsArr"
+        (selectionChange)="onViewTasks($event)">
+      </vadp-proxy-status-table>
+      <br>
+      <refresh-button-basic [defaultState]="true" [tickEnabled]="true" (onTick)="getRecords()"></refresh-button-basic>
+    </div>
+    <div class="card details-content" style="background-color: transparent">
+      <div class="space-left-15" [hidden]="!canRegister">
+        <i class="bidi-status-warning"></i>
+        <span class="space-left-15" translate>{{'vadpProxyMonitor.textNotEnabledProxy'}}</span>
+        <div class="margin-top-10 space-left-35">
+          <button class="btn btn-primary btn-xm"
+                  (click)="onEnableProxy()" translate>
+            {{'vadpProxyMonitor.textEnableProxy'}}
+          </button>
+        </div>
+      </div>
+      <div class="card-body">
+        <vadp-proxy-details
+          (executeAction)="executeActionCallback()"
+          (onError)="handleError($event)" [sites]="sites" [vadp]="vadpWithTaskInfo"></vadp-proxy-details>
+      </div>
+      <div class="card-header" translate>
+        {{'vadpProxyMonitor.textViewTasks'}}
+      </div>
+      <div class="card-body">
+        <vadp-task-info [model]="vadpWithTaskInfo"></vadp-task-info>
+      </div>
+    </div>
+  </base-details-component>
+</ba-card>
+<ba-card baCardClass="dark-card viewport100 with-scroll"
+  [title]="enableProxy ? ('vadpProxyMonitor.textEnableVadp' | translate) : ('vadpProxyMonitor.textInstallVadp' | translate)"
+  [hidden]="!registerProxy" *ngIf="canPushInstall">
+  <basic-dynamic-form
+    [enableCancelButton]="false"
+    [enableSaveButton]="false"
+    [enableCardLayout]="false"
+    [formValues]="formValues"
+  ></basic-dynamic-form>
+  <div class="form-group row margin-top-10">
+    <label  class="col-sm-4 control-label wrap" translate>{{ 'vadpProxyMonitor.textASelectSite' }}</label>
+    <div class="col-sm-3">
+      <select class="form-control" [(ngModel)]="siteId">
+        <option *ngFor="let site of sites" [ngValue]="site.id" translate> {{ site.name }} </option>
+      </select>
+    </div>
+  </div>
+  <div class="margin-top-10">
+    <identity-user-enter-select
+      [clsOfLabelCol]="'col-sm-4'"
+      [clsOfFieldCol]="'col-sm-3'"
+      [model]="identityModel"
+    ></identity-user-enter-select>
+  </div>
+</ba-card>
+<confirm-toolbar-component
+  [hideCancelButton]="!registerProxy"
+  [hideConfirmButton]="!registerProxy"
+  [confirmText]="enableProxy ? ('vadpProxyMonitor.textEnable' | translate) : ('vadpProxyMonitor.textInstall' | translate)"
+  [disableConfirmButton]="!isFormValid()"
+  [splitButtons]="true"
+  (confirmEvent)="onRegisterProxy()"
+  (cancelEvent)="onCancelClick()"
+></confirm-toolbar-component>

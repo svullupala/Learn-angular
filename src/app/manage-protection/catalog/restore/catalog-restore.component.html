@@ -1,0 +1,78 @@
+<ba-card baCardClass="dark-card" title="{{'catalog.textRestoreSPP' | translate}}">
+  <div class="row">
+    <ul class="breadcrumb2">
+      <li *ngFor="let breadcrumb of breadcrumbs">
+        <span tabindex="0" clickOnEnterKeydown (click)="onBreadcrumbClick(breadcrumb,$event)" class='link'>{{breadcrumb.title}}</span>
+      </li>
+    </ul>
+  </div>
+  <div style="height: 530px;" [ngClass]="{'masked': mask}">
+    <div style="height: 500px; overflow: auto;">
+      <table>
+        <thead>
+        <tr>
+          <th width="5%"></th>
+          <!-- Name sorting is not working, but it's not a UI bug -->
+          <th class="normal-col sortable" [ngClass]="{'st-sort-ascent': isAsc('name'), 'st-sort-descent': isDesc('name')}"
+              tabindex="0" clickOnEnterKeydown (click)="onSort('name')" translate>{{'common.textName'}}</th>
+          <th *ngIf="records && records[0] && records[0].resourceType !== 'snapshot'" translate>{{'catalog.textSite'}}</th>
+          <th class="normal-col sortable" [ngClass]="{'st-sort-ascent': isAsc('creationTime'), 'st-sort-descent': isDesc('creationTime')}"
+              tabindex="0" clickOnEnterKeydown (click)="onSort('creationTime')" *ngIf="records && records[0] && records[0].resourceType === 'snapshot'" translate>{{'catalog.textCreatedOn'}}</th>
+          <th class="normal-col sortable" [ngClass]="{'st-sort-ascent': isAsc('slaPolicyName'), 'st-sort-descent': isDesc('slaPolicyName')}"
+              tabindex="0" clickOnEnterKeydown (click)="onSort('slaPolicyName')" *ngIf="records && records[0] && records[0].resourceType === 'snapshot'" translate>{{'catalog.textSLAPolicy'}}</th>
+          <th class="normal-col sortable" [ngClass]="{'st-sort-ascent': isAsc('snapshotType'), 'st-sort-descent': isDesc('snapshotType')}"
+              tabindex="0" clickOnEnterKeydown (click)="onSort('snapshotType')" *ngIf="records && records[0] && records[0].resourceType === 'snapshot'" translate>{{'catalog.textType'}}</th>
+          <th class="align-center"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let item of records | paging: paginateConfig.json()" class="no-top-border">
+          <td width="5%"></td>
+          <td class="icon-format">
+            <i class="ion-android-desktop" *ngIf="!isSnapshot(item)"></i>
+            <i class="ion-document" *ngIf="isSnapshot(item)"></i>
+            <span [ngClass]="{'link': canNavigate(item) && item.resourceType !== 'snapshot'}" tabindex="0" (keydown.enter)="navigate(item,$event)" (click)="navigate(item,$event)">{{item.name}}</span>
+          </td>
+          <td *ngIf="records && records[0] && records[0].resourceType !== 'snapshot'">{{siteMap[item.site]}}</td>
+          <td *ngIf="records && records[0] && records[0].resourceType === 'snapshot'">{{ item.creationTime | amDateFormat: 'll LTS'}}</td>
+          <td *ngIf="records && records[0] && records[0].resourceType === 'snapshot'">{{ item.slaPolicyName }}</td>
+          <td *ngIf="records && records[0] && records[0].resourceType === 'snapshot'">{{ item.snapshotType }}</td>
+          <td class="align-center">
+            <div class="btn-group" role="group">
+              <button type="button" class="sdl inline small"
+                      *ngIf="item.resourceType === 'snapshot'" (click)="initiateRestore(item)">
+                {{'common.textRestore' | translate}}
+              </button>
+            </div>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="paging-toolbar">
+      <paging-toolbar (pageChange)="onPageChange($event)" (refresh)="onRefresh()"
+                      [id]="paginateConfig.id" [total]="paginateConfig.totalItems"></paging-toolbar>
+    </div>
+  </div>
+</ba-card>
+<base-modal-component
+  [confirmBtnText]="'common.textRestore' | translate"
+  [title]="'catalog.textCatalogRestore' | translate"
+  (onCancel)="resetRestoreType()"
+  (onSave)="onOptionRestoreClick()">
+  <div class="form-group">
+    <span translate>{{ 'catalog.textConfirmRestore' }}</span>
+  </div>
+  <div class="form-group">
+    <label class="custom-radio">
+      <input type="radio" name="mode" value="test" id="mode1" checked [(ngModel)]="restoreType">
+      <span translate>{{'catalog.textTestDetails'}}</span>
+    </label>
+  </div>
+  <div class="form-group">
+    <label class="custom-radio">
+      <input type="radio" name="mode" value="production" id="mode2" [(ngModel)]="restoreType">
+      <span translate>{{'catalog.textProductionDetails'}}</span>
+    </label>
+  </div>
+</base-modal-component>

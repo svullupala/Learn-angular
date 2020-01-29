@@ -1,0 +1,13 @@
+@import "../../../../theme/sass/conf/conf";
+
+.loader-basic {
+  margin-left: auto;
+  margin-right: auto;
+  @include sdl-loading-spinner(10.5rem, 10.5rem);
+}
+
+.loader-basic-small {
+  margin-left: auto;
+  margin-right: auto;
+  @include sdl-loading-spinner(2rem, 2rem);
+}

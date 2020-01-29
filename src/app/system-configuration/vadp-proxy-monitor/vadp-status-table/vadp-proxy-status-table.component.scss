@@ -1,0 +1,48 @@
+@import "../../../theme/sass/conf/conf";
+@include branding-ibm-svg-icon-class('deploy_16', 'deploy_16', 'action-based/', 16, 16);
+
+.large-text {
+  font-size: 24px;
+}
+
+.fixed {
+  table-layout: fixed;
+}
+
+.align-center {
+  text-align: center !important;
+}
+
+.align-right {
+  text-align: right !important;
+}
+
+.normal-col {
+  width: 45%;
+  word-break: break-all;
+}
+
+.icon-col {
+  width: 5%;
+  word-break: break-all;
+}
+
+.operation-col {
+  max-width: 120px;
+}
+
+.capitalize {
+  text-transform: capitalize;
+}
+
+.table > thead > tr > th:first-child {
+  padding-left: 0.75rem;
+}
+
+.table > tbody > tr > td:first-child {
+  padding-left: 0.75rem;
+}
+
+i.bidi-deploy_16 {
+  color: white;
+}

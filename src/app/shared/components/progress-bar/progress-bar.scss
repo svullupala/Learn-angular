@@ -1,0 +1,125 @@
+@import '../../../theme/sass/conf/conf';
+
+$barheightthin: .5rem;
+$barpaddingtopthin: 10px;
+
+$barheightstandard: 1.875rem;
+
+$barMinHeight: .5em;
+$progressMinWidth: 5em;
+$barcurve: 0;
+$leftrighttextpadding: 1.1rem;
+
+$color-normal-used: #047CC0;
+$color-normal-used-destinations: #B07CE8;
+$color-normal-used-coverage: #57D785;
+$color-warning-used: #EF8A33;
+$color-critical-used: #ED6752;
+$color-total: #D2DADA;
+$color-barlabel: #666666;
+
+
+.progress-bar {
+  min-height: $barMinHeight;
+  -webkit-transition: width 2s ease;
+  border-radius: $barcurve;
+  &.transition-on {
+    -webkit-transition: width 2s ease;
+    transition: width 2s ease;
+  }
+  &.transition-off {
+    -webkit-transition: none;
+    transition: none;
+  }
+  &.normal {
+    background-color: $color-normal-used;
+  }
+  &.warning {
+    background-color: $color-warning-used;
+  }
+  &.critical {
+    background-color: $color-critical-used;
+  }
+  &.normal-destinations {
+    background-color: $color-normal-used-destinations;
+  }
+  &.normal-coverage {
+    background-color: $color-normal-used-coverage;
+  }
+}
+
+.label-col {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.total-label-col {
+  padding-left: 0;
+  padding-right: 0;
+  float: right
+}
+
+.left-label-col {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.left-label-text {
+  padding-right: $leftrighttextpadding;
+  margin-bottom: 0;
+}
+
+.right-label-col {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.right-label-text {
+  padding-left: $leftrighttextpadding;
+  margin-bottom: 0;
+}
+
+.bottom-label-col {
+  padding-top: 12px;
+}
+
+.progress-bar-col {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.progress {
+  min-height: $barMinHeight;
+  min-width: $progressMinWidth;
+  border-radius: $barcurve;
+  background-color: $color-total;
+  margin-bottom: 0
+}
+
+.progress-thin {
+  height: $barheightthin;
+}
+
+.progress-standard {
+  height: $barheightstandard;
+}
+
+.progress-col-thin {
+  padding-top: $barpaddingtopthin;
+}
+
+.progress-col-standard {
+  padding-top: 0;
+}
+
+.progress .sr-only {
+  position: relative;
+  color: $color-barlabel;
+  font-weight: 500;
+  padding-left: 10px;
+  margin: 0;
+}
+
+.container {
+  max-width: unset;
+}

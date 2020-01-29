@@ -1,0 +1,43 @@
+<div class="sla-table-container" [ngClass]="{'masked': policyTableData === undefined}">
+  <div class="sla-table">
+    <table>
+      <thead>
+        <tr>
+          <th class="action-icon-column"></th>
+          <th class="action-icon-column"></th>
+          <th class="sortable" width="25%" [ngClass]="{'st-sort-ascent': isAsc('name'), 'st-sort-descent': isDesc('name')}"
+              tabindex="0" clickOnEnterKeydown (click)="onSort('name')" translate>{{'slapolicy.policyTable.textName'}}</th>
+          <th width="40%" translate>{{'slapolicy.policyTable.textRPOSchedule'}}</th>
+          <th width="30%" translate>{{'slapolicy.textRetention'}}</th>
+          <!--
+          <th translate>{{'slapolicy.policyTable.textSnapshot'}}</th>
+          <th translate>{{'slapolicy.policyTable.textReplication'}}</th>
+          <th translate>{{'slapolicy.policyTable.textReplicateSite'}}</th>
+          -->
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of policyTableData | paging: paginateConfig.json()">
+          <td class="action-icon-format">
+            <i *ngIf="item.isDeleteAllowed()" tabindex="0" clickOnEnterKeydown (click)="onDeleteClick(item)" class="ion-close-round" ></i>
+          </td>
+          <td class="action-icon-format">
+            <i *ngIf="item.spec.simple && item.isUpdateAllowed()" tabindex="0" clickOnEnterKeydown (click)="onEditClick(item)" class="ion-edit"></i>
+          </td>
+          <td>{{item.name}}</td>
+          <td>{{item.spec | rpoDisplay }}</td>
+          <td>{{item.spec | subPolicyDisplay: ((item && item.spec && item.spec.subpolicy && item.spec.subpolicy[0] && item.spec.subpolicy[0].type === 'SNAPSHOT') ? 'snapshot' : 'replication') | async }}</td>
+          <!--
+          <td>{{item.spec | subPolicyDisplay: 'snapshot' | async }}</td>
+          <td>{{item.spec | subPolicyDisplay: 'replication' | async }}</td>
+          <td>{{item.spec | subPolicyDisplay: 'replicationSite' | async }}</td>
+          -->
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <br>
+  <paging-toolbar (pageChange)="onPageChange($event)" (refresh)="onRefresh()"
+                  [id]="paginateConfig.id" [total]="paginateConfig.totalItems">
+  </paging-toolbar>
+</div>

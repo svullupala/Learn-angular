@@ -1,0 +1,49 @@
+<div *ngIf="!isCreatingJob" class="align-right toolbar">
+  <button *ngIf="showCreateRestoreJobButton" class="sdl inline" (click)="onCreateJobClick()" translate>{{'job.textCreateJob'}}</button>
+</div>
+<div [hidden]="isCreatingJob" [ngClass]="{'masked': isSwitchingJobList}">
+<dynamic-tabset [tabs]="tabs" (select)="onSwitchMode($event)" (refresh)="refreshList()" [lastRefreshedAt]="lastRefreshedAt"></dynamic-tabset>
+<ng-template #runningJobs>
+  <job-running-stats [loadDataInit]="loadStatsDataInit" (setFilter)="setRunningFilters($event)" (refreshed)="lastRefreshedAt = $event"></job-running-stats>
+</ng-template>
+<ng-template #jobHistory>
+  <job-history-stats [loadDataInit]="loadStatsDataInit" (setFilter)="setHistoryFilters($event)" (refreshed)="lastRefreshedAt = $event"></job-history-stats>
+</ng-template>
+<ng-template #activeResourcesTab>
+  <active-resources></active-resources>
+</ng-template>
+<ng-template #jobScheduleTab>
+  <ba-card>
+    <job-schedule-table (edit)="onWizardEditJob($event)"></job-schedule-table>
+  </ba-card>
+</ng-template>
+<ng-template #jobListTab>
+  <ba-card>
+    <job-table></job-table>
+  </ba-card>
+</ng-template>
+ <div class="card large-card add-border side-by-side-wrapper" [hidden]=" tabs && (tabs[2].active || tabs[3].active)">
+
+  <div class="side-by-side-left add-border-right" [hidden]="expandJobLog">
+    <job-list (alertSession)="onAlertSession($event)" (jobsLoad)="onJobsLoad()" (differentJobSessionClicked)=differentJobSessionClicked($event)
+        [hideChart]="isSwitchingJobList" [isHistory]="isHistory" [filterCatagories]="filterCatagories">
+    </job-list>
+  </div>
+  <div class="side-by-side-right">
+    <job-details 
+      [isHistory]="isHistory" 
+      (rerunJobEvent)="forceRunningJobs()" 
+      (expandClicked)="expandJobLogClicked()"
+      [isDifferentJobSessionClicked]="isDifferentJobSessionClicked">
+    </job-details>
+  </div>
+</div>
+</div>
+<div [hidden]="!isCreatingJob">
+  <job-wizard [autoShow]="false"
+              [isContentMaximized]="true"
+              [textBackToTarget]="'menubar.textJobsAndOperations'"
+              (cancelEvent)="onWizardCancel()"
+              (submitEvent)="onWizardSubmit()">
+  </job-wizard>
+</div>

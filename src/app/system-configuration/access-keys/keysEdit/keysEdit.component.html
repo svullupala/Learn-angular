@@ -1,0 +1,49 @@
+<div [ngClass]="{'masked': masked}">
+  <h2 class="sdl-header" translate>{{'accesskeys.textKeyProperties'}}</h2>
+  <ba-card>
+    <form class="form-horizontal" [formGroup]="form">
+      <div class="form-group row" [ngClass]="{'has-error': (!name.valid && name.touched), 'has-success': (name.valid && name.touched)}">
+        <label for="inputName" class="col-sm-2 control-label" translate>{{'common.textName'}}</label>
+        <div class="col-sm-3">
+          <input sdlTooltip
+              [mode]="'critical'"
+              [isDisabled]="(!name.valid && name.untouched) || (name.valid && name.touched)"
+              [placement]="'right'"
+              [sdlTooltip]="'common.textRequiredFieldSuggestion' | translate"
+            [formControl]="name" [(ngModel)]="model.name" type="text" class="form-control" id="inputName">
+        </div>
+      </div>
+      <div class="form-group row" [ngClass]="{'has-error': (!accessKey.valid && accessKey.touched), 'has-success': (accessKey.valid && accessKey.touched)}">
+        <label for="accessKey" class="col-sm-2 control-label" translate>{{'accesskeys.textAccessKey'}}</label>
+        <div class="col-sm-3">
+          <input sdlTooltip
+              [mode]="'critical'"
+              [isDisabled]="(!accessKey.valid && accessKey.untouched) || (accessKey.valid && accessKey.touched)"
+              [placement]="'right'"
+              [sdlTooltip]="'common.textRequiredFieldSuggestion' | translate"
+            [formControl]="accessKey" [(ngModel)]="model.access" type="text" class="form-control" id="accessKey">
+        </div>
+      </div>
+      <div class="form-group row" [ngClass]="{'has-error': (!secretKey.valid && secretKey.touched), 'has-success': (secretKey.valid && secretKey.touched)}">
+        <label for="secretKey" class="col-sm-2 control-label" translate>{{'accesskeys.textSecretKey'}}</label>
+        <div class="col-sm-3">
+          <input sdlTooltip
+              [mode]="'critical'"
+              [isDisabled]="(!secretKey.valid && secretKey.untouched) || (secretKey.valid && secretKey.touched)"
+              [placement]="'right'"
+              [sdlTooltip]="'common.textRequiredFieldSuggestion' | translate"
+            [formControl]="secretKey" [(ngModel)]="model.secret" [type]="showPassword ? 'text' : 'password'" class="form-control" id="secretKey">
+        </div>
+        <label class="control-label">
+          <i class="ion-eye action" tabindex="0" (keydown.enter)="togglePasswordVisibility()" (click)="togglePasswordVisibility()" translate>{{showPassword ? 'users.textHide': 'users.textShow'}}</i>
+        </label>
+      </div>
+    </form>
+  </ba-card>
+  <confirm-toolbar-component
+    (cancelEvent)="onCancelClick()"
+    (confirmEvent)="onSaveClick()"
+    [disableConfirmButton]="!isValid()"
+    [splitButtons]="false"
+    [floatRight]="false"></confirm-toolbar-component>
+</div>

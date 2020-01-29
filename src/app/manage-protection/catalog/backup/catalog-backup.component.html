@@ -1,0 +1,15 @@
+<ba-card title="{{'monitoring.textSystemInformation' | translate}}" baCardClass="dark-card">
+<system-info-capacity></system-info-capacity>
+</ba-card>
+<div [ngClass]="{'masked': mask}">
+  <ba-card baCardClass="dark-card" title="{{'catalog.textSLAPolicy' | translate }}">
+    <policyselect-table [selectedNames]="associationList"></policyselect-table>
+    <button (click)="onApplyPolicyClick()" class="sdl inline" [ngClass]="{'disabled': policySelectTable.disableSave}" [disabled]="policySelectTable.disableSave" type="button" translate>
+      {{'common.textSave'}}
+    </button>
+  </ba-card>
+</div>
+<br>
+<ba-card baCardClass="dark-card" title="{{'catalog.textPolicyStatus' | translate}}">
+  <policy-status-table [subtype]="'catalog'"></policy-status-table>
+</ba-card>

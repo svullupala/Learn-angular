@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-us" xml:lang="en-us" class="reference _Skins_HTML5_topnav_IBMOEM" data-mc-search-type="Stem" data-mc-help-system-file-name="Default.xml" data-mc-path-to-help-system="../../../" data-mc-has-content-body="True" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic;Default" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Setup|Requirements">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>Db2 Requirements</title>
+        <link rel="icon" href="../../Resources/images/IBM-icon-48.ico" />
+        <link href="../../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Tablet.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Mobile.css" rel="stylesheet" />
+        <link href="../../../Skins/Fluid/stylesheets/foundation.6.2.3.css" rel="stylesheet" />
+        <link href="../../../Skins/Fluid/stylesheets/styles.css" rel="stylesheet" />
+        <link href="../../../Skins/Fluid/stylesheets/tablet.css" rel="stylesheet" />
+        <link href="../../../Skins/Fluid/stylesheets/mobile.css" rel="stylesheet" />
+        <style>/*&lt;meta /&gt;*/
+
+.button.remove-highlight-button
+{
+	-pie-background: url('../../../Skins/Default/Stylesheets/Images/highlight.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.expand-all-button
+{
+	-pie-background: url('../../../Skins/Default/Stylesheets/Images/expand.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.print-button
+{
+	-pie-background: url('../../../Skins/Default/Stylesheets/Images/printer.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.collapse-all-button
+{
+	-pie-background: url('../../../Skins/Default/Stylesheets/Images/collapse.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.needs-pie
+{
+	behavior: url('../../../Resources/Scripts/PIE-no-motw.htc');
+}
+
+</style>
+        <link href="../../resources/stylesheets/styles_topnavi.css" rel="stylesheet" />
+        <script src="../../../Resources/Scripts/custom.modernizr.js">
+        </script>
+        <script src="../../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/require.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/require.config.js">
+        </script>
+        <script src="../../../Resources/Scripts/foundation.6.2.3_custom.js">
+        </script>
+        <script src="../../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div class="foundation-wrap off-canvas-wrapper">
+            <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper="">
+                <aside class="off-canvas position-right" id="offCanvas" data-off-canvas="" data-position="right" data-mc-ignore="true">
+                    <ul class="off-canvas-drilldown vertical menu off-canvas-list" data-drilldown="" data-mc-back-link="Back" data-mc-css-tree-node-expanded="is-drilldown-submenu-parent" data-mc-css-tree-node-collapsed="is-drilldown-submenu-parent" data-mc-css-sub-menu="vertical menu slide-in-right is-drilldown-submenu" data-mc-include-indicator="False" data-mc-include-icon="False" data-mc-include-parent-link="True" data-mc-include-back="True" data-mc-defer-expand-event="True" data-mc-expand-event="click.zf.drilldown" data-mc-toc="True">
+                    </ul>
+                </aside>
+                <div class="off-canvas-content inner-wrap" data-off-canvas-content="">
+                    <div>
+                        <nav class="title-bar tab-bar" data-mc-ignore="true">
+                            <div class="middle title-bar-section outer-row clearfix">
+                                <div class="relative clearfix"><a class="logo" href="../about/about_application_overview.htm" alt="Logo"></a>
+                                    <div class="navigation-wrapper nocontent">
+                                        <ul class="navigation clearfix" data-mc-css-tree-node-has-children="has-children" data-mc-css-sub-menu="sub-menu" data-mc-expand-event="mouseenter" data-mc-top-nav-menu="True" data-mc-max-depth="4" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                                            <li class="placeholder" style="visibility:hidden"><a>placeholder</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <button class="menu-icon" data-toggle="offCanvas"><span></span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="nav-search row outer-row">
+                                <form class="search" action="#">
+                                    <div class="search-bar search-bar-container needs-pie">
+                                        <input class="search-field needs-pie" type="search" placeholder="Search the help system" />
+                                        <div class="search-filter-wrapper">
+                                            <div class="search-filter">
+                                                <div class="search-filter-content">
+                                                    <ul>
+                                                        <li>All Files</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="search-submit-wrapper" dir="ltr">
+                                            <div class="search-submit" title="Search">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </nav>
+                    </div>
+                    <section class="main-section">
+                        <div class="row outer-row" data-mc-content-body="True">
+                            <div class="buttons popup-container clearfix topicToolbarProxy mc-component nocontent" style="margin-left: 0px; float: right; mc-topic-toolbar-items: RemoveHighlight ExpandAll CollapseAll Print;">
+                                <div class="button-group-container-left">
+                                    <button class="button needs-pie remove-highlight-button" title="Remove Highlights">
+                                        <img src="../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="remove highlight" />
+                                    </button>
+                                    <button class="button needs-pie expand-all-button" data-state1-class="expand-all-button" data-state2-class="collapse-all-button" data-state2-title="Collapse all" title="Expand all" data-state1-title="Expand all">
+                                        <img src="../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="expand all" />
+                                    </button>
+                                    <button class="button needs-pie print-button" title="Print">
+                                        <img src="../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="print" />
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="nocontent">
+                                <div class="MCBreadcrumbsBox_0 breadcrumbs" data-mc-breadcrumbs-divider=" &gt; " data-mc-breadcrumbs-count="3" data-mc-toc="True"><span class="MCBreadcrumbsPrefix">You are here: </span>
+                                </div>
+                            </div>
+                            <h1>Db2 Requirements</h1>
+                            <p>Ensure that all prerequisites that are required for your <span class="ProductNames_LongShortECX_Short">IBM Spectrum Protect Plus</span> Db2 application agent are in place before you start protecting Db2 data with <span class="ProductNames_LongShortECX_Short">IBM Spectrum Protect Plus</span>.</p>
+                            <p class="SubHeading">Space prerequisites</p>
+                            <p>Ensure that you have adequate space available to store backups as defined in your SLA. For more information about space requirements, see Space requirements for Db2 backups. When you are restoring data to an alternate location, you must ensure that you have allocated extra dedicated volumes for the copying and restoring procedures. The data paths for table spaces and logs on the target host are the same as those of the original host but are on separate volumes. This setup is required for mounting the data from the vSnap volume.</p>
+                            <p class="SubHeading">Configuration prerequisites</p>
+                            <p>Ensure that your Db2 environment is configured to meet the following criteria:</p>
+                            <ul>
+                                <li value="1">Db2 is configured for single partitioned databases only. Backups of multi-partition Db2 databases are not supported.</li>
+                                <li value="2">Db2 archive logging is activated.</li>
+                                <li value="3">Db2 tables spaces are separated from log files with each on dedicated logical volumes that are managed by Linux Logical Volume Manager (LVM2) or by AIX Journaling File System (JFS2).</li>
+                                <li value="4">If you are running IBM Spectrum Protect Plus in an AIX environment, ensure that you have the recommended version of sudo installed as detailed in the Prerequisites document for your version.</li>
+                                <li value="5">Ensure that the SSH service is running on port 22 on the server and that firewalls are configured to allow IBM Spectrum Protect Plus to connect to the server with SSH. The SFTP subsystem for SSH must be enabled.</li>
+                                <li value="6">Db2 pureScale is not supported.</li>
+                                <li value="7">Ensure that you do not have nested mount points.</li>
+                            </ul>
+                            <p class="SubHeading">Space requirements for Db2 protection</p>
+                            <p>Before you start backing up DB2® databases and log files, ensure that you have enough free space. Extra space is required to store temporarily LVM backups of logical volumes that the Db2 database and logs files are running on. To create LVM snapshots of a protected Db2 database, sufficient free space is required on all volume groups that contain Db2 data and log files.</p>
+                            <p style="font-weight: bold;">LVM snapshots</p>
+                            <p>LVM snapshots are point-in-time copies of LVM logical volumes. They are space efficient snapshots that reflect changed data on the source logical volume that is then written to the LVM snapshot volume. LVM snapshots are created in the same volume group as the source logical volume. The IBM Spectrum Protect™ Plus Db2 application server, uses LVM snapshots to temporarily create a consistent point-in-time copy of the Db2 database.</p>
+                            <p>Once IBM Spectrum Protect Plus Db2 application server creates the LVM snapshot, it is mounted and a file copy operation to the vSnap repository is started. The duration of the file copy operation depends on the size of the Db2 database. During this file copy operation, the Db2 application remains fully online. After the file copy operation finishes, the LVM snapshots are removed by the IBM Spectrum Protect Plus Db2 application server in a cleanup operation.</p>
+                            <p><span class="NoteBlue">Note:</span>
+                            </p>
+                            <ul>
+                                <li value="1">On Linux, LVM snapshots are created with Linux lvm2 LVM commands.</li>
+                                <li value="2">On AIX, LVM snapshots are created with the AIX snapshot command as external JFS2 snapshots.</li>
+                            </ul>
+                            <p>For AIX, no more than 15 snapshots can exist on each filesystem or JFS2 file system. Internal and external JFS2 snapshots cannot exist at the same time for the same file system.</p>
+                            <p>For each LVM or JFS2 snapshot logical volume, you must allow at least 10% free space in the volume group. If there is sufficient free space in the volume group, the IBM Spectrum Protect Plus Db2 application server reserves up to 25% of the source logical volume size for the snapshot logical volume. After the snapshot reaches 50% of the source logical volume size, the snapshot is automatically switched offline by the LVM, and the file copying stops. A failure notification is sent to the logs and the backup operation terminates.</p>
+                            <p class="SubHeading">LVM2 and JFS2</p>
+                            <p>When you run a DB2® backup operation, Db2 requests a snapshot. This snapshot is created on an or for each logical volume with data or logs for the selected database. In Linux systems, the logical volumes need to be managed by LVM2. On AIX®, file systems must be of type JFS2.</p>
+                            <p>A software-based LVM2 or JFS2 snapshot is taken on a storage array. The snapshot volumes are mounted on the same machine that runs the Db2 instance so that they can be transferred to the vSnap repository.</p>
+                            <p>On Linux, the LVM2 volume manager stores the snapshot of a logical volume within the same volume group. There must be enough space to store this logical volume on that machine. The logical volume grows in size when the parent logical volume grows in size.</p>
+                            <p class="SubHeading">Setting sudo privileges for <span class="ProductNames_LongShortECX_Short">IBM Spectrum Protect Plus</span></p>
+                            <p>Set up a dedicated IBM Spectrum Protect Plus agent user with the required super user privileges with sudo. This configuration enables sudoers to run commands without a password. DB2® instance owners need sudo privileges to be set up before they can use IBM Spectrum Protect Plus to detect Db2 instances.</p>
+                            <ol>
+                                <li value="1">Create an application server user.</li>
+                                <li class="indent" data-mc-autonum=""><span class="autonumber"><span></span></span>For example, <code>useradd -m &lt;sppagent&gt;</code></li>
+                                <li value="2">Set a password for the new user.</li>
+                                <li class="indent" data-mc-autonum=""><span class="autonumber"><span></span></span>For example, <code>passwd &lt;sppagentpw&gt;</code></li>
+                                <li value="3">Set the <code>!requiretty</code> setting for your system.</li>
+                                <li value="4">At the end of the sudoers configuration file <code>/etc/sudoers</code>, add these lines.</li>
+                                <li class="indent" data-mc-autonum=""><span class="autonumber"><span></span></span><code>Defaults:sppagent !requiretty</code>
+                                </li>
+                                <li class="indent" data-mc-autonum=""><span class="autonumber"><span></span></span><code>sppagent ALL=(root) NOPASSWD:ALL</code>
+                                </li>
+                                <li class="indent" data-mc-autonum=""><span class="autonumber"><span></span></span>If your sudoers file is configured to import configurations from another directory <code>/etc/sudoers.d</code>, you can add the lines in a new file in that directory.</li>
+                            </ol>
+                            <p>&#160;</p>
+                            <hr width="100%" size="0" align="center" />
+                            <p style="text-align: left;"><span class="Strong" style="font-size: 10pt;">IBM Spectrum Protect Plus</span> <span class="Strong" style="font-size: 10pt;">10.1.2</span> <![CDATA[ ]]></p>
+                            <p style="font-size: 8pt;">Licensed Material - Property of IBM Corp. © IBM Corporation and other(s) <span class="GeneralYear">2018</span>. IBM is a registered trademark of the IBM Corporation in the United States, other countries, or both. <span style="font-size: 10pt;"><span style="font-size: 8pt;">| </span></span><span style="font-size: 8pt;" class="SystemShortDate">8/23/2018</span></p>
+                        </div>
+                    </section><a data-close="true"></a>
+                </div>
+            </div>
+            <script>/* <![CDATA[ */$(document).foundation();/* ]]> */</script>
+        </div>
+    </body>
+</html>

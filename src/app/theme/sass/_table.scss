@@ -1,0 +1,493 @@
+@import 'conf/conf';
+
+table {
+  padding: 0;
+  width: 100%;
+  max-width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  > thead {
+    > tr {
+      height: 48px;
+      border-bottom: 2px solid $header-line-color;
+      background-color: $header-color;
+      > th {
+        white-space: nowrap;
+        padding: 0 16px 0 16px;
+        text-align: left;
+        vertical-align: middle;
+        color: $header-font-color;
+        cursor: auto;
+        background-color: $header-color;
+        position: sticky;
+        position: -webkit-sticky;
+        top: 0;
+        border-bottom: 1px solid $header-line-color;
+        z-index: 3;
+        + th {
+          border-left: 1px solid $header-divider-color;
+        }
+        &.sortable {
+          cursor: pointer;
+          &:after {
+            content: '';
+            display: inline-block;
+            width: 8px;
+            margin-left: 8px;
+          }
+        }
+      }
+    }
+  }
+  > tbody {
+    > tr {
+      height: 32px;
+      border-top: 1px solid $standard-row-line-color;
+      > td {
+        padding: .5rem 1rem;
+        line-height: 1.5rem;
+        text-align: left;
+        vertical-align: middle;
+        border-top: 1px solid $standard-row-line-color;
+      }
+      &:hover {
+        background-color: $hover-over-row-color;
+      }
+      &.disabled {
+        color: $gray20;
+      }
+    }
+  }
+  &.selectable {
+    > tbody {
+      > tr {
+        &:hover {
+          cursor: pointer;
+        }
+        &.selected > td {
+          color: $standard-row-font-color;
+          background-color: $active-row-color;
+        }
+        &.selected > td > a.ion-close-round {
+          color: $standard-row-font-color;
+        }
+        &.selected > td > a.ion-edit {
+          color: $standard-row-font-color;
+        }
+        &.selected > td > button.btn-primary {
+          border-color: $standard-row-font-color;
+        }
+        &.activated {
+          border-left: 10px solid $active-row-line-color;
+        }
+      }
+    }
+  }
+}
+
+.active-row {
+  color: $standard-row-font-color;
+  background-color: $active-row-color;
+}
+
+
+.table-id {
+  text-align: left !important;
+  width: 40px;
+}
+
+.table-arr {
+  width: 5px;
+  padding: 10px 8px 8px 0 !important;
+}
+
+.table-no-borders {
+  border: none;
+  td, th, tr {
+    border: none !important;
+  }
+}
+
+.editable-wrap .btn-group.form-control {
+  background-color: transparent;
+}
+
+.editable-tr-wrap {
+  .editable-wrap {
+    vertical-align: super;
+  }
+  .editable-controls input.editable-input {
+    width: 110px;
+  }
+  td {
+    width: 20%;
+  }
+}
+
+.editable-table-button {
+  width: 70px;
+}
+
+.add-row-editable-table {
+  margin-bottom: 10px;
+}
+
+.add-row-editable-table + table {
+  margin-bottom: 5px;
+}
+
+.select-page-size-wrap {
+  width: 150px;
+}
+
+.table .header-row th {
+  vertical-align: middle;
+  padding: 0 8px;
+}
+
+tr.editable-row {
+  input.form-control {
+    vertical-align: middle;
+  }
+}
+
+.select-td .editable-select {
+  margin-bottom: 1px;
+}
+
+@media screen and (max-width: 1199px) {
+  .editable-tr-wrap {
+    .editable-wrap {
+      vertical-align: middle;
+    }
+  }
+}
+
+.browser-icons {
+  width: 41px;
+}
+
+.st-sort-ascent:after, .st-sort-descent:after {
+  width: 0;
+  height: 0;
+  border-bottom: 4px solid $default-text;
+  border-top: 4px solid transparent;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  margin-bottom: 2px;
+}
+
+.st-sort-descent:after {
+  transform: rotate(-180deg);
+  margin-bottom: -2px;
+}
+
+a.email-link {
+  color: $content-text;
+  &:hover {
+    color: $danger;
+  }
+}
+
+input.search-input {
+  margin-left: -8px;
+  padding-left: 8px;
+}
+
+.table .pagination {
+  margin: 4px 0 -12px 0;
+  a {
+    cursor: pointer;
+  }
+}
+
+.vertical-scroll {
+  max-height: 214px;
+}
+
+.pagination > li > a, .pagination > li > span {
+  background: transparent;
+}
+
+.pagination > li:first-child > a, .pagination > li:first-child > span {
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+}
+
+.pagination > li:last-child > a, .pagination > li:last-child > span {
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
+
+.status-button {
+  width: 60px;
+}
+
+.table {
+  .editable-wrap .editable-controls, .editable-wrap .editable-error {
+    vertical-align: sub;
+    .btn {
+      &.dropdown-toggle {
+        padding: 3px 20px;
+        margin-top: 3px;
+      }
+      padding: 3px 8px;
+    }
+    input {
+      line-height: 1px;
+      height: 30px;
+    }
+  }
+}
+
+.form-inline button[type="submit"].editable-table-button {
+  margin-left: 0;
+}
+
+.table {
+  & > thead {
+    & > tr {
+      & > th {
+        border-bottom: none;
+      }
+    }
+  }
+  & > tbody {
+    & > tr.no-top-border {
+      &:first-child > td {
+        border-top: none;
+      }
+    }
+  }
+}
+
+.black-muted-bg {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.table-hover {
+  > tbody > tr:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+}
+
+.table-bordered,
+.table-bordered > thead > tr > th,
+.table-bordered > tbody > tr > th,
+.table-bordered > tfoot > tr > th,
+.table-bordered > thead > tr > td,
+.table-bordered > tbody > tr > td,
+.table-bordered > tfoot > tr > td{
+  border: 0px solid $border-light;
+}
+
+.table-striped > tbody > tr:nth-of-type(odd) {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.table-striped > tbody > tr:nth-of-type(even) {
+  background-color: rgb(235, 245, 254);
+}
+
+@mixin color-row($color) {
+  background-color: rgba($color, 0.7);
+  color: $label-text;
+  border: none;
+  a.email-link {
+    color: $label-text;
+    &:hover {
+      color: $danger;
+    }
+  }
+}
+.table > tbody > tr.primary > td {
+  @include color-row($primary);
+}
+.table > tbody > tr.success > td {
+  @include color-row($success);
+}
+.table > tbody > tr.warning > td {
+  @include color-row($warning);
+}
+.table > tbody > tr.danger > td {
+  @include color-row($danger);
+}
+.table > tbody > tr.info > td {
+  @include color-row($info);
+}
+
+.editable-click, a.editable-click {
+  color: $default-text;
+  border-bottom: dashed 1px $border;
+}
+
+th {
+  font-weight: $font-normal;
+}
+
+.editable-empty {
+  color: $danger-dark;
+}
+
+.table > tbody > tr > th {
+  border: none;
+}
+
+.table-striped > tbody > tr > td {
+  border: none;
+}
+
+.ngx-pagination > li.current {
+  background-color: #047CC0;
+}
+
+.pagination > li > a,
+.pagination > li > span{
+  color: $default-text;
+  border-color: $border;
+}
+
+
+.pagination > li:first-of-type > a,
+.pagination > li:first-of-type > span{
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+.pagination > li:last-of-type > a,
+.pagination > li:last-of-type > span{
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.pagination > .active > a,
+.pagination > .active > span,
+.pagination > .active > a:hover,
+.pagination > .active > span:hover,
+.pagination > .active > a:focus,
+.pagination > .active > span:focus {
+  background-color: rgba(0,0,0,.3)!important;
+  border-color: $border!important;
+}
+
+.pagination > li > a:hover,
+.pagination > li > span:hover,
+.pagination > li > a:focus,
+.pagination > li > span:focus{
+  background-color: rgba(0,0,0,.2);
+  color: $default-text;
+}
+
+.page-item.disabled .page-link, .page-item.disabled .page-link:focus, .page-item.disabled .page-link:hover {
+  background-color: rgba(255,255,255,.1);
+  color: $default-text;
+}
+
+.editable-buttons .btn-with-icon i {
+  margin-right: 0;
+}
+
+.table-responsive {
+  margin-top: 10px;
+}
+
+.offset-table, .offset-table th, .offset-table td {
+  padding-top: 0;
+  padding-bottom: 0;
+  text-align: left;
+}
+
+.offset-table {
+  width: 99%;
+  margin: 0 5px 0 5px;
+}
+
+.table2, .table2 th, .table2 td {
+  padding-top: 0;
+  padding-bottom: 0;
+  border: 0;
+  text-align: center;
+}
+
+.table2 {
+  width: 100%;
+  margin: 0 5px 0 5px;
+}
+
+.paging-toolbar {
+  text-align: right;
+  padding-top: 10px;
+}
+
+.checkbox-column {
+  width: 64px;
+  input {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+.action-icon-column {
+  width: 48px;
+  border: 0;
+  border-bottom: 1px solid #a6a5a6;
+}
+
+.plain-row {
+  &:hover {
+    background-color: #FFFFFF;
+  }
+}
+
+.icon-format {
+  i {
+    padding: 8px 16px 8px 0px;
+    font-size: 16px;
+  }
+}
+
+.action-icon-format {
+  i {
+    cursor: pointer;
+    color: $hyperlink-color;
+    padding: 8px 16px 8px 0px;
+    font-size: 16px;
+  }
+}
+
+.inventory-table {
+  tbody {
+    background-color: #f3f3f3;
+    tr {
+      td {
+        border-top: 1px solid #dedede;
+      }
+    }
+  }
+  thead {
+    tr {
+      height: 41px;
+      & > th {
+        border-bottom: 0;
+        border-top: 1px solid #f9f9f9;
+        background-color: #f9f9f9;
+        color: #252525;
+        font-weight: 500;
+      }
+
+      & > th + th {
+        border-left: none;
+
+        &:before {
+          content: '';
+          height: calc(70% - 4px);
+          width: 1px;
+          position: absolute;
+          top: 8px;
+          left: 0;
+          background-color: #C6C5C6;
+        }
+      }
+    }
+  }
+}

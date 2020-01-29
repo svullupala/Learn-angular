@@ -1,0 +1,116 @@
+<div class="destination">
+  <div class="title" translate>{{'wizard.job.textSelectDestinationTitle'}}</div>
+  <div class="desc" translate>{{'wizard.job.textSelectDestinationDesc'}}</div>
+  <div class="content">
+    <div class="form-group row">
+      <div class="col-sm-6" style="max-width: 35%;">
+        <label class=" col-form-label" translate>{{'application.textTargetPath'}}</label>
+      </div>
+      <div class="col-sm-6">
+        <div class=" input-group input-field-light">
+          <input class="form-control" placeholder="{{textTargetPathPlaceholder}}" type="text"
+            [(ngModel)]="targetPath">
+        </div>
+      </div>
+    </div>
+    <div class="input-demo radio-demo row">
+      <div class="col-sm-6" style="max-width: 35%;">
+        <label class="radio-inline custom-radio nowrap">
+          <input 
+            type="radio" 
+            name="inlineRadioDestinationOptions" 
+            [value]="'original'" 
+            (ngModelChange)="onOriginalClick($event)"
+            [(ngModel)]="targetLocation">
+          <span translate>{{'application.textRestoreToOriginalAccount'}}</span>
+        </label>
+        <div class="space-top-10" [hidden]="!hasMultipleVersions">
+          <span class="nowrap" translate>{{'application.textErrMultipleVersionList'}}</span>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <label class="radio-inline custom-radio nowrap">
+          <input 
+            type="radio" 
+            name="inlineRadioDestinationOptions" 
+            [value]="'alternate'"
+            (ngModelChange)="onOriginalClick($event)"
+            [(ngModel)]="targetLocation">
+          <span translate>{{'application.textRestoreToOtherAccount'}}</span>
+        </label>
+        <div class="space-top-10" [hidden]="!hasMultipleVersions">
+          <span class="nowrap" translate>{{'application.textErrMultipleVersionList'}}</span>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="targetLocation === 'alternate'">
+      <div class="form-group row" style="margin-top: 30px">
+        <div class="col-sm-6" style="max-width: 35%;">
+          <div class="btn-group space-left-10" role="group" aria-label="Filter">
+            <div class="btn-group" role="group">
+              <button id="btnGroupDrop2" type="button" class="btn btn-default dropdown-toggle dropdown-toggle-sdl"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                {{selectedTenantProviderID && selectedTenantProviderID.name}}
+              </button>
+              <div class="dropdown-menu slas-menu scrollable-menu dropdown-menu-sdl" aria-labelledby="btnGroupDrop2">
+                <a *ngFor="let item of tenantProviderID" tabindex="0" class="dropdown-item dropdown-item-sdl"
+                  clickOnEnterKeydown (click)="onTenantProviderIDSelect(item)">{{item.name}}</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <sdl-search-bar (search)="startSearch($event)" [textPlaceholderLabel]="textSearchByUsername"
+            [isSearchFieldDisabled]="isSearchByUsernameDisabled">
+          </sdl-search-bar>
+        </div>
+      </div>
+      <div *ngIf="editMode && model.selectedUsername != null" class="form-group row">
+        <div class="col-sm-6" style="max-width: 35%;">
+          <label class=" col-form-label" translate>{{'application.textSearchByUsernameSummary'}}</label>
+        </div>
+        <div class="col-sm-6">
+          <label class=" col-form-label" translate>{{model.selectedUsername}}@{{selectedTenantProviderID.name}}</label>
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="col-sm-6">
+          <tenant-usernames (selectionChange)="onSelectionChange($event)" [usernameSearchResult]="usernameSearchResult"
+            [masked]="masked">
+          </tenant-usernames>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<ng-template #summary>
+  <div class="summary">
+    <div class="title">{{'wizard.job.textSelectDestinationTitle' | translate}}</div>
+    <div class="content">
+      <div class="property">
+        <label class="name">{{'wizard.job.textRestoreMethod' | translate}}</label>
+        <label class="value">
+          {{targetLocation === 'original' ? ('application.textRestoreToOriginalAccount' | translate) : ('application.textRestoreToOtherAccount' | translate)}}
+        </label>
+      </div>
+      <div class="property">
+        <label class="name">{{'application.textTargetPathSummary' | translate}}</label>
+        <label class="value">
+          {{targetPath || ('wizard.job.textEmpty' | translate)}}
+        </label>
+      </div>
+      <div *ngIf="targetLocation === 'alternate'" class="property">
+        <label class="name">{{'application.textTenantProviderIDSummary' | translate}}</label>
+        <label class="value">
+          {{selectedTenantProviderID.value || ('wizard.job.textEmpty' | translate)}}
+        </label>
+      </div>
+      <div *ngIf="targetLocation === 'alternate'" class="property">
+        <label class="name">{{'application.textSearchByUsernameSummary' | translate}}</label>
+        <label class="value">
+          {{model.selectedUsername || ('wizard.job.textEmpty' | translate)}}
+        </label>
+      </div>
+    </div>
+  </div>
+</ng-template>

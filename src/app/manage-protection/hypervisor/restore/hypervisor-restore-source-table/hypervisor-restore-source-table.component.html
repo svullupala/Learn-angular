@@ -1,0 +1,43 @@
+<div style="height: 360px;" [ngClass]="{'masked': masked}">
+  <div style="height: 330px; overflow: auto;">
+  <table>
+    <thead>
+      <tr>
+        <th width="30%" translate>{{'hypervisor.textName'}}</th>
+        <th width="50%" *ngIf="onShowPath()" class="wordbreak" translate>{{ 'fileRestore.textPath' }}</th>
+        <th width="2%"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <ng-template let-item ngFor [ngForOf]="records | paging: paginateConfig.json()">
+        <tr>
+          <td class="icon-format">
+            <carbon-icon [type]="'user'" *ngIf="isCompute(item)"></carbon-icon>
+            <i class="ion-android-folder" *ngIf="folderIcon(item)"></i>
+            <i class="ion-android-desktop" *ngIf="isVm(item)"></i>
+            <i class="fa fa-building" *ngIf="isDatacenter(item)"></i>
+            <i class="fa fa-database" *ngIf="isDatastore(item) || isVolume(item)"></i>
+            <i class="ion-android-apps" *ngIf="isTemplate(item)"></i>
+            <i class="ion-cube" *ngIf="isVDisk(item)"></i>
+            <i class="ion-pricetag" *ngIf="isTag(item)"></i>
+            <i class="ion-pricetags" *ngIf="isTagsAndCategories(item)"></i>
+            <span [ngClass]="{'link': canNavigate(item)}" tabindex="0" (keydown.enter)="navigate(item,$event)" (click)="navigate(item,$event)">{{item.name}}</span>
+          </td>
+          <td class="wordbreak" *ngIf="onShowPath()">{{ item.location && item.location || '' }}</td>
+          <td>
+            <button class="btn btn-primary btn-xs" (click)="onUseLatestClick(item)" type="button"
+                    [attr.aria-label]="'common.textSelect' | translate"
+                    *ngIf="canAddItem(item)">
+                <i class="ion-plus"></i>
+            </button>
+          </td>
+        </tr>
+      </ng-template>
+    </tbody>
+  </table>
+</div>
+  <div class="paging-toolbar">
+    <paging-toolbar (pageChange)="onPageChange($event)" (refresh)="onRefresh()"
+                    [id]="paginateConfig.id" [total]="paginateConfig.totalItems"></paging-toolbar>
+  </div>
+</div>

@@ -1,0 +1,27 @@
+<h2 class="sdl-header" translate>{{'auditlog.textFilters'}}</h2>
+<ba-card>
+  <div class="row">
+    <div class="col-md-2">
+      <label class="control-label" translate>
+        {{'auditlog.textDescription'}}
+      </label>
+    </div>
+    <div class="col-sm-8">
+      <input [attr.aria-label]="'auditlog.textDescription' | translate" class="form-control" [(ngModel)]="model.description">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-2">
+      <label class="control-label" translate>
+        {{'auditlog.textAccessDateRange'}}
+      </label>
+    </div>
+    <div class="col-sm-8">
+      <input [attr.aria-label]="'auditlog.textAccessDateRange' | translate"
+             class="form-control" #drpElement #drp="bsDaterangepicker" readonly="readonly" bsDaterangepicker
+             [bsConfig]="bsConfig"
+             [(ngModel)]="model.accessDateRange"
+             (keydown)="onDateRangeKeyDown(drp, $event)">
+    </div>
+  </div>
+</ba-card>

@@ -1,0 +1,67 @@
+@import 'variables';
+@import '_sdl-variables';
+
+@mixin branding-idi-svg-icon($url, $width:'', $height:'', $hasUnit: false) {
+  display: inline-block;
+  background: url($url) no-repeat center;
+  background-size: contain;
+  vertical-align: middle;
+  @if ($width != '') {
+    @if ($hasUnit == true) {
+      width: $width;
+    } @else {
+      width: $width + px;
+    }
+  }
+  @if ($height != '') {
+    @if ($hasUnit == true) {
+      height: $height;
+    } @else {
+      height: $height + px;
+    }
+  }
+}
+
+@mixin branding-ibm-svg-icon-class($classId, $iconName, $path, $width:'', $height:'') {
+  .#{'bidi-' + $classId} {
+    @include branding-idi-svg-icon($branding-ibm-root + $path + $iconName + '.svg', $width, $height);
+  }
+}
+
+@mixin setBorderColorActions($initial: $gray70, $after: $cerulean50) {
+  border-color: $initial;
+  &:focus {
+    border-color: $after !important;
+  }
+  &:active {
+    border-color: $after !important;
+  }
+  &:hover {
+    border-color: $after !important;
+  }
+}
+
+@mixin setBackgroundColorActions($color: $cerulean1) {
+  &:focus {
+    background-color: $color !important;
+  }
+  &:active {
+    background-color: $color !important;
+  }
+  &:hover {
+    background-color: $color !important;
+  }
+}
+
+@mixin setColorActions($initial: $nc3, $after: $gray70) {
+  color: $initial !important;
+  &:focus {
+    color: $after !important;
+  }
+  &:active {
+    color: $after !important;
+  }
+  &:hover {
+    color: $after !important;
+  }
+}

@@ -1,0 +1,34 @@
+<div class="manage-table-container">
+  <div class="manage-table-height">
+    <table>
+      <thead>
+      <tr>
+        <th class="action-icon-column"></th>
+        <th class="action-icon-column"></th>
+        <th class="sortable" [ngClass]="{'st-sort-ascent': isAsc('name'), 'st-sort-descent': isDesc('name')}"
+            (click)="onSort('name')" translate>{{'accesskeys.textKeyName'}}</th>
+        <th translate>{{'key.textUser'}}</th>
+        <th translate>{{'key.textSshKey'}}</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let item of keysTableData">
+        <td class="action-icon-format">
+          <i *ngIf="canDelete(item)" tabindex="0" (keydown.enter)="onDeleteClick(item)" (click)="onDeleteClick(item)" class="ion-close-round"></i>
+        </td>
+        <td class="action-icon-format">
+          <i *ngIf="canEdit(item)" tabindex="0" (keydown.enter)="onEditClick(item)" (click)="onEditClick(item)" class="ion-edit"></i>
+        </td>
+        <td>{{item.name}}</td>
+        <td>{{item.user}}</td>
+        <td>{{item.publickey}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <br/>
+  <paging-toolbar (refresh)="onRefresh()"
+                  [id]="paginateConfig.id" [total]="paginateConfig.totalItems">
+  </paging-toolbar>
+</div>
+

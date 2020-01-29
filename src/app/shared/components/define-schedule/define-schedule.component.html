@@ -1,0 +1,97 @@
+<ba-checkbox
+  *ngIf="allowDisableSchedule"
+  [(ngModel)]="disableScheduleCheckboxFlag"
+  [baCheckboxClass]="'enabled'"
+  [label]="('common.textDisableSchedule' | translate)"
+  (onChangeEvent)="onDisableCheckboxChange($event)"
+  [disabled]="disable">
+</ba-checkbox>
+<div class="schedule-row">
+  <div class="side-by-side-wrapper">
+    <label class="form-control-label space-right-10 label-middle"
+           [ngClass]="{'disabled-label': disableScheduleField}"
+           [hidden]="hideLabel">{{!!(frequencyLabel) ? frequencyLabel : 'common.textFrequency' | translate}}</label>
+    <input [attr.aria-label]="'common.textFrequency' | translate"
+           [disabled]="disableScheduleField" class="space-right-5"
+           (keypress)="onHandleKeyPress($event)" [min]="min" [max]="max" type="number" [(ngModel)]="model.frequency" (ngModelChange)="calculateFrequency()" required>
+    <select [disabled]="disableScheduleField" class="custom-select space-right-5" [(ngModel)]="model.type" (change)="onChangeType();calculateFrequency()">
+      <option value="SUBHOURLY" translate [hidden]="hideSubhourlyType">{{'slapolicy.textMinutes'}}</option>
+      <option value="HOURLY" translate [hidden]="hideHourlyType">{{'slapolicy.textHours'}}</option>
+      <option value="DAILY" translate [hidden]="hideDailyType">{{'slapolicy.textDays'}}</option>
+      <option value="WEEKLY" translate [hidden]="hideWeeklyType">{{'slapolicy.textWeeks'}}</option>
+      <option value="MONTHLY" translate [hidden]="hideMonthlyType">{{'slapolicy.textMonths'}}</option>
+      <!--<option value="YEARLY">Year(s)</option>-->
+    </select>
+    <select [disabled]="disableScheduleField" class="custom-select" [(ngModel)]="model.dow" [hidden]="model.type !== 'WEEKLY'" (change)="onChangeDOW()">
+      <option value="1" translate>{{'slapolicy.textSunday'}}</option>
+      <option value="2" translate>{{'slapolicy.textMonday'}}</option>
+      <option value="3" translate>{{'slapolicy.textTuesday'}}</option>
+      <option value="4" translate>{{'slapolicy.textWednesday'}}</option>
+      <option value="5" translate>{{'slapolicy.textThursday'}}</option>
+      <option value="6" translate>{{'slapolicy.textFriday'}}</option>
+      <option value="7" translate>{{'slapolicy.textSaturday'}}</option>
+    </select>
+    <select [disabled]="disableScheduleField" class="custom-select" [(ngModel)]="model.dom" [hidden]="model.type !== 'MONTHLY'" (change)="onChangeDOM()">
+      <option value="1" translate>{{'slapolicy.monthDay.1st'}}</option>
+      <option value="2" translate>{{'slapolicy.monthDay.2nd'}}</option>
+      <option value="3" translate>{{'slapolicy.monthDay.3rd'}}</option>
+      <option value="4" translate>{{'slapolicy.monthDay.4th'}}</option>
+      <option value="5" translate>{{'slapolicy.monthDay.5th'}}</option>
+      <option value="6" translate>{{'slapolicy.monthDay.6th'}}</option>
+      <option value="7" translate>{{'slapolicy.monthDay.7th'}}</option>
+      <option value="8" translate>{{'slapolicy.monthDay.8th'}}</option>
+      <option value="9" translate>{{'slapolicy.monthDay.9th'}}</option>
+      <option value="10" translate>{{'slapolicy.monthDay.10th'}}</option>
+      <option value="11" translate>{{'slapolicy.monthDay.11th'}}</option>
+      <option value="12" translate>{{'slapolicy.monthDay.12th'}}</option>
+      <option value="13" translate>{{'slapolicy.monthDay.13th'}}</option>
+      <option value="14" translate>{{'slapolicy.monthDay.14th'}}</option>
+      <option value="15" translate>{{'slapolicy.monthDay.15th'}}</option>
+      <option value="16" translate>{{'slapolicy.monthDay.16th'}}</option>
+      <option value="17" translate>{{'slapolicy.monthDay.17th'}}</option>
+      <option value="18" translate>{{'slapolicy.monthDay.18th'}}</option>
+      <option value="19" translate>{{'slapolicy.monthDay.19th'}}</option>
+      <option value="20" translate>{{'slapolicy.monthDay.20th'}}</option>
+      <option value="21" translate>{{'slapolicy.monthDay.21st'}}</option>
+      <option value="22" translate>{{'slapolicy.monthDay.22nd'}}</option>
+      <option value="23" translate>{{'slapolicy.monthDay.23rd'}}</option>
+      <option value="24" translate>{{'slapolicy.monthDay.24th'}}</option>
+      <option value="25" translate>{{'slapolicy.monthDay.25th'}}</option>
+      <option value="26" translate>{{'slapolicy.monthDay.26th'}}</option>
+      <option value="27" translate>{{'slapolicy.monthDay.27th'}}</option>
+      <option value="28" translate>{{'slapolicy.monthDay.28th'}}</option>
+      <option value="29" translate>{{'slapolicy.monthDay.29th'}}</option>
+      <option value="30" translate>{{'slapolicy.monthDay.30th'}}</option>
+      <option value="31" translate>{{'slapolicy.monthDay.31st'}}</option>
+    </select>
+  </div>
+  <!-- Frequency warning message -->
+  <span *ngIf="showWarningMessage()">
+    <i class="bidi-status-warning frequency-danger-icon"></i><label class="frequency-danger-label"
+      translate>{{frequencyWarningMessage}}</label>
+  </span>
+</div>
+<div class="schedule-row" [hidden]="hideStartTime === true && hideStartHourAndMinute === true">
+  <div class="side-by-side-wrapper">
+    <label class="form-control-label label-middle {{startTimeLabelMarginClass}}"
+    [ngClass]="{'disabled-label': disableScheduleField}"
+    [hidden]="hideLabel">{{!!(startTimeLabel) ? startTimeLabel : 'common.textStartTime' | translate}}</label>
+    <input [hidden]="!hideStartTime === false"
+           #dpElement #dp="bsDatepicker" readonly="readonly" bsDatepicker
+           [attr.aria-label]="'common.textStartTime' | translate"
+           class="space-right-5"
+           [disabled]="disableScheduleField"
+           [ngClass]="{'invalid': !model.date}"
+           [bsConfig]="bsConfig"
+           [(ngModel)]="model.date"
+           [minDate]="minDate"
+           (keydown)="onDateKeyDown(dp, $event)" required>
+    <time-picker
+      [initValue]="{ h: model.activateHour, m: model.activateMinute }"
+      [disabled]="disableScheduleField"
+      [required]="true"
+      (onChangeValue)="onChangeTimepickerValue($event)"
+    ></time-picker>
+  </div>
+</div>
+<!--<label class="schedule-display-string">{{getDisplayString()}}</label>-->

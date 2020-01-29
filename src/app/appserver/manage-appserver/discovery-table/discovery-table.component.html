@@ -1,0 +1,45 @@
+<div class="manage-table-container">
+  <div class="manage-table-height">
+    <table>
+      <thead>
+      <tr>
+        <th class="action-icon-column"></th>
+        <th translate>{{'application.textName'}}</th>
+        <th translate>{{'common.textStatus'}}</th>
+        <th translate>{{'common.textConfigured'}}</th>
+        <th class="operation-col" translate></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr [hidden]="instances === undefined || instances.length > 0">
+        <td colspan="4" translate>
+          <i class="bidi-status-warning"></i>
+          {{'application.textNoInstancesFound'}}
+        </td>
+      </tr>
+      <tr *ngFor="let instance of instances; trackBy: trackyByFn; let idx = index;">
+        <td class="action-icon-format">
+          <i tabindex="0" (keydown.enter)="onRemoveInstance(instance)" (click)="onRemoveInstance(instance)"
+             [title]="'textRemoveCredential' | translate"
+             [hidden]="!instance.isConfigured" class="ion-close-round"></i>
+        </td>
+        <td>{{instance.name}}</td>
+        <td translate>{{statusStringMap.get(instance.status) || instance.status || 'common.textLive'}}</td>
+        <td translate>{{instance.isConfigured | boolean}}</td>
+        <td class="operation-col">
+          <button class="sdl small" (click)="onShowModal(instance, idx)" translate>
+            {{'application.textSetCredential'}}
+          </button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<base-modal-component
+  (onSave)="onSave()"
+  [disableConfirmButton]="!isIdentityValid()"
+  [title]="'application.textSetCredential' | translate">
+  <identity-user-enter-select [clsOfFieldCol]="'col-sm-6'" [clsOfLabelCol]="'col-sm-3'" [applicationType]="applicationType"></identity-user-enter-select>
+</base-modal-component>
+

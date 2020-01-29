@@ -1,0 +1,77 @@
+<div>
+  <div class="horizontal-scroll table-dropdown-holder" #jobcontainer [ngClass]="{'masked': masked}">
+  <table>
+    <thead>
+    <tr>
+      <th class="action-icon-column"></th>
+      <th class="action-icon-column"></th>
+      <th class="action-icon-column"></th>
+      <th class="normal-col sortable" [ngClass]="{'st-sort-ascent': isAsc('name'), 'st-sort-descent': isDesc('name')}"
+          tabindex="0" clickOnEnterKeydown (click)="onSort('name')" translate>{{'job.textName'}}</th>
+      <th class="normal-col" translate>{{'job.textType'}}</th>
+      <th class="normal-col sortable" [ngClass]="{'st-sort-ascent': isAsc('status'), 'st-sort-descent': isDesc('status')}"
+          tabindex="0" clickOnEnterKeydown (click)="onSort('status')" translate>{{'job.textStatus'}}</th>
+      <th class="normal-col sortable" [ngClass]="{'st-sort-ascent': isAsc('nextFireTime'), 'st-sort-descent': isDesc('nextFireTime')}"
+          tabindex="0" clickOnEnterKeydown (click)="onSort('nextFireTime')"
+          translate>{{'job.textNextRuntime'}}</th>
+      <th class="normal-col sortable" [ngClass]="{'st-sort-ascent': isAsc('lastRunTime'), 'st-sort-descent': isDesc('lastRunTime')}"
+          tabindex="0" clickOnEnterKeydown (click)="onSort('lastRunTime')" translate>{{'job.textLastRuntime'}}</th>
+      <th class="operation-col align-center"></th>
+    </tr>
+    </thead>
+    <tbody>
+      <tr [hidden]="!(model.records && model.records.length < 1)">
+        <td>
+          <i class="bidi-status-warning"></i>
+        </td>
+        <td colspan="3">
+          <span translate>{{'common.textThereIsNoEntries'}}</span>
+        </td>
+      </tr>
+    <ng-template let-item ngFor [ngForOf]="model.records | paging: model.json()" [ngForTrackBy]="trackByModel">
+      <tr>
+        <td class="action-icon-format align-center">
+          <i class="ion-calendar" [title]="'schedule.textEditSchedule' | translate" *ngIf="isScheduleEditAllowed(item)"
+            tabindex="0" (keydown.enter)="onShowEditSchedule(item)" (click)="onShowEditSchedule(item)">
+          </i>
+        </td>
+        <td class="action-icon-format">
+          <i *ngIf="isEditAllowed(item)" tabindex="0" clickOnEnterKeydown (click)="onEditClick(item)" class="ion-edit" [title]="'wizard.job.textEditJob' | translate"></i>
+        </td>
+        <td class="action-icon-format">
+          <i *ngIf="isDeletionAllowed(item)" tabindex="0" clickOnEnterKeydown (click)="onDeleteClick(item)" class="ion-close-round" [title]="'wizard.job.textDeleteJob' | translate"></i>
+        </td>
+        <td>
+            <label>{{item.name}}</label>
+            <label *ngIf="isOnDemandJob(item)">{{"(" + item.subTypeDisplayName + ")"}}</label>
+        </td>
+        <td>{{item.type | jobTypeDisplay}}</td>
+        <td>{{item.statusDisplayName}}</td>
+        <td>{{item.nextFireTime | amDateFormat: 'll LTS'}}</td>
+        <td>{{item.lastRunTime | amDateFormat: 'll LTS'}}</td>
+        <td class="align-center" >
+          <dropdown [value]="'job.textOperation' | translate"
+                    [scrollableHolder]="jobcontainer"
+                    [scrollableHolderMargin]="24"
+                    [noBorder]="true"
+                    (onSelect)="onExecuteAction(item, $event)"
+                    [id]="getDropDownMenuId(item)"
+                    [dropMenuRight]="true"
+                    [key]="'title'"
+                    [values]="getActionLinks(item)"></dropdown>
+        </td>
+      </tr>
+    </ng-template>
+    </tbody>
+  </table>
+  </div>
+  <br/>
+  <paging-toolbar (pageChange)="onPageChange($event)" (refresh)="onRefresh($event)"
+                  [model]="model"></paging-toolbar>
+  <refresh-button-basic [defaultState]="!locateMode" [rate]="30000" [tickEnabled]="true" (onTick)="refresh()"></refresh-button-basic>
+  <job-action-schema *ngIf="showJobSchema" [textActionOptions]="textActionOptions" [model]="jobSchema" (run)="onJobRun($event)" (abort)="onAbort()"></job-action-schema>
+</div>
+<define-edit-schedule-modal
+  [jobName] = "scheduleJobName"
+  [triggerId] = "triggerId"
+  (save) = "refresh()"></define-edit-schedule-modal>

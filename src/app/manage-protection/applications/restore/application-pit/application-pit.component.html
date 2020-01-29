@@ -1,0 +1,90 @@
+<div>
+  <div class="checkbox-demo-row">
+    <div class="input-demo radio-demo row">
+      <div class="col-md-3" *ngIf="!isOracle() && !isMongo()" [title]="'application.textRecoveryTooltip' | translate">
+        <label class="radio-inline custom-radio">
+          <input [disabled]="disabled || granularMode || enablePitOnly" type="radio"
+                 (change)="determinePit()"
+                 name="inlineRecoveryRadioOptions" [(ngModel)]="applicationOptions.recoveryType" value="norecovery">
+          <span translate class="modal-font">{{'application.textNoRecovery'}}</span>
+        </label>
+      </div>
+      <div [ngClass]="isMongo() ? 'col-md-6' : 'col-md-3'">
+        <label class="radio-inline custom-radio">
+          <input [disabled]="disabled || enablePitOnly" type="radio" name="inlineRecoveryRadioOptions"
+                 (change)="determinePit()"
+                 [(ngModel)]="applicationOptions.recoveryType" value="recovery">
+          <span translate class="modal-font">{{'application.textRecovery'}}</span>
+        </label>
+      </div>
+      <div class="col-md-3" *ngIf="isDb2() || isExchange()">
+        <label class="radio-inline custom-radio">
+          <input [disabled]="disabled || disablePit || applicationType === 'exch'" type="radio" name="inlineRecoveryRadioOptions"
+                 (change)="determinePit()"
+                 [(ngModel)]="applicationOptions.recoveryType" value="fullrecovery">
+          <span translate class="modal-font">{{'application.textFullRecovery'}}</span>
+        </label>
+      </div>
+      <div class="col-md-3" *ngIf="!isMongo()">
+        <label class="radio-inline custom-radio">
+          <input [disabled]="disabled || disablePit"
+                 (change)="determinePit()"
+                 type="radio" name="inlineRecoveryRadioOptions" [(ngModel)]="applicationOptions.recoveryType" value="pitrecovery">
+          <span translate class="modal-font">{{'application.textRecoveryPit'}}</span>
+        </label>
+      </div>
+      <div class="col-md-3" *ngIf="isSql()">
+        <label class="radio-inline custom-radio">
+          <input (change)="determinePit()" [disabled]="disabled || view !== 'applicationview' || enablePitOnly"
+                 type="radio" name="inlineRecoveryRadioOptions" [(ngModel)]="applicationOptions.recoveryType" value="standby">
+          <span translate class="modal-font">{{'application.textStandbyMode'}}</span>
+        </label>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="checkbox-demo-row" [hidden]="isMongo()">
+  <div class="input-demo radio-demo row checkbox-demo-row" *ngIf="!isDb2()">
+    <div class="col-md-3">
+      <label class="radio-inline custom-radio nowrap">
+        <input type="radio" [disabled]="!isPitEligible" name="inlinePitRadioOptions" [(ngModel)]="byTime" [value]="true">
+        <span translate class="modal-font">{{'application.textByTime'}}</span>
+      </label>
+    </div>
+    <div class="col-md-3" [hidden]="hideByIdOption">
+      <label class="radio-inline custom-radio nowrap">
+        <input type="radio" [disabled]="!isPitEligible" name="inlinePitRadioOptions" [(ngModel)]="byTime" [value]="false">
+        <span translate class="modal-font">{{isOracle() ? 'application.textByScn' :  'application.textById'}}</span>
+      </label>
+    </div>
+  </div>
+  <div [hidden]="byTime" class="input-width">
+    <input type="text" [disabled]="!isPitEligible" [(ngModel)]="transactionId" class="form-control">
+  </div>
+  <div [hidden]="!byTime">
+    <button #dpElement #dp="bsDatepicker" bsDatepicker
+            [bsConfig]="bsConfig"
+            [disabled]="!isPitEligible"
+            (bsValueChange)="setDate($event)"
+            [bsValue]="selectedDate"
+            type="text" class="btn btn-default btn-with-icon button-border-none">
+      <i class="ion-calendar center"></i></button>
+    <select class="custom-select" [disabled]="!isPitEligible" (change)="setTime()" [(ngModel)]="selectedHr">
+      <option *ngFor="let hour of hourArray" [value]="hour.value" [selected]="selectedHr === hour.value">
+        {{hour.displayString}}
+      </option>
+    </select>
+    <select class="custom-select" [disabled]="!isPitEligible" [(ngModel)]="selectedMin" (change)="setTime()">
+      <option *ngFor="let minute of timeArray" [value]="minute.value" [selected]="selectedMin === minute.value">
+        {{minute.displayString}}
+      </option>
+    </select>
+    <select class="custom-select" [disabled]="!isPitEligible" [(ngModel)]="selectedSeconds" (change)="setTime()">
+      <option *ngFor="let second of timeArray" [value]="second.value" [selected]="selectedSeconds === second.value">
+        {{second.displayString}}
+      </option>
+    </select>
+    <span class="modal-font">{{ epochTime | amDateFormat: 'll LTS' }}</span>
+  </div>
+</div>
+

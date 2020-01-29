@@ -1,0 +1,195 @@
+//@import "../../../../theme/sass/conf/conf";
+
+.modal-buttons .btn {
+  margin-right: 20px;
+}
+
+.input[type="checkbox"] + label span {
+  display: inline-block;
+  width: 19px;
+  height: 19px;
+
+}
+
+.custom-select-danger {
+  border-color: #e85656 !important;
+}
+
+.custom-select {
+  height: 2.5em;
+  padding-top: 7px;
+  margin-top: -1px;
+  margin-left: 2px;
+}
+
+.snapshot-danger-label {
+  margin-left: 8px;
+  margin-top: 5px;
+}
+
+.snapshot-danger-icon {
+  margin-left: 8px;
+}
+
+input[type=number]:valid {
+  height: 29px;
+  width: 45px;
+  color: #666666;
+  border: 1px solid #cbcbcb;
+  border-radius: 0px;
+  background-color: #ffffff;
+  box-shadow: none;
+  font-size: 14px;
+}
+
+input[type=number]:invalid {
+  height: 29px;
+  width: 45px;
+  color: #666666;
+  border: 1px solid #ed7878;
+  border-radius: 0px;
+  background-color: #ffffff;
+  box-shadow: none;
+  font-size: 14px;
+}
+
+ul.a {
+  list-style-type: none;
+}
+
+.select-style {
+  padding: 15px;
+  margin: 0;
+  border: 1px solid white;
+  width: 100px;
+  border-radius: 0px;
+  overflow: hidden;
+  background-color: none;
+}
+
+.select-style select {
+  padding: 5px 8px;
+  width: 130%;
+  border: 1px;
+  box-shadow: none;
+  background-color: transparent;
+  background-image: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+
+}
+
+.select-style select:focus {
+  outline: none;
+}
+
+.oneline {
+  display: inline;
+
+}
+
+.targetsite {
+  & > * {
+    float: right;
+    margin: 10px 0 0 4px;
+  }
+  & > :first-child {
+    margin-left: 0px;
+  }
+}
+
+.styled-select select {
+  background-color: transparent;
+  background-image: none;
+
+  -webkit-appearance: none;
+
+  box-shadow: none;
+  background: none;
+  border: none;
+  font-size: 14px;
+  height: 29px;
+  padding: 5px; /* If you add too much padding here, the options won't show in IE */
+  width: 268px;
+}
+
+.spo-padding {
+  padding-left: 25px;
+}
+
+.space-left-15 {
+  margin-left: 15px !important;
+}
+
+.space-left-10 {
+  margin-left: 10px;
+}
+
+.space-left-11 {
+  margin-left: 11px;
+}
+
+.space-left-8 {
+  margin-left: 8px;
+}
+
+.space-top-10 {
+  margin-top: 10px;
+}
+
+.space-top-15 {
+  margin-top: 15px;
+}
+
+input[type="number"] {
+  width: 60px !important;
+  margin-left: 8px;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {  
+  height: 22px;
+}
+
+.disabled-label {
+  color: #dddddd;
+}
+
+.space-right-12 {
+  margin-right: 12px;
+}
+
+.label-center {
+  .control-label {
+    position: absolute;
+    transform: translateY(50%); 
+  }
+}
+.snapshot-protection-prefix-container {
+  display: flex;
+  .control-label {
+    margin-top: 10px;
+  }
+  .snapshot-protection-prefix {
+    max-width: 15rem;
+    margin-left: 10px; 
+  }
+}
+
+.heading-space-top {
+  margin-top: -10px;
+}
+
+.radio-btn-margin {
+  margin-bottom: 10px;
+}
+
+
+/*
+@media screen and (max-width: 1620px) {
+  .card {
+    height: 300px;
+  }
+}
+*/

@@ -1,0 +1,10 @@
+<wizard [maximize]="true"
+        [registry]="registry"
+        [model]="model"
+        [delayLoad]="true"
+        [textBackToTarget]="textBackToTarget"
+        [showOverallSummary]="false"
+        (beforeCancelEvent)="onWizardBeforeCancel($event)"
+        (cancelEvent)="onWizardCancel()"
+        (submitEvent)="onWizardSubmit($event)">
+</wizard>

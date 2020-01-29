@@ -1,0 +1,36 @@
+<div class="card no-border">
+  <div class="card-header">
+    {{'resourceGroups.textSelectedResources' | translate}}
+  </div>
+  <div class="card-body overflow">
+    <table class="table table-hover" role="presentation">
+      <tbody>
+      <tr [hidden]="!(models && models.length > 0)"
+          *ngIf="!hideDelete"
+          class="no-top-border">
+        <td class="normal-col align-left" width="90%">
+        </td>
+        <td class="align-center" width="10%">
+          <button class="btn btn-sm btn-danger" (click)="deleteAllClick()">{{ 'resourceGroups.textDeleteAll' | translate }}</button>
+      </tr>
+      <tr *ngFor="let model of models; let i = index;" class="no-top-border">
+        <div class="row">
+            <ul class="breadcrumb2arrow">
+              <li *ngFor="let breadcrumb of model.breadcrumbs">
+                <span>{{ breadcrumb.title }}</span>
+              </li>
+              <li *ngIf="model.resource && (model.resource.name ||  model.resource.displayName)">
+              <span>
+                {{ model.resource && (model.resource.name ||  model.resource.displayName) }}</span>
+              </li>
+            </ul>
+        </div>
+        <td
+          *ngIf="!hideDelete"
+          class="align-center icon-format"
+          width="5%"><i class="ion-ios-minus delete-icon" tabindex="0" (keydown.enter)="onDeleteResource(model, i)" (click)="onDeleteResource(model, i)"></i></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

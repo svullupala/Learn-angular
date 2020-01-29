@@ -1,0 +1,123 @@
+<div class="identity-user-type-wrapper" [formGroup]="form">
+  <div *ngIf="!!identityTypes.length" class="identity-user-type-selector container side-by-side-wrapper">
+    <ng-container *ngFor="let type of identityTypes">
+      <div class="category" [ngClass]="{ selected: form.value.identityType === type.value }">
+        <button aria-label="..." (click)="onChangeIdentityType(type.value)">
+          <span translate>{{ type.key }}</span>
+        </button>
+      </div>
+    </ng-container>
+  </div>
+
+  <div
+    class="form-group"
+    *ngIf="!model.useExisting && !model.useSsh && enableNameField"
+    [ngClass]="{
+      'has-error': !name.valid && name.touched,
+      'has-success': name.valid && name.touched
+    }"
+  >
+    <label class="control-label" translate>{{ 'common.textName' }}</label>
+    <div>
+      <input type="text" [formControl]="name" class="form-control" [(ngModel)]="model.name" />
+    </div>
+  </div>
+  <div
+    class="form-group"
+    *ngIf="!model.useExisting && !model.useSsh"
+    [ngClass]="{
+      'has-error': !username.valid && username.touched,
+      'has-success': username.valid && username.touched
+    }"
+  >
+    <label class="control-label" translate>{{
+      textUsername ? textUsername : 'identity.textUsername'
+    }}</label>
+    <div>
+      <input
+        sdlTooltip
+        [mode]="'critical'"
+        [isDisabled]="disableToolTip(username)"
+        [placement]="'top'"
+        [sdlTooltip]="'common.textRequiredFieldSuggestion' | translate"
+        type="text"
+        [formControl]="username"
+        class="form-control"
+        [(ngModel)]="model.username"
+        [attr.aria-label]="textUsername || 'identity.textUsername' | translate"
+        placeholder="{{
+          noPlaceholder
+            ? ''
+            : applicationType === 'db2' ||
+              applicationType === 'mongo' ||
+              applicationType === 'oracle'
+            ? ('identity.textUsernameDatabasePlaceholder' | translate)
+            : ('identity.textUsernamePlaceholder' | translate)
+        }}"
+      />
+    </div>
+  </div>
+  <div
+    class="form-group"
+    *ngIf="!model.useExisting && !model.useSsh"
+    [ngClass]="{
+      'has-error': !password.valid && password.touched,
+      'has-success': password.valid && password.touched
+    }"
+  >
+    <label class="control-label" translate>{{
+      textPassword ? textPassword : 'identity.textPassword'
+    }}</label>
+    <div class="side-by-side-wrapper">
+      <input
+        sdlToolTip
+        [mode]="'critical'"
+        [isDisabled]="disableToolTip(password)"
+        [placement]="'top'"
+        [sdlTooltip]="'common.textRequiredFieldSuggestion' | translate"
+        [type]="showPassword ? 'text' : 'password'"
+        [formControl]="password"
+        class="form-control"
+        [(ngModel)]="model.password"
+        [attr.aria-label]="textPassword || 'identity.textPassword' | translate"
+        placeholder="{{ noPlaceholder ? '' : ('identity.textPassword' | translate) }}"
+      />
+      <label class="control-label label-password-visibility" *ngIf="showHidePassword">
+        <i
+          class="ion-eye action btn-show"
+          tabindex="0"
+          (keydown.enter)="togglePasswordVisibility()"
+          (click)="togglePasswordVisibility()"
+          translate
+        >{{ showPassword ? 'users.textHide' : 'users.textShow' }}</i
+        >
+      </label>
+    </div>
+  </div>
+  <div class="form-group" *ngIf="model.useExisting">
+    <label class="control-label" translate>{{ 'identity.textSelectExistingUser' }}</label>
+    <div>
+      <select
+        class="form-control"
+        [(ngModel)]="model.user"
+        (ngModelChange)="onSelectUser()"
+        [ngModelOptions]="{ standalone: true }"
+      >
+        <option [ngValue]="undefined" [hidden]="true" translate>{{
+          'common.textClickToSelect'
+        }}</option>
+        <option *ngFor="let item of records" [ngValue]="item">{{ userDisplayName(item) }} </option>
+      </select>
+    </div>
+  </div>
+
+  <div class="form-group" *ngIf="model.useSsh">
+    <key-selector
+      [model]="model.sshKey"
+      [onlySSHKeys]="true"
+      [useExistingOnly]="true"
+      [clsOfFieldCol]="'col-sm-12'"
+      [clsOfLabelCol]="'col-sm-12'"
+    ></key-selector>
+  </div>
+</div>

@@ -1,0 +1,54 @@
+<ng-template #template>
+  <div *ngIf="model">
+    <div *ngIf="testInProgress(model)" class="text-center">
+      <label class="green-text" translate>{{'configGroups.textTestInProgress'}}</label>
+      <div class="masked">
+      </div>
+    </div>
+    <div *ngIf="testInProgress(model)" class="text-center">
+      <button class="sdl inline small" (click)="onAbortClick()" translate>
+        {{'configGroups.textAbortTest'}}
+      </button>
+      <br>
+    </div>
+    <div *ngFor="let item of model.getRecords(); let i = index" class="horizontal-scroll">
+      <br>
+      <label class="bold">{{i+1}}. {{item.name}}</label> - <label>{{item.description}}</label>
+      <label *ngIf="testInProgress(model, item)" class="green-text right" translate>
+        {{'configGroups.textTestInProgress'}}
+      </label>
+      <table class="table table-hover">
+        <thead>
+        <tr class="black-muted-bg">
+          <th class="align-left name-column-width" translate>{{'common.textName'}}</th>
+          <th class="align-left description-column-width" translate>{{'configGroups.textDescription'}}</th>
+          <th class="align-left status-column-width" translate>{{'configGroups.textStatus'}}</th>
+          <th class="align-left message-column-width" translate>{{'configGroups.textMessage'}}</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let test of item.tests" class="no-top-border">
+          <td class="align-left">
+            {{test.name}}
+          </td>
+          <td>
+            {{test.description}}
+          </td>
+          <td class="align-center">
+            <i class="bidi-status-normal"
+               *ngIf="test.status === 'SUCCESS'"></i>
+            <i class="bidi-status-warning"
+               *ngIf="test.status === 'WARNING'"></i>
+            <i class="bidi-status-error"
+               *ngIf="test.status === 'FAILURE'"></i>
+          </td>
+          <td>
+            {{test.statusDetail}}
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</ng-template>
+

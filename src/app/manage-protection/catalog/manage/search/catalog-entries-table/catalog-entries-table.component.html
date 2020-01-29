@@ -1,0 +1,44 @@
+<div class="manage-table-container" [ngClass]="{'masked': masked}">
+  <div class="manage-table-height" #scrollableTable>
+    <table class="fixed">
+      <thead>
+      <tr>
+        <th class="normal-col" width="18%" translate>{{ 'catalog.textJobName' }}</th>
+        <th class="normal-col" width="22%" translate>{{ 'catalog.textBackupTime' }}</th>
+        <th class="normal-col" width="20%" translate>{{ 'catalog.textType' }}</th>
+        <th class="normal-col" width="15%" translate>{{ 'catalog.textSubpolicyType' }}</th>
+        <th class="normal-col" width="15%" translate>{{ 'catalog.textExpiresOn' }}</th>
+        <th class="operation-col align-center" width="10%" translate></th>
+      </tr>
+      </thead>
+      <tbody>
+      <ng-template let-item ngFor [ngForOf]="model.records | paging: model.json()">
+        <tr [attr.id]="'line-' + getDropDownActionId(item)">
+          <td class="normal-col">{{item.jobName}}</td>
+          <td class="normal-col">{{item.start  | amDateFormat: 'll LTS'}}</td>
+          <td class="normal-col">{{item.serviceId | serviceIdDisplay}}</td>
+          <td class="normal-col">{{item.subPolicyType | jobTypeDisplay}}</td>
+          <td class="normal-col">{{item.expirationTime | amDateFormat: 'll LTS'}}</td>
+          <td class="align-center">
+            <div class="btn-group" role="group">
+              <button [attr.id]="getDropDownActionId(item)" type="button" class="btn btn-default dropdown-toggle dropdown-toggle-sdl noborder"
+                      data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" (click)="getOffset(item)">
+                {{'hypervisor.textOperation' | translate}}
+              </button>
+              <div class="dropdown-menu dropdown-menu-sdl" [ngClass]="{'top-dropdown': isTopDropdown}" [attr.aria-labelledby]="getDropDownActionId(item)">
+                <a tabindex="0" class="dropdown-item dropdown-item-sdl capitalize" *ngFor="let link of item.getActionLinks()"
+                   clickOnEnterKeydown (click)="onExecuteAction(item, link)" translate>{{link.title || link.name}}</a>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </ng-template>
+      </tbody>
+    </table>
+  </div>
+  <paging-toolbar [model]="model" [noPageNumber]="true"
+                  (startGoPage)="mask()" (refresh)="onRefresh()"
+                  (pageChange)="onPageChange($event)"></paging-toolbar>
+</div>
+
+

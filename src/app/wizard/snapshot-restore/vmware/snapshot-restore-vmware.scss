@@ -1,0 +1,71 @@
+$summary-text-color: #1C496D;
+
+.source, .snapshot, .destination, .datastore, .network, .run-type, .options, .schedule, .scripts {
+  background-color: transparent;
+  text-align: left;
+  & > .title {
+    font-size: 24px;
+    line-height: 2.5rem;
+  }
+  & > .desc {
+    font-size: 14px;
+    line-height: 1.25rem;
+  }
+  & > .content {
+    font-size: 14px;
+    margin-top: 2rem;
+  }
+}
+
+.snapshot {
+  & > .content {
+    & > .note {
+      margin-bottom: 1rem;
+    }
+  }
+}
+
+.run-type {
+  & > .content {
+    font-size: 14px;
+    margin-top: 2rem;
+    margin-right: 2rem;
+  }
+}
+
+.options {
+  & > .content {
+    font-size: 14px;
+    margin-top: 2rem;
+    margin-left: 1rem;
+    margin-right: 2rem;
+  }
+}
+
+.summary {
+  text-align: left;
+  color: $summary-text-color;
+
+  & > .title {
+    font-size: 16px;
+    line-height: 2rem;
+    font-weight: bold;
+  }
+  & > .content {
+    font-size: 14px;
+
+    & > .property {
+      line-height: 24px;
+
+      & > .name {
+        white-space: normal;
+        width: 300px;
+      }
+      & > .value {
+        white-space: normal;
+        font-weight: bold;
+        vertical-align: top;
+      }
+    }
+  }
+}

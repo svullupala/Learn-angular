@@ -1,0 +1,25 @@
+.bold {
+  font-weight: bold;
+}
+
+.indent {
+  padding-left: 1.5rem;
+}
+
+.side-by-side-wrapper {
+  display: flex;
+  flex-flow: row;
+}
+
+.side-by-side-left {
+  flex: 1;
+}
+
+.side-by-side-right {
+  flex: 3;
+}
+
+hr {
+  margin-top: 0;
+  margin-bottom: 0;
+}

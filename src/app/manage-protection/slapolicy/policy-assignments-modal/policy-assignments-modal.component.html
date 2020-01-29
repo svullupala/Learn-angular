@@ -1,0 +1,21 @@
+<div bsModal #paModal="bs-modal" tabindex="-1" class="policy-assignments-modal modal fade"
+     [ngClass]="{'masked': masked}"
+     [config]="{backdrop: 'static', keyboard : false}" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div cdkTrapFocus class="modal-content">
+      <div class="modal-header">
+        <div class="modal-title-wrapper">
+          <label class="modal-title sdl-header" translate>{{'slapolicy.textEditAssignments'}}</label>
+          <br>
+          <label class="sub-title">{{('slapolicy.textPolicyColon' | translate) + ' ' + policyName}}</label>
+        </div>
+        <button cdkFocusRegionStart type="button" class="close pull-right" (click)="close()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <policy-assignments-wizard></policy-assignments-wizard>
+      </div>
+    </div>
+  </div>
+</div>

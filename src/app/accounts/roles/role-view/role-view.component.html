@@ -1,0 +1,9 @@
+<div *ngIf="model" class="view">
+  <div class="form-group row">
+    <label class="control-label bold uppercase" translate>
+      {{'roles.textPermissionGroups'}}
+    </label>
+  </div>
+  <permission-role [roles]="[model]"></permission-role>
+</div>
+

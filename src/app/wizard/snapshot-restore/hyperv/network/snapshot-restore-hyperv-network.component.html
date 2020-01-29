@@ -1,0 +1,33 @@
+<div class="network">
+  <div class="title" translate>{{'wizard.job.textSetNetworkTitle'}}</div>
+  <div class="desc" translate>{{'wizard.job.textSetNetworkDesc'}}</div>
+  <div class="content">
+    <div *ngIf="!showNetworkCard()">
+      <label translate>{{ model.workflowType === 'IA' ? 'wizard.textNoNetworkIAMsg' : 'wizard.textNoNetworkMsg'}}</label>
+    </div>
+    <div *ngIf="showNetworkCard()">
+      <h6 translate>{{'hypervisor.networkText'}}</h6>
+      <ba-card>
+        <virtual-network-component [subnets]="model.mapSubnetPayload"
+                                   [hypervisorType]="model.hypervisorType"
+                                   [mapVirtualNetwork]="model.mapNetworkPayload"
+                                   [sourceList]="model.source"></virtual-network-component>
+      </ba-card>
+    </div>
+  </div>
+</div>
+<ng-template #summary>
+  <div class="summary">
+    <div class="content">
+      <div class="property">
+        <label class="name" translate>{{'wizard.job.textNetworkSummary'}}</label>
+        <label class="value" *ngIf="!summaryPayload">{{'wizard.job.textEmpty' | translate}}</label>
+        <label class="value">
+          <div *ngFor="let item of summaryPayload">
+            {{item.name}} - {{item.production}} - {{item.test}}
+          </div>
+        </label>
+      </div>
+    </div>
+  </div>
+</ng-template>

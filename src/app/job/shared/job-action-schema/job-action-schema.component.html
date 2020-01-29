@@ -1,0 +1,42 @@
+<div bsModal #modal="bs-modal" class="modal fade" (keydown.esc)="onAbort()"
+     [config]="{backdrop: 'static', keyboard : false}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog">
+    <div cdkTrapFocus class="modal-content">
+      <button cdkFocusRegionStart class="close" (click)="onAbort()" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <div class="modal-header">
+        <label *ngIf="textActionOptions" class="modal-title">{{textActionOptions}}</label>
+        <label *ngIf="!textActionOptions" class="modal-title" translate>{{'job.textActionOptions'}}</label>
+        <hr class="modal-hr-sdl">
+      </div>
+      <div class="modal-body">
+        <form *ngIf="model" class="form-horizontal">
+          <div *ngFor="let param of records" class="row">
+            <label class="col-md-8 control-label">{{param.promptText || param.name}}</label>
+            <div class="col-sm-4">
+              <div *ngIf="param.metadata['dropdownSettings']" keyboardMultiselect [multiselect]="multiselect">
+              <angular2-multiselect #multiselect
+                                    [ngModelOptions]="{standalone: true}"
+                                    [data]="param.metadata['dropdownList']"
+                                    [(ngModel)]="param.metadata['selectedItems']"
+                                    [settings]="param.metadata['dropdownSettings']"
+                                    (onSelect)="onItemSelect($event, multiselect)"
+                                    (onDeSelect)="OnItemDeSelect($event, multiselect)"></angular2-multiselect>
+              </div>
+              <br/>
+            </div>
+          </div>
+          <br>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button class="sdl inline secondary margin-right-1rem" (click)="onAbort()" translate>{{'common.textCancel'}}</button>
+        <button cdkFocusRegionEnd [disabled]="!isValid()" [ngClass]="{'disabled': !isValid()}" class="sdl inline" (click)="onRunClick()" translate>
+          {{'common.textOK'}}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

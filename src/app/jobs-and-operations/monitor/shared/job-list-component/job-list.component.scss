@@ -1,0 +1,42 @@
+table > tbody > tr > td {
+  padding: 0;
+  line-height: inherit;
+}
+
+.capitalize {
+  text-transform: capitalize;
+}
+
+.sorter-button {
+  min-width: 2.5rem;
+  height: 2.5em;
+  padding: 0;
+  border: none;
+
+  &:hover, &:active, &:focus {
+    background-color: white;
+    color: #047CC0;
+  }
+  &.cdk-keyboard-focused {
+    &.cdk-program-focused {
+      outline: 2px dashed yellow;
+      outline-offset: .15em;
+    }
+  }
+}
+
+.disable-scroll {
+  overflow-y: hidden;
+}
+
+.scroll-container {
+  height: calc(100% - 3rem);
+  overflow-y: auto;
+}
+
+.toolbar {
+  height: 25px;
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
+  margin-top: 1.5rem;
+}

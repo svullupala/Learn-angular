@@ -1,0 +1,129 @@
+@import "../../../../theme/sass/conf/conf";
+
+.form-control {
+  background-color: #ffffff;
+  color: $dropdown-text;
+  margin-bottom: 5px;
+}
+
+.vmsearch {
+  position: relative;
+  .close {
+    float: none;
+  }
+  .selection-total {
+    color: green;
+    font-size: 12px;
+  }
+  .arrow-up {
+    width: 0;
+    height: 0;
+    border-left: 13px solid transparent;
+    border-right: 13px solid transparent;
+    border-bottom: 15px solid #e5e5e5;
+    margin-left: 15px;
+    position: absolute;
+    top: 26px;
+    left: 24%;
+    z-index: 10;
+  }
+  .bread-crumb {
+    width: 100%;
+    height: 20px;
+    top: 0;
+    left: 0;
+    background-color: transparent;
+  }
+  .result {
+    left: 24%;
+    width: 100%;
+    margin: 0;
+    max-height: 600px;
+    table {
+      thead > tr > th > button.close {
+        float: right;
+        line-height: 0.5;
+        width: 20px;
+        height: 20px;
+        span {
+          display: inline-block;
+          height: 20px;
+        }
+      }
+      thead > tr > th.closecol {
+        width: 20px;
+        button {
+          position: absolute;
+          top: 0;
+          right: 0;
+        }
+      }
+    }
+  }
+  .popup {
+    position: absolute;
+    width: 60%;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    background: #fff;
+    box-shadow: 0 1px 5px #959595;
+    z-index: 300;
+  }
+  .arrow-up2 {
+    top: 66px;
+  }
+  .result2 {
+    top: 80px;
+  }
+  .align-left {
+    left: 0;
+  }
+}
+
+.no-top-border {
+  border-top: 0;
+}
+
+.table th, .table td {
+  border-top: 0;
+  border-bottom: 0;
+}
+
+.table {
+  padding-top: 0;
+  padding-bottom: 0;
+  border: 0;
+  text-align: center;
+}
+
+.table th, .table td {
+  padding-top: 0;
+  padding-bottom: 0;
+  border: 0;
+}
+
+.align-left {
+  text-align: left;
+}
+
+.align-center {
+  text-align: center;
+}
+
+.align-right {
+  text-align: right;
+}
+
+label {
+  line-height: 30px;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Style the list */
+ul.breadcrumb2 {
+  display: block;
+  color: $dropdown-text;
+}

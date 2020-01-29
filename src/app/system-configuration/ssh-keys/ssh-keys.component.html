@@ -1,0 +1,7 @@
+<div class="align-right margin-bottom-10" [ngClass]="{'hidden': mode !== 'list'}">
+  <button class="sdl inline with-icon" *ngIf="!keysTable.disableAddKeys" (click)="onAddClick()" translate>
+    <i class="bidi-add-new-white_16"></i>{{'key.textAddSshKey' | translate}}
+  </button>
+</div>
+<ssh-keys-table (deleteClick)="onDeleteClick($event)" (editClick)="onEditClick($event)" [ngClass]="{'hidden': mode !== 'list'}"></ssh-keys-table>
+<ssh-keys-edit (saveClick)="loadData(true)" (cancelClick)="onCancelClick()" [disableAddKeys]="keysTable.disableAddKeys" [ngClass]="{'hidden': mode !== 'edit'}"></ssh-keys-edit>

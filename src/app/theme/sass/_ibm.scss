@@ -1,0 +1,102 @@
+@import "ibm-design-icons";
+@include branding-ibm-svg-icon-class('status-normal', 'normal_16', 'status/', 16, 16);
+@include branding-ibm-svg-icon-class('status-warning', 'warning_16', 'status/', 16, 16);
+@include branding-ibm-svg-icon-class('status-error', 'error_16', 'status/', 16, 16);
+@include branding-ibm-svg-icon-class('status-info', 'info_16', 'status/', 16, 16);
+@include branding-ibm-svg-icon-class('status-info-blue', 'info-blue_16', 'status/', 16, 16);
+@include branding-ibm-svg-icon-class('warning', 'warning', 'status/', 16, 16);
+@include branding-ibm-svg-icon-class('failed', 'failed', 'status/', 16, 16);
+@include branding-ibm-svg-icon-class('success', 'success', 'status/', 16, 16);
+@include branding-ibm-svg-icon-class('full', 'full', 'status/', 16, 16);
+@include branding-ibm-svg-icon-class('unavailable', 'unavailable', 'status/', 16, 16);
+@include branding-ibm-svg-icon-class('dashboard-white_24', 'dashboard-white_24', 'object-based/', 24, 24);
+@include branding-ibm-svg-icon-class('search-white_24', 'search-white_24', 'action-based/', 24, 24);
+@include branding-ibm-svg-icon-class('user-white_24', 'user-white_24', 'object-based/', 24, 24);
+@include branding-ibm-svg-icon-class('calendar-gray-70_16', 'calendar-gray-70_16', 'object-based/', 16, 16);
+
+@include branding-ibm-svg-icon-class('accounts_24', 'accounts_24', 'object-based/', 24, 24);
+@include branding-ibm-svg-icon-class('dashboard_24', 'dashboard_24', 'object-based/', 24, 24);
+@include branding-ibm-svg-icon-class('jobsAndOperations_24', 'jobsAndOperations_24', 'object-based/', 24, 24);
+@include branding-ibm-svg-icon-class('manageProtection_24', 'manageProtection_24', 'object-based/', 24, 24);
+@include branding-ibm-svg-icon-class('report_24', 'report_24', 'object-based/', 24, 24);
+@include branding-ibm-svg-icon-class('systemConfiguration_24', 'systemConfiguration_24', 'object-based/', 24, 24);
+@include branding-ibm-svg-icon-class('add-new-white_16', 'add-new-white_16', 'action-based/', 16, 16);
+
+@include branding-ibm-svg-icon-class('SortingArrow_Icon_16px', 'SortingArrow_Icon_16px', 'action-based/', 16, 16);
+@include branding-ibm-svg-icon-class('SortingArrow_Icon_24px', 'SortingArrow_Icon_24px', 'action-based/', 24, 24);
+@include branding-ibm-svg-icon-class('filter_16', 'filter_16', 'action-based/', 16, 16);
+@include branding-ibm-svg-icon-class('filter_white_16', 'filter_white_16', 'action-based/', 16, 16);
+@include branding-ibm-svg-icon-class('status-normal-white', 'normal-white_16', 'status/', 16, 16);
+
+@include branding-ibm-svg-icon-class('download-blue', 'Download_32px_blue', 'whatsnew/', 32, 32);
+@include branding-ibm-svg-icon-class('link-blue', 'Learn_More_32px_blue', 'whatsnew/', 32, 32);
+
+@include branding-ibm-svg-icon-class('wizard-snapshot', 'SPP_Snapshot', 'wizard/', 32, 32);
+@include branding-ibm-svg-icon-class('wizard-adhoc-backup', 'SPP_Adhoc_Backup', 'wizard/', 32, 32);
+@include branding-ibm-svg-icon-class('wizard-file-restore', 'SPP_File_Restore', 'wizard/', 32, 32);
+
+.masked {
+  position: relative;
+  pointer-events: none;
+  * {
+    pointer-events: none;
+  }
+}
+
+.masked:before {
+  position: absolute;
+  content: "";
+  display: block;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background: #CCC;
+  opacity: 0.3;
+  z-index: 77;
+}
+
+.masked:after {
+  position: absolute;
+  content: "";
+  left: calc(50% - 1rem);
+  top: calc(50% - 1rem);
+  margin-left: auto;
+  margin-right: auto;
+  z-index: 78;
+  @include sdl-loading-spinner(2rem, 2rem);
+  @include branding-idi-svg-icon($branding-ibm-root + 'status/loading_spinner.svg', 2rem, 2rem, true);
+}
+
+.mask-page-content {
+  position: relative;
+  pointer-events: none;
+  * {
+    pointer-events: none;
+  }
+}
+
+.mask-page-content:before {
+  position: absolute;
+  content: "";
+  display: block;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background: #CCC;
+  opacity: 0.3;
+  z-index: 79;
+}
+
+.mask-page-content:after {
+  position: fixed;
+  content: "";
+  left: calc(50% - 1rem);
+  top: calc(50% - 1rem);
+  margin-left: auto;
+  margin-right: auto;
+  z-index: 80;
+  @include sdl-loading-spinner(10.5rem, 10.5rem);
+  @include branding-idi-svg-icon($branding-ibm-root + 'status/loading_spinner.svg', 10.5rem, 10.5rem, true);
+}

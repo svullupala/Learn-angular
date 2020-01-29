@@ -1,0 +1,323 @@
+[{
+  "method": "POST",
+  "pattern": "findDiscovery",
+  "response": {
+    "instances": [{
+        "href": "http://ecxbed5:8082/api/identity/user/1003",
+        "name": "MongoDB12",
+        "status": "registered",
+        "user": "http://ecxbed5:8082/api/identity/user/1003"
+      }, {
+        "href": null,
+        "user": null,
+        "name": "MongoGuy",
+        "status": "live"
+      }, {
+        "href": "http://ecxbed5:8082/api/identity/user/1003",
+        "user": "http://ecxbed5:8082/api/identity/user/1003",
+        "name": "MongoGuy",
+        "status": "stale"
+      }]
+  }
+}, {
+  "method": "POST",
+  "pattern": "discover",
+  "response": {
+    "instances": [
+      {
+        "id": null,
+        "name": "MongoDB12",
+        "comment": null,
+        "creatorId": 0,
+        "creationTime": null,
+        "type": null,
+        "flags": 0,
+        "pk": "1123349217",
+        "sessionId": null,
+        "objType": null,
+        "jobId": null,
+        "host": null,
+        "providerNodeId": null,
+        "providerUniqueId": null,
+        "siteId": null,
+        "autoProvisionedsubPolicyName": null,
+        "metadataPath": "/DBINST:1123349217",
+        "applicationType": "sql",
+        "applicationFullName": "Microsoft SQL Server SSSQL16DEV7SQL16INST1",
+        "version": "13.0.4001.0",
+        "clusterType": null,
+        "preferredNodes": null,
+        "clusterHosts": null,
+        "databases": null,
+        "capabilities": {
+          "supportedCommands": [
+            {
+              "command": "backup",
+              "location": "PREFERRED"
+            },
+            {
+              "command": "enablelogbackup",
+              "location": "ALL",
+              "sequence": "PARALLEL"
+            },
+            {
+              "command": "disablelogbackup",
+              "location": "ALL",
+              "sequence": "PARALLEL"
+            },
+            {
+              "command": "restore",
+              "location": "ALL",
+              "sequence": "SERIAL"
+            }
+          ]
+        },
+        "appServerVmInfos": null
+      },
+      {
+        "id": null,
+        "name": "MongoGuy",
+        "comment": null,
+        "creatorId": 0,
+        "creationTime": null,
+        "type": null,
+        "flags": 0,
+        "pk": "1123349217",
+        "sessionId": null,
+        "objType": null,
+        "jobId": null,
+        "host": null,
+        "providerNodeId": null,
+        "providerUniqueId": null,
+        "siteId": null,
+        "autoProvisionedsubPolicyName": null,
+        "metadataPath": "/DBINST:1123349217",
+        "applicationType": "sql",
+        "applicationFullName": "Microsoft SQL Server SSSQL16DEV7SQL16INST1",
+        "version": "13.0.4001.0",
+        "clusterType": null,
+        "preferredNodes": null,
+        "clusterHosts": null,
+        "databases": null,
+        "capabilities": {
+          "supportedCommands": [
+            {
+              "command": "backup",
+              "location": "PREFERRED"
+            },
+            {
+              "command": "enablelogbackup",
+              "location": "ALL",
+              "sequence": "PARALLEL"
+            },
+            {
+              "command": "disablelogbackup",
+              "location": "ALL",
+              "sequence": "PARALLEL"
+            },
+            {
+              "command": "restore",
+              "location": "ALL",
+              "sequence": "SERIAL"
+            }
+          ]
+        },
+        "appServerVmInfos": null
+      }
+    ]
+  }
+}, {
+  "method": "GET",
+  "pattern": "appserver",
+  "response": {
+    "links": {
+      "self": {
+        "rel": "self",
+        "href": "http://ecxbed3:8082/api/appserver",
+        "hreflang": null,
+        "media": null,
+        "title": null,
+        "type": null,
+        "deprecation": null
+      },
+      "create": {
+        "rel": "create",
+        "href": "http://ecxbed3:8082/api/appserver",
+        "hreflang": null,
+        "media": null,
+        "title": null,
+        "type": null,
+        "deprecation": null
+      },
+      "test": {
+        "rel": "action",
+        "href": "http://ecxbed3:8082/api/appserver?action=test",
+        "hreflang": null,
+        "media": null,
+        "title": null,
+        "type": null,
+        "deprecation": null
+      },
+      "types": {
+        "rel": "action",
+        "href": "http://ecxbed3:8082/api/appserver/types",
+        "hreflang": null,
+        "media": null,
+        "title": null,
+        "type": null,
+        "deprecation": null
+      }
+    },
+    "page": 1,
+    "total": 1,
+    "appservers": [
+      {
+        "links": {
+          "self": {
+            "rel": "self",
+            "href": "http://ecxbed3:8082/api/appserver/1001",
+            "hreflang": null,
+            "media": null,
+            "title": null,
+            "type": null,
+            "deprecation": null
+          },
+          "up": {
+            "rel": "up",
+            "href": "http://ecxbed3:8082/api/appserver",
+            "hreflang": null,
+            "media": null,
+            "title": null,
+            "type": null,
+            "deprecation": null
+          },
+          "edit": {
+            "rel": "update",
+            "href": "http://ecxbed3:8082/api/appserver/1001",
+            "hreflang": null,
+            "media": null,
+            "title": null,
+            "type": null,
+            "deprecation": null
+          },
+          "delete": {
+            "rel": "delete",
+            "href": "http://ecxbed3:8082/api/appserver/1001",
+            "hreflang": null,
+            "media": null,
+            "title": null,
+            "type": null,
+            "deprecation": null
+          },
+          "usedby": {
+            "rel": "related",
+            "href": "http://ecxbed3:8082/api/endeavour/association/resource/appserver/1001?action=listUsingResources",
+            "hreflang": null,
+            "media": null,
+            "title": null,
+            "type": null,
+            "deprecation": null
+          },
+          "credentials": {
+            "rel": "related",
+            "href": "http://ecxbed3:8082/api/appserver/1001/credential",
+            "hreflang": null,
+            "media": null,
+            "title": null,
+            "type": null,
+            "deprecation": null
+          },
+          "volumes": {
+            "rel": "related",
+            "href": "http://ecxbed3:8082/api/appserver/1001/volume?from=hlo",
+            "hreflang": null,
+            "media": null,
+            "title": null,
+            "type": null,
+            "deprecation": null
+          },
+          "disks": {
+            "rel": "related",
+            "href": "http://ecxbed3:8082/api/appserver/1001/disk?from=hlo",
+            "hreflang": null,
+            "media": null,
+            "title": null,
+            "type": null,
+            "deprecation": null
+          },
+          "test": {
+            "rel": "action",
+            "href": "http://ecxbed3:8082/api/appserver/1001?action=test",
+            "hreflang": null,
+            "media": null,
+            "title": null,
+            "type": null,
+            "deprecation": null
+          },
+          "inventory": {
+            "rel": "action",
+            "href": "http://ecxbed3:8082/api/appserver/1001?action=inventory",
+            "hreflang": null,
+            "media": null,
+            "title": null,
+            "type": null,
+            "deprecation": null
+          }
+        },
+        "id": "1001",
+        "name": "172.20.46.45",
+        "hostAddress": "172.20.46.45",
+        "comment": null,
+        "catalogEligible": null,
+        "serverType": null,
+        "vsphereId": null,
+        "applicationType": null,
+        "osType": "linux",
+        "useKeyAuthentication": null,
+        "logicalDelete": false,
+        "applicationTypes": [
+          "oracle"
+        ],
+        "oskey": null,
+        "osuser": {
+          "href": "http://ecxbed5:8082/api/identity/user/1012"
+        },
+        "appCredentials": [
+          {
+            "id": "2001",
+            "credentialType": "oracle",
+            "comment": "For test",
+            "instanceName": "testDB01",
+            "appuser": {
+              "href": "http://ecxbed5:8082/api/identity/user/1012"
+            },
+            "useForAllInstances": false
+          },
+          {
+            "id": "2002",
+            "credentialType": "oracle",
+            "comment": "For test",
+            "instanceName": "anotherDB02",
+            "appuser": {
+              "href": "http://ecxbed5:8082/api/identity/user/1003"
+            },
+            "useForAllInstances": false
+          }
+        ],
+        "portNumber": 0,
+        "opProperties": {
+          "maxConcurrency": 10
+        },
+        "application": true,
+        "script": false,
+        "metadataPath": null,
+        "siteName": "",
+        "siteId": "",
+        "nodeId": "1001",
+        "type": null,
+        "resourceType": "appserver",
+        "rbacPath": "root:0/appserver.all:0/appserver:1001"
+      }
+    ]
+  }
+}]

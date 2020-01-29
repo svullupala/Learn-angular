@@ -1,0 +1,67 @@
+$summary-text-color: #1C496D;
+
+.source, .snapshot, .destination, .datastore, .network, .run-type, .error-response, .schedule, .scripts {
+  background-color: transparent;
+  text-align: left;
+  & > .title {
+    font-size: 24px;
+    line-height: 2.5rem;
+  }
+  & > .desc {
+    font-size: 14px;
+    line-height: 1.25rem;
+  }
+  & > .content {
+    font-size: 14px;
+    margin-top: 2rem;
+  }
+}
+
+.run-type {
+  & > .content {
+    font-size: 14px;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    & > .item {
+      margin-top: 2rem;
+      width: 150px;
+    }
+  }
+}
+
+.error-response {
+  & > .content {
+    font-size: 14px;
+    margin-top: 2rem;
+    margin-left: 1rem;
+    margin-right: 2rem;
+  }
+}
+
+.summary {
+  text-align: left;
+  color: $summary-text-color;
+
+  & > .title {
+    font-size: 16px;
+    line-height: 2rem;
+    font-weight: bold;
+  }
+  & > .content {
+    font-size: 14px;
+
+    & > .property {
+      line-height: 24px;
+
+      & > .name {
+        white-space: nowrap;
+        width: 300px;
+      }
+      & > .value {
+        white-space: normal;
+        font-weight: bold;
+      }
+    }
+  }
+}

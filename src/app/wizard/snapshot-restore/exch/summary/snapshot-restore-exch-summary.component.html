@@ -1,0 +1,150 @@
+<div class="summary">
+  <wizard-summary-page [model]="model" [summaryEntries]="summaryEntries"></wizard-summary-page>
+</div>
+
+<ng-template #summarySource>
+  <div class="summary">
+    <div class="content">
+      <div class="property">
+        <label class="name">{{'wizard.job.textSourceSelectSummary' | translate}}</label>
+        <label class="value">{{sourceValue || ('wizard.job.textEmpty' | translate)}}</label>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #summarySnapshot>
+  <div class="summary">
+    <div class="content">
+      <div class="property" *ngFor="let item of sourceItems; let i = index">
+        <label class="name">{{i === 0 ? ('wizard.job.textSourceSnapshotSummary' | translate) : ''}}</label>
+        <label class="value">
+          {{sourceItemName(item)}} - {{ useLatest(item) ? ('hypervisor.textUseLatest' | translate) : (version(item) | amDateFormat: 'll LTS')}}
+        </label>
+      </div>
+      <div class="property">
+        <label class="name">{{'wizard.job.textRestoreTypeSummary' | translate}}</label>
+        <label class="value" translate>{{selectedRestoreType}}</label>
+      </div>
+      <div class="property">
+        <label class="name">{{'wizard.job.textRestoreSourceTypeSummary' | translate}}</label>
+        <label class="value" translate>{{selectedRestoreSourceType}}</label>
+      </div>
+      <div class="property">
+        <label class="name">{{'wizard.job.textRestoreSourceItemSummary' | translate}}</label>
+        <label class="value">{{selectedRestoreSourceItem}}</label>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #summaryRunType>
+  <div class="summary">
+    <div class="content">
+      <div class="property">
+        <label class="name">{{'wizard.job.textRunTypeSummary' | translate}}</label>
+        <label class="value">{{runTypeString | translate}}</label>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #summaryDestination>
+  <div class="summary">
+    <div class="content">
+      <div class="property">
+        <label class="name">{{'wizard.job.textDestinationSummary' | translate}}</label>
+        <label class="value">{{originalLocation? ('application.textRestoreOriginal' | translate) : ('application.textRestoreAlternate' | translate) + ' - ' + (destinationName || ('wizard.job.textEmpty' | translate))}}</label>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #summaryOptions>
+  <div class="summary">
+    <div class="title"></div>
+    <div class="content">
+      <div class="property">
+        <label class="name">{{'hypervisor.autoCleanupTextSummary' | translate}}</label>
+        <label class="value">{{(options.autocleanup ? 'wizard.job.textYes' : 'wizard.job.textNo') | translate}}</label>
+      </div>
+      <div class="property">
+        <label class="name">{{'application.textAllowSessionOverwriteSummary' | translate}}</label>
+        <label class="value">{{(options.allowsessoverwrite ? 'wizard.job.textYes' : 'wizard.job.textNo') |
+          translate}}</label>
+      </div>
+      <div class="property">
+        <label class="name">{{'application.textContinueWithRestoreSummary' | translate}}</label>
+        <label class="value">{{(options.continueonerror ? 'wizard.job.textYes' : 'wizard.job.textNo') |
+          translate}}</label>
+      </div>
+      <div *ngIf="hasApplicationOption" class="section">
+        <div class="property" *ngIf="!isSubPolicyTypeIA && model.runType !== 'test'">
+          <label class="name">{{'application.textOverwriteDatabaseSummary' | translate}}</label>
+          <label class="value">{{(applicationOption.overwriteExistingDb ? 'wizard.job.textYes' :
+            'wizard.job.textNo') | translate}}</label>
+        </div>
+        <div class="property" *ngIf="!isSubPolicyTypeIA">
+          <label class="name">{{'wizard.job.textRecoveryTypeSummary' | translate}}</label>
+          <label class="value">{{applicationOption.recoveryType}}</label>
+        </div>
+        <div class="property" *ngIf="!isSubPolicyTypeIA && hasMaxParallelStreams">
+          <label class="name">{{'application.textMaxParallelStreamsSummary' | translate}}</label>
+          <label class="value">{{applicationOption.maxParallelStreams}}</label>
+        </div>
+        <div class="property" *ngIf="hasMountPathPrefix">
+          <label class="name">{{'application.textInstantAccessMountPointSummary' | translate}}</label>
+          <label class="value">{{applicationOption.mountPathPrefix || ('wizard.job.textEmpty' | translate)}}</label>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #summaryScripts>
+  <div class="summary">
+    <div class="content">
+      <div class="property">
+        <label class="name">{{'scripts.textPreScriptSummary' | translate}}</label>
+        <label class="value">
+          {{hasPreScript ? (preScript + ' ' + ('wizard.job.textIn' | translate) + ' ' +
+          ((isPreScriptServer ? 'scripts.textScriptServer' : 'application.textApplicationServer') | translate) +
+          ' ' + preServer) : ('wizard.job.textEmpty' | translate)}}
+        </label>
+      </div>
+      <div class="property">
+        <label class="name">{{'scripts.textPostScriptSummary' | translate}}</label>
+        <label class="value">
+          {{hasPostScript ? (postScript + ' ' + ('wizard.job.textIn' | translate) + ' ' +
+          ((isPostScriptServer ? 'scripts.textScriptServer' : 'application.textApplicationServer') | translate) +
+          ' ' + postServer) : ('wizard.job.textEmpty' | translate)}}
+        </label>
+      </div>
+      <div class="property">
+        <label class="name">{{'scripts.textContinueScriptsOnErrorSummary' | translate}}</label>
+        <label class="value">
+          {{(continueScriptsOnError ? 'wizard.job.textYes' : 'wizard.job.textNo') | translate}}
+        </label>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #summarySchedule>
+  <div class="summary">
+    <div class="content">
+      <div class="property">
+        <label class="name">{{'wizard.textJobNameSummary' | translate}}</label>
+        <label class="value">{{scheduleName || ('wizard.job.textEmpty' | translate)}}</label>
+      </div>
+      <div class="property" *ngIf="isRecurring">
+        <label class="name">{{'wizard.job.textScheduleSummary' | translate}}</label>
+        <label class="value">
+          {{(rpo | rpoDisplay: true) +
+          (activateDate ? (' ' +
+          ('wizard.job.textFrom' | translate ) + ' ' +
+          (activateDate | amDateFormat: 'll')) : '')}}</label>
+      </div>
+    </div>
+  </div>
+</ng-template>

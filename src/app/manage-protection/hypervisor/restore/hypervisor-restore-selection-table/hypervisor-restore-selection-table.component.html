@@ -1,0 +1,51 @@
+<div style="height: 360px;">
+  <div style="height: 330px; overflow: auto;">
+    <table>
+      <thead>
+      <tr>
+        <th *ngIf="showDelete" width="3%"></th>
+        <th translate>{{'hypervisor.textItem'}}</th>
+        <th *ngIf="selectSnapshot" translate>{{'hypervisor.textRecoveryPoint'}}</th>
+        <th *ngIf="showDelete && !isAwsec2" translate>{{ 'common.typeText' }}</th>
+        <th *ngIf="showRename" translate>{{ isAwsec2() ? 'awsec2.textRenameInstance' : 'hypervisor.textRenameVM' }}</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr [hidden]="!(records === undefined || records.length < 1)">
+        <td>
+          <i class="bidi-status-warning"></i>
+        </td>
+        <td colspan="3">
+          <span>{{ 'hypervisor.addToRestoreListText' | translate }}</span>
+        </td>
+      </tr>
+      <tr *ngFor="let item of records; trackBy: trackByFn(); let i = index" class="no-top-border">
+        <td *ngIf="showDelete">
+          <button class="btn btn-danger btn-xs"  (click)="remove(item)" type="button"
+                  [attr.aria-label]="'common.textDeselect' | translate">
+            <i class="ion-minus"></i>
+          </button>
+        </td>
+        <td ngClass="nowrap" [ngClass]="{'greyed-out': greyedOutEnabled && greyedOut(item)}">{{item.resource.name}}</td>
+        <td *ngIf="selectSnapshot">
+          <div class="btn-group" role="group">
+            <button type="button" class="btn btn-default dropdown-toggle dropdown-toggle-sdl" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false" (click)="onSnapshotDropDown(item)" [disabled]="snapshotSelectionDisabled">
+              {{item.snapshot ? (item.snapshot.protectionTime | amDateFormat: 'll LTS') : ('hypervisor.textNoSnapshotsFound' | translate)}}
+            </button>
+            <div class="dropdown-menu dropdown-menu-sdl">
+              <a tabindex="0" *ngFor="let version of item.resource.snapshots" class="dropdown-item dropdown-item-sdl"
+                 clickOnEnterKeydown (click)="onSnapshotSelect(item, version)">{{version.protectionTime | amDateFormat: 'll LTS'}}</a>
+            </div>
+          </div>
+        </td>
+        <td *ngIf="showDelete && !isAwsec2" ngClass="nowrap">{{item.resource.resourceType}}</td>
+        <td width="45%" *ngIf="showRename">
+          <input type="text" [attr.aria-label]="'Rename VM (optional)' | translate"
+                 [(ngModel)]="item.mapName" (ngModelChange)="handleRenameChange($event, item.resource.name, i)" class="form-control">
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

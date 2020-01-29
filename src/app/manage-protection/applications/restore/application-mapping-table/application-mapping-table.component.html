@@ -1,0 +1,60 @@
+<div class="horizontal-scroll">
+  <table>
+    <thead>
+    <tr>
+      <th class="align-center" [hidden]="hidePathMapping"></th>
+      <th translate>{{'common.textName'}}</th>
+      <th width="60%" translate>{{'application.textDatabaseRename'}}</th>
+    </tr>
+    </thead>
+    <tbody>
+    <ng-template let-item ngFor [ngForOf]="records" [ngForTrackBy]="trackByModel">
+      <tr>
+        <td class="collapsible-col align-center" [hidden]="hidePathMapping">
+          <button
+            [attr.aria-label]="'common.textCollapseExpand' | translate"
+            onCollapsableButtonDirective
+            [useArrow]="true"
+            data-toggle="collapse"
+            (onShowClickEvent)="onShowPaths(item)"
+            [attr.data-target]="'#' + 'icon-' +  item.resource.id">
+          </button>
+        </td>
+        <td>{{item.resource.name}}</td>
+        <td width="60%">
+          <input type="text" [maxlength]="dbRenamingCharLimit" class="form-control" [disabled]="granularMode || disableNameMapping"
+                 [attr.aria-label]="'application.textDatabaseRename' | translate"
+                 [(ngModel)]="granularMode ? item.resource.name + '_RDB' : item.databaseMapping">
+        </td>
+      </tr>
+      <tr [hidden]="hidePathMapping" class="plain-row">
+        <td colspan=3>
+          <div [attr.id]="'icon-' + item.resource.id" class="collapse align-left offset-path-table" role="form">
+            <table class="offset-table">
+              <thead>
+                <tr>
+                  <th class="align-center"></th>
+                  <th translate>{{'application.textSourcePath'}}</th>
+                  <th width="60%" translate>{{'application.textDestinationPath'}}</th>
+                </tr>
+              </thead>
+              <tbody>
+                <ng-template let-path ngFor [ngForOf]="item.paths">
+                  <tr colspan=3>
+                    <td class="collapsible-col align-center"></td>
+                    <td>{{path.name || path.source || ''}}</td>
+                    <td width="60%">
+                      <input type="text" [attr.aria-label]="'application.textDestinationPath' | translate"
+                             [(ngModel)]="path.destination" class="form-control">
+                    </td>
+                  </tr>
+                </ng-template>
+              </tbody>
+            </table>
+          </div>
+        </td>
+      </tr>
+    </ng-template>
+    </tbody>
+  </table>
+</div>
